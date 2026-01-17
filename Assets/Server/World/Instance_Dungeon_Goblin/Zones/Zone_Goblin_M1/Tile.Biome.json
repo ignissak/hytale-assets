@@ -1,0 +1,102 @@
+{
+  "Weight": 12.5,
+  "SizeModifier": 1,
+  "MapColor": "#4e8015",
+  "Covers": [],
+  "Prefabs": {},
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": ["Soil_Grass"]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone1.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Volcanic"
+      },
+	    {
+        "File": "Zones.Layers.Zone1.Bedrock"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "Gully_Cliffs",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 4,
+      "Persistence": 0.4,
+      "Scale": 0.05
+    },
+    "Keys": [0.4, 0.5, 0.6],
+    "Thresholds": [
+      {
+        "Positions": [114, 115, 117, 122, 132, 139],
+        "Values": [1, 0.9, 0.78, 0.782, 0.625, 0]
+      },
+      {
+        "Positions": [114, 115, 117, 123, 133, 140],
+        "Values": [1, 0.9, 0.8, 0.75, 0.625, 0]
+      },
+      {
+        "Positions": [114, 115, 117, 123, 126, 140],
+        "Values": [1, 0.9, 0.8, 0.73, 0.732, 0]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "Grasslands-Plains-Heightmap",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.1,
+        "Scale": 0.02
+      }
+    ],
+    "Factors": [0.8, 0.2]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["0x55881a"]
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone1_Forests"]
+    },
+    "Entries": [
+
+		]
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

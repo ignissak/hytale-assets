@@ -1,0 +1,79 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Replace",
+      "Var": "ConsumeSFX",
+      "DefaultValue": {
+        "Interactions": [
+          "Consume_SFX"
+        ]
+      }
+    },
+    {
+      "Type": "Charging",
+      "Effects": {
+        "ItemAnimationId": "Consume",
+        "ClearAnimationOnFinish": true,
+        "ClearSoundEventOnFinish": true
+      },
+      "HorizontalSpeedMultiplier": 0.4,
+      "Next": {
+        "3.0": {
+          "Type": "Serial",
+          "Interactions": [
+            {
+              "Type": "Replace",
+              "Var": "DurabilityModify",
+              "DefaultValue": {
+                "Interactions": [
+                  {
+                    "Type": "ModifyInventory",
+                    "AdjustHeldItemDurability": -1
+                  }
+                ]
+              }
+            },
+            {
+              "Type": "Replace",
+              "Var": "ConsumedSFX",
+              "DefaultOk": true,
+              "DefaultValue": {
+                "Interactions": [
+                  "Consumed_SFX"
+                ]
+              }
+            },
+            {
+              "Type": "Replace",
+              "DefaultValue": {
+                "Interactions": [
+                  "Effect"
+                ]
+              },
+              "Var": "Effect"
+            },
+            {
+              "Type": "Simple",
+              "RunTime": 0.4,
+              "$Comment": "Delay before next consume cycle can start to prevent sound overlap"
+            }
+          ]
+        }
+      },
+      "Failed": {
+        "Type": "ModifyInventory",
+        "AdjustHeldItemDurability": -1,
+        "Next": {
+          "Type": "Replace",
+          "DefaultValue": {
+            "Interactions": [
+              "Effect"
+            ]
+          },
+          "Var": "RemoveEffect"
+        }
+      }
+    }
+  ]
+}

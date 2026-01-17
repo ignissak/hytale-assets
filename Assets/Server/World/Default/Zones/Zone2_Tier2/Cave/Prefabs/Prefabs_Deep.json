@@ -1,0 +1,67 @@
+{
+  "Entries": [
+    {
+      "Weight": [45, 45, 30],
+      "Prefab": ["Cave.Stalagmites.Rock_Sandstone.Ceiling.*", "Cave.Stalagmites.Wood_Dry_Roots.*", "Rock_Formations.Rocks.Empty.Large.*"],
+      "Config": {
+        "HeightThreshold": {
+          "Positions": [45, 46, 100, 101],
+          "Values": [0, 1, 1, 0]
+        },
+        "Mask": {
+          "Default": ["*", "!Soil_Grass_Dry", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt"],
+          "Specific": [
+            {
+              "Block": ["Rock_Sandstone_Stalactite_Small", "Rock_Sandstone_Stalactite_Large"],
+              "Rule": ["Empty", "!*"]
+            }
+          ]
+        },
+        "Iterations": 1,
+        "Priority": 1,
+        "Placement": "CEILING",
+        "Rotations": ["ROTATION_0", "ROTATION_90", "ROTATION_180", "ROTATION_270"]
+      }
+    },
+    {
+      "Weight": [10,90],
+      "Prefab": [ "Cave.Formations.Rock_Volcanic.*", "Cave.Stalagmites.Rock_Volcanic_Large.Floor.*" ],
+      "Config": {
+        "HeightThreshold": {
+          "Positions": [24, 25, 39, 40],
+          "Values": [0, 1, 1, 0]
+        },
+        "Mask": {
+          "Default": ["*", "!Soil_Grass_Dry", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt"]
+        },
+        "Iterations": 1,
+        "Priority": 0,
+        "Placement": "FLOOR",
+        "Rotations": ["ROTATION_0", "ROTATION_90", "ROTATION_180", "ROTATION_270"]
+      }
+    },
+    {
+      "Weight": [100],
+      "Prefab": ["Cave.Stalagmites.Rock_Volcanic_Large.Ceiling.*"],
+      "Config": {
+        "HeightThreshold": {
+          "Positions": [24, 25, 39, 40],
+          "Values": [0, 1, 1, 0]
+        },
+        "Mask": {
+          "Default": ["*", "!Soil_Grass_Dry", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt"],
+          "Specific": [
+            {
+              "Block": ["Rock_Volcanic_Stalactite_Small", "Rock_Volcanic_Stalactite_Large"],
+              "Rule": ["Empty", "!*"]
+            }
+          ]
+        },
+        "Iterations": 2,
+        "Priority": 0,
+        "Placement": "CEILING",
+        "Rotations": ["ROTATION_90"]
+      }
+    }
+  ]
+}

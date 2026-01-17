@@ -1,0 +1,222 @@
+{
+  "Type": "Generic",
+  "Appearance": "Crow",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 8,
+      "MaxHeightOverGround": 10,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    },
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation"
+            },
+            {
+              "Sensor": {
+                "Type": "MotionController",
+                "MotionController": "Walk"
+              },
+              "Instructions": [
+                {
+                  "BodyMotion": {
+                    "Type": "TakeOff",
+                    "JumpSpeed": 1
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 20,
+                "Items": [ "Plant_Crop_*" ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Land"
+                }
+              ]
+            },
+            {
+              "BodyMotion": {
+                "Type": "WanderInCircle",
+                "Radius": 10
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Land"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Nav",
+                "NavStates": [ "Defer", "Blocked", "Aborted" ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "MotionController",
+                    "MotionController": "Fly"
+                  },
+                  {
+                    "Type": "DroppedItem",
+                    "Range": 20,
+                    "Items": [ "Plant_Crop_*" ]
+                  }
+                ]
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 10 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Land",
+                "SlowDownDistance": 3,
+                "StopDistance": 0.5,
+                "GoalLenience": 3
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 20,
+                "Items": [ "Plant_Crop_*" ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Eat"
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Eat"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 1,
+                "Items": [ "Plant_Crop_*" ]
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Eat"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 4, 6 ]
+                },
+                {
+                  "Type": "PickUpItem",
+                  "Range": 1,
+                  "StorageTarget": "Destroy"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 20,
+                "Items": [ "Plant_Crop_*" ]
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 2,
+                "StopDistance": 1,
+                "RelativeSpeed": 0.5
+              }
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 0.5, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Land_Seeds.name"
+}

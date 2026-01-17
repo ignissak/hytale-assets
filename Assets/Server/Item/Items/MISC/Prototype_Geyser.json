@@ -1,0 +1,156 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Prototype_Geyser.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Platform_Launcher.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "Quality": "Developer",
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "CustomModel": "Blocks/Miscellaneous/Platform_Magic.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Red.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Pad_Portal",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "Quality": 2,
+        "GatherType": "Rocks",
+        "ItemId": "Rock_Basalt_Cobble"
+      }
+    },
+    "VariantRotation": "UpDown",
+    "RandomRotation": "YawStep90",
+    "BlockParticleSetId": "Stone",
+    "ParticleColor": "#636045",
+    "BlockSoundSetId": "Stone",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Interactions": {
+      "CollisionEnter": {
+        "Interactions": [
+          {
+            "Type": "ApplyForce",
+            "Direction": {
+              "X": 0,
+              "Y": 1,
+              "Z": 0
+            },
+            "AdjustVertical": false,
+            "WaitForGround": false,
+            "Force": 65,
+            "VelocityConfig": {
+              "AirResistance": 0.97,
+              "AirResistanceMax": 0.96,
+              "GroundResistance": 0.94,
+              "GroundResistanceMax": 0.82,
+              "Threshold": 3.0,
+              "Style": "Exp"
+            },
+            "ChangeVelocityType": "Set",
+            "Duration": 0.0
+          },
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "On",
+              "On": "default"
+            },
+            "RunTime": 3,
+            "Next": {
+              "Type": "ChangeState",
+              "Changes": {
+                "default": "On",
+                "On": "default"
+              }
+            },
+            "UpdateBlockState": true
+          }
+        ],
+        "Cooldown": {
+          "Cooldown": 5.0
+        }
+      }
+    },
+    "Particles": [],
+    "State": {
+      "Definitions": {
+        "Off": {
+          "Particles": null,
+          "SoundEventId": null,
+          "Interactions": {
+            "CollisionEnter": {
+              "Interactions": [
+                "Simple"
+              ]
+            }
+          }
+        },
+        "On": {
+          "Particles": [
+            {
+              "SystemId": "Geyzer_Timed",
+              "PositionOffset": {
+                "Y": -1.0
+              }
+            }
+          ],
+          "SoundEventId": "SFX_Env_Emit_Geyzer",
+          "Interactions": {
+            "CollisionEnter": {
+              "Interactions": [
+                {
+                  "Type": "ApplyForce",
+                  "Direction": {
+                    "X": 0,
+                    "Y": 1,
+                    "Z": 0
+                  },
+                  "AdjustVertical": false,
+                  "WaitForGround": false,
+                  "Force": 65,
+                  "VelocityConfig": {
+                    "AirResistance": 0.97,
+                    "AirResistanceMax": 0.96,
+                    "GroundResistance": 0.94,
+                    "GroundResistanceMax": 0.82,
+                    "Threshold": 3.0,
+                    "Style": "Exp"
+                  },
+                  "ChangeVelocityType": "Set"
+                }
+              ]
+            }
+          },
+          "AmbientSoundEventId": "SFX_Env_Emit_Geyzer"
+        }
+      }
+    }
+  },
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.305,
+    "Translation": [
+      0,
+      -11.3
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

@@ -1,0 +1,204 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "DeployablePreview": 1
+  },
+  "Next": {
+    "Type": "Replace",
+    "Var": "Fire_Trap_Config",
+    "DefaultOk": true,
+    "DefaultValue": {
+      "Interactions": [
+        "Weapon_Stick_Fire_Spawn_Trap"
+      ]
+    }
+  },
+  "Failed": {
+    "Type": "StatsCondition",
+    "Costs": {
+      "MagicCharges": 4
+    },
+    "Next": {
+      "Parent": "Weapon_Stick_Fire_Shoot_Base",
+      "Next": {
+        "0.0": "Weapon_Stick_Fire_Projectile_Charged_0",
+        "0.5": "Weapon_Stick_Fire_Projectile_Charged_1",
+        "1.0": "Weapon_Stick_Fire_Projectile_Charged_2",
+        "1.5": "Weapon_Stick_Fire_Projectile_Charged_3",
+        "2.0": "Weapon_Stick_Fire_Projectile_Charged_3"
+      },
+      "Effects": {
+        "ItemPlayerAnimationsId": "Fire_Stick",
+        "ItemAnimationId": "Soak_4",
+        "ClearAnimationOnFinish": true,
+        "ClearSoundEventOnFinish": true,
+        "WorldSoundEventId": "SFX_Staff_Flame_Consume_Charge_4",
+        "LocalSoundEventId": "SFX_Staff_Flame_Consume_Charge_4_Local",
+        "Particles": [
+          {
+            "TargetNodeName": "Attachment_Spin4",
+            "SystemId": "Fire_Charge1",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin3",
+            "SystemId": "Fire_Charge1",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin2",
+            "SystemId": "Fire_Charge1",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin1",
+            "SystemId": "Fire_Charge1",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Origin_Projectile",
+            "SystemId": "Fireball_Charge_To_4",
+            "Scale": 0.2,
+            "PositionOffset": {
+              "X": 0,
+              "Y": 0.15,
+              "Z": 0
+            }
+          }
+        ]
+      }
+    },
+    "Failed": {
+      "Type": "StatsCondition",
+      "Costs": {
+        "MagicCharges": 3
+      },
+      "Next": {
+        "Parent": "Weapon_Stick_Fire_Shoot_Base",
+        "Next": {
+          "0.0": "Weapon_Stick_Fire_Projectile_Charged_0",
+          "0.5": "Weapon_Stick_Fire_Projectile_Charged_1",
+          "1.0": "Weapon_Stick_Fire_Projectile_Charged_2",
+          "1.5": "Weapon_Stick_Fire_Projectile_Charged_2"
+        },
+        "Effects": {
+          "ItemPlayerAnimationsId": "Fire_Stick",
+          "ItemAnimationId": "Soak_3",
+          "ClearAnimationOnFinish": true,
+          "ClearSoundEventOnFinish": true,
+          "WorldSoundEventId": "SFX_Staff_Flame_Consume_Charge_3",
+          "LocalSoundEventId": "SFX_Staff_Flame_Consume_Charge_3_Local",
+          "Particles": [
+            {
+              "TargetNodeName": "Attachment_Spin4",
+              "SystemId": "Fire_Charge1",
+              "Scale": 0.2
+            },
+            {
+              "TargetNodeName": "Attachment_Spin3",
+              "SystemId": "Fire_Charge1",
+              "Scale": 0.2
+            },
+            {
+              "TargetNodeName": "Attachment_Spin2",
+              "SystemId": "Fire_Charge1",
+              "Scale": 0.2
+            },
+            {
+              "TargetNodeName": "Origin_Projectile",
+              "SystemId": "Fireball_Charge_To_4",
+              "Scale": 0.2,
+              "PositionOffset": {
+                "X": 0,
+                "Y": 0.15,
+                "Z": 0
+              }
+            }
+          ]
+        }
+      },
+      "Failed": {
+        "Type": "StatsCondition",
+        "Costs": {
+          "MagicCharges": 2
+        },
+        "Next": {
+          "Parent": "Weapon_Stick_Fire_Shoot_Base",
+          "Next": {
+            "0.0": "Weapon_Stick_Fire_Projectile_Charged_0",
+            "0.5": "Weapon_Stick_Fire_Projectile_Charged_1",
+            "1.0": "Weapon_Stick_Fire_Projectile_Charged_1"
+          },
+          "Effects": {
+            "ItemPlayerAnimationsId": "Fire_Stick",
+            "ItemAnimationId": "Soak_2",
+            "ClearAnimationOnFinish": true,
+            "ClearSoundEventOnFinish": true,
+            "WorldSoundEventId": "SFX_Staff_Flame_Consume_Charge_2",
+            "LocalSoundEventId": "SFX_Staff_Flame_Consume_Charge_2_Local",
+            "Particles": [
+              {
+                "TargetNodeName": "Attachment_Spin4",
+                "SystemId": "Fire_Charge1",
+                "Scale": 0.2
+              },
+              {
+                "TargetNodeName": "Attachment_Spin3",
+                "SystemId": "Fire_Charge1",
+                "Scale": 0.2
+              },
+              {
+                "TargetNodeName": "Origin_Projectile",
+                "SystemId": "Fireball_Charge_To_4",
+                "Scale": 0.2,
+                "PositionOffset": {
+                  "X": 0,
+                  "Y": 0.15,
+                  "Z": 0
+                }
+              }
+            ]
+          }
+        },
+        "Failed": {
+          "Type": "StatsCondition",
+          "Costs": {
+            "MagicCharges": 1
+          },
+          "Next": {
+            "Parent": "Weapon_Stick_Fire_Shoot_Base",
+            "Next": {
+              "0.0": "Weapon_Stick_Fire_Projectile_Charged_0"
+            },
+            "Effects": {
+              "ItemPlayerAnimationsId": "Fire_Stick",
+              "ItemAnimationId": "Soak_1",
+              "ClearAnimationOnFinish": true,
+              "ClearSoundEventOnFinish": true,
+              "WorldSoundEventId": "SFX_Staff_Flame_Consume_Charge_1",
+              "LocalSoundEventId": "SFX_Staff_Flame_Consume_Charge_1_Local",
+              "Particles": [
+                {
+                  "TargetNodeName": "Attachment_Spin4",
+                  "SystemId": "Fire_Charge1",
+                  "Scale": 0.2
+                },
+                {
+                  "TargetNodeName": "Origin_Projectile",
+                  "SystemId": "Fireball_Charge_To_4",
+                  "Scale": 0.2,
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": 0.15,
+                    "Z": 0
+                  }
+                }
+              ]
+            }
+          },
+          "Failed": "Staff_Cast_Fail"
+        }
+      }
+    }
+  }
+}

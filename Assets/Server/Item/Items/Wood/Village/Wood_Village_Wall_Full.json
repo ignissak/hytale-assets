@@ -1,0 +1,120 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Village_Wall_1.name"
+  },
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Icon": "Icons/ItemsGenerated/Wood_Village_Wall_Full.png",
+  "Categories": [
+    "Blocks.Rocks"
+  ],
+  "PlayerAnimationsId": "Block",
+  "Set": "Wood_Hardwood_Furniture",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Soil_Clay_Smooth_White",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Wood_Hardwood",
+        "Quantity": 2
+      }
+    ],
+    "OutputQuantity": 2,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Village_Walls"
+        ]
+      }
+    ]
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "Group": "Wall",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods",
+        "ItemId": "Wood_Village_Wall_Full"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Textures": [
+      {
+        "All": "BlockTextures/Wood_Village_Wall_Corner_Full.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#908263",
+    "BlockSoundSetId": "Wood",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Full": "Wood_Village_Wall_Full",
+        "Base": "*Wood_Village_Wall_Full_State_Definitions_Bottom",
+        "Middle": "*Wood_Village_Wall_Full_State_Definitions_Middle",
+        "Base_Inverted": "*Wood_Village_Wall_Full_State_Definitions_Top"
+      },
+      "TemplateShapeAssetId": "VillageConnectedBlockTemplate"
+    },
+    "State": {
+      "Definitions": {
+        "Bottom": {
+          "Textures": [
+            {
+              "Sides": "BlockTextures/Wood_Village_Wall_02_Bot.png",
+              "Down": "BlockTextures/Wood_Village_Wall_Corner_Full.png",
+              "Weight": 1,
+              "Up": "BlockTextures/Wood_Village_Wall_02_None.png"
+            }
+          ]
+        },
+        "Middle": {
+          "Textures": [
+            {
+              "All": "BlockTextures/Wood_Village_Wall_02.png",
+              "Weight": 1,
+              "UpDown": "BlockTextures/Wood_Village_Wall_02_None.png"
+            }
+          ]
+        },
+        "Top": {
+          "Textures": [
+            {
+              "All": "BlockTextures/Wood_Village_Wall_02_Top.png",
+              "Up": "BlockTextures/Wood_Village_Wall_Corner_Full.png",
+              "Weight": 1,
+              "Down": "BlockTextures/Wood_Village_Wall_02_None.png"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Tags": {
+    "Family": [
+      "Village"
+    ],
+    "Type": [
+      "Wood"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

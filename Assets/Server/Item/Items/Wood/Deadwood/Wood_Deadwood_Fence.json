@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Deadwood_Fence.name"
+  },
+  "Parent": "Wood_Softwood_Fence",
+  "Icon": "Icons/ItemsGenerated/Wood_Deadwood_Fence.png",
+  "Set": "Wood_Deadwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Deadwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Deadwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Deadwood_Fence",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#4e412c",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Deadwood.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Deadwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Deadwood_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Deadwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Deadwood_Fence",
+        "Corner": "*Wood_Deadwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Deadwood_Fence_Gate"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Deadwood"
+    ]
+  }
+}

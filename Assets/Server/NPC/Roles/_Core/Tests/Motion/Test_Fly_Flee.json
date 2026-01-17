@@ -1,0 +1,56 @@
+{
+  "Type": "Generic",
+  "Appearance": "Bluegill",
+  "BreathesInAir": true,
+  "BreathesInWater": true,
+  "Debug": "PathFinder",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 8,
+      "MaxHeightOverGround": 20,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 0
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Flee",
+            "StopDistance": 10,
+            "SlowDownDistance": 6,
+            "Falloff": 3,
+            "Debug": ""
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Fly_Flee.name"
+}

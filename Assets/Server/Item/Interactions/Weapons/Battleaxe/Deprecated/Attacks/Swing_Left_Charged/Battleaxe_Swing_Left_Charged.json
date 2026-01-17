@@ -1,0 +1,94 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingLeftLeapFalling",
+    "CameraEffect": "Battleaxe_Jump"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "ApplyForce",
+    "Direction": {
+      "X": 0,
+      "Y": 2,
+      "Z": -10
+    },
+    "Force": 20,
+    "WaitForGround": false,
+    "Next": {
+      "Type": "Parallel",
+      "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+      "Interactions": [
+        {
+          "Interactions": [
+            {
+              "Type": "Simple",
+              "$Comment": "Prepare Delay",
+              "RunTime": 0,
+              "Effects": {
+                "ItemAnimationId": "SwingLeftLeapCharged"
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "Selector",
+              "$Comment": "Length of Combat",
+              "RunTime": 0.45,
+              "Selector": {
+                "Id": "Horizontal",
+                "Direction": "ToLeft",
+                "TestLineOfSight": false,
+                "ExtendTop": 0.5,
+                "ExtendBottom": 0.5,
+                "StartDistance": 0.1,
+                "EndDistance": 3,
+                "Length": 120,
+                "RollOffset": 0,
+                "YawStartOffset": -60
+              },
+              "HitBlock": {
+                "Interactions": [
+                  "Block_Break_Adventure"
+                ]
+              },
+              "HitEntity": {
+                "Interactions": [
+                  {
+                    "Type": "Replace",
+                    "DefaultValue": {
+                      "Interactions": [
+                        "Battleaxe_Swing_Left_Charged_Damage"
+                      ]
+                    },
+                    "Var": "Battleaxe_Swing_Left_Charged_Damage"
+                  }
+                ]
+              },
+              "Next": {
+                "Type": "Simple",
+                "$Comment": "Pad the interaction length",
+                "RunTime": 0.199
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "Replace",
+              "DefaultValue": {
+                "Interactions": [
+                  "Battleaxe_Swing_Left_Charged_Effect"
+                ]
+              },
+              "Var": "Battleaxe_Swing_Left_Charged_Effect"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "Type": "Abstract",
+  "KnockbackScale": 0.5,
+  "Parameters": {
+    "Appearance": {
+      "Value": "Rat",
+      "Description": "Model to be used"
+    },
+    "WalkSpeed": {
+      "Value": 3,
+      "Description": "How fast this critter moves"
+    },
+    "SeekRange": {
+      "Value": 40,
+      "Description": "How far this NPC is allowed to be from the target that will eat it"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "WalkSpeed" },
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Approach_Target",
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Seek"
+                }
+              ]
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "Despawn"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Seek"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Range": { "Compute": "SeekRange" }
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 0.1,
+                "StopDistance": 0.1
+              }
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

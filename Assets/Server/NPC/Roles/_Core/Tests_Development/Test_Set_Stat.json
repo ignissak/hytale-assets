@@ -1,0 +1,121 @@
+{
+  "Type": "Generic",
+  "Parameters": {
+    "AttackDistance": {
+      "Value": 2,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Appearance": "Mannequin",
+  "HotbarItems": [ "Weapon_Sword_Iron" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "SetStat",
+              "Stat": "SignatureEnergy",
+              "Value": 1000
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 3, 3 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "SignatureEnergy",
+              "Value": 0
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 3, 3 ]
+            }
+          ]
+        },
+        {
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": -50
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": -10
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": -10
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": 10
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": 10
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "SetStat",
+              "Stat": "Health",
+              "Add": true,
+              "Value": 10
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Set_Stat.name"
+}

@@ -1,0 +1,182 @@
+{
+	"Types": [
+		{
+      "Name": "Firelands_Sewer",
+      "NoiseMask": {
+				"Type":"DISTORTED",
+		    "Noise": {
+		      "Seed": "Monuments-Firelands",
+		      "NoiseType": "DISTANCE",
+		      "DistanceMode": "NATURAL",
+		      "Distance2Mode": "DIV",
+		      "Scale": 0.003,
+		      "Jitter": 0.75
+		      },
+		    "Randomizer": {
+		      "Generators": [
+		        {
+		          "Seed": "Firelands-Hills",
+		          "NoiseType": "SIMPLEX",
+		          "Octaves": 4,
+		          "Persistence": 0.3,
+		          "Scale": 0.008,
+		          "Amplitude": 30
+		        }
+		      ]
+		    },
+		    "Threshold": [0.01, 0.42]
+      },
+      "Depth": 60,
+      "Entry": "Sewer2.Entry",
+      "EntryPoints": {
+        "Density": 1,
+        "Seed": "Monuments-Firelands",
+        "Scale": 0.003,
+        "Jitter": 0.75
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0
+    },
+    {
+      "Name": "Firelands_Shallow",
+      "BlockMask": {
+        "Default": ["*"]
+      },
+      "NoiseMask": {
+        "Seed": "Grasslands-Cave-Mask",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.006,
+        "Threshold": [0, 0.55]
+      },
+      "Depth": 200,
+      "Entry": "Shallow.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density",
+        "Density": [0.15, 1],
+        "Scale": 0.025,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [88, 98],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 31
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Swamps"
+    },
+    {
+      "Name": "Firelands_Volcanic",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Sandstone_Red", "!Rock_Sandstone", "!Rock_Sandstone_White", "!Soil_Clay", "!Soil_Dirt_Dry", "!Soil_Grass_Dry", "*"]
+      },
+      "Depth": 200,
+      "Entry": "Volcanic.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density-2",
+        "Density": 1,
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [15, 25],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 31
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone4_Caves_Volcanic"
+    },
+    {
+      "Name": "Firelands_Mountain",
+      "BlockMask": {
+        "Default": ["*"]
+      },
+      "NoiseMask": {
+        "$Comment": "Mountain Mask to restrict caves to only mountains",
+				"Type": "SUM",
+				"Noise": [
+					{
+						"Seed": "Firelands-Base",
+						"NoiseType": "SIMPLEX",
+						"Formula": "INVERTED",
+						"Octaves": 3,
+						"Persistence": 0.4,
+						"Scale": 0.001
+					},
+					{
+						"Seed": "Firelands-Hills",
+						"NoiseType": "SIMPLEX",
+						"Formula": "INVERTED",
+						"Octaves": 4,
+						"Persistence": 0.3,
+						"Scale": 0.008
+					},
+					{
+						"Seed": "4554845555",
+						"NoiseType": "DISTANCE",
+						"Distance2Mode": "DIV",
+						"Formula": "INVERTED_SQUARED",
+						"Octaves": 2,
+						"Persistence": 0.3,
+						"Scale": 0.008
+					}
+				],
+				"Factors": [0.75, 0.15, 0.1],
+				"Threshold": [0, 0.43]
+      },
+      "Depth": 200,
+      "Entry": "Mountain.Entry",
+      "EntryPoints": {
+        "Seed": "4554845555",
+				"Density": [0, 0.3],
+        "Scale": 0.008
+      },
+      "FixedEntryHeight": [100, 110],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 31
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 140, 255],
+        "Values": [0, 0.8, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Swamps"
+    },
+		{
+      "Name": "Firelands_Ores",
+      "BlockMask": {
+        "Default": ["Rock_Stone","Rock_Basalt","Rock_Volcanic",{"Replace":false,"Fluid":"Water_Source"}]
+      },
+      "Entry": "Ores.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Ore-Entry",
+        "Scale": 0.0156,
+        "Jitter": 0
+      },
+      "FixedEntryHeight": 0,
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": -180
+    }
+	]
+}

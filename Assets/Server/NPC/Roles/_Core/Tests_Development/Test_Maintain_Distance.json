@@ -1,0 +1,57 @@
+{
+  "Type": "Generic",
+  "Appearance": "Skeleton",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "DisableDamageGroups": [ "Self" ],
+  "PossibleInventoryItems": "Drop_Arrows",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15
+          },
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15
+          },
+          "BodyMotion": {
+            "Type": "MaintainDistance",
+            "DesiredDistanceRange": [ 5, 10 ],
+            "TargetDistanceFactor": 0.5,
+            "RelativeForwardsSpeed": 1,
+            "RelativeBackwardsSpeed": 0.5,
+            "StrafingDurationRange": [ 0.5, 1 ]
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Maintain_Distance.name"
+}

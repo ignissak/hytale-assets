@@ -1,0 +1,104 @@
+{
+  "Model": "Trash",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 30,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.5,
+    "SticksVertically": false
+  },
+  "LaunchForce": 30,
+  "SpawnOffset": {
+    "X": 0.1,
+    "Y": 0.0,
+    "Z": 0.5
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Rubble_Hit",
+            "LocalSoundEventId": "SFX_Rubble_Hit"
+          }
+        },
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stone_Death"
+        },
+        {
+          "Type": "DamageEntity",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 7
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Point",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Force": 12,
+              "VelocityType": "Add"
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Rubble_Bounce",
+            "LocalSoundEventId": "SFX_Rubble_Bounce"
+          }
+        },
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stone_Death"
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileBounce": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Rubble_Bounce",
+            "LocalSoundEventId": "SFX_Rubble_Bounce"
+          }
+        }
+      ]
+    }
+  }
+}

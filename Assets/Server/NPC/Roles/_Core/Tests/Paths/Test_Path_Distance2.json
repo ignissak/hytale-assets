@@ -1,0 +1,62 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_G",
+  "CollisionDistance": 5,
+  "CollisionForceFalloff": 0.25,
+  "CollisionRadius": 0.5,
+  "EntityAvoidanceStrength": 0.05,
+  "ApplyAvoidance": true,
+  "AvoidanceMode": "Slowdown",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Path",
+            "PathType": "WorldPath",
+            "Path": "red, green, blue, yellow"
+          },
+          "BodyMotion": {
+            "Type": "Path",
+            "MinRelSpeed": 1,
+            "MaxRelSpeed": 1,
+            "Shape": "Loop"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Path_Distance2.name"
+}

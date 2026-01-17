@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Basalt_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Basalt_Brick_Wall.png",
+  "Set": "Rock_Basalt_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Basalt_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Basalt_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Basalt_Brick_BasaltBrick.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Basalt_Brick_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#5a5144",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Basalt_Brick_BasaltBrick.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Basalt_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Basalt_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Basalt_Brick_Wall",
+        "Corner": "*Rock_Basalt_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Basalt"
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall"
+}

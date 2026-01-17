@@ -1,0 +1,178 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Stamina3_Stage_0.name"
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/Spore_Yellow.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Blocks/Foliage/Plants/Stamina_T3_Storm_Sapling/Storm_Sapling_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Stamina_T3_Storm_Sapling/Storm_Sapling_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 1,
+          "HitboxType": "Plant_Medium",
+          "RandomRotation": "YawStep1",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Stamina3_Stage_1"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "Light": {
+            "Color": "#431"
+          },
+          "ParticleColor": "#ffc819"
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Plants/Stamina_T3_Storm_Sapling/Storm_Sapling_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Stamina_T3_Storm_Sapling/Storm_Sapling_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Plant_Full",
+          "RandomRotation": "YawStep1",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Stamina3_Stage_2"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "Light": {
+            "Color": "#652"
+          },
+          "ParticleColor": "#ffa619"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10350,
+              "Max": 41400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Block": "Plant_Crop_Stamina3",
+            "Type": "BlockType",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "State": "Stage2"
+          },
+          {
+            "Block": "Plant_Crop_Stamina3",
+            "Type": "BlockType"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Plant_Crop_Stamina3_Stage_0"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "CustomModelScale": 0.7,
+    "BlockSoundSetId": "Seeds",
+    "ParticleColor": "#ffe064",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 1.26,
+    "Translation": [
+      1.5,
+      -5.7
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Stamina2_Stage_0.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

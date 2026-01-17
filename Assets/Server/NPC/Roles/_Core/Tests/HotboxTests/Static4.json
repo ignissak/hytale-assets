@@ -1,0 +1,52 @@
+{
+  "$Comment": "SETTING THE INITIAL STATE OF THE NPC ON THE NEXT LINE!",
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Trork_Chieftain",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 1,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "$Comment": "--------THE IDLE STATE---------",
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Static.name"
+}

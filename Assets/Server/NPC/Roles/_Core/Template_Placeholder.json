@@ -1,0 +1,77 @@
+{
+  "Type": "Abstract",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Bear_Grizzly",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "PlaceholderAnimation": {
+      "Value": "Idle",
+      "Description": "An animation to play."
+    },
+      "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "DisableDamageGroups": ["Player"],
+  "Invulnerable": true,
+  "KnockbackScale": 0,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+               "Animation": { "Compute": "PlaceholderAnimation" }
+              }
+            ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

@@ -1,0 +1,97 @@
+{
+  "Type": "StatsCondition",
+  "Lenient": false,
+  "Costs": {
+    "Stamina": 2.01
+  },
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -5
+        },
+        "Behaviour": "Set"
+      },
+      {
+        "Type": "Charging",
+        "MouseSensitivityAdjustmentTarget": 1,
+        "MouseSensitivityAdjustmentDuration": 1,
+        "DisplayProgress": false,
+        "Effects": {
+          "ClearSoundEventOnFinish": true,
+          "ItemAnimationId": "StabDashCharging",
+          "Particles": [
+            {
+              "PositionOffset": {
+                "X": 0.6,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Sword_Charging"
+            }
+          ]
+        },
+        "AllowIndefiniteHold": false,
+        "Next": {
+          "0": {
+            "Type": "Serial",
+            "Interactions": [
+              "Sword_Swing_Left_Fast",
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -0.75
+                },
+                "Behaviour": "Set"
+              }
+            ]
+          },
+          "0.45": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "Stamina": -2
+                }
+              },
+              "Sword_Stab_Dash_Charged",
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -0.75
+                },
+                "Behaviour": "Set"
+              },
+              {
+                "Type": "CancelChain",
+                "ChainId": "Sword_Combo"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Serial",
+    "Interactions": [
+      "Sword_Swing_Left_Fast",
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -0.75
+        },
+        "Behaviour": "Set"
+      }
+    ]
+  }
+}

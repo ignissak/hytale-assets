@@ -1,0 +1,61 @@
+{
+  "Model": "Bomb",
+  "SpawnRotationOffset": {
+    "Pitch": 10.0,
+    "Yaw": 1,
+    "Roll": 15
+  },
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 15,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityRoll",
+    "Bounciness": 0.5,
+    "BounceCount": 3,
+    "AllowRolling": true,
+    "RollingFrictionFactor": 1,
+    "SticksVertically": false
+  },
+  "LaunchForce": 25,
+  "SpawnOffset": {
+    "X": 0.3,
+    "Y": 0.1,
+    "Z": 0.0
+  },
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0.5
+        },
+        "Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

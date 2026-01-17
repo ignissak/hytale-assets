@@ -1,0 +1,468 @@
+{
+  "MapColor": "#67787e",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Seed": "Monuments-Firelands",
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "Distance2Mode": "DIV",
+        "Density": [
+          0,
+          0.8
+        ],
+        "Scale": 0.003,
+        "Jitter": 0.75
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Firelands-Hills",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 4,
+            "Persistence": 0.3,
+            "Scale": 0.008,
+            "Amplitude": 30
+          }
+        ]
+      },
+      "Threshold": [
+        0.01,
+        0.42
+      ]
+    },
+    "BiomeMask": [
+      "Forest_Ghost"
+    ],
+    "Priority": 5
+  },
+  "Covers": [
+    {
+      "Type": [
+        "Plant_Leaves_Autumn_Floor"
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Leaves.Leaves_Dead_Forest"
+          }
+        ],
+        "Threshold": [
+          0.7,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Gnarled",
+        "Plant_Grass_Gnarled_Short"
+      ],
+      "Weight": [
+        0.4,
+        0.6
+      ],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Grass.Grass_Dry_Wastes"
+          }
+        ],
+        "Threshold": [
+          0.75,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass_Burnt",
+        "Soil_Grass",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Gnarled_Tall",
+        "Plant_Grass_Gnarled",
+        "Plant_Bush_Dead",
+        "Plant_Crop_Mushroom_Glowing_Violet"
+      ],
+      "$Comment": "This cover adds covers around big boulders.",
+      "Weight": [
+        0.35,
+        0.55,
+        0.05,
+        0.05
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Grass.Grass_Cave_Light"
+          }
+        ],
+        "Threshold": 0.2
+      },
+      "Parent": [
+        "Soil_Grass_Burnt",
+        "Soil_Grass",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Gnarled_Short",
+        "Plant_Grass_Gnarled"
+      ],
+      "Weight": [
+        0.6,
+        0.4
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Grass.Grass_Arid_Wastes"
+          }
+        ],
+        "Threshold": [
+          0.64,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass_Burnt",
+        "Soil_Grass",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Dead"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.4,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Bush.Bush_Swamp"
+          }
+        ],
+        "Threshold": [
+          0.72,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass_Burnt",
+        "Soil_Dirt_Burnt"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Slate",
+        "Rubble_Slate_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Rubble.Stone_Bedrock_Dense"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.3
+        ]
+      },
+      "Parent": [
+        "Soil_Ash",
+        "Soil_Grass_Burnt",
+        "Soil_Dirt_Burnt",
+        "Rock_Slate",
+        "Rock_Volcanic",
+        "Soil_Sand_Ashen",
+        "Soil_Dirt_Cold",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Crop_Mushroom_Glowing_Violet"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Crops.Mushroom_Clover"
+          }
+        ],
+        "Threshold": [
+          0.01,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass_Burnt",
+        "Soil_Grass",
+        "Soil_Leaves"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Monuments.Encounter.Zone4.Tier4.Village.Forest.Layout.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier4.PrefabPatterns.Monuments_Cities"
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Slate_Forest_Ghost.Boulder_Large.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier4.PrefabPatterns.Boulder"
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Slate_Forest_Ghost.Pillars.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier4.PrefabPatterns.Boulder_Forest_Ghost"
+        }
+      },
+      {
+        "Weight": [
+          0.5,
+          0.3,
+          0.2
+        ],
+        "Prefab": [
+          "Trees.Petrified.Stage_1.*",
+          "Trees.Petrified_Dead.Stage_1.*",
+          "Plants.Twisted_Wood.Poisoned.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier4.PrefabPatterns.Forest_Ghost_Trees_Sparse"
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Slate_Forest_Ghost.Boulder_Small.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier4.PrefabPatterns.Boulder_Forest_Ghost_Small"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Slate",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Soil_Ash",
+              "Soil_Dirt_Burnt:2"
+            ],
+            "$Comment": "This layer adds dirt pathways.",
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Soil.Layer_Bedrock_Light_1"
+                }
+              ],
+              "Threshold": [
+                0.01,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Grass_Burnt",
+              "Soil_Dirt_Burnt:2"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Soil.Layer_Bedrock_Medium_1"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.4
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Leaves"
+            ],
+            "$Comment": "This layer adds leaves around trees in the forest.",
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Soil.Layer_Bedrock_Light_3"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.99
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Ash:3"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Soil.Layer_Bedrock_Medium_2"
+                }
+              ],
+              "Threshold": [
+                0.74,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Grass_Burnt",
+              "Soil_Dirt_Burnt:3"
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Zone4_Tier4.Layers.Jungle"
+      },
+      {
+        "File": "Zones.Zone4_Tier4.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone4.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T2"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [
+      126,
+      142,
+      160
+    ],
+    "Values": [
+      1,
+      0.5,
+      0
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Lava_Cracks",
+        "NoiseType": "CELL",
+        "DistanceMode": "NATURAL",
+        "DistanceRange": [
+          1,
+          3
+        ],
+        "CellMode": "NOISE_LOOKUP",
+        "NoiseLookup": {
+          "Seed": "Firelands-Base",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.02
+        },
+        "Scale": 0.05
+      },
+      {
+        "Seed": "Firelands-Hills",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 4,
+        "Persistence": 0.3,
+        "Scale": 0.008
+      }
+    ],
+    "Factors": [
+      0.7,
+      0.3
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "62626C",
+        "595F6D"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Grasslands-Base-Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone4_Forests"
+      ]
+    }
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

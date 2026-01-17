@@ -1,0 +1,57 @@
+{
+  "Conditions": {
+    "Altitude": {
+      "Min": 0,
+      "Max": 200
+    },
+    "DayTime": {
+      "Min": 19,
+      "Max": 5
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Or",
+          "Patterns": [
+            {
+              "Op": "Equals",
+              "Tag": "Forests"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Azure"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Swamps"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Autumn"
+            }
+          ]
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    }
+  },
+  "AmbientBed": {
+    "Track": "Sounds/Environments/Zone1/Environments/Forest/Night/Z1_Forest_Night_Stereo_LOOP.ogg",
+    "Volume": 1.0
+  }
+}

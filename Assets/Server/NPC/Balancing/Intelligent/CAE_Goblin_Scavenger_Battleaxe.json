@@ -1,0 +1,243 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "MeleeState": {
+        "Type": "State",
+        "Description": "Switch dynamically to melee during ranged",
+        "State": "Chase",
+        "SubState": "Melee",
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "RecentSustainedDamage",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 1
+            }
+          },
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                30
+              ]
+            }
+          }
+        ]
+      },
+      "SelectTarget": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "$Comment": "This would function better with a substate option",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          }
+        ]
+      },
+      "SelectTargetRanged": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                30
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Melee": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Battleaxe_Attack"
+          ],
+          "InteractionVars": {
+            "Battleaxe_Swing_Down_Left_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Down_Left_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Down_Left_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Down_Left_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 11
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+                    "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Down_Right_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Down_Right_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Down_Right_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Down_Right_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 11
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+                    "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Up_Right_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Up_Right_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Up_Right_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Up_Right_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 16
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+                    "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Up_Left_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Up_Left_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+                  }
+                }
+              ]
+            },
+            "Battleaxe_Swing_Up_Left_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Battleaxe_Swing_Up_Left_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 16
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+                    "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "MaxRange": 2.5,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SelectTarget"
+        ]
+      },
+      "Ranged": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Scavenger_Trash"
+          ],
+          "Randomise": false,
+          "MaxRange": 30,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.01,
+            0.05
+          ]
+        },
+        "Actions": [
+          "SelectTargetRanged",
+          "MeleeState"
+        ]
+      }
+    }
+  }
+}

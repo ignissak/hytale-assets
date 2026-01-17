@@ -1,0 +1,61 @@
+{
+  "GridGenerator": {
+    "Density": 0.5,
+    "Scale": 0.4,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+		"Type": "MAX",
+		"Noise": [
+			{
+				"Type": "SUM",
+				"Noise": [
+					{
+						"Seed": "Firelands-Canyons",
+						"NoiseType": "SIMPLEX",
+						"Formula": "INVERTED_RIDGED_FIX",
+						"Octaves": 2,
+						"Persistence": 0.3,
+						"Scale": 0.004
+					},
+					{
+						"Seed": "Firelands-Base",
+						"NoiseType": "SIMPLEX",
+						"Formula": "INVERTED",
+						"Octaves": 3,
+						"Persistence": 0.4,
+						"Scale": 0.001,
+						"Normalize": [0.15, 0.4]
+					},
+					{
+						"Seed": "Lava_Cracks",
+						"NoiseType": "DISTANCE",
+						"DistanceMode": "NATURAL",
+						"Formula": "SQUARED",
+						"DistanceRange": [1, 3],
+						"Distance2Mode": "DIV",
+						"Scale": 0.05
+					}
+				],
+				"Factors": [0.63, 0.25, 0.12]
+			},
+			{
+				"Seed": "Red_Bushes",
+				"NoiseType": "SIMPLEX",
+				"Octaves": 3,
+				"Persistence": 0.4,
+				"Scale": 0.04,
+				"Normalize": [0.35]
+			}
+		],
+    "Threshold": [0.75, 0.82]
+  },
+  "HeightThreshold": {
+    "Positions": [125, 135, 155, 156],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Bushes"
+  },
+	"Parent": ["Soil_Ash", "Rock_Slate"]
+}

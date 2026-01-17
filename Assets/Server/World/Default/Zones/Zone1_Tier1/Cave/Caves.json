@@ -1,0 +1,443 @@
+{
+  "Types": [
+    {
+      "Name": "Grasslands_Mountain_Goblin_Lair",
+
+      "Depth": 100,
+      "Entry": "Mountain_GoblinLair.Entry",
+      "EntryPoints": {
+        "Density": [0, 0.4],
+        "Seed": "MountainPeaks2",
+        "CellType": "HEX",
+        "Jitter": 0.5,
+        "Scale": 0.007
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+          }
+        ],
+        "Threshold": [0, 0.95]
+      },
+      "HeightThreshold": {
+        "Positions": [140, 141],
+        "Values": [0, 1]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaximumSize": 200,
+      "Pitch": 0,
+      "Environment": "Env_Zone1_Caves"
+    },
+    {
+      "Name": "Grasslands_Mountains",
+      "BlockMask": {
+        "Default": [
+          { "Replace": false, "Fluid": "Water_Source" },
+          "!Rock_Bedrock",
+          "!Rock_Sandstone_Red",
+          "!Rock_Sandstone",
+          "!Rock_Sandstone_White",
+          "!Soil_Clay",
+          "!Soil_Dirt_Dry",
+          "!Soil_Grass_Dry",
+          "!Soil_Gravel_Sand_White",
+          "!Soil_Sand",
+          "!Soil_Gravel",
+          "!Soil_Gravel_Mossy",
+          "*"
+        ]
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+          }
+        ],
+        "Threshold": [0, 0.95]
+      },
+      "Depth": 200,
+      "Entry": "Mountains.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density",
+        "Density": 1,
+        "Scale": 0.018,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [115, 165],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Plains"
+    },
+    {
+      "Name": "Grasslands_Shallow",
+      "BlockMask": {
+        "Default": [
+          { "Replace": false, "Fluid": "Water_Source" },
+          "!Rock_Bedrock",
+          "!Rock_Sandstone_Red",
+          "!Rock_Sandstone",
+          "!Rock_Sandstone_White",
+          "!Soil_Clay",
+          "!Soil_Dirt_Dry",
+          "!Soil_Grass_Dry",
+          "!Soil_Gravel_Sand_White",
+          "!Soil_Sand",
+          "!Soil_Gravel",
+          "!Soil_Gravel_Mossy",
+          "*"
+        ]
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+          }
+        ],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Shallow.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density",
+        "Density": 1,
+        "Scale": 0.018, //0.02
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [88, 98],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Plains"
+    },
+    {
+      "Name": "Grasslands_Deep",
+      "BlockMask": {
+        "Default": [
+          { "Replace": false, "Fluid": "Water_Source" },
+          "!Rock_Bedrock",
+          "!Rock_Sandstone_Red",
+          "!Rock_Sandstone",
+          "!Rock_Sandstone_White",
+          "!Soil_Clay",
+          "!Soil_Dirt_Dry",
+          "!Soil_Grass_Dry",
+          "!Soil_Sand",
+          "*"
+        ]
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+          }
+        ],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Deep.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density-1",
+        "Density": 1,
+        "Scale": 0.015, //0.02
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [63, 73],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Plains"
+    },
+    {
+      "Name": "Grasslands_Volcanic",
+      "BlockMask": {
+        "Default": [
+          { "Replace": false, "Fluid": "Water_Source" },
+          "!Rock_Bedrock",
+          "*"
+        ]
+      },
+      "Depth": 200,
+      "Entry": "Volcanic.Entry",
+      "EntryPoints": {
+        "Seed": "Grasslands-Caves-Density-2",
+        "Density": 1,
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [33, 43],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone1_Caves_Volcanic_T1"
+    },
+    {
+      "Name": "Grasslands_Klops_Holes",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.004
+          },
+          {
+            "Seed": "Grasslands-Base",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 3,
+            "Persistence": 0.4,
+            "Scale": 0.002
+          }
+        ],
+        "Factors": [0.85, 0.15],
+        "Threshold": [0, 0.91]
+      },
+      "Depth": 60,
+      "Entry": "Klops.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Klops",
+        "Scale": 0.0027,
+        "Jitter": 0.4
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightThreshold": {
+        "Positions": [113, 114, 119, 120],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaskDensity": 0.7,
+      "Pitch": 0,
+      "Environment": "Env_Zone1_Caves"
+    },
+    {
+      "Name": "Dungeons_Cave",
+      "$Comment": "Environment is in the node files",
+      "Depth": 100,
+      "Entry": "Dungeons.Dungeon.Cave.Entry",
+      "EntryPoints": {
+        "Seed": "Pattern_Monuments",
+        "Density": [0, 0.015],
+        "Scale": 0.004,
+        "Jitter": 0.75
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "FixedEntryHeight": [88, 98],
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0
+    },
+    {
+      "Name": "Dungeons",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.004
+          },
+          {
+            "Seed": "Grasslands-Base",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 3,
+            "Persistence": 0.4,
+            "Scale": 0.002
+          }
+        ],
+        "Factors": [0.85, 0.15],
+        "Threshold": [0, 0.9]
+      },
+      "Depth": 100,
+      "Entry": "Dungeons.Entry",
+      "EntryPoints": {
+        "Seed": "Pattern_Monuments",
+        "Scale": 0.004,
+        "Density": [0.015, 0.0625],
+        "Jitter": 0.75
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116, 139, 140],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaximumSize": 200,
+      "Pitch": 0
+    },
+    {
+      "Name": "Grasslands_Mineshaft",
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+          },
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Zone1.NoiseMasks.Faction_Trorks"
+              }
+            ],
+            "Normalize": 0.3,
+            "Threshold": [0, 0.9]
+          }
+        ],
+        "Threshold": [0.95, 1]
+      },
+      "Depth": 60,
+      "Entry": "Mineshaft.Entry",
+      "EntryPoints": {
+        "Seed": "Pattern_Monuments",
+        "Density": [0.1025, 0.1875],
+        "Scale": 0.004,
+        "Jitter": 0.75
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightThreshold": {
+        "Positions": [116, 117, 139, 140],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0,
+      "Environment": "Env_Zone1_Mineshafts",
+      "MaximumSize": 200
+    },
+    {
+      "Name": "Mineshaft_Drift",
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+          }
+        ],
+        "Threshold": [0, 0.95]
+      },
+      "Depth": 100,
+      "Entry": "Mineshaft_Drift.Entry",
+      "EntryPoints": {
+        "Density": [0.4, 1],
+        "Seed": "MountainPeaks2",
+        "CellType": "HEX",
+        "Jitter": 0.5,
+        "Scale": 0.007
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightThreshold": {
+        "Positions": [140, 141],
+        "Values": [0, 1]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0,
+      "MaximumSize": 100,
+      "Environment": "Env_Zone1_Mineshafts"
+    },
+    {
+      "Name": "Grasslands_Ores",
+      "BlockMask": {
+        "Default": [
+          "Rock_Stone",
+          "Rock_Basalt",
+          "Rock_Volcanic",
+          { "Replace": false, "Fluid": "Water_Source" }
+        ]
+      },
+      "Entry": "Ores.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Ore-Entry",
+        "Scale": 0.0156,
+        "Jitter": 0
+      },
+      "FixedEntryHeight": 0,
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": -180
+    }
+  ]
+}

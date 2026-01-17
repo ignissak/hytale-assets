@@ -1,0 +1,183 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            5
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Behind": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "Positioning": "Behind",
+        "PositionFirst": true,
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 1
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "OwnStatAbsolute",
+            "Stat": "Health",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 90
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          }
+        ]
+      },
+      "Front": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "Positioning": "Front",
+        "PositionFirst": true,
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 1
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "OwnStatAbsolute",
+            "Stat": "Health",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 90
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          }
+        ]
+      },
+      "Flanks": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "Positioning": "Flank",
+        "PositionFirst": true,
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 1
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "OwnStatAbsolute",
+            "Stat": "Health",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 90
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "Actions": [
+          "Behind",
+          "Front",
+          "Flanks"
+        ]
+      }
+    }
+  }
+}

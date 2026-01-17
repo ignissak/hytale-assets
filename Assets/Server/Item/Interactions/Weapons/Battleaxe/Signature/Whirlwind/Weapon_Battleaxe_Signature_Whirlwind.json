@@ -1,0 +1,57 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "SignatureEnergy": 100
+  },
+  "ValueType": "Percent",
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ApplyEffect",
+        "EffectId": "Battleaxe_Whirlwind"
+      },
+      {
+        "Type": "Replace",
+        "Var": "Signature_Whirlwind_Windup",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Signature_Whirlwind_Windup"
+          ]
+        }
+      },
+      {
+        "Type": "Replace",
+        "Var": "Signature_Whirlwind_Spin_Repeat",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Signature_Whirlwind_Spin_Repeat"
+          ]
+        }
+      },
+      {
+        "Type": "Replace",
+        "Var": "Signature_Whirlwind_End",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Signature_Whirlwind_End"
+          ]
+        }
+      },
+      {
+        "Type": "ClearEntityEffect",
+        "EntityEffectId": "Battleaxe_Whirlwind"
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "SignatureEnergy": -100
+        },
+        "ValueType": "Percent"
+      }
+    ]
+  }
+}

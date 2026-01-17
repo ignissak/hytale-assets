@@ -1,0 +1,242 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+    	  {
+      		"Seed": "3.14159",
+      		"NoiseType": "OLD_SIMPLEX",
+      		"FractalMode": "OLDSCHOOL",
+      		"Octaves": 2,
+      		"Persistence": 0.5,
+      		"Scale": 0.008
+        },
+        {
+          "Seed": "Grasslayer3",
+          "NoiseType": "SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 3,
+          "Persistence": 0.7,
+          "Scale": 0.004
+        },
+        {
+          "Seed": "Grasslayer3",
+          "NoiseType": "SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 2,
+          "Persistence": 0.7,
+          "Scale": 0.02
+        }
+      ],
+      "Factors": [0.6, 0.3, 0.1],
+      "Threshold": [0, 0.38]
+    },
+    "BiomeMask": ["Tropical_Reef"],
+    "Priority": 5
+  },
+  "MapColor": "#1e3e80",
+  "Covers": [
+    {
+      "Type": [{"Block":"Deco_Coral_Shell","Fluid":"Water_Source"}],
+      "Weight": [1],
+      "Offset": 0,
+      "Density": 0.01,
+      "HeightThreshold": {
+        "Positions": [68, 73, 80, 81],
+        "Values": [0, 1, 1, 0]
+      },
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.09,
+        "Threshold": [0.695, 1]
+      }
+    },
+    {
+      "Type": [{"Block":"Deco_Coral_Shell_Swirly","Fluid":"Water_Source"}],
+      "Weight": [1],
+      "Offset": 0,
+      "Density": 0.015,
+      "HeightThreshold": {
+        "Positions": [68, 73, 80, 81],
+        "Values": [0, 1, 1, 0]
+      },
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.09,
+        "Threshold": [0.695, 1]
+      }
+    },
+    {
+      "Type": ["Rubble_Stone", "Rubble_Stone_Medium", "Rubble_Stone_Mossy", "Rubble_Stone_Mossy_Medium", "Deco_Coral_Shell"],
+      "Weight": [0.4, 0.3, 0.18, 0.1, 0.02],
+      "Density": 0.15,
+      "NoiseMask": {
+				"Type": "SUM",
+				"Noise": [
+					{
+						"Seed": "Bed_Rocks",
+						"NoiseType": "CELL",
+						"CellMode": "DISTANCE",
+            "Density": 0.85,
+            "Scale": 0.1,
+            "Jitter": 0.9,
+						"DistanceRange": [1, 3]
+					},
+					{
+						"Seed": "3.14159",
+						"NoiseType": "SIMPLEX",
+						"Octaves": 3,
+						"Persistence": 0.5,
+						"Scale": 0.008,
+						"Normalize": 0.15
+					}
+				],
+				"Factors": [0.5, 0.5],
+				"Threshold": [0, 0.3]
+			}
+    },
+    {
+      "Type": ["Plant_Seaweed_Arid_Tall", "Plant_Seaweed_Arid_Yellow"],
+      "Weight": [0.5, 0.5],
+      "Density": 0.35,
+      "HeightThreshold": {
+        "Positions": [68, 73, 80, 81],
+        "Values": [0, 1, 1, 0]
+      },
+      "NoiseMask": {
+        "Seed": "Oceans_Seaweed_Plants_Patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08,
+        "Threshold": [0.75, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Seaweed_Arid_Short"],
+      "Density": 0.35,
+      "HeightThreshold": {
+        "Positions": [68, 73, 80, 81],
+        "Values": [0, 1, 1, 0]
+      },
+      "NoiseMask": {
+        "Seed": "Oceans_Seaweed_Plants_Patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08,
+        "Threshold": [0.64, 0.75]
+      }
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Plants.Coral.Sponge.Small.*",
+          "Plants.Coral.Bushy.*",
+          "Plants.Coral.Branchy.*",
+          "Plants.Coral.Tubes.Small.*",
+          "Plants.Coral.Tubes.Medium.*",
+          "Plants.Coral.Tubes.Bracket.*"
+        ],
+        "Weight": [0.5, 0.15, 0.15, 0.1, 0.05, 0.05],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Reef"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Static": [
+      {
+        "File": "Zones.Oceans.Layers.Static_Tropical"
+      },
+      {
+        "File": "Zones.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Ocean.Cave_Environments_Ocean"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [30, 60, 70, 75, 90],
+    "Values": [1, 0.4, 0.37, 0.34, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+  	  {
+    		"Seed": "3.14159",
+    		"NoiseType": "OLD_SIMPLEX",
+    		"FractalMode": "OLDSCHOOL",
+    		"Octaves": 2,
+    		"Persistence": 0.5,
+    		"Scale": 0.008
+      },
+      {
+        "Seed": "Grasslayer3",
+        "NoiseType": "SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.7,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "Grasslayer3",
+        "NoiseType": "SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 2,
+        "Persistence": 0.7,
+        "Scale": 0.02
+      }
+    ],
+    "Factors": [0.6, 0.3, 0.1]
+  },
+  "Tint": {
+    "Colors": ["#a32929", "#cc3333"],
+    "Weights": [0.5, 0.5],
+    "Noise": {
+      "Seed": "Biome1_Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone0_Warm"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

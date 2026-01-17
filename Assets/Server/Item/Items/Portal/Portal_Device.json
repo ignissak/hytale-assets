@@ -1,0 +1,194 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Portal_Device.name",
+    "Description": "server.items.Portal_Device.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Portal_Device.png",
+  "Categories": [
+    "Blocks.Portals"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Platform_MagicInactive.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Blue2.png",
+        "Weight": 1
+      }
+    ],
+    "BlockEntity": {
+      "Components": {
+        "Portal": {
+          "Config": {
+            "OnState": "Active",
+            "SpawningState": "Spawning",
+            "ReturnBlockType": "Portal_Return"
+          }
+        }
+      }
+    },
+    "HitboxType": "Pad_Portal",
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "VariantRotation": "NESW",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "State": {
+      "Definitions": {
+        "Spawning": {
+          "InteractionSoundEventId": "SFX_Portal_Neutral_Open",
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Unbreakable"
+            }
+          },
+          "Light": {
+            "Radius": 0,
+            "Color": "#7cc"
+          },
+          "Particles": [
+            {
+              "SystemId": "Portal_Going_Through_Blue",
+              "PositionOffset": {
+                "Y": 1
+              }
+            }
+          ],
+          "CustomModelAnimation": "Blocks/Miscellaneous/Platform_Magic_Activate.blockyanim"
+        },
+        "Active": {
+          "AmbientSoundEventId": "SFX_Portal_Neutral",
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Unbreakable"
+            }
+          },
+          "Light": {
+            "Radius": 0,
+            "Color": "#7cc"
+          },
+          "Particles": [
+            {
+              "SystemId": "MagicPortal",
+              "PositionOffset": {
+                "Y": 2.0
+              },
+              "Scale": 0.8
+            },
+            {
+              "SystemId": "MagicPortal_Stones",
+              "TargetEntityPart": "Self",
+              "TargetNodeName": "Debris"
+            },
+            {
+              "SystemId": "MagicPortal_Stones",
+              "TargetEntityPart": "Self",
+              "TargetNodeName": "Debris6"
+            }
+          ],
+          "Interactions": {
+            "CollisionEnter": {
+              "Interactions": [
+                {
+                  "Type": "Portal",
+                  "Next": {
+                    "Type": "Simple",
+                    "Effects": {
+                      "LocalSoundEventId": "SFX_Portal_Neutral_Teleport_Local"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "CustomModel": "Blocks/Miscellaneous/Platform_MagicInactive.blockymodel",
+          "CustomModelAnimation": "Blocks/Miscellaneous/Platform_Magic_Idle.blockyanim"
+        }
+      }
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "OpenCustomUI",
+            "Page": {
+              "Id": "PortalDevice",
+              "Config": {
+                "OnState": "Active",
+                "SpawningState": "Spawning",
+                "ReturnBlockType": "Portal_Return",
+                "GameplayConfig": "Portal"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "Light": {
+      "Color": "#a3f",
+      "Radius": 2
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Rock_Stone_Cobble",
+        "Quantity": 30
+      },
+      {
+        "ItemId": "Ingredient_Bar_Thorium",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Ingredient_Void_Essence",
+        "Quantity": 10
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Portals"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 5
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Portal"
+    ]
+  },
+  "Quality": "Rare",
+  "MaxStack": 1,
+  "ItemLevel": 50,
+  "IconProperties": {
+    "Scale": 0.35,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

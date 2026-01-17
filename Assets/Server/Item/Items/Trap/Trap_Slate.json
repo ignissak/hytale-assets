@@ -1,0 +1,95 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Trap_Slate.name"
+  },
+  "ItemLevel": 10,
+  "Categories": [
+    "Blocks.Rocks"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Group": "Stone",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks",
+        "ItemId": "Rock_Slate"
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "Textures": [
+      {
+        "Sides": "BlockTextures/Rock_Slate_Cracked.png",
+        "UpDown": "BlockTextures/Rock_Slate_Cracked.png",
+        "Weight": 1
+      }
+    ],
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Structures/Base_Shapes/QuarterBlock_High.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/Rock_Slate_Cracked.png"
+      }
+    ],
+    "Interactions": {
+      "CollisionEnter": {
+        "Cooldown": {
+          "Id": "Collision",
+          "Cooldown": 0
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "BlockCondition",
+              "Matchers": [
+                {
+                  "Block": {
+                    "Id": "Trap_Slate"
+                  },
+                  "Face": "Up",
+                  "StaticFace": true
+                }
+              ],
+              "Next": {
+                "Type": "ChangeBlock",
+                "Changes": {
+                  "Trap_Slate": "Empty"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "ParticleColor": "#262728"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Rock"
+    }
+  ],
+  "Set": "Rock_Slate",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Translation": [
+      0,
+      -25.5
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Trap_Slate.png",
+  "Tags": {
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

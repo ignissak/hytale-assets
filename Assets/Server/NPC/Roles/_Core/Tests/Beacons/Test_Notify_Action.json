@@ -1,0 +1,44 @@
+{
+  "DefaultSubState": "Start",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "ExcludeOwnType": false,
+            "Range": 5
+          },
+          "Actions": [
+            {
+              "Type": "Notify",
+              "Message": "Test"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Notify_Action.name"
+}

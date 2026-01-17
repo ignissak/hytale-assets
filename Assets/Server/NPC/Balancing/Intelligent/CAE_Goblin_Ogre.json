@@ -1,0 +1,193 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 5,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Charged": {
+        "Type": "Ability",
+        "Description": "Use smash attack",
+        "Target": "Hostile",
+        "ChargeFor": 1,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Goblin_Ogre_Attack",
+        "InteractionVars": {
+          "Goblin_Ogre_Swing_Down_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Goblin_Ogre_Swing_Down_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 16
+                  }
+                },
+                "DamageEffects": {
+                  "Knockback": {
+                    "Force": 0.2,
+                    "RelativeX": 0,
+                    "RelativeZ": 0,
+                    "VelocityY": 5
+                  },
+                  "WorldSoundEventId": "SFX_Unarmed_Impact",
+                  "WorldParticles": [
+                    {
+                      "SystemId": "Impact_Blade_01"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "SubState": "Default",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          }
+        ]
+      },
+      "Heal": {
+        "Type": "State",
+        "Description": "",
+        "State": "Chase",
+        "SubState": "Heal",
+        "Target": "Self",
+        "WeightCoefficient": 3,
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "SimpleDescendingLogistic"
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "Ranged": {
+        "Type": "State",
+        "Description": "",
+        "State": "Chase",
+        "SubState": "Ranged",
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 5
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Ogre_Attack"
+          ],
+          "InteractionVars": {
+            "Goblin_Ogre_Swing_Left_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Ogre_Swing_Left_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 12
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": -5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Goblin_Ogre_Swing_Right_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Ogre_Swing_Right_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 12
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": 5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "UseProjectedDistance": true,
+          "MaxRange": 2.5,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "Charged",
+          "Heal",
+          "Ranged"
+        ]
+      }
+    }
+  }
+}

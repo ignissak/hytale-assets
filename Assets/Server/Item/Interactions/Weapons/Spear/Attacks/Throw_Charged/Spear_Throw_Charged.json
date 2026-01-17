@@ -1,0 +1,37 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "ThrowCharged",
+    "LocalSoundEventId": "SFX_Spear_Throw_Local",
+    "WorldSoundEventId": "SFX_Spear_Throw"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Spear_Throw_Charged_Projectile"
+              ]
+            },
+            "Var": "Spear_Throw_Charged_Projectile"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ModifyInventory",
+            "AdjustHeldItemQuantity": -1
+          }
+        ]
+      }
+    ]
+  }
+}

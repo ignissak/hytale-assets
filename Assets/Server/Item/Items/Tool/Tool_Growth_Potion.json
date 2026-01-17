@@ -1,0 +1,69 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Growth_Potion.name",
+    "Description": "server.items.Tool_Growth_Potion.description"
+  },
+  "Model": "Items/Consumables/Potions/Potion.blockymodel",
+  "Texture": "Items/Consumables/Potions/Potion_Textures/Pink.png",
+  "Quality": "Tool",
+  "Icon": "Icons/ItemsGenerated/Tool_Growth_Potion.png",
+  "Categories": [
+    "Items.Tools"
+  ],
+  "ItemLevel": 0,
+  "PlayerAnimationsId": "Item",
+  "IconProperties": {
+    "Scale": 0.8,
+    "Rotation": [
+      10,
+      131,
+      0
+    ],
+    "Translation": [
+      -1,
+      -12
+    ]
+  },
+  "Scale": 1,
+  "Interactions": {
+    "Primary": "Root_ChangeFarmingStage_Decrease",
+    "Secondary": "Root_ChangeFarmingStage_Increase"
+  },
+  "InteractionVars": {
+    "ChangeFarmingStage_Increase": {
+      "Interactions": [
+        {
+          "Type": "ChangeFarmingStage",
+          "$Comment": "Developer tool - increases any farming block by 1 stage. Works on all farming blocks without restrictions.",
+          "Increase": 1,
+          "Effects": {
+            "ItemAnimationId": "Till"
+          },
+          "RunTime": 0.15
+        }
+      ]
+    },
+    "ChangeFarmingStage_Decrease": {
+      "Interactions": [
+        {
+          "Type": "ChangeFarmingStage",
+          "$Comment": "Developer tool - decreases any farming block by 1 stage. Works on all farming blocks without restrictions.",
+          "Decrease": 1,
+          "Effects": {
+            "ItemAnimationId": "Till"
+          },
+          "RunTime": 0.15
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Tool"
+    ],
+    "Family": [
+      "Developer"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Potion"
+}

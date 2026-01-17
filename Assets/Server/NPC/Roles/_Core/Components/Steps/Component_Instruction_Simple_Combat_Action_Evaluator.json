@@ -1,0 +1,86 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Search", "Alerted" ],
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "AvoidGroup": {
+      "Value": [ "Self" ],
+      "Description": "NPC group to try and navigate around"
+    },
+    "Attitudes": {
+      "Value": [ "Hostile" ],
+      "Description": "Attitude to prioritize"
+    },
+    "RelativeSpeed": {
+      "Value": 1,
+      "Description": "Relative speed in chase component"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Or",
+      "Sensors": [
+        {
+          "Reference": "Component_Sensor_Sight_By_Attitude",
+          "Modify": {
+            "ViewRange": { "Compute": "AlertedRange" },
+            "ViewSector": { "Compute": "ViewSector" },
+            "Attitudes": { "Compute": "Attitudes" }
+          }
+        },
+        {
+          "Type": "HasHostileTargetMemory"
+        }
+      ]
+    },
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "CombatActionEvaluator",
+          "TargetInRange": true
+        },
+        "HeadMotion": {
+          "Type": "Aim"
+        },
+        "BodyMotion": {
+          "Type": "MaintainDistance",
+          "DesiredDistanceRange": [ 2, 3 ],
+          "MoveThreshold": 0.2,
+          "RelativeForwardsSpeed": 0.45,
+          "RelativeBackwardsSpeed": 0.45
+        },
+        "Actions": [
+          {
+            "Type": "CombatAbility"
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Intelligent_Chase",
+        "Modify": {
+          "_ExportStates": [ "Search", "Alerted", "Search" ],
+          "AvoidGroup": { "Compute": "AvoidGroup" },
+          "ViewRange": { "Compute": "ViewRange * 2" },
+          "HearingRange": { "Compute": "HearingRange" },
+          "RelativeSpeed": { "Compute": "RelativeSpeed" }
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

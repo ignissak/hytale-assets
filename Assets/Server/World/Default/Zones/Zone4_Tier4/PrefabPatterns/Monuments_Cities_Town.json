@@ -1,0 +1,50 @@
+{
+  "GridGenerator": {
+		"Seed": "Monuments-Firelands",
+    "Density": 1,
+    "Scale": 0.003,
+    "Jitter": 0.75
+  },
+  "NoiseMask":{
+    "Type":"MIN",
+    "Noise":[
+      {
+        "Seed": "Monuments-Firelands",
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "Distance2Mode": "DIV",
+        "Scale": 0.003,
+        "Jitter": 0.75
+      },
+      {
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "Distance2Mode": "DIV",
+        "Seed": "Monuments-Firelands",
+        "Density": [0.1, 0.5],
+        "Scale": 0.005,
+        "Jitter": 0.7,
+        "Normalize": [0.5,0.5]
+      }
+    ],
+    "Threshold": [0.01, 0.42]
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115, 150, 151],
+    "Values": [0, 1, 1, 0]
+  },
+	"Mask": {
+		"Default": ["*"],
+		"Specific": [
+			{
+				"Block": ["Rock_Stone_Cobble_Half", "Wood_Deadwood_Planks_Half", "Wood_Deadwood_Stairs", "Wood_Deadwood_Beam", "Wood_Softwood_Stairs", "Furniture_Ancient_Ladder"],
+				"Rule": ["Empty", "Plant_Grass_Gnarled_Short", "Plant_Grass_Gnarled", "Plant_Grass_Gnarled_Tall", "Plant_Crop_Wheat_Stage_4_Burnt", "Plant_Reeds_Water"]
+			},
+			{
+				"Block": ["Empty"],
+				"Rule": ["Plant_Grass_Gnarled_Short", "Plant_Grass_Gnarled", "Plant_Grass_Gnarled_Tall", "Plant_Crop_Wheat_Stage_4_Burnt", "Plant_Reeds_Water", "Soil_Dirt_Burnt", "Soil_Dirt_Cold", "Soil_Grass_Burnt", "Soil_Dirt_Poisoned", "Rock_Basalt"]
+			}
+		]
+	},
+  "MaxSize": 100
+}

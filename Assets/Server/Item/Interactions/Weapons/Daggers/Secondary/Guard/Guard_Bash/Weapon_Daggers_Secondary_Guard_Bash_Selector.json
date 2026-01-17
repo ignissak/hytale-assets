@@ -1,0 +1,63 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.083,
+  "Effects": {
+    "CameraEffect": "Daggers_Bash",
+    "Particles": [
+      {
+        "SystemId": "Daggers_Bash",
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Yaw": 180,
+          "Pitch": 0,
+          "Roll": 0
+        }
+      },
+      {
+        "SystemId": "Daggers_Bash",
+        "TargetEntityPart": "SecondaryItem",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Yaw": -180,
+          "Pitch": 0,
+          "Roll": 0
+        }
+      }
+    ]
+  },
+  "Selector": {
+    "Id": "Stab",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendLeft": 0.5,
+    "ExtendRight": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0,
+    "EndDistance": 2.5
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Guard_Bash_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Secondary_Guard_Bash_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "RunTime": 0.333
+  }
+}

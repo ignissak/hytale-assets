@@ -1,0 +1,109 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Line.name",
+    "Description": "server.builderTools.tools.Line.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Laser.png",
+  "Categories": [
+    "Tool.BuilderTool"
+  ],
+  "Model": "Items/Tools/Brush/Brush.blockymodel",
+  "Texture": "Items/Tools/Brush/Brush_Texture.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Line",
+        "IsBrush": false,
+        "Args": {
+          "aLineMaterial": {
+            "Type": "Block",
+            "Default": "Rock_Stone",
+            "AllowPattern": true
+          },
+          "bLineWidth": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 1,
+            "Max": 50
+          },
+          "cLineHeight": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 1,
+            "Max": 50
+          },
+          "dLineShape": {
+            "Type": "Option",
+            "Default": "Cube",
+            "Options": [
+              "Cube",
+              "Sphere",
+              "Cylinder",
+              "Cone",
+              "InvertedCone",
+              "Pyramid",
+              "InvertedPyramid",
+              "Dome",
+              "InvertedDome",
+              "Diamond",
+              "Torus"
+            ]
+          },
+          "eLineOrigin": {
+            "Type": "Option",
+            "Default": "Center",
+            "Options": [
+              "Center",
+              "Bottom",
+              "Top"
+            ]
+          },
+          "fLineWallThickness": {
+            "Type": "Int",
+            "Default": 0,
+            "Min": 0,
+            "Max": 50
+          },
+          "gLineSpacing": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 1,
+            "Max": 50
+          },
+          "hLineDensity": {
+            "Type": "Int",
+            "Default": 100,
+            "Min": 1,
+            "Max": 100
+          },
+          "iLineType": {
+            "Type": "Option",
+            "Default": "Split",
+            "Options": [
+              "Continous",
+              "Split",
+              "Origin"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "Set": "AAAA40",
+  "Quality": "Tool"
+}

@@ -1,0 +1,57 @@
+{
+  "Type": "Generic",
+  "$Comment": "MotionControllerMove, MotionControllerSteer",
+  "Appearance": "Vulture",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 8,
+      "MaxHeightOverGround": 10,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 30
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 8,
+            "StopDistance": 5,
+            "HeightDifference": [ -15, 15 ]
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "WanderInCircle",
+            "Radius": 20,
+            "RelativeSpeed": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Seek.name"
+}

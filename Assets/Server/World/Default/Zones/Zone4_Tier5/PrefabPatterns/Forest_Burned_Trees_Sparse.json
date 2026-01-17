@@ -1,0 +1,37 @@
+{
+  "GridGenerator": {
+		"Seed": "Forest_Burned_Trees_Sparse",
+    "Scale": 0.12,
+    "Jitter": 0.6
+  },
+  "NoiseMask": {
+    "Type": "MIN",
+    "Noise": [
+      {
+        "Seed": "Forest_Burned_Trees",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "Scale": 0.065,
+        "Jitter": 0.6,
+        "Normalize": 0.55
+      },
+      {
+    		"Seed": "Monuments-Firelands",
+    		"NoiseType": "CELL",
+    		"CellMode": "DISTANCE",
+    		"Scale": 0.005,
+        "Jitter": 0.7,
+        "Normalize": 0.25
+      }
+    ],
+    "Threshold": [0.5, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [120, 121, 160, 170],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "File": "Zones.Zone4_Tier5.Masks.Trees"
+  },
+  "Parent": ["Rock_Volcanic", "Rock_Volcanic_Cracked_Lava", "Soil_Grass_Burnt", "Soil_Dirt_Burnt", "Soil_Ash"]
+}

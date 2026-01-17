@@ -1,0 +1,41 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "Class": "Light"
+  },
+  "Effects": {
+    "CameraEffect": "Impact"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.99,
+        "AirResistanceMax": 0.98,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Linear"
+      },
+      "Direction": {
+        "X": 2,
+        "Y": 1,
+        "Z": -1
+      },
+      "Force": 12,
+      "VelocityType": "Set"
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Mace_Basic"
+      }
+    ],
+    "CameraEffect": "Impact_Light"
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 1
+    }
+  ]
+}

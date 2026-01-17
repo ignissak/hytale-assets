@@ -1,0 +1,60 @@
+{
+  "Parent": "Potion_Template",
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Regen_Health_Small.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Regen_Health_Small.png",
+  "InteractionVars": {
+    "RemoveEffect": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    },
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "StatModifiers": {
+              "Health": 5
+            },
+            "Duration": 2,
+            "DamageCalculatorCooldown": 4,
+            "Debuff": true,
+            "StatusEffectIcon": "UI/StatusEffects/Health_Potion.png",
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Health": 100
+          },
+          "ValueType": "Percent",
+          "LessThan": true
+        }
+      ]
+    }
+  },
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Pink.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#f977be",
+    "Light": {
+      "Color": "#414"
+    }
+  },
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

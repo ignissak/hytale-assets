@@ -1,0 +1,42 @@
+{
+  "Conditions": {
+    "Walls": {
+      "Min": 0,
+      "Max": 3
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "DayTime": {
+      "Min": 5,
+      "Max": 19
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone2"
+        },
+        {
+          "Op": "Or",
+          "Patterns": [
+            {
+              "Op": "Equals",
+              "Tag": "Savanna"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Encounters"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "AmbientBed": {
+    "Track": "Sounds/Environments/Zone2/Environments/Savannah_Plains/Day/Z2_Savannah_Plains_Day_Stereo_LOOP.ogg",
+    "Volume": -4.0
+  }
+}

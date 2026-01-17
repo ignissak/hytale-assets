@@ -1,0 +1,80 @@
+{
+  "Type": "Wielding",
+  "Effects": {
+    "ItemAnimationId": "Guard",
+    "ClearAnimationOnFinish": true,
+    "WorldSoundEventId": "SFX_Battleaxe_T2_Raise",
+    "LocalSoundEventId": "SFX_Battleaxe_T2_Raise_Local"
+  },
+  "Forks": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Guard_Bash",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Battleaxe_Secondary_Guard_Bash"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "AngledWielding": {
+    "Angle": 0,
+    "AngleDistance": 90,
+    "DamageModifiers": {
+      "Physical": 0,
+      "Projectile": 0,
+      "Poison": 0
+    },
+    "KnockbackModifiers": {
+      "Physical": 0.25,
+      "Projectile": 0.25
+    }
+  },
+  "StaminaCost": {
+    "Value": 7,
+    "CostType": "Damage"
+  },
+  "CancelOnOtherClick": false,
+  "Failed": {
+    "Type": "Replace",
+    "Var": "Guard_Break",
+    "DefaultOk": true,
+    "DefaultValue": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Shield_Shatter"
+              }
+            ],
+            "WorldSoundEventId": "SFX_Shield_T1_Break",
+            "LocalSoundEventId": "SFX_Shield_T1_Break"
+          }
+        }
+      ]
+    }
+},
+  "BlockedEffects": {
+    "WorldSoundEventId": "SFX_Battleaxe_T1_Block_Impact",
+    "WorldParticles": [
+      {
+        "SystemId": "Shield_Block"
+      }
+    ]
+  },
+  "Next": {
+    "$Comment": "Standard regen delay upon ending guarding on all weapons",
+    "Type": "ChangeStat",
+    "Behaviour": "Set",
+    "StatModifiers": {
+      "StaminaRegenDelay": -1
+    }
+  }
+}

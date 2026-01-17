@@ -1,0 +1,56 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingLeft"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.05,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 1,
+              "ExtendBottom": 1,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 60,
+              "RollOffset": 0,
+              "YawStartOffset": -30
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                 "Shortbow_Shove_Damage"
+              ]
+            },
+            "Next": {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "Stamina": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          "Shortbow_Shove_Effect"
+        ]
+      }
+    ]
+  }
+}

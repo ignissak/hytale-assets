@@ -1,0 +1,51 @@
+{
+  "$Comment": "Particles on hit and sound on hit",
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Physical": 3
+    }
+  },
+  "Effects": {
+    "CameraEffect": "Impact_Light"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      },
+      "Direction": {
+        "X": 0.0,
+        "Y": 1.0,
+        "Z": -1.5
+      },
+      "Force": 5,
+      "VelocityType": "Set"
+    },
+    "LocalSoundEventId": "SFX_Daggers_T2_Stab_Impact",
+    "WorldSoundEventId": "SFX_Daggers_T2_Stab_Impact",
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Slash",
+        "Scale": 1,
+        "RotationOffset": {
+          "Yaw": 180.0,
+          "Pitch": 0.0,
+          "Roll": 0.0
+        }
+      }
+    ]
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 1
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+
+	
+	"Children": [
+	
+		//Forward
+		{
+        	"Node": ["Sewer2.Rooms.1_Pipe.1_Pipe_001"],
+			"Weights": [20], 
+			"Offset": [0, -31, 18], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+		//Forward Left Turn
+		{
+        	"Node": ["Sewer2.Pipe.Tunnels.Left.Left_001"],
+			"Weights": [20], 
+			"Offset": [7, -31, 18], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+		//Forward Right Turn
+		{
+        	"Node": ["Sewer2.Pipe.Tunnels.Right.Right_001"],
+			"Weights": [20], 
+			"Offset": [-7, -31, 18], 
+			"Rotation": 0,
+			"Chance": 1
+		},     	
+        
+        { //Back
+            "Node": ["Sewer2.Rooms.1_Pipe.1_Pipe_001"],
+			"Weights": [20],
+			"Offset": [0, -31, -18], 
+			"Rotation": 180,
+			"Chance": 1
+		},
+		//Back Left Turn
+		{
+        	"Node": ["Sewer2.Pipe.Tunnels.Right.Right_001"],
+			"Weights": [20], 
+			"Offset": [7, -31, -18], 
+			"Rotation": 180,
+			"Chance": 1
+		},
+		//Back Right Turn
+		{
+        	"Node": ["Sewer2.Pipe.Tunnels.Left.Left_001"],
+			"Weights": [20], 
+			"Offset": [-7, -31, -18], 
+			"Rotation": 180,
+			"Chance": 1
+		}, 
+
+        { //Left
+        	"Node": ["Sewer2.Rooms.3_Pipe.3_Pipe_001"],
+			"Weights": [20],  
+			"Offset": [20, -37, 0], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+        { //Right
+        	"Node": ["Sewer2.Rooms.3_Pipe.3_Pipe_001"],
+			"Weights": [20], 
+			"Offset": [-20, -37, 0], 
+			"Rotation": 180,
+			"Chance": 1
+		}
+	],
+	
+	
+  "Mask": {
+    "Default": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"],
+    "Specific": [
+      {
+        "Block": ["Empty"],
+        "Rule": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"]
+      }
+    ]
+  },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Dungeon.Sewer.Tier_2.Main.*"
+	]
+}

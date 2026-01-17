@@ -1,0 +1,128 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 5,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Ranged": {
+        "Type": "State",
+        "State": "Ranged",
+        "Description": "move back to the chase state",
+        "PostExecuteDistanceRange": [
+          10,
+          10
+        ],
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          }
+        ]
+      },
+      "LargeBomb": {
+        "Type": "Ability",
+        "Description": "Special bomb attack",
+        "WeaponSlot": 0,
+        "Target": "Hostile",
+        "ChargeFor": 1,
+        "Ability": "Goblin_Lobber_Attack",
+        "AttackDistanceRange": [
+          10,
+          10
+        ],
+        "PostExecuteDistanceRange": [
+          10,
+          10
+        ],
+        "RequireAiming": false,
+        "Conditions": [
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 19
+            }
+          }
+        ]
+      },
+      "FleeBomb": {
+        "Type": "Ability",
+        "Description": "Bomb Jump",
+        "WeaponSlot": 0,
+        "Target": "Self",
+        "Ability": "Goblin_Lobber_Attack",
+        "RequireAiming": false,
+        "AttackDistanceRange": [
+          15,
+          15
+        ],
+        "Conditions": [
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "ResponseCurve": "Linear",
+              "XRange": [
+                0,
+                2
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Lobber_Attack"
+          ],
+          "Randomise": false,
+          "MaxRange": 15,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            1,
+            2
+          ]
+        },
+        "Actions": [
+          "LargeBomb"
+        ]
+      },
+      "Flee": {
+        "Actions": [
+          "FleeBomb"
+        ]
+      }
+    }
+  }
+}

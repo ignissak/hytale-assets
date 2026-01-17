@@ -1,0 +1,76 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Flee",
+  "Parameters": {
+    "_ImportStates": [ "Search", "Idle", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 15,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation",
+        "Modify": { }
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange + 5" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ]
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "ThroughWalls": false,
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "BodyMotion": {
+          "Type": "Flee",
+          "SlowDownDistance": { "Compute": "ViewRange + 2" },
+          "StopDistance": { "Compute": "ViewRange + 5" },
+          "RelativeSpeed": 0.5
+        }
+      },
+      {
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

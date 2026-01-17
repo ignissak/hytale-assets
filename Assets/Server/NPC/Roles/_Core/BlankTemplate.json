@@ -1,0 +1,41 @@
+{
+  "$Comment": "DisplayState",
+  "StartState": "start",
+  "Type": "Abstract",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.BlankTemplate.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

@@ -1,0 +1,72 @@
+{
+  "Type": "Component",
+  "Class": "Sensor",
+  "Parameters": {
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the target will be seen. If zero, sight will be disabled."
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which the target needs to be to be seen"
+    },
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the target will be heard. If zero, hearing will be disabled."
+    },
+    "AbsoluteDetectionRange": {
+      "Value": 2,
+      "Description": "The range at which a target is guaranteed to be detected. If zero, abosulte detection will be disabled."
+    },
+    "ThroughWalls": {
+      "Value": true,
+      "Description": "Whether the NPC can hear the target through obstacles"
+    },
+    "TargetSlot": {
+      "Value": "LockedTarget",
+      "Description": "The target slot for the target that's considered lost"
+    }
+  },
+  "Content": {
+    "Type": "Or",
+    "Sensors": [
+      {
+        "Enabled": { "Compute": "AbsoluteDetectionRange > 0" },
+        "Type": "Target",
+        "TargetSlot": { "Compute": "TargetSlot" }
+      },
+      {
+        "Enabled": { "Compute": "ViewRange > 0" },
+        "Type": "Target",
+        "TargetSlot": { "Compute": "TargetSlot" },
+        "Filters": [
+          {
+            "Type": "LineOfSight"
+          },
+          {
+            "Type": "ViewSector",
+            "ViewSector": { "Compute": "ViewSector" }
+          }
+        ]
+      },
+      {
+        "Enabled": { "Compute": "HearingRange > 0" },
+        "Type": "Target",
+        "TargetSlot": { "Compute": "TargetSlot" },
+        "Filters": [
+          {
+            "Enabled": { "Compute": "!ThroughWalls" },
+            "Type": "LineOfSight"
+          },
+          {
+            "Type": "Not",
+            "Filter": {
+              "Type": "MovementState",
+              "State": "Crouching"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

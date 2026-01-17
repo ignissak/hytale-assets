@@ -1,0 +1,355 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Intelligent.Idle",
+  "DefaultState": ".Default",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Search", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "MotionComponent": {
+      "Value": "$Null",
+      "Description": "The component to use for motion"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "$Comment": "Leave idle if damaged",
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "$Comment": "Leave idle if alerted",
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "Player",
+              "Range": 2,
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ]
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "ThroughWalls": false,
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Alerted"
+          }
+        ]
+      },
+      {
+        "$Comment": "State contains logic to determine which idle to choose",
+        "Sensor": {
+          "Type": "State",
+          "State": ".Default"
+        },
+        "Type": "Random",
+        "Name": "IdleRandom",
+        "Instructions": [
+          {
+            "Weight": 25,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Wander"
+              }
+            ]
+          },
+          {
+            "Weight": 25,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Gather"
+              }
+            ]
+          },
+          {
+            "Weight": 25,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Sleep"
+              }
+            ]
+          },
+          {
+            "Weight": 25,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Rubble"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Wander"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status"
+              },
+              {
+                "Type": "ResetInstructions",
+                "Instructions": [ "IdleRandom" ]
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 10 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Default"
+                }
+              }
+            ]
+          },
+          {
+            "Reference": { "Compute": "MotionComponent" },
+            "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ],
+            "Nullable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Gather"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "ResetInstructions",
+                "Instructions": [ "IdleRandom" ]
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 5 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Default"
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": 15,
+              "ExcludeOwnType": false,
+              "LockOnTarget": false,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": [ "Self" ]
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 8,
+              "StopDistance": 4,
+              "RelativeSpeed": 0.45
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Sleep"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "BodyMotion": {
+              "Type": "Nothing"
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sleep"
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 5 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Wake"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Wake"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "BodyMotion": {
+              "Type": "Nothing"
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Wake"
+              },
+              {
+                "$Comment": "Prevent the Goblin going back to sleep instantly",
+                "Type": "Timeout",
+                "Delay": [ 1, 1 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Wander"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Rubble"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Block",
+              "Range": 15,
+              "Blocks": "Breakables",
+              "Reserve": true
+            },
+            "HeadMotion": {
+              "Type": "Aim",
+              "HitProbability": 1,
+              "Spread": 0.3
+            },
+            "Actions": [
+              {
+                "Type": "ResetInstructions",
+                "Instructions": [ "IdleRandom" ]
+              },
+              {
+                "Type": "Attack",
+                "Attack": "Goblin_Scrapper_Rubble_Throw",
+                "AttackPauseRange": [ 1, 2 ]
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 2, 2 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Wander"
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "BodyMotion": {
+              "Type": "Nothing"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Wander"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

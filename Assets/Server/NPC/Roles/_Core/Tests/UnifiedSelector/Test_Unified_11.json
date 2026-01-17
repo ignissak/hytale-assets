@@ -1,0 +1,88 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Name": "First",
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [ ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [ ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Name": "Second",
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [ ]
+        }
+      ]
+    },
+    {
+      "Name": "Third",
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [ ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Unified_11.name"
+}

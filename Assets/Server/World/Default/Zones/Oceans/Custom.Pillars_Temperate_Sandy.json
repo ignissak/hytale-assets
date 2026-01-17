@@ -1,0 +1,247 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+      		"Type":"DISTORTED",
+      		"Noise":{
+      		  "Type": "SUM",
+      		  "Noise": [
+        			{
+        			  "Seed": "Ocean_Pillars",
+        			  "NoiseType": "CELL",
+        			  "CellMode": "DISTANCE",
+        			  "Formula": "SQUARED",
+        			  "DistanceRange": [1, 4],
+        			  "Density": 0.4,
+        			  "Scale": 0.05
+        			},
+        			{
+        			  "Seed": "3.14159",
+        			  "NoiseType": "OLD_SIMPLEX",
+        			  "FractalMode": "OLDSCHOOL",
+        			  "Octaves": 2,
+        			  "Persistence": 0.3,
+        			  "Scale": 0.006
+        			}
+      		  ],
+      		  "Factors": [0.3, 0.7]
+      		},
+      		"Randomizer":{
+      		  "Generators":[
+        			{
+        			  "Seed": "Grasslands-River-Noise",
+        			  "NoiseType":"SIMPLEX",
+        			  "Octaves":3,
+        			  "Persistence":0.9,
+        			  "Scale":0.006,
+        			  "Amplitude": 15
+        			}
+      		  ]
+      		}
+        },
+        {
+          "Seed": "affawfawfaw",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.2
+        }
+      ],
+      "Factors": [0.9, 0.1],
+      "Threshold": [0, 0.5]
+    },
+    "BiomeMask": ["Temperate_Sandy"],
+    "Priority": 5
+  },
+  "MapColor": "#1e3e80",
+  "Covers": [
+    {
+      "Type": [{"Block":"Rubble_Stone","Fluid":"Water_Source"},{"Block":"Rubble_Stone_Medium","Fluid":"Water_Source"},{"Block":"Rubble_Stone_Mossy","Fluid":"Water_Source"},{"Block":"Rubble_Stone_Mossy_Medium","Fluid":"Water_Source"},{"Block":"Deco_Coral_Shell","Fluid":"Water_Source"}],
+      "Weight": [0.4, 0.3, 0.18, 0.1, 0.02],
+      "Density": 0.25,
+      "NoiseMask": {
+				"Type": "SUM",
+				"Noise": [
+					{
+						"Seed": "Bed_Rocks",
+						"NoiseType": "CELL",
+						"CellMode": "DISTANCE",
+						"Scale": 0.1,
+						"Jitter": 0.9,
+						"Density": [0, 0.6],
+						"DistanceRange": [1, 3]
+					},
+					{
+						"Seed": "3.14159",
+						"NoiseType": "SIMPLEX",
+						"Octaves": 3,
+						"Persistence": 0.5,
+						"Scale": 0.018,
+						"Normalize": [0.3, 0.35]
+					}
+				],
+				"Factors": [0.5, 0.5],
+				"Threshold": [0, 0.3]
+			}
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+				"Weight": [0.5, 0.5],
+        "Prefab": ["Rock_Formations.Rocks.Stone.Oceans.Large.*", "Rock_Formations.Rocks.Stone.Oceans.Small.*"],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Bed_Rocks"
+        }
+      },
+      {
+				"Weight": [20, 25, 5, 20, 25, 5],
+        "Prefab": [
+          "Plants.Coral.Bracket.Small.Green.*",
+          "Plants.Coral.Bracket.Medium.Green.*",
+          "Plants.Coral.Bracket.Large.Green.*",
+          "Plants.Coral.Bracket.Small.Blue.*",
+          "Plants.Coral.Bracket.Medium.Blue.*",
+          "Plants.Coral.Bracket.Large.Blue.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Coral_Bracket_Pillars"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Static": [
+      {
+        "File": "Zones.Oceans.Layers.Static_Temperate"
+      },
+      {
+        "File": "Zones.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Ocean.Cave_Environments_Ocean"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "Pillar_Caves",
+      "NoiseType": "SIMPLEX",
+      "Formula": "RIDGED_SQRT",
+      "Octaves": 2,
+      "Persistence": 0.3,
+      "Scale": 0.01
+    },
+    "Keys": [0.18, 0.2, 0.24, 0.28],
+    "Thresholds": [
+      {
+      	"Positions": [55, 60, 72, 73, 82, 85, 100, 114],
+      	"Values": [1, 0.5, 0.425, 0, 0, 0.35, 0.25, 0]
+      },
+      {
+      	"Positions": [55, 60, 72, 76, 79, 85, 100, 114],
+      	"Values": [1, 0.5, 0.425, 0, 0, 0.35, 0.25, 0]
+      },
+	    {
+      	"Positions": [55, 60, 72, 76, 77, 85, 100, 114],
+      	"Values": [1, 0.5, 0.425, 0, 0, 0.35, 0.25, 0]
+      },
+      {
+      	"Positions": [55, 60, 100, 114],
+      	"Values": [1, 0.5, 0.25, 0]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+    		"Type":"DISTORTED",
+    		"Noise":{
+    		  "Type": "SUM",
+    		  "Noise": [
+      			{
+      			  "Seed": "Ocean_Pillars",
+      			  "NoiseType": "CELL",
+      			  "CellMode": "DISTANCE",
+      			  "Formula": "SQUARED",
+      			  "DistanceRange": [1, 4],
+      			  "Density": 0.4,
+      			  "Scale": 0.05
+      			},
+      			{
+      			  "Seed": "3.14159",
+      			  "NoiseType": "OLD_SIMPLEX",
+      			  "FractalMode": "OLDSCHOOL",
+      			  "Octaves": 2,
+      			  "Persistence": 0.3,
+      			  "Scale": 0.006
+      			}
+    		  ],
+    		  "Factors": [0.3, 0.7]
+    		},
+    		"Randomizer":{
+    		  "Generators":[
+      			{
+      			  "Seed": "Grasslands-River-Noise",
+      			  "NoiseType":"SIMPLEX",
+      			  "Octaves":3,
+      			  "Persistence":0.9,
+      			  "Scale":0.006,
+      			  "Amplitude": 15
+      			}
+    		  ]
+    		}
+      },
+      {
+        "Seed": "affawfawfaw",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.2
+      }
+    ],
+    "Factors": [0.9, 0.1]
+  },
+  "Tint": {
+    "Colors": ["#a32929", "#cc3333"],
+    "Weights": [0.5, 0.5],
+    "Noise": {
+      "Seed": "Biome1_Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone0_Temperate"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

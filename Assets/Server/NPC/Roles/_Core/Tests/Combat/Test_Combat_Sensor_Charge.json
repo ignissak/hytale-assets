@@ -1,0 +1,102 @@
+{
+  "StartState": "Idle",
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 20,
+                "LockOnTarget": true
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Filters": [
+                      {
+                        "Type": "Combat",
+                        "Mode": "Charging"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Flee"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 20
+                  },
+                  "HeadMotion": {
+                    "Type": "Watch"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10,
+                "LockOnTarget": true
+              },
+              "BodyMotion": {
+                "Type": "Flee"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Combat_Sensor_Charge.name"
+}

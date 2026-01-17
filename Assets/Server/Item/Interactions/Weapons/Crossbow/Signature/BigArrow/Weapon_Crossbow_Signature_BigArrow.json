@@ -1,0 +1,32 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "SignatureEnergy": 100
+  },
+  "ValueType": "Percent",
+  "Next": {
+    "Type": "ChangeStat",
+    "StatModifiers": {
+      "SignatureEnergy": -100,
+      "SignatureCharges": 100
+    },
+    "ValueType": "Percent",
+    "Next": {
+      "Type": "Replace",
+      "Var": "Signature_Activate_Effects",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "Effects": {
+              "ClearSoundEventOnFinish": true,
+              "WorldSoundEventId": "SFX_Bow_T2_Draw",
+              "LocalSoundEventId": "SFX_Bow_T2_Draw_Local"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

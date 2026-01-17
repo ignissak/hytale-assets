@@ -1,0 +1,123 @@
+{
+  "StartState": "Idle",
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Inventory",
+                    "Items": [ "Weapon*" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Attack"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 10,
+                "Items": [ "Weapon*" ],
+                "ViewSector": 120
+              },
+              "ActionsAtomic": true,
+              "Actions": [
+                {
+                  "Type": "PickUpItem",
+                  "Once": true,
+                  "Range": 1
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Armed!"
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 2,
+                "StopDistance": 1
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 10,
+                "ExcludeOwnType": false
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 2.5,
+                "ExcludeOwnType": false
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": "Root_NPC_Attack_Melee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 10,
+                "ExcludeOwnType": false
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 2.5,
+                "SlowDownDistance": 2.5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_DroppedItem.name"
+}

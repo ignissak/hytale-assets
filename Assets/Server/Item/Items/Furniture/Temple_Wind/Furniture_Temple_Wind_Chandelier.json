@@ -1,0 +1,122 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Temple_Wind_Chandelier.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Lumberjack",
+  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Wind_Chandelier.png",
+  "IconProperties": {
+    "Scale": 0.5,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -0.6
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Wind/Chandelier.blockymodel",
+    "CustomModelScale": 1,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Temple_Wind/Chandelier_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "Light": {
+      "Color": "#ba9",
+      "Radius": 0
+    },
+    "Opacity": "Transparent",
+    "RandomRotation": "YawStep1",
+    "Looping": true,
+    "Material": "Solid",
+    "HitboxType": "Chandelier",
+    "ParticleColor": "#cb8455",
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 0.75
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter2",
+        "Color": "#ffcd10",
+        "Scale": 0.8
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter3",
+        "Color": "#ffcd10",
+        "Scale": 0.7
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter4",
+        "Color": "#ffcd10",
+        "Scale": 0.65
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter5",
+        "Color": "#ffcd10",
+        "Scale": 0.8
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Temple"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

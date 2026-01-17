@@ -1,0 +1,69 @@
+{
+  "Type": "Generic",
+  "Appearance": "Skeleton",
+  "InventorySize": 10,
+  "HotbarSize": 4,
+  "HotbarItems": [ "Weapon_Sword_Iron", "Weapon_Shortbow_Crude" ],
+  "Debug": "DisplayFreeSlots,DisplayState",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 20
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8
+          },
+          "Actions": [
+            {
+              "Type": "Inventory",
+              "Operation": "EquipHotbar",
+              "Slot": 0,
+              "UseTarget": false
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Inventory",
+              "Operation": "EquipHotbar",
+              "Slot": 1,
+              "UseTarget": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Hotbar_Weapon_Swap.name"
+}

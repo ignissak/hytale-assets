@@ -1,0 +1,153 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Signature_Greater.name",
+    "Description": "server.items.Potion_Signature_Greater.description"
+  },
+  "ItemLevel": 22,
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "Categories": [
+    "Items.Potions"
+  ],
+  "Icon": "Icons/ItemsGenerated/Potion_Regen_Mana.png",
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Potion_Empty",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Potion_Signature_Lesser",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Plant_Crop_Mushroom_Glowing_Blue",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Plant_Flower_Orchid_Blue",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Plant_Crop_Mana3",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Alchemybench",
+        "Type": "Crafting",
+        "Categories": [
+          "Alchemy_Potions"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ],
+    "OutputQuantity": 3,
+    "TimeSeconds": 1
+  },
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.8,
+    "Translation": [
+      0,
+      -10
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Root_Secondary_Consume_Potion_Slow"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ClearEntityEffect",
+          "EntityEffectId": "Potion_Signature_Lesser_Regen",
+          "Next": {
+            "Type": "ApplyEffect",
+            "EffectId": "Potion_Signature_Greater_Regen"
+          }
+        }
+      ]
+    },
+    "ConsumeSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consume_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+          }
+        }
+      ]
+    },
+    "ConsumedSFX": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    }
+  },
+  "Utility": {
+    "Compatible": false
+  },
+  "BlockType": {
+    "BlockParticleSetId": "GlassSmall",
+    "BlockSoundSetId": "Glass",
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Cyan.png",
+        "Weight": 1
+      }
+    ],
+    "CustomModelScale": 0.5,
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "HitboxType": "Potion",
+    "Material": "Empty",
+    "RandomRotation": "YawStep1",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#4efaff",
+    "Light": {
+      "Color": "#255"
+    }
+  },
+  "Consumable": true,
+  "Tags": {
+    "Type": [
+      "Potion"
+    ]
+  },
+  "Scale": 2,
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

@@ -1,0 +1,84 @@
+{
+  "Type": "Charging",
+  "DisplayProgress": false,
+  "MouseSensitivityAdjustmentTarget": 0.25,
+  "MouseSensitivityAdjustmentDuration": 0.1,
+  "HorizontalSpeedMultiplier": 0.6,
+  "Effects": {
+    "ItemAnimationId": "DownstrikeCharging",
+    "Particles": [
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "SystemId": "Sword_Charging"
+      }
+    ]
+  },
+  "AllowIndefiniteHold": false,
+  "Next": {
+    "0": "Weapon_Battleaxe_Primary_Chain",
+    "0.7": {
+      "Type": "Serial",
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Downstrike_StaminaCost",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Stamina_Broken_Immune"
+              },
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "Stamina": -3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Type": "Replace",
+          "Var": "Downstrike_StaminaRegenDelay",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "Behaviour": "Set",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -1.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Battleaxe_Downstrike_Jump"
+        },
+        {
+          "Type": "Replace",
+          "Var": "Downstrike_Force",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Battleaxe_Primary_Downstrike_Force"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

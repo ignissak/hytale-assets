@@ -1,0 +1,191 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Bench_Armour.name",
+    "Description": "server.items.Bench_Armour.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_Armour.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Copper",
+        "Quantity": 2
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 10
+      },
+      {
+        "ResourceTypeId": "Rock",
+        "Quantity": 5
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Crafting"
+        ],
+        "Id": "Workbench"
+      }
+    ]
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Benches/Armor.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Armor_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "VariantRotation": "NESW",
+    "HitboxType": "Bench_Armor",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "Bench": {
+      "Type": "Crafting",
+      "Categories": [
+        {
+          "Id": "Armor_Head",
+          "Icon": "Icons/CraftingCategories/Armory/MetalHead.png",
+          "Name": "server.benchCategories.head"
+        },
+        {
+          "Id": "Armor_Chest",
+          "Icon": "Icons/CraftingCategories/Armory/MetalChest.png",
+          "Name": "server.benchCategories.chest"
+        },
+        {
+          "Id": "Armor_Hands",
+          "Icon": "Icons/CraftingCategories/Armory/MetalHands.png",
+          "Name": "server.benchCategories.hands"
+        },
+        {
+          "Id": "Armor_Legs",
+          "Icon": "Icons/CraftingCategories/Armory/MetalLegs.png",
+          "Name": "server.benchCategories.legs"
+        },
+        {
+          "Id": "Weapon_Shield",
+          "Icon": "Icons/CraftingCategories/Armory/Shield.png",
+          "Name": "server.benchCategories.shield"
+        }
+      ],
+      "LocalOpenSoundEventId": "SFX_Armour_Bench_Open",
+      "LocalCloseSoundEventId": "SFX_Armour_Bench_Close",
+      "CompletedSoundEventId": "SFX_Armour_Bench_Craft",
+      "BenchUpgradeSoundEventId": "SFX_Workbench_Upgrade_Start_Default",
+      "BenchUpgradeCompletedSoundEventId": "SFX_Workbench_Upgrade_Complete_Default",
+      "Id": "Armor_Bench",
+      "TierLevels": [
+        {
+          "CraftingTimeReductionModifier": 0.0,
+          "UpgradeRequirement": {
+            "Material": [
+              {
+                "ItemId": "Ingredient_Bar_Copper",
+                "Quantity": 20
+              },
+              {
+                "ItemId": "Ingredient_Bone_Fragment",
+                "Quantity": 20
+              },
+              {
+                "ItemId": "Ingredient_Leather_Medium",
+                "Quantity": 20
+              },
+              {
+                "ItemId": "Wood_Azure_Trunk",
+                "Quantity": 100
+              }
+            ],
+            "TimeSeconds": 3
+          }
+        },
+        {
+          "UpgradeRequirement": {
+            "Material": [
+              {
+                "ItemId": "Ingredient_Bar_Thorium",
+                "Quantity": 25
+              },
+              {
+                "ItemId": "Ingredient_Bar_Cobalt",
+                "Quantity": 25
+              },
+              {
+                "ItemId": "Ingredient_Fabric_Scrap_Shadoweave",
+                "Quantity": 40
+              },
+              {
+                "ItemId": "Ingredient_Chitin_Sturdy",
+                "Quantity": 40
+              },
+              {
+                "ItemId": "Ingredient_Voidheart",
+                "Quantity": 3
+              }
+            ],
+            "TimeSeconds": 3
+          },
+          "CraftingTimeReductionModifier": 0.15
+        },
+        {
+          "CraftingTimeReductionModifier": 0.3
+        }
+      ]
+    },
+    "State": {
+      "Id": "crafting",
+      "Definitions": {
+        "CraftCompleted": {
+          "CustomModelAnimation": "Blocks/Benches/Armor_Crafting.blockyanim",
+          "Looping": true
+        },
+        "CraftCompletedInstant": {
+          "CustomModelAnimation": "Blocks/Benches/Armor_Crafting.blockyanim"
+        }
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#64482d",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockSoundSetId": "Wood"
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.33,
+    "Translation": [
+      9.6,
+      -18.6
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemLevel": 2,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

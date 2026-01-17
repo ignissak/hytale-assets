@@ -1,0 +1,135 @@
+{
+  "Type": "Component",
+  "Class": "Sensor",
+  "Parameters": {
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the target will be seen. If zero, sight will be disabled."
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which the target needs to be to be seen"
+    },
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the target will be heard. If zero, hearing will be disabled."
+    },
+    "AbsoluteDetectionRange": {
+      "Value": 2,
+      "Description": "The range at which a target is guaranteed to be detected. If zero, abosulte detection will be disabled."
+    },
+    "ThroughWalls": {
+      "Value": true,
+      "Description": "Whether the NPC can hear the target through obstacles"
+    },
+    "Attitudes": {
+      "Value": [ "Hostile", "Revered", "Friendly", "Neutral" ],
+      "Description": "A prioritised list of attitudes to respond to"
+    },
+    "ExcludeGroups": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Groups to exclude"
+    },
+    "GetNPCs": {
+      "Value": true,
+      "Description": "Whether to include NPCs in this sensor"
+    },
+    "IgnoreLockedTarget": {
+      "Value": false,
+      "Description": "Whether to ignore the current locked target"
+    }
+  },
+  "Content": {
+    "Type": "Or",
+    "Sensors": [
+      {
+        "Enabled": { "Compute": "AbsoluteDetectionRange > 0" },
+        "Type": "Mob",
+        "Range": { "Compute": "AbsoluteDetectionRange" },
+        "LockOnTarget": true,
+        "GetPlayers": true,
+        "GetNPCs": { "Compute": "GetNPCs" },
+        "ExcludeOwnType": true,
+        "Filters": [
+          {
+            "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+            "Type": "NPCGroup",
+            "ExcludeGroups": { "Compute": "ExcludeGroups" }
+          }
+        ],
+        "Prioritiser": {
+          "Type": "Attitude",
+          "AttitudesByPriority": { "Compute": "Attitudes" }
+        },
+        "Collector": {
+          "Type": "CombatTargets"
+        }
+      },
+      {
+        "Enabled": { "Compute": "ViewRange > 0" },
+        "Type": "Mob",
+        "Range": { "Compute": "ViewRange" },
+        "LockOnTarget": true,
+        "GetPlayers": true,
+        "GetNPCs": { "Compute": "GetNPCs" },
+        "ExcludeOwnType": true,
+        "Filters": [
+          {
+            "Type": "LineOfSight"
+          },
+          {
+            "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+            "Type": "NPCGroup",
+            "ExcludeGroups": { "Compute": "ExcludeGroups" }
+          },
+          {
+            "Type": "ViewSector",
+            "ViewSector": { "Compute": "ViewSector" }
+          }
+        ],
+        "Prioritiser": {
+          "Type": "Attitude",
+          "AttitudesByPriority": { "Compute": "Attitudes" }
+        },
+        "Collector": {
+          "Type": "CombatTargets"
+        }
+      },
+      {
+        "Enabled": { "Compute": "HearingRange > 0" },
+        "Type": "Mob",
+        "Range": { "Compute": "HearingRange" },
+        "LockOnTarget": true,
+        "GetPlayers": true,
+        "GetNPCs": { "Compute": "GetNPCs" },
+        "ExcludeOwnType": true,
+        "Filters": [
+          {
+            "Enabled": { "Compute": "!ThroughWalls" },
+            "Type": "LineOfSight"
+          },
+          {
+            "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+            "Type": "NPCGroup",
+            "ExcludeGroups": { "Compute": "ExcludeGroups" }
+          },
+          {
+            "Type": "Not",
+            "Filter": {
+              "Type": "MovementState",
+              "State": "Crouching"
+            }
+          }
+        ],
+        "Prioritiser": {
+          "Type": "Attitude",
+          "AttitudesByPriority": { "Compute": "Attitudes" }
+        },
+        "Collector": {
+          "Type": "CombatTargets"
+        }
+      }
+    ]
+  }
+}

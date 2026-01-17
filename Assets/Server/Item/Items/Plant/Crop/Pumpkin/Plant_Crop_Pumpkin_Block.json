@@ -1,0 +1,214 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Pumpkin_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/PlantYellow.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Pumpkin_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Pumpkin_01_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.8,
+          "HitboxType": "Plant_Small",
+          "Flags": {},
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Pumpkin_Stage1"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#659100"
+        },
+        "Stage2": {
+          "Material": "Solid",
+          "CustomModel": "Resources/Ingredients/Pumpkin_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Pumpkin_02_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.8,
+          "HitboxType": "Pumpkin_Baby",
+          "Flags": {},
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Pumpkin_Stage2"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#f9cd36"
+        },
+        "Stage3": {
+          "Material": "Solid",
+          "CustomModel": "Resources/Ingredients/Pumpkin.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Pumpkin_03.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.6,
+          "HitboxType": "Pumpkin_Young",
+          "Flags": {},
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Pumpkin_Stage3"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#f1951e"
+        },
+        "StageFinal": {
+          "Material": "Solid",
+          "CustomModel": "Resources/Ingredients/Pumpkin.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Pumpkin_default.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.8,
+          "HitboxType": "Plant_Medium",
+          "InteractionHint": "server.interactionHints.harvest",
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Pumpkin_StageFinal_Harvest"
+            },
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Pumpkin_StageFinal"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#1e951c"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Pumpkin_Block"
+      }
+    },
+    "ParticleColor": "#db9941"
+  },
+  "IconProperties": {
+    "Scale": 1.0,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      1.2,
+      -3.6
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Pumpkin_Block.png"
+}

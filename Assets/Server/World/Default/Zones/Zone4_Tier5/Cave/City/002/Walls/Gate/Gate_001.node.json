@@ -1,0 +1,75 @@
+{
+	"Name": "Gate_001",
+	
+	"Children": [
+	
+		// Roads
+		{
+			"Node": ["City.002.Roads.Straight.Straight_006"],
+			"Weights": [100],
+			"Offset": [0, 0, 9],
+			"Rotation": 0,
+			"Chance": 1
+		},
+	
+		// Walls
+		{ // left
+			"Node": ["City.002.Walls.Straight.Straight_001"],
+			"Weights": [100],
+			"Offset": [5, 0, 4],
+			"Rotation": 90,
+			"Chance": 1
+		}, { // right
+			"Node": ["City.002.Walls.Straight.Straight_001"],
+			"Weights": [100],
+			"Offset": [-5, 0, 4],
+			"Rotation": 270,
+			"Chance": 1
+		}/*, 
+		
+		//Buildings
+		{ //Bottem Left
+			"Node": ["City.002.Buildings.Large.Large_Intown_001"],
+			"Weights": [100],
+			"Offset": [5, 0, -1],
+			"Rotation": 90,
+			"Chance": 1
+		}, { //Bottem Right
+			"Node": ["City.002.Buildings.Small.Small_Intown_002"],
+			"Weights": [100],
+			"Offset": [-5, 0, -1],
+			"Rotation": 180,
+			"Chance": 1
+		}*/, { //Top Left
+			"Node": ["City.002.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [5, 0, 8],
+			"Rotation": 0,
+			"Chance": 1
+		}, { //Top Right
+			"Node": ["City.002.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [-5, 0, 8],
+			"Rotation": 270,
+			"Chance": 1
+		}
+	],
+	
+	"InheritRotation": true,
+	
+    "Mask":{
+        "Default": ["*"],
+         "Specific": [{
+                "Block": ["Empty"],
+                "Rule": ["*"]
+            }]
+    },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 2,
+	
+	"Prefab": [
+		"Monuments.Encounter.City_Ruins.Walls.Gates.*"
+	]
+}

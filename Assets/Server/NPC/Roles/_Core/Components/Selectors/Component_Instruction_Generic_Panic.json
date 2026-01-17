@@ -1,0 +1,35 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Panic",
+  "Parameters": {
+    "_ImportStates": [ "Idle" ],
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 8 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ],
+        "BodyMotion": {
+          "Type": "WanderInCircle",
+          "Radius": { "Compute": "AlertedRange" },
+          "MaxHeadingChange": 90,
+          "RelativeSpeed": 1
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

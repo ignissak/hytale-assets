@@ -1,0 +1,27 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container {
+  Anchor: (Width: 1000, Height: 700);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = %server.customUI.objectiveAdminPanel.title;
+      }
+    }
+  }
+
+  #Content {
+    LayoutMode: Left;
+
+    Group #ObjectiveList {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+  }
+}
+
+$C.@BackButton {}

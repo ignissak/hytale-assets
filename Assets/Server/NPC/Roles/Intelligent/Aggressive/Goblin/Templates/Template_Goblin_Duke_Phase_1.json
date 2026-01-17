@@ -1,0 +1,277 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "PickupDropOnDeath": true,
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Scavanger",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Drop_Goblin_Duke",
+      "Description": "Drop Items"
+    },
+    "AttitudeGroup": {
+      "Value": "Goblin",
+      "Description": "This NPCs attitude group"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self" ],
+      "Description": "Groups not to take damage from"
+    },
+    "ViewRange": {
+      "Value": 30,
+      "Description": "View range"
+    },
+    "ArenaSize": {
+      "Value": 50,
+      "Description": "A generous range to check for beacons & paths within the arena"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Appearance": { "Compute": "Appearance" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "DropList": { "Compute": "DropList" },
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "HotbarItems": [ "Weapon_Mace_Scrap_NPC" ],
+  "OffHandItems": [ "Weapon_Shield_Scrap_Spiked" ],
+  "OffHandSlots": 1,
+  "DefaultOffHandSlot": 0,
+  "KnockbackScale": 0.5,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 20,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 145
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ "Idle" ],
+          "To": [ "Spawn" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status",
+          "Animation": "Alerted"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 1, 1 ]
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "Spawn" ],
+          "To": [ "Command" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status",
+          "Animation": "Alerted"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 1, 1 ]
+        }
+      ]
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Reference": "Component_Sensor_Sight_By_Attitude",
+                "Modify": {
+                  "ViewRange": { "Compute": "ViewRange" },
+                  "ViewSector": 270,
+                  "Attitudes": [ "Hostile" ]
+                }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Spawn"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "$Comment": "Spawn first NPC wave with beacons",
+            "Type": "State",
+            "State": "Spawn"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Sensor removed to force goblin spawns at start of boss round",
+              "Actions": [
+                {
+                  "Type": "TriggerSpawnBeacon",
+                  "BeaconSpawn": "Goblin_Duke_Phase_1",
+                  "TargetSlot": "LockedTarget",
+                  "Range": { "Compute": "ViewRange" }
+                },
+                {
+                  "Type": "State",
+                  "State": "Command"
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "$Comment": "Skip to Command if the wave was already spawned",
+                  "Type": "State",
+                  "State": "Command"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "$Comment": "Command the Goblin army!",
+            "Type": "State",
+            "State": "Command"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "$Comment": "Skip to Phase_2 early if enough damage has been taken while on the throne",
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Stat",
+                    "StatTarget": "Value",
+                    "RelativeTo": "Health",
+                    "Stat": "Health",
+                    "RelativeToTarget": "Max",
+                    "ValueRange": [ 0, 0.8 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Role",
+                  "Role": "Goblin_Duke_Phase_2"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "If wave is defeated or dies somehow, go to Phase_2",
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Mob",
+                  "Range": { "Compute": "ArenaSize" },
+                  "ExcludeOwnType": true,
+                  "LockOnTarget": false,
+                  "Filters": [
+                    {
+                      "$Comment": "This height check is to make sure we only check the arena itself, goblins pushed off the edge don't count",
+                      "Type": "HeightDifference",
+                      "HeightDifference": [ -8, 8 ]
+                    },
+                    {
+                      "Type": "NPCGroup",
+                      "IncludeGroups": [ "Goblin" ]
+                    }
+                  ]
+                }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Role",
+                  "Role": "Goblin_Duke_Phase_2"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": 270,
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "CombatActionEvaluator",
+                    "TargetInRange": true
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim"
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": [ 2, 3 ],
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 0.45,
+                    "RelativeBackwardsSpeed": 0.45
+                  },
+                  "Actions": [
+                    {
+                      "Type": "CombatAbility"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

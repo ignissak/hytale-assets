@@ -1,0 +1,29 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container {
+  Anchor: (Width: 600, Height: 700);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = %server.customUI.warpListPage.warps;
+      }
+
+      $C.@HeaderSearch {}
+    }
+  }
+
+  #Content {
+    LayoutMode: Left;
+
+    Group #WarpList {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+  }
+}
+
+$C.@BackButton {}

@@ -1,0 +1,96 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.1,
+  "Selector": {
+    "Id": "Stab",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.75,
+    "ExtendBottom": 0.75,
+    "ExtendLeft": 1.5,
+    "ExtendRight": 1.5,
+    "StartDistance": 0.1,
+    "EndDistance": 2.25
+  },
+  "Effects": {
+    "Particles": [
+      {
+        "TargetNodeName": "Origin_Projectile",
+        "SystemId": "Daggers_Signature_Sweep",
+        "TargetEntityPart": "PrimaryItem",
+        "Scale": 1.0,
+        "DetachedFromModel": true,
+        "RotationOffset": {
+          "Roll": -90.0,
+          "Pitch": 30.0,
+          "Yaw": -70.0
+        },
+        "PositionOffset": {
+          "X": 0.7,
+          "Y": 0.5,
+          "Z": 0.8
+        }
+      },
+      {
+        "TargetNodeName": "Origin_Projectile",
+        "SystemId": "Daggers_Signature_Sweep",
+        "TargetEntityPart": "SecondaryItem",
+        "Scale": 1.0,
+        "DetachedFromModel": true,
+        "RotationOffset": {
+          "Roll": 90.0,
+          "Pitch": 30.0,
+          "Yaw": 70.0
+        },
+        "PositionOffset": {
+          "X": -0.7,
+          "Y": 0.5,
+          "Z": 0.8
+        }
+      }
+    ],
+    "Trails": [
+      {
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Blade",
+        "TrailId": "Daggers_Signature",
+        "RotationOffset": {
+          "Roll": 90.0
+        }
+      },
+      {
+        "TargetEntityPart": "SecondaryItem",
+        "TargetNodeName": "Blade",
+        "TrailId": "Daggers_Signature",
+        "RotationOffset": {
+          "Roll": 90.0
+        }
+      }
+    ],
+    "CameraEffect": "Daggers_Sweep"
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.1
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Razorstrike_Sweep_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Signature_Razorstrike_Sweep_Damage"
+          ]
+        }
+      }
+    ]
+  }
+}

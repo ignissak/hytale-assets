@@ -1,0 +1,65 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Cheese.name",
+    "Description": "server.items.Food_Cheese.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T3"
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/Food_Cheese.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Cheese.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Cheese_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#fcde4e"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T3"
+        }
+      ]
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Milk_Bucket",
+        "Quantity": 1
+      }
+    ],
+    "TimeSeconds": 5,
+    "Output": [
+      {
+        "ItemId": "Food_Cheese",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Container_Bucket",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Ingredients"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 8,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

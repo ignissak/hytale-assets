@@ -1,0 +1,59 @@
+{
+  "Type": "MAX",
+  "Noise": [
+    {
+      "Seed": "GhostForest",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "INVERTED",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.01,
+      "Normalize": 0.45
+    },
+    {
+      "Seed": "Monuments-Firelands",
+      "NoiseType": "CELL",
+      "CellMode": "DISTANCE",
+      "Formula": "INVERTED",
+      "Scale": 0.005,
+      "Jitter": 0.7,
+      "Normalize": [
+        0.75
+      ]
+    },
+    {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Seed": "Forest_Ghost_Trees",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": [
+          1,
+          2
+        ],
+        "Density": 0.6,
+        "Scale": 0.12,
+        "Jitter": 0.5,
+        "Normalize": 0.5
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Firelands-Hills",
+            "NoiseType": "OLD_SIMPLEX",
+            "Octaves": 4,
+            "Persistence": 0.3,
+            "Scale": 0.1,
+            "Amplitude": 2
+          }
+        ]
+      },
+      "Normalize": 0.6
+    }
+  ],
+  "Threshold": [
+    0,
+    0.99
+  ]
+}

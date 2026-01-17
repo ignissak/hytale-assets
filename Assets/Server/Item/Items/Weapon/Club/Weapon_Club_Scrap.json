@@ -1,0 +1,119 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Club_Scrap.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Uncommon",
+  "ItemLevel": 30,
+  "PlayerAnimationsId": "Club",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Club_Attack"
+  },
+  "InteractionVars": {
+    "Club_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 6
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 10
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Down_Charged_Effect": "Club_Swing_Down_Charged_Effect",
+    "Club_Swing_Down_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Down_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 16
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.3,
+    "Translation": [
+      -20.31,
+      -20.91
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Model": "NPC/Intelligent/Goblin/Models/Weapons/Club/Scrap.blockymodel",
+  "Texture": "NPC/Intelligent/Goblin/Models/Weapons/Club/Scrap_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Club_Scrap_Goblin.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 45,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Club"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

@@ -1,0 +1,99 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Spear_Crude.name",
+    "Description": "server.items.Weapon_Spear_Crude.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 15,
+  "Model": "Items/Weapons/Spear/Crude.blockymodel",
+  "Texture": "Items/Weapons/Spear/Crude_Texture.png",
+  "MaxStack": 6,
+  "IconProperties": {
+    "Scale": 0.26,
+    "Translation": [
+      -57,
+      -57
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Interactions": {
+    "Primary": "Spear_Attack",
+    "Secondary": "Spear_Block"
+  },
+  "InteractionVars": {
+    "Spear_Block_Damage": "Spear_Block_Damage",
+    "Spear_Stab_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Spear_Stab_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 4
+            },
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Spear_Impact"
+          }
+        }
+      ]
+    },
+    "Spear_Throw_Charged_Projectile": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Throw_Charged_Projectile",
+          "ProjectileId": "Spear_Crude"
+        }
+      ]
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Spear_Crude.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "PlayerAnimationsId": "Spear",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Spear"
+    ]
+  },
+  "Weapon": {},
+  "Recipe": {
+    "OutputQuantity": 3,
+    "Input": [
+      {
+        "ResourceTypeId": "Rubble",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 1
+      }
+    ]
+  },
+  "MaxDurability": 45,
+  "DurabilityLossOnHit": 0,
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

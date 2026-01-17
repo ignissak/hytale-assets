@@ -1,0 +1,32 @@
+$C = "../Common.ui";
+$Browser = "PrefabBrowser.ui";
+
+$C.@PageOverlay {
+  Anchor: (Top: 130);
+}
+
+$C.@Container {
+  Anchor: (Width: 600, Height: 700);
+
+  #Title {
+    $C.@Title {
+      @Text = %server.customUI.prefabListPage.title;
+    }
+  }
+
+  #Content {
+    LayoutMode: Top;
+
+    Label #CurrentPath {
+      Anchor: (Bottom: 8, Horizontal: 4);
+      Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #6a7d8f);
+      Text: "";
+    }
+
+    $Browser.@PrefabBrowserContent {
+      FlexWeight: 1;
+    }
+  }
+}
+
+$C.@BackButton {}

@@ -1,0 +1,62 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Test",
+  "TestType": "Normal",
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Test"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 5 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Other"
+                }
+              }
+            ],
+            "BodyMotion": {
+              "Type": "Wander"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Other"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 5 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Test"
+                }
+              }
+            ],
+            "BodyMotion": {
+              "Type": "Nothing"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

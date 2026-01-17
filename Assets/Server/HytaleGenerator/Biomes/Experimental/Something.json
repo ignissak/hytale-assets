@@ -1,0 +1,673 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-3548,
+		"$y":	-4135
+	},
+	"Name":	"Hills",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-3027,
+			"$y":	-5454
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2740,
+				"$y":	-5487
+			},
+			"Type":	"Amplitude",
+			"ExportAs":	"Terrain",
+			"Skip":	false,
+			"FunctionForY":	{
+				"$Position":	{
+					"$x":	-2035,
+					"$y":	-5307
+				},
+				"Points":	[{
+						"$Position":	{
+							"$x":	-1740,
+							"$y":	-5262
+						},
+						"Y":	90,
+						"Out":	0
+					}, {
+						"$Position":	{
+							"$x":	-1741,
+							"$y":	-5118
+						},
+						"Y":	100,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1744,
+							"$y":	-4974
+						},
+						"Y":	250,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1746,
+							"$y":	-4823
+						},
+						"Y":	260,
+						"Out":	0
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-2100,
+						"$y":	-5632
+					},
+					"Type":	"Max",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1786,
+								"$y":	-8760
+							},
+							"Type":	"Min",
+							"ExportAs":	"Peak",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-155,
+										"$y":	-11783
+									},
+									"Type":	"Sum",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	1016,
+												"$y":	-12557
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	3,
+											"Scale":	800,
+											"Seed":	"gesigesuuyhesges",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1212,
+												"$y":	-12076
+											},
+											"Type":	"Normalizer",
+											"Skip":	false,
+											"FromMin":	-1,
+											"FromMax":	1,
+											"ToMin":	-0.8,
+											"ToMax":	0,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	1952,
+														"$y":	-12079
+													},
+													"Type":	"CellNoise2D",
+													"Skip":	false,
+													"ScaleX":	150,
+													"ScaleZ":	150,
+													"Jitter":	0.5,
+													"CellType":	"Distance2Div",
+													"Octaves":	3,
+													"Seed":	"gesigesuuyhesges",
+													"CacheSize":	16
+												}]
+										}, {
+											"$Position":	{
+												"$x":	925,
+												"$y":	-11169
+											},
+											"Type":	"CurveMapper",
+											"Skip":	false,
+											"Curve":	{
+												"$Position":	{
+													"$x":	1578,
+													"$y":	-10894
+												},
+												"Type":	"Manual",
+												"Points":	[{
+														"$Position":	{
+															"$x":	2227,
+															"$y":	-11029
+														},
+														"In":	100,
+														"Out":	1
+													}, {
+														"$Position":	{
+															"$x":	2240,
+															"$y":	-10882
+														},
+														"In":	175,
+														"Out":	0.4
+													}, {
+														"$Position":	{
+															"$x":	2234,
+															"$y":	-10729
+														},
+														"In":	250,
+														"Out":	-1
+													}]
+											},
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	1586,
+														"$y":	-11176
+													},
+													"Type":	"BaseHeight",
+													"Skip":	false,
+													"BaseHeightName":	"Base",
+													"Distance":	true
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-148,
+										"$y":	-9664
+									},
+									"Type":	"Sum",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	991,
+												"$y":	-9948
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	1.8,
+											"Persistence":	0.5,
+											"Octaves":	3,
+											"Scale":	800,
+											"Seed":	"gesigesuuyhesges",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1886,
+												"$y":	-9927
+											},
+											"Type":	"Normalizer",
+											"Skip":	false,
+											"FromMin":	0,
+											"FromMax":	1,
+											"ToMin":	-0.05,
+											"ToMax":	0,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2566,
+														"$y":	-9950
+													},
+													"Type":	"Pow",
+													"Skip":	false,
+													"Exponent":	0.5,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3215,
+																"$y":	-9992
+															},
+															"Type":	"Abs",
+															"Skip":	false,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	3877,
+																		"$y":	-9983
+																	},
+																	"Type":	"Rotator",
+																	"Skip":	false,
+																	"SpinAngle":	0,
+																	"NewYAxis":	{
+																		"$Comment":	"Z is UP ;-;",
+																		"$Position":	{
+																			"$x":	4663,
+																			"$y":	-9583
+																		},
+																		"X":	1,
+																		"Y":	1,
+																		"Z":	0
+																	},
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	4658,
+																				"$y":	-9995
+																			},
+																			"Type":	"SimplexNoise3D",
+																			"Skip":	false,
+																			"Sampled":	false,
+																			"Lacunarity":	2,
+																			"Persistence":	0.5,
+																			"Octaves":	1,
+																			"ScaleXZ":	200,
+																			"ScaleY":	20,
+																			"Seed":	"A"
+																		}]
+																}]
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	1841,
+												"$y":	-9488
+											},
+											"Type":	"Normalizer",
+											"Skip":	true,
+											"FromMin":	-1,
+											"FromMax":	1,
+											"ToMin":	-0.1,
+											"ToMax":	0,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2447,
+														"$y":	-9491
+													},
+													"Type":	"Inverter",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3069,
+																"$y":	-9499
+															},
+															"Type":	"PositionsCellNoise",
+															"Skip":	false,
+															"MaxDistance":	45,
+															"Positions":	{
+																"$Position":	{
+																	"$x":	3847,
+																	"$y":	-9495
+																},
+																"Type":	"Mesh3D",
+																"Skip":	false,
+																"PointGenerator":	{
+																	"$Position":	{
+																		"$x":	4504,
+																		"$y":	-9298
+																	},
+																	"Type":	"Mesh",
+																	"Jitter":	0.5,
+																	"ScaleX":	30,
+																	"ScaleY":	30,
+																	"ScaleZ":	30,
+																	"Seed":	"A"
+																}
+															},
+															"ReturnType":	{
+																"$Position":	{
+																	"$x":	3693,
+																	"$y":	-9104
+																},
+																"Type":	"Distance2Div"
+															},
+															"DistanceFunction":	{
+																"$Position":	{
+																	"$x":	3769,
+																	"$y":	-9224
+																},
+																"Type":	"Manhattan"
+															}
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	1857,
+												"$y":	-9155
+											},
+											"Type":	"Normalizer",
+											"Skip":	false,
+											"FromMin":	-1,
+											"FromMax":	1,
+											"ToMin":	-0.2,
+											"ToMax":	0,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2476,
+														"$y":	-9134
+													},
+													"Type":	"Inverter",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3117,
+																"$y":	-9143
+															},
+															"Type":	"CellNoise2D",
+															"Skip":	false,
+															"ScaleX":	80,
+															"ScaleZ":	80,
+															"Jitter":	0.5,
+															"CellType":	"Distance2Div",
+															"Octaves":	2,
+															"Seed":	"A",
+															"CacheSize":	16
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	421,
+												"$y":	-8930
+											},
+											"Type":	"CurveMapper",
+											"Skip":	false,
+											"Curve":	{
+												"$Position":	{
+													"$x":	1074,
+													"$y":	-8655
+												},
+												"Type":	"Manual",
+												"Points":	[{
+														"$Position":	{
+															"$x":	1742,
+															"$y":	-8827
+														},
+														"In":	100,
+														"Out":	0.5
+													}, {
+														"$Position":	{
+															"$x":	1741,
+															"$y":	-8480
+														},
+														"In":	250,
+														"Out":	-0.8
+													}]
+											},
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	1082,
+														"$y":	-8937
+													},
+													"Type":	"BaseHeight",
+													"Skip":	false,
+													"BaseHeightName":	"Base",
+													"Distance":	true
+												}]
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-838,
+								"$y":	-6109
+							},
+							"Type":	"Sum",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-71,
+										"$y":	-6535
+									},
+									"Type":	"SimplexNoise2D",
+									"Skip":	false,
+									"Lacunarity":	2,
+									"Persistence":	0.25,
+									"Octaves":	3,
+									"Scale":	800,
+									"Seed":	"gesigesuuyhesges",
+									"CacheSize":	16
+								}, {
+									"$Position":	{
+										"$x":	983,
+										"$y":	-6017
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.2,
+									"ToMax":	0,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	1640,
+												"$y":	-6020
+											},
+											"Type":	"Inverter",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2243,
+														"$y":	-6019
+													},
+													"Type":	"CellNoise2D",
+													"Skip":	false,
+													"ScaleX":	80,
+													"ScaleZ":	80,
+													"Jitter":	0.5,
+													"CellType":	"Distance2Div",
+													"Octaves":	2,
+													"Seed":	"B",
+													"CacheSize":	16
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-458,
+										"$y":	-5243
+									},
+									"Type":	"CurveMapper",
+									"Skip":	false,
+									"Curve":	{
+										"$Position":	{
+											"$x":	194,
+											"$y":	-4968
+										},
+										"Type":	"Manual",
+										"Points":	[{
+												"$Position":	{
+													"$x":	846,
+													"$y":	-4997
+												},
+												"In":	100,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	850,
+													"$y":	-4803
+												},
+												"In":	159,
+												"Out":	-1
+											}]
+									},
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	202,
+												"$y":	-5250
+											},
+											"Type":	"BaseHeight",
+											"Skip":	false,
+											"BaseHeightName":	"Base",
+											"Distance":	true
+										}]
+								}]
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-2360,
+			"$y":	-2643
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1562,
+				"$y":	-2701
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-954,
+						"$y":	-2698
+					},
+					"Type":	"Striped",
+					"Material":	{
+						"$Position":	{
+							"$x":	-311,
+							"$y":	-2791
+						},
+						"Type":	"SpaceAndDepth",
+						"LayerContext":	"DEPTH_INTO_FLOOR",
+						"MaxExpectedDepth":	2,
+						"Layers":	[{
+								"$Position":	{
+									"$x":	315,
+									"$y":	-2717
+								},
+								"Type":	"ConstantThickness",
+								"Thickness":	2,
+								"Material":	{
+									"$Position":	{
+										"$x":	737,
+										"$y":	-2739
+									},
+									"Type":	"FieldFunction",
+									"FieldFunction":	{
+										"$Position":	{
+											"$x":	1438,
+											"$y":	-2884
+										},
+										"Type":	"Imported",
+										"Skip":	false,
+										"Name":	"Peak"
+									},
+									"Delimiters":	[{
+											"$Position":	{
+												"$x":	1423,
+												"$y":	-2693
+											},
+											"From":	-1,
+											"To":	0.1,
+											"Material":	{
+												"$Position":	{
+													"$x":	1850,
+													"$y":	-2681
+												},
+												"Type":	"FieldFunction",
+												"FieldFunction":	{
+													"$Position":	{
+														"$x":	2554,
+														"$y":	-2802
+													},
+													"Type":	"Gradient",
+													"Skip":	false,
+													"SampleRange":	1,
+													"Axis":	{
+														"$Position":	{
+															"$x":	3191,
+															"$y":	-2656
+														},
+														"X":	0.1,
+														"Y":	1,
+														"Z":	0.1
+													},
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3173,
+																"$y":	-2814
+															},
+															"Type":	"Imported",
+															"Skip":	false,
+															"Name":	"Terrain"
+														}]
+												},
+												"Delimiters":	[{
+														"$Position":	{
+															"$x":	2550,
+															"$y":	-2383
+														},
+														"From":	0,
+														"To":	35,
+														"Material":	{
+															"$Position":	{
+																"$x":	3011,
+																"$y":	-2385
+															},
+															"Type":	"Constant",
+															"Material": {
+  "Solid": "Soil_Grass_Deep"
+}
+														}
+													}, {
+														"$Position":	{
+															"$x":	2550,
+															"$y":	-2207
+														},
+														"From":	35,
+														"To":	60,
+														"Material":	{
+															"$Position":	{
+																"$x":	3014,
+																"$y":	-2181
+															},
+															"Type":	"Constant","Material": {
+  "Solid": "Rock_Stone"
+}
+														}
+													}]
+											}
+										}]
+								}
+							}]
+					},
+					"Stripes":	[{
+							"$Position":	{
+								"$x":	-330,
+								"$y":	-2552
+							},
+							"TopY":	300,
+							"BottomY":	100
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-874,
+						"$y":	-1730
+					},
+					"Type":	"Constant",
+					"Material": {
+  "Solid": "Rock_Stone_Cobble"
+}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-1551,
+				"$y":	-1715
+			},
+			"Type":	"Constant","Material": {
+  "Solid": "Empty"
+}
+		}
+	},
+	"$WorkspaceID":	"Worldgen Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-1644.1875,
+				"$y":	-24301.8125
+			},
+			"$width":	6836.0625,
+			"$height":	8446.875,
+			"$name":	"Terrain"
+		}, {
+			"$Position":	{
+				"$x":	-231.5,
+				"$y":	-10211.5
+			},
+			"$width":	5586.1875,
+			"$height":	2031.4375,
+			"$name":	"Cliffs"
+		}, {
+			"$Position":	{
+				"$x":	-281.5625,
+				"$y":	-12748.75
+			},
+			"$width":	4919.3125,
+			"$height":	2412.6875,
+			"$name":	"Top"
+		}, {
+			"$Position":	{
+				"$x":	-969.3125,
+				"$y":	-6609.8125
+			},
+			"$width":	4039.25,
+			"$height":	1985.0625,
+			"$name":	"Base"
+		}]
+}

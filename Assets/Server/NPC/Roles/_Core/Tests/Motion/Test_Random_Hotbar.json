@@ -1,0 +1,56 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "Weapons": {
+      "Value": [ "Droplist:Test_Random_Hotbar" ]
+    }
+  },
+  "HotbarSize": 4,
+  "HotbarItems": { "Compute": "Weapons" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 30,
+            "GetPlayers": true,
+            "GetNPCs": false,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          },
+          "Actions": [
+            {
+              "Type": "Log",
+              "Message": "Visible"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Random_Hotbar.name"
+}

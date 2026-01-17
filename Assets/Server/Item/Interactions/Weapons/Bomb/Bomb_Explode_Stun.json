@@ -1,0 +1,82 @@
+{
+  "Type": "Selector",
+  "Selector": {
+    "Id": "AOECircle",
+    "Range": 3
+  },
+  "Effects": {
+    "Particles": [
+      {
+        "SystemId": "Explosion_Medium",
+        "TargetEntityPart": "Entity"
+      }
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "EffectCondition",
+        "Entity": "Target",
+        "EntityEffectIds": [
+          "Immune"
+        ],
+        "Match": "None",
+        "Next": {
+          "Type": "Serial",
+          "Interactions": [
+            {
+              "Type": "ChangeStat",
+              "Entity": "Target",
+              "StatModifiers": {
+                "Immunity": 25
+              }
+            },
+            {
+              "Type": "Interrupt",
+              "Entity": "Target",
+              "ExcludedTag": "Uninterruptable"
+            },
+            {
+              "Type": "ApplyEffect",
+              "EffectId": "Stun",
+              "Entity": "Target"
+            },
+            {
+              "Parent": "DamageEntityParent",
+              "DamageCalculator": {
+                "BaseDamage": {
+                  "Physical": 15
+                }
+              },
+              "DamageEffects": {
+                "Knockback": {
+                  "Type": "Point",
+                  "VelocityConfig": {
+                    "AirResistance": 0.97,
+                    "AirResistanceMax": 0.96,
+                    "GroundResistance": 0.94,
+                    "GroundResistanceMax": 0.3,
+                    "Threshold": 3.0,
+                    "Style": "Exp"
+                  },
+                  "Force": 15,
+                  "VelocityType": "Set"
+                },
+                "WorldParticles": [
+                  {
+                    "SystemId": "Impact_Mace_Charged",
+                    "Scale": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "RunTime": 0.1
+  }
+}

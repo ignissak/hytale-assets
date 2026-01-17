@@ -1,0 +1,40 @@
+{
+  "Type": "DISTORTED",
+  "Noise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.River"
+          }
+        ],
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Normalize": [0.6, 0.9]
+      },
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.Base"
+          }
+        ],
+        "Normalize": [0.55, 0.75]
+      }
+    ],
+    "Factors": [0.3, 0.7]
+  },
+  "Randomizer": {
+    "Generators": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.6,
+        "Scale": 0.006,
+        "Amplitude": 15
+      }
+    ]
+  }
+}

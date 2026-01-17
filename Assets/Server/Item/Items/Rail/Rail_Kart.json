@@ -1,0 +1,107 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rail_Kart.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rail_Kart.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 12
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "SpawnMinecart",
+          "Model": "Minecart",
+          "CartInteractions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "Mount",
+                  "AttachmentOffset": {
+                    "X": 0,
+                    "Y": 1,
+                    "Z": 0.3
+                  },
+                  "Controller": "Minecart"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "Type": "ModifyInventory",
+          "AdjustHeldItemQuantity": -1
+        }
+      ]
+    }
+  },
+  "Set": "Furniture_Jungle",
+  "BlockType": {
+    "DrawType": "Model",
+    "CustomModel": "Items/Vehicles/Rail_Kart.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Vehicles/Rail_Kart_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Material": "Solid",
+    "VariantRotation": "NESW",
+    "BlockParticleSetId": "Metal",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "ParticleColor": "#5c646d",
+    "BlockSoundSetId": "Metal",
+    "HitboxType": "Minecart"
+  },
+  "PlayerAnimationsId": "Item",
+  "Model": "Blocks/Decorative_Sets/Tavern/Table.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Tavern/Chair_Texture.png",
+  "IconProperties": {
+    "Scale": 0.595,
+    "Translation": [
+      0.1,
+      -19.1
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Rail"
+    ]
+  },
+  "MaxStack": 1
+}

@@ -1,0 +1,51 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Skeleton_Soldier",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Block",
+            "Range": 10,
+            "Blocks": "Gaia"
+          },
+          "Actions": [
+            {
+              "Type": "Attack",
+              "Attack": "Skeleton_Archer_Bow_Shoot"
+            }
+          ],
+          "HeadMotion": {
+            "Type": "Aim"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Shoot_At_Block.name"
+}

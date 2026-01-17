@@ -1,0 +1,67 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@DecoratedContainer {
+  Anchor: (Width: 740, Height: 480);
+
+  #Title {
+    Label #ShopTitle {
+      Style: (
+        ...$C.@TitleStyle,
+        HorizontalAlignment: Center,
+      );
+      Padding: (Horizontal: 19);
+    }
+  }
+
+  #Content {
+    LayoutMode: Top;
+    Padding: (Horizontal: 10);
+
+    // Trade grid container with scrollbar
+    Group #TradeGridContainer {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      Padding: (Top: 10, Left: 8, Right: 8);
+
+      // Grid wrapper - cards flow left to right, wrap to next row
+      Group #TradeGrid {
+        LayoutMode: LeftCenterWrap;
+      }
+    }
+
+    // Footer with restock timer
+    Group #Footer {
+      Anchor: (Height: 40);
+      LayoutMode: Top;
+      Padding: (Horizontal: -2);
+      
+      // Divider line matching container inner border
+      Group #FooterDivider {
+        Anchor: (Height: 2);
+        Background: #19252F;
+      }
+      
+      // Timer text centered in remaining space
+      Group #FooterContent {
+        FlexWeight: 1;
+        LayoutMode: CenterMiddle;
+        Padding: (Bottom: 6);
+        
+        Label #RefreshTimer {
+          Style: (
+            FontSize: 14,
+            TextColor: #7caacc,
+            HorizontalAlignment: Center,
+            VerticalAlignment: Center,
+          );
+          Text: "";
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

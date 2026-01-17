@@ -1,0 +1,36 @@
+{
+  "$Comment": "Stamina cost and regeneration delay",
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "ChangeStat",
+      "StatModifiers": {
+        "Stamina": -3
+      }
+    },
+    {
+      "$Comment": "Apply stamina regen delay based on whether stamina is positive or negative",
+      "Type": "StatsCondition",
+      "Lenient": true,
+      "Costs": {
+        "Stamina": 0.0
+      },
+      "Next": {
+        "$Comment": "Regular stamina regen penalty",
+        "Type": "ChangeStat",
+        "Behaviour": "Set",
+        "StatModifiers": {
+          "StaminaRegenDelay": -1
+        }
+      },
+      "Failed": {
+        "$Comment": "Overdrawn stamina regen penalty",
+        "Type": "ChangeStat",
+        "Behaviour": "Set",
+        "StatModifiers": {
+          "StaminaRegenDelay": -1
+        }
+      }
+    }
+  ]
+}

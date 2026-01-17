@@ -1,0 +1,61 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "DisplayNames": [ "Remove" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 3
+          },
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ],
+              "Action": {
+                "Type": "Inventory",
+                "UseTarget": true,
+                "Operation": "Remove",
+                "Count": 1,
+                "Item": "Rock_Crystal_Green_Small"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Inventory_Remove.name"
+}

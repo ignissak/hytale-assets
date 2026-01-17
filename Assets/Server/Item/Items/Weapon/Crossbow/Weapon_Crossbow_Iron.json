@@ -1,0 +1,95 @@
+{
+  "Parent": "Template_Weapon_Crossbow",
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Crossbow_Iron.name"
+  },
+  "Model": "Items/Weapons/Crossbow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Crossbow/Iron_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Crossbow_Iron.png",
+  "Quality": "Uncommon",
+  "ItemLevel": 20,
+  "Recipe": {
+    "TimeSeconds": 3.5,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 6
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Bow"
+        ],
+        "Id": "Weapon_Bench"
+      },
+      {
+        "Type": "DiagramCrafting",
+        "Categories": [
+          "Weapons.Bow"
+        ],
+        "Id": "Armory"
+      }
+    ]
+  },
+  "InteractionVars": {
+    "Standard_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Standard_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 10
+            }
+          }
+        }
+      ]
+    },
+    "Combo_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Combo_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 27
+            }
+          }
+        }
+      ]
+    },
+    "Signature_BigArrow_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Signature_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 78
+            }
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 10,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    }
+  },
+  "MaxDurability": 120,
+  "DurabilityLossOnHit": 0.28
+}

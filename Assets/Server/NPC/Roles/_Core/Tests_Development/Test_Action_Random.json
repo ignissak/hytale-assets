@@ -1,0 +1,125 @@
+{
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Random",
+              "Actions": [
+                {
+                  "Weight": 30,
+                  "Action": {
+                    "Type": "Sequence",
+                    "Blocking": true,
+                    "Actions": [
+                      {
+                        "Type": "DisplayName",
+                        "DisplayName": "30% Chance"
+                      },
+                      {
+                        "Type": "Timeout",
+                        "Delay": [ 2, 2 ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Weight": 15,
+                  "Action": {
+                    "Type": "Sequence",
+                    "Blocking": true,
+                    "Actions": [
+                      {
+                        "Type": "DisplayName",
+                        "DisplayName": "15% Chance"
+                      },
+                      {
+                        "Type": "Timeout",
+                        "Delay": [ 2, 2 ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Weight": 10,
+                  "Action": {
+                    "Type": "Sequence",
+                    "Blocking": true,
+                    "Actions": [
+                      {
+                        "Type": "DisplayName",
+                        "DisplayName": "10% Chance"
+                      },
+                      {
+                        "Type": "Timeout",
+                        "Delay": [ 2, 2 ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Weight": 25,
+                  "Action": {
+                    "Type": "Sequence",
+                    "Blocking": true,
+                    "Actions": [
+                      {
+                        "Type": "DisplayName",
+                        "DisplayName": "25% Chance"
+                      },
+                      {
+                        "Type": "Timeout",
+                        "Delay": [ 2, 2 ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Weight": 20,
+                  "Action": {
+                    "Type": "Sequence",
+                    "Blocking": true,
+                    "Actions": [
+                      {
+                        "Type": "DisplayName",
+                        "DisplayName": "20% Chance"
+                      },
+                      {
+                        "Type": "Timeout",
+                        "Delay": [ 2, 2 ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Action_Random.name"
+}

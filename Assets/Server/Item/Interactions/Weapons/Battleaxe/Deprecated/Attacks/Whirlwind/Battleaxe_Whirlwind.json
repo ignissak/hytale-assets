@@ -1,0 +1,101 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "WhirlwindCharging"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "HorizontalSpeedMultiplier": 0.8,
+  "Next": {
+    "Type": "Repeat",
+    "Repeat": 10,
+    "HorizontalSpeedMultiplier": 0.6,
+    "ForkInteractions": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "DefaultValue": {
+            "Interactions": [
+              "Battleaxe_Whirlwind_Effect"
+            ]
+          },
+          "Var": "Battleaxe_Whirlwind_Effect"
+        },
+        {
+          "Type": "Selector",
+          "$Comment": "Length of Combat",
+          "RunTime": 0.1,
+          "Selector": {
+            "Id": "Horizontal",
+            "Direction": "ToLeft",
+            "TestLineOfSight": false,
+            "ExtendTop": 0.5,
+            "ExtendBottom": 0.5,
+            "StartDistance": 0.1,
+            "EndDistance": 3,
+            "Length": 360,
+            "RollOffset": 0,
+            "YawStartOffset": -180
+          },
+          "HitBlock": {
+            "Interactions": [
+              "Block_Break_Adventure"
+            ]
+          },
+          "HitEntity": {
+            "Interactions": [
+              {
+                "Type": "Replace",
+                "DefaultValue": {
+                  "Interactions": [
+                    "Battleaxe_Whirlwind_Damage"
+                  ]
+                },
+                "Var": "Battleaxe_Whirlwind_Damage"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Next": {
+      "Type": "Selector",
+      "Effects": {
+        "ItemAnimationId": "WhirlwindCharged"
+      },
+      "$Comment": "Length of Combat",
+      "HorizontalSpeedMultiplier": 0.8,
+      "RunTime": 0.167,
+      "Selector": {
+        "Id": "Horizontal",
+        "Direction": "ToLeft",
+        "TestLineOfSight": false,
+        "ExtendTop": 0.5,
+        "ExtendBottom": 0.5,
+        "StartDistance": 0.1,
+        "EndDistance": 3,
+        "Length": 210,
+        "RollOffset": 0,
+        "YawStartOffset": -180
+      },
+      "HitBlock": {
+        "Interactions": [
+          "Block_Break_Adventure"
+        ]
+      },
+      "HitEntity": {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Battleaxe_Whirlwind_Damage"
+              ]
+            },
+            "Var": "Battleaxe_Whirlwind_Damage"
+          }
+        ]
+      }
+    }
+  }
+}

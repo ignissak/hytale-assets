@@ -1,0 +1,81 @@
+{
+	"Name": "CityCenter_004",
+	
+	"Children": [
+	
+		// Roads
+		{ // Straight
+			"Node": ["City.004.Roads.End.End_001"],
+			"Weights": [100],
+			"Offset": [0, 0, 5],
+			"Rotation": 0,
+			"Chance": 1
+		},/* { // Left
+			"Node": ["City.004.Roads.Straight.Straight_001", "City.004.Roads.End.End_001"],
+			"Weights": [50, 50],
+			"Offset": [5, 0, 0],
+			"Rotation": 90,
+			"Chance": 1
+		}, { // Back
+			"Node": ["City.004.Roads.End.End_001"],
+			"Weights": [100],
+			"Offset": [0, 0, -5],
+			"Rotation": 180,
+			"Chance": 1
+		},*/ { // Right
+			"Node": ["City.004.Roads.End.End_001"],
+			"Weights": [100],
+			"Offset": [-5, 0, 0],
+			"Rotation": 270,
+			"Chance": 1
+		}/*,
+		
+		// Buildings
+		{ //Bottem Left
+			"Node": ["City.004.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [5, 0, -5],
+			"Rotation": 90,
+			"Chance": 1
+		}, { //Bottem Right
+			"Node": ["City.004.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [-5, 0, -5],
+			"Rotation": 180,
+			"Chance": 1
+		}, { //Top Left
+			"Node": ["City.004.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [5, 0, 5],
+			"Rotation": 0,
+			"Chance": 1
+		}, { //Top Right
+			"Node": ["City.004.Buildings.Small.Small_Intown_001"],
+			"Weights": [100],
+			"Offset": [-5, 0, 5],
+			"Rotation": 270,
+			"Chance": 1
+		}*/
+	],
+	
+	"InheritRotation": true, 
+	
+    "Mask":{
+        "Default": ["*"],
+         "Specific": [{
+                "Block": ["Empty"],
+                "Rule": ["*"]
+            }, {
+                "Block": ["Rock_Basalt_Cobble_Half", "Rock_Stone_Brick_Smooth_Half", "Soil_Dirt_Burnt"],
+                "Rule": ["Empty", "Plant_Grass_Sharp", "Plant_Grass_Lush", "Plant_Grass_Sharp", "Plant_Grass_Sharp_Tall", "Plant_Grass_Gnarled"]
+            }]
+    },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Monuments.Encounter.City_Ruins.Roads.Center.*"
+	]
+}

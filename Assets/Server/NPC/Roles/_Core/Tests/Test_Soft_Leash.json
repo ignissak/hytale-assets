@@ -1,0 +1,153 @@
+{
+  "Type": "Generic",
+  "Appearance": "Zombie",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10,
+                "LockOnTarget": true,
+                "AutoUnlockTarget": true
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Aggro"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Aggro"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Returning Home"
+                }
+              ]
+            },
+            {
+              "Reference": "Component_Instruction_Soft_Leash",
+              "Modify": {
+                "_ExportStates": [ "ReturnHome" ],
+                "LeashDistance": 2,
+                "LeashMinPlayerDistance": 10,
+                "LeashTimer": [ 5, 5 ]
+              }
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Aggro"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Leash",
+                      "Range": 3
+                    }
+                  },
+                  {
+                    "Type": "Player",
+                    "Range": 10
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 5
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "ReturnHome"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 5 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Idle"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Soft_Leash.name"
+}

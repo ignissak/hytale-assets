@@ -1,0 +1,181 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Idle",
+  "DefaultState": ".Call",
+  "ResetOnStateChange": true,
+  "Parameters": {
+    "_ImportStates": [ "Complete" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "NPCGroups": {
+      "Value": [ "Edible_Goblin_Scrapper" ],
+      "Description": "The groups of NPCs that will come from triggering the beacon to be thrown at the player during combat"
+    },
+    "CallBeacon": {
+      "Value": "Edible_Goblin_Scrapper",
+      "Description": "The spawn beacon to trigger to create a throwable NPC"
+    },
+    "ThrowRole": {
+      "Value": "Goblin_Scrapper",
+      "Description": "The type of NPC to throw at the player when successfully catching it"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Call"
+        },
+        "Actions": [
+          {
+            "Type": "TriggerSpawnBeacon",
+            "BeaconSpawn": { "Compute": "CallBeacon" },
+            "Range": 25
+          },
+          {
+            "Type": "State",
+            "State": ".Wait"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Wait"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": 2.5,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": { "Compute": "NPCGroups" }
+                },
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            },
+            "ActionsBlocking": true,
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Swipe"
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 0.1, 0.1 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Remove"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Throw"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": 10,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": { "Compute": "NPCGroups" }
+                },
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 1,
+              "StopDistance": 1,
+              "RelativeSpeed": 0.5
+            }
+          },
+          {
+            "ActionsBlocking": true,
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 5 ]
+              },
+              {
+                "Type": "ParentState",
+                "State": "Complete"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Throw"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Target",
+              "TargetSlot": "CAETargetSlot",
+              "Range": { "Compute": "ViewRange" },
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Aim"
+            },
+            "ActionsBlocking": true,
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Throw"
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 0.5, 0.5 ]
+              },
+              {
+                "Type": "Spawn",
+                "CountRange": [ 1, 1 ],
+                "Kind": { "Compute": "ThrowRole" },
+                "LaunchAtTarget": true,
+                "LaunchSpread": 1,
+                "SpawnState": "Stunned"
+              },
+              {
+                "Type": "ParentState",
+                "State": "Complete"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

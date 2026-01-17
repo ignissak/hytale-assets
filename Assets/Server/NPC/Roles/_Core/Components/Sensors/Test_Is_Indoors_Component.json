@@ -1,0 +1,57 @@
+{
+  "Type": "Abstract",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Test_Is_Indoors_Component.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Reference": "Component_Sensor_Is_Indoors",
+            "Modify": { }
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Indoors"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Outdoors"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

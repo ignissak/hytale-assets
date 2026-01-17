@@ -1,0 +1,115 @@
+{
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Type": "Random",
+      "ExecuteFor": [ 1, 1 ],
+      "Instructions": [
+        {
+          "Weight": 5,
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "1"
+            }
+          ]
+        },
+        {
+          "Weight": 2.5,
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "2"
+            }
+          ]
+        },
+        {
+          "Weight": 2.5,
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Type": "Random",
+      "Name": "Test",
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "WanderInCircle"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Player",
+                "Range": 10,
+                "LockOnTarget": true
+              },
+              {
+                "Type": "Damage"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "ResetInstructions",
+              "Instructions": [ "Test" ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Random_Instruction.name"
+}

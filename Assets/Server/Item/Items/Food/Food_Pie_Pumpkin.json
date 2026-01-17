@@ -1,0 +1,70 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Pie_Pumpkin.name",
+    "Description": "server.items.Food_Pie_Pumpkin.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T3"
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/Food_Pie_Pumpkin.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Pie.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Pie_Textures/Pumpkin.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#ca923f"
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Dough",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Plant_Crop_Pumpkin_Item",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Spices",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Fuel",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Cookingbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Baked"
+        ]
+      }
+    ],
+    "TimeSeconds": 5,
+    "KnowledgeRequired": true
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T3"
+        },
+        "HealthRegen_TierCheck_T3",
+        "FruitVeggie_TierCheck_T3"
+      ]
+    }
+  },
+  "ItemLevel": 13,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

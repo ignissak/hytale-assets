@@ -1,0 +1,114 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "ApplyForce",
+      "Direction": {
+        "X": -5,
+        "Y": 0,
+        "Z": 5
+      },
+      "AdjustVertical": false,
+      "WaitForGround": false,
+      "Force": 13,
+      "ChangeVelocityType": "Set",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.82,
+        "Threshold": 5.0,
+        "Style": "Exp"
+      }
+    },
+    {
+      "Type": "Chaining",
+      "$Comment": "This chain allows alternating feet to play as parents of Daggers_Dash_Effect",
+      "ChainingAllowance": 1.25,
+      "Next": [
+        {
+          "Parent": "Daggers_Dash_Effect",
+          "Effects": {
+            "ItemAnimationId": "DashBackward",
+            "CameraEffect": "Daggers_Dash",
+            "FirstPersonParticles": [
+              {
+                "SystemId": "Dagger_Dash_Forward_FP",
+                "TargetEntityPart": "Entity",
+                "TargetNodeName": "Head",
+                "Color": "#d7e5ec",
+                "PositionOffset": {
+                  "Z": 0.0,
+                  "Y": 0.0,
+                  "X": -0.5
+                },
+                "RotationOffset": {
+                  "Yaw": 90.0,
+                  "Pitch": 0.0,
+                  "Roll": 0.0
+                }
+              },
+              {
+                "SystemId": "Dagger_Dash_Forward_FP",
+                "TargetEntityPart": "Entity",
+                "TargetNodeName": "Head",
+                "Color": "#d7e5ec",
+                "PositionOffset": {
+                  "Z": 0.0,
+                  "Y": 0.0,
+                  "X": 0.5
+                },
+                "RotationOffset": {
+                  "Yaw": 90.0,
+                  "Pitch": 0.0,
+                  "Roll": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Parent": "Daggers_Dash_Effect",
+          "Effects": {
+            "ItemAnimationId": "DashBackward2",
+            "CameraEffect": "Daggers_Dash",
+            "FirstPersonParticles": [
+              {
+                "SystemId": "Dagger_Dash_Forward_FP",
+                "TargetEntityPart": "Entity",
+                "TargetNodeName": "Head",
+                "Color": "#d7e5ec",
+                "PositionOffset": {
+                  "Z": 0.0,
+                  "Y": 0.0,
+                  "X": -0.5
+                },
+                "RotationOffset": {
+                  "Yaw": 90.0,
+                  "Pitch": 0.0,
+                  "Roll": 0.0
+                }
+              },
+              {
+                "SystemId": "Dagger_Dash_Forward_FP",
+                "TargetEntityPart": "Entity",
+                "TargetNodeName": "Head",
+                "Color": "#d7e5ec",
+                "PositionOffset": {
+                  "Z": 0.0,
+                  "Y": 0.0,
+                  "X": 0.5
+                },
+                "RotationOffset": {
+                  "Yaw": 90.0,
+                  "Pitch": 0.0,
+                  "Roll": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

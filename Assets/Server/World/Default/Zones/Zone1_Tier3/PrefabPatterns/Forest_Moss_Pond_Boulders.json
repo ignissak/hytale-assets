@@ -1,0 +1,38 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Forest-Moss-Pond-Boulders",
+    "Density": [0, 1],
+    "Scale": 0.085,
+    "Jitter": 0.65
+  },
+  "NoiseMask": {
+    "Type": "MULTIPLY",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_FIX",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.01,
+        "Normalize": [0, 0.98]
+      },
+      {
+        "Seed": "Grasslands-Moss-Ponds",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "Density": 0.25,
+        "Jitter": 0.6,
+        "Formula": "INVERTED_SQUARED",
+        "Scale": 0.025
+      }
+    ],
+    "Normalize": [0.7, 0.8],
+    "Threshold": [0.9, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [116, 117, 120, 121],
+    "Values": [0, 1, 1, 0]
+  }
+}

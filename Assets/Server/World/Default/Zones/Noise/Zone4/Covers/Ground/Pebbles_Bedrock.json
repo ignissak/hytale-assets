@@ -1,0 +1,55 @@
+{
+  "Type": "SUM",
+  "Noise": [
+    {
+      "Seed": "Lava_Cracks",
+      "NoiseType": "CELL",
+      "DistanceMode": "NATURAL",
+      "CellMode": "NOISE_LOOKUP",
+      "NoiseLookup": {
+        "Seed": "Firelands-Canyons",
+        "NoiseType": "SIMPLEX",
+        "Formula": "INVERTED_RIDGED_FIX",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.08
+      },
+      "DistanceRange": [
+        1,
+        3
+      ],
+      "Scale": 0.05
+    },
+    {
+      "Seed": "Lava_Cracks",
+      "NoiseType": "DISTANCE",
+      "DistanceMode": "NATURAL",
+      "Formula": "INVERTED_SQUARED",
+      "DistanceRange": [
+        1,
+        3
+      ],
+      "Distance2Mode": "DIV",
+      "Scale": 0.05
+    },
+    {
+      "Seed": "Lava_Cracks",
+      "NoiseType": "CELL",
+      "DistanceMode": "NATURAL",
+      "DistanceRange": [
+        1,
+        3
+      ],
+      "Scale": 0.05
+    }
+  ],
+  "Factors": [
+    0.4,
+    0.2,
+    0.4
+  ],
+  "Threshold": [
+    0.65,
+    1
+  ]
+}

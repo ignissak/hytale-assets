@@ -1,0 +1,893 @@
+{
+  "MapColor": "#bfbfa1",
+  "Name": "lake",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Grasslands-River-Noise",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED_RIDGED",
+          "Octaves": 4,
+          "Persistence": 0.4,
+          "Scale": 0.004
+        },
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 5,
+          "Persistence": 0.6,
+          "Scale": 0.002
+        }
+      ],
+      "Factors": [
+        0.3,
+        0.7
+      ],
+      "Threshold": [
+        0.74,
+        1
+      ]
+    },
+    "BiomeMask": [
+      "Beach"
+    ],
+    "FadeHeightmap": 1,
+    "FadeLength": 0,
+    "FadeStart": 0
+  },
+  "Covers": [
+    {
+      "Type": [
+        "Plant_Moss_Rug_Green"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslands-Base",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "NORMAL",
+            "Octaves": 5,
+            "Persistence": 0.6,
+            "Scale": 0.002
+          },
+          {
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 5,
+            "Persistence": 0.5,
+            "Scale": 0.065
+          }
+        ],
+        "Factors": [
+          0.2,
+          0.8
+        ],
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "OnWater": true
+    },
+    {
+      "Type": [
+        "Soil_Gravel"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.06,
+        "Threshold": [
+          0.5,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          111,
+          112
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Seaweed_Grass_Bulbs",
+        "Plant_Seaweed_Grass_Green",
+        "Plant_Seaweed_Grass_Tall",
+        "Plant_Seaweed_Grass"
+      ],
+      "Weight": [
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.06,
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          111,
+          112
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Soil_Gravel_Mossy"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Gravel_Mossy"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Oceans.Covers.Grass.Island_Grass_Lush"
+          }
+        ],
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Soil_Gravel_Sand_White",
+        "Rock_Stone"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Gravel"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "wasabi",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.5,
+        "Scale": 0.06,
+        "Threshold": [
+          0,
+          0.31
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel_Sand_White"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Gravel"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": -1,
+      "Density": 1,
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Stone",
+        "Rubble_Stone_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.5,
+        "Scale": 0.05,
+        "Threshold": [
+          0,
+          0.35
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          117,
+          118
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Soil_Gravel_Mossy",
+        "Soil_Gravel_Sand_White",
+        "Rock_Stone"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Grass_Deep"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "wasabi123",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.06,
+        "Threshold": [
+          0,
+          0.35
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Fern_Winter",
+        "Plant_Grass_Sharp"
+      ],
+      "Weight": [
+        0.4,
+        0.6
+      ],
+      "Density": 0.42,
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass_Deep"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Reeds_Marsh"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.3,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.06,
+        "Threshold": [
+          0,
+          0.35
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          112,
+          113
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel_Sand_White",
+        "Soil_Gravel",
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Sharp",
+        "Plant_Grass_Lush",
+        "Plant_Grass_Sharp"
+      ],
+      "Weight": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Mixed_Dense"
+          }
+        ],
+        "Threshold": [
+          0.5,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Sharp_Tall",
+        "Plant_Grass_Sharp"
+      ],
+      "Weight": [
+        0.43,
+        0.2
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Lush_Moss"
+          }
+        ],
+        "Threshold": [
+          0.65,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Sharp"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Sharp_Dense"
+          }
+        ],
+        "Threshold": [
+          0.54,
+          0.65
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_Violet"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_Yellow2"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_Red2"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_White2"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Stone.Large.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Shore.PrefabPatterns.Lake_Boulders"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Rock_Stone"
+            ],
+            "Offset": 1,
+            "NoiseMask": {
+              "Seed": "lake_noise",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 4,
+              "Persistence": 0.4,
+              "Scale": 0.05,
+              "Threshold": [
+                0,
+                0.36
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Gravel_Sand_White",
+                "Repeat": [
+                  4,
+                  6
+                ],
+                "RepeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Grasslands-River-Noise",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED_RIDGED_SQRT",
+                  "Octaves": 4,
+                  "Persistence": 0.6,
+                  "Scale": 0.004
+                },
+                {
+                  "Seed": "Grasslands-Base",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED",
+                  "Octaves": 5,
+                  "Persistence": 0.6,
+                  "Scale": 0.002
+                },
+                {
+                  "Seed": "Grasslands-Base-2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.04
+                }
+              ],
+              "Factors": [
+                0.27,
+                0.8,
+                0.03
+              ],
+              "Threshold": [
+                0.765,
+                0.8
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Mud",
+              "Soil_Mud",
+              "Soil_Mud",
+              "Soil_Dirt",
+              "Soil_Dirt",
+              "Soil_Dirt"
+            ],
+            "NoiseMask": {
+              "Seed": "wasabi",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 5,
+              "Persistence": 0.5,
+              "Scale": 0.06,
+              "Threshold": [
+                0,
+                0.31
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Grass",
+              "Soil_Dirt",
+              "Soil_Dirt",
+              "Soil_Dirt",
+              "Soil_Dirt",
+              "Soil_Dirt"
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Zone1_Shore.Layers.Static"
+      },
+      {
+        "File": "Zones.Zone1_Shore.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "lake_noise",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 4,
+      "Persistence": 0.4,
+      "Scale": 0.05
+    },
+    "Keys": [
+      0.15,
+      0.35
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          108,
+          113,
+          118,
+          120
+        ],
+        "Values": [
+          1,
+          0.83,
+          0.8,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          98,
+          101,
+          106,
+          114,
+          118,
+          120
+        ],
+        "Values": [
+          1,
+          0.83,
+          0.8,
+          0.77,
+          0.73,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 4,
+        "Persistence": 0.4,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "Grasslands-Base",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.002
+      },
+      {
+        "Seed": "Grasslands-Base-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.04
+      }
+    ],
+    "Factors": [
+      0.27,
+      0.8,
+      0.03
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "0x79af2d",
+        "0x6e9e34"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Grasslands-Base-Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone1_Shores"
+      ]
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

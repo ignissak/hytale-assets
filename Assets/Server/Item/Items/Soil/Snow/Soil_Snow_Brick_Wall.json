@@ -1,0 +1,103 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Soil_Snow_Brick_Wall.name"
+  },
+  "ItemLevel": 15,
+  "Icon": "Icons/ItemsGenerated/Soil_Snow_Brick_Wall.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "PlayerAnimationsId": "Block",
+  "Set": "Soil_Snow_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ItemId": "Soil_Snow"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "Crafting",
+        "Categories": [
+          "Structural-Rock"
+        ]
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 2
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Structures/Walls/Wall_Snow_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Stairs/Stairs_Textures/Snow_Brick.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "HitboxType": "Fence",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Soils"
+      }
+    },
+    "VariantRotation": "Wall",
+    "BlockParticleSetId": "Stone",
+    "Supporting": {
+      "Down": [
+        {
+          "FaceType": "Wall"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Wall"
+        }
+      ]
+    },
+    "ParticleColor": "#545035",
+    "BlockSoundSetId": "Stone",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Stairs/Stairs_Textures/Snow_Brick.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Snow_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Soil_Snow_Brick_Wall",
+              "GatherType": "Soils"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Soil_Snow_Brick_Wall",
+        "Corner": "*Soil_Snow_Brick_Wall_State_Definitions_Corner"
+      }
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Soil"
+    ],
+    "Family": [
+      "Snow"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Soft"
+}

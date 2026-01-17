@@ -1,0 +1,130 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer_2",
+            "State": "Stopped"
+          },
+          "Actions": [
+            {
+              "Type": "SpawnParticles",
+              "Offset": [ 0, 2.1, 0 ],
+              "ParticleSystem": "Alerted"
+            },
+            {
+              "Type": "Random",
+              "Actions": [
+                {
+                  "Action": {
+                    "Type": "Beacon",
+                    "Message": "Test_Messager",
+                    "TargetGroups": [ "Tests" ],
+                    "ExpirationTime": 2
+                  },
+                  "Weight": 1
+                },
+                {
+                  "Action": {
+                    "Type": "Beacon",
+                    "Message": "Test_Messager2",
+                    "TargetGroups": [ "Tests" ],
+                    "ExpirationTime": 2
+                  },
+                  "Weight": 1
+                }
+              ]
+            },
+            {
+              "Type": "TimerRestart",
+              "Name": "Test_Timer_2"
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer_2",
+            "State": "Stopped",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Test_Timer_2",
+              "StartValueRange": [ 5, 5 ],
+              "RestartValueRange": [ 5, 5 ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Test_Messager"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "GettingMessage"
+            }
+          ],
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 1
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Test_Messager2"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "GettingMessage2"
+            }
+          ],
+          "BodyMotion": {
+            "Type": "Flee"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon.name"
+}

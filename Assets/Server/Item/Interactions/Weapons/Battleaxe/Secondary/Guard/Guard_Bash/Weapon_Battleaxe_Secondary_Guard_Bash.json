@@ -1,0 +1,38 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "ApplyEffect",
+      "EffectId": "Stamina_Broken_Immune"
+    },
+    {
+      "Type": "ChangeStat",
+      "StatModifiers": {
+        "Stamina": -2
+      },
+      "Effects": {
+        "ItemAnimationId": "GuardBash",
+        "WorldSoundEventId": "SFX_Battleaxe_T1_Shove",
+        "LocalSoundEventId": "SFX_Battleaxe_T1_Shove_Local"
+      },
+      "RunTime": 0.167,
+      "Next": {
+        "Type": "ChangeStat",
+        "Behaviour": "Set",
+        "StatModifiers": {
+          "StaminaRegenDelay": -1.5
+        },
+        "Next": {
+          "Type": "Replace",
+          "Var": "Guard_Bash_Selector",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Battleaxe_Secondary_Guard_Bash_Selector"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

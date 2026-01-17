@@ -1,0 +1,199 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "CollisionDistance": 3,
+  "CollisionForceFalloff": 0.25,
+  "CollisionRadius": 0.2,
+  "EntityAvoidanceStrength": 0.29,
+  "ApplyAvoidance": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 13,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10,
+            "LockOnTarget": true
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Crouching"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Crouched"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Idle"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Running"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Running"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Walking"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Walking"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Flying"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Flying"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Falling"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Falling"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Climbing"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Climbing"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Jumping"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Jumping"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Movement_State_Sheep.name"
+}

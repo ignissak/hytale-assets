@@ -1,0 +1,76 @@
+{
+	"Name": "Entry",
+
+	"Children": [
+		{
+			"$Comment": "This node spawns the walls, small tombs and pathways around the entrance. It is filled with stone as well to make sure all nested child prefab chunks are loaded.",
+			"Node": [
+				"Dungeons.Dungeon_Cursed_Crypt.Entrance_Graveyard.Graveyard_Layout"
+			],
+			"Offset": [0, 0, 0],
+			"Rotation": 0,
+			"Chance": 1
+		},
+		{
+			"$Comment": "This node replaces air around the graveyard with air that has the graveyard environment",
+			"Node": [
+				"Dungeons.Dungeon_Cursed_Crypt.Entrance_Graveyard.Graveyard_Environment"
+			],
+			"Offset": [0, 0, 0],
+			"Rotation": 0,
+			"Chance": 1
+		},
+		{
+			"$Comment": "This node acts as a mask and removes unwanted covers from the pathways.",
+			"Node": [
+				"Dungeons.Dungeon_Cursed_Crypt.Entrance_Graveyard.Graveyard_Pathway_Mask"
+			],
+			"Offset": [0, 0, 0],
+			"Rotation": 0,
+			"Chance": 1
+		},
+		{
+			"$Comment": "This node spawns the stairs and continues the dungeon system.",
+			"Node": [
+				"Dungeons.Dungeon_Cursed_Crypt.Nodes_Cursed.Stairs.Stairs_001",
+				"Dungeons.Dungeon_Cursed_Crypt.Nodes_Cursed.Stairs.Stairs_002",
+				"Dungeons.Dungeon_Cursed_Crypt.Nodes_Cursed.Stairs.Stairs_003"
+			],
+			"Offset": [0, -1, 5],
+			"Rotation": 0,
+			"Chance": 1
+		}
+
+	],
+
+	"Environment": "Env_Zone1_Dungeons",
+
+  "Mask": {
+    "Default": ["*"],
+    "Specific": [
+      {
+        "Block": ["Empty", "Rock_Basalt_Cobble"],
+        "Rule": ["*"]
+      },
+	  {
+        "Block": [
+			"Plant_Bush",
+			"Plant_Vine_Wall", "Plant_Vine",
+			"Plant_Moss_Wall_Green_Dark", "Plant_Moss_Rug_Green_Dark",
+			"Furniture_Village_Tombstone",
+			"Rubble_Stone",
+			"Rubble_Stone_Medium", "Rock_Basalt_Cobble_Stairs"
+		],
+        "Rule": ["Empty"]
+      }
+    ]
+  },
+
+	"Type": "PREFAB",
+
+	"Priority": 2,
+
+	"Prefab": [
+		"Dungeon.Cursed_Crypt.Entrance.Crypt.*"
+	]
+}

@@ -1,0 +1,197 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Oak.name",
+    "Description": "server.items.Plant_Sapling_Oak.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Oak_Sapling.png",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "ItemLevel": 6,
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 15
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 4
+      }
+    ]
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "CustomModel": "Blocks/Foliage/Tree/Sapling.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Oak.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Wood",
+    "HitboxType": "Plant_Large",
+    "Flags": {},
+    "RandomRotation": "YawStep1",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Sapling_Oak",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_0/Oak_Stage0_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_1/Oak_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_2/Oak_Stage2_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_3/Oak_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_4/Oak_Stage4_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 80000,
+              "Max": 100000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Oak/Stage_5/Oak_Stage5_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Oak"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "BlockParticleSetId": "Flower",
+    "BlockSoundSetId": "Bush",
+    "ParticleColor": "#477d32"
+  },
+  "PlayerAnimationsId": "Item",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Sapling"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

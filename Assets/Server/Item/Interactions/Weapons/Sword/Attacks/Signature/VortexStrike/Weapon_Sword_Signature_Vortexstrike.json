@@ -1,0 +1,43 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "SignatureEnergy": 100
+  },
+  "ValueType": "Percent",
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Vortexstrike_Spin",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Sword_Signature_Vortexstrike_Spin"
+          ]
+        }
+      },
+      {
+        "Type": "Simple",
+        "RunTime": 0.15
+      },
+      {
+        "Type": "Replace",
+        "Var": "Vortexstrike_Stab",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Sword_Signature_Vortexstrike_Stab"
+          ]
+        }
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "SignatureEnergy": -100
+        },
+        "ValueType": "Percent"
+      }
+    ]
+  }
+}

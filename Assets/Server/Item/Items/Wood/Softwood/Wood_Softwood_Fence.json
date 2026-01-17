@@ -1,0 +1,119 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Softwood_Fence.name"
+  },
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Icon": "Icons/ItemsGenerated/Wood_Softwood_Fence.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "PlayerAnimationsId": "Item",
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "Set": "Wood_Softwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Softwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Softwood.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Softwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Wood",
+    "HitboxType": "Fence_Thin",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods",
+        "ItemId": "Wood_Softwood_Fence"
+      }
+    },
+    "VariantRotation": "NESW",
+    "BlockParticleSetId": "Wood",
+    "Supporting": {
+      "Down": [
+        {
+          "FaceType": "Fence"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Fence"
+        }
+      ]
+    },
+    "ParticleColor": "#65482d",
+    "BlockSoundSetId": "Wood",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Softwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Softwood_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Softwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Softwood_Fence",
+        "Corner": "*Wood_Softwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Softwood_Fence_Gate"
+      }
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.63,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -16.7
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

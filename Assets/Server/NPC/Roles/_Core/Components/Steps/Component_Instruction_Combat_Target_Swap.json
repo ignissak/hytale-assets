@@ -1,0 +1,94 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "TargetSwitchTimer": {
+      "Value": [ 5, 5 ],
+      "Description": "Minimum time the NPC will be locked onto a single target before switching"
+    },
+    "TargetRange": {
+      "Value": 4,
+      "Description": "The distance the target needs to be within to maintain priority over other targets while in combat"
+    }
+  },
+  "Content": {
+    "Continue": true,
+    "Instructions": [
+      {
+        "$Comment": "We start a timer when entering attack mode to decide if we should switch targets.",
+        "Continue": true,
+        "Sensor": {
+          "Once": true,
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "TimerStart",
+            "Name": "TargetSwitchTimer",
+            "StartValueRange": { "Compute": "TargetSwitchTimer" },
+            "RestartValueRange": { "Compute": "TargetSwitchTimer" }
+          },
+          {
+            "Type": "TimerRestart",
+            "Name": "TargetSwitchTimer"
+          }
+        ]
+      },
+      {
+        "$Comment": "Switch to a different target if there's another potential target in range and current target is not. Restart the timer regardless.",
+        "Sensor": {
+          "Type": "Timer",
+          "Name": "TargetSwitchTimer",
+          "State": "Stopped"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Actions": [
+              {
+                "Type": "TimerRestart",
+                "Name": "TargetSwitchTimer"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "TargetRange" }
+                  }
+                },
+                {
+                  "Type": "Mob",
+                  "Range": { "Compute": "TargetRange" },
+                  "LockOnTarget": true,
+                  "GetPlayers": true,
+                  "GetNPCs": true,
+                  "ExcludeOwnType": true,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ],
+                  "Prioritiser": {
+                    "Type": "Attitude",
+                    "AttitudesByPriority": [ "Hostile" ]
+                  }
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Nothing"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

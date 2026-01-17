@@ -1,0 +1,129 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Chase", "Search" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": 2,
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Sequence",
+            "Blocking": true,
+            "Actions": [
+              {
+                "$TODO": "Set up proper attack",
+                "Type": "Attack",
+                "Attack": "Root_NPC_Attack_Melee",
+                "AttackPauseRange": [ 1, 2 ]
+              },
+              {
+                "Type": "ParentState",
+                "State": "Idle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Eval",
+              "Expression": "blocked"
+            },
+            "BodyMotion": {
+              "Type": "Wander",
+              "MaxHeadingChange": 45,
+              "RelativeSpeed": 1
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": 1,
+              "ExcludeOwnType": false,
+              "LockOnTarget": false,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": [ "Self" ]
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Wander",
+              "MaxHeadingChange": 45,
+              "RelativeSpeed": 1
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": { "Compute": "ViewRange" },
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 3,
+              "StopDistance": 1.5,
+              "RelativeSpeed": 0.6
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Target",
+            "Range": { "Compute": "ViewRange" }
+          }
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 2, 2 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Idle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

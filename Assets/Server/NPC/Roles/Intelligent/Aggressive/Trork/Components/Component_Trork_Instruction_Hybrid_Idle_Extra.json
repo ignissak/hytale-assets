@@ -1,0 +1,91 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Component.Trork.ExtraIdle",
+  "Parameters": {
+    "_ImportStates": [
+      "Idle",
+      "Alerted",
+      "Chase",
+      "Search",
+      "Warn",
+      "Neutral",
+      "Friendly",
+      "Revered",
+      "DroppedMeat"
+    ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "RangedAttack": {
+      "Value": "Trork_Sentry_Spear_Throw",
+      "Description": "Ranged attack"
+    },
+    "UnderlingGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "The block set designating chests for this NPC"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Trork_Instruction_Pre_Checks",
+        "Modify": {
+          "_ExportStates": [
+            "Alerted",
+            "Chase",
+            "Search",
+            "Warn",
+            "Neutral",
+            "Friendly",
+            "Revered",
+            "DroppedMeat"
+          ],
+          "ViewRange": { "Compute": "ViewRange" },
+          "ViewSector": { "Compute": "ViewSector" },
+          "HearingRange": { "Compute": "HearingRange" },
+          "AlertedRange": { "Compute": "AlertedRange" },
+          "CheckDroppedMeat": true,
+          "ExcludeGroups": { "Compute": "UnderlingGroups" },
+          "ChestBlockSet": { "Compute": "ChestBlockSet" }
+        }
+      },
+      {
+        "Reference": "Component_Trork_Instruction_Shoot_Bush",
+        "Modify": {
+          "_ExportStates": [ "Idle" ],
+          "ShootRange": { "Compute": "ViewRange" },
+          "RangedAttack": { "Compute": "RangedAttack" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

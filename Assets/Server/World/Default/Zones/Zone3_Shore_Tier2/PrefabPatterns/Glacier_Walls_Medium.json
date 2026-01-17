@@ -1,0 +1,45 @@
+{
+  "GridGenerator": {
+    "Density": 1,
+    "Scale": 1,
+    "Jitter": 0
+  },
+  "NoiseMask": {
+					"Type": "SUM",
+					"Noise": [
+						{
+							"Seed": "Glacier_Base",
+							"NoiseType": "SIMPLEX",
+							"Octaves": 3,
+							"Persistence": 0.5,
+							"Scale": 0.0015
+						},
+						{
+							"Type": "MIN",
+							"Noise": [
+							  {
+							    "File": "Zones.Noise.Shared.Heightmaps.River"
+							  }
+							],
+							"Formula": "INVERTED_RIDGED",
+							"Normalize": [0, 0.8]
+						},
+						{
+							"Seed": "Snowlands-Ice",
+							"NoiseType": "DISTANCE",
+							"DistanceMode": "NATURAL",
+							"Jitter": 0.8,
+							"Distance2Mode": "DIV",
+							"Formula": "INVERTED_SQUARED",
+							"Scale": 0.032
+						}
+					],
+					"Factors": [0.55, 0.4, 0.05],
+    "Threshold": [0.78, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [141, 142, 151, 152],
+    "Values": [0, 1, 1, 0]
+  },
+  "OnWater": true
+}

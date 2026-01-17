@@ -1,0 +1,80 @@
+{
+  "Type": "Variant",
+  "Reference": "Bear_Grizzly",
+  "Modify": {
+    "Appearance": "Bear_Polar",
+    "DropList": "Drop_Bear_Polar",
+    "Attack": "Root_NPC_Bear_Polar_Attack",
+    "MaxHealth": 103,
+    "LeashDistance": 60,
+    "HardLeashDistance": 100,
+    "_InteractionVars": {
+      "Swipe_Left_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Polar_Swipe_Left_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 36
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      },
+      "Swipe_Right_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Polar_Swipe_Right_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 36
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      },
+      "Stomp_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Polar_Stomp_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 36
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Bear_Polar.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

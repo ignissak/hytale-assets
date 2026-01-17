@@ -1,0 +1,107 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Intelligent.Idle",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Search", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "MotionComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Motion_Leashed_Wander",
+      "Description": "The component to use for motion"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "BlockChange",
+          "Range": { "Compute": "ViewRange" },
+          "EventType": "Damage",
+          "BlockSet": "Chest",
+          "SearchType": "PlayerOnly",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Chase"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "BlockChange",
+          "Range": { "Compute": "ViewRange" },
+          "EventType": "Interaction",
+          "BlockSet": "Chest",
+          "SearchType": "PlayerOnly",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Chase"
+          }
+        ]
+      },
+      {
+        "Reference": { "Compute": "MotionComponent" },
+        "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ]
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ]
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "ThroughWalls": false,
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Alerted"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

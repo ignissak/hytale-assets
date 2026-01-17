@@ -1,0 +1,760 @@
+{
+  "MapColor": "#544550",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Firelands-Base",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.001
+        },
+        {
+          "Seed": "Firelands-Hills",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 4,
+          "Persistence": 0.3,
+          "Scale": 0.008
+        },
+        {
+          "Seed": "4554845555",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "Formula": "INVERTED_SQUARED",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.008
+        }
+      ],
+      "Factors": [
+        0.75,
+        0.15,
+        0.1
+      ],
+      "Threshold": [
+        0,
+        0.43
+      ]
+    },
+    "BiomeMask": [
+      "Wastes_Ash"
+    ],
+    "Priority": 50
+  },
+  "Covers": [
+    {
+      "Type": [
+        "Plant_Bush_Dead_Twisted"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.4,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.04,
+        "Threshold": [
+          0.72,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Ash"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Dead"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Bush.Bush_Ghost_Forest"
+          }
+        ],
+        "Threshold": [
+          0.85,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Ash",
+        "Soil_Sand_Ashen"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Sand_Ashen"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "Offset": -2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Ground.Pebbles_Bedrock"
+          }
+        ],
+        "Threshold": [
+          0.65,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          122,
+          123,
+          175,
+          176
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Ash"
+      ]
+    },
+    {
+      "Type": [
+        "Soil_Sand_Ashen"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Ground.Pebbles_Bedrock"
+          }
+        ],
+        "Threshold": [
+          0.65,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          122,
+          123,
+          175,
+          176
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Ash"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Crystal",
+        "Plant_Grass_Cave_Short",
+        "Rock_Crystal_Red_Medium",
+        "Rock_Crystal_Red_Small"
+      ],
+      "Weight": [
+        0.65,
+        0.25,
+        0.05,
+        0.05
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Grass.Grass_Bedrock_Light"
+          }
+        ],
+        "Threshold": [
+          0.75,
+          0.85
+        ]
+      },
+      "Parent": [
+        "Soil_Sand_Ashen"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Bushy_Red",
+        "Rock_Crystal_Red_Medium",
+        "Rock_Crystal_Red_Small"
+      ],
+      "Weight": [
+        0.9,
+        0.05,
+        0.05
+      ],
+      "Density": 0.25,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Flowers.Flowers_Cave_Dense"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.2
+        ]
+      },
+      "Parent": [
+        "Soil_Ash",
+        "Soil_Sand_Ashen"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Slate",
+        "Rubble_Slate_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.16,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Rubble.Stone_Lava"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.15
+        ]
+      },
+      "Parent": [
+        "Soil_Ash",
+        "Rock_Slate",
+        "Rock_Volcanic",
+        "Soil_Sand_Ashen"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Dead_Tall"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.001,
+      "Parent": [
+        "Soil_Sand_Ashen",
+        "Soil_Ash"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Trees.Burnt_dead.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Wastes_Ash_Stumps"
+        }
+      },
+      {
+        "Prefab": [
+          "Plants.Bush.Dead_Hanging.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Wastes_Ash_Bushes"
+        }
+      },
+      {
+        "Weight": [
+          0.7,
+          0.3
+        ],
+        "Prefab": [
+          "Rock_Formations.Rocks.Slate.Pillar.*",
+          "Rock_Formations.Rocks.Slate.Hexagon.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Wastes_Ash_Boulder"
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Slate.Pillar_Large.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Wastes_Ash_Pillars_Mountain"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Slate",
+    "Dynamic": [
+      {
+        "NoiseMask": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Firelands-Base",
+              "NoiseType": "SIMPLEX",
+              "Formula": "INVERTED",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.001
+            },
+            {
+              "Seed": "Lava_Cracks",
+              "NoiseType": "DISTANCE",
+              "DistanceMode": "NATURAL",
+              "DistanceRange": [
+                1,
+                3
+              ],
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED",
+              "Scale": 0.05,
+              "Normalize": [
+                0,
+                0.5
+              ]
+            },
+            {
+              "Seed": "4554845555",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED_SQUARED",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.008
+            }
+          ],
+          "Factors": [
+            0.8,
+            0.05,
+            0.15
+          ],
+          "Threshold": [
+            0.3,
+            1
+          ]
+        },
+        "Entries": [
+          {
+            "Blocks": [
+              "Soil_Sand_Ashen:4"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Canyons",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED_RIDGED_FIX",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.004
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001,
+                  "Normalize": [
+                    0.15,
+                    0.4
+                  ]
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Formula": "SQUARED",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Scale": 0.05
+                }
+              ],
+              "Factors": [
+                0.63,
+                0.25,
+                0.12
+              ],
+              "Threshold": [
+                0.79,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Rock_Slate"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Rock.Bedrock_Cave_1"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.3
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Rock_Slate"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Hills",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 4,
+                  "Persistence": 0.4,
+                  "Scale": 0.008
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Formula": "SQUARED",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Scale": 0.05,
+                  "Normalize": [
+                    0,
+                    0.85
+                  ]
+                }
+              ],
+              "Factors": [
+                0.4,
+                0.6
+              ],
+              "Threshold": [
+                0.72,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Rock_Slate"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Canyons",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED_RIDGED_FIX",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.004
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001,
+                  "Normalize": [
+                    0.15,
+                    0.4
+                  ]
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Formula": "SQUARED",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Scale": 0.05
+                }
+              ],
+              "Factors": [
+                0.63,
+                0.25,
+                0.12
+              ],
+              "Threshold": [
+                0.75,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Ash:2"
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Mountain"
+      },
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Jungle"
+      },
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone4.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Firelands-Canyons",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED_RIDGED_FIX",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.004
+        },
+        {
+          "Seed": "Firelands-Base",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.001,
+          "Normalize": [
+            0.15,
+            0.4
+          ]
+        },
+        {
+          "Seed": "Lava_Cracks",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "Formula": "SQUARED",
+          "DistanceRange": [
+            1,
+            3
+          ],
+          "Distance2Mode": "DIV",
+          "Scale": 0.05
+        }
+      ],
+      "Factors": [
+        0.63,
+        0.25,
+        0.12
+      ]
+    },
+    "Keys": [
+      0.77,
+      0.79
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          141,
+          143,
+          154,
+          184,
+          230,
+          250,
+          255
+        ],
+        "Values": [
+          1,
+          0.6,
+          0.4,
+          0.28,
+          0.2,
+          0.1,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          123,
+          130,
+          142,
+          180,
+          230,
+          250,
+          255
+        ],
+        "Values": [
+          1,
+          0.43,
+          0.38,
+          0.28,
+          0.2,
+          0.1,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Firelands-Base",
+        "NoiseType": "SIMPLEX",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.001,
+        "Normalize": [
+          0.06,
+          0.7
+        ]
+      },
+      {
+        "Seed": "5683568",
+        "NoiseType": "DISTANCE",
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.025
+      },
+      {
+        "Seed": "4554845555",
+        "NoiseType": "DISTANCE",
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.008
+      },
+      {
+        "Type": "DISTORTED",
+        "Noise": {
+          "Seed": "Firelands_Biomes_Pattern",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "Distance2Mode": "DIV",
+          "Scale": 0.003,
+          "Jitter": 0.711
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Firelands-Hills",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 4,
+              "Persistence": 0.3,
+              "Scale": 0.008,
+              "Amplitude": 30
+            }
+          ]
+        },
+        "Normalize": [
+          0.75,
+          1
+        ]
+      }
+    ],
+    "Factors": [
+      0.76,
+      0.02,
+      0.12,
+      0.1
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone4_Wastes"
+      ],
+      "Weights": [
+        1
+      ]
+    },
+    "Entries": []
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "7ea629",
+        "5b9e28"
+      ],
+      "Weights": [
+        40,
+        60
+      ],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    }
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 31
+      }
+    ]
+  },
+  "Fade": {
+    "FadeHeightmap": 0.6,
+    "FadeLength": 0,
+    "FadeStart": 0,
+    "TerrainLength": 200,
+    "TerrainStart": -100
+  }
+}

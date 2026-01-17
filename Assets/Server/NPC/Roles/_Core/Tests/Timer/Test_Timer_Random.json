@@ -1,0 +1,126 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Test_Timer",
+              "StartValueRange": [ 1, 5 ],
+              "RestartValueRange": [ 2, 5 ],
+              "Repeating": true
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 4, 5 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "5"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 3, 4 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "4"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 2, 3 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "3"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 1, 2 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "2"
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 0, 1 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "1"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 0, 0.2 ]
+          },
+          "Actions": [
+            {
+              "Type": "SpawnParticles",
+              "Offset": [ 0, 2.1, 0 ],
+              "ParticleSystem": "Alerted"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Timer_Random.name"
+}

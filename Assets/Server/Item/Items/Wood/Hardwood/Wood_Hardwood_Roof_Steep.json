@@ -1,0 +1,115 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Hardwood_Roof_Steep.name"
+  },
+  "Set": "Wood_Hardwood_Planks",
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Roofs/Slope_Steep.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Hardwood.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Hardwood_Roof_Steep",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#693e2a",
+    "State": {
+      "Definitions": {
+        "Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Right.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Left.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Inverted_Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Inverted_Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "Roof",
+      "Regular": {
+        "Straight": {
+          "State": "default"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left"
+        }
+      },
+      "MaterialName": "Roof_Steep"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Wood_Hardwood_Roof_Steep.png",
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Hardwood"
+    ]
+  },
+  "Parent": "Wood_Softwood_Roof_Steep",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Hardwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Roof"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  }
+}

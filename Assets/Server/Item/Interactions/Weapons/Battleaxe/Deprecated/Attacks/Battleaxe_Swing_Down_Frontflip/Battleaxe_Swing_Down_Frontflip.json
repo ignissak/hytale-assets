@@ -1,0 +1,72 @@
+{
+  "Type": "Simple",
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Effects": {
+    "ItemAnimationId": "SwingDownFrontflipFlip",
+    "CameraEffect": "Battleaxe_Jump"
+  },
+  "Next": {
+    "Type": "ApplyForce",
+    "Direction": {
+      "X": 0,
+      "Y": 5,
+      "Z": 0
+    },
+    "ChangeVelocityType": "Set",
+    "Force": 8,
+    "WaitForGround": false,
+    "Next": {
+      "Type": "Parallel",
+      "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+      "Interactions": [
+        {
+          "Interactions": [
+            {
+              "Type": "Simple",
+              "$Comment": "Prepare Delay",
+              "RunTime": 0.4,
+              "Next": {
+                "Type": "Selector",
+                "$Comment": "Length of Combat",
+                "RunTime": 0.167,
+                "Effects": {
+                  "ItemAnimationId": "SwingDownFrontflipChop",
+                  "CameraEffect": "Battleaxe_Frontflip_Chop"
+                },
+                "Selector": {
+                  "Id": "Horizontal",
+                  "Direction": "ToLeft",
+                  "TestLineOfSight": false,
+                  "ExtendTop": 0.5,
+                  "ExtendBottom": 0.5,
+                  "StartDistance": 0.1,
+                  "EndDistance": 3,
+                  "Length": 90,
+                  "RollOffset": 90,
+                  "YawStartOffset": -45
+                },
+                "HitBlock": {
+                  "Interactions": [
+                    "Block_Break_Adventure"
+                  ]
+                },
+                "HitEntity": "Battleaxe_Swing_Down_Frontflip_Damage",
+                "Next": {
+                  "Type": "Simple",
+                  "$Comment": "Pad the interaction length",
+                  "RunTime": 0.699
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            "Battleaxe_Swing_Down_Frontflip_Effect"
+          ]
+        }
+      ]
+    }
+  }
+}

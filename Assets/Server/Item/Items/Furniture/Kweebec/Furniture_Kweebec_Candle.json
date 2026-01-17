@@ -1,0 +1,149 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Kweebec_Candle.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Kweebec",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "IconProperties": {
+    "Rotation": [
+      21.4,
+      41.6,
+      14.6
+    ],
+    "Scale": 0.4,
+    "Translation": [
+      0.6,
+      -20.4
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Kweebec/Candle.blockymodel",
+    "CustomModelScale": 1,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Kweebec/Candle_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Torch_Small",
+    "Light": {
+      "Color": "#dcb"
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#633625",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rope"
+        }
+      ]
+    },
+    "Particles": [
+      {
+        "SystemId": "Kweebec_Lantern",
+        "TargetEntityPart": "PrimaryItem"
+      }
+    ],
+    "RandomRotation": "YawStep1",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Candle_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Icon": "Icons/ItemsGenerated/Furniture_Kweebec_Candle.png",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Kweebec"
+    ]
+  },
+  "Utility": {
+    "Usable": true
+  },
+  "Scale": 1.5,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

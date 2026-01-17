@@ -1,0 +1,35 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.05,
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToLeft",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0.5,
+    "EndDistance": 2.5,
+    "Length": 90,
+    "RollOffset": 60,
+    "YawStartOffset": -45
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "DefaultValue": {
+          "Interactions": [
+            "NPC_Attack_Melee_Damage"
+          ]
+        },
+        "Var": "Melee_Damage"
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.15
+  }
+}

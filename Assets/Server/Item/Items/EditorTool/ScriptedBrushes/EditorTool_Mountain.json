@@ -1,0 +1,86 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Mountain.name",
+    "Description": "server.builderTools.tools.Mountain.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "MountainBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 10,
+            "Min": 6,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 10,
+            "Min": 6,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Cube"
+          },
+          "Origin": {
+            "Default": "Center"
+          }
+        },
+        "Args": {
+          "1stLayer": {
+            "Type": "Block",
+            "Default": "Soil_Grass",
+            "AllowPattern": true
+          },
+          "2ndLayer": {
+            "Type": "Block",
+            "Default": "Soil_Dirt",
+            "AllowPattern": true
+          },
+          "3rdLayer": {
+            "Type": "Block",
+            "Default": "Rock_Stone",
+            "AllowPattern": true
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

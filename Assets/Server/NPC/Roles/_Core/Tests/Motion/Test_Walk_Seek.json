@@ -1,0 +1,43 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "Debug": "",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 80
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "AbortDistance": 80,
+            "StopDistance": 1,
+            "SlowDownDistance": 1,
+            "ThrottleDelayRange": [ 30, 30 ],
+            "Debug": "Status"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Walk_Seek.name"
+}

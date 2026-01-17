@@ -1,0 +1,133 @@
+{
+  "Type": "Generic",
+  "Appearance": "Goblin",
+  "HotbarItems": [ "Weapon_Club_Crude" ],
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "InteractionVars": {
+    "Sword_Swing_Right_Fast_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Sword_Swing_Right_Fast_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 50
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 8
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Attack"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "BodyMotion": {
+                "Type": "Nothing"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 2,
+                "Filters": [
+                  {
+                    "Type": "ViewSector",
+                    "ViewSector": 90
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 0, 0.5 ],
+                  "Action": {
+                    "Type": "Attack",
+                    "Attack": "Sword_Swing_Right_Fast"
+                  }
+                }
+              ],
+              "HeadMotion": {
+                "Type": "Watch"
+              },
+              "BodyMotion": {
+                "Type": "MatchLook"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 3,
+                "StopDistance": 2,
+                "AbortDistance": 15
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "BodyMotion": {
+                "Type": "Nothing"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_InteractionVars_Template.name"
+}

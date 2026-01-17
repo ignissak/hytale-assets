@@ -1,0 +1,72 @@
+{
+  "Parent": "Template_Weapon_Crossbow",
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Crossbow_Ancient_Steel.name"
+  },
+  "Model": "Items/Weapons/Crossbow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Crossbow/Iron_Rusty_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Crossbow_Iron_Rusty.png",
+  "Quality": "Rare",
+  "ItemLevel": 40,
+  "Recipe": {
+    "TimeSeconds": 4,
+    "Input": [],
+    "BenchRequirement": [
+      {
+        "Type": "Processing",
+        "Id": "Salvagebench"
+      }
+    ]
+  },
+  "InteractionVars": {
+    "Standard_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Standard_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 16
+            }
+          }
+        }
+      ]
+    },
+    "Combo_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Combo_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 42
+            }
+          }
+        }
+      ]
+    },
+    "Signature_BigArrow_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Signature_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 123
+            }
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 15.56,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    }
+  },
+  "MaxDurability": 180,
+  "DurabilityLossOnHit": 0.28
+}

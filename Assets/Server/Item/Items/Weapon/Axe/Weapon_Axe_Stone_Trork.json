@@ -1,0 +1,161 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Axe_Stone_Trork.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Axe_Stone_Trork.png",
+  "ItemLevel": 20,
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 2
+      },
+      {
+        "ResourceTypeId": "Rock",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "DiagramCrafting",
+        "Categories": [
+          "Weapons.Axe"
+        ],
+        "Id": "Armory"
+      },
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Axe"
+        ],
+        "Id": "Weapon_Bench"
+      }
+    ]
+  },
+  "Texture": "NPC/Intelligent/Trork/Models/Weapons/Axe/Stone_Texture.png",
+  "PlayerAnimationsId": "Axe",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Axe_Attack"
+  },
+  "InteractionVars": {
+    "Axe_Swing_Down_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Down_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 10
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 10
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 20
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -30.6,
+      -26.4
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Model": "NPC/Intelligent/Trork/Models/Weapons/Axe/Stone.blockymodel",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 45,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Family": [
+      "Axe"
+    ],
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {},
+  "Quality": "Uncommon",
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

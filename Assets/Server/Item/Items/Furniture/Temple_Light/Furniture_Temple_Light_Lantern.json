@@ -1,0 +1,137 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Temple_Light_Lantern.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Temple_Light",
+  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Light_Lantern.png",
+  "BlockType": {
+    "PlacementSettings": {
+      "CeilingPlacementOverrideBlockId": "Furniture_Temple_Light_Lantern_Ceiling"
+    },
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Light/Lantern.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Temple_Light/Lantern_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Plant_Full",
+    "Light": {
+      "Color": "#abb",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Particles": [
+      {
+        "SystemId": "Temple_Light_Lantern",
+        "TargetNodeName": "Light",
+        "PositionOffset": {
+          "Y": 0.5
+        }
+      }
+    ],
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Full",
+          "Filler": []
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        },
+        {
+          "FaceType": "Rope"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chain_Small"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chains_Vertical"
+        }
+      ]
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "CustomModelScale": 0.8
+  },
+  "Model": "Blocks/Decorative_Sets/Tavern/Lantern.blockymodel",
+  "Particles": [
+    {
+      "SystemId": "Temple_Light_Lantern",
+      "TargetNodeName": "Light"
+    }
+  ],
+  "Texture": "Blocks/Decorative_Sets/Tavern/Lantern_Texture.png",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Temple"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

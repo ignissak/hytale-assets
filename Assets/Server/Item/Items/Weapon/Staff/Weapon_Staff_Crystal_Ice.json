@@ -1,0 +1,181 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Staff_Crystal_Ice.name",
+    "Description": "server.items.Weapon_Staff_Crystal_Ice.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Staff_Crystal_Ice.png",
+  "Quality": "Rare",
+  "ItemLevel": 50,
+  "Recipe": {
+    "TimeSeconds": 5,
+    "Input": [
+      {
+        "ItemId": "Rock_Gem_Sapphire",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bar_Silver",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Wood_Azure_Trunk",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Ingredient_Ice_Essence",
+        "Quantity": 20
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  },
+  "Model": "Items/Weapons/Staff/Crystal_Ice.blockymodel",
+  "Texture": "Items/Weapons/Staff/Crystal_Ice_Texture.png",
+  "PlayerAnimationsId": "Staff",
+  "IconProperties": {
+    "Scale": 0.31,
+    "Translation": [
+      -26.31,
+      -23.91
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Particles": [
+    {
+      "SystemId": "Ice_Staff",
+      "TargetNodeName": "TopPommel",
+      "RotationOffset": {
+        "Pitch": 0,
+        "Yaw": 180,
+        "Roll": 0
+      }
+    }
+  ],
+  "Interactions": {
+    "Primary": "Root_Ice_Staff_Primary_Wrapper",
+    "Secondary": "Root_Ice_Staff_Primary_Entry"
+  },
+  "InteractionVars": {
+    "Staff_Cast_Summon_Cost": {
+      "Interactions": [
+        {
+          "Parent": "Staff_Cast_Cost",
+          "StatModifiers": {
+            "Mana": 0
+          }
+        }
+      ]
+    },
+    "Staff_Cast_Summon_StaminaCost": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0
+        }
+      ]
+    },
+    "Staff_Cast_Summon_StaminaRegenDelay": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0
+        }
+      ]
+    },
+    "Staff_Cast_Summon_Launch": {
+      "Interactions": [
+        {
+          "Type": "ModifyInventory",
+          "ItemToRemove": {
+            "Id": "Ingredient_Ice_Essence",
+            "Quantity": 1
+          },
+          "AdjustHeldItemDurability": -0.5,
+          "Next": {
+            "Type": "Parallel",
+            "Interactions": [
+              {
+                "Interactions": [
+                  {
+                    "Type": "ChangeStat",
+                    "StatModifiers": {
+                      "Stamina": -5
+                    }
+                  }
+                ]
+              },
+              {
+                "Interactions": [
+                  {
+                    "Type": "ChangeStat",
+                    "Behaviour": "Set",
+                    "StatModifiers": {
+                      "StaminaRegenDelay": -1.5
+                    }
+                  }
+                ]
+              },
+              {
+                "Interactions": [
+                  {
+                    "Type": "Projectile",
+                    "RunTime": 0.25,
+                    "Config": "Projectile_Config_Ice_Ball",
+                    "Effects": {
+                      "ItemAnimationId": "CastSummonCharged"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "Failed": "Staff_Cast_Fail"
+        }
+      ]
+    },
+    "Staff_Cast_Summon_Effect": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0.5
+        }
+      ]
+    },
+    "Staff_Cast_Summon_Fail": "Staff_Cast_Fail",
+    "Spear_Swing_Left_Damage": "Spear_Swing_Left_Damage",
+    "Spear_Swing_Right_Damage": "Spear_Swing_Right_Damage",
+    "Spear_Swing_Left_Effect": "Spear_Swing_Left_Effect",
+    "Spear_Swing_Right_Effect": "Spear_Swing_Right_Effect"
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Family": [
+      "Staff"
+    ],
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {},
+  "Light": {
+    "Radius": 1,
+    "Color": "#146"
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood",
+  "MaxDurability": 300,
+  "DurabilityLossOnHit": 0.5
+}

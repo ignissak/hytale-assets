@@ -1,0 +1,56 @@
+{
+  "Type": "Generic",
+  "Appearance": "Cow",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 2, 2 ]
+            },
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status",
+              "Animation": "Laydown"
+            },
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status",
+              "Animation": "Sleep"
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 4, 4 ]
+            },
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status",
+              "Animation": "Wake"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Blocking_Animation.name"
+}

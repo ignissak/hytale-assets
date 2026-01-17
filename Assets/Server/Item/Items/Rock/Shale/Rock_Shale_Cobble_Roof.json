@@ -1,0 +1,141 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Shale_Cobble_Roof.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Shale_Cobble_Roof.png",
+  "Set": "Rock_Shale_Cobble",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Shale"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Roof"
+        ]
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Shale_Cobble.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Stairs_Thin",
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Shale_Cobble_Roof",
+        "GatherType": "Rocks"
+      }
+    },
+    "Supporting": {
+      "Down": [
+        {}
+      ]
+    },
+    "ParticleColor": "#2d3d42",
+    "State": {
+      "Definitions": {
+        "Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Right",
+          "FlipType": "Orthogonal"
+        },
+        "Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Left",
+          "FlipType": "Orthogonal"
+        },
+        "Inverted_Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Right.blockymodel",
+          "HitboxType": "Stairs_Inverted_Corner_Right",
+          "FlipType": "Orthogonal"
+        },
+        "Inverted_Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Left.blockymodel",
+          "HitboxType": "Stairs_Inverted_Corner_Left",
+          "FlipType": "Orthogonal"
+        },
+        "Topper": {
+          "CustomModel": "Blocks/Structures/Roofs/Topper.blockymodel",
+          "HitboxType": "Block_Three_Quarter",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Roofs/Slope_Textures/Shale_Cobble.png",
+              "Weight": 1
+            }
+          ]
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "Roof",
+      "Regular": {
+        "Straight": {
+          "State": "default"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left"
+        }
+      },
+      "Hollow": {
+        "Straight": {
+          "State": "default",
+          "Block": "Rock_Shale_Cobble_Roof_Hollow"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right",
+          "Block": "Rock_Shale_Cobble_Roof_Hollow"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left",
+          "Block": "Rock_Shale_Cobble_Roof_Hollow"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right",
+          "Block": "Rock_Shale_Cobble_Roof_Hollow"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left",
+          "Block": "Rock_Shale_Cobble_Roof_Hollow"
+        }
+      },
+      "Topper": {
+        "State": "Topper"
+      },
+      "MaterialName": "Roof"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Shale"
+    ]
+  },
+  "Parent": "Rock_Stone_Cobble_Roof"
+}

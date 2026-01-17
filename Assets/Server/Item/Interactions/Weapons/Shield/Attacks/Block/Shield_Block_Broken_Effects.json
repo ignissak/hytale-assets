@@ -1,0 +1,31 @@
+{
+  "$Comment": "The effects applied after shield blocking was interrupted",
+  "Type": "StatsCondition",
+  "Lenient": true,
+  "Costs": {
+    "Stamina": 0
+  },
+  "Failed": {
+    "$Comment": "Additional regen delay and sound/particle effects when stamina is taken below zero",
+    "Type": "ChangeStat",
+    "Behaviour": "Add",
+    "StatModifiers": {
+      "StaminaRegenDelay": -1.0
+    },
+    "RunTime": 0.5,
+    "Effects": {
+      "Particles": [
+        {
+          "SystemId": "Shield_Shatter",
+          "TargetEntityPart": "SecondaryItem",
+          "TargetNodeName": "L-Attachment",
+          "RotationOffset": {
+            "Yaw": 90.0
+          }
+        }
+      ],
+      "ClearSoundEventOnFinish": true,
+      "ClearAnimationOnFinish": true
+    }
+  }
+}

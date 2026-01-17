@@ -1,0 +1,108 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Weapon_Shield.name"
+  },
+  "Model": "Items/Weapons/Shield/Iron.blockymodel",
+  "Texture": "Items/Weapons/Shield/Iron_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Shield_Iron.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "PlayerAnimationsId": "Shield",
+  "ItemSoundSetId": "ISS_Weapons_Shield_Metal",
+  "Quality": "Template",
+  "ItemLevel": 40,
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Utility": {
+    "Usable": true
+  },
+  "Reticle": "DefaultMelee",
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Root_Weapon_Shield_Secondary_Guard"
+  },
+  "InteractionVars": {
+    "Guard_Start_StaminaCost": {
+      "Interactions": [
+        {
+          "$Comment": "The amount of stamina consumed upon starting guarding",
+          "Type": "ChangeStat",
+          "StatModifiers": {
+            "Stamina": -0.5
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "$Comment": "Actively guarding with the weapon",
+          "Parent": "Weapon_Shield_Secondary_Guard_Wield",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Shield_T2_Raise",
+            "LocalSoundEventId": "SFX_Shield_T2_Raise_Local"
+          },
+          "StaminaCost": {
+            "Value": 12,
+            "CostType": "Damage"
+          },
+          "BlockedEffects": {
+            "WorldSoundEventId": "SFX_Shield_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Guard_Bash": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stamina_Broken_Immune"
+        },
+        {
+          "$Comment": "Effects and stamina consumed upon a guard bash",
+          "Parent": "Weapon_Shield_Secondary_Guard_Bash",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Shield_T2_Swing",
+            "LocalSoundEventId": "SFX_Shield_T2_Swing_Local"
+          },
+          "StatModifiers": {
+            "Stamina": -2
+          }
+        }
+      ]
+    },
+    "Guard_Bash_Damage": {
+      "Interactions": [
+        {
+          "$Comment": "Damage & Effects on a successful hit with the guard shove attack",
+          "Parent": "Weapon_Shield_Secondary_Guard_Bash_Damage",
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Shield_T2_Impact",
+            "LocalSoundEventId": "SFX_Shield_T2_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -25,
+      -25
+    ],
+    "Rotation": [
+      315,
+      270,
+      0
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Shield"
+    ]
+  },
+  "Weapon": {}
+}

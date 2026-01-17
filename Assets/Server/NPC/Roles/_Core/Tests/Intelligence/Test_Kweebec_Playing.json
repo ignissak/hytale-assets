@@ -1,0 +1,355 @@
+{
+  "StartState": "Idle",
+  "Debug": "DisplayState, DisplayFreeSlots",
+  "Type": "Generic",
+  "Appearance": "Kweebec_Sproutling",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "JumpHeight": 1.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Acknowledge_Play",
+                "Range": 10,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Once": true,
+                  "Type": "Inventory",
+                  "UseTarget": false,
+                  "Operation": "Equip",
+                  "Item": "Plant_Seeds_Pine"
+                },
+                {
+                  "Type": "State",
+                  "State": "Play_Master"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Start_Play",
+                "Range": 10,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Play_Slave"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "ExcludeOwnType": false,
+                "LockOnTarget": true,
+                "Range": 15,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  },
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Self" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Start_Play",
+                  "TargetGroups": [ "Self" ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Play_Master"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "SetFlag",
+                  "Name": "Master",
+                  "SetTo": true
+                },
+                {
+                  "Type": "State",
+                  "State": "Throw"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Play_Slave"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Once": true,
+                  "Type": "Beacon",
+                  "Message": "Acknowledge_Play",
+                  "TargetGroups": [ "Self" ]
+                },
+                {
+                  "Type": "SetFlag",
+                  "Name": "Master",
+                  "SetTo": false
+                },
+                {
+                  "Type": "State",
+                  "State": "Wait"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "AutoUnlockTarget": true,
+                "Range": 15,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 8,
+                "StopDistance": 4
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Throw"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Start_Play",
+                  "TargetGroups": [ "Self" ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Picked_Up",
+                "Range": 10,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Wait"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Target",
+                "AutoUnlockTarget": true,
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Inventory",
+                    "Items": [ "Plant_Seeds_Pine" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 2 ],
+                  "Action": {
+                    "Type": "Sequence",
+                    "Actions": [
+                      {
+                        "Type": "DropItem",
+                        "Item": "Plant_Seeds_Pine",
+                        "Distance": [ 4, 4 ],
+                        "ThrowSpeed": 19
+                      },
+                      {
+                        "Type": "Inventory",
+                        "UseTarget": false,
+                        "Operation": "Remove",
+                        "Item": "Plant_Seeds_Pine"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Wait"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Start_Play",
+                "TargetSlot": "LockedTarget"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Inventory",
+                    "Items": [ "Plant_Seeds_Pine" ]
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": 4
+                  },
+                  "BodyMotion": {
+                    "Type": "Flee",
+                    "StopDistance": 4.5,
+                    "SlowDownDistance": 4
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Beacon",
+                      "Message": "Picked_Up",
+                      "TargetGroups": [ "Self" ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": "Throw"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Items": [ "Plant_Seeds_Pine" ],
+                "Range": 5
+              },
+              "Actions": [
+                {
+                  "Type": "PickUpItem",
+                  "Range": 1
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 4
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "StopDistance": 4.5,
+                "SlowDownDistance": 4
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Kweebec_Playing.name"
+}

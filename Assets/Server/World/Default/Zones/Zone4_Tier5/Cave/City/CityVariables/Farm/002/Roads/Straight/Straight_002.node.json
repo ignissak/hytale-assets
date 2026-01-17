@@ -1,0 +1,65 @@
+{
+	"Name": "Straight_002",
+	
+	"Children": [
+	
+		// Roads
+		{
+			"Node": ["City.CityVariables.Farm.002.Roads.CityCenter.CityCenter_001"],
+			"Weights": [100],
+			"Offset": [0, 0, 18],
+			"Rotation": 0,
+			"Chance": 1
+		},/*
+		
+		// Buildings
+		{ // left
+			"Node": ["City.CityVariables.Farm.001.Buildings.Farmhouse.Farmhouse_001"],
+			"Weights": [100],
+			"Offset": [11, 0, 7],
+			"Rotation": 90,
+			"Chance": 1
+		}, { // right
+			"Node": ["City.CityVariables.Farm.001.Buildings.Farmhouse.Farmhouse_001"],
+			"Weights": [100],
+			"Offset": [-10, 0, 5],
+			"Rotation": 270,
+			"Chance": 1
+		},*/
+		
+		// Lamp Posts
+		{ // left
+			"Node": ["City.CityVariables.Farm.001.Misc.Lamppost_001"],
+			"Weights": [100],
+			"Offset": [2, 0, 4],
+			"Rotation": 0,
+			"Chance": 0.35
+		}, { // right
+			"Node": ["City.CityVariables.Farm.001.Misc.Lamppost_001"],
+			"Weights": [100],
+			"Offset": [-2, 0, 12],
+			"Rotation": 0,
+			"Chance": 0.35
+		} 
+	],
+	
+	
+    "Mask":{
+        "Default": ["*"],
+         "Specific": [{
+                "Block": ["Empty"],
+                "Rule": ["*"]
+            }, {
+                "Block": ["Rock_Basalt_Cobble_Half", "Rock_Stone_Brick_Smooth_Half", "Soil_Dirt_Burnt"],
+                "Rule": ["Empty", "Plant_Grass_Sharp", "Plant_Grass_Lush", "Plant_Grass_Sharp", "Plant_Grass_Sharp_Tall", "Plant_Grass_Gnarled"]
+            }]
+    },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Monuments.Encounter.City_Ruins.Roads.Straight.*"
+	]
+}

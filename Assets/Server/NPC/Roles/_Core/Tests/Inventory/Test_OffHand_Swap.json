@@ -1,0 +1,76 @@
+{
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "OffHandItems": [ "Furniture_Crude_Torch", "Weapon_Shield_Praetorian" ],
+  "OffHandSlots": 2,
+  "DefaultOffHandSlot": 0,
+  "HotbarItems": [ "Weapon_Sword_Iron" ],
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Inventory",
+              "Operation": "EquipOffHand",
+              "UseTarget": false,
+              "Slot": -1
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 2, 2 ]
+            },
+            {
+              "Type": "Inventory",
+              "Operation": "EquipOffHand",
+              "UseTarget": false,
+              "Slot": 0
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 2, 2 ]
+            },
+            {
+              "Type": "Inventory",
+              "Operation": "EquipOffHand",
+              "UseTarget": false,
+              "Slot": 1
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 2, 2 ]
+            },
+            {
+              "Type": "State",
+              "State": "Idle"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_OffHand_Swap.name"
+}

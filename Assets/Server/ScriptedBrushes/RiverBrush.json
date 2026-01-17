@@ -1,0 +1,1123 @@
+{
+	"$NodeId":	"Root-61c847ef-0cf8-4452-ae38-4db5ff30f408",
+	"Operations":	[{
+			"$NodeId":	"EchoOnce-68af5465-45d2-4c99-a9c0-2b0c8114d977",
+			"Id":	"echoonce",
+			"Message":	"-------------------------------------\n  RIVER BRUSH\n-------------------------------------\nThis brush gives you the ability to create rivers and ponds.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the body of water.\n\nLeft Click: Adds decoration blocks to the body of water (top, under, and side of the water).\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your river or ponds how you want them. Below are each setting and what they do:\n\nFluid Material = The fluid to create the river from.\n\nMaterial under the Fluid = Materials to be placed under the fluid. The density slider under it controls how many materials to place.\n\nMaterial on side of the Fluid = Materials to be placed above the fluid on the edge of it. The density slider under it controls how many materials to place.\n\nMaterial on top of the Fluid  = Materials to be placed directly on top of the fluid. The density slider under it controls how many materials to place.\n\nGround Material under the Fluid = Materials to form the base ground of the river under the fluid ONLY. The density slider under it controls how many materials to place.\n\nGround Material above the Fluid = Materials to form the base ground of the river. This includes under the fluid and on the edges of the fluid. The density slider under it controls how many materials to place.\n\n-------------------------------------------\n  RIVER BRUSH - Read the Above ^\n-------------------------------------------"
+		}, {
+			"$NodeId":	"JumpIfClickType-aaf0810b-48f9-49f4-9df6-a90b3bf9c27d",
+			"Id":	"jumpifclicktype",
+			"StoredIndexName":	"decoration",
+			"ClickType":	"Left"
+		}, {
+			"$NodeId":	"Dimensions-b50ebd50-be00-40d8-b6b2-ef356f7a2da5",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	11,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	11,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Mask-1e3dd75d-3d76-4813-b3f9-ba98c2cd27e2",
+			"Id":	"mask",
+			"Mask":	"Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"Material-df479354-c734-4d91-b0f9-ec6b7ec2c877",
+			"Id":	"material",
+			"BlockType":	"Rock_Basalt"
+		}, {
+			"$NodeId":	"Set-e2637c2d-bf3e-423c-886b-0e97aa12e18b",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-f15aa62f-a96a-48ae-85d7-65cffe82d878",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	-11,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	-11,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Mask-d1ef56d1-8f16-4488-9987-056ecbd0524f",
+			"Id":	"mask",
+			"Mask":	"!Rock_Basalt"
+		}, {
+			"$NodeId":	"SaveIndex-166ae9a2-7f42-44e3-84f2-0a40e54c139d",
+			"Id":	"saveindex",
+			"StoredIndexName":	"melt_loop"
+		}, {
+			"$NodeId":	"Shape-361c54c4-a09d-41dc-95bb-964471775981",
+			"Id":	"shape",
+			"Shape":	"Cylinder"
+		}, {
+			"$NodeId":	"RandomOffset-642a9fff-6ffc-4e7f-83de-03bfae4d66b6",
+			"Id":	"randomoffset",
+			"XOffsetRange":	{
+				"Min":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	1,
+					"Relative":	true
+				}
+			},
+			"YOffsetRange":	{
+				"Min":	{
+					"Value":	0,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	0,
+					"Relative":	true
+				}
+			},
+			"ZOffsetRange":	{
+				"Min":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	1,
+					"Relative":	true
+				}
+			}
+		}, {
+			"$NodeId":	"Melt-bbcb6b41-1c4f-4497-991b-9c879ecaa9ef",
+			"Id":	"melt"
+		}, {
+			"$NodeId":	"Loop-97aba6cd-5e73-437b-ba88-ed11a1fda47d",
+			"Id":	"loop",
+			"StoredIndexName":	"melt_loop",
+			"AdditionalRepetitions":	3
+		}, {
+			"$NodeId":	"Dimensions-1f8aa57f-8fe4-43b2-87ca-6c0bd1f0a83c",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	5,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	10,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Offset-4fb94f69-ebb4-43f3-8bcc-27ab73b1c847",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"Smooth-8c337da3-b7cd-4d01-8dbb-dc8af956ebb5",
+			"Id":	"smooth",
+			"SmoothStrength":	2
+		}, {
+			"$NodeId":	"Offset-315701f8-4eb4-45d6-9bca-58e320f84ed8",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	1,
+					"Relative":	true
+				},
+				"Y":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"Smooth-6ca22298-9f07-4844-8565-20dfe7e9065b",
+			"Id":	"smooth",
+			"SmoothStrength":	2
+		}, {
+			"$NodeId":	"Offset-53a6ab8f-36f4-4ca3-bfb2-3feca53f9963",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Y":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"Smooth-63f148e6-2a81-4d2a-9cca-7fbf9713eedf",
+			"Id":	"smooth",
+			"SmoothStrength":	2
+		}, {
+			"$NodeId":	"Dimensions-64dd8860-d14b-4c8e-a881-89911ffa7515",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	0,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	-5,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Mask-ccfbbd7e-7711-401f-af37-35cadc868fa9",
+			"Id":	"mask",
+			"Mask":	"!Empty|Filter_PlantsAndTrees|Rock_Basalt"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-603748ec-407b-4a86-b9f6-40a016b7beed",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"yMaterialOutFluid",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-719a3c8e-2934-4b0e-93fe-ba11885c31dc",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"zMaterialInFluid",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-a2525e8a-adf4-4699-8f61-8663a2540d19",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"xMaterialTopFluid",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-391629f3-5c7a-48b9-8906-a597076f4630",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SubsurfaceMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Dimensions-1e729264-dcc8-40a0-9765-c6ba5004db8d",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	4,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	4,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadMaterial-975db5fe-ab2b-4a52-ad90-57a292005001",
+			"Id":	"loadmaterial",
+			"ArgName":	"SurfaceMaterial"
+		}, {
+			"$NodeId":	"Set-3cd734ef-a139-4856-953f-b95eabe0ad66",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-7b51624b-db22-4c77-b75a-15afee660dc4",
+			"Id":	"loadint",
+			"ArgName":	"SurfaceMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Dimensions-4e15db4b-d3f1-4908-ab25-75be0b6e4dd0",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	2,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Set-886e7088-ac8e-4564-9461-0ccd2b4844ee",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-45e0e63d-78e8-4161-9c82-2918ab7b8e00",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-ba6e6180-8d93-4eb4-b866-195f65594084",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SurfaceMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-3a75c0ae-eb26-4ebb-96d5-87cd15275bd8",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"FluidType",
+			"FilterType":	"BelowBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-86b00aa6-cec6-4ffa-9926-398f58d828f6",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SubsurfaceMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Dimensions-0efecb1c-fb2f-47b4-bde7-8b73566bf821",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	-5,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadMaterial-02830b76-e6bb-4876-9cfa-9e0e7ef1f571",
+			"Id":	"loadmaterial",
+			"ArgName":	"SubsurfaceMaterial"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-8b2109e5-7e5a-467f-a263-0f1728d62a1d",
+			"Id":	"loadint",
+			"ArgName":	"SubsurfaceMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-d579484a-aa77-4aeb-a450-6a4c0a509c75",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-e06635d4-0b8b-4641-a91c-5ccec42f648f",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"HistoryMask-c66744b0-0929-4ad4-9307-4ca7866cc4be",
+			"Id":	"historymask",
+			"HistoryMask":	"Only"
+		}, {
+			"$NodeId":	"Mask-5cd86c6f-46ec-4cff-9c4f-85df01744cae",
+			"Id":	"mask",
+			"Mask":	"Empty,!Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-a08b9723-89eb-4a7b-8f2d-023c6c4ffc5d",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"yMaterialOutFluid",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-bb0a46b1-0f93-449a-a5c6-e5849401640c",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"xMaterialTopFluid",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-eb649a47-b638-4373-84ab-d2ea1f6e8c64",
+			"Id":	"loadmaterial",
+			"ArgName":	"FluidType"
+		}, {
+			"$NodeId":	"SetDensity-3b0c3b12-f20e-4a6a-8509-f98316dc4e6a",
+			"Id":	"density",
+			"Density":	100
+		}, {
+			"$NodeId":	"Dimensions-c33e713b-3a22-4826-9749-266a7a5c5077",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	6,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	6,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Set-6dc92139-faee-415f-8c36-1b2ede5e0d68",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"HistoryMask-46e162a9-17e3-44cb-a7f8-fc9f79414215",
+			"Id":	"historymask",
+			"HistoryMask":	"None"
+		}, {
+			"$NodeId":	"Dimensions-586dfcc6-1ff2-4f37-baba-b268be003344",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	6,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	6,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"ClearOperationMask-7a52f1f4-237a-44b2-9641-dc924612c0a8",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-b8233116-8ae5-40b6-8707-fcb207c3a685",
+			"Id":	"mask",
+			"Mask":	"Rock_Basalt"
+		}, {
+			"$NodeId":	"Material-cad80d15-6717-4592-9c67-7994a34e6ba7",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-e45927f6-035f-4680-8b0d-a7da56dcd630",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Exit-0645d5ed-26c9-4a3e-ad21-a42baf543cbe",
+			"Id":	"exit"
+		}, {
+			"$NodeId":	"SaveIndex-d4624734-ecd3-4cd5-97cd-c6a06de415e6",
+			"Id":	"saveindex",
+			"StoredIndexName":	"decoration"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-c00e434f-a125-4b49-862d-438543bc9482",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"FluidType",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-bd5f0186-a730-4eab-96f7-895519d1ac16",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SurfaceMaterial",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-51a074e7-ff2a-4bf4-87f0-79750f4d587f",
+			"Id":	"loadmaterial",
+			"ArgName":	"zMaterialInFluid"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-4eb740fe-0cbd-4fd2-ada2-54d16ad37ecc",
+			"Id":	"loadint",
+			"ArgName":	"zMaterialInFluidDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-f7aeb040-70f2-4c92-bf2b-a2d0e79dc4a6",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-cb0b9440-d774-4735-8a24-0a6ed514ff68",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-10ae717f-d9f1-4934-b7df-e0bb0d2947fd",
+			"Id":	"mask",
+			"Mask":	"Fluid_Water,>Soil_Gravel"
+		}, {
+			"$NodeId":	"Set-7ce2a5ff-2a9e-4b77-9c9d-0c1a910f3452",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-cb88f9af-ec86-4b9e-b670-39ea37ad6ded",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-9d0048f3-a832-4ba4-886b-cf298a7ba54f",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-cb546e69-2656-4686-8f7f-00c48b5136bd",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SurfaceMaterial",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-cd343c3a-c917-4e30-87ec-fa106d2d78bf",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"FluidType",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-b6e4d46d-d323-4e7b-911b-c59faaf59e9a",
+			"Id":	"loadint",
+			"ArgName":	"yMaterialOutFluidDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadMaterial-4bead4a1-6984-4196-96e2-de272dec46d3",
+			"Id":	"loadmaterial",
+			"ArgName":	"yMaterialOutFluid"
+		}, {
+			"$NodeId":	"Set-f31c3ee6-40b1-464f-8bf8-792e1f6bf306",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-a4d33f9d-893f-4be3-9554-54ba10bda482",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-db740c12-bc94-46c4-8370-3d32683ff00c",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-93c5ca91-08a5-45f2-8e4b-550a1e56250c",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"FluidType",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-e9d8bab5-287f-4080-8950-32b2fa0e79fa",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"FluidType",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-3b75eebd-01a9-438e-ab40-4a25c7e6fb6a",
+			"Id":	"loadint",
+			"ArgName":	"xMaterialTopFluidDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadMaterial-7a0b8a45-cbcd-464e-a2e6-d0304e227606",
+			"Id":	"loadmaterial",
+			"ArgName":	"xMaterialTopFluid"
+		}, {
+			"$NodeId":	"Set-295a5f5b-9c5c-44f7-b0b4-ce72f1766ec7",
+			"Id":	"set"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-61c847ef-0cf8-4452-ae38-4db5ff30f408":	{
+				"$Position":	{
+					"$x":	-33,
+					"$y":	11048
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"EchoOnce-68af5465-45d2-4c99-a9c0-2b0c8114d977":	{
+				"$Position":	{
+					"$x":	1729,
+					"$y":	-2073
+				}
+			},
+			"JumpIfClickType-aaf0810b-48f9-49f4-9df6-a90b3bf9c27d":	{
+				"$Position":	{
+					"$x":	1730,
+					"$y":	-1839
+				}
+			},
+			"Dimensions-b50ebd50-be00-40d8-b6b2-ef356f7a2da5":	{
+				"$Position":	{
+					"$x":	1739,
+					"$y":	-1318
+				}
+			},
+			"Mask-1e3dd75d-3d76-4813-b3f9-ba98c2cd27e2":	{
+				"$Position":	{
+					"$x":	1737,
+					"$y":	-908
+				}
+			},
+			"Material-df479354-c734-4d91-b0f9-ec6b7ec2c877":	{
+				"$Position":	{
+					"$x":	1737,
+					"$y":	-748
+				}
+			},
+			"Set-e2637c2d-bf3e-423c-886b-0e97aa12e18b":	{
+				"$Position":	{
+					"$x":	1737,
+					"$y":	-585
+				}
+			},
+			"Dimensions-f15aa62f-a96a-48ae-85d7-65cffe82d878":	{
+				"$Position":	{
+					"$x":	1740,
+					"$y":	-425
+				}
+			},
+			"Mask-d1ef56d1-8f16-4488-9987-056ecbd0524f":	{
+				"$Position":	{
+					"$x":	1746,
+					"$y":	-4
+				}
+			},
+			"SaveIndex-166ae9a2-7f42-44e3-84f2-0a40e54c139d":	{
+				"$Position":	{
+					"$x":	1715,
+					"$y":	557
+				}
+			},
+			"Shape-361c54c4-a09d-41dc-95bb-964471775981":	{
+				"$Position":	{
+					"$x":	1715,
+					"$y":	685
+				}
+			},
+			"RandomOffset-642a9fff-6ffc-4e7f-83de-03bfae4d66b6":	{
+				"$Position":	{
+					"$x":	1714,
+					"$y":	828
+				}
+			},
+			"Melt-bbcb6b41-1c4f-4497-991b-9c879ecaa9ef":	{
+				"$Position":	{
+					"$x":	1728,
+					"$y":	2033
+				}
+			},
+			"Loop-97aba6cd-5e73-437b-ba88-ed11a1fda47d":	{
+				"$Position":	{
+					"$x":	1717,
+					"$y":	2186
+				}
+			},
+			"Dimensions-1f8aa57f-8fe4-43b2-87ca-6c0bd1f0a83c":	{
+				"$Position":	{
+					"$x":	1693,
+					"$y":	2863
+				}
+			},
+			"Offset-4fb94f69-ebb4-43f3-8bcc-27ab73b1c847":	{
+				"$Position":	{
+					"$x":	1679,
+					"$y":	3262
+				}
+			},
+			"Smooth-8c337da3-b7cd-4d01-8dbb-dc8af956ebb5":	{
+				"$Position":	{
+					"$x":	1690,
+					"$y":	3918
+				}
+			},
+			"Offset-315701f8-4eb4-45d6-9bca-58e320f84ed8":	{
+				"$Position":	{
+					"$x":	1674,
+					"$y":	4107
+				}
+			},
+			"Smooth-6ca22298-9f07-4844-8565-20dfe7e9065b":	{
+				"$Position":	{
+					"$x":	1676,
+					"$y":	4722
+				}
+			},
+			"Offset-53a6ab8f-36f4-4ca3-bfb2-3feca53f9963":	{
+				"$Position":	{
+					"$x":	1667,
+					"$y":	4913
+				}
+			},
+			"Smooth-63f148e6-2a81-4d2a-9cca-7fbf9713eedf":	{
+				"$Position":	{
+					"$x":	1668,
+					"$y":	5529
+				}
+			},
+			"Dimensions-64dd8860-d14b-4c8e-a881-89911ffa7515":	{
+				"$Position":	{
+					"$x":	1670,
+					"$y":	5698
+				}
+			},
+			"Mask-ccfbbd7e-7711-401f-af37-35cadc868fa9":	{
+				"$Position":	{
+					"$x":	1651,
+					"$y":	6592
+				}
+			},
+			"AppendMaskFromToolArg-603748ec-407b-4a86-b9f6-40a016b7beed":	{
+				"$Position":	{
+					"$x":	1652,
+					"$y":	6744
+				}
+			},
+			"AppendMaskFromToolArg-719a3c8e-2934-4b0e-93fe-ba11885c31dc":	{
+				"$Position":	{
+					"$x":	1649,
+					"$y":	6988
+				}
+			},
+			"AppendMaskFromToolArg-a2525e8a-adf4-4699-8f61-8663a2540d19":	{
+				"$Position":	{
+					"$x":	1651,
+					"$y":	7241
+				}
+			},
+			"AppendMaskFromToolArg-391629f3-5c7a-48b9-8906-a597076f4630":	{
+				"$Position":	{
+					"$x":	1651,
+					"$y":	7484
+				}
+			},
+			"Dimensions-1e729264-dcc8-40a0-9765-c6ba5004db8d":	{
+				"$Position":	{
+					"$x":	1665,
+					"$y":	7789
+				}
+			},
+			"LoadMaterial-975db5fe-ab2b-4a52-ad90-57a292005001":	{
+				"$Position":	{
+					"$x":	1662,
+					"$y":	8190
+				}
+			},
+			"Set-3cd734ef-a139-4856-953f-b95eabe0ad66":	{
+				"$Position":	{
+					"$x":	1666,
+					"$y":	8339
+				}
+			},
+			"LoadIntFromToolArg-7b51624b-db22-4c77-b75a-15afee660dc4":	{
+				"$Position":	{
+					"$x":	1668,
+					"$y":	8475
+				}
+			},
+			"Dimensions-4e15db4b-d3f1-4908-ab25-75be0b6e4dd0":	{
+				"$Position":	{
+					"$x":	1665,
+					"$y":	8697
+				}
+			},
+			"Set-886e7088-ac8e-4564-9461-0ccd2b4844ee":	{
+				"$Position":	{
+					"$x":	1677,
+					"$y":	9103
+				}
+			},
+			"ClearOperationMask-45e0e63d-78e8-4161-9c82-2918ab7b8e00":	{
+				"$Position":	{
+					"$x":	1569,
+					"$y":	9624
+				}
+			},
+			"AppendMaskFromToolArg-ba6e6180-8d93-4eb4-b866-195f65594084":	{
+				"$Position":	{
+					"$x":	1574,
+					"$y":	9768
+				}
+			},
+			"AppendMaskFromToolArg-3a75c0ae-eb26-4ebb-96d5-87cd15275bd8":	{
+				"$Position":	{
+					"$x":	1573,
+					"$y":	10035
+				}
+			},
+			"AppendMaskFromToolArg-86b00aa6-cec6-4ffa-9926-398f58d828f6":	{
+				"$Position":	{
+					"$x":	1571,
+					"$y":	10306
+				}
+			},
+			"Dimensions-0efecb1c-fb2f-47b4-bde7-8b73566bf821":	{
+				"$Position":	{
+					"$x":	1566,
+					"$y":	10576
+				}
+			},
+			"LoadMaterial-02830b76-e6bb-4876-9cfa-9e0e7ef1f571":	{
+				"$Position":	{
+					"$x":	1570,
+					"$y":	10990
+				}
+			},
+			"LoadIntFromToolArg-8b2109e5-7e5a-467f-a263-0f1728d62a1d":	{
+				"$Position":	{
+					"$x":	1578,
+					"$y":	11137
+				}
+			},
+			"Set-d579484a-aa77-4aeb-a450-6a4c0a509c75":	{
+				"$Position":	{
+					"$x":	1580,
+					"$y":	11361
+				}
+			},
+			"ClearOperationMask-e06635d4-0b8b-4641-a91c-5ccec42f648f":	{
+				"$Position":	{
+					"$x":	1533,
+					"$y":	11769
+				}
+			},
+			"HistoryMask-c66744b0-0929-4ad4-9307-4ca7866cc4be":	{
+				"$Position":	{
+					"$x":	1533,
+					"$y":	11896
+				}
+			},
+			"Mask-5cd86c6f-46ec-4cff-9c4f-85df01744cae":	{
+				"$Position":	{
+					"$x":	1530,
+					"$y":	12035
+				}
+			},
+			"AppendMaskFromToolArg-a08b9723-89eb-4a7b-8f2d-023c6c4ffc5d":	{
+				"$Position":	{
+					"$x":	1527,
+					"$y":	12211
+				}
+			},
+			"AppendMaskFromToolArg-bb0a46b1-0f93-449a-a5c6-e5849401640c":	{
+				"$Position":	{
+					"$x":	1526,
+					"$y":	12475
+				}
+			},
+			"LoadMaterial-eb649a47-b638-4373-84ab-d2ea1f6e8c64":	{
+				"$Position":	{
+					"$x":	1504,
+					"$y":	12748
+				}
+			},
+			"SetDensity-3b0c3b12-f20e-4a6a-8509-f98316dc4e6a":	{
+				"$Position":	{
+					"$x":	1501,
+					"$y":	12893
+				}
+			},
+			"Dimensions-c33e713b-3a22-4826-9749-266a7a5c5077":	{
+				"$Position":	{
+					"$x":	1495,
+					"$y":	13041
+				}
+			},
+			"Set-6dc92139-faee-415f-8c36-1b2ede5e0d68":	{
+				"$Position":	{
+					"$x":	1488,
+					"$y":	13442
+				}
+			},
+			"HistoryMask-46e162a9-17e3-44cb-a7f8-fc9f79414215":	{
+				"$Position":	{
+					"$x":	1527,
+					"$y":	13902
+				}
+			},
+			"Dimensions-586dfcc6-1ff2-4f37-baba-b268be003344":	{
+				"$Position":	{
+					"$x":	1514,
+					"$y":	14055
+				}
+			},
+			"ClearOperationMask-7a52f1f4-237a-44b2-9641-dc924612c0a8":	{
+				"$Position":	{
+					"$x":	1514,
+					"$y":	14456
+				}
+			},
+			"Mask-b8233116-8ae5-40b6-8707-fcb207c3a685":	{
+				"$Position":	{
+					"$x":	1511,
+					"$y":	14604
+				}
+			},
+			"Material-cad80d15-6717-4592-9c67-7994a34e6ba7":	{
+				"$Position":	{
+					"$x":	1516,
+					"$y":	14757
+				}
+			},
+			"Set-e45927f6-035f-4680-8b0d-a7da56dcd630":	{
+				"$Position":	{
+					"$x":	1520,
+					"$y":	14920
+				}
+			},
+			"Exit-0645d5ed-26c9-4a3e-ad21-a42baf543cbe":	{
+				"$Position":	{
+					"$x":	1516,
+					"$y":	15137
+				}
+			},
+			"SaveIndex-d4624734-ecd3-4cd5-97cd-c6a06de415e6":	{
+				"$Position":	{
+					"$x":	1460,
+					"$y":	16554
+				}
+			},
+			"AppendMaskFromToolArg-c00e434f-a125-4b49-862d-438543bc9482":	{
+				"$Position":	{
+					"$x":	1478,
+					"$y":	16886
+				}
+			},
+			"AppendMaskFromToolArg-bd5f0186-a730-4eab-96f7-895519d1ac16":	{
+				"$Position":	{
+					"$x":	1477,
+					"$y":	17142
+				}
+			},
+			"LoadMaterial-51a074e7-ff2a-4bf4-87f0-79750f4d587f":	{
+				"$Position":	{
+					"$x":	1475,
+					"$y":	17409
+				}
+			},
+			"LoadIntFromToolArg-4eb740fe-0cbd-4fd2-ada2-54d16ad37ecc":	{
+				"$Position":	{
+					"$x":	1474,
+					"$y":	17561
+				}
+			},
+			"Set-f7aeb040-70f2-4c92-bf2b-a2d0e79dc4a6":	{
+				"$Position":	{
+					"$x":	1480,
+					"$y":	17782
+				}
+			},
+			"ClearOperationMask-cb0b9440-d774-4735-8a24-0a6ed514ff68":	{
+				"$Position":	{
+					"$x":	1478,
+					"$y":	17931
+				}
+			},
+			"Mask-10ae717f-d9f1-4934-b7df-e0bb0d2947fd":	{
+				"$Position":	{
+					"$x":	1479,
+					"$y":	18074
+				}
+			},
+			"Set-7ce2a5ff-2a9e-4b77-9c9d-0c1a910f3452":	{
+				"$Position":	{
+					"$x":	1484,
+					"$y":	18235
+				}
+			},
+			"ClearOperationMask-cb88f9af-ec86-4b9e-b670-39ea37ad6ded":	{
+				"$Position":	{
+					"$x":	1583,
+					"$y":	18782
+				}
+			},
+			"Mask-9d0048f3-a832-4ba4-886b-cf298a7ba54f":	{
+				"$Position":	{
+					"$x":	1579,
+					"$y":	18947
+				}
+			},
+			"AppendMaskFromToolArg-cb546e69-2656-4686-8f7f-00c48b5136bd":	{
+				"$Position":	{
+					"$x":	1579,
+					"$y":	19093
+				}
+			},
+			"AppendMaskFromToolArg-cd343c3a-c917-4e30-87ec-fa106d2d78bf":	{
+				"$Position":	{
+					"$x":	1582,
+					"$y":	19342
+				}
+			},
+			"LoadIntFromToolArg-b6e4d46d-d323-4e7b-911b-c59faaf59e9a":	{
+				"$Position":	{
+					"$x":	1584,
+					"$y":	19600
+				}
+			},
+			"LoadMaterial-4bead4a1-6984-4196-96e2-de272dec46d3":	{
+				"$Position":	{
+					"$x":	1586,
+					"$y":	19821
+				}
+			},
+			"Set-f31c3ee6-40b1-464f-8bf8-792e1f6bf306":	{
+				"$Position":	{
+					"$x":	1579,
+					"$y":	19991
+				}
+			},
+			"ClearOperationMask-a4d33f9d-893f-4be3-9554-54ba10bda482":	{
+				"$Position":	{
+					"$x":	1582,
+					"$y":	20566
+				}
+			},
+			"Mask-db740c12-bc94-46c4-8370-3d32683ff00c":	{
+				"$Position":	{
+					"$x":	1576,
+					"$y":	20721
+				}
+			},
+			"AppendMaskFromToolArg-93c5ca91-08a5-45f2-8e4b-550a1e56250c":	{
+				"$Position":	{
+					"$x":	1570,
+					"$y":	20868
+				}
+			},
+			"AppendMaskFromToolArg-e9d8bab5-287f-4080-8950-32b2fa0e79fa":	{
+				"$Position":	{
+					"$x":	1569,
+					"$y":	21121
+				}
+			},
+			"LoadIntFromToolArg-3b75eebd-01a9-438e-ab40-4a25c7e6fb6a":	{
+				"$Position":	{
+					"$x":	1567,
+					"$y":	21377
+				}
+			},
+			"LoadMaterial-7a0b8a45-cbcd-464e-a2e6-d0304e227606":	{
+				"$Position":	{
+					"$x":	1569,
+					"$y":	21600
+				}
+			},
+			"Set-295a5f5b-9c5c-44f7-b0b4-ce72f1766ec7":	{
+				"$Position":	{
+					"$x":	1563,
+					"$y":	21772
+				}
+			}
+		},
+		"$FloatingNodes":	[],
+		"$Links":	{
+		},
+		"$Groups":	[{
+				"$Position":	{
+					"$x":	1443.5,
+					"$y":	16821.5
+				},
+				"$width":	941.625,
+				"$height":	1613.4375,
+				"$name":	"Plants in the Water"
+			}, {
+				"$Position":	{
+					"$x":	1498.5625,
+					"$y":	18697.5625
+				},
+				"$width":	990.4375,
+				"$height":	1522.9375,
+				"$name":	"Plants on sides of the Water"
+			}, {
+				"$Position":	{
+					"$x":	1496.5625,
+					"$y":	20485.25
+				},
+				"$width":	1039.875,
+				"$height":	1485.625,
+				"$name":	"Plants on top of the Water"
+			}, {
+				"$Position":	{
+					"$x":	1417.5625,
+					"$y":	11630.25
+				},
+				"$width":	964.4375,
+				"$height":	2384.6875,
+				"$name":	"Set the Water"
+			}, {
+				"$Position":	{
+					"$x":	1527.875,
+					"$y":	6432.9375
+				},
+				"$width":	954.5,
+				"$height":	2847.6875,
+				"$name":	"Coloring - Water Edge"
+			}, {
+				"$Position":	{
+					"$x":	1585.5625,
+					"$y":	2711.3125
+				},
+				"$width":	848.75,
+				"$height":	3493.375,
+				"$name":	"Smoothing"
+			}, {
+				"$Position":	{
+					"$x":	1616.4375,
+					"$y":	434.8125
+				},
+				"$width":	1067.0625,
+				"$height":	1985.875,
+				"$name":	"Shaping"
+			}, {
+				"$Position":	{
+					"$x":	1489.4375,
+					"$y":	9512
+				},
+				"$width":	1011,
+				"$height":	2039.0625,
+				"$name":	"Coloring - Underwater"
+			}, {
+				"$Position":	{
+					"$x":	1230.25,
+					"$y":	16366.1875
+				},
+				"$width":	1555.75,
+				"$height":	5813.3125,
+				"$name":	"Left Click"
+			}, {
+				"$Position":	{
+					"$x":	1175.125,
+					"$y":	-2289.5625
+				},
+				"$width":	1918.75,
+				"$height":	17693.375,
+				"$name":	"Right Click"
+			}, {
+				"$Position":	{
+					"$x":	1642.0625,
+					"$y":	-1409.75
+				},
+				"$width":	855.25,
+				"$height":	1580.3125,
+				"$name":	"Workaround - Replace Plants and Trees with Air"
+			}, {
+				"$Position":	{
+					"$x":	1425.3125,
+					"$y":	13796.375
+				},
+				"$width":	991,
+				"$height":	1323.375,
+				"$name":	"Workaround - Replace Plants and Trees with Air"
+			}],
+		"$Comments":	[{
+				"$Position":	{
+					"$x":	751297.75,
+					"$y":	754723.625
+				},
+				"$width":	739.4375,
+				"$height":	150,
+				"$name":	"Comment",
+				"$text":	"This section adds the noisiness around the edges of the water. Under the water it should be all one block, and then aroudn the edges it can blend into whatever was there before."
+			}, {
+				"$Position":	{
+					"$x":	751002.625,
+					"$y":	762062.5
+				},
+				"$width":	493.75,
+				"$height":	150,
+				"$name":	"Comment",
+				"$text":	""
+			}, {
+				"$Position":	{
+					"$x":	3230,
+					"$y":	-2187.1875
+				},
+				"$width":	1638.3125,
+				"$height":	2534.625,
+				"$name":	"Tool Documentation for In-Game Users",
+				"$text":	"-------------------------------------\n  RIVER BRUSH\n-------------------------------------\nThis brush gives you the ability to create rivers and ponds.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the body of water.\n\nLeft Click: Adds decoration blocks to the body of water (top, under, and side of the water).\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your river or ponds how you want them. Below are each setting and what they do:\n\nFluid Material = The fluid to create the river from.\n\nMaterial under the Fluid = Materials to be placed under the fluid. The density slider under it controls how many materials to place.\n\nMaterial on side of the Fluid = Materials to be placed above the fluid on the edge of it. The density slider under it controls how many materials to place.\n\nMaterial on top of the Fluid  = Materials to be placed directly on top of the fluid. The density slider under it controls how many materials to place.\n\nGround Material under the Fluid = Materials to form the base ground of the river under the fluid ONLY. The density slider under it controls how many materials to place.\n\nGround Material above the Fluid = Materials to form the base ground of the river. This includes under the fluid and on the edges of the fluid. The density slider under it controls how many materials to place.\n\n-------------------------------------------\n  RIVER BRUSH - Read the Above ^\n-------------------------------------------",
+				"$fontSize":	41
+			}, {
+				"$Position":	{
+					"$x":	4930,
+					"$y":	-2118.75
+				},
+				"$width":	1459.6875,
+				"$height":	819.0625,
+				"$name":	"Comment",
+				"$text":	"River Brush Documentation:\n\nThe comment to the left of this comment block is the documentation that will be sent in the chat when the player first tries to use the brush. The documentation in this comment block will detail about the brush itself in the node editor.\n\nTODO:\n\nThe brush struggles with handling plants due to the way the water is being placed via the history mask. Currently, a work around is in place where it replaces plants with basalt, then masks the basalt when placing the water so the plants don't get turned into water, after the water is placed, the basalt is turned to air.\n",
+				"$fontSize":	41
+			}],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

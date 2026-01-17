@@ -1,0 +1,40 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "Mine"
+  },
+  "$Comment": "Prepare Delay for Area Mine ability",
+  "RunTime": 0.15,
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "UseBlock",
+        "Failed": {
+          "Type": "BreakBlock",
+          "Tool": "Pickaxe",
+          "UseLatestTarget": true,
+          "Next": {
+            "Type": "Replace",
+            "Var": "Pickaxe_Ability_Area_Mine",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Pickaxe_Ability_Area_Mine"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "Type": "Replace",
+        "DefaultValue": {
+          "Interactions": [
+            "Pickaxe_Ability_Powerstrike_Effect"
+          ]
+        },
+        "Var": "Pickaxe_Ability_Effect"
+      }
+    ]
+  }
+}

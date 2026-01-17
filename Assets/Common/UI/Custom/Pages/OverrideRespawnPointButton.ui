@@ -1,0 +1,37 @@
+$C = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+Button #Button {
+  @Sounds = $Sounds.@ButtonsLight;
+  Anchor: (Height: 50, Bottom: 4);
+  LayoutMode: Left;
+
+  Label #Name {
+    Style: (RenderBold: true, VerticalAlignment: Center, TextColor: #90a2b7);
+    FlexWeight: 2;
+    Padding: (Left: 14);
+  }
+
+  Label #Distance {
+    Style: (VerticalAlignment: Center, HorizontalAlignment: End, TextColor: #8698ad, FontSize: 14);
+    FlexWeight: 1;
+  }
+
+  Sprite #Icon {
+    Anchor: (Width: 40, Height: 40, Left: 7);
+    Padding: (Full: 5);
+    TexturePath: "RespawnPointArrow.png";
+    Frame: (Width: 32, Height: 32, PerRow: 1, Count: 1);
+  }
+}
+
+@DefaultRespawnButtonStyle = ButtonStyle(
+  Default: (Background: (TexturePath: "../Common/OptionBackgroundPatch.png", Border: 16)),
+  Hovered: (Background: (TexturePath: "../Common/OptionBackgroundPatch.png", Border: 16, Color: #ffffff(0.7))),
+  Pressed: (Background: (TexturePath: "../Common/OptionBackgroundPatch.png", Border: 16, Color: #ffffff(0.85))),
+  Disabled: (Background: (TexturePath: "../Common/OptionBackgroundPatch.png", Border: 16))
+);
+
+@SelectedRespawnButtonStyle = ButtonStyle(
+  Default: (Background: (TexturePath: "../Common/InputBoxSelected.png", Border: 16))
+);

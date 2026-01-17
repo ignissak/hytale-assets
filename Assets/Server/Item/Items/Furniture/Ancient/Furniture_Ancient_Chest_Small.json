@@ -1,0 +1,131 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Ancient_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Ancient",
+  "Icon": "Icons/ItemsGenerated/Furniture_Ancient_Chest_Small.png",
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Ancient/Chest_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Ancient/Chest_Small_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Chest_Small",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#4e462c",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "ChestConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Default": "Furniture_Ancient_Chest_Small",
+        "Double": "Furniture_Ancient_Chest_Large"
+      }
+    },
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    }
+  },
+  "Model": "Blocks/Decorative_Sets/Ancient/Chest_Small.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Ancient/Chest_Small_Texture.png",
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Ancient"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.55,
+    "Translation": [
+      0,
+      -15
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Wood_Deadwood_Planks",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Bar_Copper",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Furniture_Bench",
+        "Type": "Crafting",
+        "Categories": [
+          "Furniture_Storage"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 2
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemLevel": 8,
+  "MaxStack": 10
+}

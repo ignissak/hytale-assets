@@ -1,0 +1,81 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Shale_Cobble_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Shale_Cobble_Wall.png",
+  "Set": "Rock_Shale_Cobble",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Shale"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Shale_Cobble.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Shale_Cobble_default.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Fence_Thick",
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Shale_Cobble_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "VariantRotation": "NESW",
+    "ParticleColor": "#2d3d42",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Shale_Cobble_default.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Shale_Cobble_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thick",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Shale_Cobble_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Shale_Cobble_Wall",
+        "Corner": "*Rock_Shale_Cobble_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Shale"
+    ]
+  },
+  "Parent": "Rock_Stone_Cobble_Wall"
+}

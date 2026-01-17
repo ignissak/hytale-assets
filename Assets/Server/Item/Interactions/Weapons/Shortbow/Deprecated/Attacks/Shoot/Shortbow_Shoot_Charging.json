@@ -1,0 +1,47 @@
+{
+  "Type": "Charging",
+  "AllowIndefiniteHold": true,
+  "DisplayProgress": false,
+  "Effects": {
+    "ItemAnimationId": "ShootCharging",
+    "ClearAnimationOnFinish": true,
+    "WorldSoundEventId": "SFX_Bow_T2_Draw",
+    "LocalSoundEventId": "SFX_Bow_T2_Draw_Local"
+  },
+  "HorizontalSpeedMultiplier": 0.5,
+  "Next": {
+    "0": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Shortbow_Shoot_Projectile",
+        "Config": "Projectile_Config_Deprecated_Shoot_Charge_0"
+      }
+    },
+    "0.4": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Shortbow_Shoot_Projectile",
+        "Config": "Projectile_Config_Deprecated_Shoot_Charge_04"
+      }
+    },
+    "1.5": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Shortbow_Shoot_Projectile",
+        "Config": "Projectile_Config_Deprecated_Shoot_Charge_15"
+      }
+    }
+  }
+}

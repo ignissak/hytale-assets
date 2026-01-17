@@ -1,0 +1,90 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Antidote.name",
+    "Description": "server.items.Potion_Antidote.description"
+  },
+  "Quality": "Common",
+  "ItemLevel": 3,
+  "Categories": [
+    "Items.Consumables"
+  ],
+  "PlayerAnimationsId": "Item",
+  "Icon": "Icons/ItemsGenerated/Weapon_Bomb_Potion_Poison.png",
+  "Model": "Items/Weapons/Bomb/Potion_Onion.blockymodel",
+  "Texture": "Items/Weapons/Bomb/Potion_Onion_Poison.png",
+  "IconProperties": {
+    "Scale": 0.75,
+    "Translation": [
+      -13,
+      -12
+    ],
+    "Rotation": [
+      12.5,
+      12.5,
+      315
+    ]
+  },
+  "Consumable": true,
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Potion"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ClearEntityEffect",
+          "EntityEffectId": "Poison_T1",
+          "Next": {
+            "Type": "ClearEntityEffect",
+            "EntityEffectId": "Poison_T2",
+            "Next": {
+              "Type": "ApplyEffect",
+              "EffectId": "Antidote"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Potion_Empty",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Sac_Venom",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Alchemybench",
+        "Type": "Crafting",
+        "Categories": [
+          "Alchemy_Potions"
+        ]
+      }
+    ],
+    "TimeSeconds": 1
+  },
+  "MaxStack": 10,
+  "Tags": {
+    "Type": [
+      "Consumable"
+    ]
+  },
+  "Light": {
+    "Radius": 1,
+    "Color": "#141"
+  },
+  "DropOnDeath": true
+}

@@ -1,0 +1,619 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Lobber",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Drop_Goblin_Lobber",
+      "Description": "Drop Items"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "SmellRange": {
+      "Value": 8,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 15,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "AlertedTime": {
+      "Value": [ 1, 1 ],
+      "Description": "The duration for which the NPC is alert before switching to attack"
+    },
+    "TargetGroups": {
+      "Value": [ "Goblin" ],
+      "Description": "Beacon target groups"
+    },
+    "AvoidGroup": {
+      "Value": [ "Goblin" ],
+      "Description": "NPC group to try and navigate around"
+    },
+    "AttitudeGroup": {
+      "Value": "Goblin",
+      "Description": "This NPCs attitude group"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Motion_Wander",
+      "Description": "The motion component to use when idling. Allows path following instead of normal wander"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DisableDamageGroups": [ "Goblin" ],
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ ],
+          "To": [ "Idle" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "Inventory",
+          "Operation": "ClearHeldItem",
+          "UseTarget": false
+        }
+      ]
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Instruction_Clear_Status_Animation"
+                },
+                {
+                  "Reference": "Component_Goblin_Instruction_Pre_Checks",
+                  "Modify": {
+                    "_ExportStates": [ "Alerted", "Ranged", "Search", "Alerted" ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" }
+                  }
+                },
+                {
+                  "Reference": { "Compute": "IdleMotionComponent" },
+                  "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Once": true,
+                        "Type": "Beacon",
+                        "Message": "MinerSleep",
+                        "TargetSlot": "LockedTarget"
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": { "Compute": "ViewRange" },
+                        "AutoUnlockTarget": true,
+                        "Filters": [
+                          {
+                            "Type": "LineOfSight"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Alerted"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": ".Order"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 5, 10 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": ".Flavor"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Flavor"
+              },
+              "Type": "Random",
+              "Instructions": [
+                {
+                  "Weight": 5,
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation"
+                    },
+                    {
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "Attack",
+                          "Attack": "Goblin_Lobber_Bomb_Juggle_Fail",
+                          "AttackPauseRange": [ 4, 5 ]
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 5, 5 ],
+                          "Action": {
+                            "Type": "PlayAnimation",
+                            "Slot": "Status",
+                            "Animation": "PlugEars"
+                          }
+                        },
+                        {
+                          "Type": "Beacon",
+                          "Range": 8,
+                          "Message": "LobberJuggleFail",
+                          "TargetGroups": { "Compute": "TargetGroups" },
+                          "SendCount": -1
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 2, 2 ],
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Default"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Weight": 5,
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation"
+                    },
+                    {
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "JuggleSuccess"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 5.5, 5.5 ],
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Default"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Weight": 3,
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation"
+                    },
+                    {
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "FixGlasses"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 1.2, 1.2 ],
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Default"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Weight": 3,
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation"
+                    },
+                    {
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "ScratchButt"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 1.2, 1.2 ],
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Default"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Order"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Goblin_Instruction_Pre_Checks",
+                  "Modify": {
+                    "_ExportStates": [ "Alerted", "Ranged", "Search", "Alerted" ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": 2
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Scold"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.8, 0.8 ]
+                    },
+                    {
+                      "Type": "Beacon",
+                      "Range": 4,
+                      "Message": "LobberOrder",
+                      "TargetGroups": { "Compute": "TargetGroups" },
+                      "SendCount": -1
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "ViewRange" },
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 1,
+                    "StopDistance": 0.5
+                  }
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 7, 7 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": ".Default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Goblin_Instruction_Alerted",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Search", "Ranged" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Search",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Ranged", "Search", "Idle" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Ranged"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "AlertedRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Default"
+                  },
+                  "Instructions": [
+                    {
+                      "Continue": true,
+                      "Sensor": {
+                        "Type": "Target",
+                        "Range": 5,
+                        "Filters": [
+                          {
+                            "Type": "LineOfSight"
+                          }
+                        ]
+                      },
+                      "Actions": [
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 1, 1 ],
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Flee"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.2,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.25
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Reference": "Component_Instruction_Intelligent_Chase",
+                      "Modify": {
+                        "_ExportStates": [ "Search", "Search", "Search" ],
+                        "AvoidGroup": { "Compute": "AvoidGroup" },
+                        "ViewRange": { "Compute": "AlertedRange * 2" },
+                        "HearingRange": { "Compute": "HearingRange * 2" },
+                        "RelativeSpeed": 0.8
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Flee"
+                  },
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation"
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "Flee",
+                        "SlowDownDistance": { "Compute": "AlertedRange - 5" },
+                        "StopDistance": { "Compute": "AlertedRange - 2" },
+                        "RelativeSpeed": 0.6
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Actions": [
+                        {
+                          "Type": "State",
+                          "State": ".Default"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Search"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "DeathInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Once": true,
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "Attack",
+            "Attack": "Goblin_Lobber_Bomb_Death",
+            "SkipAiming": true,
+            "LineOfSight": false,
+            "AvoidFriendlyFire": false
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

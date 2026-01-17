@@ -1,0 +1,53 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Zombie",
+  "AttitudeGroup": "Attack_Tests",
+  "DefaultPlayerAttitude": "Hostile",
+  "DefaultNPCAttitude": "Ignore",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 10,
+            "GetPlayers": true,
+            "GetNPCs": true,
+            "Filters": [
+              {
+                "Type": "Attitude",
+                "Attitudes": [ "Hostile" ]
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Split_Entity_Sensor.name"
+}

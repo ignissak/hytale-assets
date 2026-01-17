@@ -1,0 +1,65 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which the player needs to be to be seen"
+    },
+    "Attitudes": {
+      "Value": [ "Hostile", "Revered", "Friendly", "Neutral" ],
+      "Description": "A prioritised list of attitudes to respond to"
+    },
+    "ExcludeGroups": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Groups to exclude"
+    },
+    "GetNPCs": {
+      "Value": true,
+      "Description": "Whether to include NPCs in this sensor"
+    },
+    "IgnoreLockedTarget": {
+      "Value": false,
+      "Description": "Whether to ignore the current locked target"
+    },
+    "Enabled": {
+      "Value": true,
+      "Description": "Whether this should be enabled"
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "Enabled" },
+    "Type": "Mob",
+    "Range": { "Compute": "ViewRange" },
+    "LockOnTarget": true,
+    "GetPlayers": true,
+    "GetNPCs": { "Compute": "GetNPCs" },
+    "ExcludeOwnType": true,
+    "Filters": [
+      {
+        "Type": "LineOfSight"
+      },
+      {
+        "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+        "Type": "NPCGroup",
+        "ExcludeGroups": { "Compute": "ExcludeGroups" }
+      },
+      {
+        "Type": "ViewSector",
+        "ViewSector": { "Compute": "ViewSector" }
+      }
+    ],
+    "Prioritiser": {
+      "Type": "Attitude",
+      "AttitudesByPriority": { "Compute": "Attitudes" }
+    },
+    "Collector": {
+      "Type": "CombatTargets"
+    }
+  },
+  "Type": "Component"
+}

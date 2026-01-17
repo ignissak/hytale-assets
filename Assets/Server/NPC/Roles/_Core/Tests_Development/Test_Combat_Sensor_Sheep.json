@@ -1,0 +1,148 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 13,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 20,
+            "LockOnTarget": true
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "Combat",
+                    "Mode": "Charging",
+                    "TimeElapsedRange": [ 0, 1 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Charging < 1s"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "Combat",
+                    "Mode": "Charging",
+                    "TimeElapsedRange": [ 0, 2 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Charging < 2s"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "Combat",
+                    "Mode": "Charging",
+                    "TimeElapsedRange": [ 0, 100 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Charging > 3s"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "Combat",
+                    "Mode": "Melee"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Melee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "Combat",
+                    "Mode": "Ranged"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Ranged"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Not In Combat"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Combat_Sensor_Sheep.name"
+}

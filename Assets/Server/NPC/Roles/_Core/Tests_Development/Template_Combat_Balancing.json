@@ -1,0 +1,542 @@
+{
+  "Type": "Abstract",
+  "Parameters": {
+    "Primary": {
+      "Value": true,
+      "Description": "Are Primary attacks enabled"
+    },
+    "Secondary": {
+      "Value": true,
+      "Description": "Are Secondary attacks enabled"
+    },
+    "Charged": {
+      "Value": true,
+      "Description": "Are Charged attacks enabled"
+    },
+    "Signature": {
+      "Value": true,
+      "Description": "Are Signature attacks enabled"
+    },
+    "PrimaryCharge": {
+      "Value": 0.1,
+      "Description": "Length to charge for primary"
+    },
+    "SecondaryCharge": {
+      "Value": 0.1,
+      "Description": "Length to charge for secondary"
+    },
+    "ChargedCharge": {
+      "Value": 0.1,
+      "Description": "Length to charge for charged"
+    },
+    "SignatureCharge": {
+      "Value": 0.1,
+      "Description": "Length to charge for signature"
+    },
+    "SignatureCost": {
+      "Value": [ 1, 1 ],
+      "Description": ""
+    },
+    "ChargedCost": {
+      "Value": [ 0.2, 1 ],
+      "Description": ""
+    },
+    "PrimaryCost": {
+      "Value": [ 0, 1 ],
+      "Description": ""
+    },
+    "SecondaryCost": {
+      "Value": [ 0, 1 ],
+      "Description": ""
+    },
+    "PrimaryDistance": {
+      "Value": [ 2, 2.5 ],
+      "Description": "Distance to maintain from target"
+    },
+    "SecondaryDistance": {
+      "Value": [ 2, 2.5 ],
+      "Description": "Distance to maintain from target"
+    },
+    "ChargedDistance": {
+      "Value": [ 3, 5 ],
+      "Description": "Distance to maintain from target"
+    },
+    "SignatureDistance": {
+      "Value": [ 3, 5 ],
+      "Description": "Distance to maintain from target"
+    },
+    "FleeDistance": {
+      "Value": [ 7, 9 ],
+      "Description": "Distance to maintain from target"
+    },
+    "ChaseDistance": {
+      "Value": [ 7, 9 ],
+      "Description": "Distance to maintain from target"
+    },
+    "PrimaryTimer": {
+      "Value": [ 0, 0 ],
+      "Description": "Chance for running this attack"
+    },
+    "SecondaryTimer": {
+      "Value": [ 1, 2 ],
+      "Description": "Chance for running this attack"
+    },
+    "SignatureTimer": {
+      "Value": [ 5, 5 ],
+      "Description": "Chance for running this attack"
+    },
+    "ChargedTimer": {
+      "Value": [ 2, 5 ],
+      "Description": "Chance for running this attack"
+    },
+    "Flee": {
+      "Value": true,
+      "Description": "Should the NPC flee between attacks"
+    },
+    "Chase": {
+      "Value": true,
+      "Description": "Should the NPC flee between attacks"
+    },
+    "Weapon": {
+      "Value": [ "Weapon_Sword_Iron" ],
+      "Description": "Which weapon to attack with"
+    },
+    "OffHand": {
+      "Value": [ "Weapon_Shield_Iron" ],
+      "Description": "Which weapon to attack with"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Appearance": "Player",
+  "CombatConfig": "CAE_Test_Combat_Knight",
+  "DefaultPlayerAttitude": "Hostile",
+  "DefaultNPCAttitude": "Hostile",
+  "HotbarItems": { "Compute": "Weapon" },
+  "OffHandItems": { "Compute": "OffHand" },
+  "Armor": [ ],
+  "OffHandSlots": 1,
+  "DefaultOffHandSlot": 0,
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 15,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Combat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Combat"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "TimerStart",
+                  "Name": "Charged",
+                  "StartValueRange": { "Compute": "ChargedTimer" },
+                  "RestartValueRange": { "Compute": "ChargedTimer" }
+                },
+                {
+                  "Type": "TimerStart",
+                  "Name": "Signature",
+                  "StartValueRange": { "Compute": "SignatureTimer" },
+                  "RestartValueRange": { "Compute": "SignatureTimer" }
+                },
+                {
+                  "Type": "TimerStart",
+                  "Name": "Primary",
+                  "StartValueRange": { "Compute": "PrimaryTimer" },
+                  "RestartValueRange": { "Compute": "PrimaryTimer" }
+                },
+                {
+                  "Type": "TimerStart",
+                  "Name": "Secondary",
+                  "StartValueRange": { "Compute": "SecondaryTimer" },
+                  "RestartValueRange": { "Compute": "SecondaryTimer" }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Player",
+                    "Range": 15,
+                    "LockOnTarget": true
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Enabled": { "Compute": "Signature" },
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Timer",
+                        "Name": "Signature",
+                        "State": "Stopped"
+                      },
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Stat",
+                            "StatTarget": "Value",
+                            "RelativeTo": "SignatureEnergy",
+                            "Stat": "SignatureEnergy",
+                            "RelativeToTarget": "Max",
+                            "ValueRange": { "Compute": "SignatureCost" }
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": 5
+                      }
+                    ]
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "RelativeTurnSpeed": 0.4
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": { "Compute": "SignatureDistance" },
+                    "MoveThreshold": 0.1,
+                    "RelativeForwardsSpeed": 0.65,
+                    "RelativeBackwardsSpeed": 0.45
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "DisplayName",
+                      "DisplayName": "Signature"
+                    },
+                    {
+                      "Type": "Attack",
+                      "AttackType": "Ability1",
+                      "ChargeFor": { "Compute": "SignatureCharge" }
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 0.5 ]
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Signature"
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Signature"
+                    }
+                  ]
+                },
+                {
+                  "Enabled": { "Compute": "Charged" },
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Timer",
+                        "Name": "Charged",
+                        "State": "Stopped"
+                      },
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Stat",
+                            "StatTarget": "Value",
+                            "RelativeTo": "Stamina",
+                            "Stat": "Stamina",
+                            "RelativeToTarget": "Max",
+                            "ValueRange": { "Compute": "ChargedCost" }
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": 5
+                      }
+                    ]
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "RelativeTurnSpeed": 0.4
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": { "Compute": "ChargedDistance" },
+                    "MoveThreshold": 0.1,
+                    "RelativeForwardsSpeed": 0.45,
+                    "RelativeBackwardsSpeed": 0.45
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "DisplayName",
+                      "DisplayName": "Charge"
+                    },
+                    {
+                      "Type": "Attack",
+                      "AttackType": "Primary",
+                      "ChargeFor": { "Compute": "ChargedCharge" }
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 0.5 ]
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Charged"
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Charged"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Enabled": { "Compute": "Secondary" },
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Timer",
+                        "Name": "Secondary",
+                        "State": "Stopped"
+                      },
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Stat",
+                            "StatTarget": "Value",
+                            "RelativeTo": "Stamina",
+                            "Stat": "Stamina",
+                            "RelativeToTarget": "Max",
+                            "ValueRange": { "Compute": "SecondaryCost" }
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": 3
+                      }
+                    ]
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "RelativeTurnSpeed": 0.4
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": { "Compute": "SecondaryDistance" },
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 0.25,
+                    "RelativeBackwardsSpeed": 0.25
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "DisplayName",
+                      "DisplayName": "Secondary"
+                    },
+                    {
+                      "Type": "Attack",
+                      "AttackType": "Secondary",
+                      "ChargeFor": { "Compute": "SecondaryCharge" }
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.15, 0.15 ]
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Secondary"
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Secondary"
+                    }
+                  ]
+                },
+                {
+                  "Enabled": { "Compute": "Primary" },
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Timer",
+                        "Name": "Primary",
+                        "State": "Stopped"
+                      },
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Stat",
+                            "StatTarget": "Value",
+                            "RelativeTo": "Stamina",
+                            "Stat": "Stamina",
+                            "RelativeToTarget": "Max",
+                            "ValueRange": { "Compute": "PrimaryCost" }
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": 3
+                      }
+                    ]
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "RelativeTurnSpeed": 0.4
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": { "Compute": "PrimaryDistance" },
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 0.25,
+                    "RelativeBackwardsSpeed": 0.25
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "DisplayName",
+                      "DisplayName": "Primary"
+                    },
+                    {
+                      "Type": "Attack",
+                      "AttackType": "Primary",
+                      "ChargeFor": { "Compute": "PrimaryCharge" }
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.15, 0.15 ]
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Secondary"
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Primary"
+                    }
+                  ]
+                },
+                {
+                  "Type": "Random",
+                  "ExecuteFor": [ 2, 5 ],
+                  "Instructions": [
+                    {
+                      "Weight": 50,
+                      "Enabled": { "Compute": "Chase" },
+                      "Sensor": {
+                        "Type": "Target"
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim",
+                        "RelativeTurnSpeed": 0.4
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": { "Compute": "ChaseDistance" },
+                        "MoveThreshold": 0.1,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.25
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "DisplayName",
+                          "DisplayName": "Chase"
+                        }
+                      ]
+                    },
+                    {
+                      "Weight": 50,
+                      "Enabled": { "Compute": "Flee" },
+                      "Sensor": {
+                        "Type": "Target"
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim",
+                        "RelativeTurnSpeed": 0.4
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": { "Compute": "FleeDistance" },
+                        "MoveThreshold": 0.1,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.25
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "DisplayName",
+                          "DisplayName": "Flee"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

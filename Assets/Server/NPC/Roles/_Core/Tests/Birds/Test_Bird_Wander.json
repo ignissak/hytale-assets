@@ -1,0 +1,77 @@
+{
+  "Type": "Generic",
+  "$Comment": "MotionControllerMove, MotionControllerSteer",
+  "Appearance": "Parrot",
+  "MotionControllerList": [
+    {
+      "Type": "Fly"
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8
+          },
+          "Tag": "threat",
+          "BodyMotion": {
+            "Type": "Flee",
+            "SlowDownDistance": 9,
+            "StopDistance": 10
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "OnGround"
+              },
+              {
+                "Type": "Player",
+                "Range": 10
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "InAir"
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Wander.name"
+}

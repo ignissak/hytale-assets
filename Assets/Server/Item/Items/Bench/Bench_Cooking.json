@@ -1,0 +1,122 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Bench_Cooking.name",
+    "Description": "server.items.Bench_Cooking.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_Cooking.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Copper",
+        "Quantity": 2
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 10
+      },
+      {
+        "ResourceTypeId": "Rock",
+        "Quantity": 5
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Workbench",
+        "Categories": [
+          "Workbench_Crafting"
+        ]
+      }
+    ]
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Benches/Cooking.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Cooking_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Bench_Cooking",
+    "VariantRotation": "NESW",
+    "Bench": {
+      "Type": "Crafting",
+      "Categories": [
+        {
+          "Id": "Prepared",
+          "Icon": "Icons/CraftingCategories/Cooking/Prepared.png",
+          "Name": "server.benchCategories.prepared"
+        },
+        {
+          "Id": "Baked",
+          "Icon": "Icons/CraftingCategories/Cooking/Baked.png",
+          "Name": "server.benchCategories.baked"
+        },
+        {
+          "Id": "Ingredients",
+          "Name": "server.benchCategories.ingredients",
+          "Icon": "Icons/CraftingCategories/Cooking/Boiled.png"
+        }
+      ],
+      "LocalOpenSoundEventId": "SFX_Bench_Placeholder",
+      "LocalCloseSoundEventId": "SFX_Bench_Placeholder",
+      "CompletedSoundEventId": "SFX_Bench_Placeholder",
+      "Id": "Cookingbench"
+    },
+    "State": {
+      "Id": "crafting",
+      "Definitions": {
+        "CraftCompleted": {
+          "CustomModelAnimation": "Blocks/Benches/Cooking_Crafting.blockyanim",
+          "Looping": true
+        },
+        "CraftCompletedInstant": {
+          "CustomModelAnimation": "Blocks/Benches/Cooking_Crafting.blockyanim"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "ParticleColor": "#5C583E",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockSoundSetId": "Stone"
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.34,
+    "Translation": [
+      11.4,
+      -18
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemLevel": 6,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

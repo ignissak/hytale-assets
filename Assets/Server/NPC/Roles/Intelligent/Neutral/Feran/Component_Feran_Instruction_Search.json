@@ -1,0 +1,123 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Attack", "Search", "Idle" ],
+    "SmellRange": {
+      "Value": 20,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "$Comment": "Animations",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status"
+          },
+          {
+            "Type": "SpawnParticles",
+            "Offset": [ 0, 2.1, 0 ],
+            "ParticleSystem": "Question"
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Attack", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Beacon",
+          "Message": "Feran_All_Attack",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Attack"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Reference": "Component_Sensor_Scent_By_Attitude",
+          "Modify": {
+            "SmellRange": { "Compute": "SmellRange" },
+            "Attitudes": [ "Hostile", "Neutral" ]
+          }
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Alerted"
+          }
+        ]
+      },
+      {
+        "ActionsAtomic": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 7, 10 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ],
+        "BodyMotion": {
+          "Type": "Sequence",
+          "Motions": [
+            {
+              "Type": "Timer",
+              "Time": [ 2, 3 ],
+              "Motion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 1,
+                "RelativeSpeed": 0.6
+              }
+            },
+            {
+              "Type": "Sequence",
+              "Looped": true,
+              "Motions": [
+                {
+                  "Type": "Timer",
+                  "Time": [ 1, 2 ],
+                  "Motion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 5,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.6
+                  }
+                },
+                {
+                  "Type": "Timer",
+                  "Time": [ 1, 2 ],
+                  "Motion": {
+                    "Type": "Nothing"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

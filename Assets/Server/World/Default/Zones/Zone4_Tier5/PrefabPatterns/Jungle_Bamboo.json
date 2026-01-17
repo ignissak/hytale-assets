@@ -1,0 +1,47 @@
+{
+  "GridGenerator": {
+    "Density": 0.75,
+    "Scale": 0.3,
+    "Jitter": 0.7
+  },
+  "NoiseMask": {
+  	"Type": "MAX",
+  	"Noise": [
+      {
+    		"Seed": "Firelands-Hills",
+    		"NoiseType": "SIMPLEX",
+				"Formula": "INVERTED",
+    		"Octaves": 4,
+    		"Persistence": 0.3,
+    		"Scale": 0.008
+      },
+  		{
+        "Seed": "Jungle_Forest",
+        "NoiseType": "CELL",
+  			"Formula": "INVERTED",
+        "Scale": 0.01,
+      	"CellMode": "DISTANCE",
+        "Density": [0, 1],
+        "Scale": 0.04,
+        "Jitter": 0.6,
+        "Normalize": 0.72
+  		}
+  	],
+    "Threshold": [0.3, 0.63]
+  },
+  "HeightThreshold": {
+    "Positions": [31, 32, 38, 39],
+    "Values": [0, 1, 1, 0]
+  },
+	"Displacement": [0, -2],
+  "Mask": {
+    "Default": ["!Soil_Dirt", "!Soil_Grass", "!Soil_Grass_Deep", "!Soil_Gravel", "!Rock_Stone", "!Rock_Quartzite", "!Rock_Basalt", "!Rock_Volcanic", "!Rock_Slate", "!Rock_Slate_Cracked", "!Rock_Volcanic_Cracked_Lava", "!Soil_Pathway", "*"],
+    "Specific": [
+      {
+        "Block": ["Plant_Leaves_Bamboo"],
+        "Rule": ["Empty"]
+      }
+    ]
+  },
+  "DeepSearch": true
+}

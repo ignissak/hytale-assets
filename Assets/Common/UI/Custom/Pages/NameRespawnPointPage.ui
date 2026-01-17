@@ -1,0 +1,55 @@
+$C = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 500);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.nameRespawnPoint.title;
+      }
+    }
+
+    #Content {
+      Padding: (Vertical: 32, Horizontal: 45);
+
+      Label {
+        Text: %server.customUI.respawnName;
+        Style: (RenderBold: true, RenderUppercase: true, TextColor: #94a7bb);
+      }
+
+      Label #Error {
+        Style: (RenderBold: true, TextColor: #bb3333);
+        Visible: false;
+      }
+
+      $C.@TextField #NameInput {
+        Anchor: (Top: 10, Height: 44);
+      }
+
+      Group {
+        LayoutMode: Center;
+        Anchor: (Top: 8);
+
+        $C.@TextButton #SetButton {
+          @Sounds = $Sounds.@SaveSettings;
+          @Anchor = (Right: 4);
+          Text: %server.customUI.confirm;
+          FlexWeight: 1;
+        }
+
+        $C.@SecondaryTextButton #CancelButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Left: 4);
+          Text: %server.customUI.cancel;
+          FlexWeight: 1;
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

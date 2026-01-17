@@ -1,0 +1,40 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "Particles": [
+      {
+        "PositionOffset": {
+          "X": 1,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 0,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "SystemId": "Impact_Ice"
+      }
+    ]
+  },
+  "RunTime": 1,
+  "Next": {
+    "Type": "Simple",
+    "Effects": {
+      "ItemPlayerAnimationsId": "Goblin_Item",
+      "ItemAnimationId": "Throw"
+    },
+    "$Comment": "Prepare Delay",
+    "RunTime": 0.5,
+    "Next": {
+      "Type": "Projectile",
+      "Config": "Projectile_Config_Goblin_Duke_Ice",
+      "RunTime": 0.2,
+      "Effects": {},
+      "Tags": {
+        "AimingReference": []
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "Type": "Chaining",
+  "ChainingAllowance": 0.93,
+  "ChainId": "Sword_Combo",
+  "Next": [
+    "Sword_Combo_Stage_1",
+    "Sword_Combo_Stage_2",
+    {
+      "Type": "Charging",
+      "DisplayProgress": false,
+      "Next": {
+        "0": {
+          "Type": "Serial",
+          "Interactions": [
+            "Sword_Swing_Down_Strong",
+            {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "StaminaRegenDelay": -0.75
+              },
+              "Behaviour": "Set"
+            }
+          ]
+        },
+        "0.2": {
+          "Type": "Serial",
+          "Interactions": [
+            "Sword_Combo_Lunge",
+            {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "StaminaRegenDelay": -0.75
+              },
+              "Behaviour": "Set"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

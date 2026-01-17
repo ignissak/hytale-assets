@@ -1,0 +1,162 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Onion_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Ingredients/Onion_Seed.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Onion_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Onion_01.blockymodel",
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Small",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Onion_Stage1"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9fc348"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Onion_02.blockymodel",
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Medium",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Onion_Stage2"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9cc247"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Onion_03.blockymodel",
+          "CustomModelScale": 0.6,
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Onion_StageFinal_Harvest"
+            },
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Onion_StageFinal"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Large",
+          "ParticleColor": "#376020"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 165600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 165600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Onion_Block"
+      }
+    },
+    "CustomModelScale": 0.5,
+    "ParticleColor": "#afe53d"
+  },
+  "IconProperties": {
+    "Scale": 1,
+    "Translation": [
+      0,
+      -4.2
+    ],
+    "Rotation": [
+      14.6,
+      114.7,
+      9
+    ]
+  },
+  "Scale": 1.5,
+  "Icon": "Icons/ItemsGenerated/Plant_Onion_Stage_0.png"
+}

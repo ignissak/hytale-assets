@@ -1,0 +1,63 @@
+{
+  "MaxFluidLevel": 1,
+  "Effect": [
+    "Lava"
+  ],
+  "Opacity": "Transparent",
+  "Textures": [
+    {
+      "Weight": 1,
+      "All": "BlockTextures/Fluid_Lava.png"
+    }
+  ],
+  "BlockParticleSetId": "Lava",
+  "ParticleColor": "#f94e11",
+  "BlockSoundSetId": "Empty",
+  "FluidFXId": "Lava",
+  "Light": {
+    "Color": "#e90"
+  },
+  "Interactions": {
+    "Collision": {
+      "Cooldown": {
+        "Id": "BurnEffect",
+        "Cooldown": 1
+      },
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "RequiredGameMode": "Adventure",
+          "Next": {
+            "Type": "ApplyEffect",
+            "EffectId": {
+              "Duration": 1,
+              "OverlapBehavior": "Overwrite",
+              "ApplicationEffects": {
+                "HorizontalSpeedMultiplier": 0.5
+              }
+            },
+            "Next": {
+              "Type": "ApplyEffect",
+              "EffectId": "Burn"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "Ticker": {
+    "CanDemote": false,
+    "SpreadFluid": "Lava",
+    "FlowRate": 4.0,
+    "Collisions": {
+      "Water": {
+        "BlockToPlace": "Rock_Stone_Cobble",
+        "SoundEvent": "SFX_Flame_Break"
+      },
+      "Water_Source": {
+        "BlockToPlace": "Rock_Stone",
+        "SoundEvent": "SFX_Flame_Break"
+      }
+    }
+  }
+}

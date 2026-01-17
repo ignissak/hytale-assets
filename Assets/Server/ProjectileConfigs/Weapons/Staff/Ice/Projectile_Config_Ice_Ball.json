@@ -1,0 +1,91 @@
+{
+  "Model": "Ice_Ball",
+  "LaunchForce": 30,
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 4.4,
+    "TerminalVelocityAir": 42.5,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "LaunchWorldSoundEventId": "SFX_Staff_Ice_Shoot",
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Parent": "DamageEntityParent",
+          "DamageCalculator": {
+            "Class": "Charged",
+            "BaseDamage": {
+              "Ice": 20
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 3,
+                "Z": -1
+              },
+              "Force": 20,
+              "VelocityType": "Set"
+            },
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Ice"
+              },
+              {
+                "SystemId": "IceBall_Explosion"
+              }
+            ],
+            "WorldSoundEventId": "SFX_Ice_Ball_Death"
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Ice_Ball_Death",
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Ice"
+              },
+              {
+                "SystemId": "IceBall_Explosion"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

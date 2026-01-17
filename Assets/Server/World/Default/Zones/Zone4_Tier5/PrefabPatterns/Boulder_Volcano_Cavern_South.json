@@ -1,0 +1,38 @@
+{
+  "GridGenerator": {
+		"Seed": "Lava_Cracks",
+    "Density": 1,
+    "Scale": 0.05,
+    "Jitter": 0.75
+  },
+	"NoiseMask": {
+		"Type": "MULTIPLY",
+		"Noise": [
+			{
+				"Seed": "4554845555",
+				"NoiseType": "CELL",
+				"CellMode": "DISTANCE",
+				"Scale": 0.008,
+				"Density": [0, 0.3],
+				"Normalize": 0.32
+			},
+			{
+				"Seed": "4554845555",
+				"NoiseType": "CELL",
+				"CellMode": "DISTANCE",
+				"Formula": "INVERTED",
+				"Scale": 0.008,
+				"OffsetY": -25,
+				"OffsetX": 0,
+				"Density": [0, 0.3]
+			}
+		],
+    "Threshold": [0.75, 1]
+	},
+  "HeightThreshold": {
+    "Positions": [31, 32, 40, 41],
+    "Values": [0, 1, 1, 0]
+  },
+	"DeepSearch": true,
+	"Rotations": ["ROTATION_0"]
+}

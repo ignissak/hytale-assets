@@ -1,0 +1,189 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Chase", "Search" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "SmellRange": {
+      "Value": 8,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "AlertedTime": {
+      "Value": [ 1, 1 ],
+      "Description": "The duration for which the NPC is alert before switching to attack"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether this NPC can see"
+    },
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether this NPC can hear"
+    },
+    "CanSmell": {
+      "Value": false,
+      "Description": "Whether this NPC can smell"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "$Comment": "Animations",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status",
+            "Animation": "Alerted"
+          },
+          {
+            "Type": "SpawnParticles",
+            "Offset": [ 0, 2.1, 0 ],
+            "ParticleSystem": "Alerted"
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": { "Compute": "AlertedRange" },
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Reference": "Component_Sensor_Target_Hidden_Nearby",
+          "Modify": {
+            "IntuitionRange": { "Compute": "AlertedRange" },
+            "HearingRange": { "Compute": "HearingRange + 1" },
+            "ViewRange": { "Compute": "ViewRange + 1" },
+            "SmellRange": { "Compute": "SmellRange" },
+            "ViewSector": { "Compute": "ViewSector" },
+            "CanSee": { "Compute": "CanSee" },
+            "CanHear": { "Compute": "CanHear" },
+            "CanSmell": { "Compute": "CanSmell" }
+          }
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Search"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "AlertedRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ],
+                "Enabled": { "Compute": "CanSee" }
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "Attitudes": [ "Hostile" ],
+                "Enabled": { "Compute": "CanHear" }
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Scent_By_Attitude",
+              "Modify": {
+                "SmellRange": { "Compute": "SmellRange" },
+                "Enabled": { "Compute": "CanSmell" },
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "AlertedTime" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Chase"
+            }
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 3, 5 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Idle"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Mob",
+            "Range": { "Compute": "AlertedRange" },
+            "GetNPCs": true,
+            "Prioritiser": {
+              "Type": "Attitude",
+              "AttitudesByPriority": [ "Hostile" ]
+            },
+            "GetPlayers": true
+          }
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

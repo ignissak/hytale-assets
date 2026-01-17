@@ -1,0 +1,52 @@
+{
+  "Type": "Variant",
+  "Reference": "Snake_Marsh",
+  "Modify": {
+    "Appearance": "Snake_Rattle",
+    "DropList": "Drop_Snake_Rattle",
+    "MaxHealth": 61,
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Snake_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Snake_Marsh_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.25
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Snake_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 23
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Snake_Rattle.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

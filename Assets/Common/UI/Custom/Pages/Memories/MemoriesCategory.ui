@@ -1,0 +1,111 @@
+$C = "../../Common.ui";
+$Sounds = "../../Sounds.ui";
+
+@CategoryButtonLabelStyle = LabelStyle(
+  Wrap: true,
+  HorizontalAlignment: Center,
+  VerticalAlignment: End,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  RenderUppercase: true,
+  FontSize: 15,
+);
+
+@MemoryCounterStyle = LabelStyle(
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  RenderUppercase: true,
+  FontSize: 13,
+  HorizontalAlignment: End,
+);
+
+Group {
+  Anchor: (Width: 144, Height: 176, Right: 16, Bottom: 16);
+  Padding: (Full: 8);
+
+  Group #CompleteCategoryBackground {
+    Background: (TexturePath: "Tiles/TileComplete.png", Border: 8);
+    Visible: false;
+  }
+
+  Group #NewMemoryIndicator {
+    Anchor: (Top: 0, Left: 0);
+    Background: (TexturePath: "Tiles/NewMemoryIndicator.png");
+    Visible: false;
+  }
+
+  Group {
+    LayoutMode: Right;
+    Anchor: (Right: 5, Top: 5);
+
+    Group #NotCompleteCategoryCounter {
+      LayoutMode: Right;
+      Visible: false;
+      Label #CurrentMemoryCountNotComplete {
+        Text: "0";
+        Style: @MemoryCounterStyle;
+      }
+
+      Label {
+        Text: "/";
+        Style: @MemoryCounterStyle;
+      }
+
+      Label #TotalMemoryCountNotComplete {
+        Text: "0";
+        Style: @MemoryCounterStyle;
+      }
+    }
+
+    Group #CompleteCategoryCounter {
+      LayoutMode: Right;
+      Visible: false;
+
+      Group {
+        FlexWeight: 1;
+      }
+
+      Group {
+        Background: "Checkmark.png";
+        Anchor: (Width: 16, Height: 16, Right: 5, Top: 0);
+      }
+
+      Label #CurrentMemoryCountComplete {
+        Text: "0";
+        Style: (...@MemoryCounterStyle, TextColor: #39f493);
+      }
+
+      Label {
+        Text: "/";
+        Style: (...@MemoryCounterStyle, TextColor: #39f493);
+      }
+
+      Label #TotalMemoryCountComplete {
+        Text: "0";
+        Style: (...@MemoryCounterStyle, TextColor: #39f493);
+      }
+    }
+  }
+
+  TextButton #Button {
+    Padding: (Bottom: 10);
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (...@CategoryButtonLabelStyle),
+        Background: (TexturePath: "Tiles/TileDefault.png", Border: 8),
+      ),
+      Hovered: (
+        LabelStyle: (...@CategoryButtonLabelStyle),
+        Background: (TexturePath: "Tiles/TileHovered.png", Border: 8),
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  AssetImage #CategoryIcon {
+    Anchor: (Width: 128, Height: 128);
+  }
+}

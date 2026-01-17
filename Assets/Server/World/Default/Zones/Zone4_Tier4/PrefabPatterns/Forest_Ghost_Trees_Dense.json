@@ -1,0 +1,85 @@
+{
+  "GridGenerator": {
+		"Seed": "Forest_Ghost_Trees",
+    "Density": 0.9,
+    "Scale": 0.12,
+    "Jitter": 0.5
+  },
+  "NoiseMask": {
+	"Type": "MIN",
+	"Noise": [
+	  {
+	  "Seed": "Monuments-Firelands",
+	  "NoiseType": "CELL",
+	  "CellMode": "DISTANCE",
+	  "Scale": 0.005,
+	  "Jitter": 0.7,
+	  "Normalize": [0.25]
+	  },
+	  {
+	  "Seed": "Calderas",
+	  "NoiseType": "CELL",
+	  "CellMode": "DISTANCE",
+	  "DistanceRange": [1, 5],
+	  "Density": 0.2,
+	  "Scale": 0.02,
+	  "Normalize": [0.6]
+	  },
+	  {
+	  "Seed": "GhostForest",
+	  "NoiseType": "OLD_SIMPLEX",
+	  "FractalMode": "OLDSCHOOL",
+	  "Octaves": 3,
+	  "Persistence": 0.5,
+	  "Scale": 0.01,
+	  "Normalize": 0.475
+	  },
+	  {
+	  "Seed": "Firelands-Boulders",
+	  "NoiseType": "CELL",
+	  "CellMode": "DISTANCE",
+	  "DistanceRange": [8],
+	  "Density": [[0, 0.4], [0.8, 1]],
+	  "Scale": 0.02,
+	  "Jitter": 0.7,
+	  "Normalize": [0.6]
+	  },
+    {
+      "$Comment": "Dirt pathway noise",
+      "Type":"DISTORTED",
+      "Noise":{
+        "Seed": "Pathway_Cracks",
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "DistanceRange": 2,
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Scale": 0.01,
+        "Jitter": 0.75,
+        "Normalize": [0.15, 0.2]
+      },
+      "Randomizer": {
+        "Generators": [
+        {
+          "Seed": "Firelands-Hills",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 4,
+          "Persistence": 0.3,
+          "Scale": 0.008,
+          "Amplitude": 25
+        }
+        ]
+      },
+      "Normalize": 0.5
+      }
+	],
+    "Threshold": [0.01, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [120, 121, 169, 170],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "File": "Zones.Zone4_Tier4.Masks.Trees"
+  }
+}

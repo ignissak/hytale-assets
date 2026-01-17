@@ -1,0 +1,95 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "AvailableActions": {
+      "Charge": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "ChargeDistance": 8,
+        "AttackDistanceRange": [
+          7,
+          7
+        ],
+        "Ability": "Sword_Attack",
+        "ChargeFor": 1.565,
+        "SubState": "Charge",
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "MinActionUtility": 0.1,
+    "ActionSets": {
+      "Default": {
+        "Actions": [
+          "Charge"
+        ]
+      },
+      "Charge": {
+        "Actions": [
+          "Charge"
+        ]
+      }
+    }
+  }
+}

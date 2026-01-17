@@ -1,0 +1,54 @@
+{
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "DisableDamageGroups": [ "Self" ],
+  "HotbarItems": [ "Weapon_Longsword_Copper" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 360,
+      "ClimbSpeedMult": 0.125
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Blocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 10 ]
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "DelayOver"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Delay.name"
+}

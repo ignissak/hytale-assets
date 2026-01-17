@@ -1,0 +1,78 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container {
+  Anchor: (Width: 1000, Height: 700);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = %server.customUI.pluginListPage.plugins;
+      }
+    }
+  }
+
+  #Content {
+    LayoutMode: Top;
+
+    Group #PluginContainer {
+      LayoutMode: Left;
+      Anchor: (Height: 585);
+
+      Group #PluginList {
+        Anchor: (Width: 350);
+        LayoutMode: TopScrolling;
+        ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      }
+
+      Group #PluginInfo {
+        FlexWeight: 1;
+        LayoutMode: TopScrolling;
+        Padding: (Left: 10);
+        ScrollbarStyle: $C.@DefaultScrollbarStyle;
+
+        Label #PluginName {
+          Style: (
+            FontSize: 22,
+            RenderUppercase: true,
+            RenderBold: true
+          );
+          Anchor: (Bottom: 3);
+        }
+
+        Label #PluginIdentifier {
+          Style: (
+            FontSize: 18,
+            TextColor: #919191
+          );
+          Anchor: (Bottom: 3);
+        }
+
+        Label #PluginVersion {
+          Style: (
+            FontSize: 15,
+            TextColor: #919191
+          );
+          Anchor: (Bottom: 12);
+        }
+
+        Label #PluginDescription {
+          Anchor: (Bottom: 10);
+        }
+      }
+    }
+
+    Group #SearchOptions {
+      Anchor: (Top: 10);
+      LayoutMode: Right;
+
+      $C.@CheckBoxWithLabel #DescriptiveOnlyOption {
+          @Text =  %server.customUI.pluginListPage.descriptiveOnly;
+          @Checked = true;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

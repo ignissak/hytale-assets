@@ -1,0 +1,212 @@
+{
+  "MapColor": "#396631",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+        }
+      ],
+      "Threshold": [0, 0.9]
+    },
+    "BiomeMask": [
+      "Forest_Frozen_Light",
+      "Forest_Frozen",
+      "Plains_Frozen_Frost"
+    ],
+    "Priority": 10
+  },
+  "Covers": [
+    {
+      "Type": ["Rubble_Shale", "Rubble_Shale_Medium"],
+      "Weight": [0.8, 0.2],
+      "Density": 0.2,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.04,
+        "Threshold": [0.7, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Dirt_Cold", "Rock_Shale", "Rock_Slate", "Rock_Basalt"]
+    },
+    {
+      "Type": ["Plant_Bush_Winter_Snow"],
+      "Weight": [1],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Seed": "13246346146",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08,
+        "Threshold": [0.65, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [150, 151],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": ["Plant_Bush_Winter_Sharp"],
+      "Weight": [1],
+      "Density": 0.05,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.1,
+        "Threshold": [0.5, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [150, 151],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Snow"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [1],
+        "Prefab": ["Npc.Yeti.Camps.*"],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier2.PrefabPatterns.Yeti_Camp"
+        }
+      },
+      {
+        "Weight": [1],
+        "Prefab": ["Rock_Formations.Rocks.Shale.*"],
+        "Pattern": {
+          "GridGenerator": {
+            "Seed": "GrasslandsMountainRocks",
+            "Density": [0, 0.1],
+            "Scale": 0.5,
+            "Jitter": 1
+          },
+          "NoiseMask": {
+            "Seed": "GrasslandsMountainRocks",
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.6,
+            "Scale": 0.07,
+            "Threshold": [0, 0.6]
+          },
+          "HeightThreshold": {
+            "Positions": [100, 160],
+            "Values": [1, 0]
+          },
+          "Parent": ["Soil_Snow"]
+        }
+      },
+      {
+        "Weight": [0.5, 0.43, 0.07],
+        "Prefab": [
+          "Trees.Fir_Snow.Stage_1.*",
+          "Trees.Fir_Snow.Stage_2.*",
+          "Trees.Fir_Dead.Stage_1.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier3.PrefabPatterns.Forest_Fir_Frozen"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Shale",
+    "Dynamic": [
+      {
+        "Blocks": ["Soil_Snow:3", "Rock_Ice:10"],
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+            }
+          ],
+          "Gradient": {
+            "Mode": "MAGNITUDE",
+            "Distance": 2.0,
+            "Normalize": 0.1
+          },
+          "Threshold": [0, 0.1]
+        }
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone3.Mountain"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [117, 285],
+    "Values": [1, 0]
+  },
+  "HeightmapNoise": {
+    "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["487E4D", "36763C"],
+      "Weights": [50, 50],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone3_Glacial"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

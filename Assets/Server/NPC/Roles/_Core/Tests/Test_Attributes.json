@@ -1,0 +1,93 @@
+{
+  "Type": "Generic",
+  "Parameters": {
+    "Boolean": {
+      "Value": { "Compute": "true" }
+    },
+    "Double": {
+      "Value": { "Compute": "0.5" }
+    },
+    "Float": {
+      "Value": { "Compute": "0.3" }
+    },
+    "Int": {
+      "Value": { "Compute": "1" }
+    },
+    "String": {
+      "Value": { "Compute": "\"Hello\"" }
+    },
+    "Enum": {
+      "Value": { "Compute": "\"Collisions\"" }
+    },
+    "EnumSet": {
+      "Value": { "Compute": "[ ]" },
+      "TypeHint": "String"
+    },
+    "Asset": {
+      "Value": { "Compute": "\"Test*\"" }
+    },
+    "DoubleArray": {
+      "Value": { "Compute": "[ 0, 1 ]" }
+    },
+    "StringArray": {
+      "Value": [ ],
+      "TypeHint": "String"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Test",
+              "Boolean": true,
+              "Double": 0,
+              "Float": 0,
+              "Int": 0,
+              "String": "Test",
+              "Enum": "Collisions",
+              "EnumSet": [ "Collisions", "Flock", "DisplayAnim" ],
+              "Asset": "Test*",
+              "DoubleArray": [ 0, 1, 2 ],
+              "StringArray": [ "a", "b", "c" ]
+            },
+            {
+              "Type": "Test",
+              "Boolean": true,
+              "Double": { "Compute": "Double" },
+              "Float": { "Compute": "Float" },
+              "Int": { "Compute": "Int" },
+              "String": { "Compute": "String" },
+              "Enum": { "Compute": "Enum" },
+              "EnumSet": { "Compute": "EnumSet" },
+              "Asset": { "Compute": "Asset" },
+              "DoubleArray": { "Compute": "DoubleArray" },
+              "StringArray": { "Compute": "StringArray" }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Attributes.name"
+}

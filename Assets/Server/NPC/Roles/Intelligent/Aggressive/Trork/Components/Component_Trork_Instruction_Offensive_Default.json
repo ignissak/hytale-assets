@@ -1,0 +1,118 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Attack", "Search" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "$TODO": "Must not kill Kweebec young!",
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "NPCGroup",
+              "IncludeGroups": [ "Kweebec" ],
+              "ExcludeGroups": [ "Kweebec_Prisoner" ]
+            }
+          ]
+        },
+        "Instructions": [
+          {
+            "$TODO": "Should play a proper roaring animation/sound",
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              },
+              {
+                "Type": "SpawnParticles",
+                "Offset": [ 0, 2.1, 0 ],
+                "ParticleSystem": "Alerted"
+              }
+            ]
+          },
+          {
+            "Reference": "Component_Instruction_Damage_Check",
+            "Modify": {
+              "_ExportStates": [ "Attack", "Search" ],
+              "AlertedRange": { "Compute": "AlertedRange" }
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": { "Compute": "ViewRange" },
+              "AutoUnlockTarget": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 5 ],
+                "Action": {
+                  "Type": "ParentState",
+                  "State": "Attack"
+                }
+              }
+            ],
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target"
+        },
+        "Actions": [
+          {
+            "Type": "OverrideAttitude",
+            "Attitude": "Hostile",
+            "Duration": 120
+          },
+          {
+            "Type": "ParentState",
+            "State": "Attack"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 2, 3 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Idle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

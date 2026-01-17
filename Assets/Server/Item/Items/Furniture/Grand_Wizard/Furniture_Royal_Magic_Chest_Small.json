@@ -1,0 +1,133 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Royal_Magic_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Royal_Magic",
+  "Icon": "Icons/ItemsGenerated/Furniture_GrandWizard_Chest_Small.png",
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Royal_Magic/Chest_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Royal_Magic/Chest_Small_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#551423",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "ChestConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Default": "Furniture_Royal_Magic_Chest_Small",
+        "Double": "Furniture_Royal_Magic_Chest_Large"
+      }
+    },
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    }
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Crude"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.55,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -15
+    ]
+  },
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Leather_Dark",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Rock_Gem_Ruby",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Furniture_Bench",
+        "Type": "Crafting",
+        "Categories": [
+          "Furniture_Storage"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 6
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemLevel": 21,
+  "MaxStack": 10
+}

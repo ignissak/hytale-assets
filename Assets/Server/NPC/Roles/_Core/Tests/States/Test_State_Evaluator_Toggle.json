@@ -1,0 +1,158 @@
+{
+  "Debug": "DisplayState",
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "TestType": "Normal",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "StateEvaluator": {
+    "Options": [
+      {
+        "State": "Idle",
+        "Description": "Go to idle state",
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "Linear"
+          }
+        ]
+      },
+      {
+        "State": "Flee",
+        "Description": "Go to flee state",
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "ReverseLinear"
+          }
+        ]
+      }
+    ]
+  },
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 2,
+                "StopDistance": 1
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "ToggleStateEvaluator",
+                  "Enabled": false
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "StopDistance": 10
+              }
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Flee2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee2"
+          },
+          "Instructions": [
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 5 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Flee3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee3"
+          },
+          "Instructions": [
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 5 ]
+                },
+                {
+                  "Type": "ToggleStateEvaluator",
+                  "Enabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_State_Evaluator_Toggle.name"
+}

@@ -1,0 +1,153 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SpinRightCharging"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.5,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "Effects": {
+              "ItemAnimationId": "SpinRightCharged"
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ApplyForce",
+            "ChangeVelocityType": "Add",
+            "Direction": {
+              "X": 0,
+              "Y": 1,
+              "Z": -2
+            },
+            "AdjustVertical": false,
+            "WaitForGround": false,
+            "Force": 4,
+            "VelocityConfig": {
+              "AirResistance": 0.97,
+              "AirResistanceMax": 0.96,
+              "GroundResistance": 0.94,
+              "GroundResistanceMax": 0.82,
+              "Threshold": 3.0,
+              "Style": "Exp"
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "$Comment": "Status effect on the player on cast before the animation",
+            "Type": "ApplyEffect",
+            "EffectId": "Mace_Signature"
+          },
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.15,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 1,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 360,
+              "RollOffset": 0,
+              "YawStartOffset": -90
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Sword_Spin_Right_Stab_Dash_Damage"
+                    ]
+                  },
+                  "Var": "Sword_Spin_Right_Stab_Dash_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Parallel",
+              "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+              "Interactions": [
+                {
+                  "Interactions": [
+                    {
+                      "Type": "Selector",
+                      "$Comment": "Length of Combat",
+                      "RunTime": 0.1,
+                      "Selector": {
+                        "Id": "Horizontal",
+                        "Direction": "ToRight",
+                        "TestLineOfSight": false,
+                        "ExtendTop": 0.5,
+                        "ExtendBottom": 1,
+                        "StartDistance": 0.1,
+                        "EndDistance": 3,
+                        "Length": 180,
+                        "RollOffset": 0,
+                        "YawStartOffset": -90
+                      },
+                      "HitEntity": {
+                        "Interactions": [
+                          {
+                            "Type": "Replace",
+                            "DefaultValue": {
+                              "Interactions": [
+                                "Sword_Spin_Right_Stab_Dash_Damage2"
+                              ]
+                            },
+                            "Var": "Sword_Spin_Right_Stab_Dash_Damage2"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Interactions": [
+                    {
+                      "Type": "Replace",
+                      "DefaultValue": {
+                        "Interactions": [
+                          "Sword_Spin_Right_Stab_Dash_Effect2"
+                        ]
+                      },
+                      "Var": "Sword_Spin_Right_Stab_Dash_Effect2"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Sword_Spin_Right_Stab_Dash_Effect"
+              ]
+            },
+            "Var": "Sword_Spin_Right_Stab_Dash_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

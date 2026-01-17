@@ -1,0 +1,418 @@
+{
+  "MapColor": "#396631",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+          
+        }
+      ],
+      "Threshold": [0, 0.9]
+    },
+    "BiomeMask": [
+      "Forest_Fir",
+      "Forest_Redwood",
+      "Forest_Tundra",
+      "Plains_Hotsprings",
+      "Plains_Shire"
+    ],
+    "Priority": 10
+  },
+  "Covers": [
+    {
+      "Type": ["Plant_Bush_Lush", "*Plant_Crop_Berry_Winter_Block_State_Definitions_StageFinal"],
+      "Weight": [0.8, 0.2],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Bush.Bush_Redwood"
+          }
+        ],
+        "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass", "Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Rubble_Shale", "Rubble_Shale_Medium"],
+      "Weight": [0.8, 0.2],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Rubble.Stone_Forest"
+          }
+        ],
+        "Threshold": [0.7, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Dirt_Cold", "Rock_Shale", "Rock_Slate", "Rock_Basalt"]
+    },
+    {
+      "Type": ["Plant_Bush_Winter_Snow"],
+      "Weight": [1],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Flowers.Flowers_Common"
+          }
+        ],
+        "Threshold": [0.65, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [150, 151],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": ["Plant_Bush_Winter_Sharp"],
+      "Weight": [1],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Mixed_Dense"
+          }
+        ],
+        "Threshold": [0.5, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [150, 151],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": ["Plant_Grass_Winter_Tall"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Bedrock_Dense"
+          }
+        ],
+        "Threshold": [0, 0.5]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Grass_Winter_Tall"],
+      "Weight": [1],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Lush_Forest"
+          }
+        ],
+        "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Grass_Winter"],
+      "Weight": [1],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Sharp_Forest"
+          }
+        ],
+        "Threshold": [0.54, 0.65]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Crop_Stamina1"],
+      "Density": 0.015,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Wheat_Small"
+          }
+        ],
+        "Threshold": [0.6, 0.65]
+      },
+      "HeightThreshold": {
+        "Positions": [150, 160],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass", "Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Violet"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [0.695, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass"]
+    },
+    {
+      "Type": ["Plant_Flower_Flax_Blue"],
+      "Weight": [1],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Flowers.Flowers_Lake"
+          }
+        ],
+        "Threshold": [0.712, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_White2"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [0.695, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Cyan2"],
+      "Weight": [1],
+      "Density": 0.09,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.04,
+        "Threshold": [0.7, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Yellow"],
+      "Weight": [1],
+      "Density": 0.08,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Flowers.Flowers_Cave"
+          }
+        ],
+        "Threshold": [0.73, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    },
+    {
+      "Type": ["Soil_Snow"],
+      "Weight": [1],
+      "Density": 1,
+      "Offset": -1,
+      "HeightThreshold": {
+        "Positions": [175, 177],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Cold"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [1],
+        "Prefab": ["Npc.Yeti.Camps.*"],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier2.PrefabPatterns.Yeti_Camp"
+        }
+      },
+      {
+        "Weight": [1],
+        "Prefab": ["Rock_Formations.Rocks.Basalt.*"],
+        "Pattern": {
+          "GridGenerator": {
+            "Seed": "GrasslandsMountainRocks",
+            "Density": [0, 0.1],
+            "Scale": 0.5,
+            "Jitter": 1
+          },
+          "NoiseMask": {
+            "Seed": "GrasslandsMountainRocks",
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.6,
+            "Scale": 0.07,
+            "Threshold": [0, 0.6]
+          },
+          "HeightThreshold": {
+            "Positions": [100, 160],
+            "Values": [1, 0]
+          },
+          "Parent": ["Soil_Grass_Cold"]
+        }
+      },
+      {
+        "Weight": [0.07, 0.32, 0.08, 0.12],
+        "Prefab": [
+          "Trees.Ash.Stage_1.*",
+          "Trees.Fir.Stage_3.*",
+          "Trees.Fir.Stage_1.*",
+          "Trees.Fir.Stage_2.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier2.PrefabPatterns.Forest_Fir"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Shale",
+    "Dynamic": [
+      {
+        "Blocks": ["Soil_Grass_Cold", "Soil_Dirt_Cold:3"],
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+            }
+          ],
+          "Gradient": {
+            "Mode": "MAGNITUDE",
+            "Distance": 2.0,
+            "Normalize": 0.1
+          },
+          "Threshold": [0, 0.05]
+        }
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone3.Mountain"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [117, 250],
+    "Values": [1, 0]
+  },
+  "HeightmapNoise": {
+    "File": "Zones.Noise.Zone3.Heightmaps.Mountain"
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["487E4D", "36763C"],
+      "Weights": [50, 50],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone3_Mountains"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

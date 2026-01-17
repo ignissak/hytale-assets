@@ -1,0 +1,182 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+Group {
+    LayoutMode: Center;
+
+    $C.@DecoratedContainer {
+
+      #Title {
+        $C.@Title {
+          @Text = %server.customUI.portalDevice.title;
+        }
+      }
+
+      #Content {
+        Padding: (Full: 9, Top: 8);
+
+        Group #Panes {
+          LayoutMode: Left;
+
+          Group #LeftPane {
+            Anchor: (Width: 431, Height: 716 + 30, Left: 15, Right: 15);
+
+            Group #Artwork {
+              Background: (TexturePath: "Portals/DefaultArtwork.png");
+              Anchor: (Width: 345, Height: 629);
+            }
+
+            Group #Vignette {
+              Background: (TexturePath: "Portals/PortalHighlight.png");
+              Visible: false;
+              Anchor: (Width: 345, Height: 629);
+            }
+
+            Group {
+              Background: (TexturePath: "Portals/RunicBorder.png");
+              Anchor: (Width: 431, Height: 716);
+            }
+
+            Group {
+              Anchor: (Width: 59, Height: 59, Top: 32);
+              Background: (TexturePath: "Portals/PortalCursebreakerLogo.png");
+            }
+          }
+
+          Group #RightPane {
+            Anchor: (Width: 431, Right: 15, Top: 15, Bottom: 15);
+            Background: (TexturePath: "../Common/ContainerBackgroundSecondary.png", Border: 5);
+
+            Group #TopStuff {
+              @SectionTitleStyle = LabelStyle(FontSize: 18, TextColor: #778292, RenderBold: true, RenderUppercase: true);
+              @SectionValueStyle = LabelStyle(FontSize: 15, TextColor: #dee2ef);
+
+              LayoutMode: Top;
+
+              Group #Title {
+                LayoutMode: Top;
+
+                Label #PortalTitle {
+                  Anchor: (Top: 14, Bottom: 9);
+                  Style: (FontSize: 18, TextColor: #dee2ee, FontName: "Secondary", RenderUppercase: true, HorizontalAlignment: Center);
+                }
+
+                Group {
+                  Background: (TexturePath: "Portals/PortalTopDivider.png");
+                  Anchor: (Width: 369, Height: 7);
+                }
+              }
+
+              Group {
+                LayoutMode: Top;
+                FlexWeight: 1;
+
+                Group #Error {
+                  Visible: false;
+                  LayoutMode: Top;
+                  Padding: (Vertical: 32);
+
+                  Label #ErrorTitle {
+                    Style: (FontSize: 18, RenderBold: true, RenderUppercase: true, TextColor: #d13b57, HorizontalAlignment: Center);
+                    Text: %server.customUI.portalDevice.error;
+                  }
+
+                  Label #ErrorLabel {
+                    Padding: (Top: 4, Bottom: 12);
+                    Style: (...$C.@DefaultLabelStyle, Wrap: true, HorizontalAlignment: Center);
+                  }
+                }
+
+                Group #PortalPanel {
+                  Visible: false;
+                  LayoutMode: Top;
+                  FlexWeight: 1;
+
+                  Group {
+                    LayoutMode: Left;
+                    Anchor: (Top: 8, Horizontal: 32);
+                    Background: (Color: #0a1119(0.8));
+                    Padding: (Horizontal: 8, Vertical: 5);
+
+                    Group {
+                      Anchor: (Width: 48, Height: 48, Right: 12, Top: -2);
+                      Background: (TexturePath: "../Common/WIPIcon.png");
+                    }
+
+                    Label {
+                      Text: %server.customUI.portalDevice.wipText;
+                      Style: (FontSize: 16, TextColor: #7c899f,  VerticalAlignment: Center, Wrap: true);
+                      FlexWeight: 1;
+                      Padding: (Vertical: 14);
+                    }
+                  }
+
+                  Group #PortalInfo {
+                    LayoutMode: Top;
+                    Anchor: (Top: 24);
+
+                    Label #PortalDescription {
+                      Padding: (Top:4);
+                      Text: "There be a lot of lines here.";
+                      Style: (FontSize: 16, TextColor: #96a9be, HorizontalAlignment: Center);
+                    }
+
+                    Label #PlayersInside {
+                      Padding: (Top: 4);
+                      Style: (FontSize: 16, TextColor: #96a9be, HorizontalAlignment: Center);
+                    }
+                  }
+
+                  Group #AlreadyOpen {
+                    LayoutMode: Top;
+                    Padding: (Top: 60, Bottom: 30);
+
+                    Label #PortalIsOpen {
+                      Visible: false;
+                      Text: %server.customUI.portalDevice.portalIsOpen;
+                      Style: (FontSize: 16, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center, TextColor: #dee2ee);
+                      FlexWeight: 1;
+                    }
+
+                    Label #RemainingDuration {
+                      Style: (FontSize: 18, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center, TextColor: #dee2ee);
+                      FlexWeight: 1;
+                    }
+                  }
+
+                  Group #Died {
+                    Visible: false;
+                    LayoutMode: Top;
+                    Anchor: (Top: 8);
+                    Padding: (Vertical: 32);
+
+                    Group #Skull {
+                      Anchor: (Height: 64, Width: 64, Top: 8);
+                      Background: (TexturePath: "RespawnPageSkull.png");
+                    }
+
+                    Label {
+                      Text: %server.customUI.portalDevice.forsaken;
+                      Padding: (Top: 12, Bottom: 8);
+                      Style: (FontName: "Secondary", FontSize: 24, TextColor: #d13b57, RenderUppercase: true, HorizontalAlignment: Center);
+                    }
+
+                    Label {
+                      Text: %server.customUI.portalDevice.forsakenExplanation;
+                      Style: (FontSize: 18, Wrap: true, HorizontalAlignment: Center, TextColor: #949ba8);
+                      Padding: 32;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

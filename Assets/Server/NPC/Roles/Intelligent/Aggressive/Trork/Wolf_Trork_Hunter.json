@@ -1,0 +1,43 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Trork_Companion",
+  "Modify": {
+    "Appearance": "Wolf_Trork_Hunter",
+    "DropList": "Drop_Wolf_Trork_Hunter",
+    "Attack": "Root_NPC_Wolf_Attack",
+    "MaxHealth": 38,
+    "IsMemory": true,
+    "MemoriesCategory": "Predator",
+    "MemoriesNameOverride": "Wolf_Black",
+    "_InteractionVars": {
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Wolf_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 6
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Wolf_Trork_Hunter.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

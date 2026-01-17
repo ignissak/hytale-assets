@@ -1,0 +1,72 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingUpRight",
+    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.4,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.15,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 90,
+              "RollOffset": 50,
+              "YawStartOffset": -45
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Battleaxe_Swing_Up_Right_Damage"
+                    ]
+                  },
+                  "Var": "Battleaxe_Swing_Up_Right_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.45
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Battleaxe_Swing_Up_Right_Effect"
+              ]
+            },
+            "Var": "Battleaxe_Swing_Up_Right_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

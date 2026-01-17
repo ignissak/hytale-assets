@@ -1,0 +1,109 @@
+{
+  "Randomizer": {
+    "Generators": [
+      {
+        "Seed": "RANDOMIZER",
+        "NoiseType": "SIMPLEX",
+        "Scale": 0.01,
+        "Amplitude": 16.0
+      }
+    ]
+  },
+  "Noise": {
+    "Thresholds": {
+      "Land": 0.5,
+      "Island": 0.75,
+      "BeachSize": 0.02,
+      "ShallowOceanSize": 0.08
+    },
+    "Continent": {
+      "File": "Mask.Continent"
+    },
+    "Temperature": {
+      "File": "Mask.Temperature"
+    },
+    "Intensity": {
+      "File": "Mask.Intensity"
+    }
+  },
+  "Climate": {
+    "FadeMode": "CHILDREN",
+    "FadeRadius": 50.0,
+    "FadeDistance": 100.0,
+    "Climates": [
+      {
+        "File": "Mask.Climate.Temperate"
+      },
+      {
+        "File": "Mask.Climate.Cold"
+      },
+      {
+        "File": "Mask.Climate.Hot"
+      }
+    ]
+  },
+  "UniqueZones": [
+    {
+      "Name": "Zone1_Spawn",
+      "Color": "#ff0000",
+      "Radius": 35,
+      "OriginX": 0,
+      "OriginY": 0,
+      "Distance": 3000,
+      "Rule": {
+        "Continent": {
+          "Target": 0.0,
+          "Radius": 0.3,
+          "Weight": 1.0
+        },
+        "Temperature": {
+          "Target": 0.5,
+          "Radius": 0.2,
+          "Weight": 1.0
+        },
+        "Intensity": {
+          "Target": 0.1,
+          "Radius": 0.3,
+          "Weight": 1.0
+        },
+        "Fade": {
+          "Target": 1.0,
+          "Radius": 0.5,
+          "Weight": 0.5
+        }
+      }
+    },
+    {
+      "Name": "Zone1_Temple",
+      "Parent": "Zone1_Spawn",
+      "Color": "#ffff00",
+      "Radius": 20,
+      "OriginX": 0,
+      "OriginY": 0,
+      "Distance": 400,
+      "MinDistance": 250,
+      "Rule": {
+        "Continent": {
+          "Target": 0.0,
+          "Radius": 0.5,
+          "Weight": 0.5
+        },
+        "Temperature": {
+          "Target": 0.5,
+          "Radius": 0.3,
+          "Weight": 1.0
+        },
+        "Intensity": {
+          "Target": 0.0,
+          "Radius": 0.5,
+          "Weight": 0.5
+        },
+        "Fade": {
+          "Target": 1.0,
+          "Radius": 1.0,
+          "Weight": 0.0
+        }
+      }
+    }
+  ]
+}

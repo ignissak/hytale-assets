@@ -1,0 +1,305 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Scrapper",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Drop_Goblin_Scrapper",
+      "Description": "Drop Items"
+    },
+    "Weapons": {
+      "Value": [ "Weapon_Club_Scrap" ],
+      "Weapons": "List of weapons npc can use"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 15,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 15,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "AlertedTime": {
+      "Value": [ 1, 1 ],
+      "Description": "The duration for which the NPC is alert before switching to attack"
+    },
+    "AttitudeGroup": {
+      "Value": "Goblin",
+      "Description": "This NPCs attitude group"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Motion_Wander",
+      "Description": "The motion component to use when idling. Allows path following instead of normal wander"
+    },
+    "RangedAttack": {
+      "Value": "Goblin_Scrapper_Rubble_Throw",
+      "Description": "Ranged attack to use"
+    },
+    "AvoidGroup": {
+      "Value": [ "Goblin" ],
+      "Description": "NPC group to try and navigate around"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DisableDamageGroups": [ "Goblin" ],
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "HotbarItems": { "Compute": "Weapons" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "Reference": "Component_Goblin_Instruction_Pre_Checks",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Chase", "Search", "Alerted" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Timer",
+                "Name": "Goblin_Scrapper_Rubble",
+                "State": "Stopped"
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": "Goblin_Scrapper_Rubble_Throw",
+                  "AvoidFriendlyFire": false,
+                  "SkipAiming": false,
+                  "AttackPauseRange": [ 0.2, 1 ]
+                },
+                {
+                  "Type": "TimerStart",
+                  "Name": "Goblin_Scrapper_Rubble",
+                  "StartValueRange": [ 10, 20 ],
+                  "RestartValueRange": [ 10, 20 ]
+                },
+                {
+                  "Type": "TimerRestart",
+                  "Name": "Goblin_Scrapper_Rubble"
+                },
+                {
+                  "Type": "TimerContinue",
+                  "Name": "Goblin_Scrapper_Rubble"
+                }
+              ]
+            },
+            {
+              "Reference": { "Compute": "IdleMotionComponent" },
+              "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Goblin_Instruction_Alerted",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Search", "Chase" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Search",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Chase", "Search", "Idle" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "AlertedRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Default"
+                  },
+                  "Name": ".Default",
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.2,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.45
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Reference": "Component_Instruction_Intelligent_Chase",
+                      "Modify": {
+                        "_ExportStates": [ "Search", "Idle", "Search" ],
+                        "AvoidGroup": { "Compute": "AvoidGroup" },
+                        "ViewRange": { "Compute": "ViewRange * 2" },
+                        "HearingRange": { "Compute": "HearingRange * 2" }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Ranged",
+                    "IgnoreMissingSetState": true
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Search"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

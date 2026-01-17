@@ -1,0 +1,121 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Path.name",
+    "Description": "server.builderTools.tools.Path.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "PathBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Cylinder"
+          },
+          "Origin": {
+            "Default": "Center"
+          }
+        },
+        "Args": {
+          "PathGroundBlocks": {
+            "Type": "Block",
+            "Default": "Soil_Pathway,Soil_Mud_Dry,Soil_Pathway",
+            "AllowPattern": true
+          },
+          "PathGroundBlockDensity": {
+            "Type": "Int",
+            "Default": 75,
+            "Min": 1,
+            "Max": 100
+          },
+          "PathOutlineGroundBlocks": {
+            "Type": "Block",
+            "Default": "Soil_Grass_Deep,Soil_Grass",
+            "AllowPattern": true
+          },
+          "PathOutlineGroundBlockWidth": {
+            "Type": "Int",
+            "Default": 2,
+            "Min": 1,
+            "Max": 20
+          },
+          "PathGroundOutlineBlockDensity": {
+            "Type": "Int",
+            "Default": 25,
+            "Min": 1,
+            "Max": 100
+          },
+          "PathFoliageGroundBlocks": {
+            "Type": "Block",
+            "Default": "Plant_Grass_Sharp,Plant_Grass_Lush_Short,Plant_Grass_Lush,Rubble_Quartzite",
+            "AllowPattern": true
+          },
+          "PathFoliageBlockDensity": {
+            "Type": "Int",
+            "Default": 9,
+            "Min": 1,
+            "Max": 100
+          },
+          "PathFoliageBlockWidth": {
+            "Type": "Int",
+            "Default": 3,
+            "Min": 1,
+            "Max": 20
+          },
+          "PathGroundHalfBlocks": {
+            "Type": "Block",
+            "Default": "Soil_Pathway_Half",
+            "AllowPattern": true
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

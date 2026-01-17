@@ -1,0 +1,82 @@
+{
+  "Parent": "Potion_Template",
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Health_Small.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Health_Small.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.8,
+    "Translation": [
+      0,
+      -10
+    ]
+  },
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Red.png",
+        "Weight": 1
+      }
+    ],
+    "BlockParticleSetId": "GlassSmall",
+    "DrawType": "Model"
+  },
+  "MaxStack": 10,
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "StatModifiers": {
+              "Health": 20
+            },
+            "ValueType": "Percent",
+            "StatusEffectIcon": "UI/StatusEffects/Health_Potion.png",
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Health": 100
+          },
+          "ValueType": "Percent",
+          "LessThan": true
+        }
+      ]
+    },
+    "ConsumeSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consume_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+          }
+        }
+      ]
+    },
+    "ConsumedSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consumed_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Potion_Drink_Success"
+          }
+        }
+      ]
+    }
+  },
+  "ItemLevel": 0,
+  "DropOnDeath": true
+}

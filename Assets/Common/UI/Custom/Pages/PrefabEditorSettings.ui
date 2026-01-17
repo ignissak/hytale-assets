@@ -1,0 +1,484 @@
+$C = "../Common.ui";
+$Sounds = "../Sounds.ui";
+$Browser = "PrefabBrowser.ui";
+
+@InputLabel = Label {
+  Anchor: (Left: 6, Right: 16, Width: 250);
+  Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+};
+
+@NumberInput = Group {
+  @Visible = false;
+  @Left = 32;
+  LayoutMode: Left;
+  Anchor: (Left: @Left, Top: 6);
+  Visible: @Visible;
+
+  @InputLabel {
+    Text: @Label;
+  }
+
+  $C.@NumberField #Input {
+    @Anchor = (Width: 60, Left: 0, Right: 16);
+
+    Format: (
+      MaxDecimalPlaces: 0,
+      Step: 1
+    );
+  }
+};
+
+@MultilineTextField = MultilineTextField {
+    Style: $C.@DefaultInputFieldStyle;
+    PlaceholderStyle: $C.@DefaultInputFieldPlaceholderStyle;
+    Background: $C.@InputBoxBackground;
+    AutoGrow: false;
+    Padding: (Horizontal: 10, Vertical: 8);
+};
+
+$C.@PageOverlay #MainPage {
+  LayoutMode: Middle;
+  Anchor: (Top: 130);
+
+  $C.@DecoratedContainer {
+    Anchor: (Top: 0, Width: 700);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabEditorSettings.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+
+      Group #SavedConfigs {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.savedConfigs;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #RootDir {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.rootDir;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #PrefabPaths {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.prefabPaths;
+        }
+
+        @TextField #Input {
+          Anchor: (Height: 35, Left: 0, Right: 8);
+          FlexWeight: 1;
+          MaxLength: 4096;
+        }
+
+        $C.@SecondaryTextButton #BrowseButton {
+          @Anchor = (Width: 140, Right: 16);
+          Text: %server.customUI.prefabEditorSettings.browse;
+        }
+      }
+
+      Group #Recursive {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.recursiveSearch;
+        }
+
+        $C.@CheckBox #CheckBox {
+          Anchor: (Width: 26, Height: 26);
+        }
+      }
+
+      Group #Children {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.loadChildren;
+        }
+
+        $C.@CheckBox #CheckBox {
+          Anchor: (Width: 26, Height: 26);
+        }
+      }
+
+      Group #Entities {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.loadEntities;
+        }
+
+        $C.@CheckBox #CheckBox {
+          Anchor: (Width: 26, Height: 26);
+          Value: true;
+        }
+      }
+
+      Group #EnableWorldTicking {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.enableWorldTicking;
+        }
+
+        $C.@CheckBox #CheckBox {
+          Anchor: (Width: 26, Height: 26);
+          Value: true;
+        }
+      }
+
+      @NumberInput #DesiredYLevel {
+        @Visible = true;
+        @Left = 0;
+        @Label = %server.customUI.prefabEditorSettings.desiredYLevel;
+      }
+
+      @NumberInput #BlocksBetweenPrefabs {
+        @Visible = true;
+        @Left = 0;
+        @Label = %server.customUI.prefabEditorSettings.blocksBetweenPrefabs;
+      }
+
+      Group #WorldGenType {
+        LayoutMode: Left;
+        Anchor: (Top: 8, Bottom: 10);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.worldGenType;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #Environment {
+        LayoutMode: Left;
+        Anchor: (Top: 8, Bottom: 10);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.environment;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #GrassTint {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.grassTint;
+        }
+
+        ColorPickerDropdownBox #Input {
+          Anchor: (Width: 50, Height: 32, Left: 0, Right: 16);
+          Format: Rgb;
+          Style: $C.@DefaultColorPickerDropdownBoxStyle;
+          DisplayTextField: true;
+        }
+      }
+
+      @NumberInput #NumAirBeforeGround {
+        @Visible = true;
+        @Left = 0;
+        @Label = %server.customUI.prefabEditorSettings.numAirBeforeGround;
+      }
+
+      Group #PasteAxis {
+        LayoutMode: Left;
+        Anchor: (Top: 8, Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.pasteAxis;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #AlignmentMethod {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.alignmentMethod;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #RowSplitMode {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        @InputLabel {
+          Text: %server.customUI.prefabEditorSettings.rowSplitMode;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group {
+        Anchor: (Vertical: 16, Height: 1);
+        Background: #5e512c(0.4);
+      }
+
+      Group {
+          LayoutMode: Center;
+          Anchor: (Top: 8);
+
+          $C.@TextButton #LoadButton {
+            @Sounds = $Sounds.@SaveSettings;
+            @Anchor = (Right: 4);
+            Text: %server.customUI.prefabEditorSettings.load;
+            FlexWeight: 1;
+          }
+
+          $C.@SecondaryTextButton #SavePropertiesButton {
+            @Sounds = $Sounds.@SaveSettings;
+            @Anchor = (Left: 4);
+            Text: %server.customUI.prefabEditorSettings.saveProperties;
+            FlexWeight: 1;
+          }
+
+          $C.@SecondaryTextButton #CancelButton {
+            @Sounds = $Sounds.@ButtonsCancel;
+            @Anchor = (Left: 4);
+            Text: %server.customUI.cancel;
+            FlexWeight: 1;
+          }
+      }
+
+    }
+  }
+}
+
+
+
+$C.@PageOverlay #SaveConfigPage {
+  LayoutMode: Middle;
+  Visible: false;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 532);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabEditorSettings.saveConfig.title;
+      }
+    }
+
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+      Group #SaveName {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        Label {
+          Text: %server.customUI.prefabEditorSettings.saveName;
+          Anchor: (Top: 6, Left: 6, Right: 16);
+          Style: $C.@DefaultLabelStyle;
+        }
+
+        $C.@TextField #Input {
+          @Anchor = (Width: 350, Left: 0, Right: 16);
+        }
+      }
+
+      Group #Buttons {
+          LayoutMode: Center;
+          Anchor: (Top: 8);
+
+          $C.@TextButton #SavePropertiesButton {
+            @Sounds = $Sounds.@SaveSettings;
+            @Anchor = (Left: 4);
+            Disabled: true;
+            Text: %server.customUI.prefabEditorSettings.saveProperties;
+            FlexWeight: 1;
+          }
+
+          $C.@SecondaryTextButton #CancelButton {
+            @Sounds = $Sounds.@ButtonsCancel;
+            @Anchor = (Left: 4);
+            Text: %server.customUI.cancel;
+            FlexWeight: 1;
+          }
+      }
+
+    }
+
+  }
+}
+
+$C.@PageOverlay #LoadingPage {
+  LayoutMode: Middle;
+  Visible: false;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 450);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabEditorSettings.loading.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 24);
+
+      Label #StatusText {
+        Anchor: (Bottom: 16, Horizontal: 8);
+        Style: (...$C.@DefaultLabelStyle, HorizontalAlignment: Center, VerticalAlignment: Center);
+        Text: %server.customUI.prefabEditorSettings.loading.initializing;
+      }
+
+      Group {
+        Anchor: (Height: 12, Bottom: 16, Horizontal: 16);
+        Background: "../Common/ProgressBar.png";
+
+        ProgressBar #ProgressBar {
+          BarTexturePath: "../Common/ProgressBarFill.png";
+          EffectTexturePath: "../Common/ProgressBarEffect.png";
+          EffectWidth: 102;
+          EffectHeight: 58;
+          EffectOffset: 74;
+        }
+      }
+
+      Label #ErrorText {
+        Anchor: (Bottom: 16, Horizontal: 8);
+        Visible: false;
+        Style: (...$C.@DefaultLabelStyle, HorizontalAlignment: Center, VerticalAlignment: Center, TextColor: #ff6b6b);
+        Text: "";
+      }
+
+      Group {
+        LayoutMode: Center;
+        Anchor: (Top: 8);
+
+        $C.@SecondaryTextButton #CancelButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          Text: %server.customUI.back;
+          FlexWeight: 1;
+        }
+      }
+    }
+  }
+}
+
+$C.@PageOverlay #BrowserPage {
+  LayoutMode: Middle;
+  Visible: false;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 700, Height: 700);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabEditorSettings.browser.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+      // Current path display
+      Label #CurrentPath {
+        Anchor: (Bottom: 8, Horizontal: 4);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #6a7d8f);
+        Text: "";
+      }
+
+      // Shared browser content (root selector + file list)
+      Group #BrowserContent {
+        FlexWeight: 1;
+        $Browser.@PrefabBrowserContent {}
+      }
+
+      // Selected items section
+      Group #SelectedSection {
+        Anchor: (Top: 12, Bottom: 8);
+        LayoutMode: Top;
+
+        Label {
+          Anchor: (Bottom: 4);
+          Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #96a9be);
+          Text: %server.customUI.prefabEditorSettings.browser.selectedItems;
+        }
+
+        @MultilineTextField #SelectedItems {
+          Anchor: (Height: 60);
+          PlaceholderText: %server.customUI.prefabEditorSettings.browser.noItemsSelected;
+        }
+      }
+
+      Group #BrowserButtons {
+        LayoutMode: Center;
+        Anchor: (Top: 8);
+
+        $C.@SecondaryTextButton #AddToListButton {
+          @Sounds = $Sounds.@SaveSettings;
+          @Anchor = (Right: 4);
+          Text: %server.customUI.prefabEditorSettings.browser.addToList;
+          FlexWeight: 1;
+        }
+
+        $C.@TextButton #ConfirmButton {
+          @Sounds = $Sounds.@SaveSettings;
+          @Anchor = (Left: 4, Right: 4);
+          Text: %server.customUI.prefabEditorSettings.browser.confirm;
+          FlexWeight: 1;
+        }
+
+        $C.@SecondaryTextButton #CancelButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Left: 4);
+          Text: %server.customUI.cancel;
+          FlexWeight: 1;
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

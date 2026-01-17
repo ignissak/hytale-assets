@@ -1,0 +1,39 @@
+{
+  "Parent": "Weapon_Crossbow_Damage_Standard_Projectile",
+  "DamageCalculator": {
+    "Class": "Charged",
+    "BaseDamage": {
+      "Physical": 20
+    }
+  },
+  "Effects": {
+    "CameraEffect": "Impact_Strong"
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 1
+    }
+  ],
+  "DamageEffects": {
+    "Knockback": {
+      "Force": 12.0,
+      "VelocityType": "Set"
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Stab_Charged"
+      }
+    ]
+  },
+  "Next": {
+    "Type": "ClearEntityEffect",
+    "Entity": "Target",
+    "EntityEffectId": "Crossbow_Combo_1",
+    "Next": {
+      "Type": "ClearEntityEffect",
+      "Entity": "Target",
+      "EntityEffectId": "Crossbow_Combo_2"
+    }
+  }
+}

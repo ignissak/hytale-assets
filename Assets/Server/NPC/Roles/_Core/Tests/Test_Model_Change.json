@@ -1,0 +1,136 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "StartState": "Phase-A",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Phase-A"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 2
+              },
+              "Actions": [
+                {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Random",
+                      "Actions": [
+                        {
+                          "Action": {
+                            "Type": "Appearance",
+                            "Appearance": "PlayerTestModel_G"
+                          },
+                          "Weight": 1
+                        },
+                        {
+                          "Action": {
+                            "Type": "Appearance",
+                            "Appearance": "Cat"
+                          },
+                          "Weight": 1
+                        },
+                        {
+                          "Action": {
+                            "Type": "Appearance",
+                            "Appearance": "Dog"
+                          },
+                          "Weight": 1
+                        }
+                      ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": "Phase-B"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Phase-B"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 2
+              },
+              "Actions": [
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 2 ],
+                  "Action": {
+                    "Type": "Sequence",
+                    "Actions": [
+                      {
+                        "Type": "Appearance",
+                        "Appearance": "PlayerTestModel_V"
+                      },
+                      {
+                        "Type": "State",
+                        "State": "Phase-A"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Model_Change.name"
+}

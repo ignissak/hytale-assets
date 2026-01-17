@@ -1,0 +1,36 @@
+{
+  "GridGenerator": {
+    "Density": 0.4,
+    "Scale": 0.1,
+    "Jitter": 0.8
+  },
+  "NoiseMask": {
+	"Type": "SUM",
+	"Noise": [
+		{
+			"Type": "MIN",
+			"Noise": [
+			  {
+			    "File": "Zones.Noise.Shared.Heightmaps.River"
+			  }
+			],
+			"Formula": "INVERTED_RIDGED_SQRT",
+    "Threshold": [0.85, 1.0]
+			},
+			{
+			"Seed": "Grasslands-River-Noise",
+			"Formula": "INVERTED",
+			"NoiseType": "DISTANCE",
+			"DistanceMode": "NATURAL",
+			"Distance2Mode": "DIV",
+			"Octaves": 4,
+			"Persistence": 0.4,
+			"Scale": 0.02,
+			"Normalize": [0.0, 0.005],
+    "Threshold": [0.0, 1.0]
+		}
+      ],
+      "Factors": [0.90, 0.40],
+    "Threshold": [0.0, 0.7]
+  }
+}

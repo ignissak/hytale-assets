@@ -1,0 +1,107 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Fruit.name"
+  },
+  "Quality": "Template",
+  "Icon": "Icons/ItemsGenerated/Plant_Fruit_Apple.png",
+  "Categories": [
+    "Blocks.Plants",
+    "Items.Foods"
+  ],
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "Opacity": "Semitransparent",
+    "CustomModel": "Resources/Ingredients/Apple.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Apple_Red.png"
+      }
+    ],
+    "HitboxType": "Plant_Medium",
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "TagId": "Family=Leaves"
+        }
+      ],
+      "Up": [
+        {
+          "TagId": "Family=Leaves"
+        }
+      ],
+      "CardinalDirections": [
+        {
+          "TagId": "Family=Leaves"
+        }
+      ]
+    },
+    "BlockParticleSetId": "Flower",
+    "BlockSoundSetId": "Plant",
+    "Group": "Plant",
+    "ParticleColor": "#518e2e",
+    "CustomModelScale": 0.5
+  },
+  "ItemLevel": 0,
+  "ResourceTypes": [
+    {
+      "Id": "Fruits"
+    }
+  ],
+  "Utility": {
+    "Compatible": true
+  },
+  "PlayerAnimationsId": "Item",
+  "IconProperties": {
+    "Scale": 0.85,
+    "Translation": [
+      0,
+      -10.8
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T1"
+  },
+  "$Comment": "[TMP] Tiered food buff system - FruitVeggie T1 (health regen + stamina)",
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T1"
+        },
+        "HealthRegen_TierCheck_T1",
+        "FruitVeggie_TierCheck_T1"
+      ]
+    }
+  },
+  "InteractionConfig": {
+    "Priorities": {
+      "Secondary": 1
+    }
+  },
+  "Consumable": true,
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Fruit"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage",
+  "Scale": 1.5
+}

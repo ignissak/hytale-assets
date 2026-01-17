@@ -1,0 +1,78 @@
+{
+  "Type": "Generic",
+  "Appearance": "Cat",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Eval",
+            "Expression": "blocked"
+          },
+          "BodyMotion": {
+            "Type": "Timer",
+            "Time": [ 2, 5 ],
+            "Motion": {
+              "Type": "Wander",
+              "MaxHeadingChange": 180
+            }
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Path",
+            "PathType": "WorldPath",
+            "Path": "p1,p2,p3"
+          },
+          "BodyMotion": {
+            "Type": "Path",
+            "Shape": "Points",
+            "Direction": "Random",
+            "StartAtNearestNode": false,
+            "PathWidth": 0,
+            "NodeWidth": 0.1,
+            "MinRelSpeed": 0.5,
+            "MaxRelSpeed": 1,
+            "MinWalkDistance": 2,
+            "MaxWalkDistance": 5,
+            "MinNodeDelay": 0,
+            "MaxNodeDelay": 0
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Path.name"
+}

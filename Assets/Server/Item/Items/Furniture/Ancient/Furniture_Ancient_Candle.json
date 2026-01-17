@@ -1,0 +1,147 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Ancient_Candle.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Ancient",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Ancient_Candle.png",
+  "IconProperties": {
+    "Rotation": [
+      25,
+      0,
+      0
+    ],
+    "Scale": 0.8,
+    "Translation": [
+      0.1,
+      -7.1
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Ancient/Lantern.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Ancient/Lantern_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Plant_Medium",
+    "Light": {
+      "Color": "#baa",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Looping": true,
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "Color": "#ffcd10",
+        "TargetNodeName": "Flame-Emitter",
+        "Scale": 0.75
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter2",
+        "Color": "#ffcd10",
+        "Scale": 0.65
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Candle_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+  },
+  "Model": "Blocks/Decorative_Sets/Tavern/Lantern.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Tavern/Lantern_Texture.png",
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Ancient"
+    ]
+  },
+  "Utility": {
+    "Usable": true
+  },
+  "Scale": 1.5,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

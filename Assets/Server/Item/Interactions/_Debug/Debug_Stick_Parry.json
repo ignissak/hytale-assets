@@ -1,0 +1,59 @@
+{
+  "Type": "Wielding",
+  "Effects": {
+    "ItemAnimationId": "Guard",
+    "ClearAnimationOnFinish": true
+  },
+  "RunTime": 5,
+  "FailOnDamage": true,
+  "DamageModifiers": {
+    "Physical": 0
+  },
+  "BlockedInteractions": {
+    "Interactions": [
+      {
+        "Type": "Parallel",
+        "Interactions": [
+          {
+            "Interactions": [
+              {
+                "Type": "Simple",
+                "RunTime": 0.1
+              },
+              {
+                "Type": "ApplyForce",
+                "WaitForGround": false,
+                "Forces": [
+                  {
+                    "Direction": {
+                      "X": 0,
+                      "Y": 0,
+                      "Z": -1
+                    },
+                    "Force": 10
+                  }
+                ],
+                "VelocityConfig": {
+                  "AirResistance": 0.93,
+                  "GroundResistance": 0.93
+                }
+              }
+            ]
+          },
+          {
+            "Interactions": [
+              "Stick_Attack"
+            ]
+          }
+        ]
+      },
+      {
+        "Type": "ResetCooldown",
+        "Cooldown": {
+          "Id": "Debug_Stick_Parry",
+          "Cooldown": 0.5
+        }
+      }
+    ]
+  }
+}

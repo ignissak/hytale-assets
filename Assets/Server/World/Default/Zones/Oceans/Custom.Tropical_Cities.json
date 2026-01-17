@@ -1,0 +1,372 @@
+{
+  "MapColor": "#fffff",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Seed": "Oceans-City",
+      "NoiseType": "CELL",
+      "Formula": "INVERTED",
+      "Jitter": 0.5,
+      "DistanceRange": 2.0,
+      "CellMode": "DISTANCE",
+      "Density": [0, 0.25],
+      "Scale": 0.003,
+      "Normalize": 0.6,
+			"Threshold": [0.5, 1]
+		},
+    "BiomeMask": ["Tropical_Barren", "Tropical_Tubes"],
+    "Priority": 1
+  },
+  "Covers": [
+    {
+      "Type": [
+        "Furniture_Ancient_Pot",
+        "Deco_Pot_Clay_Broken",
+        "Furniture_Crude_Chest_Small"
+      ],
+      "Weight": [0.6, 0.35, 0.05],
+      "Density": 0.35,
+      "NoiseMask": {
+      	"Seed": "Oceans-City-Buildings-Small",
+      	"NoiseType": "CELL",
+      	"Formula": "INVERTED",
+      	"CellMode": "DISTANCE",
+      	"Scale": 0.07,
+      	"Density": 0.1,
+      	"Jitter": 0.3,
+        "Threshold": [0.8, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Seaweed_Arid_Tall", "Plant_Seaweed_Arid_Yellow"],
+      "Weight": [0.5, 0.5],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Seed": "Oceans_Seaweed_Plants_Patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08,
+        "Threshold": [0.75, 1]
+      },
+      "Parent": ["Soil_Gravel_Sand"]
+    },
+    {
+      "Type": ["Plant_Seaweed_Arid_Short"],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Seed": "Oceans_Seaweed_Plants_Patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08,
+        "Threshold": [0.64, 0.75]
+      },
+      "Parent": ["Soil_Gravel_Sand"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": ["Monuments.Encounter.City_Oceans.Buildings_Capital.*"],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.City_Buildings_Capital"
+        }
+      },
+      {
+        "Weight": [30, 70],
+        "Prefab": [
+          "Monuments.Encounter.City_Oceans.Buildings_Small.Coral.*",
+          "Monuments.Encounter.City_Oceans.Buildings_Small.Normal.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.City_Buildings_Small"
+        }
+      },
+      {
+        "Weight": [30, 70],
+        "Prefab": [
+          "Monuments.Encounter.City_Oceans.Buildings_Medium.Coral.*",
+          "Monuments.Encounter.City_Oceans.Buildings_Medium.Normal.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.City_Buildings_Medium"
+        }
+      },
+      {
+        "Prefab": [
+          "Plants.Seaweed.Arid.Seaweed_Arid_010",
+          "Plants.Seaweed.Arid.Seaweed_Arid_011",
+          "Plants.Seaweed.Arid.Seaweed_Arid_012",
+          "Plants.Seaweed.Arid.Seaweed_Arid_013",
+          "Plants.Seaweed.Arid.Seaweed_Arid_014"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Seaweed_Tall"
+        }
+      },
+      {
+        "Prefab": [
+          "Plants.Seaweed.Arid.Seaweed_Arid_005",
+          "Plants.Seaweed.Arid.Seaweed_Arid_006",
+          "Plants.Seaweed.Arid.Seaweed_Arid_007",
+          "Plants.Seaweed.Arid.Seaweed_Arid_008",
+          "Plants.Seaweed.Arid.Seaweed_Arid_009"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Seaweed_Small"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Rock_Sandstone_Cobble"
+            ],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+        				  "Type": "SUM",
+        				  "Noise": [
+          					{
+          						"Seed": "Oceans-City-Roads-Large",
+          						"NoiseType": "DISTANCE",
+          						"Distance2Mode": "DIV",
+          						"Formula": "SQUARED",
+          						"Jitter": 0.75,
+          						"Normalize": 0.85,
+          						"Scale": 0.008
+          					},
+          					{
+          						"Seed": "Oceans-City",
+          						"NoiseType": "CELL",
+          						"Formula": "INVERTED",
+          						"Jitter": 0.5,
+                      "Density": [0, 0.25],
+          						"DistanceRange": 2.0,
+          						"CellMode": "DISTANCE",
+          						"Scale": 0.003,
+          						"Normalize": 0.6
+          					},
+          					{
+          						"Seed": "Oceans-City-Buildings-Small",
+          						"NoiseType": "CELL",
+          						"NoiseType": "DISTANCE",
+          						"Distance2Mode": "DIV",
+          						"DistanceRange": 3.0,
+          						"Offset": 7,
+          						"Scale": 0.035,
+          						"Normalize": 0.85,
+          						"Jitter": 0.2
+          					}
+        				  ],
+        				  "Factors": [0.25, 0.4, 0.25]
+                },
+          	    {
+        				  "Seed": "Oceans_Seaweed_Patches",
+        				  "NoiseType": "SIMPLEX",
+        				  "Octaves": 3,
+        				  "Persistence": 0.5,
+        				  "Scale": 0.04,
+        				  "Normalize": 0.4
+                }
+              ],
+      			  "Threshold": [0.6, 1]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Gravel_Sand:2"
+            ],
+            "NoiseMask": {
+              "Seed": "Oceans_Seaweed_Patches",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.5,
+    	        "Lacunarity": 2.5,
+              "Scale": 0.004,
+              "Threshold": [0, 0.28]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Pebbles",
+                "Repeat": [2, 8],
+                "RepeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "548888h9",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "NORMAL",
+                  "Octaves": 5,
+                  "Persistence": 0.8,
+                  "Scale": 0.002
+                },
+                {
+                  "Seed": "55444hh9",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "NORMAL",
+                  "Octaves": 5,
+                  "Persistence": 0.8,
+                  "Scale": 0.02
+                }
+              ],
+              "Factors": [0.7, 0.3],
+              "Threshold": [0, 0.38]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Gravel_Sand_White",
+                "Repeat": [2, 8],
+                "RepeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "5e899999h9",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "NORMAL",
+                  "Octaves": 5,
+                  "Persistence": 0.8,
+                  "Scale": 0.002
+                },
+                {
+                  "Seed": "5e22h9",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "NORMAL",
+                  "Octaves": 5,
+                  "Persistence": 0.8,
+                  "Scale": 0.02
+                }
+              ],
+              "Factors": [0.7, 0.3],
+              "Threshold": [0, 0.45]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Sand_White",
+                "Repeat": [3, 8],
+                "RepeatNoise": {
+                  "Seed": "groundlayer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Oceans.Layers.Static_Tropical"
+      },
+      {
+        "File": "Zones.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Ocean.Cave_Environments_Ocean"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [40, 70],
+    "Values": [1,0]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+  	  {
+    		"Seed": "3.14159",
+    		"NoiseType": "OLD_SIMPLEX",
+    		"FractalMode": "OLDSCHOOL",
+    		"Octaves": 2,
+    		"Persistence": 0.3,
+		    "Scale": 0.006
+      },
+      {
+        "Seed": "Grasslayer3",
+        "NoiseType": "SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "RIDGED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.0075
+      }
+    ],
+    "Factors": [0.65, 0.35]
+  },
+  "Tint": {
+    "Colors": ["0x3cb878"],
+    "Weights": [1],
+    "Noise": {
+      "Seed": "Biome1_Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone0_Warm"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

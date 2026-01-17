@@ -1,0 +1,142 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Jungle_Torch.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Jungle",
+  "Icon": "Icons/ItemsGenerated/Furniture_Jungle_Torch.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.41,
+    "Translation": [
+      0.7,
+      -23.9
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Block_Secondary"
+  },
+  "InteractionVars": {
+    "Torch_Swing_Left_Effect": "Torch_Swing_Left_Effect",
+    "Torch_Swing_Right_Effect": "Torch_Swing_Right_Effect",
+    "Torch_Swing_Left_Damage": "Torch_Swing_Left_Damage",
+    "Torch_Swing_Right_Damage": "Torch_Swing_Right_Damage"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Torch",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Jungle/Torch.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Jungle/Torch_Texture.png"
+      }
+    ],
+    "Light": {
+      "Radius": 0,
+      "Color": "#ba9"
+    },
+    "Flags": {},
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "HitboxType": "Beam",
+    "MovementSettings": {},
+    "Material": "Solid",
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_On_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Torch_Default_Loop",
+    "Looping": true,
+    "ParticleColor": "#bd9c60"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Scale": 1.5,
+  "Utility": {
+    "Usable": true
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Jungle"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

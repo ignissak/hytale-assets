@@ -1,0 +1,177 @@
+{
+  "Type": "Generic",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Sheep",
+      "Description": "Model to be used"
+    },
+    "Players": {
+      "Value": false,
+      "Description": "Include players"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Appearance": { "Compute": "Appearance" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Type": "Reference",
+      "Name": "Test1",
+      "Parameters": {
+        "Display": {
+          "Value": "Default parameter name",
+          "Description": "Display Name"
+        }
+      },
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": { "Compute": "Display" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Type": "Reference",
+      "Name": "Test2",
+      "Parameters": {
+        "PlayerRange": {
+          "Value": 10,
+          "Description": "The range to use"
+        }
+      },
+      "Instructions": [
+        {
+          "Sensor": {
+            "Enabled": { "Compute": "Players" },
+            "Type": "Player",
+            "Range": { "Compute": "PlayerRange" }
+          },
+          "Instructions": [
+            {
+              "Reference": "Test1",
+              "Local": true,
+              "Modify": {
+                "Display": "Global Scope var:     true"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Global Scope var:     false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Type": "Reference",
+      "Name": "Flee_Component",
+      "Parameters": {
+        "PlayerRange": {
+          "Value": 5,
+          "Description": "Range to use"
+        }
+      },
+      "Instructions": [
+        {
+          "Sensor": {
+            "Reference": "Component_Sensor_Sound",
+            "Modify": {
+              "HearingRange": { "Compute": "PlayerRange" }
+            }
+          },
+          "BodyMotion": {
+            "Type": "Flee"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Flee_Component",
+                  "Local": true,
+                  "Modify": {
+                    "PlayerRange": 5
+                  }
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Test2",
+                  "Local": true,
+                  "Modify": {
+                    "PlayerRange": 10
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 10
+                }
+              },
+              "Instructions": [
+                {
+                  "Reference": "Test1",
+                  "Local": true,
+                  "Modify": { }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Reference_Instruction.name"
+}

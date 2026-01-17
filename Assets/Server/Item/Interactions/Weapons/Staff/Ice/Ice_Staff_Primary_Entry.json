@@ -1,0 +1,76 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 1.51
+  },
+  "Failed": "Staff_Cast_Fail",
+  "Next": {
+    "Type": "ModifyInventory",
+    "ItemToRemove": {
+      "Id": "Ingredient_Ice_Essence",
+      "Quantity": 1
+    },
+    "AdjustHeldItemDurability": -0.5,
+    "Failed": "Staff_Cast_Fail",
+    "Next": {
+      "Type": "Parallel",
+      "Interactions": [
+        {
+          "Interactions": [
+            {
+              "Type": "Simple",
+              "RunTime": 0.3,
+              "Effects": {
+                "Particles": [
+                  {
+                    "PositionOffset": {
+                      "X": 1.5,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "RotationOffset": {
+                      "Pitch": 0,
+                      "Roll": 0,
+                      "Yaw": -90
+                    },
+                    "TargetNodeName": "Handle",
+                    "SystemId": "IceBall"
+                  }
+                ],
+                "ItemPlayerAnimationsId": "Stick",
+                "ItemAnimationId": "Cast_Magic",
+                "ClearAnimationOnFinish": true
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "Stamina": -1.5
+              }
+            },
+            {
+              "Type": "ChangeStat",
+              "Behaviour": "Set",
+              "StatModifiers": {
+                "StaminaRegenDelay": -2
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "Projectile",
+              "RunTime": 0.15,
+              "Config": "Projectile_Config_Ice_Bolt"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "StartState": "Idle",
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "Whale_Humpback",
+  "DefaultPlayerAttitude": "Neutral",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "BodyMotion": {
+                "Type": "Wander"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "$Interaction"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "TargetSlot": "LockedTarget",
+                    "Filters": [
+                      {
+                        "Type": "MovementState",
+                        "State": "Crouching"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": true
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 4
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 5,
+                "StopDistance": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "InteractionInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "CanInteract"
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "HasInteracted"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "State",
+                "State": "$Interaction"
+              }
+            },
+            "Actions": [
+              {
+                "Type": "LockOnInteractionTarget"
+              },
+              {
+                "Type": "State",
+                "State": "$Interaction"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "ReleaseTarget"
+              },
+              {
+                "Type": "State",
+                "State": "Idle"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": "server.npcRoles.Test_Interaction_Follow.name"
+}

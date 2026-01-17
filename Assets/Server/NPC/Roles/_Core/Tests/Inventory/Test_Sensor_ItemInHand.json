@@ -1,0 +1,71 @@
+{
+  "$Comment": "Text ItemInHand and Inventory entity filter",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 20,
+            "Filters": [
+              {
+                "Type": "ItemInHand",
+                "Items": [ "Item.*Sword*" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "PlayerTestModel_G"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "PlayerTestModel_V"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_ItemInHand.name"
+}

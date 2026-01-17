@@ -1,0 +1,197 @@
+{
+  "MapColor": "#1c86ed",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Seed": "testing",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 3,
+      "Persistence": 0.4,
+      "Scale": 0.02,
+      "Threshold": [0.62, 1]
+    },
+    "BiomeMask": ["Coral_Red", "Coral_Yellow", "Coral_Orange", "Shallow_Sand", "Grass_Yellow"]
+  },
+  "Covers": [
+    {
+      "Type": ["Rock_Quartzite"],
+      "Weight": [1],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "seacavernpatches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.3,
+        "Threshold": [0.5, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [100, 101],
+        "Values": [1, 0]
+      }
+    },
+    {
+      "Type": [{"Block":"Plant_Seaweed_Arid_Stack","Fluid":"Water_Source"}],
+      "Weight": [1],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Seed": "seacavernpatches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.3,
+        "Threshold": [0.5, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [99, 100],
+        "Values": [1, 0]
+      },
+      "Parent": "Soil_Gravel_Mossy"
+    },
+    {
+      "Type": ["Rock_Quartzite"],
+      "Weight": [1],
+      "Offset": 0,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "this_is_a_seed",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.09,
+        "Threshold": [0.79, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [105, 106],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Soil_Gravel_Sand_White"],
+      "Weight": [1],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "this_is_a_seed",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.09,
+        "Threshold": [0.55, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [105, 106],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Rock_Quartzite"],
+      "Weight": [1],
+      "Offset": -1,
+      "Density": 1,
+      "NoiseMask": {
+        "Seed": "this_is_a_seed",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.09,
+        "Threshold": [0.60, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [105, 106],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Gravel_Sand_White"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Plants.Seaweed.Arid.Seaweed_Arid_001",
+          "Plants.Seaweed.Arid.Seaweed_Arid_002",
+          "Plants.Seaweed.Arid.Seaweed_Arid_003"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Shallow_Ocean.PrefabPatterns.Shore_Seaweed"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Sand_White",
+                "Repeat": [6, 8],
+                "RepeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Zone2_Shallow_Ocean.Layers.Static"
+      },
+      {
+        "File": "Zones.Zone2_Shallow_Ocean.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [82, 97, 102, 107, 108, 110, 112, 114],
+    "Values": [1, 0.8, 0.65, 0.5, 0.55, 0.65, 0.35, 0]
+  },
+  "HeightmapNoise": {
+    "Seed": "testing",
+    "NoiseType": "OLD_SIMPLEX",
+    "FractalMode": "OLDSCHOOL",
+    "Octaves": 3,
+    "Persistence": 0.4,
+    "Scale": 0.02,
+    "Forest_Boulders": "NORMAL"
+  },
+  "Tint": {
+    "Colors": ["#f4df41"]
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Shores"]
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "Parameters": {
+    "ViewDistance": {
+      "Value": 80
+    },
+    "MultiDistance": {
+      "Value": true
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Enabled": { "Compute": "MultiDistance" },
+          "Continue": true,
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": false,
+            "GetNPCs": true,
+            "Range": { "Compute": "ViewDistance/4" },
+            "Prioritiser": {
+              "Type": "Attitude",
+              "AttitudesByPriority": [ "Revered" ]
+            }
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        },
+        {
+          "Enabled": { "Compute": "MultiDistance" },
+          "Continue": true,
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": false,
+            "GetNPCs": true,
+            "Range": { "Compute": "ViewDistance/2" },
+            "Prioritiser": {
+              "Type": "Attitude",
+              "AttitudesByPriority": [ "Revered" ]
+            }
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": false,
+            "GetNPCs": true,
+            "Range": { "Compute": "ViewDistance" },
+            "Prioritiser": {
+              "Type": "Attitude",
+              "AttitudesByPriority": [ "Revered" ]
+            }
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Benchmark_Sensor_80.name"
+}

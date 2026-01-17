@@ -1,0 +1,1097 @@
+{
+  "StartState": "Random",
+  "Type": "Abstract",
+  "Appearance": "Warrior_Quest",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Quest_Master.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Not",
+            "Sensor": {
+              "Type": "State",
+              "State": "Flee"
+            }
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Flee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Aggressive" ]
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "SlowDownDistance": 10,
+                "StopDistance": 15,
+                "RelativeSpeed": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Random",
+            "$Comment": "This NPC starts on a random Instruction state so that we can make the quests random"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 2.5,
+                    "StopDistance": 2,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ],
+                  "Action": {
+                    "$Comment": "This is where we decide what task to move onto,     this should be plug and play for new quests",
+                    "Type": "Random",
+                    "Actions": [
+                      {
+                        "Action": {
+                          "Type": "State",
+                          "State": "Quest_Plant_Fiber"
+                        },
+                        "Weight": 1
+                      },
+                      {
+                        "Action": {
+                          "Type": "State",
+                          "State": "Quest_Plant_Berries"
+                        },
+                        "Weight": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "$Comment": "Using Displaynames in place of whatever form of communication we choose to use for NPCs",
+                  "Type": "DisplayName",
+                  "DisplayName": "Hey! Over here!"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Flee",
+                    "SlowDownDistance": 10,
+                    "StopDistance": 15,
+                    "RelativeSpeed": 0.8
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Aggressive" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Flee",
+                    "SlowDownDistance": 10,
+                    "StopDistance": 15,
+                    "RelativeSpeed": 0.8
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 30, 30 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Random"
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "I don't give quests if you hurt me!"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Quest_Plant_Fiber"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      },
+                      {
+                        "Type": "ItemInHand",
+                        "Items": [ "Ingredient_Fibre" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 2.5,
+                    "StopDistance": 2,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  },
+                  {
+                    "Type": "ItemInHand",
+                    "Items": [ "Ingredient_Fibre" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "You got it! Here I have something in return.."
+                },
+                {
+                  "Type": "Inventory",
+                  "Once": true,
+                  "UseTarget": true,
+                  "Operation": "Remove",
+                  "Count": 1,
+                  "Item": "Ingredient_Fibre"
+                },
+                {
+                  "Type": "Inventory",
+                  "Once": true,
+                  "UseTarget": true,
+                  "Operation": "Add",
+                  "Count": 1,
+                  "Item": "Plant_Fruit_Apple"
+                },
+                {
+                  "Type": "State",
+                  "State": "Quest_Plant_Fiber_Timeout"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Could you get me some Plant Fiber?"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Quest_Plant_Fiber_Timeout"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 30, 30 ],
+                  "Action": {
+                    "$Comment": "Here we stop the quest repeating itself,     by removing itself from the possibly selection",
+                    "Type": "Random",
+                    "Actions": [
+                      {
+                        "Action": {
+                          "Type": "State",
+                          "State": "Quest_Plant_Berries"
+                        },
+                        "Weight": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Come back later and I might have more quests.."
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Quest_Plant_Berries"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      },
+                      {
+                        "Type": "ItemInHand",
+                        "Items": [ "Plant_Fruit_Berries_Red" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 2.5,
+                    "StopDistance": 2,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  },
+                  {
+                    "Type": "ItemInHand",
+                    "Items": [ "Plant_Fruit_Berries_Red" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "You got it! Here I have something in return.."
+                },
+                {
+                  "Type": "Inventory",
+                  "Once": true,
+                  "Operation": "Remove",
+                  "UseTarget": true,
+                  "Count": 1,
+                  "Item": "Plant_Fruit_Berries_Red"
+                },
+                {
+                  "Type": "Inventory",
+                  "Once": true,
+                  "UseTarget": true,
+                  "Operation": "Add",
+                  "Count": 2,
+                  "Item": "Plant_Fruit_Apple"
+                },
+                {
+                  "Type": "State",
+                  "State": "Quest_Plant_Berries_Timeout"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Could you get me some Red Berries?"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Quest_Plant_Berries_Timeout"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.25
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 3, 5 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 6,
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 30, 30 ],
+                  "Action": {
+                    "$Comment": "Here we stop the quest repeating itself,     by removing itself from the possibly selection",
+                    "Type": "Random",
+                    "Actions": [
+                      {
+                        "Action": {
+                          "Type": "State",
+                          "State": "Quest_Plant_Fiber"
+                        },
+                        "Weight": 1
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Come back later and I might have more quests.."
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 15
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

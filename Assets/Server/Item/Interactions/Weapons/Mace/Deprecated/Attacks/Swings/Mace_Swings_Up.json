@@ -1,0 +1,44 @@
+{
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Charging",
+        "DisplayProgress": false,
+        "Effects": {
+          "ItemAnimationId": "SwingUpLeftCharging",
+          "Particles": [
+            {
+              "PositionOffset": {
+                "X": 0.6,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Mace_Charging"
+            }
+          ]
+        },
+        "AllowIndefiniteHold": false,
+        "Next": {
+          "0": {
+            "Type": "Serial",
+            "Interactions": [
+              "Mace_Swing_Up_Left"
+            ]
+          },
+          "0.65": {
+            "$Comment": "Fully charged",
+            "Type": "Serial",
+            "Interactions": [
+              "Mace_Swing_Up_Left_Charged"
+            ]
+          }
+        }
+      }
+    ]
+  }

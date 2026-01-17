@@ -1,0 +1,50 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Replace",
+      "Var": "Swing_Left_Charged_StaminaCost",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          {
+            "Type": "ApplyEffect",
+            "EffectId": "Stamina_Broken_Immune"
+          },
+          {
+            "Type": "ChangeStat",
+            "StatModifiers": {
+              "Stamina": -2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Type": "Replace",
+      "Var": "Swing_Left_Charged_Selector",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          "Weapon_Mace_Primary_Swing_Left_Charged_Selector"
+        ]
+      }
+    },
+    {
+      "Type": "Replace",
+      "Var": "Swing_Left_Charged_StaminaRegenDelay",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          {
+            "Type": "ChangeStat",
+            "Behaviour": "Set",
+            "StatModifiers": {
+              "StaminaRegenDelay": -1.5
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

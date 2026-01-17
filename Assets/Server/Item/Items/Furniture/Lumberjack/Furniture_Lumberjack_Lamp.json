@@ -1,0 +1,129 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Lumberjack_Lamp.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Lumberjack",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Furniture_Crude_Candle",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Wood_Hardwood_Planks",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Lumberjack_Lamp.png",
+  "IconProperties": {
+    "Rotation": [
+      11,
+      45,
+      11
+    ],
+    "Scale": 0.335,
+    "Translation": [
+      1.8,
+      -39.5
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Lumberjack/Lamp.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Lumberjack/Lamp_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Lamp_Tall_Lumberjack",
+    "Light": {
+      "Color": "#edd",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#793e21",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff"
+  },
+  "Model": "Blocks/Decorative_Sets/Lumberjack/Lantern.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Lumberjack/Lantern_Texture.png",
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Lumberjack"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

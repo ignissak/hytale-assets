@@ -1,0 +1,96 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Intelligent.Idle.Motion.ConfigurableWander",
+  "Parameters": {
+    "WanderRadius": {
+      "Value": 15,
+      "Description": "Wander radius"
+    },
+    "MotionWander1Timer": {
+      "Value": [ 3, 6 ],
+      "Description": "How long the NPC will perform the Wander motion for, in seconds"
+    },
+    "MotionWander2Timer": {
+      "Value": [ 3, 6 ],
+      "Description": "How long the NPC will perform the WanderInCircle motion for, in seconds"
+    },
+    "MotionNothingTimer": {
+      "Value": [ 1, 2 ],
+      "Description": "How long the NPC will stop for, in seconds"
+    }
+  },
+  "Content": {
+    "Continue": true,
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Spread_Out",
+        "Modify": {
+          "Range": 2,
+          "RelativeSpeed": 0.45
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Leash",
+          "Range": { "Compute": "WanderRadius" }
+        },
+        "BodyMotion": {
+          "Type": "Seek",
+          "StopDistance": 1,
+          "SlowDownDistance": 2,
+          "RelativeSpeed": 0.45
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "BodyMotion": {
+          "Type": "Sequence",
+          "Motions": [
+            {
+              "Type": "Timer",
+              "Time": { "Compute": "MotionWander1Timer" },
+              "Motion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 1,
+                "RelativeSpeed": 0.45,
+                "MinWalkTime": 2,
+                "RelaxedMoveConstraints": false
+              }
+            },
+            {
+              "Type": "Sequence",
+              "Looped": true,
+              "Motions": [
+                {
+                  "Type": "Timer",
+                  "Time": { "Compute": "MotionWander2Timer" },
+                  "Motion": {
+                    "Type": "WanderInCircle",
+                    "Radius": { "Compute": "WanderRadius" },
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.45,
+                    "MinWalkTime": 1,
+                    "RelaxedMoveConstraints": false
+                  }
+                },
+                {
+                  "Type": "Timer",
+                  "Time": { "Compute": "MotionNothingTimer" },
+                  "Motion": {
+                    "Type": "Nothing"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

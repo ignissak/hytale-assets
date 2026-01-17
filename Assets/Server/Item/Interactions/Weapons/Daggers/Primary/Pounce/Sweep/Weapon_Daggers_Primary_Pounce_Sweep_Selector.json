@@ -1,0 +1,36 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.133,
+  "Selector": {
+    "Id": "Stab",
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.5,
+    "ExtendLeft": 2.25,
+    "ExtendRight": 2.25,
+    "EndDistance": 2.5
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Pounce_Sweep_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Primary_Pounce_Sweep_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.133
+  }
+}

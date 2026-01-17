@@ -1,0 +1,39 @@
+{
+  "Type": "SUM",
+  "Noise": [
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+            }
+          ],
+          "Formula": "INVERTED"
+        },
+        {
+          "Seed": "Grasslands-Plains-Heightmap",
+          "NoiseType": "SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.01,
+          "Amplitude": 40
+        }
+      ],
+      "Factors": [0.5, 0.5]
+    },
+    {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Shared.Heightmaps.River"
+        }
+      ]
+    }
+  ],
+  "Factors": [0.5, 0.5]
+}

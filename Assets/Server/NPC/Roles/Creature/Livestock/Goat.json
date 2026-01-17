@@ -1,0 +1,52 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Animal_Neutral",
+  "Modify": {
+    "Appearance": "Goat",
+    "FlockArray": [
+      "Goat",
+      "Goat_Kid"
+    ],
+    "LovedItems": [
+      "Plant_Fruit_Apple"
+    ],
+    "DropList": "Drop_Goat",
+    "MaxHealth": 81,
+    "ViewRange": 15,
+    "AttackWhenStartled": true,
+    "Attack": "Root_NPC_Attack_Melee",
+    "GreetAnimation": "Bleat",
+    "ChanceToTurnFriendly": 20,
+    "ChanceToTurnFriendlyWithAttractiveItem": 50,
+    "WeightGreet": 30,
+    "WeightFollowItem": 15,
+    "WeightFollow": 10,
+    "WeightIgnore": 30,
+    "ProduceItem": "Ingredient_Poop",
+    "IsMemory": true,
+    "PlayerDefaultAttitude": "Friendly",
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    },
+    "_InteractionVars": {
+      "Melee_Damage": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Damage",
+            "DamageCalculator": {
+              "BaseDamage": {
+                "Physical": 7
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Goat.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

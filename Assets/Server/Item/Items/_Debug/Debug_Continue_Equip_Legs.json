@@ -1,0 +1,141 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Continue_Equip_Legs.name"
+  },
+  "Quality": "Debug",
+  "ItemLevel": 45,
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Items.Armors"
+  ],
+  "Icon": "Icons/ItemsGenerated/Armor_Adamantite_Legs.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.415,
+    "Translation": [
+      -1.2,
+      -22.2
+    ]
+  },
+  "Model": "Items/Armors/Adamantite/Legs.blockymodel",
+  "Texture": "Items/Armors/Adamantite/Legs_Texture.png",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 4
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "TODO",
+        "Type": "Crafting",
+        "Categories": [
+          "Armor_Legs"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
+  },
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    },
+    "Equipped": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "ItemPlayerAnimationsId": {
+              "Parent": "Block",
+              "Animations": {
+                "Dance": {
+                  "FirstPerson": "Characters/Animations/Items/Dual_Handed/Block/Idle_FPS.blockyanim",
+                  "Speed": 0.5,
+                  "ThirdPerson": "Characters/Animations/Items/Dual_Handed/Block/Idle.blockyanim",
+                  "Looping": true
+                }
+              }
+            },
+            "ItemAnimationId": "Dance"
+          },
+          "RunTime": 5
+        }
+      ],
+      "Tags": {
+        "Allows": [
+          "Movement"
+        ]
+      }
+    }
+  },
+  "Armor": {
+    "ArmorSlot": "Legs",
+    "BaseDamageResistance": 17,
+    "CosmeticsToHide": [
+      "Pants",
+      "Shoes"
+    ],
+    "DamageResistance": {
+      "Physical": [
+        {
+          "Amount": 0,
+          "CalculationType": "Additive"
+        }
+      ],
+      "Projectile": [
+        {
+          "Amount": 0,
+          "CalculationType": "Additive"
+        }
+      ]
+    },
+    "StatModifiers": {
+      "Health": [
+        {
+          "Amount": 97,
+          "CalculationType": "Additive"
+        }
+      ],
+      "Mana": [
+        {
+          "Amount": 11,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "MaxDurability": 250,
+  "DurabilityLossOnHit": 1,
+  "Tags": {
+    "Type": [
+      "Armor"
+    ],
+    "Family": [
+      "Adamantite"
+    ]
+  }
+}

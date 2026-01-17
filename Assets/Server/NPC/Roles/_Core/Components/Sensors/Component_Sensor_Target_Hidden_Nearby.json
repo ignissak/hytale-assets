@@ -1,0 +1,95 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether or not this NPC detects by sound"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether or not this NPC detects by sight"
+    },
+    "CanSmell": {
+      "Value": false,
+      "Description": "Whether or not this NPC detects by scent"
+    },
+    "IntuitionRange": {
+      "Value": 20,
+      "Description": "The distance within which the NPC still 'knows' of the player's presence"
+    },
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the player can be heard"
+    },
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the player can be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The viewsector within which the player can be seen"
+    },
+    "SmellRange": {
+      "Value": 10,
+      "Description": "The range from which the player can be smelled"
+    }
+  },
+  "Content": {
+    "Type": "And",
+    "Sensors": [
+      {
+        "Type": "Target",
+        "Range": { "Compute": "IntuitionRange" },
+        "AutoUnlockTarget": true
+      },
+      {
+        "Type": "Not",
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Enabled": { "Compute": "CanSee" },
+              "Type": "Mob",
+              "Range": { "Compute": "ViewRange" },
+              "LockOnTarget": true,
+              "GetNPCs": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                },
+                {
+                  "Type": "ViewSector",
+                  "ViewSector": { "Compute": "ViewSector" }
+                }
+              ],
+              "Prioritiser": {
+                "Type": "Attitude",
+                "AttitudesByPriority": [ "Hostile" ]
+              },
+              "GetPlayers": true
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "Enabled": { "Compute": "CanHear" },
+                "Attitudes": [ "Hostile" ],
+                "GetNPCs": true
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Scent_By_Attitude",
+              "Modify": {
+                "Enabled": { "Compute": "CanSmell" },
+                "SmellRange": { "Compute": "SmellRange" },
+                "Attitudes": [ "Hostile" ],
+                "GetNPCs": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

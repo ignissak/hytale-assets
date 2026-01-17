@@ -1,0 +1,688 @@
+{
+	"$NodeId":	"Root-9245c0b5-1d01-44e5-888c-ab976ae089fd",
+	"Operations":	[{
+			"$NodeId":	"EchoOnce-993fbe3a-bc8e-446e-9850-a3fafae0cfab",
+			"Id":	"echoonce",
+			"Message":	"-------------------------------------\n  PATH BRUSH\n-------------------------------------\nThis brush gives you the ability to create paths on the ground.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the path.\n\nLeft Click: Edits the blocks on the path, around a raised area, to add slabs to make a smoother path.\n\nNOTE: This brush currently does not clear out blocks that already exist. If you are making a path through lots of plants, it will not remove the plants in the way of the path.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nFoliage Density = How dense the materials that make up the \"Blocks to appear on and around Path\" should be.\n\nFoliage Width = The width of the \"Blocks to appear on and around Path\" should be around the main path on the ground. This increases how far away foliage appears on the path, the bigger the number, the farther away it will appear.\n\nBlocks to appear on and around Path = The decoration blocks to add on and around the path.\n\nGround Density = How dense the materials that make up the \"Blocks for Path\" blocks should be.\n\nBlocks for Path = Materials that make up the main path on the ground.\n\nHalf-Blocks on Path = Materials that can be placed with Left-Click on raised areas to make the path smoother. Half-Blocks are recommended to create the smooth look/effect.\n\nOutline Density = How dense the materials that make up the \"Blocks to outline the Path\" should be.\n\nBlocks to ouline the Path = Materials that are placed around the border of the \"Blocks for Path\". This puts materials are the main path to act as a border\"\n\n-------------------------------------------\n  PATH BRUSH - Read the Above ^\n-------------------------------------------"
+		}, {
+			"$NodeId":	"Shape-6f447696-08e4-4b7e-92a7-aa16f0dad477",
+			"Id":	"shape",
+			"Shape":	"Cylinder"
+		}, {
+			"$NodeId":	"JumpIfClickType-7269c460-9016-4dd3-84bc-057e59b8e797",
+			"Id":	"jumpifclicktype",
+			"StoredIndexName":	"halfblocks",
+			"ClickType":	"Left"
+		}, {
+			"$NodeId":	"HistoryMask-89c6ca92-d528-409e-a90c-01c7a785658a",
+			"Id":	"historymask",
+			"HistoryMask":	"Not"
+		}, {
+			"$NodeId":	"Mask-f806bb73-3f87-441c-8f20-9b798847cc27",
+			"Id":	"mask",
+			"Mask":	"!Empty"
+		}, {
+			"$NodeId":	"AppendMask-a8613312-0555-4d56-9bd6-664b2d0fb5de",
+			"Id":	"appendmask",
+			"AppendMask":	"!Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-2e5a0ac5-5633-4d1c-a298-d7c359fba240",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathFoliageGroundBlocks",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-9b7b9ad8-6a2b-425b-8201-120a5c586af9",
+			"Id":	"loadmaterial",
+			"ArgName":	"PathGroundBlocks"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-2e0ddb90-521c-4aa9-bb9e-1da88b104714",
+			"Id":	"loadint",
+			"ArgName":	"PathGroundBlockDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-e48d29d0-4bd2-40ca-b4df-47e2baf936ae",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-a83804d5-2c13-496f-a026-7a9532ae6568",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	2,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-20259582-d2bc-45a3-b3d9-b7b3751cdba6",
+			"Id":	"loadint",
+			"ArgName":	"PathGroundBlockDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-d9d69704-fb46-44c9-8477-381763dc62c5",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-4515d047-b9ad-42b5-ae60-6bd67f79e628",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-df31212e-b68e-4aac-bf6b-195ec4174a8e",
+			"Id":	"mask",
+			"Mask":	"!Empty"
+		}, {
+			"$NodeId":	"AppendMask-0d3a291b-246b-4ff8-92e7-345f1364b7e8",
+			"Id":	"appendmask",
+			"AppendMask":	"!Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-38a3f4ee-497e-439f-9b74-3b120292633d",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundBlocks",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-bf221f0f-b13b-4b7f-8630-1ff143e9f69f",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathFoliageGroundBlocks",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-f35d0898-773b-4487-9832-c246285a7111",
+			"Id":	"loadint",
+			"ArgName":	"PathOutlineGroundBlockWidth",
+			"TargetField":	"Width",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadMaterial-0c0d3597-a696-4d1b-a4be-f2eced83b6b1",
+			"Id":	"loadmaterial",
+			"ArgName":	"PathOutlineGroundBlocks"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-2b50911c-494f-4176-94d5-f4de88dd4e06",
+			"Id":	"loadint",
+			"ArgName":	"PathGroundOutlineBlockDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-f7ff1f05-de82-49e6-89ec-24f733ef3fbe",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-1fd6e79e-284e-4d6e-b664-dc206a014ea5",
+			"Id":	"loadint",
+			"ArgName":	"PathOutlineGroundBlockWidth",
+			"TargetField":	"Width",
+			"Relative":	true,
+			"Negate":	true
+		}, {
+			"$NodeId":	"ClearOperationMask-7025f875-26a7-4571-be4e-a56cfc647a31",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"HistoryMask-c6b919cf-b371-4c5d-a9a5-e2564636ee76",
+			"Id":	"historymask",
+			"HistoryMask":	"None"
+		}, {
+			"$NodeId":	"Mask-fe6a483c-02c9-4953-9388-61f071b7762d",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-40a387d9-f669-428e-ba51-bbcdb5a16768",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathOutlineGroundBlocks",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMask-57a44865-6ce3-4188-873e-97acf1057a62",
+			"Id":	"appendmask",
+			"AppendMask":	"!Filter_PlantAndTrees"
+		}, {
+			"$NodeId":	"LoadMaterial-1d43db89-9d46-43ed-b2d8-eb13b6710a1a",
+			"Id":	"loadmaterial",
+			"ArgName":	"PathFoliageGroundBlocks"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-41cf6343-3ccf-4ab9-bda1-cab934670794",
+			"Id":	"loadint",
+			"ArgName":	"PathFoliageBlockDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-7998aa35-5a84-4d62-b9ce-b7cc241710a6",
+			"Id":	"loadint",
+			"ArgName":	"PathFoliageBlockWidth",
+			"TargetField":	"Width",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-4a91ba92-04a0-438d-a83b-92375fc02319",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Exit-639317ca-79df-45f9-baad-fc5f8310d7ed",
+			"Id":	"exit"
+		}, {
+			"$NodeId":	"SaveIndex-d3d0f850-680a-4272-bb33-51047890dc29",
+			"Id":	"saveindex",
+			"StoredIndexName":	"halfblocks"
+		}, {
+			"$NodeId":	"Dimensions-5843ab6f-7302-4ada-b2d4-b2abb8735bfa",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	3,
+				"Relative":	false
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadMaterial-5b09b1a8-ba00-4eeb-b6a2-5588e745e4f9",
+			"Id":	"loadmaterial",
+			"ArgName":	"PathGroundHalfBlocks"
+		}, {
+			"$NodeId":	"SetDensity-642c9f8b-152c-4ed0-9909-df55f448f316",
+			"Id":	"density",
+			"Density":	100
+		}, {
+			"$NodeId":	"Mask-0fc92b71-23aa-41f7-8f68-302ce68033c1",
+			"Id":	"mask",
+			"Mask":	"Empty,!Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-4bb3af3b-bf8c-45e6-a172-a31dd0d0a2a7",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundBlocks",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-f41666a1-7fec-44ed-ad8e-431923fba5b4",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-b08e58d2-8ed4-42f4-b7c4-097876ffe254",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-a95ade73-70f1-46d9-8ef9-9e97beba76ce",
+			"Id":	"mask",
+			"Mask":	"Empty,!Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-0cf17df4-1f3c-4a3c-9314-c9f39df2ac5b",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-751aacd4-3a34-4066-aa3d-5722cf2a3019",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-d3795f81-fd30-409c-adb3-b640f4c81b94",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-8ff8484c-547b-4da4-b645-368baf6d1643",
+			"Id":	"mask",
+			"Mask":	"Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"Set-044342ba-b609-4f91-8452-85ba5401a956",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-5d8c83d9-10f7-462f-9a24-26e1409a83ec",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Material-b7d405ad-4409-4281-b019-1a26db4633f2",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-212aedb9-e336-4675-9ba0-74cb841b0cee",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-c0a8558d-e6ac-47b1-b786-843860620cf5",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-c69f4efc-0de3-4091-b047-4affe84158e7",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-3b67c514-da8d-46f7-a406-cbce33747ce6",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"AppendMask-a85dce1a-e33a-457a-a53c-d20fa18e46cd",
+			"Id":	"appendmask",
+			"AppendMask":	"~Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-d3625e3f-2f56-4c8d-8194-f36573cb4768",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-d2cfaba3-dee4-4378-aef6-dc472e6a8c01",
+			"Id":	"set"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-9245c0b5-1d01-44e5-888c-ab976ae089fd":	{
+				"$Position":	{
+					"$x":	-1000,
+					"$y":	-5193
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"EchoOnce-993fbe3a-bc8e-446e-9850-a3fafae0cfab":	{
+				"$Position":	{
+					"$x":	493,
+					"$y":	-10319
+				}
+			},
+			"Shape-6f447696-08e4-4b7e-92a7-aa16f0dad477":	{
+				"$Position":	{
+					"$x":	493,
+					"$y":	-10043
+				}
+			},
+			"JumpIfClickType-7269c460-9016-4dd3-84bc-057e59b8e797":	{
+				"$Position":	{
+					"$x":	483,
+					"$y":	-9853
+				}
+			},
+			"HistoryMask-89c6ca92-d528-409e-a90c-01c7a785658a":	{
+				"$Position":	{
+					"$x":	425,
+					"$y":	-8888
+				}
+			},
+			"Mask-f806bb73-3f87-441c-8f20-9b798847cc27":	{
+				"$Position":	{
+					"$x":	434,
+					"$y":	-8508
+				}
+			},
+			"AppendMask-a8613312-0555-4d56-9bd6-664b2d0fb5de":	{
+				"$Position":	{
+					"$x":	429,
+					"$y":	-8357
+				}
+			},
+			"AppendMaskFromToolArg-2e5a0ac5-5633-4d1c-a298-d7c359fba240":	{
+				"$Position":	{
+					"$x":	432,
+					"$y":	-8210
+				}
+			},
+			"LoadMaterial-9b7b9ad8-6a2b-425b-8201-120a5c586af9":	{
+				"$Position":	{
+					"$x":	435,
+					"$y":	-7932
+				}
+			},
+			"LoadIntFromToolArg-2e0ddb90-521c-4aa9-bb9e-1da88b104714":	{
+				"$Position":	{
+					"$x":	435,
+					"$y":	-7775
+				}
+			},
+			"Set-e48d29d0-4bd2-40ca-b4df-47e2baf936ae":	{
+				"$Position":	{
+					"$x":	431,
+					"$y":	-7550
+				}
+			},
+			"Dimensions-a83804d5-2c13-496f-a026-7a9532ae6568":	{
+				"$Position":	{
+					"$x":	430,
+					"$y":	-7381
+				}
+			},
+			"LoadIntFromToolArg-20259582-d2bc-45a3-b3d9-b7b3751cdba6":	{
+				"$Position":	{
+					"$x":	434,
+					"$y":	-6958
+				}
+			},
+			"Set-d9d69704-fb46-44c9-8477-381763dc62c5":	{
+				"$Position":	{
+					"$x":	439,
+					"$y":	-6715
+				}
+			},
+			"ClearOperationMask-4515d047-b9ad-42b5-ae60-6bd67f79e628":	{
+				"$Position":	{
+					"$x":	420,
+					"$y":	-6245
+				}
+			},
+			"Mask-df31212e-b68e-4aac-bf6b-195ec4174a8e":	{
+				"$Position":	{
+					"$x":	419,
+					"$y":	-6089
+				}
+			},
+			"AppendMask-0d3a291b-246b-4ff8-92e7-345f1364b7e8":	{
+				"$Position":	{
+					"$x":	419,
+					"$y":	-5937
+				}
+			},
+			"AppendMaskFromToolArg-38a3f4ee-497e-439f-9b74-3b120292633d":	{
+				"$Position":	{
+					"$x":	418,
+					"$y":	-5762
+				}
+			},
+			"AppendMaskFromToolArg-bf221f0f-b13b-4b7f-8630-1ff143e9f69f":	{
+				"$Position":	{
+					"$x":	412,
+					"$y":	-5478
+				}
+			},
+			"LoadMaterial-0c0d3597-a696-4d1b-a4be-f2eced83b6b1":	{
+				"$Position":	{
+					"$x":	405,
+					"$y":	-4869
+				}
+			},
+			"LoadIntFromToolArg-2b50911c-494f-4176-94d5-f4de88dd4e06":	{
+				"$Position":	{
+					"$x":	405,
+					"$y":	-4745
+				}
+			},
+			"Set-f7ff1f05-de82-49e6-89ec-24f733ef3fbe":	{
+				"$Position":	{
+					"$x":	404,
+					"$y":	-4533
+				}
+			},
+			"ClearOperationMask-7025f875-26a7-4571-be4e-a56cfc647a31":	{
+				"$Position":	{
+					"$x":	425,
+					"$y":	-3651
+				}
+			},
+			"HistoryMask-c6b919cf-b371-4c5d-a9a5-e2564636ee76":	{
+				"$Position":	{
+					"$x":	422,
+					"$y":	-3501
+				}
+			},
+			"Mask-fe6a483c-02c9-4953-9388-61f071b7762d":	{
+				"$Position":	{
+					"$x":	424,
+					"$y":	-3343
+				}
+			},
+			"AppendMaskFromToolArg-40a387d9-f669-428e-ba51-bbcdb5a16768":	{
+				"$Position":	{
+					"$x":	425,
+					"$y":	-3173
+				}
+			},
+			"AppendMask-57a44865-6ce3-4188-873e-97acf1057a62":	{
+				"$Position":	{
+					"$x":	414,
+					"$y":	-2883
+				}
+			},
+			"LoadMaterial-1d43db89-9d46-43ed-b2d8-eb13b6710a1a":	{
+				"$Position":	{
+					"$x":	416,
+					"$y":	-2709
+				}
+			},
+			"LoadIntFromToolArg-41cf6343-3ccf-4ab9-bda1-cab934670794":	{
+				"$Position":	{
+					"$x":	421,
+					"$y":	-2538
+				}
+			},
+			"LoadIntFromToolArg-7998aa35-5a84-4d62-b9ce-b7cc241710a6":	{
+				"$Position":	{
+					"$x":	424,
+					"$y":	-2299
+				}
+			},
+			"Set-4a91ba92-04a0-438d-a83b-92375fc02319":	{
+				"$Position":	{
+					"$x":	421,
+					"$y":	-2055
+				}
+			},
+			"Exit-639317ca-79df-45f9-baad-fc5f8310d7ed":	{
+				"$Position":	{
+					"$x":	386,
+					"$y":	-1762
+				}
+			},
+			"SaveIndex-d3d0f850-680a-4272-bb33-51047890dc29":	{
+				"$Position":	{
+					"$x":	371,
+					"$y":	-1053
+				}
+			},
+			"Dimensions-5843ab6f-7302-4ada-b2d4-b2abb8735bfa":	{
+				"$Position":	{
+					"$x":	361,
+					"$y":	-842
+				}
+			},
+			"LoadMaterial-5b09b1a8-ba00-4eeb-b6a2-5588e745e4f9":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	-427
+				}
+			},
+			"SetDensity-642c9f8b-152c-4ed0-9909-df55f448f316":	{
+				"$Position":	{
+					"$x":	350,
+					"$y":	-268
+				}
+			},
+			"Mask-0fc92b71-23aa-41f7-8f68-302ce68033c1":	{
+				"$Position":	{
+					"$x":	344,
+					"$y":	-122
+				}
+			},
+			"AppendMaskFromToolArg-4bb3af3b-bf8c-45e6-a172-a31dd0d0a2a7":	{
+				"$Position":	{
+					"$x":	345,
+					"$y":	33
+				}
+			},
+			"Set-f41666a1-7fec-44ed-ad8e-431923fba5b4":	{
+				"$Position":	{
+					"$x":	349,
+					"$y":	312
+				}
+			},
+			"ClearOperationMask-b08e58d2-8ed4-42f4-b7c4-097876ffe254":	{
+				"$Position":	{
+					"$x":	349,
+					"$y":	476
+				}
+			},
+			"Mask-a95ade73-70f1-46d9-8ef9-9e97beba76ce":	{
+				"$Position":	{
+					"$x":	343,
+					"$y":	631
+				}
+			},
+			"AppendMaskFromToolArg-0cf17df4-1f3c-4a3c-9314-c9f39df2ac5b":	{
+				"$Position":	{
+					"$x":	361,
+					"$y":	779
+				}
+			},
+			"Set-751aacd4-3a34-4066-aa3d-5722cf2a3019":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	1035
+				}
+			},
+			"ClearOperationMask-d3795f81-fd30-409c-adb3-b640f4c81b94":	{
+				"$Position":	{
+					"$x":	340,
+					"$y":	1178
+				}
+			},
+			"Mask-8ff8484c-547b-4da4-b645-368baf6d1643":	{
+				"$Position":	{
+					"$x":	337,
+					"$y":	1361
+				}
+			},
+			"Set-044342ba-b609-4f91-8452-85ba5401a956":	{
+				"$Position":	{
+					"$x":	340,
+					"$y":	1517
+				}
+			},
+			"ClearOperationMask-5d8c83d9-10f7-462f-9a24-26e1409a83ec":	{
+				"$Position":	{
+					"$x":	372,
+					"$y":	1785
+				}
+			},
+			"Material-b7d405ad-4409-4281-b019-1a26db4633f2":	{
+				"$Position":	{
+					"$x":	356,
+					"$y":	1934
+				}
+			},
+			"AppendMaskFromToolArg-212aedb9-e336-4675-9ba0-74cb841b0cee":	{
+				"$Position":	{
+					"$x":	346,
+					"$y":	2102
+				}
+			},
+			"AppendMaskFromToolArg-c0a8558d-e6ac-47b1-b786-843860620cf5":	{
+				"$Position":	{
+					"$x":	353,
+					"$y":	2342
+				}
+			},
+			"Set-c69f4efc-0de3-4091-b047-4affe84158e7":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	2598
+				}
+			},
+			"ClearOperationMask-3b67c514-da8d-46f7-a406-cbce33747ce6":	{
+				"$Position":	{
+					"$x":	350,
+					"$y":	2753
+				}
+			},
+			"AppendMask-a85dce1a-e33a-457a-a53c-d20fa18e46cd":	{
+				"$Position":	{
+					"$x":	338,
+					"$y":	2904
+				}
+			},
+			"AppendMaskFromToolArg-d3625e3f-2f56-4c8d-8194-f36573cb4768":	{
+				"$Position":	{
+					"$x":	326,
+					"$y":	3049
+				}
+			},
+			"Set-d2cfaba3-dee4-4378-aef6-dc472e6a8c01":	{
+				"$Position":	{
+					"$x":	332,
+					"$y":	3322
+				}
+			},
+			"LoadIntFromToolArg-f35d0898-773b-4487-9832-c246285a7111":	{
+				"$Position":	{
+					"$x":	416,
+					"$y":	-5123
+				}
+			},
+			"LoadIntFromToolArg-1fd6e79e-284e-4d6e-b664-dc206a014ea5":	{
+				"$Position":	{
+					"$x":	403,
+					"$y":	-4398
+				}
+			}
+		},
+		"$FloatingNodes":	[],
+		"$Links":	{
+		},
+		"$Groups":	[{
+				"$Position":	{
+					"$x":	352.25,
+					"$y":	-8597.25
+				},
+				"$width":	971.625,
+				"$height":	2083.0625,
+				"$name":	"Coloring - Main Pathway"
+			}, {
+				"$Position":	{
+					"$x":	359.3125,
+					"$y":	-6329
+				},
+				"$width":	949.4375,
+				"$height":	1878.4375,
+				"$name":	"Coloring - Pathway Outline"
+			}, {
+				"$Position":	{
+					"$x":	338.0625,
+					"$y":	-3769.125
+				},
+				"$width":	1024.0625,
+				"$height":	1900.5,
+				"$name":	"Foliage - Set Blocks above the Pathway Outline"
+			}, {
+				"$Position":	{
+					"$x":	273.4375,
+					"$y":	-9068.6875
+				},
+				"$width":	1177.75,
+				"$height":	7529,
+				"$name":	"Right Click"
+			}, {
+				"$Position":	{
+					"$x":	271.125,
+					"$y":	-1148.3125
+				},
+				"$width":	1221.5625,
+				"$height":	3024.9375,
+				"$name":	"Left Click"
+			}],
+		"$Comments":	[{
+				"$Position":	{
+					"$x":	1695,
+					"$y":	-10337.6875
+				},
+				"$width":	970.1875,
+				"$height":	1405.25,
+				"$name":	"Comment",
+				"$text":	"-------------------------------------\n  PATH BRUSH\n-------------------------------------\nThis brush gives you the ability to create paths on the ground.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the path.\n\nLeft Click: Edits the blocks on the path, around a raised area, to add slabs to make a smoother path.\n\nNOTE: This brush currently does not clear out blocks that already exist. If you are making a path through lots of plants, it will not remove the plants in the way of the path.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nFoliage Density = How dense the materials that make up the \"Blocks to appear on and around Path\" should be.\n\nFoliage Width = The width of the \"Blocks to appear on and around Path\" should be around the main path on the ground. This increases how far away foliage appears on the path, the bigger the number, the farther away it will appear.\n\nBlocks to appear on and around Path = The decoration blocks to add on and around the path.\n\nGround Density = How dense the materials that make up the \"Blocks for Path\" blocks should be.\n\nBlocks for Path = Materials that make up the main path on the ground.\n\nHalf-Blocks on Path = Materials that can be placed with Left-Click on raised areas to make the path smoother. Half-Blocks are recommended to create the smooth look/effect.\n\nOutline Density = How dense the materials that make up the \"Blocks to outline the Path\" should be.\n\nBlocks to ouline the Path = Materials that are placed around the border of the \"Blocks for Path\". This puts materials are the main path to act as a border\"\n\n-------------------------------------------\n  PATH BRUSH - Read the Above ^\n-------------------------------------------",
+				"$fontSize":	21
+			}, {
+				"$Position":	{
+					"$x":	2677.375,
+					"$y":	-10327.8125
+				},
+				"$width":	868.4375,
+				"$height":	1388.375,
+				"$name":	"Comment",
+				"$text":	"Path Brush Documentation:\n\nThe comment to the left of this comment block is the documentation that will be sent in the chat when the player first tries to use the brush. The documentation in this comment block will detail about the brush itself in the node editor.\n\nTODO:\n\nThe brush works well for creating newer paths, but if there is a lot of foliage or materials in the way of the path, it can be hard to see the path when created because the brush doesn't remove obstalces in the way of the path. It may be nice to remove any plants or the like on the path so that it isn't too dense and hard to see.\n\nThe brush places half-blocks with left-click to smooth the movement on the path out. However, the brush currently loads the materials to replace with the half-blocks from the user input - and the node that does this currently does not have a way to list blocks to replace as inclusive. It currently does this:\n\nBlock1, Block2, Block3... BlockN\n\nbut should do this:\n\nBlock1 | Block2 | Block 3 | ... Block N\n\nHaving that functionality would help create smoother placement of half-blocks and help place them over foliage blocks.\n",
+				"$fontSize":	25
+			}],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

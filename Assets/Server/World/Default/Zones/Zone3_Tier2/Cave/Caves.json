@@ -1,0 +1,354 @@
+{
+  "Types": [
+    {
+      "Name": "Snowlands_Shallow",
+      "BlockMask": {
+        "Default": [
+          "!Rock_Bedrock",
+          "!Rock_Sandstone_Red",
+          "!Rock_Sandstone",
+          "!Rock_Sandstone_White",
+          "!Soil_Clay",
+          "!Soil_Dirt_Dry",
+          "!Soil_Grass_Dry",
+          "!Soil_Sand",
+          "*"
+        ]
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+          }
+        ],
+        "Density": [0, 1],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Shallow.Entry",
+      "EntryPoints": {
+        "Seed": "Snowlands-Caves-Density",
+        "Density": 1,
+        "Scale": 0.018, //0.02
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [92, 102],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 45
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone3_Caves_Forests"
+    },
+    {
+      "Name": "Snowlands_Deep",
+      "BlockMask": {
+        "Default": [
+          "!Rock_Bedrock",
+          "!Rock_Sandstone_Red",
+          "!Rock_Sandstone",
+          "!Rock_Sandstone_White",
+          "!Soil_Clay",
+          "!Soil_Dirt_Dry",
+          "!Soil_Grass_Dry",
+          "!Soil_Sand",
+          "*"
+        ]
+      },
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+          }
+        ],
+        "Density": [0, 1],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Deep.Entry",
+      "EntryPoints": {
+        "Seed": "Snowlands-Caves-Density-1",
+        "Density": 1,
+        "Scale": 0.015, //0.02
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [68, 78],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 45
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone3_Caves_Forests"
+    },
+    {
+      "Name": "Snowlands_Volcanic2",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "*"]
+      },
+      "Depth": 200,
+      "Entry": "Volcanic2.Entry",
+      "EntryPoints": {
+        "Seed": "Snowlands-Caves-Density-2",
+        "Density": [0.6, 1],
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [46],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 45
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone3_Caves_Volcanic_T2"
+    },
+    {
+      "Name": "Snowlands_Volcanic",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "*"]
+      },
+      "Depth": 200,
+      "Entry": "Volcanic.Entry",
+      "EntryPoints": {
+        "Seed": "Snowlands-Caves-Density-2",
+        "Density": [0, 0.6],
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [31, 35],
+      "FluidLevel": {
+        "Fluid": "Water_Source",
+        "Height": 45
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone3_Caves_Volcanic_T2"
+    },
+    {
+      "Name": "Snowlands_Dungeons",
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.River"
+              }
+            ],
+            "Formula": "RIDGED",
+            "Normalize": [0.09, 0.1]
+          },
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.Base"
+              }
+            ],
+            "Formula": "INVERTED",
+            "Normalize": [0.399, 0.4]
+          }
+        ],
+        "Threshold": [0.9, 1]
+      },
+      "Depth": 80,
+      "Entry": "Dungeons.Entry",
+      "EntryPoints": {
+        "Density": [0.175, 0.25],
+        "Seed": "Pattern_Monuments",
+        "Scale": 0.004,
+        "Jitter": 0.75
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaskDensity": 0.8,
+      "Pitch": 0,
+      "Environment": "Env_Zone3_Dungeons"
+    },
+    {
+      "Name": "Env_Zone3_Mineshafts",
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.River"
+              }
+            ],
+            "Formula": "RIDGED",
+            "Normalize": [0.09, 0.1]
+          },
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.Base"
+              }
+            ],
+            "Formula": "INVERTED",
+            "Normalize": [0.399, 0.4]
+          }
+        ],
+        "Threshold": [0.9, 1]
+      },
+      "Depth": 60,
+      "Entry": "Mineshaft.Entry",
+      "EntryPoints": {
+        "Seed": "Pattern_Monuments",
+        "Density": [0.125, 0.1875],
+        "Scale": 0.004,
+        "Jitter": 0.75
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      /* "HeightThreshold": {
+        "Positions": [115, 116, 145, 146],
+        "Values": [0, 1, 1, 0]
+      },*/
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaskDensity": 0.8,
+      "Pitch": 0,
+      "Environment": "Env_Zone3_Mineshafts"
+    },
+    {
+      "Name": "Snowlands_Klops",
+      "NoiseMask": {
+        "Type": "DISTORTED",
+        "Noise": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Grasslands-River-Noise",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Formula": "INVERTED_RIDGED",
+              "Octaves": 1,
+              "Persistence": 0.1,
+              "Scale": 0.004
+            },
+            {
+              "Seed": "Grasslands-Base",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Formula": "INVERTED",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.002,
+              "Normalize": [0.45, 0.6]
+            },
+            {
+              "Seed": "Grasslands-Base",
+              "NoiseType": "CELL",
+              "Formula": "INVERTED_SQRT",
+              "Scale": 0.025,
+              "CellMode": "DISTANCE",
+              "Jitter": 0.6
+            },
+            {
+              "Seed": "Grasslands-Base",
+              "NoiseType": "CELL",
+              "Formula": "INVERTED_SQRT",
+              "Scale": 0.011,
+              "CellMode": "DISTANCE",
+              "Jitter": 0.6
+            }
+          ],
+          "Factors": [0.65, 0.2, 0.075, 0.075],
+          "Normalize": [0.38, 0.7]
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Grasslands-River-Noise",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.6,
+              "Scale": 0.006,
+              "Amplitude": 15
+            }
+          ]
+        },
+        "Threshold": [0.79, 1]
+      },
+      "Depth": 60,
+      "Entry": "Klops.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Klops",
+        "Scale": 0.0027,
+        "Jitter": 0.4
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "MaskDensity": 0.8,
+      "Pitch": 0,
+      "Environment": "Env_Zone3_Caves"
+    },
+    {
+      "Name": "Snowlands_Ores",
+      "BlockMask": {
+        "Default": [
+          "Rock_Shale",
+          "Rock_Slate",
+          "Rock_Basalt",
+          "Soil_Dirt_Cold",
+          "Rock_Volcanic"
+        ]
+      },
+      "Depth": 150,
+      "Entry": "Ores.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Ores-Entry",
+        "Scale": 0.0156,
+        "Jitter": 0
+      },
+      "FixedEntryHeight": 0,
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": -180
+    }
+  ]
+}

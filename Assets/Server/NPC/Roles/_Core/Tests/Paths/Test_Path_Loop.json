@@ -1,0 +1,46 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "ApplyAvoidance": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Path",
+            "PathType": "WorldPath",
+            "Path": "TestPath"
+          },
+          "BodyMotion": {
+            "Type": "Path",
+            "PathWidth": 2,
+            "NodeWidth": 2,
+            "MinRelSpeed": 0.5,
+            "MaxRelSpeed": 0.8,
+            "MaxWalkDistance": 2,
+            "Shape": "Loop",
+            "StartAtNearestNode": true
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Path_Loop.name"
+}

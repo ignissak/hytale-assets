@@ -1,0 +1,65 @@
+{
+  "Type": "Simple",
+  "RunTime": 0.2,
+  "Effects": {
+    "ItemAnimationId": "CastLeftCharged",
+    "Particles": [
+      {
+        "SystemId": "NatureBeam",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Roll": 180
+        }
+      }
+    ],
+    "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact",
+    "LocalSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact"
+  },
+  "Next": {
+    "Type": "Selector",
+    "Selector": {
+      "Id": "Raycast",
+      "Offset": {
+        "Y": 1.6
+      }
+    },
+    "HitEntityRules": [{
+      "Matchers": [{
+        "Type": "Vulnerable"
+      }
+      ],
+      "Next": {
+        "Interactions": [{
+          "Type": "EffectCondition",
+          "Entity": "Target",
+          "EntityEffectIds": [
+            "Immune"
+          ],
+          "Match": "None",
+          "Next": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "Entity": "Target",
+                "StatModifiers": {
+                  "Immunity": 25
+                }
+              },
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Root",
+                "Entity": "Target"
+              },
+              {
+                "Type": "SendMessage",
+                "Message": "Adding stat!"
+              }
+            ]
+          }
+        }]
+      }
+    }
+    ]
+  }
+}

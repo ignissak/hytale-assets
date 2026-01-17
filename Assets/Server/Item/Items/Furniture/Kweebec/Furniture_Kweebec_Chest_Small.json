@@ -1,0 +1,133 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Kweebec_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Kweebec",
+  "Icon": "Icons/ItemsGenerated/Furniture_Kweebec_Chest_Small.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.55,
+    "Translation": [
+      0,
+      -15
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Kweebec/Chest_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Kweebec/Chest_Small_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#825e34",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "ChestConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Default": "Furniture_Kweebec_Chest_Small",
+        "Double": "Furniture_Kweebec_Chest_Large"
+      }
+    },
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    }
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Kweebec"
+    ]
+  },
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Furniture_Storage"
+        ],
+        "Id": "Furniture_Bench"
+      }
+    ],
+    "RequiredMemoriesLevel": 3
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemLevel": 11,
+  "MaxStack": 10
+}

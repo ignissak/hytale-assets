@@ -1,0 +1,25 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Main" ],
+    "Delay": {
+      "Value": [ 3, 5 ],
+      "Description": "The amount of time to wait before transitioning"
+    }
+  },
+  "Content": {
+    "Continue": true,
+    "ActionsBlocking": true,
+    "Actions": [
+      {
+        "Type": "Timeout",
+        "Delay": { "Compute": "Delay" }
+      },
+      {
+        "Type": "ParentState",
+        "State": "Main"
+      }
+    ]
+  }
+}

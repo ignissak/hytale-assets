@@ -1,0 +1,38 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "SignatureCharges": 1
+  },
+  "Next": {
+    "Type": "ChangeStat",
+    "Behaviour": "Set",
+    "StatModifiers": {
+      "StaminaRegenDelay": -10
+    },
+    "Next": {
+      "Type": "Replace",
+      "Var": "Signature_Volley_Charge",
+      "DefaultValue": {
+        "Interactions": [
+          "Weapon_Shortbow_Signature_Volley_Charge"
+        ]
+      }
+    }
+  },
+  "Failed": {
+    "Type": "ChangeStat",
+    "Behaviour": "Set",
+    "StatModifiers": {
+      "StaminaRegenDelay": -10
+    },
+    "Next": {
+      "Type": "Replace",
+      "Var": "Primary_Shoot_Charge",
+      "DefaultValue": {
+        "Interactions": [
+          "Weapon_Shortbow_Primary_Shoot_Charge"
+        ]
+      }
+    }
+  }
+}

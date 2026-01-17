@@ -1,0 +1,64 @@
+{
+  "$Comment": [
+    "Controls the shape of the continent at the center of the world.",
+    "Uses Blend_Inner to fade between land and ocean. This (generally) produces",
+    "a single disconnected landmass at the center of the world."
+  ],
+  "Type": "BLEND",
+  "Alpha": {
+    "File": "Mask.Continent.Blend_Inner"
+  },
+  "Thresholds": [
+    0.0,
+    1.0
+  ],
+  "Noise": [
+    {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Seed": "CONTINENT-CENTER",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 2,
+        "Lacunarity": 2.5,
+        "Persistence": 0.4,
+        "Scale": 0.0004,
+        "$Normalize": [
+          "This pushes the noise value downwards encouraging more landmass, less ocean"
+        ],
+        "Normalize": [
+          0.45,
+          1.0
+        ]
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "CONTINENT-CENTER-WARP-1",
+            "NoiseType": "SIMPLEX",
+            "Scale": 0.001,
+            "Octaves": 2,
+            "Persistence": 0.5,
+            "Lacunarity": 2.5,
+            "Amplitude": 100
+          }
+        ]
+      }
+    },
+    {
+      "Type": "SUM",
+      "Factors": [0.25, 1.0],
+      "Noise": [
+        {
+          "Seed": "CONTINENT-ISLANDS",
+          "NoiseType": "SIMPLEX",
+          "Scale": 0.0005,
+          "Normalize": [0.4, 0.8]
+        },
+        {
+          "NoiseType": "CONSTANT",
+          "Value": 0.35
+        }
+      ]
+    }
+  ]
+}

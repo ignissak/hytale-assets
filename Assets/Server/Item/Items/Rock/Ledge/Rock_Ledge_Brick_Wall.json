@@ -1,0 +1,77 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Ledgestone_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Ledgestone_Brick_Wall.png",
+  "Set": "Rock_Ledgestone_Brick",
+  "Parent": "Rock_Stone_Brick_Wall",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Rock_Ledge_Brick",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Calcite_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Rock_Ledgestone_Wall.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#5a5144",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Rock_Ledgestone_Wall.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Calcite_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Ledge_Brick_Wall",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Corner": "*Rock_Ledge_Brick_Wall_State_Definitions_Corner",
+        "Straight": "Rock_Ledge_Brick_Wall"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  }
+}

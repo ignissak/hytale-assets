@@ -1,0 +1,370 @@
+{
+  "Weight": 14,
+  "SizeModifier": 1,
+  "MapColor": "#e1ce99",
+  "Covers": [
+    {
+      "Type": ["Plant_Bramble_Dry_Twisted", "Plant_Leaves_Bramble"],
+      "Weight": [90, 10],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Bramble.Bramble_Arid"
+          }
+        ],
+        "Threshold": [0.76, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry"]
+    },
+    {
+      "Type": ["Plant_Grass_Arid_Short", "Plant_Grass_Arid"],
+      "Weight": [40, 60],
+      "Density": 0.08,
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry"]
+    },
+    {
+      "Type": ["Rubble_Sandstone_White", "Rubble_Sandstone_White_Medium"],
+      "Weight": [0.7, 0.3],
+      "Density": 0.025,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Rubble.Sandstone_White_Sparse"
+          }
+        ],
+        "Threshold": [0.725, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Flower_Bushy_Red"],
+      "Density": 0.025,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Flowers.Flowers_Desert_Bones"
+          }
+        ],
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry"]
+    },
+    {
+      "Type": ["*Plant_Crop_Wheat_Block_State_Definitions_StageFinal"],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Flowers.Flowers_Desert_Bones"
+          }
+        ],
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Blue2"],
+      "Weight": [1],
+      "Density": 0.005,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.35,
+        "Scale": 0.05,
+        "Threshold": [0.695, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry", "Soil_Sand_White"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Poisoned"],
+      "Density": 0.0025,
+      "NoiseMask": {
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": 1.0,
+        "Formula": "NORMAL",
+        "Density": [0.625, 0.8125],
+        "Scale": 0.0050012,
+        "Jitter": 0.6,
+        "Threshold": [0, 0.15]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Hive", "Soil_Mud_Dry", "Soil_Sand_White"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": ["Npc.Feran.Tier3.Layout.*"],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Factions_Ferans"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Vertical_Sand_White.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Cave_Entrance_Type1"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Diagonal_Sand_White.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Cave_Entrance_Type2"
+        }
+      },
+      {
+        "Weight": [0.4, 0.6],
+        "Prefab": [
+          "Rock_Formations.Fossils.Gigantic.*",
+          "Rock_Formations.Fossils.Gigantic_Health.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Desert_Fossils_Gigantic"
+        }
+      },
+      {
+        "Weight": [0.4, 0.6],
+        "Prefab": [
+          "Rock_Formations.Fossils.Large.*",
+          "Rock_Formations.Fossils.Large_Health.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Desert_Fossils_Large"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Fossils.Small.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Desert_Fossils_Small"
+        }
+      },
+      {
+        "Prefab": ["Monuments.Challenge.Sand.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Monuments_Dungeon_Challenge"
+        }
+      },
+      {
+        "Weight": [5, 5, 90],
+        "Prefab": [
+          "Monuments.Incidental.Sandstone.Normal.*",
+          "Monuments.Incidental.Sandstone.White.Drywood.*",
+          "Monuments.Incidental.Sandstone.White.Camp.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Incidental"
+        }
+      },
+      {
+        "Weight": [33, 33, 33, 5],
+        "Prefab": [
+          "Monuments.Encounter.Zone2.Tier3.Outpost.Base.*",
+          "Monuments.Encounter.Zone2.Tier3.Outpost.Base_Boss.*",
+          "Monuments.Encounter.Zone2.Tier3.Tradingpost.Camp.*",
+          "Monuments.Unique.Mage_Towers.Sandstone.Tier_3.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Encounter"
+        }
+      },
+      {
+
+        "Prefab": [
+          "Monuments.Unique.Temple.Portal.Drylands.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Temple_Entrances"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "$Comment": "This layer places Dry Dirt around Bones",
+            "Blocks": ["Soil_Dirt_Dry:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone2.Layers.Soil.Layer_Cave_Upper"
+                }
+              ],
+              "Threshold": [0.2, 1]
+            }
+          },
+          {
+            "$Comment": "This layer places Sandstone around Bones",
+            "Blocks": ["Rock_Sandstone_White:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone2.Layers.Rock.Bedrock_Desert"
+                }
+              ],
+              "Threshold": [0.2, 1]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Sand_White",
+                "Repeat": [2, 5],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt_Dry",
+                "Repeat": [3, 8],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              },
+              {
+                "Type": "Soil_Clay",
+                "Repeat": [2, 5],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [114, 115, 117, 120],
+    "Values": [1, 0.9, 0.5, 0]
+  },
+  "HeightmapNoise": {
+    "Seed": "Grasslands-Height-Threshold",
+    "NoiseType": "OLD_SIMPLEX",
+    "FractalMode": "OLDSCHOOL",
+    "Octaves": 2,
+    "Persistence": 0.2,
+    "Scale": 0.02
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["0xD5BA6E", "0xD5BB70", "0xCDB868"],
+      "Weights": [0.4, 0.27, 0.33],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Deserts"]
+    },
+    "Entries": [
+      {
+        "Names": ["Env_Zone2_Feran"],
+        "NoiseMask": {
+          "Seed": "Drylands-Pattern-Monuments-Tier-3",
+          "Density": [0.8125, 1],
+          "NoiseType": "CELL",
+          "Formula": "INVERTED_SQRT",
+          "CellMode": "DISTANCE",
+          "Scale": 0.0050012,
+          "Jitter": 0.6,
+          "Threshold": [0.6, 1]
+        }
+      },
+      {
+        "Names": ["Env_Zone2_Encounters"],
+        "NoiseMask": {
+          "Seed": "Drylands-Pattern-Monuments-Tier-3",
+          "Density": [0.25, 0.625],
+          "NoiseType": "CELL",
+          "Formula": "INVERTED_SQRT",
+          "CellMode": "DISTANCE",
+          "Scale": 0.0050012,
+          "Jitter": 0.6,
+          "Threshold": [0.6, 1]
+        }
+      }
+    ]
+  }
+}

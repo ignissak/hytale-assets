@@ -1,0 +1,211 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Turnip_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/SmallBlack.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Turnip_Seed.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Turnip_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Turnip_Stage1"
+            }
+          },
+          "HitboxType": "Plant_Small",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#a0d36d"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Turnip_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Turnip_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Turnip_Stage2"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#55bb1e"
+        },
+        "Stage3": {
+          "CustomModel": "Resources/Ingredients/Turnip_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Turnip_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Turnip_Stage3"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#6fcb22"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Turnip_03.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Turnip_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "InteractionHint": "server.interactionHints.harvest",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Turnip_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Turnip_StageFinal_Harvest"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#6fcb22"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Turnip_Block"
+      }
+    },
+    "CustomModelScale": 0.75,
+    "ParticleColor": "#655641"
+  },
+  "IconProperties": {
+    "Scale": 1.4,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      2.4,
+      -3.0
+    ]
+  },
+  "Scale": 1.5,
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Turnip_Block.png"
+}

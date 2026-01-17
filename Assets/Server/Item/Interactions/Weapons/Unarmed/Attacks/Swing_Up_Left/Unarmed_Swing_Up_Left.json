@@ -1,0 +1,75 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingUpLeft",
+    "WorldSoundEventId": "SFX_Unarmed_Swing",
+    "LocalSoundEventId": "SFX_Player_Unarmed_Swing_Left"
+  },
+  "RunTime": 0.111,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "Effects": {
+              "CameraEffect": "Unarmed_Swing_Horizontal"
+            },
+            "$Comment": "Length of Combat",
+            "RunTime": 0.25,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 2.5,
+              "Length": 30,
+              "RollOffset": -60,
+              "YawStartOffset": -15
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "DamageEntity",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 1
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.1,
+                      "RelativeX": 0,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Block break delay",
+            "RunTime": 0,
+            "Next": "Block_Break"
+          }
+        ]
+      }
+    ]
+  }
+}

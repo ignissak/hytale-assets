@@ -1,0 +1,36 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Plains-Smooth-Grove",
+    "Density": [0, 0.60],
+    "Scale": 0.1,
+    "Jitter": 0.9
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+  	"Noise": [
+  		{
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+        }
+      ],
+  			"Density": [0, 1],
+  			"Threshold": [0, 1],
+  			"Normalize": 0.6
+  		},
+  		{
+  			"Seed": "Grasslands-Pattern-Plains-Smooth-Grove",
+  			"NoiseType": "CELL",
+  			"Density": [0, 0.15],
+  			"CellMode": "DISTANCE",
+  			"Scale": 0.02
+  		}
+  	],
+    "Threshold": [0, 0.9]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Trees"
+  },
+  "Parent": ["Soil_Grass", "Soil_Grass_Full", "Soil_Grass_Deep", "Soil_Leaves", "Soil_Pathway", "Soil_Pathway"]
+}

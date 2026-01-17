@@ -1,0 +1,46 @@
+{
+  "InitialValue": 0,
+  "Min": 0,
+  "Max": 1,
+  "Shared": true,
+  "IgnoreInvulnerability": true,
+  "Regenerating": [
+    {
+      "Interval": 0.1,
+      "Amount": 1,
+      "RegenType": "Additive",
+      "ClampAtZero": true,
+      "Conditions": [
+        {
+          "Id": "Gliding"
+        }
+      ]
+    },
+    {
+      "Interval": 0.1,
+      "Amount": -1,
+      "RegenType": "Additive",
+      "ClampAtZero": true,
+      "Conditions": [
+        {
+          "Id": "Gliding",
+          "Inverse": true
+        }
+      ]
+    }
+  ],
+  "MinValueEffects": {
+    "TriggerAtZero": true,
+    "Interactions": {
+      "Interactions": [
+        {
+          "Type": "ChangeStat",
+          "Behaviour": "Set",
+          "StatModifiers": {
+            "StaminaRegenDelay": -2
+          }
+        }
+      ]
+    }
+  }
+}

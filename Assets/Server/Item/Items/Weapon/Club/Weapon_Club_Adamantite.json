@@ -1,0 +1,154 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Club_Adamantite.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Rare",
+  "ItemLevel": 40,
+  "PlayerAnimationsId": "Club",
+  "Utility": {
+    "Compatible": true
+  },
+  "Recipe": {
+    "TimeSeconds": 4.5,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Leather_Heavy",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "DiagramCrafting",
+        "Categories": [
+          "Weapons.Club"
+        ],
+        "Id": "Armory"
+      },
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Club"
+        ],
+        "Id": "Weapon_Bench",
+        "RequiredTierLevel": 3
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Club_Attack"
+  },
+  "InteractionVars": {
+    "Club_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 52
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Special_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 52
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Special_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Down_Charged_Effect": "Club_Swing_Down_Charged_Effect",
+    "Club_Swing_Down_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Down_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 104
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Special_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Texture": "Items/Weapons/Club/Adamantite_Texture.png",
+  "Model": "Items/Weapons/Club/Adamantite.blockymodel",
+  "IconProperties": {
+    "Scale": 0.37,
+    "Translation": [
+      -32,
+      -32
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Club_Adamantite.png",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Club"
+    ]
+  },
+  "MaxDurability": 150,
+  "DurabilityLossOnHit": 0.56,
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

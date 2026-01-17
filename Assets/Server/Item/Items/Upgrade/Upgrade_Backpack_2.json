@@ -1,0 +1,88 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.UpgradeBackpack_2.name",
+    "Description": "server.items.UpgradeBackpack_2.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Recipe_Page.png",
+  "Quality": "Uncommon",
+  "MaxStack": 1,
+  "ItemLevel": 30,
+  "Categories": [
+    "Upgrade"
+  ],
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 40
+      },
+      {
+        "ItemId": "Ingredient_Bar_Cobalt",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Leather_Heavy",
+        "Quantity": 24
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ],
+        "RequiredTierLevel": 3
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Item",
+  "Model": "Items/Consumables/Recipes/Recipe.blockymodel",
+  "Texture": "Items/Consumables/Recipes/Recipe_Texture.png",
+  "IconProperties": {
+    "Scale": 0.76,
+    "Translation": [
+      -0.895,
+      -1.11
+    ],
+    "Rotation": [
+      33.92,
+      68.795,
+      40.67
+    ]
+  },
+  "Consumable": true,
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "CheckUniqueItemUsage",
+          "Next": {
+            "Type": "IncreaseBackpackCapacity",
+            "Capacity": 9
+          }
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "CheckUniqueItemUsage",
+          "Next": {
+            "Type": "IncreaseBackpackCapacity",
+            "Capacity": 9
+          }
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Family": [
+      "Backpack"
+    ],
+    "Type": [
+      "Upgrade"
+    ]
+  }
+}

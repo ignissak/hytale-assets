@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Capture_Crate.name",
+    "Description": "server.items.Tool_Capture_Crate.description"
+  },
+  "Model": "Items/CaptureCrate/Capture_Crate.blockymodel",
+  "Texture": "Items/CaptureCrate/Capture_Crate_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Tool_Capture_Crate.png",
+  "PlayerAnimationsId": "Block",
+  "MaxStack": 1,
+  "ItemLevel": 9,
+  "Recipe": {
+    "TimeSeconds": 2,
+    "Input": [
+      {
+        "Quantity": 4,
+        "ResourceTypeId": "Wood_All"
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Farming"
+        ],
+        "Id": "Farmingbench"
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "ItemAnimationId": "Interact"
+          },
+          "RunTime": 0.05,
+          "Next": {
+            "Type": "UseCaptureCrate",
+            "AcceptedNpcGroups": [
+              "Capture_Crate"
+            ],
+            "FullIcon": "Icons/ItemsGenerated/Tool_Capture_Crate_Full.png",
+            "Failed": {
+              "Type": "Simple",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Capture_Crate_Capture_Fail_Local"
+              }
+            },
+            "Next": {
+              "Type": "Simple",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Capture_Crate_Capture_Succeed_Local",
+                "WorldSoundEventId": "SFX_Capture_Crate_Capture_Succeed"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  }
+}

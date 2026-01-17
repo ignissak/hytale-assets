@@ -1,0 +1,1246 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "PickupDropOnDeath": false,
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Hermit",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Drop_Goblin_Hermit",
+      "Description": "Drop Items"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "SmellRange": {
+      "Value": 8,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "AlertedTime": {
+      "Value": [ 1, 1 ],
+      "Description": "The duration for which the NPC is alert before switching to attack"
+    },
+    "AttitudeGroup": {
+      "Value": "Goblin",
+      "Description": "This NPCs attitude group"
+    },
+    "BedBlockSet": {
+      "Value": "Trash",
+      "Description": "The block set designating bedrolls for this NPC"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Goblin" ],
+      "Description": "Groups not to take damage from"
+    },
+    "FoundNPC": {
+      "Value": "Goblin_Scavenger_Rat",
+      "Description": "The NPC that spawns from a trashpile when found"
+    },
+    "AvoidGroup": {
+      "Value": [ "Goblin" ],
+      "Description": "NPC group to try and navigate around"
+    },
+    "ChangeRole": {
+      "Value": true,
+      "Description": "If the scavenger can change role or not"
+    },
+    "Hotbar": {
+      "Value": "",
+      "Description": "Hotbar items"
+    },
+    "OffHand": {
+      "Value": "",
+      "Description": "OffHand items"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "OffHandSlots": 2,
+  "DefaultOffHandSlot": 0,
+  "Appearance": { "Compute": "Appearance" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "DropList": { "Compute": "DropList" },
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ "Idle" ],
+          "To": [ "Sleep" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status",
+          "Animation": "Laydown"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 1, 1 ]
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "Idle" ],
+          "To": [ ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status"
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ ],
+          "To": [ "Chase" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "Crouch",
+          "Crouch": false
+        },
+        {
+          "Type": "Beacon",
+          "TargetGroups": [ "Goblin" ],
+          "Range": 15,
+          "Message": "GoblinAlert"
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "Sleep" ],
+          "To": [ ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status",
+          "Animation": "Wake"
+        },
+        {
+          "Type": "SpawnParticles",
+          "Offset": [ 0, 2.1, 0 ],
+          "ParticleSystem": "Alerted"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 2, 2 ]
+        }
+      ]
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Goblin_Instruction_Pre_Checks",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Chase", "Chase", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "$Comment": "Deal with default wondering behaviour and set to .Find",
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "$Comment": "Set the timer as we enter the state so it starts idling first",
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "TimerStart",
+                      "Name": "Goblin_Scavenger_Find",
+                      "StartValueRange": [ 10, 20 ],
+                      "RestartValueRange": [ 10, 20 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Goblin_Scavenger_Find"
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Goblin_Scavenger_Find"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "$Comment": "We enter a Instruction here so that we can change motion once the timer stops",
+                    "Type": "Timer",
+                    "Name": "Goblin_Scavenger_Find",
+                    "State": "Stopped"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "$Comment": "Set which behaviour to do once the bedblockset if found",
+                        "Type": "Block",
+                        "Range": 1,
+                        "Blocks": { "Compute": "BedBlockSet" }
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 0.5,
+                        "StopDistance": 0.4,
+                        "RelativeSpeed": 0.5
+                      },
+                      "Actions": [
+                        {
+                          "Type": "Random",
+                          "Actions": [
+                            {
+                              "Weight": 50,
+                              "Action": {
+                                "Type": "State",
+                                "State": ".Search"
+                              }
+                            },
+                            {
+                              "Weight": 25,
+                              "Action": {
+                                "Type": "State",
+                                "State": ".Squabble"
+                              }
+                            },
+                            {
+                              "Weight": 25,
+                              "Action": {
+                                "Type": "State",
+                                "State": "Sleep"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "And",
+                        "Sensors": [
+                          {
+                            "Type": "Block",
+                            "Range": 3,
+                            "Blocks": { "Compute": "BedBlockSet" }
+                          },
+                          {
+                            "Type": "Mob",
+                            "Range": 3,
+                            "ExcludeOwnType": false,
+                            "LockOnTarget": false,
+                            "Filters": [
+                              {
+                                "Type": "NPCGroup",
+                                "IncludeGroups": [ "Self" ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "Alerted"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 1, 1 ]
+                        },
+                        {
+                          "Type": "TimerStart",
+                          "Name": "Goblin_Scavenger_Find",
+                          "StartValueRange": [ 10, 20 ],
+                          "RestartValueRange": [ 10, 20 ]
+                        },
+                        {
+                          "Type": "TimerRestart",
+                          "Name": "Goblin_Scavenger_Find"
+                        },
+                        {
+                          "Type": "TimerContinue",
+                          "Name": "Goblin_Scavenger_Find"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Block",
+                        "Range": { "Compute": "AlertedRange" },
+                        "Blocks": { "Compute": "BedBlockSet" }
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 5, 8 ]
+                        },
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "Alerted"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 1, 1 ]
+                        },
+                        {
+                          "Type": "TimerStart",
+                          "Name": "Goblin_Scavenger_Find",
+                          "StartValueRange": [ 10, 20 ],
+                          "RestartValueRange": [ 10, 20 ]
+                        },
+                        {
+                          "Type": "TimerRestart",
+                          "Name": "Goblin_Scavenger_Find"
+                        },
+                        {
+                          "Type": "TimerContinue",
+                          "Name": "Goblin_Scavenger_Find"
+                        }
+                      ],
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 0.5,
+                        "StopDistance": 0.4,
+                        "RelativeSpeed": 0.75
+                      }
+                    },
+                    {
+                      "Actions": [
+                        {
+                          "Type": "TimerStart",
+                          "Name": "Goblin_Scavenger_Find",
+                          "StartValueRange": [ 10, 20 ],
+                          "RestartValueRange": [ 10, 20 ]
+                        },
+                        {
+                          "Type": "TimerRestart",
+                          "Name": "Goblin_Scavenger_Find"
+                        },
+                        {
+                          "Type": "TimerContinue",
+                          "Name": "Goblin_Scavenger_Find"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "$TODO": "This may need to go",
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 5,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 1
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Leash",
+                    "Range": { "Compute": "AlertedRange" }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Leash"
+                    }
+                  ]
+                },
+                {
+                  "$Comment": "Default idle motions if the timer is running",
+                  "Reference": "Component_Instruction_Intelligent_Idle_Motion_Wander",
+                  "Modify": { }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Search"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": true
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Instruction_Play_Animation_In_State_For_Duration",
+                  "Modify": {
+                    "_ExportStates": [ "Idle.Found" ],
+                    "Animation": "Dig",
+                    "Duration": [ 5, 30 ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "Set substate once Search has complete",
+                "Type": "State",
+                "State": ".Found"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    },
+                    {
+                      "Type": "Random",
+                      "Actions": [
+                        {
+                          "Weight": 100,
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Throw"
+                          }
+                        },
+                        {
+                          "Weight": 100,
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Eat"
+                          }
+                        },
+                        {
+                          "Weight": 100,
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Bomb"
+                          }
+                        },
+                        {
+                          "Weight": 100,
+                          "Action": {
+                            "Type": "State",
+                            "State": ".Rat"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Squabble"
+              },
+              "Instructions": [
+                {
+                  "$Comment": "Fix this beacon behaviour - only sent once",
+                  "Continue": true,
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Beacon",
+                      "TargetGroups": [ "Self" ],
+                      "Range": 15,
+                      "Message": "Squabble"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 4, 6 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 15,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Attack",
+                      "Attack": "Goblin_Scavenger_Trash",
+                      "AimingTimeRange": [ 3, 3 ],
+                      "AttackPauseRange": [ 1, 2 ]
+                    }
+                  ],
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "Spread": 5,
+                    "HitProbability": 0.001
+                  }
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "Eat an item",
+                "Type": "State",
+                "State": ".Eat"
+              },
+              "Actions": [
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "SetHotbar",
+                  "Item": "Food_Cheese",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ]
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Eat"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 4, 8 ]
+                },
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "RemoveHeldItem",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "State",
+                  "State": ".Default"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "Spawn a despawning rat from the trash pile",
+                "Type": "State",
+                "State": ".Rat"
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "Spawn",
+                  "CountRange": [ 1, 1 ],
+                  "Kind": { "Compute": "FoundNPC" },
+                  "LaunchAtTarget": false,
+                  "LaunchSpread": 1
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": ".Search"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "Find a bomb then throw it in surprise",
+                "Type": "State",
+                "State": ".Bomb"
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "SetHotbar",
+                  "Item": "Weapon_Bomb_Fire",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Dig_Find"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ]
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "RemoveHeldItem",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "Attack",
+                  "Attack": "Goblin_Lobber_Attack",
+                  "SkipAiming": false,
+                  "AvoidFriendlyFire": false,
+                  "DamageFriendlies": true,
+                  "AttackPauseRange": [ 0.2, 1 ]
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": ".Search"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "$Comment": "Find an unwanted item & discard it - we use a combat action for the projectile",
+                "Type": "State",
+                "State": ".Throw"
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "SetHotbar",
+                  "Item": "Rubble_Stone",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Dig_Find"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ]
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "Inventory",
+                  "Slot": 0,
+                  "Operation": "RemoveHeldItem",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "Attack",
+                  "Attack": "Goblin_Scavenger_Trash",
+                  "AvoidFriendlyFire": false,
+                  "SkipAiming": false,
+                  "AttackPauseRange": [ 0.2, 1 ]
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": ".Default"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Goblin_Instruction_Alerted",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Search", "Chase" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Search",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Alerted", "Alerted", "Leash" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Sleep"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "SpawnParticles",
+                  "Offset": [ 0, 2.1, 0 ],
+                  "ParticleSystem": "Sleepy"
+                }
+              ]
+            },
+            {
+              "Reference": "Component_Instruction_Play_Animation_In_State_For_Duration",
+              "$Comment": "Idle.Search",
+              "Comment": "We move to a search substate here to stop the goblin going back to sleep straight away",
+              "Modify": {
+                "_ExportStates": [ "Idle" ],
+                "Animation": "Sleep",
+                "Duration": [ 5, 60 ]
+              }
+            },
+            {
+              "Reference": "Component_Instruction_Damage_Check",
+              "Modify": {
+                "_ExportStates": [ "Chase", "Search" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "GoblinAlert",
+                "Range": 20,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Reference": "Component_Sensor_Sound_By_Attitude",
+                "Modify": {
+                  "HearingRange": { "Compute": "HearingRange" },
+                  "ThroughWalls": false,
+                  "Attitudes": [ "Hostile" ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Leash"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Goblin_Instruction_Pre_Checks",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Chase", "Chase", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Block",
+                "Range": 1,
+                "Blocks": { "Compute": "BedBlockSet" }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "SetLeashPosition",
+                  "ToCurrent": true
+                },
+                {
+                  "$Comment": "Go to .Search here since the goblin sought out the trash set",
+                  "Type": "State",
+                  "State": "Idle.Search"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Block",
+                "Range": { "Compute": "AlertedRange" },
+                "Blocks": { "Compute": "BedBlockSet" }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 8 ]
+                },
+                {
+                  "$Comment": "Timed catch if leash can't be reached",
+                  "Type": "State",
+                  "State": "Idle.Default"
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 0.1,
+                "SlowDownDistance": 5,
+                "AbortDistance": 192
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Leash",
+                "Range": 3
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 0.1,
+                "SlowDownDistance": 5,
+                "AbortDistance": 192
+              }
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "AlertedRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "$Comment": "Replace the substates here with roles that have their own balancing files once roles can be changed to specific states",
+                    "Type": "State",
+                    "State": ".Default"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "Block",
+                        "Range": 1.5,
+                        "Blocks": { "Compute": "BedBlockSet" },
+                        "Enabled": { "Compute": "ChangeRole" }
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "Dig"
+                        },
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 0.5, 0.5 ]
+                        },
+                        {
+                          "Type": "Random",
+                          "Actions": [
+                            {
+                              "Weight": 25,
+                              "Action": {
+                                "Type": "Role",
+                                "Role": "Goblin_Scavenger_Sword",
+                                "State": "Chase"
+                              }
+                            },
+                            {
+                              "Weight": 25,
+                              "Action": {
+                                "Type": "Role",
+                                "Role": "Goblin_Scavenger_Battleaxe",
+                                "State": "Chase"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Block",
+                        "Range": 1.5,
+                        "Blocks": { "Compute": "BedBlockSet" },
+                        "Enabled": { "Compute": "!ChangeRole" }
+                      },
+                      "Actions": [
+                        {
+                          "Type": "Random",
+                          "Actions": [
+                            {
+                              "Weight": 100,
+                              "Action": {
+                                "Type": "State",
+                                "State": ".Melee"
+                              }
+                            },
+                            {
+                              "Weight": 100,
+                              "Action": {
+                                "Type": "State",
+                                "State": ".Ranged"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Reference": "Component_Sensor_Sight_By_Attitude",
+                        "Modify": {
+                          "ViewRange": 3,
+                          "ViewSector": 360,
+                          "Attitudes": [ "Hostile" ]
+                        }
+                      },
+                      "Actions": [
+                        {
+                          "Type": "State",
+                          "State": ".Melee"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Block",
+                        "$Comment": "Half the distance, if trash is too far it's negaative to combat",
+                        "Range": { "Compute": "AlertedRange / 2" },
+                        "Blocks": { "Compute": "BedBlockSet" }
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "$Comment": "Timeout if trash can't be reached, better to ignore",
+                          "Type": "Timeout",
+                          "Delay": [ 2, 4 ]
+                        },
+                        {
+                          "Type": "State",
+                          "State": ".Melee"
+                        }
+                      ],
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 0.5,
+                        "StopDistance": 0.1,
+                        "RelativeSpeed": 0.75
+                      }
+                    },
+                    {
+                      "Actions": [
+                        {
+                          "Type": "State",
+                          "State": ".Melee"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Melee"
+                  },
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation",
+                      "Modify": { }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Any",
+                        "Once": true
+                      },
+                      "Actions": [
+                        {
+                          "Type": "Inventory",
+                          "Slot": 0,
+                          "Operation": "SetHotbar",
+                          "Item": { "Compute": "Hotbar" },
+                          "UseTarget": false
+                        },
+                        {
+                          "Type": "Inventory",
+                          "Slot": 0,
+                          "Operation": "SetOffHand",
+                          "Item": { "Compute": "OffHand" },
+                          "UseTarget": false
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.2,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.45
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Reference": "Component_Instruction_Intelligent_Chase",
+                      "Modify": {
+                        "_ExportStates": [ "Search", "Alerted", "Search" ],
+                        "AvoidGroup": { "Compute": "AvoidGroup" },
+                        "ViewRange": { "Compute": "AlertedRange" },
+                        "HearingRange": { "Compute": "HearingRange" },
+                        "RelativeSpeed": 0.8
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Ranged"
+                  },
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Clear_Status_Animation",
+                      "Modify": { }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "Actions": [
+                        {
+                          "Type": "State",
+                          "State": ".Melee"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Search"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

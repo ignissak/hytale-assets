@@ -1,0 +1,104 @@
+$Common = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+Group {
+  Background: "RespawnPageBackground.png";
+
+  Group {
+    LayoutMode: Middle;
+
+    Group {
+      LayoutMode: Center;
+
+      Group {
+        Anchor: (Width: 104, Height: 97, Left: 36);
+        Background: "RespawnPageSkull.png";
+      }
+    }
+
+    Group {
+      Anchor: (Width: 850, Height: 215, Top: -22);
+      Background: "RespawnPageBackgroundInner.png";
+
+      Group {
+        LayoutMode: Center;
+
+        Label #Title {
+          Anchor: (Height: 48, Left: 36, Top: 45);
+          Text: %server.customUI.respawnPage.title;
+          Style: (
+            FontSize: 38,
+            LetterSpacing: 1.8,
+            FontName: "Secondary",
+            RenderBold: true,
+            HorizontalAlignment: Center,
+            RenderUppercase: true
+          );
+          MaskTexturePath: "RespawnPageLabelGradient.png";
+        }
+      }
+
+      Group {
+        LayoutMode: Center;
+
+        Label #DeathReason {
+          Anchor: (Height: 32, Left: 36, Top: 98);
+          Style: (
+            FontSize: 20,
+            HorizontalAlignment: Center
+          );
+        }
+      }
+
+      Group {
+        LayoutMode: Center;
+
+        TextButton #RespawnButton {
+          Anchor: (Width: 220, Height: 40, Left: 36, Bottom: 40);
+          Style: (
+            ...$Common.@DefaultTextButtonStyle,
+            Sounds: (
+              ...$Common.@ButtonSounds,
+              ...$Sounds.@RespawnActivate
+            )
+          );
+          Text: %server.customUI.respawnPage.respawn;
+        }
+      }
+    }
+
+    Group #DeathData {
+      Anchor: (Width: 850, Top: 20);
+      Padding: (Vertical: 35);
+      Background: (Color: #000000(0.3));
+      Visible: true;
+
+      Group {
+        LayoutMode: Top;
+
+        Label #ItemsLossStatus {
+          Style: (
+            FontSize: 20,
+            HorizontalAlignment: Center,
+            Wrap: true
+          );
+        }
+
+        Label #ItemsAmountLoss {
+          Anchor: (Top: 30);
+          Style: (
+            FontSize: 20,
+            HorizontalAlignment: Center,
+            Wrap: true
+          );
+        }
+
+        Group #DroppedItemsContainer {
+          Anchor: (Width: 600);
+          LayoutMode: LeftCenterWrap;
+          Padding: (Top: 35);
+        }
+      }
+    }
+  }
+}

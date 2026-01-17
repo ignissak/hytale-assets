@@ -1,0 +1,71 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingRight"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.083,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 2.5,
+              "Length": 60,
+              "RollOffset": 30,
+              "YawStartOffset": -30
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Sword_Swing_Right_Fast_Damage"
+                    ]
+                  },
+                  "Var": "Sword_Swing_Right_Fast_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.167
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Sword_Swing_Right_Fast_Effect"
+              ]
+            },
+            "Var": "Sword_Swing_Right_Fast_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

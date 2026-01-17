@@ -1,0 +1,63 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "StatsCondition",
+      "Costs": {
+        "SignatureEnergy": 100
+      },
+      "ValueType": "Percent",
+      "Failed": "Bow_Shoot_Charged_Fail",
+      "Next": {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "SignatureEnergy": -100
+        },
+        "ValueType": "Percent",
+        "Next": {
+          "Type": "ModifyInventory",
+          "ItemToRemove": {
+            "Id": "Weapon_Arrow_Crude",
+            "Quantity": 3
+          },
+          "Failed": "Bow_Shoot_Charged_Fail",
+          "Next": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "Simple",
+                "Effects": {
+                  "ItemAnimationId": "Shoot"
+                },
+                "RunTime": 1
+              },
+              "Bow_Combat_Trishot_Projectile",
+              {
+                "Type": "Simple",
+                "RunTime": 0.01
+              },
+              "Bow_Combat_Trishot_Projectile",
+              {
+                "Type": "Simple",
+                "RunTime": 0.01
+              },
+              "Bow_Combat_Trishot_Projectile"
+            ]
+          },
+          "Failed": {
+            "Type": "ChangeStat",
+            "StatModifiers": {
+              "SignatureEnergy": 100
+            },
+            "ValueType": "Percent"
+          }
+        }
+      }
+    }
+  ],
+  "Tags": {
+    "Attack": [
+      "Melee"
+    ]
+  }
+}

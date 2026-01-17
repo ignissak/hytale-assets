@@ -1,0 +1,64 @@
+{
+
+	
+	"Children": [
+	
+		// Ladder
+		{
+        	"Node": ["Sewer.Type_01.Ladder.Ladder_002"],
+			"Weights": [20], 
+			"Offset": [-6, -12, 0], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+		
+		//Forward
+		{
+        	"Node": ["Sewer.Type_01.Pipe.Main.3Way_Right.3Way_Right_001"],
+			"Weights": [20], 
+			"Offset": [-13, -10, 12], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+     	{ //Back
+          "Node": ["Sewer.Type_01.Pipe.Main.Storage.Storage_002"],
+			"Weights": [20],
+			"Offset": [-13, -10, -20], 
+			"Rotation": 180,
+			"Chance": 1
+		},
+        { //Left
+        	"Node": ["Sewer.Type_01.Short.Mines_007"],
+			"Weights": [20],  
+			"Offset": [12, -10, -13], 
+			"Rotation": 90,
+			"Chance": 1
+		},
+        { //Right
+        	"Node": ["Sewer.Type_01.Short.Mines_001"],
+			"Weights": [20], 
+			"Offset": [-20, -10, -13], 
+			"Rotation": 270,
+			"Chance": 1
+		}
+	],
+	
+	
+  "Mask": {
+    "Default": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"],
+    "Specific": [
+      {
+        "Block": ["Empty"],
+        "Rule": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"]
+      }
+    ]
+  },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Dungeon.Sewer.Tier_3.Main.Large.*"
+	]
+}

@@ -1,0 +1,81 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 10,
+      "RunThreshold": 0.3
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "$Comment": "This is a seperate Instruction so we are always open to recieving beacon messages",
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 0.2, 0.2 ],
+              "Action": {
+                "Type": "SpawnParticles",
+                "Offset": [ 0, 1.2, -1 ],
+                "ParticleSystem": "Hearts"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 6,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.18
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Particle_Emotions.name"
+}

@@ -1,0 +1,93 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "FlockAllowedNPC": [ "Test_Sheep_Flock2" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Member"
+                  }
+                ]
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Flock"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Tag": "idle",
+          "BodyMotion": {
+            "Reference": "Wander_Simple",
+            "Modify": { }
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Leader"
+                  }
+                ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Cat"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sheep_Flock2.name"
+}

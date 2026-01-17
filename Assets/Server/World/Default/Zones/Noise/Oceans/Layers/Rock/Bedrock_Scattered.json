@@ -1,0 +1,60 @@
+{
+  "Type": "MULTIPLY",
+  "Noise": [
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Oceans-City-Roads-Large",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "Formula": "SQUARED",
+          "Jitter": 0.75,
+          "Normalize": 0.85,
+          "Scale": 0.008
+        },
+        {
+          "Seed": "Oceans-City",
+          "NoiseType": "CELL",
+          "Formula": "INVERTED",
+          "Jitter": 0.5,
+          "Density": [
+            0,
+            0.25
+          ],
+          "DistanceRange": 2.0,
+          "CellMode": "DISTANCE",
+          "Scale": 0.003,
+          "Normalize": 0.6
+        },
+        {
+          "Seed": "Oceans-City-Buildings-Small",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "DistanceRange": 3.0,
+          "Offset": 7,
+          "Scale": 0.035,
+          "Normalize": 0.85,
+          "Jitter": 0.2
+        }
+      ],
+      "Factors": [
+        0.25,
+        0.4,
+        0.25
+      ]
+    },
+    {
+      "Seed": "Oceans_Seaweed_Patches",
+      "NoiseType": "SIMPLEX",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.04,
+      "Normalize": 0.4
+    }
+  ],
+  "Threshold": [
+    0.6,
+    1
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Type": "Charging",
+  "DisplayProgress": false,
+  "AllowIndefiniteHold": false,
+  "HorizontalSpeedMultiplier": 0.8,
+  "MouseSensitivityAdjustmentTarget": 0.3,
+  "MouseSensitivityAdjustmentDuration": 0.1,
+  "Effects": {
+    "ItemAnimationId": "SwingLeftCharging",
+    "Particles": [
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "SystemId": "Mace_Charging"
+      }
+    ]
+  },
+  "Next": {
+    "0": {
+      "Type": "Replace",
+      "Var": "Swing_Left_Start",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          "Weapon_Mace_Primary_Swing_Left"
+        ]
+      }
+    },
+    "2": {
+      "Type": "Replace",
+      "Var": "Swing_Left_Charged",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          "Weapon_Mace_Primary_Swing_Left_Charged_Parallel"
+        ]
+      }
+    }
+  }
+}

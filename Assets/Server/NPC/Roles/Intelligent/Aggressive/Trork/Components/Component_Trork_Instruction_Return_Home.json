@@ -1,0 +1,193 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Alerted", "Chase", "Search", "Warn" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "SmellRange": {
+      "Value": 8,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "LeashDistance": {
+      "Value": 30,
+      "Description": "The range after which an NPC will start to want to return to their spawn point"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether this NPC can see"
+    },
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether this NPC can hear"
+    },
+    "CanSmell": {
+      "Value": false,
+      "Description": "Whether this NPC can smell"
+    },
+    "ReactToChests": {
+      "Value": true,
+      "Description": "Whether to react to chest interactions"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "Chest block set"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation",
+        "Modify": { }
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Leash",
+              "Range": 2
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "StopDistance": 1,
+              "SlowDownDistance": 5,
+              "AbortDistance": 192
+            }
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "AlertedRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ],
+                "Enabled": { "Compute": "CanSee" }
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "Attitudes": [ "Hostile" ],
+                "Enabled": { "Compute": "CanHear" }
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Scent_By_Attitude",
+              "Modify": {
+                "SmellRange": { "Compute": "SmellRange" },
+                "Enabled": { "Compute": "CanSmell" },
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 1, 1 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Alerted"
+            }
+          }
+        ]
+      },
+      {
+        "Enabled": { "Compute": "ReactToChests" },
+        "Sensor": {
+          "Type": "BlockChange",
+          "Range": { "Compute": "ViewRange" },
+          "EventType": "Damage",
+          "BlockSet": { "Compute": "ChestBlockSet" },
+          "SearchType": "PlayerOnly",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Chase"
+          }
+        ]
+      },
+      {
+        "Enabled": { "Compute": "ReactToChests" },
+        "Sensor": {
+          "Type": "BlockChange",
+          "Range": { "Compute": "ViewRange" },
+          "EventType": "Interaction",
+          "BlockSet": { "Compute": "ChestBlockSet" },
+          "SearchType": "PlayerOnly",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Warn"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Leash",
+            "Range": 5
+          }
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 2, 4 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Idle"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Nav",
+          "NavStates": [ "Defer" ],
+          "ThrottleDuration": 5
+        },
+        "Actions": [
+          {
+            "Type": "RecomputePath"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

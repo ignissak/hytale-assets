@@ -1,0 +1,555 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "BusyStates": [ "Chase", "Search", "ReturnHome" ],
+  "Parameters": {
+    "Appearance": {
+      "Value": "Trork_Warrior",
+      "Description": "Model to be used"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Trork_Instruction_Idle_Motion_Wander",
+      "Description": "The component that controls how the NPC moves during idle state"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 50,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "LeashDistance": {
+      "Value": 30,
+      "Description": "The range after which an NPC will start to want to return to their spawn point"
+    },
+    "LeashMinPlayerDistance": {
+      "Value": 7,
+      "Description": "The minimum distance from the player before the NPC will be willing to give up on the chase"
+    },
+    "LeashTimer": {
+      "Value": [ 8, 8 ],
+      "Description": "How long the NPC must be more than the minimum distance form the player and too far from leash before giving up"
+    },
+    "HardLeashDistance": {
+      "Value": 160,
+      "Description": "An absolute maximum from the the leash position the NPC can go before turning back"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "MaxSpeed": {
+      "Value": 8,
+      "Description": "Maximum walking speed"
+    },
+    "RelativeChaseSpeed": {
+      "Value": 0.8,
+      "Description": "Relative chase speed"
+    },
+    "Weapons": {
+      "Value": [ "Weapon_Battleaxe_Stone_Trork", "Weapon_Battleaxe_Stone_Trork" ],
+      "Description": "NPC Weapon"
+    },
+    "AttackSequence": {
+      "Value": "Component_Instruction_Attack_Sequence_Trork_Warrior",
+      "Description": "The attack sequence to use in combat"
+    },
+    "AttackDistance": {
+      "Value": 3,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "SparBeginMessage": {
+      "Value": "TrorkSparBegin",
+      "Description": "The message to send when requesting sparring"
+    },
+    "TargetGroups": {
+      "Value": [ "Trork" ],
+      "Description": "Beacon target groups"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "The block set designating chests for this NPC"
+    },
+    "BedBlockSet": {
+      "Value": "Trork_Bedroll",
+      "Description": "The block set designating bedrolls for this NPC"
+    },
+    "CampfireBlockSet": {
+      "Value": "Trork_Campfire",
+      "Description": "The block set designating campfires for this NPC"
+    },
+    "SparTargetGroups": {
+      "Value": [ "Trork_Spar" ],
+      "Description": "Groups to spar with"
+    },
+    "UnderlingGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self", "Trork" ],
+      "Description": "Groups not to take damage from"
+    },
+    "AttitudeGroup": {
+      "Value": "Trork",
+      "Description": "Attitude group"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "HotbarItems": { "Compute": "Weapons" },
+  "HotbarSize": 5,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 10,
+      "RunThreshold": 0.3,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 10,
+      "MinJumpHeight": 0.8
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "Inventory",
+              "Operation": "EquipHotbar",
+              "Slot": 0,
+              "UseTarget": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Beacon",
+                "Message": "TrorkEnemySighted",
+                "TargetSlot": "LockedTarget"
+              },
+              {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Or",
+                  "Sensors": [
+                    {
+                      "Type": "State",
+                      "State": "Converge"
+                    },
+                    {
+                      "Type": "State",
+                      "State": "Chase"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "State",
+              "State": "Converge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": { "Compute": "SparBeginMessage" },
+                "ConsumeMessage": false,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Spar"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "$TODO": "Send proper friendly state",
+                  "Reference": "Component_Trork_Instruction_Idle",
+                  "Modify": {
+                    "_ExportStates": [
+                      "Idle",
+                      "Alerted",
+                      "Chase",
+                      "Search",
+                      "Spar",
+                      "NeutralPlayer",
+                      "NeutralPlayer",
+                      "Revered",
+                      "Warn",
+                      "DroppedMeat"
+                    ],
+                    "MotionComponent": { "Compute": "IdleMotionComponent" },
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" },
+                    "BedBlockSet": { "Compute": "BedBlockSet" },
+                    "CampfireBlockSet": { "Compute": "CampfireBlockSet" },
+                    "ExcludeGroups": { "Compute": "UnderlingGroups" },
+                    "ChestBlockSet": { "Compute": "ChestBlockSet" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "NeutralPlayer"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Greeting",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Chase", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Revered"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Greeting",
+              "$TODO": "Change greeting",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Chase", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "Greet": true,
+                "Greeting": "Kneel",
+                "Approach": true,
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Alerted",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Chase", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Trork_Instruction_Offensive_Default",
+                  "Modify": {
+                    "_ExportStates": [ "Idle", "Chase.Attack", "Search" ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" }
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Attack"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Beacon",
+                      "Range": 30,
+                      "Message": "TrorkEnemySighted",
+                      "TargetGroups": { "Compute": "TargetGroups" },
+                      "SendTargetSlot": "LockedTarget"
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Instruction_Clear_Status_Animation",
+                  "Modify": { }
+                },
+                {
+                  "Reference": "Component_Instruction_Target_Adjusted_Attack_Melee",
+                  "Modify": {
+                    "TargetSwitchTimer": [ 5, 5 ],
+                    "AttackSequence": { "Compute": "AttackSequence" },
+                    "AttackDistance": { "Compute": "AttackDistance" },
+                    "TargetRange": 4,
+                    "CombatRelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Soft_Leash",
+                  "Modify": {
+                    "_ExportStates": [ "ReturnHome" ],
+                    "LeashDistance": { "Compute": "LeashDistance" },
+                    "LeashMinPlayerDistance": { "Compute": "LeashMinPlayerDistance" },
+                    "LeashTimer": { "Compute": "LeashTimer" },
+                    "HardLeashDistance": { "Compute": "HardLeashDistance" }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Intelligent_Chase",
+                  "Modify": {
+                    "_ExportStates": [ "Search", "ReturnHome", "ReturnHome" ],
+                    "ViewRange": { "Compute": "AlertedRange" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "RelativeSpeed": { "Compute": "RelativeChaseSpeed" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "ReturnHome"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Return_Home",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Alerted", "Chase", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "LeashDistance": { "Compute": "LeashDistance" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Converge"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Converge",
+              "Modify": {
+                "_ExportStates": [ "Chase", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Spar"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Spar",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Chase", "Search" ],
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "SparBeginMessage": { "Compute": "SparBeginMessage" },
+                "SparTargetGroups": { "Compute": "SparTargetGroups" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Search",
+              "Modify": {
+                "_ExportStates": [ "ReturnHome", "Chase", "Alerted", "FleeTimed" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "FleeTimed"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Panic",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Alerted", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Warn"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Warn",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Chase", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "DroppedMeat"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Dropped_Meat",
+              "Modify": {
+                "_ExportStates": [
+                  "Idle",
+                  "Alerted",
+                  "Chase",
+                  "Search",
+                  "Warn",
+                  "NeutralPlayer",
+                  "NeutralPlayer",
+                  "Revered",
+                  "DroppedMeat"
+                ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "TargetGroups": { "Compute": "TargetGroups" },
+                "UnderlingGroups": { "Compute": "UnderlingGroups" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

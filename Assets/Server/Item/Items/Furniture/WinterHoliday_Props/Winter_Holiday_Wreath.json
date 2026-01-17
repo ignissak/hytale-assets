@@ -1,0 +1,112 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Winter_Holiday_Wreath.name"
+  },
+  "Categories": [
+    "Blocks.Deco",
+    "Furniture.Lighting"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Plant_Seeds_Pine",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Plant_Petals_Red",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Seasonal"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Wreath_Texture.png"
+      }
+    ],
+    "HitboxType": "Block_Vertical_Half",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {}
+    },
+    "BlockParticleSetId": "Leaves_Fir",
+    "BlockSoundSetId": "Leaves",
+    "CustomModel": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Wreath.blockymodel",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "",
+    "VariantRotation": "NESW",
+    "Light": {
+      "Color": "#fc9"
+    },
+    "Group": "Props",
+    "ParticleColor": "#204a2a"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.6,
+    "Rotation": [
+      0.0,
+      0.0,
+      22.5
+    ],
+    "Translation": [
+      8.0,
+      -17.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Winter_Holiday_Wreath.png"
+}

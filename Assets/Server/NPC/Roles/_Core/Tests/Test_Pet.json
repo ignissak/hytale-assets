@@ -1,0 +1,403 @@
+{
+  "Debug": "DisplayState",
+  "StartState": "Idle",
+  "DefaultSubState": "Default",
+  "Type": "Generic",
+  "Appearance": "Corgi",
+  "Invulnerable": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": 50,
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 5,
+                    "Filters": [
+                      {
+                        "Type": "SpotsMe",
+                        "ViewAngle": 45
+                      }
+                    ]
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".90"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "LockOnTarget": true
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 5,
+                    "StopDistance": 3,
+                    "RelativeSpeed": 1
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "Teleport"
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".90"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 10,
+                    "Filters": [
+                      {
+                        "Type": "SpotsMe",
+                        "ViewAngle": 180
+                      }
+                    ]
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".180"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": [ 2, 3 ],
+                    "StrafingDurationRange": [ 1, 1 ],
+                    "StrafingFrequencyRange": [ 2, 2 ],
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 1,
+                    "RelativeBackwardsSpeed": 1
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2, 2 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".180"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 10,
+                    "Filters": [
+                      {
+                        "Type": "Not",
+                        "Filter": {
+                          "Type": "SpotsMe",
+                          "ViewAngle": 180
+                        }
+                      }
+                    ]
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".270"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": [ 2, 3 ],
+                    "StrafingDurationRange": [ 1, 1 ],
+                    "StrafingFrequencyRange": [ 2, 2 ],
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 1,
+                    "RelativeBackwardsSpeed": 1
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2, 2 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".270"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 10,
+                    "Filters": [
+                      {
+                        "Type": "SpotsMe",
+                        "ViewAngle": 180
+                      }
+                    ]
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".360"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": [ 2, 3 ],
+                    "StrafingDurationRange": [ 1, 1 ],
+                    "StrafingFrequencyRange": [ 2, 2 ],
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 1,
+                    "RelativeBackwardsSpeed": 1
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2, 2 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".360"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 10,
+                    "Filters": [
+                      {
+                        "Type": "SpotsMe",
+                        "ViewAngle": 90
+                      }
+                    ]
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".Spin"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "MaintainDistance",
+                    "DesiredDistanceRange": [ 2, 3 ],
+                    "StrafingDurationRange": [ 1, 1 ],
+                    "StrafingFrequencyRange": [ 2, 2 ],
+                    "MoveThreshold": 0.2,
+                    "RelativeForwardsSpeed": 1,
+                    "RelativeBackwardsSpeed": 1
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2, 2 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Spin"
+              },
+              "Instructions": [
+                {
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ]
+                    },
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "IdlePassive"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2.55, 2.55 ]
+                    },
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Pet"
+          },
+          "Instructions": [
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted2"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1.5, 1.5 ]
+                },
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "InteractionInstruction": {
+    "Instructions": [
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "HasInteracted"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "State",
+                "State": "Pet"
+              }
+            },
+            "Actions": [
+              {
+                "Type": "LockOnInteractionTarget"
+              },
+              {
+                "Type": "State",
+                "State": "Pet"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": "server.npcRoles.Test_Pet.name"
+}

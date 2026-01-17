@@ -1,0 +1,29 @@
+{
+  "$Comment": "The shield requires a certain amount of stamina to begin the blocking state",
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 2
+  },
+  "Next": {
+    "Type": "EffectCondition",
+    "EntityEffectIds": [
+      "Stamina_Broken"
+    ],
+    "Match": "None",
+    "Next": {
+      "Type": "Simple",
+      "$Comment": "Remove this delay again after the bug is fixed where the animation doesn't play",
+      "RunTime": 0.05,
+      "Next": {
+        "Type": "Replace",
+        "DefaultValue": {
+          "Interactions": [
+            "Shield_Block_Damage"
+          ]
+        },
+        "Var": "Shield_Block_Damage"
+      }
+    }
+  },
+  "Failed": "Stamina_Bar_Flash"
+}

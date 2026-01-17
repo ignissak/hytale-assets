@@ -1,0 +1,86 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Wild.Panic.Aggressive",
+  "Parameters": {
+    "_ImportStates": [ "Idle" ],
+    "Attack": {
+      "Value": "",
+      "Description": "The attack name to use"
+    },
+    "AttackFrequency": {
+      "Value": [ 3, 3 ],
+      "Description": "How frequently the attack should be triggered"
+    },
+    "RunRadius": {
+      "Value": 20,
+      "Description": "The desired range within which to run"
+    },
+    "Duration": {
+      "Value": [ 5, 8 ],
+      "Description": "The desired duration to panic for"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "TimerStart",
+            "Name": "Panic_Attack",
+            "StartValueRange": { "Compute": "AttackFrequency" },
+            "RestartValueRange": { "Compute": "AttackFrequency" },
+            "Repeating": true
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "ActionsAtomic": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 8 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Timer",
+          "Name": "Panic_Attack",
+          "TimeRemainingRange": [ 0, 0.3 ]
+        },
+        "Actions": [
+          {
+            "Type": "Attack",
+            "Attack": { "Compute": "Attack" },
+            "AttackPauseRange": [ 1, 2 ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "BodyMotion": {
+          "Type": "WanderInCircle",
+          "Radius": { "Compute": "RunRadius" },
+          "MaxHeadingChange": 90,
+          "RelativeSpeed": 1
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

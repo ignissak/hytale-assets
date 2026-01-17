@@ -1,0 +1,137 @@
+{
+  "Model": "Arrow_Crude",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 15,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0,
+    "SticksVertically": true
+  },
+  "LaunchForce": 25,
+  "LaunchLocalSoundEventId": "SFX_Mace_T2_Impact",
+  "LaunchWorldSoundEventId": "SFX_Mace_T2_Impact",
+  "SpawnOffset": {
+    "X": 0.25,
+    "Y": 0.6,
+    "Z": 1.0
+  },
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "SendMessage",
+          "Message": "Spawn"
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "DamageEntity",
+          "TargetedDamage": {
+            "Head": {
+              "DamageCalculator": {
+                "BaseDamage": {
+                  "Physical": 20
+                }
+              },
+              "DamageEffects": {
+                "Knockback": {
+                  "Type": "Force",
+                  "VelocityConfig": {
+                    "AirResistance": 0.97,
+                    "AirResistanceMax": 0.96,
+                    "GroundResistance": 0.94,
+                    "GroundResistanceMax": 0.3,
+                    "Threshold": 3.0,
+                    "Style": "Exp"
+                  },
+                  "Direction": {
+                    "X": 0.0,
+                    "Y": 1.0,
+                    "Z": -1.5
+                  },
+                  "Force": 16.5,
+                  "VelocityType": "Set"
+                },
+                "WorldSoundEventId": "SFX_Mace_T2_Impact",
+                "LocalSoundEventId": "SFX_Mace_T2_Impact",
+                "WorldParticles": [
+                  {
+                    "SystemId": "Impact_Mace_Basic",
+                    "PositionOffset": {
+                      "Y": 0.0,
+                      "X": 0.0,
+                      "Z": 0.0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 6
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 1.0,
+                "Z": -1.5
+              },
+              "Force": 6.5,
+              "VelocityType": "Set"
+            },
+            "WorldSoundEventId": "SFX_Sword_T2_Impact",
+            "LocalSoundEventId": "SFX_Sword_T2_Impact",
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Sword_Basic"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "Simple",
+          "RunTime": 0.15
+        },
+        {
+          "Type": "RemoveEntity"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 10
+        },
+        {
+          "Type": "RemoveEntity"
+        }
+      ]
+    }
+  }
+}

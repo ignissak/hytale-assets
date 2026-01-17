@@ -1,0 +1,37 @@
+{
+  "GridGenerator": {
+    "Seed": "Lava-Wastes-Boulders-Low",
+    "Density": 0.4,
+    "Scale": 0.08,
+    "Jitter": 0.5
+  },
+  "Noisemask":{
+    "Type": "DISTORTED",
+    "Noise":{
+      "NoiseType": "SIMPLEX",
+      "Octaves": 2,
+      "Persistence": 0.4,
+      "Formula": "INVERTED_RIDGED",
+      "Scale": 0.010,
+      "Normalize": [0.9, 0.9]
+    },
+    "Randomizer": {
+        "Generators": [
+            {
+                "Seed": "Firelands-Randomiser-1",
+                "NoiseType": "OLD_SIMPLEX",
+                "Octaves": 4,
+                "Persistence": 0.3,
+                "Scale": 0.008,
+                "Amplitude": 10
+            }
+        ]
+    },
+    "Threshold": [0.01, 1]
+  },
+  "HeightThreshold": {
+		"Positions": [105, 105, 120, 120],
+		"Values": [0, 1, 1, 0]
+    },
+  "OnWater": true
+}

@@ -1,0 +1,61 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "SmellRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be heard"
+    },
+    "ThroughWalls": {
+      "Value": true,
+      "Description": "Whether the NPC can hear the player through obstacles"
+    },
+    "Attitudes": {
+      "Value": [ "Hostile", "Revered", "Friendly", "Neutral" ],
+      "Description": "A prioritised list of attitudes to respond to"
+    },
+    "ExcludeGroups": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Groups to exclude"
+    },
+    "GetNPCs": {
+      "Value": true,
+      "Description": "Whether to include NPCs in this sensor"
+    },
+    "IgnoreLockedTarget": {
+      "Value": false,
+      "Description": "Whether to ignore the current locked target"
+    },
+    "Enabled": {
+      "Value": true,
+      "Description": "Whether this sensor should be enabled"
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "Enabled" },
+    "Type": "Mob",
+    "Range": { "Compute": "SmellRange" },
+    "LockOnTarget": true,
+    "GetPlayers": true,
+    "GetNPCs": { "Compute": "GetNPCs" },
+    "ExcludeOwnType": true,
+    "Filters": [
+      {
+        "Type": "LineOfSight"
+      },
+      {
+        "Enabled": { "Compute": "!isEmptyStringArray(ExcludeGroups)" },
+        "Type": "NPCGroup",
+        "ExcludeGroups": { "Compute": "ExcludeGroups" }
+      }
+    ],
+    "Prioritiser": {
+      "Type": "Attitude",
+      "AttitudesByPriority": { "Compute": "Attitudes" }
+    },
+    "Collector": {
+      "Type": "CombatTargets"
+    }
+  },
+  "Type": "Component"
+}

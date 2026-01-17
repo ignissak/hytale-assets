@@ -1,0 +1,194 @@
+{
+"MapColor": "#1e3e80",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+  		"Type":"DISTORTED",
+  		"Noise":{
+        "Seed": "Grasslands-Base",
+        "NoiseType": "CELL",
+        "Density": [0, 0.075],
+        "DistanceRange": [
+          10.0,
+          30.0
+        ],
+        "CellMode": "DISTANCE",
+        "Formula": "RIDGED",
+        "Scale": 0.003
+  		},
+  		"Randomizer":{
+  		  "Generators":[
+    			{
+    			  "Seed": "Grasslands-River-Noise",
+    			  "NoiseType":"SIMPLEX",
+    			  "Octaves":3,
+    			  "Persistence":0.9,
+  	        "Lacunarity": 2.6,
+    			  "Scale":0.006,
+    			  "Amplitude": 15
+    			}
+  		  ]
+  		},
+			"Threshold": [0, 0.37]
+		},
+    "BiomeMask": ["Tropical_Reef", "Tropical_Barren", "Tropical_Tubes", "Tropical_Sandy", "Tropical_Kelp", "Temperate_Sandy", "Temperate_Barren", "Temperate_Kelp", "Temperate_Reef", "Cold_Sandy", "Cold_Barren", "Cold_Kelp", "Cold_Reef"],
+    "Priority": 200
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Rock_Volcanic:3"
+            ],
+            "NoiseMask": {
+          		"Type":"DISTORTED",
+          		"Noise":{
+                "Seed": "Grasslands-Base",
+                "NoiseType": "CELL",
+                "Density": [0, 0.075],
+                "DistanceRange": [
+                  10.0,
+                  30.0
+                ],
+                "CellMode": "DISTANCE",
+                "Scale": 0.003
+          		},
+          		"Randomizer":{
+          		  "Generators":[
+            			{
+            			  "Seed": "Grasslands-River-Noise",
+            			  "NoiseType":"SIMPLEX",
+            			  "Octaves":3,
+            			  "Persistence":0.9,
+          	        "Lacunarity": 2.6,
+            			  "Scale":0.006,
+            			  "Amplitude": 15
+            			}
+          		  ]
+          		},
+        			"Threshold": [0, 0.25]
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Oceans.Layers.Static_Volcanoe"
+      },
+      {
+        "File": "Zones.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Ocean.Cave_Environments_Ocean"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+		"Positions": [10, 28, 36, 78, 107, 127, 220],
+		"Values": [1, 0.9, 0.87, 0.67, 0.531, 0.39, 0]
+  },
+  "HeightmapNoise": {
+    "Type":"DISTORTED",
+    "Noise":{
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 3,
+          "Scale": 0.002
+        },
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "CELL",
+          "Density": [0, 0.075],
+          "DistanceRange": [
+            20.0,
+            35.0
+          ],
+          "CellMode": "DISTANCE",
+          "Formula": "RIDGED",
+          "Scale": 0.003
+        },
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "CELL",
+          "Density": [0, 0.1],
+          "CellMode": "DISTANCE",
+          "Formula": "NORMAL",
+          "Scale": 0.003
+        },
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "CELL",
+          "Density": [0.05, 0.15],
+          "Jitter": 0.2,
+          "CellMode": "DISTANCE",
+          "Formula": "NORMAL",
+          "Scale": 0.003
+        }
+      ],
+      "Factors": [0.25, 0.3, 0.225, 0.225]
+    },
+    "Randomizer":{
+      "Generators":[
+        {
+          "Seed": "Grasslands-River-Noise",
+          "NoiseType":"SIMPLEX",
+          "Octaves":3,
+          "Persistence":0.9,
+	        "Lacunarity": 2.6,
+          "Scale":0.006,
+          "Amplitude": 15
+        }
+      ]
+    }
+	},
+	"Tint": {
+    "Default": {
+      "Colors": ["0x669415"],
+      "Weights": [100],
+      "Noise": {
+				"Seed": "Grasslands-Base",
+				"NoiseType": "OLD_SIMPLEX",
+				"FractalMode": "OLDSCHOOL",
+				"Octaves": 3,
+				"Persistence": 0.5,
+				"Scale": 0.08
+			}
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone0_Warm"],
+      "Weights": [1],
+      "Noise": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  },
+  "Fade": {
+    "FadeHeightmap": 0.67,
+    "FadeLength": 80,
+    "FadeStart": 0,
+    "TerrainLength": 200,
+    "TerrainStart": 0
+  }
+}

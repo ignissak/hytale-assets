@@ -1,0 +1,67 @@
+{
+	"GridGenerator": {
+    "Seed": "Pattern_Monuments",
+		"Density": [0.25, 0.375],
+    "Scale": 0.005,
+		"Jitter": 0.75
+	},
+	"NoiseMask": {
+		"Type":"DISTORTED",
+		"Noise":{
+			"Type": "SUM",
+			"Noise": [
+				{
+					"Type": "MIN",
+					"Noise": [
+					  {
+					    "File": "Zones.Noise.Shared.Heightmaps.River"
+					  }
+					],
+					"Formula": "INVERTED_RIDGED_SQRT"
+				},
+				{
+					"Type": "MIN",
+					"Noise": [
+					  {
+					    "File": "Zones.Noise.Shared.Heightmaps.Base"
+					  }
+					],
+					"Formula": "INVERTED",
+					"Normalize": [0.37, 0.55]
+				}
+			],
+			"Factors": [0.60, 0.40]
+		},
+		"Randomizer":{
+			"Generators":[
+				{
+					"Seed": "Grasslands-River-Noise",
+					"NoiseType":"SIMPLEX",
+					"Octaves":3,
+					"Persistence":0.6,
+					"Scale":0.006,
+					"Amplitude": 15
+				}
+			]
+		},
+    "Threshold": [0, 0.85]
+	},
+  "HeightThreshold": {
+    "Positions": [114, 115, 155, 156],
+    "Values": [0, 1, 1, 0]
+  },
+	"Mask": {
+	  "Default": ["*"],
+			"Specific": [
+	      {
+				"Block": ["Plant_Grass_Winter", "Plant_Grass_Winter_Short", "Plant_Grass_Winter_Tall", "Plant_Crop_Mushroom_Flatcap_Blue"],
+				"Rule": ["Empty"]
+	    },
+	    {
+	    "Block": ["Soil_Pathway", "Soil_Pathway_Half", "Rubble_Shale", "Rubble_Shale_Medium"],
+	    "Rule": ["!Empty","*"]
+	    }
+	  ]
+	},
+	"MaxSize": 100
+}

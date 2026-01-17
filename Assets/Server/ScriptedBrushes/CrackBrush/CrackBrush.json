@@ -1,0 +1,325 @@
+{
+  "Operations": [
+    {
+      "Id": "echoonce",
+      "Message": "====================================================\n                 C R A C K   B R U S H   U S A G E\n  [X]   Use Axis Lock along the terrain surface\n  [X]   Recommended brush width: 7 height: 11\n        (use a larger brush at your own risk)\n        (shape is irrelevant)\n  [X]   Select fill material from the dropdown"
+    },
+    {
+      "Id": "jumpiftoolarg",
+      "ArgName": "FillMaterial",
+      "ComparisonType": "Equals",
+      "ComparisonValue": "Water",
+      "StoredIndexName": "setWater"
+    },
+    {
+      "Id": "jumpiftoolarg",
+      "ArgName": "FillMaterial",
+      "ComparisonType": "Equals",
+      "ComparisonValue": "Empty",
+      "StoredIndexName": "setEmpty"
+    },
+    {
+      "Id": "pattern",
+      "BlockPattern": "Fluid_Lava"
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "saveFillPattern"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "setWater"
+    },
+    {
+      "Id": "pattern",
+      "BlockPattern": "Fluid_Water"
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "saveFillPattern"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "setEmpty"
+    },
+    {
+      "Id": "pattern",
+      "BlockPattern": "Empty"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "saveFillPattern"
+    },
+    {
+      "Id": "savebrushconfig",
+      "StoredName": "fillPattern"
+    },
+    {
+      "Id": "shape",
+      "Shape": "InvertedCone"
+    },
+    {
+      "Id": "dimensions",
+      "Width": {
+        "Value": 4,
+        "Relative": true
+      },
+      "Height": {
+        "Value": 25,
+        "Relative": true
+      }
+    },
+    {
+      "Id": "offset",
+      "Offset": {
+        "X": {
+          "Value": 0,
+          "Relative": true
+        },
+        "Y": {
+          "Value": -5,
+          "Relative": true
+        },
+        "Z": {
+          "Value": 0,
+          "Relative": true
+        }
+      }
+    },
+    {
+      "Id": "savebrushconfig",
+      "StoredName": "original"
+    },
+    {
+      "Id": "material",
+      "BlockType": "Empty"
+    },
+    {
+      "Id": "set"
+    },
+    {
+      "Id": "dimensions",
+      "Width": {
+        "Value": -1,
+        "Relative": true
+      },
+      "Height": {
+        "Value": -1,
+        "Relative": true
+      }
+    },
+    {
+      "Id": "jumprandom",
+      "WeightedListOfIndexNames": [
+        {
+          "Left": 13,
+          "Right": "end"
+        },
+        {
+          "Left": 1,
+          "Right": "branchxp"
+        },
+        {
+          "Left": 1,
+          "Right": "branchxn"
+        }
+      ]
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "branchxp"
+    },
+    {
+      "Id": "randomdimensions",
+      "WidthRange": {
+        "Min": {
+          "Value": -1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      },
+      "HeightRange": {
+        "Min": {
+          "Value": -1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      }
+    },
+    {
+      "Id": "randomoffset",
+      "XOffsetRange": {
+        "Min": {
+          "Value": 1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 1,
+          "Relative": true
+        }
+      },
+      "YOffsetRange": {
+        "Min": {
+          "Value": 0,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      },
+      "ZOffsetRange": {
+        "Min": {
+          "Value": -2,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 2,
+          "Relative": true
+        }
+      }
+    },
+    {
+      "Id": "set"
+    },
+    {
+      "Id": "loadoperationsfromasset",
+      "AssetId": "Crackloop"
+    },
+    {
+      "Id": "jumpifcompare",
+      "Comparisons": [
+        {
+          "DataGettingFlag": "Width",
+          "IntegerComparisonOperator": "EqualTo",
+          "ValueToCompareTo": 2
+        }
+      ],
+      "StoredIndexName": "end"
+    },
+    {
+      "Id": "looprandom",
+      "StoredIndexName": "branchxp",
+      "RangeOfAdditionalRepetitions": {
+        "Left": 15,
+        "Right": 25
+      }
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "end"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "branchxn"
+    },
+    {
+      "Id": "randomdimensions",
+      "WidthRange": {
+        "Min": {
+          "Value": -1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      },
+      "HeightRange": {
+        "Min": {
+          "Value": -1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      }
+    },
+    {
+      "Id": "randomoffset",
+      "XOffsetRange": {
+        "Min": {
+          "Value": -1,
+          "Relative": true
+        },
+        "Max": {
+          "Value": -1,
+          "Relative": true
+        }
+      },
+      "YOffsetRange": {
+        "Min": {
+          "Value": 0,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 0,
+          "Relative": true
+        }
+      },
+      "ZOffsetRange": {
+        "Min": {
+          "Value": -2,
+          "Relative": true
+        },
+        "Max": {
+          "Value": 2,
+          "Relative": true
+        }
+      }
+    },
+    {
+      "Id": "set"
+    },
+    {
+      "Id": "loadoperationsfromasset",
+      "AssetId": "Crackloop"
+    },
+    {
+      "Id": "jumpifcompare",
+      "Comparisons": [
+        {
+          "DataGettingFlag": "Width",
+          "IntegerComparisonOperator": "EqualTo",
+          "ValueToCompareTo": 2
+        }
+      ],
+      "StoredIndexName": "end"
+    },
+    {
+      "Id": "looprandom",
+      "StoredIndexName": "branchxn",
+      "RangeOfAdditionalRepetitions": {
+        "Left": 15,
+        "Right": 25
+      }
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "end"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "end"
+    },
+    {
+      "Id": "loadbrushconfig",
+      "StoredName": "original",
+      "ParametersToLoad": ["Offset", "Dimensions", "Shape"]
+    },
+    {
+      "Id": "loadoperationsfromasset",
+      "AssetId": "Crackloop"
+    },
+    {
+      "Id": "exit"
+    }
+  ]
+}

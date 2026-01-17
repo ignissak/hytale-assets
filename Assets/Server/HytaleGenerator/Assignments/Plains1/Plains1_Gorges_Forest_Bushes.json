@@ -1,0 +1,133 @@
+{
+	"$Title":	"[ROOT] Weighted Assignments",
+	"$Position":	{
+		"$x":	5230,
+		"$y":	4855
+	},
+	"Type":	"FieldFunction",
+	"ExportAs":	"Plains1_Gorges_Forest_Bushes",
+	"FieldFunction":	{
+		"$Position":	{
+			"$x":	6101,
+			"$y":	4556
+		},
+		"Type":	"Imported",
+		"Skip":	false,
+		"Name":	"Plains1_Gorges_Forest_Clusters"
+	},
+	"Delimiters":	[{
+			"$Position":	{
+				"$x":	6067,
+				"$y":	4904
+			},
+			"Max":	-0.65,
+			"Min":	-1,
+			"Assignments":	{
+				"$Position":	{
+					"$x":	6816,
+					"$y":	4903
+				},
+				"Type":	"FieldFunction",
+				"FieldFunction":	{
+					"$Position":	{
+						"$x":	7633,
+						"$y":	4874
+					},
+					"Type":	"SimplexNoise2D",
+					"Skip":	false,
+					"Lacunarity":	2,
+					"Persistence":	1,
+					"Octaves":	2,
+					"Scale":	10,
+					"Seed":	"Bush"
+				},
+				"Delimiters":	[{
+						"$Position":	{
+							"$x":	7685,
+							"$y":	5395
+						},
+						"Max":	-0.3,
+						"Min":	-1,
+						"Assignments":	{
+							"$Position":	{
+								"$x":	8191,
+								"$y":	5404
+							},
+							"Type":	"Weighted",
+							"ExportAs":	"Plains1_Gorges_Bushes_Assignment",
+							"SkipChance":	0.2,
+							"Seed":	"A",
+							"WeightedAssignments":	[{
+									"$Position":	{
+										"$x":	8942,
+										"$y":	5407
+									},
+									"Weight":	1,
+									"Assignments":	{
+										"$Position":	{
+											"$x":	9489,
+											"$y":	5393
+										},
+										"Type":	"Constant",
+										"Prop":	{
+											"$Position":	{
+												"$x":	10140,
+												"$y":	5375
+											},
+											"Type":	"Column",
+											"Skip":	false,
+											"ColumnBlocks":	[{
+													"$Position":	{
+														"$x":	10842,
+														"$y":	5374
+													},
+													"Y":	0,
+													"Material":	{
+														"$Position":	{
+															"$x":	11398,
+															"$y":	5320
+														},
+														"Solid":	"Plant_Bush_Lush"
+													}
+												}],
+											"Directionality":	{
+												"$Position":	{
+													"$x":	10829,
+													"$y":	5533
+												},
+												"Type":	"Static",
+												"Rotation":	0,
+												"Pattern":	{
+													"$Position":	{
+														"$x":	11473,
+														"$y":	5541
+													},
+													"Type":	"Imported",
+													"Skip":	false,
+													"Name":	"Floor_Grass_Pattern"
+												}
+											},
+											"Scanner":	{
+												"$Position":	{
+													"$x":	10847,
+													"$y":	5725
+												},
+												"Type":	"ColumnLinear",
+												"Skip":	false,
+												"MaxY":	80,
+												"MinY":	30,
+												"RelativeToPosition":	false,
+												"BaseHeightName":	"Base",
+												"TopDownOrder":	true,
+												"ResultCap":	1
+											}
+										}
+									}
+								}]
+						}
+					}]
+			}
+		}],
+	"$WorkspaceID":	"HytaleGenerator - Assignments",
+	"$Groups":	[]
+}

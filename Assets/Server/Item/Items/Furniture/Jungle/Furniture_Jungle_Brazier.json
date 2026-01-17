@@ -1,0 +1,101 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Jungle_Brazier.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Jungle",
+  "Icon": "Icons/ItemsGenerated/Furniture_Jungle_Brazier.png",
+  "BlockType": {
+    "BlockParticleSetId": "Metal",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Dark/Brazier.blockymodel",
+    "CustomModelAnimation": "Blocks/Animations/Fire/Fire_Burn.blockyanim",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Temple_Dark/Brazier_Bronze.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Brazier",
+    "Light": {
+      "Color": "#dca"
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#bd9c60",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Particles": [
+      {
+        "SystemId": "Campfire_New_Cartoon",
+        "TargetNodeName": "Flame",
+        "Scale": 1,
+        "PositionOffset": {
+          "Y": 0.2
+        }
+      }
+    ],
+    "BlockSoundSetId": "Brazier",
+    "Looping": true,
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Jungle"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

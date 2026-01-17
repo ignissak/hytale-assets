@@ -1,0 +1,45 @@
+{
+  "GridGenerator": {
+		"Seed": "Monuments-Firelands",
+    "Density": 1,
+    "Scale": 0.003,
+    "Jitter": 0.75
+  },
+  "NoiseMask":{
+    "Type":"DISTORTED",
+    "Noise": {
+      "Seed": "Monuments-Firelands",
+      "NoiseType": "DISTANCE",
+      "DistanceMode": "NATURAL",
+      "Distance2Mode": "DIV",
+      "Scale": 0.003,
+      "Jitter": 0.75
+      },
+    "Randomizer": {
+      "Generators": [
+        {
+          "Seed": "Firelands-Hills",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 4,
+          "Persistence": 0.3,
+          "Scale": 0.008,
+          "Amplitude": 30
+        }
+      ]
+    },
+    "Threshold": [0.01, 0.42]
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115, 150, 151],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+		"Default": ["*"],
+		"Specific": [
+			{
+				"Block": ["Rock_Stone_Brick_Smooth_Half"],
+				"Rule": ["Empty"]
+			}
+		]
+	}
+}

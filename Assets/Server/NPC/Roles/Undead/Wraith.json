@@ -1,0 +1,56 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Intelligent",
+  "Modify": {
+    "MaxHealth": 193,
+    "HearingRange": 8,
+    "WakingPeriod": [
+      0,
+      24
+    ],
+    "DropList": "Drop_Wraith",
+    "Appearance": "Wraith",
+    "Weapons": [
+      "Weapon_Battleaxe_Scythe_Void"
+    ],
+    "OffHand": [],
+    "FlockArray": [
+      "Wraith_Lantern"
+    ],
+    "Attack": "Root_NPC_Wraith_Attack",
+    "AttackDistance": 3.5,
+    "BlockProbability": 10,
+    "DesiredAttackDistanceRange": [
+      2,
+      2.5
+    ],
+    "_InteractionVars": {
+      "Melee_Damage": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Damage",
+            "$Comment": "Sets damage and onhit effects",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 40
+              },
+              "RandomPercentageModifier": 0.1
+            }
+          }
+        ]
+      }
+    },
+    "IsMemory": true,
+    "MemoriesCategory": "Mythic",
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Wraith.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

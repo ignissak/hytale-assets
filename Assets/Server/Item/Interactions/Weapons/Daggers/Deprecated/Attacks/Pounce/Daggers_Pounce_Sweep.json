@@ -1,0 +1,78 @@
+{
+  "$Comment": "The pouncing attack - see Daggers_Pounce_Stab_Damage Daggers_Pounce_Stab_Effect",
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "PounceSweep",
+    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local",
+    "CameraEffect": "Daggers_Land"
+  },
+  "RunTime": 0.139,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.1,
+            "Selector": {
+              "Id": "Horizontal",
+              "EndDistance": 2.25,
+              "Length": 145.0,
+              "Direction": "ToRight",
+              "YawStartOffset": -35.0
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                "Daggers_Pounce_Sweep_Damage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.1,
+            "Selector": {
+              "Id": "Horizontal",
+              "EndDistance": 2.25,
+              "Length": 145.0,
+              "Direction": "ToLeft",
+              "YawStartOffset": -35.0
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                "Daggers_Pounce_Sweep_Damage"
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.139
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          "Daggers_Pounce_Sweep_Effect"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 360,
+      "ClimbSpeedMult": 0.125
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "Range": 2,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": 120
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Target",
+                    "Filters": [
+                      {
+                        "Type": "SpotsMe",
+                        "ViewAngle": 120,
+                        "ViewTest": "View_Sector"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Infront-Spot"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "Range": 2,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "Self" ]
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": 120
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "Filters": [
+                        {
+                          "Type": "SpotsMe",
+                          "ViewAngle": 120,
+                          "ViewTest": "View_Sector"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Infront-NoSpot"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Mob",
+                  "Range": 2,
+                  "ExcludeOwnType": false,
+                  "LockOnTarget": false,
+                  "Filters": [
+                    {
+                      "Type": "NPCGroup",
+                      "IncludeGroups": [ "Self" ]
+                    },
+                    {
+                      "Type": "ViewSector",
+                      "ViewSector": 120
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "NoInFront"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Combat_Mitigation.name"
+}

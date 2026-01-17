@@ -1,0 +1,124 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Berry_Block.name",
+    "Description": "server.items.Plant_Crop_Berry_Block.description"
+  },
+  "Parent": "Template_Crop_Berry_Block",
+  "ItemLevel": 10,
+  "BlockType": {
+    "CustomModel": "Blocks/Foliage/Plants/Bush_Wild.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Bush_Berry_Wild.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "StageFinal": {
+          "CustomModel": "Blocks/Foliage/Plants/Bush_Wild_Berries.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Bush_Berry_Wild.png",
+              "Weight": 1
+            }
+          ],
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_StageFinal",
+              "IsWeaponBreakable": false
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Berry_StageFinal_Harvest"
+            }
+          }
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 80000,
+              "Max": 80000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ],
+        "Harvested": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Berry_Block",
+        "IsWeaponBreakable": false
+      },
+      "UseDefaultDropWhenPlaced": true
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Berry_Block.png",
+  "IconProperties": {
+    "Scale": 0.37,
+    "Rotation": [
+      9,
+      57,
+      21
+    ],
+    "Translation": [
+      2.5,
+      -27
+    ]
+  }
+}

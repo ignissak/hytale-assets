@@ -1,0 +1,55 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "Enabled": {
+      "Value": true,
+      "Description": "Whether to enable this macro element."
+    },
+    "WanderRadius": {
+      "Value": 6,
+      "Description": "General wander radius."
+    },
+    "StopDistance": {
+      "Value": 5,
+      "Description": "Distance from leader at which to stop."
+    }
+  },
+  "Content": {
+    "$Comment": "Stay near the flock leader.",
+    "Enabled": { "Compute": "Enabled" },
+    "Sensor": {
+      "Type": "And",
+      "Sensors": [
+        {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "FlockLeader"
+            },
+            {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Flock",
+                  "FlockStatus": "Follower"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Type": "Leash",
+          "Range": { "Compute": "WanderRadius" }
+        }
+      ]
+    },
+    "BodyMotion": {
+      "Type": "Seek",
+      "SlowDownDistance": { "Compute": "StopDistance + 2" },
+      "StopDistance": { "Compute": "StopDistance" },
+      "RelativeSpeed": 1,
+      "AbortDistance": 100
+    }
+  }
+}

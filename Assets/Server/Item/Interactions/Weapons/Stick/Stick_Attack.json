@@ -1,0 +1,37 @@
+{
+  "Type": "Charging",
+  "AllowIndefiniteHold": false,
+  "DisplayProgress": false,
+  "HorizontalSpeedMultiplier": 0.8,
+  "Effects": {
+    "ItemAnimationId": "SwingLeftCharging"
+  },
+  "Next": {
+    "0": {
+      "Type": "Serial",
+      "Interactions": [
+        "Stick_Swings",
+        {
+          "Type": "ChangeStat",
+          "StatModifiers": {
+            "StaminaRegenDelay": 0
+          },
+          "Behaviour": "Set"
+        }
+      ]
+    },
+    "0.8": {
+      "Type": "Serial",
+      "Interactions": [
+        "Stick_Swing_Down_Strong",
+        {
+          "Type": "ChangeStat",
+          "StatModifiers": {
+            "StaminaRegenDelay": 0
+          },
+          "Behaviour": "Set"
+        }
+      ]
+    }
+  }
+}

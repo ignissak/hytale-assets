@@ -1,0 +1,42 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Plains-Birch-Ponds",
+    "Density": [0.9, 1],
+    "Scale": 0.12,
+    "Jitter": 0.9
+  },
+  "NoiseMask": {
+    "$Comment": "Keeps bushes spawning around ponds and away from monuments",
+    "Type": "MAX",
+    "Noise": [
+      {
+        "Seed": "Grasslands-Plains-Heightmap",
+        "NoiseType": "SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 2,
+        "Persistence": 0.35,
+        "Scale": 0.01,
+        "Normalize": [0.39]
+      },
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+          }
+        ],
+        "Density": [0, 1],
+        "Normalize": [0.6]
+      }
+    ],
+    "Threshold": [0, 0.9]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Bushes"
+  },
+  "HeightThreshold": {
+    "Positions": [113, 114],
+    "Values": [0, 1]
+  },
+  "FitHeightmap": true
+}

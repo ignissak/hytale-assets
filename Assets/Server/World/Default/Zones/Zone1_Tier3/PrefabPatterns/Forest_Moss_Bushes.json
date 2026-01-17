@@ -1,0 +1,58 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Forest-Bushes",
+    "Density": [0, 0.25],
+    "Scale": 0.09,
+    "Jitter": 0.6
+  },
+  "NoiseMask": {
+  	"Type": "MAX",
+  	"Noise": [
+      {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise-2",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED_FIX",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.01,
+            "Normalize": [0, 0.98]
+          },
+          {
+            "Seed": "Grasslands-Moss-Ponds",
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "Density": 0.25,
+            "Jitter": 0.6,
+            "Formula": "INVERTED_SQUARED",
+            "Scale": 0.025
+          }
+        ],
+        "Normalize": [0.7, 0.8]
+      },
+  		{
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+        }
+      ],
+  			"Density": [0, 1],
+  			"Normalize": 0.57
+  		}
+  	],
+    "Threshold": [0, 0.9]
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115],
+    "Values": [0, 1]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Bushes"
+  },
+  "FitHeightmap": true,
+  "Parent": ["Soil_Grass"]
+}

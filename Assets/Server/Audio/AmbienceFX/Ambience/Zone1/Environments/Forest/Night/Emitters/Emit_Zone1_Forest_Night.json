@@ -1,0 +1,88 @@
+{
+  "Conditions": {
+    "Altitude": {
+      "Min": 0,
+      "Max": 200
+    },
+    "DayTime": {
+      "Min": 19,
+      "Max": 5
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Or",
+          "Patterns": [
+            {
+              "Op": "Equals",
+              "Tag": "Forests"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Azure"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Swamps"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Autumn"
+            }
+          ]
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    }
+  },
+  "Sounds": [
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Night_Birds",
+      "Frequency": {
+        "Min": 4,
+        "Max": 8
+      },
+      "Radius": {
+        "Min": 3,
+        "Max": 15
+      }
+    },
+    {
+      "Frequency": {
+        "Min": 2,
+        "Max": 6
+      },
+      "Radius": {
+        "Min": 3,
+        "Max": 10
+      },
+      "SoundEventId": "SFX_Z1_Emit_Forest_Night_Insects"
+    },
+    {
+      "Frequency": {
+        "Min": 1,
+        "Max": 4
+      },
+      "Radius": {
+        "Min": 3,
+        "Max": 10
+      },
+      "SoundEventId": "SFX_Z1_Emit_Forest_Night_Insects"
+    }
+  ]
+}

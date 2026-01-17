@@ -1,0 +1,40 @@
+{
+  "Type": "DamageEntity",
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Physical": 10
+    }
+  },
+  "Effects": {
+    "CameraEffect": "Impact"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Point",
+      "Force": 8.0,
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      },
+      "VelocityType": "Set",
+      "VelocityY": 4.0
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Stab_Charged"
+      }
+    ],
+    "LocalSoundEventId": "SFX_Daggers_T2_Stab_Impact",
+    "WorldSoundEventId": "SFX_Daggers_T2_Stab_Impact"
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 2
+    }
+  ]
+}

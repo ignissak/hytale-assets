@@ -1,0 +1,89 @@
+$C = "../Common.ui";
+
+@ContainerHeight = 730;
+
+$C.@Container {
+  Anchor: (Left: 50, Top: 170, Width: 400, Bottom: 120);
+
+  #Title {
+    Group {
+      LayoutMode: Left;
+
+      $C.@Title {
+        @Text = %server.customUI.changeModelPage.title;
+      }
+    }
+
+    $C.@HeaderSearch {}
+  }
+
+  #Content {
+    Group #ModelList {
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      FlexWeight: 1;
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 20);
+      Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+      Padding: (Bottom:18);
+
+      Label #ModelName {
+        Padding: 8;
+        Style: (
+          FontSize: 18,
+          RenderUppercase: true,
+          RenderBold: true,
+          HorizontalAlignment: Center,
+          TextColor: #94969a
+        );
+      }
+
+      $C.@PanelSeparatorFancy {}
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: %server.customUI.changeModelPage.scale;
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        FloatSlider #Scale {
+          Anchor: (Left: 25, Width: 180, Height: 5, Right: 0);
+          Style: $C.@DefaultSliderStyle;
+          Min: 0;
+          Max: 10;
+          Step: 0.1;
+          Value: 1;
+        }
+      }
+    }
+
+    Group {
+      LayoutMode: Left;
+      Anchor: (Top: 15);
+
+      $C.@TextButton #ChangeModel {
+        Text: %server.customUI.changeModelPage.button.changeModel;
+        FlexWeight: 1;
+      }
+
+      Group {
+        Anchor: (Width: 5);
+      }
+
+      $C.@SecondaryTextButton #ResetModel {
+        Text: %server.customUI.changeModelPage.button.resetModel;
+        FlexWeight: 1;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

@@ -1,0 +1,59 @@
+{
+    "Type": "ApplyForce",
+    "MouseSensitivityAdjustmentTarget": 0.25,
+    "MouseSensitivityAdjustmentDuration": 0.1,
+    "Effects": {
+      "WorldSoundEventId": "SFX_Battleaxe_T1_Launch",
+      "LocalSoundEventId": "SFX_Battleaxe_T1_Launch_Local",
+      "ItemAnimationId": "DownstrikeLeap",
+      "CameraEffect": "Battleaxe_Downstrike_Jump",
+      "Trails": [
+        {
+          "PositionOffset": {
+            "X": 0.8,
+            "Y": 0,
+            "Z": 0
+          },
+          "RotationOffset": {
+            "Pitch": 0,
+            "Roll": 90,
+            "Yaw": 0
+          },
+          "TargetNodeName": "Handle",
+          "TrailId": "Medium_Charged"
+        }
+      ]
+    },
+    "AdjustVertical": true,
+    "VerticalClamp": [10, 30],
+    "WaitForGround": true,
+    "Force": 12,
+    "Direction": {
+      "X": 0,
+      "Y": 1,
+      "Z": -2
+    },
+    "ChangeVelocityType": "Set",
+    "VelocityConfig": {
+      "AirResistance": 0.99,
+      "AirResistanceMax": 0.98,
+      "GroundResistance": 0.94,
+      "GroundResistanceMax": 0.82,
+      "Threshold": 3.0,
+      "Style": "Linear"
+    },
+    "Next": {
+      "Type": "ClearEntityEffect",
+      "EntityEffectId": "Battleaxe_Downstrike_Jump",
+      "Next": {
+        "Type": "Replace",
+        "Var": "Downstrike_Selector",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Primary_Downstrike_Selector"
+          ]
+        }
+      }
+    }
+  }

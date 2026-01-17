@@ -1,0 +1,73 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "Class": "Charged"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.99,
+        "AirResistanceMax": 0.98,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Linear"
+      },
+      "Direction": {
+        "X": 0.0,
+        "Y": 0.5,
+        "Z": -1
+      },
+      "Force": 8,
+      "VelocityType": "Set"
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Stab_Charged",
+        "Scale": 1
+      }
+    ]
+  },
+  "TargetedDamage": {
+    "Head": {
+      "DamageEffects": {
+        "Knockback": {
+          "Type": "Force",
+          "VelocityConfig": {
+            "AirResistance": 0.99,
+            "AirResistanceMax": 0.98,
+            "GroundResistance": 0.94,
+            "GroundResistanceMax": 0.3,
+            "Threshold": 3.0,
+            "Style": "Linear"
+          },
+          "Direction": {
+            "X": 0.0,
+            "Y": 0.5,
+            "Z": -1
+          },
+          "Force": 8,
+          "VelocityType": "Add"
+        },
+        "WorldParticles": [
+          {
+            "SystemId": "Impact_Critical",
+            "Scale": 1,
+            "RotationOffset": {
+              "Yaw": 180,
+              "Pitch": 0,
+              "Roll": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 1
+    }
+  ]
+}

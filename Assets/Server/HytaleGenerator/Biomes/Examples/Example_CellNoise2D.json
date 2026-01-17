@@ -1,0 +1,129 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-3393,
+		"$y":	-4144
+	},
+	"Name":	"Hills",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-2523,
+			"$y":	-5321
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2229,
+				"$y":	-5320
+			},
+			"Type":	"Sum",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1544,
+						"$y":	-5312
+					},
+					"Type":	"CellNoise2D",
+					"Skip":	false,
+					"ScaleX":	150,
+					"ScaleZ":	150,
+					"Jitter":	0.3,
+					"CellType":	"Distance2Div",
+					"Octaves":	1,
+					"Seed":	"A"
+				}, {
+					"$Position":	{
+						"$x":	-1570,
+						"$y":	-4910
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-917,
+							"$y":	-4635
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-309,
+									"$y":	-4841
+								},
+								"In":	0,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-306,
+									"$y":	-4649
+								},
+								"In":	50,
+								"Out":	-1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-909,
+								"$y":	-4917
+							},
+							"Type":	"BaseHeight",
+							"Skip":	false,
+							"BaseHeightName":	"Base",
+							"Distance":	true
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-2575,
+			"$y":	-2501
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1776,
+				"$y":	-2469
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-972,
+						"$y":	-2423
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-352,
+							"$y":	-2439
+						},
+						"Solid":	"Soil_Dirt"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-1773,
+				"$y":	-2176
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1113,
+					"$y":	-2100
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-1644.1875,
+				"$y":	-24301.8125
+			},
+			"$width":	6836.0625,
+			"$height":	8446.875,
+			"$name":	"Terrain"
+		}]
+}

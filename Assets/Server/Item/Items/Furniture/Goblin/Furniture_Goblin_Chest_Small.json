@@ -1,0 +1,110 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Goblin_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Goblin",
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Wood_Deadwood_Planks",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Storage"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 5
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Goblin_Chest_Small.png",
+  "IconProperties": {
+    "Scale": 0.55,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -15
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "NPC/Intelligent/Goblin/Models/Attachments/Thief/Chest_Goblin_Thief.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "NPC/Intelligent/Goblin/Models/Attachments/Thief/Chest_Goblin_Thief_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#653d29",
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemLevel": 17,
+  "MaxStack": 10
+}

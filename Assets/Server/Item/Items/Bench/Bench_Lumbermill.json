@@ -1,0 +1,86 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Bench_Lumbermill.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_Lumbermill.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "Quality": "Developer",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Benches/Lumbermill.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Lumbermill_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "CustomModelScale": 1,
+    "VariantRotation": "NESW",
+    "HitboxType": "Bench_Lumbermill",
+    "Bench": {
+      "Type": "Processing",
+      "Input": [
+        {},
+        {}
+      ],
+      "LocalOpenSoundEventId": "SFX_Lumbermill_Bench_Open",
+      "LocalCloseSoundEventId": "SFX_Lumbermill_Bench_Close",
+      "Id": "Lumbermill"
+    },
+    "State": {
+      "Id": "processingBench",
+      "Definitions": {
+        "Processing": {
+          "Looping": true,
+          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
+        },
+        "ProcessCompleted": {
+          "Looping": true,
+          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#6f462c",
+    "BlockSoundSetId": "Wood",
+    "Interactions": {
+      "Use": "Open_Processing_Bench"
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.41,
+    "Translation": [
+      11.4,
+      -7.2
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

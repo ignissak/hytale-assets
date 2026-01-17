@@ -1,0 +1,92 @@
+{
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "DisableDamageGroups": [ "Neutral" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "GetNPCs": true,
+                "GetPlayers": true,
+                "Range": 5,
+                "LockOnTarget": true,
+                "AutoUnlockTarget": true,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Locked"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Locked"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 10,
+                "AutoUnlockTarget": true
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Target"
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Locked_Target.name"
+}

@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Greenwood_Fence.name"
+  },
+  "Parent": "Wood_Softwood_Fence",
+  "Icon": "Icons/ItemsGenerated/Wood_Greenwood_Fence.png",
+  "Set": "Wood_Greenwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Greenwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Greenwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Greenwood_Fence",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#9ca05b",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Greenwood.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Greenwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Greenwood_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Greenwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Greenwood_Fence",
+        "Corner": "*Wood_Greenwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Greenwood_Fence_Gate"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Greenwood"
+    ]
+  }
+}

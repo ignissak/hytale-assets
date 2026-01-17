@@ -1,0 +1,128 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Beech.name",
+    "Description": "server.items.Plant_Sapling_Beech.description"
+  },
+  "Parent": "Plant_Sapling_Oak",
+  "ItemLevel": 2,
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 5
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 0
+      }
+    ]
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Beech.png",
+        "Weight": 1
+      }
+    ],
+    "Opacity": "Transparent",
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Beech"
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Sapling_Beech",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Beech/Stage_0/Beech_Stage0_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Beech/Stage_1/Beech_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Beech/Stage_2/Beech_Stage2_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Beech/Stage_3/Beech_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "ParticleColor": "#629820"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Beech_Sapling.png"
+}

@@ -1,0 +1,365 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-4474,
+		"$y":	-6757
+	},
+	"Name":	"Runtime Defect",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-3394,
+			"$y":	-4947
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2822,
+				"$y":	-4907
+			},
+			"Type":	"Offset",
+			"Skip":	false,
+			"FunctionForY":	{
+				"$Position":	{
+					"$x":	-2111,
+					"$y":	-4697
+				},
+				"Points":	[{
+						"$Position":	{
+							"$x":	-1844,
+							"$y":	-4722
+						},
+						"Y":	100,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1842,
+							"$y":	-4508
+						},
+						"Y":	200,
+						"Out":	-1
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1838,
+						"$y":	-5167
+					},
+					"Type":	"SimplexNoise2D",
+					"Skip":	false,
+					"Lacunarity":	2,
+					"Persistence":	0.5,
+					"Octaves":	6,
+					"Scale":	1000,
+					"Seed":	"A"
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-3132,
+			"$y":	-4137
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-2333,
+				"$y":	-4105
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-1703,
+						"$y":	-4115
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-1033,
+							"$y":	-4115
+						},
+						"Solid":	"Rock_Stone"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-2330,
+				"$y":	-3812
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1634,
+					"$y":	-3783
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"Props":	[{
+			"$Position":	{
+				"$x":	-3332,
+				"$y":	-8043
+			},
+			"Skip":	false,
+			"Runtime":	1,
+			"Positions":	{
+				"$Position":	{
+					"$x":	-2776,
+					"$y":	-8853
+				},
+				"Type":	"Mesh2D",
+				"Skip":	false,
+				"PointsY":	0,
+				"PointGenerator":	{
+					"$Position":	{
+						"$x":	-2066,
+						"$y":	-8864
+					},
+					"Type":	"Mesh",
+					"Jitter":	0,
+					"ScaleX":	30,
+					"ScaleY":	40,
+					"ScaleZ":	30,
+					"Seed":	"A"
+				}
+			},
+			"Assignments":	{
+				"$Position":	{
+					"$x":	-2678,
+					"$y":	-7998
+				},
+				"Type":	"Imported",
+				"Name":	"r1"
+			}
+		}, {
+			"$Position":	{
+				"$x":	-3380,
+				"$y":	-6829
+			},
+			"Skip":	false,
+			"Runtime":	0,
+			"Positions":	{
+				"$Position":	{
+					"$x":	-2796,
+					"$y":	-7303
+				},
+				"Type":	"Mesh2D",
+				"Skip":	false,
+				"PointsY":	0,
+				"PointGenerator":	{
+					"$Position":	{
+						"$x":	-2086,
+						"$y":	-7313
+					},
+					"Type":	"Mesh",
+					"Jitter":	0,
+					"ScaleX":	40,
+					"ScaleY":	40,
+					"ScaleZ":	40,
+					"Seed":	"A"
+				}
+			},
+			"Assignments":	{
+				"$Position":	{
+					"$x":	-2784,
+					"$y":	-6783
+				},
+				"Type":	"Imported",
+				"Name":	"r0"
+			}
+		}],
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-3066,
+			"$y":	-3234
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2414,
+				"$y":	-3267
+			},
+			"Type":	"CurveMapper",
+			"Skip":	false,
+			"Curve":	{
+				"$Position":	{
+					"$x":	-1827,
+					"$y":	-3154
+				},
+				"Type":	"Manual",
+				"Points":	[{
+						"$Position":	{
+							"$x":	-1215,
+							"$y":	-3166
+						},
+						"In":	100.1,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1219,
+							"$y":	-2994
+						},
+						"In":	100,
+						"Out":	0
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1818,
+						"$y":	-3381
+					},
+					"Type":	"BaseHeight",
+					"Skip":	false,
+					"BaseHeightName":	"Base",
+					"Distance":	true
+				}]
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-2405,
+					"$y":	-2957
+				},
+				"Environment":	{
+					"$Position":	{
+						"$x":	-2167,
+						"$y":	-2964
+					},
+					"Type":	"Constant",
+					"Environment":	"Zone1_Overground"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-2158,
+						"$y":	-2804
+					},
+					"MinInclusive":	0.5,
+					"MaxExclusive":	1.5
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2413,
+					"$y":	-2580
+				},
+				"Environment":	{
+					"$Position":	{
+						"$x":	-2174,
+						"$y":	-2584
+					},
+					"Type":	"Constant",
+					"Environment":	"Zone1_Underground"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-2176,
+						"$y":	-2428
+					},
+					"MinInclusive":	-0.5,
+					"MaxExclusive":	0.5
+				}
+			}]
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-2907,
+			"$y":	-1824
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-1252,
+				"$y":	-2006
+			},
+			"Type":	"SimplexNoise2D",
+			"Skip":	false,
+			"Lacunarity":	5,
+			"Persistence":	0.2,
+			"Octaves":	2,
+			"Scale":	100,
+			"Seed":	"tints"
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-2164,
+					"$y":	-1719
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1825,
+						"$y":	-1809
+					},
+					"Type":	"Constant",
+					"Color":	"#5b9e28"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1831,
+						"$y":	-1651
+					},
+					"MinInclusive":	-1,
+					"MaxExclusive":	-0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2135,
+					"$y":	-1346
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1829,
+						"$y":	-1409
+					},
+					"Type":	"Constant",
+					"Color":	"#6ca229"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1842,
+						"$y":	-1263
+					},
+					"MinInclusive":	-0.33,
+					"MaxExclusive":	0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2117,
+					"$y":	-901
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1857,
+						"$y":	-974
+					},
+					"Type":	"Constant",
+					"Color":	"#7ea629"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1851,
+						"$y":	-829
+					},
+					"MinInclusive":	0.33,
+					"MaxExclusive":	1
+				}
+			}]
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-3134.625,
+				"$y":	-3511.125
+			},
+			"$width":	2483.875,
+			"$height":	1251.4375,
+			"$name":	"Environments"
+		}, {
+			"$Position":	{
+				"$x":	-3078.3125,
+				"$y":	-2068.3125
+			},
+			"$width":	2394.5,
+			"$height":	1432.875,
+			"$name":	"Tint"
+		}]
+}

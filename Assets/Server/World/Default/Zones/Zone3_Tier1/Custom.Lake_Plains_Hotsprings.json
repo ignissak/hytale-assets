@@ -1,0 +1,557 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Heightmaps.River"
+            }
+          ],
+          "Formula": "INVERTED_RIDGED"
+        },
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 5,
+          "Persistence": 0.6,
+          "Scale": 0.002
+        }
+      ],
+      "Factors": [
+        0.3,
+        0.7
+      ],
+      "Threshold": [
+        0.72,
+        1
+      ]
+    },
+    "BiomeMask": [
+      "Plains_Hotsprings"
+    ],
+    "Priority": 3
+  },
+  "MapColor": "#415611",
+  "Covers": [
+    {
+      "Type": [
+        {
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "lake_noise",
+            "NoiseType": "CELL",
+            "Density": [
+              0,
+              0.7
+            ],
+            "DistanceRange": [
+              1,
+              4
+            ],
+            "CellMode": "DISTANCE",
+            "Scale": 0.05
+          },
+          {
+            "Seed": "Grasslands-Base-2",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.07
+          }
+        ],
+        "Factors": [
+          0.9,
+          0.1
+        ],
+        "Threshold": [
+          0,
+          0.41
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115,
+          119,
+          120
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Moss_Rug_Green"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.1,
+        "Threshold": [
+          0.65,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Rock_Basalt",
+        "Rock_Stone"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Stone",
+        "Rubble_Stone_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Rubble.Stone_Cliffs_Dense"
+          }
+        ],
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Rock_Basalt"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Stone",
+        "Rubble_Stone_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Rubble.Stone_Cliffs_Dense"
+          }
+        ],
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Rock_Basalt"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [
+          0.4,
+          0.6
+        ],
+        "Prefab": [
+          "Rock_Formations.Hotsprings.Hotpools.*",
+          "Rock_Formations.Hotsprings.Hotpools_Mana.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier1.PrefabPatterns.Plains_Hotspring_Pools"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Basalt",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Rock_Stone:7"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "lake_noise",
+                  "NoiseType": "CELL",
+                  "Density": [
+                    0,
+                    0.7
+                  ],
+                  "DistanceRange": [
+                    1,
+                    4
+                  ],
+                  "CellMode": "DISTANCE",
+                  "Scale": 0.05
+                },
+                {
+                  "Seed": "Grasslands-Base-2",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.07
+                }
+              ],
+              "Factors": [
+                0.9,
+                0.1
+              ],
+              "Threshold": [
+                0.52,
+                0.6
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Rock_Basalt:7"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "lake_noise",
+                  "NoiseType": "CELL",
+                  "Density": [
+                    0,
+                    0.7
+                  ],
+                  "DistanceRange": [
+                    1,
+                    4
+                  ],
+                  "CellMode": "DISTANCE",
+                  "Scale": 0.05
+                },
+                {
+                  "Seed": "Grasslands-Base-2",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.07
+                }
+              ],
+              "Factors": [
+                0.9,
+                0.1
+              ],
+              "Threshold": [
+                0,
+                0.55
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Gravel:2"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone3.Layers.Soil.Layer_Bedrock_Medium_4"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.82
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Pathway:2"
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone3.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "lake_noise",
+          "NoiseType": "CELL",
+          "CellMode": "NOISE_LOOKUP",
+          "NoiseLookup": {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED_SQRT",
+            "Octaves": 1,
+            "Persistence": 0.1,
+            "Scale": 0.08
+          },
+          "Scale": 0.05
+        },
+        {
+          "Seed": "lake_noise",
+          "NoiseType": "CELL",
+          "CellMode": "NOISE_LOOKUP",
+          "NoiseLookup": {
+            "Seed": "Grasslands-Base",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 5,
+            "Persistence": 0.6,
+            "Scale": 0.04
+          },
+          "Scale": 0.05
+        }
+      ],
+      "Factors": [
+        0.27,
+        0.73
+      ]
+    },
+    "Keys": [
+      0.65,
+      0.7,
+      0.73,
+      0.78
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          108,
+          109,
+          110,
+          114,
+          123,
+          135
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.75,
+          0.72,
+          0.67,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          108,
+          109,
+          110,
+          114,
+          119,
+          119
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.75,
+          0.72,
+          0.67,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          108,
+          109,
+          110,
+          114,
+          117,
+          117
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.75,
+          0.72,
+          0.67,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          108,
+          109,
+          110,
+          112,
+          113,
+          113
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.75,
+          0.72,
+          0.67,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.River"
+          }
+        ],
+        "Formula": "INVERTED_RIDGED_SQRT"
+      },
+      {
+        "Seed": "Grasslands-Base",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.002
+      },
+      {
+        "Seed": "lake_noise",
+        "NoiseType": "CELL",
+        "Density": [
+          0,
+          0.7
+        ],
+        "DistanceRange": [
+          1,
+          4
+        ],
+        "CellMode": "DISTANCE",
+        "Scale": 0.05,
+        "Normalize": [
+          0.4,
+          0.65
+        ]
+      }
+    ],
+    "Factors": [
+      0.27,
+      0.63,
+      0.1
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "3D6922",
+        "5C5B30"
+      ],
+      "Weight": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone3_Tundra"
+      ]
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

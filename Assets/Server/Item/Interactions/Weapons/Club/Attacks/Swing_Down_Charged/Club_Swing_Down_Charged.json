@@ -1,0 +1,71 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingDownCharged"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.156,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 2.5,
+              "Length": 105,
+              "RollOffset": 75,
+              "YawStartOffset": -45
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Club_Swing_Down_Charged_Damage"
+                    ]
+                  },
+                  "Var": "Club_Swing_Down_Charged_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.178
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Club_Swing_Down_Charged_Effect"
+              ]
+            },
+            "Var": "Club_Swing_Down_Charged_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

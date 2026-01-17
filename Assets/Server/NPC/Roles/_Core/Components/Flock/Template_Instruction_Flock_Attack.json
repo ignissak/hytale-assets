@@ -1,0 +1,107 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "BeaconAttackMessage": {
+      "Value": "FlockPreyAttack",
+      "Description": "The message to send as a beacon to other flock members"
+    },
+    "AttackState": {
+      "Value": "FlockAttack",
+      "Description": "The state to set when found a target to attack"
+    },
+    "AttackRange": {
+      "Value": 10,
+      "Description": "The range to look for NPCs to attack"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "FlockLeader"
+                },
+                {
+                  "Type": "Self",
+                  "Filters": [
+                    {
+                      "Type": "Flock",
+                      "FlockStatus": "Leader",
+                      "Size": [ 10, 2000 ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Type": "Mob",
+              "GetPlayers": true,
+              "Range": { "Compute": "AttackRange" },
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": [ "FlockPrey" ]
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "FlockBeacon",
+            "Message": { "Compute": "BeaconAttackMessage" },
+            "ExpirationTime": 3,
+            "SendTargetSlot": "LockedTarget"
+          },
+          {
+            "Type": "FlockState",
+            "State": { "Compute": "AttackState" }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "FlockLeader"
+                },
+                {
+                  "Type": "Self",
+                  "Filters": [
+                    {
+                      "Type": "Flock",
+                      "FlockStatus": "Member"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Type": "Beacon",
+              "Message": { "Compute": "BeaconAttackMessage" },
+              "Range": 50,
+              "TargetSlot": "LockedTarget"
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "FlockState",
+            "State": { "Compute": "AttackState" }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

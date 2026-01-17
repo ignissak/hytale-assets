@@ -1,0 +1,99 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Gun.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Gun.png",
+  "Model": "Items/Hypixel/Minigames/Space_Swarm/Weapons/Pulse_Rifle.blockymodel",
+  "Texture": "Items/Hypixel/Minigames/Space_Swarm/Weapons/Pulse_Rifle_Texture.png",
+  "PlayerAnimationsId": {
+    "Parent": "Rifle",
+    "Animations": {
+      "Shoot": {
+        "ThirdPerson": "Characters/Animations/Items/Dual_Handed/Rifle/Attacks/Shoot/Shoot.blockyanim",
+        "ThirdPersonMoving": "Characters/Animations/Items/Dual_Handed/Rifle/Attacks/Shoot/Shoot_Moving.blockyanim",
+        "FirstPerson": "Characters/Animations/Items/Dual_Handed/Rifle/Attacks/Shoot/Shoot_FPS.blockyanim",
+        "Speed": 3,
+        "BlendingDuration": 0,
+        "ThirdPersonFace": "Characters/Animations/Expressions/Frown.blockyanim"
+      }
+    }
+  },
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Shoot",
+          "RunTime": 0.05
+        }
+      ]
+    },
+    "Secondary": "Gun_Attack"
+  },
+  "InteractionVars": {
+    "Gun_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Swing_Left_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "TrailId": "Small_Default",
+                "TargetNodeName": "Handle",
+                "TargetEntityPart": "PrimaryItem",
+                "PositionOffset": {
+                  "X": 0.4,
+                  "Y": -0.05,
+                  "Z": 0
+                },
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": -45
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Gun_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Unarmed_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.37,
+    "Translation": [
+      -13.8,
+      -15.6
+    ],
+    "Rotation": [
+      327.375,
+      90,
+      0
+    ]
+  },
+  "Quality": "Technical",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {}
+}

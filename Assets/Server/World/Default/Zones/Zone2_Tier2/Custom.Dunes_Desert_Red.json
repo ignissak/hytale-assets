@@ -1,0 +1,376 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Grasslayer1",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "RIDGED_SQRT",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.01
+        },
+        {
+          "Seed": "Drylands-Canyon-Noise",
+          "NoiseType": "SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 1,
+          "Persistence": 0.8,
+          "Scale": 0.0012,
+          "Normalize": [
+            0.19,
+            0.81
+          ]
+        },
+        {
+          "Seed": "Grasslands-River-Noise",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED_RIDGED",
+          "Octaves": 4,
+          "Scale": 0.004,
+          "Prsistence": 0.478
+        }
+      ],
+      "Factors": [
+        0.1,
+        0.45,
+        0.35
+      ],
+      "Threshold": [
+        0,
+        0.48
+      ]
+    },
+    "BiomeMask": [
+      "Desert_Red"
+    ],
+    "Priority": 2
+  },
+  "MapColor": "#e1ce99",
+  "Covers": [
+    {
+      "Type": [
+        "Plant_Grass_Arid",
+        "Plant_Flower_Common_Blue2",
+        "Rubble_Sandstone_Red"
+      ],
+      "Weight": [
+        30,
+        40,
+        20
+      ],
+      "Density": 0.15,
+      "NoiseMask": {
+        "Seed": "Drylands-Layers-Gravel",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "NORMAL",
+        "Octaves": 2,
+        "Persistence": 0.8,
+        "Scale": 0.03,
+        "Threshold": [
+          0,
+          0.23
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel_Sand_Red"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Sandstone_Red",
+        "Rubble_Sandstone_Red_Medium"
+      ],
+      "Weight": [
+        0.7,
+        0.3
+      ],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Seed": "Desert_patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.07,
+        "Threshold": [
+          0.8,
+          1
+        ]
+      }
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Npc.Feran.Tier2.Layout.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Factions_Ferans"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Vertical_Sand_Red.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Cave_Entrance_Type1"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Diagonal_Sand_Red.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Cave_Entrance_Type2"
+        }
+      },
+      {
+        "Prefab": [
+          "Monuments.Challenge.Sand.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Monuments_Dungeon_Challenge"
+        }
+      },
+      {
+        "Weight": [
+          40,
+          40,
+          20
+        ],
+        "Prefab": [
+          "Monuments.Incidental.Sandstone.Normal.*",
+          "Monuments.Incidental.Sandstone.Red.Drywood.*",
+          "Monuments.Incidental.Sandstone.Red.Camp.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Incidental"
+        }
+      },
+      {
+        "Weight": [
+          100
+        ],
+        "Prefab": [
+          "Monuments.Encounter.Zone2.Tier2.Outpost.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Encounter"
+        }
+      },
+      {
+        "Prefab": [
+          "Npc.Scarak.Scarak_Hives.Hive_Base.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Monuments_Scarak_Hives_Base"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Soil_Gravel_Sand_Red"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone2.Layers.Soil.Gravel_Red_Desert"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.25
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Sand_Red",
+                "Repeat": [
+                  1,
+                  5
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static_Dunes_Red"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T2"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [
+      115,
+      116,
+      117,
+      119,
+      145,
+      165,
+      169
+    ],
+    "Values": [
+      1,
+      0.48,
+      0.47,
+      0.46,
+      0.33,
+      0.27,
+      0
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "MAX",
+    "Noise": [
+      {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslayer1",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "RIDGED_SQRT",
+            "Octaves": 3,
+            "Persistence": 0.4,
+            "Scale": 0.01
+          },
+          {
+            "Seed": "Drylands-Canyon-Noise",
+            "NoiseType": "SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 1,
+            "Persistence": 0.8,
+            "Scale": 0.0012,
+            "Normalize": [
+              0.19,
+              0.81
+            ]
+          },
+          {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED",
+            "Octaves": 4,
+            "Persistence": 0.478,
+            "Scale": 0.004
+          }
+        ],
+        "Factors": [
+          0.1,
+          0.45,
+          0.35
+        ]
+      },
+      {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Seed": "Drylands-Biomes-Distrobution",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED_SQRT",
+              "Scale": 0.0022
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Base-Randomizer-1",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.009,
+                  "Amplitude": 40
+                },
+                {
+                  "Seed": "Drylands-Base-Randomizer-2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.005,
+                  "Amplitude": 40
+                }
+              ]
+            },
+            "Normalize": [
+              -0.3,
+              1.2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "da9137",
+        "d49837"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone2_Deserts"
+      ]
+    },
+    "Entries": []
+  }
+}

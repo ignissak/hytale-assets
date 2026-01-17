@@ -1,0 +1,1481 @@
+{
+	"$NodeId":	"Root-1a342ca9-969a-4758-979d-7bee824ef4ef",
+	"Operations":	[{
+			"$NodeId":	"SaveBrushConfig-d142b687-12d1-49f3-a54e-7c25dceb8f43",
+			"Id":	"savebrushconfig",
+			"StoredName":	"Default"
+		}, {
+			"$NodeId":	"SaveIndex-1cb3a4b8-1742-4a62-ae97-40e96377fc12",
+			"Id":	"saveindex",
+			"StoredIndexName":	"floors_loop"
+		}, {
+			"$NodeId":	"LoadMaterial-d5ac7c47-d259-4df7-97f6-86f538717111",
+			"Id":	"loadmaterial",
+			"ArgName":	"dMainMaterial"
+		}, {
+			"$NodeId":	"Set-4f13b8d2-f5ca-409d-9c91-d9cadac45f4b",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-77089382-9f70-4f58-9bc5-6c0b5d8ab818",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	-2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Material-d04b11d8-5d40-4677-85a1-b0383d9765a3",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-45fcf4a5-2bbc-49fa-be75-2ede4cdd1822",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-f940a03e-035b-4118-85fc-03dfb75ef091",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadMaterial-4d094227-ad1b-46ed-b49e-411ce97d1bd3",
+			"Id":	"loadmaterial",
+			"ArgName":	"eFloorSeparator"
+		}, {
+			"$NodeId":	"Dimensions-bde7c917-b897-468e-972e-0cda585341cd",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	0,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	1,
+				"Relative":	false
+			}
+		}, {
+			"$NodeId":	"Mask-5a5338f1-cb60-42d2-9675-cc84d1c91a2c",
+			"Id":	"mask",
+			"Mask":	"!Empty"
+		}, {
+			"$NodeId":	"Set-864f2389-068c-46f1-a79d-d6e0718f143e",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-cddf0162-db9d-46ab-9641-148e0234b05b",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"JumpIfToolArg-f3ef1f58-a72c-483c-878e-98cf1a2fac2d",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"bEnableWindows",
+			"ComparisonType":	"NotEquals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"skip_windows"
+		}, {
+			"$NodeId":	"SaveBrushConfig-35d3aeb8-60a6-44bd-bb03-240f9c0f6246",
+			"Id":	"savebrushconfig",
+			"StoredName":	"before_window"
+		}, {
+			"$NodeId":	"Shape-caeb3ae7-2d5f-4098-9083-b20392399fce",
+			"Id":	"shape",
+			"Shape":	"Cube"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-1b57a22c-511b-462a-ac02-d05daccd10ee",
+			"Id":	"loadint",
+			"ArgName":	"bWindowWidth",
+			"TargetField":	"Width",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-631d3fba-8444-494e-9ad2-ed0930ebb6e0",
+			"Id":	"loadint",
+			"ArgName":	"bWindowHeight",
+			"TargetField":	"Height",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"JumpIfToolArg-f41451fd-aba9-482a-9ab0-d0d956535152",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"bWindowWidth",
+			"ComparisonType":	"NotEquals",
+			"ComparisonValue":	"1",
+			"StoredIndexName":	"window_loop"
+		}, {
+			"$NodeId":	"JumpIfToolArg-3127d4ae-4366-4448-95ce-511506b95051",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"bWindowHeight",
+			"ComparisonType":	"NotEquals",
+			"ComparisonValue":	"1",
+			"StoredIndexName":	"window_loop"
+		}, {
+			"$NodeId":	"LoadMaterial-22ae9783-072a-49b6-a00a-96a39fd9a36b",
+			"Id":	"loadmaterial",
+			"ArgName":	"bWindowBlock"
+		}, {
+			"$NodeId":	"SaveIndex-7422da98-5b29-4cc0-8fe5-e484be2adcc8",
+			"Id":	"saveindex",
+			"StoredIndexName":	"window_small_loop_1"
+		}, {
+			"$NodeId":	"Set-7e899fd5-79b4-496d-b00b-7db0c748b578",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Mask-6a3b2cd6-b352-4fce-a00e-4fd3ba3927f7",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-3d466a5f-25bf-4032-8d50-4ee85749dc53",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"dMainMaterial",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-85763683-bb2f-4606-b791-6434c5aa7e5f",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"eFloorSeparator",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-91f25a60-54f0-40b9-a465-e7e73ef3ee7d",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-ec1a7dda-ca93-46ad-9000-7e4fba014489",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-5b73976d-6997-492b-b691-24fd4b140a42",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"window_small_loop_1",
+			"NumberCirclePointsArg":	"bNumWindows",
+			"CircleRadiusArg":	"bWindowRadius",
+			"FlipDirection":	false,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"Material-6c04bf1f-8715-4d9a-9ad2-a375f3cf3d12",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-3a84e5de-157a-4d27-aecd-ad68704ed2ec",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Offset-9a2d3367-f51d-4f2e-9fa5-6b4aca65a9d9",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadMaterial-444c4a82-cc9c-4078-8dd6-5e690acecda8",
+			"Id":	"loadmaterial",
+			"ArgName":	"bWindowBlock"
+		}, {
+			"$NodeId":	"SaveIndex-bfc4bc1b-4ac8-4e06-b391-53ce0d531ccf",
+			"Id":	"saveindex",
+			"StoredIndexName":	"window_small_loop_2"
+		}, {
+			"$NodeId":	"Set-b2ac2cdf-1e80-472a-b397-45d4cb8ee5a8",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-fa350928-9996-4cb9-a7bb-28f2f1f94505",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"dMainMaterial",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-688cd13f-320a-4119-879d-65fbdacfb48f",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"eFloorSeparator",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-245e502e-9806-4aba-8c4a-31bc90bc03a6",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-bbb912e5-a4e7-4d48-b46f-314a7766f635",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-79a3de14-f2ed-4d68-b6f2-e269b5b683eb",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"window_small_loop_2",
+			"NumberCirclePointsArg":	"bNumWindows",
+			"CircleRadiusArg":	"bWindowRadius",
+			"FlipDirection":	false,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"Material-7e85320c-144d-4f96-88b2-58cc75c0917e",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-7934a4be-697a-4763-bb9e-23e0c5df6c94",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"LoadMaterial-df3cbb8e-a96c-441e-8caf-f0746631b74c",
+			"Id":	"loadmaterial",
+			"ArgName":	"dMainMaterial"
+		}, {
+			"$NodeId":	"JumpToIndex-318e1d59-2f49-43d7-bb64-115ecb2ade05",
+			"Id":	"jump",
+			"StoredIndexName":	"window_end"
+		}, {
+			"$NodeId":	"SaveIndex-28453304-28d5-4b72-8b59-6f7b4cbcb670",
+			"Id":	"saveindex",
+			"StoredIndexName":	"window_loop"
+		}, {
+			"$NodeId":	"Set-45e5f081-7bf3-4599-8ca2-f069e56e5e3e",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Material-77618684-c071-40f1-9322-abcad7eb7b07",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-ee1de77c-0f26-4b0b-837d-c014873b331d",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"bWindowBlock",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMask-3013b7d1-7813-4abb-8fdd-e11c7f1adc21",
+			"Id":	"appendmask",
+			"AppendMask":	"~Empty"
+		}, {
+			"$NodeId":	"Set-2b30407b-1501-412d-bfe5-fd29319a6fb3",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-35a64a5b-19b6-46d5-aec4-a26077bd6145",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"LoadMaterial-81f7b441-8fbc-4c13-bed0-4c4d90ab71d9",
+			"Id":	"loadmaterial",
+			"ArgName":	"bWindowBlock"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-5e0076ae-146f-41f4-bce2-380a30da374b",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"window_loop",
+			"NumberCirclePointsArg":	"bNumWindows",
+			"CircleRadiusArg":	"bWindowRadius",
+			"FlipDirection":	false,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"Material-205913ea-50e8-4a97-af47-ccf8f8395ef4",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-04c86055-d081-45db-ae6a-3eb72e3de6c0",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"LoadMaterial-1caa7594-aaf7-46d6-b8de-701d3b78272c",
+			"Id":	"loadmaterial",
+			"ArgName":	"dMainMaterial"
+		}, {
+			"$NodeId":	"SaveIndex-476764b9-bbd0-45cc-93ef-940281f672d5",
+			"Id":	"saveindex",
+			"StoredIndexName":	"window_end"
+		}, {
+			"$NodeId":	"LoadBrushConfig-3aeb5734-f802-47dd-88c5-18b82ba385f6",
+			"Id":	"loadbrushconfig",
+			"StoredName":	"before_window",
+			"ParametersToLoad":	["Shape", "Dimensions", "Offset"]
+		}, {
+			"$NodeId":	"SaveIndex-e1f6b171-4f11-4c53-a1c9-b08c32211c00",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_windows"
+		}, {
+			"$NodeId":	"LoadBrushConfig-89d8d743-9053-480e-85b2-02551b53fc27",
+			"Id":	"loadbrushconfig",
+			"StoredName":	"Default",
+			"ParametersToLoad":	["Dimensions"]
+		}, {
+			"$NodeId":	"Dimensions-c20546c2-cc14-4c5c-aed7-6aa2662ccfa1",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	-2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Material-ec9033f3-b700-457a-be1a-ff4ff1acf08d",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-439cab6e-c431-4819-926e-086dfa57a719",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"LoadMaterial-6cecf22f-3561-49eb-9999-6bb5858b0458",
+			"Id":	"loadmaterial",
+			"ArgName":	"dMainMaterial"
+		}, {
+			"$NodeId":	"Dimensions-17960b75-8910-485e-950d-8c25ea0be9e5",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Offset-5a5be554-788b-4568-be1f-a46727dc3f9a",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	1,
+					"Relative":	true
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"TargetField":	"Height",
+			"Negate":	false
+		}, {
+			"$NodeId":	"Offset-26c6e095-a0b5-4a04-8014-69d4fc03d4d0",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"Mask-c868101a-87c9-4379-a718-fd2549907c7e",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"LoadMaterial-fdaa152f-f791-4ade-930c-3560e46419c5",
+			"Id":	"loadmaterial",
+			"ArgName":	"fFloorBlock"
+		}, {
+			"$NodeId":	"Set-ad134cd0-5428-4545-8464-b5cf6b29553d",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-c0815e9b-f6da-4848-9846-f4a0b3957223",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-644ed582-0b71-4f24-965d-a7dbcfc99bf2",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"fFloorBlock",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Material-4f894a23-5449-47d8-89eb-ebd8d67c2e5f",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-f4b258cf-2994-4461-8675-607aea0ada42",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-38bce482-8f05-426d-9c31-efd0b536bcd0",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Dimensions-2b30f4d5-c6f2-468e-a5da-59b3a8b719b5",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	4,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Mask-c4c87de1-3ba5-42c9-90c9-adc24acedbd1",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-8b5c28e2-58d0-491e-8d22-23e9231e2b14",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"fFloorBlock",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-7ab4e615-3273-4169-852f-1d0eb5f67206",
+			"Id":	"loadmaterial",
+			"ArgName":	"gRoofBlock"
+		}, {
+			"$NodeId":	"Set-a4561d0d-14bc-4909-b1c5-6a61f93f326d",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-da9d4c4e-f525-406d-80f4-eb7853037e1a",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Dimensions-aec4bec4-0653-4bce-947b-83b07be74d44",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	-4,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	0,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"Offset-329bad7e-77e3-484e-bb2c-e5e092ee9545",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	1,
+					"Relative":	true
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"JumpIfToolArg-64c8fd9d-683f-4804-a950-57f4b8b31171",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"aNumFloors",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"0",
+			"StoredIndexName":	"skip_floors_loop"
+		}, {
+			"$NodeId":	"LoadLoopFromToolArg-99c0f19c-fc12-49a8-b84f-41acceb4db64",
+			"Id":	"loadloop",
+			"StoredIndexName":	"floors_loop",
+			"ArgName":	"aNumFloors"
+		}, {
+			"$NodeId":	"SaveIndex-1cc21933-bd4d-4936-acd7-557668460c37",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_floors_loop"
+		}, {
+			"$NodeId":	"JumpIfToolArg-090c4270-3873-44ef-8aaf-8cac21ae1742",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cEnableRoof",
+			"ComparisonType":	"NotEquals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"skip_roof"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b069c062-6805-4f8b-a893-00da06cd4fe4",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cube",
+			"StoredIndexName":	"roof_cube"
+		}, {
+			"$NodeId":	"JumpIfToolArg-2ad6ef94-7e50-487c-8bd7-05a51d65cacb",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Sphere",
+			"StoredIndexName":	"roof_sphere"
+		}, {
+			"$NodeId":	"JumpIfToolArg-dce131a7-186f-4162-837e-cc01139a8a79",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cylinder",
+			"StoredIndexName":	"roof_cylinder"
+		}, {
+			"$NodeId":	"JumpIfToolArg-95e5bdc2-c539-4358-9bea-0ef659d08e92",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cone",
+			"StoredIndexName":	"roof_cone"
+		}, {
+			"$NodeId":	"JumpIfToolArg-1a3a93e7-a65b-445d-b0db-73202df9f101",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Inverted_Cone",
+			"StoredIndexName":	"roof_inverted_cone"
+		}, {
+			"$NodeId":	"JumpIfToolArg-f33eb4a6-cdb8-4b7e-bfd2-89e5b3b5a304",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Pyramid",
+			"StoredIndexName":	"roof_pyramid"
+		}, {
+			"$NodeId":	"JumpIfToolArg-1d06251b-a7fa-4aa3-b020-a9a66c1aaac3",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cRoofzShape",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Inverted_Pyramid",
+			"StoredIndexName":	"roof_inverted_pyramid"
+		}, {
+			"$NodeId":	"SaveIndex-aa09ed47-ef06-4376-9749-e31bd9060470",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_cube"
+		}, {
+			"$NodeId":	"Shape-de1f1111-2c9b-4e8c-b613-4d65e3334ed5",
+			"Id":	"shape",
+			"Shape":	"Cube"
+		}, {
+			"$NodeId":	"JumpToIndex-2d786472-a848-476f-bdff-4cab6ac5a08c",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-af81581a-b195-4d1a-8333-2485cd7fe0a9",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_sphere"
+		}, {
+			"$NodeId":	"Shape-7e7e7110-d5ab-4e7f-b068-475b2783921f",
+			"Id":	"shape",
+			"Shape":	"Sphere"
+		}, {
+			"$NodeId":	"JumpToIndex-a33f6c5f-11cd-42f8-b39a-fe97687da9e6",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-72dfce2a-341c-48e5-aa5c-c0a79b66d8fa",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_cylinder"
+		}, {
+			"$NodeId":	"Shape-6d6e5f72-3fb3-4963-ba4d-00550c28a06b",
+			"Id":	"shape",
+			"Shape":	"Cylinder"
+		}, {
+			"$NodeId":	"JumpToIndex-c461c955-0e22-4688-8183-dbad9f453786",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-a15b2465-04c0-4684-a7e5-49c1a16eadc8",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_cone"
+		}, {
+			"$NodeId":	"Shape-cb5d2f76-8cdc-4326-a536-b76e679982b1",
+			"Id":	"shape",
+			"Shape":	"Cone"
+		}, {
+			"$NodeId":	"JumpToIndex-d31bdbd9-5b21-4e9c-8812-40d354c7c337",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-d1b92fbe-18b2-497c-bcfd-e527f1c0f3c7",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_inverted_cone"
+		}, {
+			"$NodeId":	"Shape-98a28323-14f6-40a4-b5a6-538cf729f052",
+			"Id":	"shape",
+			"Shape":	"InvertedCone"
+		}, {
+			"$NodeId":	"JumpToIndex-6f5ddc75-b9ad-4530-b61b-9cfcaa2f305d",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-9edf98ca-3e1c-4fc0-b9e1-9f416508bcd0",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_pyramid"
+		}, {
+			"$NodeId":	"Shape-17a4f814-11c3-4188-9880-18efc9c04e6a",
+			"Id":	"shape",
+			"Shape":	"Pyramid"
+		}, {
+			"$NodeId":	"JumpToIndex-e26838e7-0de6-4f3f-9747-60ea74092c7b",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-5e2d215e-d6d7-4065-943e-ccb0af2235c6",
+			"Id":	"saveindex",
+			"StoredIndexName":	"roof_inverted_pyramid"
+		}, {
+			"$NodeId":	"Shape-64fdf49e-f628-4c7e-8d24-463092becd2d",
+			"Id":	"shape",
+			"Shape":	"InvertedPyramid"
+		}, {
+			"$NodeId":	"JumpToIndex-b9737e89-d891-4178-addb-82c9c48ffb46",
+			"Id":	"jump",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"SaveIndex-ed76c214-f1b5-416c-af7a-21932cf1be9c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"build_roof"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-f32cb0bb-4786-41ea-bf41-3313d6723a25",
+			"Id":	"loadint",
+			"ArgName":	"cRoofHeight",
+			"TargetField":	"Height",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-ce8f2dbe-4183-4e6e-b537-003465a6299d",
+			"Id":	"loadint",
+			"ArgName":	"cRoofWidth",
+			"TargetField":	"Width",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadMaterial-f7f6f4c7-2eb8-4fdf-8520-40058a034a54",
+			"Id":	"loadmaterial",
+			"ArgName":	"gRoofBlock"
+		}, {
+			"$NodeId":	"Set-1b384176-ee85-48a3-bb1f-a7109da19689",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"SaveIndex-9b30a14a-cd85-412e-86dd-4e6dac27a6d1",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_roof"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-1a342ca9-969a-4758-979d-7bee824ef4ef":	{
+				"$Position":	{
+					"$x":	-1324,
+					"$y":	-18322
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"SaveBrushConfig-d142b687-12d1-49f3-a54e-7c25dceb8f43":	{
+				"$Position":	{
+					"$x":	300,
+					"$y":	-36887
+				}
+			},
+			"SaveIndex-1cb3a4b8-1742-4a62-ae97-40e96377fc12":	{
+				"$Position":	{
+					"$x":	285,
+					"$y":	-36572
+				}
+			},
+			"LoadMaterial-d5ac7c47-d259-4df7-97f6-86f538717111":	{
+				"$Position":	{
+					"$x":	286,
+					"$y":	-36242
+				}
+			},
+			"Set-4f13b8d2-f5ca-409d-9c91-d9cadac45f4b":	{
+				"$Position":	{
+					"$x":	291,
+					"$y":	-36096
+				}
+			},
+			"Dimensions-77089382-9f70-4f58-9bc5-6c0b5d8ab818":	{
+				"$Position":	{
+					"$x":	261,
+					"$y":	-35852
+				}
+			},
+			"Material-d04b11d8-5d40-4677-85a1-b0383d9765a3":	{
+				"$Position":	{
+					"$x":	273,
+					"$y":	-35435
+				}
+			},
+			"Set-45fcf4a5-2bbc-49fa-be75-2ede4cdd1822":	{
+				"$Position":	{
+					"$x":	288,
+					"$y":	-35240
+				}
+			},
+			"Dimensions-f940a03e-035b-4118-85fc-03dfb75ef091":	{
+				"$Position":	{
+					"$x":	264,
+					"$y":	-35040
+				}
+			},
+			"LoadMaterial-4d094227-ad1b-46ed-b49e-411ce97d1bd3":	{
+				"$Position":	{
+					"$x":	260,
+					"$y":	-34628
+				}
+			},
+			"Dimensions-bde7c917-b897-468e-972e-0cda585341cd":	{
+				"$Position":	{
+					"$x":	261,
+					"$y":	-34464
+				}
+			},
+			"Mask-5a5338f1-cb60-42d2-9675-cc84d1c91a2c":	{
+				"$Position":	{
+					"$x":	262,
+					"$y":	-34031
+				}
+			},
+			"Set-864f2389-068c-46f1-a79d-d6e0718f143e":	{
+				"$Position":	{
+					"$x":	270,
+					"$y":	-33883
+				}
+			},
+			"ClearOperationMask-cddf0162-db9d-46ab-9641-148e0234b05b":	{
+				"$Position":	{
+					"$x":	265,
+					"$y":	-33746
+				}
+			},
+			"SaveBrushConfig-35d3aeb8-60a6-44bd-bb03-240f9c0f6246":	{
+				"$Position":	{
+					"$x":	292,
+					"$y":	-32524
+				}
+			},
+			"Shape-caeb3ae7-2d5f-4098-9083-b20392399fce":	{
+				"$Position":	{
+					"$x":	303,
+					"$y":	-32375
+				}
+			},
+			"LoadIntFromToolArg-1b57a22c-511b-462a-ac02-d05daccd10ee":	{
+				"$Position":	{
+					"$x":	313,
+					"$y":	-32059
+				}
+			},
+			"LoadIntFromToolArg-631d3fba-8444-494e-9ad2-ed0930ebb6e0":	{
+				"$Position":	{
+					"$x":	311,
+					"$y":	-31813
+				}
+			},
+			"JumpIfToolArg-f41451fd-aba9-482a-9ab0-d0d956535152":	{
+				"$Position":	{
+					"$x":	311,
+					"$y":	-31545
+				}
+			},
+			"JumpIfToolArg-3127d4ae-4366-4448-95ce-511506b95051":	{
+				"$Position":	{
+					"$x":	296,
+					"$y":	-31280
+				}
+			},
+			"LoadMaterial-22ae9783-072a-49b6-a00a-96a39fd9a36b":	{
+				"$Position":	{
+					"$x":	366,
+					"$y":	-30769
+				}
+			},
+			"SaveIndex-7422da98-5b29-4cc0-8fe5-e484be2adcc8":	{
+				"$Position":	{
+					"$x":	371,
+					"$y":	-30614
+				}
+			},
+			"Set-7e899fd5-79b4-496d-b00b-7db0c748b578":	{
+				"$Position":	{
+					"$x":	373,
+					"$y":	-30472
+				}
+			},
+			"Mask-6a3b2cd6-b352-4fce-a00e-4fd3ba3927f7":	{
+				"$Position":	{
+					"$x":	371,
+					"$y":	-30312
+				}
+			},
+			"AppendMaskFromToolArg-3d466a5f-25bf-4032-8d50-4ee85749dc53":	{
+				"$Position":	{
+					"$x":	373,
+					"$y":	-30190
+				}
+			},
+			"AppendMaskFromToolArg-85763683-bb2f-4606-b791-6434c5aa7e5f":	{
+				"$Position":	{
+					"$x":	375,
+					"$y":	-29951
+				}
+			},
+			"Set-91f25a60-54f0-40b9-a465-e7e73ef3ee7d":	{
+				"$Position":	{
+					"$x":	373,
+					"$y":	-29683
+				}
+			},
+			"ClearOperationMask-ec1a7dda-ca93-46ad-9000-7e4fba014489":	{
+				"$Position":	{
+					"$x":	373,
+					"$y":	-29555
+				}
+			},
+			"LoopCircleFromArg-5b73976d-6997-492b-b691-24fd4b140a42":	{
+				"$Position":	{
+					"$x":	377,
+					"$y":	-29381
+				}
+			},
+			"Material-6c04bf1f-8715-4d9a-9ad2-a375f3cf3d12":	{
+				"$Position":	{
+					"$x":	366,
+					"$y":	-29068
+				}
+			},
+			"Set-3a84e5de-157a-4d27-aecd-ad68704ed2ec":	{
+				"$Position":	{
+					"$x":	366,
+					"$y":	-28925
+				}
+			},
+			"Offset-9a2d3367-f51d-4f2e-9fa5-6b4aca65a9d9":	{
+				"$Position":	{
+					"$x":	345,
+					"$y":	-28720
+				}
+			},
+			"LoadMaterial-444c4a82-cc9c-4078-8dd6-5e690acecda8":	{
+				"$Position":	{
+					"$x":	352,
+					"$y":	-27951
+				}
+			},
+			"SaveIndex-bfc4bc1b-4ac8-4e06-b391-53ce0d531ccf":	{
+				"$Position":	{
+					"$x":	358,
+					"$y":	-27801
+				}
+			},
+			"Set-b2ac2cdf-1e80-472a-b397-45d4cb8ee5a8":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	-27644
+				}
+			},
+			"AppendMaskFromToolArg-fa350928-9996-4cb9-a7bb-28f2f1f94505":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	-27378
+				}
+			},
+			"AppendMaskFromToolArg-688cd13f-320a-4119-879d-65fbdacfb48f":	{
+				"$Position":	{
+					"$x":	356,
+					"$y":	-27139
+				}
+			},
+			"Set-245e502e-9806-4aba-8c4a-31bc90bc03a6":	{
+				"$Position":	{
+					"$x":	367,
+					"$y":	-26881
+				}
+			},
+			"ClearOperationMask-bbb912e5-a4e7-4d48-b46f-314a7766f635":	{
+				"$Position":	{
+					"$x":	367,
+					"$y":	-26752
+				}
+			},
+			"LoopCircleFromArg-79a3de14-f2ed-4d68-b6f2-e269b5b683eb":	{
+				"$Position":	{
+					"$x":	369,
+					"$y":	-26589
+				}
+			},
+			"Material-7e85320c-144d-4f96-88b2-58cc75c0917e":	{
+				"$Position":	{
+					"$x":	376,
+					"$y":	-26278
+				}
+			},
+			"Set-7934a4be-697a-4763-bb9e-23e0c5df6c94":	{
+				"$Position":	{
+					"$x":	375,
+					"$y":	-26135
+				}
+			},
+			"LoadMaterial-df3cbb8e-a96c-441e-8caf-f0746631b74c":	{
+				"$Position":	{
+					"$x":	379,
+					"$y":	-25993
+				}
+			},
+			"JumpToIndex-318e1d59-2f49-43d7-bb64-115ecb2ade05":	{
+				"$Position":	{
+					"$x":	367,
+					"$y":	-25547
+				}
+			},
+			"SaveIndex-28453304-28d5-4b72-8b59-6f7b4cbcb670":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	-25393
+				}
+			},
+			"Set-45e5f081-7bf3-4599-8ca2-f069e56e5e3e":	{
+				"$Position":	{
+					"$x":	370,
+					"$y":	-25242
+				}
+			},
+			"Material-77618684-c071-40f1-9322-abcad7eb7b07":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	-25064
+				}
+			},
+			"AppendMaskFromToolArg-ee1de77c-0f26-4b0b-837d-c014873b331d":	{
+				"$Position":	{
+					"$x":	359,
+					"$y":	-24917
+				}
+			},
+			"AppendMask-3013b7d1-7813-4abb-8fdd-e11c7f1adc21":	{
+				"$Position":	{
+					"$x":	373,
+					"$y":	-24641
+				}
+			},
+			"Set-2b30407b-1501-412d-bfe5-fd29319a6fb3":	{
+				"$Position":	{
+					"$x":	370,
+					"$y":	-24475
+				}
+			},
+			"ClearOperationMask-35a64a5b-19b6-46d5-aec4-a26077bd6145":	{
+				"$Position":	{
+					"$x":	367,
+					"$y":	-24331
+				}
+			},
+			"LoadMaterial-81f7b441-8fbc-4c13-bed0-4c4d90ab71d9":	{
+				"$Position":	{
+					"$x":	356,
+					"$y":	-24171
+				}
+			},
+			"LoopCircleFromArg-5e0076ae-146f-41f4-bce2-380a30da374b":	{
+				"$Position":	{
+					"$x":	353,
+					"$y":	-24020
+				}
+			},
+			"Material-205913ea-50e8-4a97-af47-ccf8f8395ef4":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	-23690
+				}
+			},
+			"Set-04c86055-d081-45db-ae6a-3eb72e3de6c0":	{
+				"$Position":	{
+					"$x":	362,
+					"$y":	-23547
+				}
+			},
+			"LoadMaterial-1caa7594-aaf7-46d6-b8de-701d3b78272c":	{
+				"$Position":	{
+					"$x":	367,
+					"$y":	-23405
+				}
+			},
+			"SaveIndex-476764b9-bbd0-45cc-93ef-940281f672d5":	{
+				"$Position":	{
+					"$x":	366,
+					"$y":	-23249
+				}
+			},
+			"LoadBrushConfig-3aeb5734-f802-47dd-88c5-18b82ba385f6":	{
+				"$Position":	{
+					"$x":	355,
+					"$y":	-23081
+				}
+			},
+			"LoadBrushConfig-89d8d743-9053-480e-85b2-02551b53fc27":	{
+				"$Position":	{
+					"$x":	265,
+					"$y":	-21928
+				}
+			},
+			"Dimensions-c20546c2-cc14-4c5c-aed7-6aa2662ccfa1":	{
+				"$Position":	{
+					"$x":	276,
+					"$y":	-21601
+				}
+			},
+			"Material-ec9033f3-b700-457a-be1a-ff4ff1acf08d":	{
+				"$Position":	{
+					"$x":	278,
+					"$y":	-21198
+				}
+			},
+			"Set-439cab6e-c431-4819-926e-086dfa57a719":	{
+				"$Position":	{
+					"$x":	289,
+					"$y":	-21066
+				}
+			},
+			"LoadMaterial-6cecf22f-3561-49eb-9999-6bb5858b0458":	{
+				"$Position":	{
+					"$x":	292,
+					"$y":	-20912
+				}
+			},
+			"Dimensions-17960b75-8910-485e-950d-8c25ea0be9e5":	{
+				"$Position":	{
+					"$x":	282,
+					"$y":	-20766
+				}
+			},
+			"Offset-5a5be554-788b-4568-be1f-a46727dc3f9a":	{
+				"$Position":	{
+					"$x":	318,
+					"$y":	-19881
+				}
+			},
+			"Offset-26c6e095-a0b5-4a04-8014-69d4fc03d4d0":	{
+				"$Position":	{
+					"$x":	326,
+					"$y":	-19137
+				}
+			},
+			"Mask-c868101a-87c9-4379-a718-fd2549907c7e":	{
+				"$Position":	{
+					"$x":	312,
+					"$y":	-18420
+				}
+			},
+			"LoadMaterial-fdaa152f-f791-4ade-930c-3560e46419c5":	{
+				"$Position":	{
+					"$x":	324,
+					"$y":	-18237
+				}
+			},
+			"Set-ad134cd0-5428-4545-8464-b5cf6b29553d":	{
+				"$Position":	{
+					"$x":	325,
+					"$y":	-18091
+				}
+			},
+			"ClearOperationMask-c0815e9b-f6da-4848-9846-f4a0b3957223":	{
+				"$Position":	{
+					"$x":	327,
+					"$y":	-17933
+				}
+			},
+			"AppendMaskFromToolArg-644ed582-0b71-4f24-965d-a7dbcfc99bf2":	{
+				"$Position":	{
+					"$x":	326,
+					"$y":	-17775
+				}
+			},
+			"Material-4f894a23-5449-47d8-89eb-ebd8d67c2e5f":	{
+				"$Position":	{
+					"$x":	324,
+					"$y":	-17505
+				}
+			},
+			"Set-f4b258cf-2994-4461-8675-607aea0ada42":	{
+				"$Position":	{
+					"$x":	343,
+					"$y":	-17339
+				}
+			},
+			"ClearOperationMask-38bce482-8f05-426d-9c31-efd0b536bcd0":	{
+				"$Position":	{
+					"$x":	328,
+					"$y":	-17175
+				}
+			},
+			"Dimensions-2b30f4d5-c6f2-468e-a5da-59b3a8b719b5":	{
+				"$Position":	{
+					"$x":	294,
+					"$y":	-16754
+				}
+			},
+			"Mask-c4c87de1-3ba5-42c9-90c9-adc24acedbd1":	{
+				"$Position":	{
+					"$x":	293,
+					"$y":	-16335
+				}
+			},
+			"AppendMaskFromToolArg-8b5c28e2-58d0-491e-8d22-23e9231e2b14":	{
+				"$Position":	{
+					"$x":	291,
+					"$y":	-16197
+				}
+			},
+			"LoadMaterial-7ab4e615-3273-4169-852f-1d0eb5f67206":	{
+				"$Position":	{
+					"$x":	293,
+					"$y":	-15937
+				}
+			},
+			"Set-a4561d0d-14bc-4909-b1c5-6a61f93f326d":	{
+				"$Position":	{
+					"$x":	300,
+					"$y":	-15789
+				}
+			},
+			"ClearOperationMask-da9d4c4e-f525-406d-80f4-eb7853037e1a":	{
+				"$Position":	{
+					"$x":	292,
+					"$y":	-15649
+				}
+			},
+			"Dimensions-aec4bec4-0653-4bce-947b-83b07be74d44":	{
+				"$Position":	{
+					"$x":	279,
+					"$y":	-15517
+				}
+			},
+			"Offset-329bad7e-77e3-484e-bb2c-e5e092ee9545":	{
+				"$Position":	{
+					"$x":	270,
+					"$y":	-14731
+				}
+			},
+			"JumpIfToolArg-64c8fd9d-683f-4804-a950-57f4b8b31171":	{
+				"$Position":	{
+					"$x":	275,
+					"$y":	-13760
+				}
+			},
+			"LoadLoopFromToolArg-99c0f19c-fc12-49a8-b84f-41acceb4db64":	{
+				"$Position":	{
+					"$x":	281,
+					"$y":	-13467
+				}
+			},
+			"SaveIndex-1cc21933-bd4d-4936-acd7-557668460c37":	{
+				"$Position":	{
+					"$x":	287,
+					"$y":	-13233
+				}
+			},
+			"JumpIfToolArg-b069c062-6805-4f8b-a893-00da06cd4fe4":	{
+				"$Position":	{
+					"$x":	309,
+					"$y":	-11796
+				}
+			},
+			"JumpIfToolArg-2ad6ef94-7e50-487c-8bd7-05a51d65cacb":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	-11540
+				}
+			},
+			"JumpIfToolArg-dce131a7-186f-4162-837e-cc01139a8a79":	{
+				"$Position":	{
+					"$x":	311,
+					"$y":	-11292
+				}
+			},
+			"JumpIfToolArg-95e5bdc2-c539-4358-9bea-0ef659d08e92":	{
+				"$Position":	{
+					"$x":	313,
+					"$y":	-11047
+				}
+			},
+			"JumpIfToolArg-1a3a93e7-a65b-445d-b0db-73202df9f101":	{
+				"$Position":	{
+					"$x":	311,
+					"$y":	-10796
+				}
+			},
+			"JumpIfToolArg-f33eb4a6-cdb8-4b7e-bfd2-89e5b3b5a304":	{
+				"$Position":	{
+					"$x":	313,
+					"$y":	-10554
+				}
+			},
+			"JumpIfToolArg-1d06251b-a7fa-4aa3-b020-a9a66c1aaac3":	{
+				"$Position":	{
+					"$x":	312,
+					"$y":	-10307
+				}
+			},
+			"SaveIndex-aa09ed47-ef06-4376-9749-e31bd9060470":	{
+				"$Position":	{
+					"$x":	306,
+					"$y":	-9992
+				}
+			},
+			"Shape-de1f1111-2c9b-4e8c-b613-4d65e3334ed5":	{
+				"$Position":	{
+					"$x":	304,
+					"$y":	-9871
+				}
+			},
+			"JumpToIndex-2d786472-a848-476f-bdff-4cab6ac5a08c":	{
+				"$Position":	{
+					"$x":	303,
+					"$y":	-9737
+				}
+			},
+			"SaveIndex-af81581a-b195-4d1a-8333-2485cd7fe0a9":	{
+				"$Position":	{
+					"$x":	316,
+					"$y":	-9576
+				}
+			},
+			"Shape-7e7e7110-d5ab-4e7f-b068-475b2783921f":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	-9455
+				}
+			},
+			"JumpToIndex-a33f6c5f-11cd-42f8-b39a-fe97687da9e6":	{
+				"$Position":	{
+					"$x":	313,
+					"$y":	-9321
+				}
+			},
+			"SaveIndex-72dfce2a-341c-48e5-aa5c-c0a79b66d8fa":	{
+				"$Position":	{
+					"$x":	320,
+					"$y":	-9177
+				}
+			},
+			"Shape-6d6e5f72-3fb3-4963-ba4d-00550c28a06b":	{
+				"$Position":	{
+					"$x":	318,
+					"$y":	-9056
+				}
+			},
+			"JumpToIndex-c461c955-0e22-4688-8183-dbad9f453786":	{
+				"$Position":	{
+					"$x":	317,
+					"$y":	-8922
+				}
+			},
+			"SaveIndex-a15b2465-04c0-4684-a7e5-49c1a16eadc8":	{
+				"$Position":	{
+					"$x":	321,
+					"$y":	-8749
+				}
+			},
+			"Shape-cb5d2f76-8cdc-4326-a536-b76e679982b1":	{
+				"$Position":	{
+					"$x":	319,
+					"$y":	-8628
+				}
+			},
+			"JumpToIndex-d31bdbd9-5b21-4e9c-8812-40d354c7c337":	{
+				"$Position":	{
+					"$x":	318,
+					"$y":	-8494
+				}
+			},
+			"SaveIndex-d1b92fbe-18b2-497c-bcfd-e527f1c0f3c7":	{
+				"$Position":	{
+					"$x":	321,
+					"$y":	-8338
+				}
+			},
+			"Shape-98a28323-14f6-40a4-b5a6-538cf729f052":	{
+				"$Position":	{
+					"$x":	319,
+					"$y":	-8217
+				}
+			},
+			"JumpToIndex-6f5ddc75-b9ad-4530-b61b-9cfcaa2f305d":	{
+				"$Position":	{
+					"$x":	318,
+					"$y":	-8083
+				}
+			},
+			"SaveIndex-9edf98ca-3e1c-4fc0-b9e1-9f416508bcd0":	{
+				"$Position":	{
+					"$x":	328,
+					"$y":	-7931
+				}
+			},
+			"Shape-17a4f814-11c3-4188-9880-18efc9c04e6a":	{
+				"$Position":	{
+					"$x":	326,
+					"$y":	-7810
+				}
+			},
+			"JumpToIndex-e26838e7-0de6-4f3f-9747-60ea74092c7b":	{
+				"$Position":	{
+					"$x":	325,
+					"$y":	-7676
+				}
+			},
+			"SaveIndex-5e2d215e-d6d7-4065-943e-ccb0af2235c6":	{
+				"$Position":	{
+					"$x":	334,
+					"$y":	-7515
+				}
+			},
+			"Shape-64fdf49e-f628-4c7e-8d24-463092becd2d":	{
+				"$Position":	{
+					"$x":	332,
+					"$y":	-7394
+				}
+			},
+			"JumpToIndex-b9737e89-d891-4178-addb-82c9c48ffb46":	{
+				"$Position":	{
+					"$x":	331,
+					"$y":	-7260
+				}
+			},
+			"SaveIndex-ed76c214-f1b5-416c-af7a-21932cf1be9c":	{
+				"$Position":	{
+					"$x":	336,
+					"$y":	-6954
+				}
+			},
+			"LoadIntFromToolArg-f32cb0bb-4786-41ea-bf41-3313d6723a25":	{
+				"$Position":	{
+					"$x":	321,
+					"$y":	-6775
+				}
+			},
+			"LoadIntFromToolArg-ce8f2dbe-4183-4e6e-b537-003465a6299d":	{
+				"$Position":	{
+					"$x":	318,
+					"$y":	-6494
+				}
+			},
+			"LoadMaterial-f7f6f4c7-2eb8-4fdf-8520-40058a034a54":	{
+				"$Position":	{
+					"$x":	320,
+					"$y":	-6220
+				}
+			},
+			"Set-1b384176-ee85-48a3-bb1f-a7109da19689":	{
+				"$Position":	{
+					"$x":	315,
+					"$y":	-6074
+				}
+			},
+			"Mask-998ae82a-9c65-4fe0-91c2-4b558c36e206":	{
+				"$Position":	{
+					"$x":	352,
+					"$y":	-27500
+				}
+			},
+			"LoadMaterial-8ec98a0d-b47f-41c7-9b35-3716bed8ea3a":	{
+				"$Position":	{
+					"$x":	308,
+					"$y":	-32211
+				}
+			},
+			"SaveIndex-9b30a14a-cd85-412e-86dd-4e6dac27a6d1":	{
+				"$Position":	{
+					"$x":	292,
+					"$y":	-5875
+				}
+			},
+			"JumpIfToolArg-090c4270-3873-44ef-8aaf-8cac21ae1742":	{
+				"$Position":	{
+					"$x":	302,
+					"$y":	-12233
+				}
+			},
+			"JumpIfToolArg-f3ef1f58-a72c-483c-878e-98cf1a2fac2d":	{
+				"$Position":	{
+					"$x":	307,
+					"$y":	-32985
+				}
+			},
+			"SaveIndex-e1f6b171-4f11-4c53-a1c9-b08c32211c00":	{
+				"$Position":	{
+					"$x":	282,
+					"$y":	-22514
+				}
+			}
+		},
+		"$FloatingNodes":	[{
+				"$NodeId":	"Mask-998ae82a-9c65-4fe0-91c2-4b558c36e206",
+				"Id":	"mask",
+				"Mask":	"Empty"
+			}, {
+				"$NodeId":	"LoadMaterial-8ec98a0d-b47f-41c7-9b35-3716bed8ea3a",
+				"Id":	"loadmaterial",
+				"ArgName":	"bWindowBlock"
+			}],
+		"$Links":	{
+		},
+		"$Groups":	[{
+				"$Position":	{
+					"$x":	-38.375,
+					"$y":	-11936.0625
+				},
+				"$width":	1143.5,
+				"$height":	6209.4375,
+				"$name":	"Roof Logic"
+			}, {
+				"$Position":	{
+					"$x":	151.375,
+					"$y":	-25674.0625
+				},
+				"$width":	933.4375,
+				"$height":	3075.6875,
+				"$name":	"Large Window Logic"
+			}, {
+				"$Position":	{
+					"$x":	154.8125,
+					"$y":	-30866.125
+				},
+				"$width":	988.6875,
+				"$height":	5053,
+				"$name":	"Small Window Logic"
+			}, {
+				"$Position":	{
+					"$x":	141.1875,
+					"$y":	-32618.1875
+				},
+				"$width":	886.8125,
+				"$height":	1653.1875,
+				"$name":	"Window Logic"
+			}, {
+				"$Position":	{
+					"$x":	133.75,
+					"$y":	-16851.625
+				},
+				"$width":	968.75,
+				"$height":	1788.4375,
+				"$name":	"Overhangs on Floor Levels"
+			}, {
+				"$Position":	{
+					"$x":	176.9375,
+					"$y":	-19977.5625
+				},
+				"$width":	818.5625,
+				"$height":	3011.125,
+				"$name":	"Set Floors"
+			}, {
+				"$Position":	{
+					"$x":	162.5625,
+					"$y":	-22030.4375
+				},
+				"$width":	862.5,
+				"$height":	1727.75,
+				"$name":	"Clear extra windows"
+			}, {
+				"$Position":	{
+					"$x":	156.8125,
+					"$y":	-14836.1875
+				},
+				"$width":	724,
+				"$height":	860.875,
+				"$name":	"Undo floor offset"
+			}],
+		"$Comments":	[],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

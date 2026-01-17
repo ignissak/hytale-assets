@@ -1,0 +1,45 @@
+{
+  "$Comment": "DisplayState",
+  "Type": "Abstract",
+  "Appearance": "Golem_Guardian_Void",
+  "DropList": "Drop_Golem_Guardian_Void",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": {
+    "Compute": "MaxHealth"
+  },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 400,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Golem_Guardian_Void.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": {
+    "Compute": "NameTranslationKey"
+  }
+}

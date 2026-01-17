@@ -1,0 +1,244 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container {
+  Anchor: (Width: 1050, Height: 700);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = %server.customUI.commandListPage.commands;
+      }
+
+      $C.@HeaderSearch {}
+    }
+  }
+
+  #Content {
+    LayoutMode: Left;
+
+    Group #CommandList {
+      Anchor: (Width: 250);
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+
+    Group #CommandInfo {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      Padding: (Left: 10);
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+
+      Label #CommandName {
+        Style: (
+          RenderUppercase: true,
+          RenderBold: true,
+          FontSize: 17
+        );
+        Anchor: (Bottom: 5);
+      }
+
+      Label #CommandUsageLabel {
+        Anchor: (Bottom: 8);
+        Style: (
+          FontSize: 13,
+          TextColor: #7a9cc6
+        );
+      }
+
+      Label #CommandDescription {
+        Anchor: (Bottom: 10);
+        Style: (
+          FontSize: 13,
+          TextColor: #ffffff(0.85)
+        );
+      }
+
+      Group #AliasesSection {
+        Anchor: (Bottom: 8);
+        LayoutMode: Left;
+        Visible: false;
+
+        Label {
+          Text: "Aliases:";
+          Style: (
+            FontSize: 12,
+            RenderBold: true,
+            TextColor: #878e9c,
+            VerticalAlignment: Center
+          );
+          Anchor: (Right: 5);
+        }
+
+        Label #AliasesList {
+          Style: (
+            FontSize: 12,
+            TextColor: #7a9cc6,
+            VerticalAlignment: Center
+          );
+        }
+      }
+
+      Group #PermissionSection {
+        Anchor: (Bottom: 8);
+        LayoutMode: Left;
+        Visible: false;
+
+        Label {
+          Text: "Permission:";
+          Style: (
+            FontSize: 12,
+            RenderBold: true,
+            TextColor: #878e9c,
+            VerticalAlignment: Center
+          );
+          Anchor: (Right: 5);
+        }
+
+        Label #PermissionLabel {
+          Style: (
+            FontSize: 12,
+            TextColor: #7a9cc6,
+            VerticalAlignment: Center
+          );
+        }
+      }
+
+      Group {
+        LayoutMode: Left;
+        Anchor: (Bottom: 12);
+
+        $C.@TertiaryTextButton #BackButton {
+          @Anchor = (Right: 8);
+          Anchor: (Width: 100, Height: 28, Right: 8);
+          Visible: false;
+          Text: %server.customUI.general.backButton;
+        }
+
+        $C.@SecondaryTextButton #SendToChatButton {
+          Anchor: (Width: 190, Height: 28);
+          Text: %server.customUI.commandListPage.sendToChat;
+        }
+      }
+
+      Group #VariantsSection {
+        Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+        Visible: false;
+
+        Group {
+          Anchor: (Height: 34, Bottom: 8);
+
+          Label {
+            Anchor: (Height: 33, Top: 0, Left: 10);
+            Style: (HorizontalAlignment: Start, VerticalAlignment: Center, RenderBold: true, RenderUppercase: true, TextColor: #878e9c, FontSize: 13);
+            Text: %server.customUI.commandListPage.variants;
+          }
+
+          Group {
+            Anchor: (Height: 1, Bottom: 0);
+            Background: (Color: #5e512c);
+          }
+        }
+
+        Group #VariantsList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 13, Top: 5, Bottom: 10);
+        }
+      }
+
+      Group #SubcommandSection {
+        Anchor: (Bottom: 10);
+        LayoutMode: Top;
+        Visible: false;
+
+        Label {
+          Text: %server.customUI.commandListPage.subcommands;
+          Style: (
+            FontSize: 13,
+            RenderBold: true,
+            RenderUppercase: true,
+            TextColor: #878e9c
+          );
+          Anchor: (Bottom: 8);
+        }
+
+        Group #SubcommandCards {
+          LayoutMode: Top;
+        }
+      }
+
+      Group #ParametersSection {
+        Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+        Visible: false;
+
+        Group {
+          Anchor: (Height: 34, Bottom: 8);
+
+          Label {
+            Anchor: (Height: 33, Top: 0, Left: 10);
+            Style: (HorizontalAlignment: Start, VerticalAlignment: Center, RenderBold: true, RenderUppercase: true, TextColor: #878e9c, FontSize: 13);
+            Text: %server.customUI.commandListPage.parameters;
+          }
+
+          Group {
+            Anchor: (Height: 1, Bottom: 0);
+            Background: (Color: #5e512c);
+          }
+        }
+
+        Group #RequiredArgumentsList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 0, Top: 5);
+        }
+
+        Group #OptionalArgumentsList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 0);
+        }
+
+        Group #DefaultArgumentsList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 0);
+        }
+
+        Group #FlagArgumentsList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 0, Bottom: 10);
+        }
+      }
+
+      Group #ArgumentTypesSection {
+        Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+        LayoutMode: Top;
+        Visible: false;
+
+        Group {
+          Anchor: (Height: 34, Bottom: 8);
+
+          Label {
+            Anchor: (Height: 33, Top: 0, Left: 10);
+            Style: (HorizontalAlignment: Start, VerticalAlignment: Center, RenderBold: true, RenderUppercase: true, TextColor: #878e9c, FontSize: 13);
+            Text: %server.customUI.commandListPage.argumentTypes;
+          }
+
+          Group {
+            Anchor: (Height: 1, Bottom: 0);
+            Background: (Color: #5e512c);
+          }
+        }
+
+        Group #ArgumentTypesList {
+          LayoutMode: Top;
+          Padding: (Horizontal: 13, Top: 5, Bottom: 10);
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

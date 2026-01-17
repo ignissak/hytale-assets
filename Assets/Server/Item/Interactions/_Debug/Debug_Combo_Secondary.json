@@ -1,0 +1,55 @@
+{
+  "Type": "Chaining",
+  "ChainId": "Debug_Combo",
+  "ChainingAllowance": 0.8,
+  "Next": [
+    {
+      "Type": "SendMessage",
+      "Message": "First - Secondary",
+      "RunTime": 0.5,
+      "Effects": {
+        "ItemAnimationId": "Kick_Spinning_Right"
+      }
+    },
+    {
+      "Type": "SendMessage",
+      "Message": "Second - Secondary",
+      "RunTime": 0.5,
+      "Effects": {
+        "ItemAnimationId": "Kick_Roundhouse_Left"
+      },
+      "Next": {
+        "Type": "ChainFlag",
+        "ChainId": "Debug_Combo",
+        "Flag": "Special_Second"
+      }
+    },
+    {
+      "Type": "SendMessage",
+      "Message": "Third - Secondary",
+      "RunTime": 0.5,
+      "Effects": {
+        "ItemAnimationId": "Kick_Tornado_Right"
+      }
+    }
+  ],
+  "Flags": {
+    "Held_Second": {
+      "Type": "SendMessage",
+      "Message": "Held Flag hit!",
+      "Next": {
+        "Type": "ApplyForce",
+        "RunTime": 0.5,
+        "Direction": {
+          "Z": 5,
+          "Y": 3
+        },
+        "Force": 30,
+        "VelocityConfig": {
+          "AirResistance": 0.93,
+          "GroundResistance": 0.93
+        }
+      }
+    }
+  }
+}

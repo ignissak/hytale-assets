@@ -1,0 +1,50 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 1,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15
+          },
+          "BodyMotion": {
+            "Type": "AimCharge",
+            "RelativeTurnSpeed": 0.5
+          },
+          "Actions": [
+            {
+              "Type": "Attack",
+              "Attack": "Root_NPC_Attack_Melee",
+              "ChargeDistance": 8,
+              "AimingTimeRange": [ 5, 5 ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Charge_Aiming.name"
+}

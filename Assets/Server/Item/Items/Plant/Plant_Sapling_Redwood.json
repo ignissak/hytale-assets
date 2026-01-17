@@ -1,0 +1,163 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Redwood.name",
+    "Description": "server.items.Plant_Sapling_Redwood.description"
+  },
+  "Parent": "Plant_Sapling_Oak",
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 20
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 5
+      }
+    ]
+  },
+  "ItemLevel": 8,
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Redwood.png",
+        "Weight": 1
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockType",
+            "Block": "Plant_Sapling_Redwood",
+            "Duration": {
+              "Min": 30000,
+              "Max": 80000
+            }
+          },
+          {
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_00/Redwood_Stage00_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 60000,
+              "Max": 80000
+            },
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_0/Redwood_Stage0_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 60000,
+              "Max": 80000
+            },
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Type": "Prefab",
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_1/Redwood_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 60000,
+              "Max": 80000
+            },
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_2/Redwood_Stage2_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 60000,
+              "Max": 80000
+            },
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_3/Redwood_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 800000,
+              "Max": 1200000
+            },
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "Prefabs": [
+              {
+                "Path": "Trees/Redwood/Stage_4/Redwood_Stage4_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Redwood"
+      }
+    },
+    "Opacity": "Transparent",
+    "BlockParticleSetId": "Grass",
+    "ParticleColor": "#364f2f"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Redwood_Sapling.png"
+}

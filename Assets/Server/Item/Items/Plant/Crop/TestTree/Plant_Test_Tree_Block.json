@@ -1,0 +1,118 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Test_Tree_Stage_0.name"
+  },
+  "Quality": "Developer",
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Ingredients/Onion_Seed.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Onion_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {}
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10350,
+              "Max": 41400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "TestTree/Stage_0.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "Prefab",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "TestTree/Stage_1.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "Prefab",
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Plant_Crop_Onion_Stage_0"
+      }
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "CustomModelScale": 0.5,
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 1,
+    "Translation": [
+      0,
+      -4.2
+    ],
+    "Rotation": [
+      14.6,
+      114.7,
+      9
+    ]
+  },
+  "Scale": 1.5,
+  "Icon": "Icons/ItemsGenerated/Plant_Onion_Stage_0.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

@@ -1,0 +1,99 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Mushroom_Glowing_Blue.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Mushroom_Glowing_Blue.png",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "RequiredGameMode": "Adventure",
+          "Crouching": false,
+          "Next": {
+            "Parent": "Consume_Charge",
+            "Effects": {
+              "ItemAnimationId": "Consume",
+              "ClearAnimationOnFinish": true
+            }
+          },
+          "Failed": "Block_Secondary"
+        }
+      ]
+    }
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "Parent": "Poison",
+            "Duration": 2,
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    }
+  },
+  "Utility": {
+    "Compatible": true
+  },
+  "Consumable": true,
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Foliage/Plants/Mushroom_Thin.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Mushroom_Thin_Textures/Blue.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Plant",
+    "HitboxType": "Plant_Full",
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockParticleSetId": "Dust",
+    "Light": {
+      "Color": "#58b"
+    },
+    "ParticleColor": "#5dc7e2",
+    "BlockSoundSetId": "Mushroom"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Mushrooms"
+    },
+    {
+      "Id": "Vegetables"
+    }
+  ],
+  "PlayerAnimationsId": "Item",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage",
+  "DropOnDeath": true
+}

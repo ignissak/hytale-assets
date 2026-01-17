@@ -1,0 +1,43 @@
+{
+  "Type": "SUM",
+  "Noise": [
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "MountainGrid",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "MIN",
+          "CellType": "HEX",
+          "Jitter": 0.5,
+          "Scale": 0.001,
+          "Density": [0, 0.5],
+          "DistanceRange": [5, 7],
+          "Normalize": [0, 1]
+        },
+        {
+          "Seed": "MountainGrid",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "MIN",
+          "CellType": "HEX",
+          "Jitter": 1,
+          "Scale": 0.005,
+          "Normalize": [0, 1]
+        }
+      ],
+      "Curve": {
+        "A": 2.0,
+        "B": -1
+      },
+      "Factors": [1, 1]
+    },
+    {
+      "Seed": "MountainSimplex",
+      "NoiseType": "SIMPLEX",
+      "Octaves": 4,
+      "Scale": 0.01
+    }
+  ],
+  "Normalize": [-1.25, 1],
+  "Factors": [1, 0.2]
+}

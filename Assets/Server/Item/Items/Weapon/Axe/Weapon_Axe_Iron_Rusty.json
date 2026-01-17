@@ -1,0 +1,132 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Axe_Iron_Rusty.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 40,
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": []
+  },
+  "Model": "Items/Weapons/Axe/Iron.blockymodel",
+  "Texture": "Items/Weapons/Axe/Iron_Rusty_Texture.png",
+  "PlayerAnimationsId": "Axe",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Axe_Attack"
+  },
+  "InteractionVars": {
+    "Axe_Swing_Down_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Down_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 19
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 19
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 38
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.45,
+    "Translation": [
+      -26,
+      -25
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Axe_Iron_Rusty.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 81,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Family": [
+      "Axe"
+    ],
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

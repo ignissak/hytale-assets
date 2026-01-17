@@ -1,0 +1,51 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Cactee_Default",
+    "ItemAnimationId": "SpikeNova"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 1,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.25,
+            "Selector": {
+              "Id": "AOECircle",
+              "Range": 3
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.167,
+            "Effects": {}
+          }
+        ]
+      }
+    ]
+  }
+}

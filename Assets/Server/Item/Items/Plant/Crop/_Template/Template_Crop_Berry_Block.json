@@ -1,0 +1,287 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Crop_Berry_Block.name"
+  },
+  "Quality": "Template",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Berry/Berry_Bush_Stage_0.png",
+        "Weight": 1
+      }
+    ],
+    "Effect": [
+      "WindFractal"
+    ],
+    "CustomModel": "Blocks/Foliage/Plants/Bush_Big.blockymodel",
+    "CustomModelScale": 0.8,
+    "Opacity": "Transparent",
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep1",
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Berry/Berry_Bush_Stage_1.png",
+              "Weight": 1
+            }
+          ],
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_Stage1"
+            }
+          }
+        },
+        "Stage2": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Berry/Berry_Bush_Stage_2.png",
+              "Weight": 1
+            }
+          ],
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_Stage2"
+            }
+          }
+        },
+        "Stage3": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Berry/Berry_Bush_Stage_3.png",
+              "Weight": 1
+            }
+          ],
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_Stage3"
+            }
+          }
+        },
+        "StageFinal": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Berry/Berry_Bush.png",
+              "Weight": 1
+            }
+          ],
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Berry_StageFinal_Harvest"
+            }
+          }
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "Stage1",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "Stage2",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "Stage3",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ],
+        "Harvested": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "Stage3",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Berry_Block"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Bushes"
+        }
+      ]
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "BushBase"
+        }
+      ]
+    },
+    "BlockParticleSetId": "Leaves_Round",
+    "ParticleColor": "#518b20",
+    "BlockSoundSetId": "Bush",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Icon": "Icons/ItemsGenerated/Plant_Bush_Green_Berry.png",
+  "IconProperties": {
+    "Scale": 0.345,
+    "Translation": [
+      2.5,
+      -26.299999
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Bush"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

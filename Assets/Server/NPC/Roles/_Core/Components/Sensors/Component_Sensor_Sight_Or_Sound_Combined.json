@@ -1,0 +1,46 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be heard"
+    },
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which the player needs to be to be seen"
+    },
+    "HasSight": {
+      "Value": true,
+      "Description": "Whether this NPC can see"
+    },
+    "HasHearing": {
+      "Value": true,
+      "Description": "Whether this NPC can hear"
+    }
+  },
+  "Content": {
+    "Type": "Or",
+    "Sensors": [
+      {
+        "Reference": "Component_Sensor_Sight",
+        "Modify": {
+          "ViewRange": { "Compute": "ViewRange" },
+          "ViewSector": { "Compute": "ViewSector" },
+          "Enabled": { "Compute": "HasSight" }
+        }
+      },
+      {
+        "Reference": "Component_Sensor_Sound",
+        "Modify": {
+          "HearingRange": { "Compute": "HearingRange" },
+          "Enabled": { "Compute": "HasSight" }
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

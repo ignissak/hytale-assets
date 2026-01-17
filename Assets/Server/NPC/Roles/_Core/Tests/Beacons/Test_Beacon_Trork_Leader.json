@@ -1,0 +1,129 @@
+{
+  "Type": "Generic",
+  "Appearance": "Trork_Hunter",
+  "HotbarItems": [ "Weapon_Longsword_Stone_Trork" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Tag": "PlayBeacon",
+          "Sensor": {
+            "Type": "Player",
+            "Range": 12,
+            "MinRange": 0,
+            "LockOnTarget": true,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Blocking": true,
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Player_Danger_Close",
+                  "Range": 25,
+                  "TargetGroups": [ "Trork" ],
+                  "ExpirationTime": 0.5,
+                  "SendTargetSlot": "LockedTarget"
+                },
+                {
+                  "Type": "PlaySound",
+                  "SoundEventId": "SFX_Trork_Alerted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Any",
+                "$Comment": {
+                  "$Comment": "This feature is deprecated and it's breaking to this NPC logic",
+                  "Type": "Triggered",
+                  "Tag": "PlayBeacon"
+                }
+              },
+              {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Beacon",
+                  "Message": "Player_Danger_Close",
+                  "Range": 25
+                }
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Blocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 10, 20 ]
+                },
+                {
+                  "Type": "Nothing",
+                  "$Comment": {
+                    "$Comment": "This feature is deprecated and it's breaking to this NPC logic",
+                    "Type": "ResetOnce",
+                    "Tag": "PlayBeacon"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon_Trork_Leader.name"
+}

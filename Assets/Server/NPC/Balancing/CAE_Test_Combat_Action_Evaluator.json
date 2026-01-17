@@ -1,0 +1,283 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "SelfHeal": {
+        "Type": "Ability",
+        "Description": "Heal self",
+        "Target": "Self",
+        "AttackDistanceRange": [
+          1,
+          1
+        ],
+        "Ability": "Test_Heal",
+        "WeightCoefficient": 1.2,
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "ReverseLinear"
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "HealFriendly": {
+        "Type": "Ability",
+        "Description": "Heal friendly",
+        "Target": "Friendly",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Eye_Void_Summon",
+        "WeightCoefficient": 1.2,
+        "Conditions": [
+          {
+            "Type": "TargetStatPercent",
+            "Stat": "Health",
+            "Curve": "ReverseLinear"
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "RangedAttack": {
+        "Type": "Ability",
+        "Description": "Use ranged attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          8,
+          12
+        ],
+        "Ability": "Outlander_Hunter_Bow_Shoot",
+        "SubState": "Ranged",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "MeleeAttack": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 6
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "MeleeAttack2": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 50
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "ThrowItem": {
+        "Type": "State",
+        "Description": "Run a behaviour to throw an item at a target",
+        "State": "Combat",
+        "SubState": "Throw",
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [
+                0,
+                20
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 30
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Scrapper_Club_Swing_Left",
+            "Goblin_Scrapper_Club_Swing_Right",
+            "Goblin_Scrapper_Club_Swing_Down"
+          ],
+          "Randomise": false,
+          "MaxRange": 2,
+          "Timeout": 2,
+          "CooldownRange": [
+            2,
+            3
+          ]
+        },
+        "Actions": [
+          "SelfHeal",
+          "HealFriendly",
+          "RangedAttack",
+          "MeleeAttack",
+          "MeleeAttack2"
+        ]
+      },
+      "Ranged": {
+        "BasicAttacks": {
+          "Attacks": [
+            "NPC_Rubble_Throw"
+          ],
+          "Randomise": false,
+          "MaxRange": 13,
+          "Timeout": 2,
+          "CooldownRange": [
+            2,
+            3
+          ]
+        },
+        "Actions": [
+          "SelfHeal",
+          "HealFriendly",
+          "RangedAttack",
+          "MeleeAttack",
+          "ThrowItem"
+        ]
+      }
+    }
+  }
+}

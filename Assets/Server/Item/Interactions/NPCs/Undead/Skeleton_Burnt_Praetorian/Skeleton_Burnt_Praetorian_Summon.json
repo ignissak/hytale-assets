@@ -1,0 +1,47 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Axe",
+    "ItemAnimationId": "SummonAbility",
+    "WorldSoundEventId": "SFX_Skeleton_Praetorian_Search_2",
+    "Particles": [
+      {
+        "SystemId": "Praetorian_Summon_Ground",
+        "TargetEntityPart": "Entity",
+        "DetachedFromModel": true
+      },
+      {
+        "SystemId": "Praetorian_Summon_Energy",
+        "TargetEntityPart": "Entity",
+        "TargetNodeName": "L-Hand",
+        "Scale": 1.5
+      },
+      {
+        "SystemId": "Praetorian_Summon_Energy",
+        "TargetEntityPart": "Entity",
+        "TargetNodeName": "R-Hand",
+        "Scale": 1.0
+      }
+    ],
+    "MovementEffects": {
+      "DisableAll": true
+    }
+  },
+  "RunTime": 2.0,
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Simple",
+        "Effects": {
+          "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact"
+        }
+      },
+      {
+        "Type": "TriggerSpawnMarkers",
+        "MarkerType": "Skeleton_Knight_Manual",
+        "Range": 30
+      }
+    ]
+  }
+}

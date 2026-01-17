@@ -1,0 +1,21 @@
+{
+  "Class": "Sensor",
+  "Content": {
+    "$Comment": "Trorks only sleep at night if they're indoors or it's not raining",
+    "Type": "Or",
+    "Sensors": [
+      {
+        "Reference": "Component_Sensor_Is_Indoors",
+        "Modify": { }
+      },
+      {
+        "Type": "Not",
+        "Sensor": {
+          "Type": "Weather",
+          "Weathers": [ "*Rain*" ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

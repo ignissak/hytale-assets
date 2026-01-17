@@ -1,0 +1,94 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8
+          },
+          "Tag": "threat",
+          "BodyMotion": {
+            "Type": "Flee",
+            "SlowDownDistance": 9,
+            "StopDistance": 10
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Tag": "idle",
+          "BodyMotion": {
+            "Type": "Sequence",
+            "Looped": true,
+            "Motions": [
+              {
+                "Type": "Timer",
+                "Time": [ 2, 5 ],
+                "Motion": {
+                  "Type": "Wander"
+                }
+              },
+              {
+                "Type": "Timer",
+                "Time": [ 3, 5 ],
+                "Motion": {
+                  "Type": "Nothing"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 6
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Sheep"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Boar"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_ShapeChange.name"
+}

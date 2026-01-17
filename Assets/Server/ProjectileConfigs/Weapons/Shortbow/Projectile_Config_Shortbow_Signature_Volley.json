@@ -1,0 +1,54 @@
+{
+  "Parent": "Projectile_Config_Arrow_Base",
+  "Model": "Arrow_Shortbow_Signature",
+  "LaunchLocalSoundEventId": "SFX_Bow_T2_Shoot_Local",
+  "LaunchWorldSoundEventId": "SFX_Bow_T2_Shoot",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 30,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Signature_Volley_Damage",
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Shortbow_Signature_Volley_Damage"
+            ]
+          }
+        },
+        {
+          "Type": "Replace",
+          "Var": "Signature_Volley_Impact",
+          "DefaultValue": {
+            "Interactions": [
+              "Common_Projectile_Impact_Effects"
+            ]
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Signature_Volley_Miss",
+          "DefaultValue": {
+            "Interactions": [
+              "Common_Projectile_Miss"
+            ]
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    }
+  }
+}

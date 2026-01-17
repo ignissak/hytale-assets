@@ -1,0 +1,53 @@
+{
+  "Type": "EffectCondition",
+  "EntityEffectIds": [
+    "Crossbow_Combo_2"
+  ],
+  "Match": "All",
+  "Entity": "Target",
+  "Next": {
+    "Type": "Replace",
+    "Var": "Combo_Projectile_Damage",
+    "DefaultValue": {
+      "Interactions": [
+        "Weapon_Crossbow_Damage_Combo_Projectile"
+      ]
+    }
+  }, 
+  "Failed": {
+    "Type": "EffectCondition",
+    "EntityEffectIds": [
+      "Crossbow_Combo_1"
+    ],
+    "Match": "All",
+    "Entity": "Target",
+    "Next": {
+      "Type": "ApplyEffect",
+      "Entity": "Target",
+      "EffectId": "Crossbow_Combo_2",
+      "Next": {
+        "Type": "Replace",
+        "Var": "Standard_Projectile_Damage",
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Crossbow_Damage_Standard_Projectile"
+          ]
+        }
+      }
+    },
+    "Failed": {
+      "Type": "ApplyEffect",
+      "Entity": "Target",
+      "EffectId": "Crossbow_Combo_1",
+      "Next": {
+        "Type": "Replace",
+        "Var": "Standard_Projectile_Damage",
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Crossbow_Damage_Standard_Projectile"
+          ]
+        }
+      }
+    }
+  }
+}

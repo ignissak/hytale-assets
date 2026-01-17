@@ -1,0 +1,191 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingLeftSpinJumpCharging"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.25,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "Effects": {
+              "ItemAnimationId": "SwingLeftSpinJumpCharged"
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ApplyForce",
+            "Direction": {
+              "X": 0,
+              "Y": 1,
+              "Z": 0
+            },
+            "Force": 12,
+            "WaitForGround": false
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.267,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 1,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 360,
+              "RollOffset": -30,
+              "YawStartOffset": -120
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Sword_Swing_Left_Spin_Jump_Damage"
+                    ]
+                  },
+                  "Var": "Sword_Swing_Left_Spin_Jump_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Parallel",
+              "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+              "Interactions": [
+                {
+                  "Interactions": [
+                    {
+                      "Type": "Selector",
+                      "$Comment": "Length of Combat",
+                      "RunTime": 0.267,
+                      "Selector": {
+                        "Id": "Horizontal",
+                        "Direction": "ToLeft",
+                        "TestLineOfSight": false,
+                        "ExtendTop": 0.5,
+                        "ExtendBottom": 1,
+                        "StartDistance": 0.1,
+                        "EndDistance": 3,
+                        "Length": 360,
+                        "RollOffset": 30,
+                        "YawStartOffset": -120
+                      },
+                      "HitEntity": {
+                        "Interactions": [
+                          {
+                            "Type": "Replace",
+                            "DefaultValue": {
+                              "Interactions": [
+                                "Sword_Swing_Left_Spin_Jump_Damage2"
+                              ]
+                            },
+                            "Var": "Sword_Swing_Left_Spin_Jump_Damage2"
+                          }
+                        ]
+                      },
+                      "Next": {
+                        "Type": "Parallel",
+                        "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+                        "Interactions": [
+                          {
+                            "Interactions": [
+                              {
+                                "Type": "Selector",
+                                "$Comment": "Length of Combat",
+                                "RunTime": 0.4,
+                                "Selector": {
+                                  "Id": "Horizontal",
+                                  "Direction": "ToLeft",
+                                  "TestLineOfSight": false,
+                                  "ExtendTop": 0.5,
+                                  "ExtendBottom": 0.5,
+                                  "StartDistance": 0.1,
+                                  "EndDistance": 3,
+                                  "Length": 270,
+                                  "RollOffset": -60,
+                                  "YawStartOffset": -180
+                                },
+                                "HitEntity": {
+                                  "Interactions": [
+                                    {
+                                      "Type": "Replace",
+                                      "DefaultValue": {
+                                        "Interactions": [
+                                          "Sword_Swing_Left_Spin_Jump_Damage3"
+                                        ]
+                                      },
+                                      "Var": "Sword_Swing_Left_Spin_Jump_Damage3"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "Interactions": [
+                              {
+                                "Type": "Replace",
+                                "DefaultValue": {
+                                  "Interactions": [
+                                    "Sword_Swing_Left_Spin_Jump_Effect3"
+                                  ]
+                                },
+                                "Var": "Sword_Swing_Left_Spin_Jump_Effect3"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Interactions": [
+                    {
+                      "Type": "Replace",
+                      "DefaultValue": {
+                        "Interactions": [
+                          "Sword_Swing_Left_Spin_Jump_Effect2"
+                        ]
+                      },
+                      "Var": "Sword_Swing_Left_Spin_Jump_Effect2"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Sword_Swing_Left_Spin_Jump_Effect"
+              ]
+            },
+            "Var": "Sword_Swing_Left_Spin_Jump_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

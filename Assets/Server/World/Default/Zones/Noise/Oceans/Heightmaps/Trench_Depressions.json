@@ -1,0 +1,55 @@
+{
+  "Type": "MULTIPLY",
+  "Noise": [
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Trench_Mask",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED_RIDGED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.001
+        },
+        {
+          "Seed": "Grasslayer3",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.0075
+        },
+        {
+          "Seed": "Trench_Noise",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED_RIDGED_SQRT",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.04
+        }
+      ],
+      "Factors": [
+        0.85,
+        0.1,
+        0.05
+      ],
+      "Normalize": [
+        0.45,
+        1
+      ]
+    },
+    {
+      "Seed": "Grasslands-Base",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "INVERTED",
+      "Octaves": 3,
+      "Persistence": 0.4,
+      "Scale": 0.0008,
+      "Normalize": [
+        0.45,
+        0.47
+      ]
+    }
+  ]
+}

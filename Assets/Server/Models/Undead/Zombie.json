@@ -1,0 +1,675 @@
+{
+  "Parent": "Player",
+  "Model": "NPC/Undead/Zombie/Models/Model.blockymodel",
+  "Texture": "NPC/Undead/Zombie/Models/Zombie.png",
+  "EyeHeight": 1.45,
+  "CrouchOffset": -0.25,
+  "HitBox": {
+    "Max": {
+      "X": 0.3,
+      "Y": 1.8,
+      "Z": 0.3
+    },
+    "Min": {
+      "X": -0.3,
+      "Y": 0,
+      "Z": -0.3
+    }
+  },
+  "DefaultAttachments": [
+    {
+      "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Eyes.blockymodel",
+      "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Eyes_Blue.png"
+    },
+    {
+      "Model": "Characters/Body_Attachments/Ears/Ears1.blockymodel",
+      "Texture": "Characters/Body_Attachments/Ears/Ears1_Textures/Zombie.png"
+    }
+  ],
+  "AnimationSets": {
+    "Idle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Idle.blockyanim",
+          "BlendingDuration": 0.2,
+          "Speed": 0.5
+        }
+      ]
+    },
+    "Walk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Walk.blockyanim",
+          "Speed": 0.85
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Walk2.blockyanim",
+          "Speed": 0.85
+        }
+      ]
+    },
+    "WalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Walk_Backward.blockyanim",
+          "Speed": 1.1
+        }
+      ]
+    },
+    "Run": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Run.blockyanim",
+          "SoundEventId": "SFX_Zombie_Pursuit",
+          "Speed": 0.8
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Run2.blockyanim",
+          "SoundEventId": "SFX_Zombie_Pursuit",
+          "Speed": 0.8
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Run3.blockyanim",
+          "SoundEventId": "SFX_Zombie_Pursuit",
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Crouch": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Crouch.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.5
+        }
+      ]
+    },
+    "CrouchWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Crouch_Walk.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "CrouchWalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Crouch_Walk_Backward.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Jump": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "JumpWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "JumpRun": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Jump_Far.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Jump_Far2.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Fall": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Fall.blockyanim",
+          "BlendingDuration": 0.4
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Fall2.blockyanim",
+          "BlendingDuration": 0.4
+        }
+      ]
+    },
+    "Alerted": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Alerted.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Alerted"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Alerted2.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Alerted"
+        }
+      ]
+    },
+    "FlyIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Fly/Fly_Idle.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "Fly": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Fly/Fly.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "FlyBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Fly/Fly_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "FlyFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Fly/Fly_Fast.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Idle.blockyanim"
+        }
+      ]
+    },
+    "Swim": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Fast.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimJump": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "SwimFloat": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Float.blockyanim"
+        }
+      ]
+    },
+    "SwimSink": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Sink.blockyanim"
+        }
+      ]
+    },
+    "SwimDive": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Dive.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimDiveBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Dive_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimDiveFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Swim/Swim_Dive_Fast.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "FluidIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Idle.blockyanim",
+          "Speed": 0.3
+        }
+      ]
+    },
+    "FluidWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Walk.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "FluidWalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Walk_Backward.blockyanim",
+          "Speed": 0.7
+        }
+      ]
+    },
+    "FluidRun": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Run.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "ClimbIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Climb/Climb_Idle.blockyanim",
+          "Speed": 0.5
+        }
+      ]
+    },
+    "ClimbUp": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Climb/Climb_Up.blockyanim"
+        }
+      ]
+    },
+    "ClimbDown": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Climb/Climb_Down.blockyanim"
+        }
+      ]
+    },
+    "ClimbLeft": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Climb/Climb_Left.blockyanim"
+        }
+      ]
+    },
+    "ClimbRight": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Climb/Climb_Right.blockyanim"
+        }
+      ]
+    },
+    "Hurt": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Hurt.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Hurt"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Hurt2.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Hurt"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Hurt3.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Hurt"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Hurt4.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Hurt"
+        }
+      ]
+    },
+    "Death": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Death.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Death"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Death2.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Death"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Damage/Death3.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Death"
+        }
+      ]
+    },
+    "Spawn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Spawn.blockyanim",
+          "BlendingDuration": 0,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Spawn"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Spawn2.blockyanim",
+          "BlendingDuration": 0,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Spawn"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Spawn3.blockyanim",
+          "BlendingDuration": 0,
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Spawn"
+        }
+      ]
+    },
+    "Despawn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Despawn.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Despawn"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Despawn2.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Zombie_Despawn"
+        }
+      ]
+    },
+    "IdlePassive": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Lean_Left.blockyanim",
+          "Weight": 5
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Lean_Right.blockyanim",
+          "Weight": 5
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Neck_Crack.blockyanim",
+          "Weight": 2
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Scratch_Back.blockyanim",
+          "Weight": 1
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Scratch_Head.blockyanim",
+          "Weight": 3
+        }
+      ],
+      "NextAnimationDelay": {
+        "Max": 15,
+        "Min": 5
+      }
+    },
+    "Search": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Search.blockyanim"
+        },
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Flavor/Search2.blockyanim"
+        }
+      ]
+    },
+    "Sleep": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Idle.blockyanim",
+          "Speed": 0.3
+        }
+      ]
+    },
+    "Laydown": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Idle.blockyanim",
+          "Looping": false,
+          "Speed": 0.5
+        }
+      ]
+    },
+    "Wake": {
+      "Animations": [
+        {
+          "Animation": "NPC/Undead/Zombie/Animations/Default/Idle.blockyanim",
+          "Looping": false,
+          "Speed": 1.0
+        }
+      ]
+    }
+  },
+  "RandomAttachmentSets": {
+    "Head": {
+      "Maid_Cap": {
+        "Model": "Cosmetics/Head/MaidCap.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/MaidCap_Texture.png",
+        "Weight": 0.5
+      },
+      "Monk_Cap": {
+        "Model": "Cosmetics/Head/Hood.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Hood_Texture/Monk_Cap.png",
+        "Weight": 0.5
+      },
+      "null": {},
+      "Goatee_Black": {
+        "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Goatee.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Goatee_Black.png",
+        "Weight": 0.5
+      },
+      "Bangs_Long_Black": {
+        "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Bangs_Long.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Bangs_Long_Black.png",
+        "Weight": 0.5
+      },
+      "Head_Bandage_Heavy_Black": {
+        "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Head_Bandage.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Heavy_Bandage_Black.png"
+      },
+      "Head_Bandage_Light_Black": {
+        "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Head_Bandage.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Light_Bandage_Black.png"
+      },
+      "Long_Oily_Blond": {
+        "Model": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Long_Oily.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Head/Haircuts/Long_Oily_Blond.png"
+      }
+    },
+    "Chest": {
+      "Tunic": {
+        "Model": "Cosmetics/Overtops/Tunic.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Tunic_Textures/Ragged_Apprentice_Tunic.png"
+      },
+      "Maid_Dress": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Maid_Dress.png"
+      },
+      "Monk_Robe": {
+        "Model": "Cosmetics/Overtops/LongDress_Long_Sleeve.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/LongDress_Long_Sleeve_Texture/Monk_Robe.png"
+      },
+      "Tramp_Tunic": {
+        "Model": "Cosmetics/Overtops/Overtops_Short_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Overtop_Short_Sleeve_Textures/Tramp_Tunic.png"
+      },
+      "Tramp_Dress": {
+        "Model": "Cosmetics/Overtops/Dress.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Textures/Tramp_Dress.png"
+      },
+      "Torn_Top": {
+        "Model": "Cosmetics/Undertops/Top.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Top_Textures/Torn_Top.png"
+      },
+      "Ragged_TrenchCoat": {
+        "Model": "Cosmetics/Overtops/TrenchCoat_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/TrenchCoat_Asymetrical_Textures/Ragged_TrenchCoat.png"
+      },
+      "Villager_Dress_01": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Villager_Dress_Greyscale.png",
+        "Weight": 0.25,
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Blue"
+      },
+      "Villager_Dress_02": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Villager_Dress_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Brown",
+        "Weight": 0.25
+      },
+      "Villager_Dress_03": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Villager_Dress_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Yellow",
+        "Weight": 0.25
+      },
+      "Blouse_01": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Blouse_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Blue",
+        "Weight": 0.25
+      },
+      "Blouse_02": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Blouse_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Brown",
+        "Weight": 0.25
+      },
+      "Blouse_03": {
+        "Model": "Cosmetics/Overtops/Dress_Long_Sleeve_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Long_Sleeve_Asymetrical_Texture/Blouse_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Yellow",
+        "Weight": 0.25
+      },
+      "Dress_01": {
+        "Model": "Cosmetics/Overtops/Dress.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Textures/Ragged_Dress_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Blue",
+        "Weight": 0.25
+      },
+      "Dress_02": {
+        "Model": "Cosmetics/Overtops/Dress.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Textures/Ragged_Dress_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Brown",
+        "Weight": 0.25
+      },
+      "Dress_03": {
+        "Model": "Cosmetics/Overtops/Dress.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/Dress_Textures/Ragged_Dress_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Yellow",
+        "Weight": 0.25
+      },
+      "Villager_Shirt_01": {
+        "Model": "Cosmetics/Overtops/SleevedDresswJersey.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/SleevedDresswJersey_Textures/Villager_Ragged_Shirt_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Blue",
+        "Weight": 0.25
+      },
+      "Villager_Shirt_02": {
+        "Model": "Cosmetics/Overtops/SleevedDresswJersey.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/SleevedDresswJersey_Textures/Villager_Ragged_Shirt_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Brown",
+        "Weight": 0.25
+      },
+      "Villager_Shirt_03": {
+        "Model": "Cosmetics/Overtops/SleevedDresswJersey.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Chest/SleevedDresswJersey_Textures/Villager_Ragged_Shirt_Greyscale.png",
+        "GradientSet": "Rotten_Fabric",
+        "GradientId": "Yellow",
+        "Weight": 0.25
+      }
+    },
+    "Shoes": {
+      "null": {},
+      "Single_Sock": {
+        "Model": "Cosmetics/Shoes/Single_Sock.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Shoes/Single_Sock_Texture.png",
+        "Weight": 0.5
+      },
+      "Single_Boot": {
+        "Model": "Cosmetics/Shoes/Single_Boot.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Shoes/Boots_Leather_Textures/Worned_Boot.png",
+        "Weight": 0.5
+      }
+    },
+    "Legs": {
+      "null": {},
+      "Brown_Trousers": {
+        "Model": "Cosmetics/Pants/Pants_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Legs/Pants_Asymetrical_Textures/Brown_Trousers.png",
+        "Weight": 0.5
+      },
+      "Dark_Trousers": {
+        "Model": "Cosmetics/Pants/Pants_Asymetrical.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Legs/Pants_Asymetrical_Textures/Dark_Trousers.png",
+        "Weight": 0.5
+      },
+      "Brown_Short": {
+        "Model": "Cosmetics/Pants/Shorty_Slim.blockymodel",
+        "Texture": "NPC/Undead/Zombie/Models/Attachments/Legs/Shorty_Slim_Textures/Brown_Short.png"
+      }
+    }
+  }
+}

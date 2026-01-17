@@ -1,0 +1,134 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Kweebec_Lantern.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Kweebec",
+  "Icon": "Icons/ItemsGenerated/Furniture_Kweebec_Lantern.png",
+  "BlockType": {
+    "PlacementSettings": {
+      "RotationMode": "BlockNormal",
+      "PlaceInEmptyBlocks": true,
+      "FloorPlacementOverrideBlockId": "Furniture_Kweebec_Lantern"
+    },
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Kweebec/Lantern_Ceiling.blockymodel",
+    "CustomModelScale": 0.85,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Kweebec/Lantern_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "ItemId": "Furniture_Kweebec_Lantern"
+      }
+    },
+    "HitboxType": "Lantern_Village_Ceiling",
+    "Light": {
+      "Color": "#dcb",
+      "Radius": 10
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#633625",
+    "Support": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Full",
+          "Filler": []
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        },
+        {
+          "FaceType": "Rope"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chain_Small"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chains_Vertical"
+        }
+      ]
+    },
+    "Particles": [
+      {
+        "SystemId": "Kweebec_Lantern",
+        "TargetEntityPart": "PrimaryItem",
+        "Color": "#f7f69f",
+        "PositionOffset": {
+          "Y": 0.5
+        }
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "AmbientSoundEventId": "SFX_Wisp_Lamp_Loop",
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Wisp_Lamp_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff"
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Kweebec"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Variant": true
+}

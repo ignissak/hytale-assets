@@ -1,0 +1,144 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Bench_Furniture.name",
+    "Description": "server.items.Bench_Furniture.description"
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "Quantity": 6,
+        "ResourceTypeId": "Wood_Trunk"
+      },
+      {
+        "Quantity": 4,
+        "ResourceTypeId": "Rock"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Crafting"
+        ],
+        "Id": "Workbench"
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_Furniture.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Semitransparent",
+    "CustomModel": "Blocks/Benches/Furniture.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Furniture_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Bench_Loom",
+    "VariantRotation": "NESW",
+    "Bench": {
+      "Type": "Crafting",
+      "Categories": [
+        {
+          "Id": "Furniture_Storage",
+          "Icon": "Icons/CraftingCategories/Furniture/Storage.png",
+          "Name": "server.benchCategories.furniture.storage"
+        },
+        {
+          "Id": "Furniture_Beds",
+          "Icon": "Icons/CraftingCategories/Furniture/Beds.png",
+          "Name": "server.benchCategories.furniture.beds"
+        },
+        {
+          "Id": "Furniture_Lighting",
+          "Icon": "Icons/CraftingCategories/Furniture/Lighting.png",
+          "Name": "server.benchCategories.furniture.lighting"
+        },
+        {
+          "Id": "Furniture_Pottery",
+          "Icon": "Icons/CraftingCategories/Furniture/Pottery.png",
+          "Name": "server.benchCategories.furniture.pottery"
+        },
+        {
+          "Id": "Furniture_Textiles",
+          "Icon": "Icons/CraftingCategories/Furniture/Textiles.png",
+          "Name": "server.benchCategories.furniture.textiles"
+        },
+        {
+          "Id": "Furniture_Village_Walls",
+          "Icon": "Icons/CraftingCategories/Furniture/Village_Walls.png",
+          "Name": "server.benchCategories.furniture.village_walls"
+        },
+        {
+          "Id": "Furniture_Misc",
+          "Icon": "Icons/CraftingCategories/Furniture/Misc.png",
+          "Name": "server.benchCategories.furniture.misc"
+        },
+        {
+          "Id": "Furniture_Seasonal",
+          "Icon": "Icons/CraftingCategories/Furniture/Seasonal.png",
+          "Name": "server.benchCategories.furniture.seasonal"
+        }
+      ],
+      "LocalOpenSoundEventId": "SFX_Workbench_Open",
+      "LocalCloseSoundEventId": "SFX_Workbench_Close",
+      "CompletedSoundEventId": "SFX_Workbench_Craft",
+      "FailedSoundEventId": "SFX_Generic_Crafting_Failed",
+      "Id": "Furniture_Bench"
+    },
+    "State": {
+      "Id": "crafting",
+      "Definitions": {
+        "CraftCompleted": {
+          "CustomModelAnimation": "Blocks/Benches/Carpenter_Crafting.blockyanim",
+          "Looping": true
+        },
+        "CraftCompletedInstant": {
+          "CustomModelAnimation": "Blocks/Benches/Carpenter_Crafting.blockyanim"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#6b472f",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockSoundSetId": "Wood"
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.42,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      13.0,
+      -13.2
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemLevel": 7,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

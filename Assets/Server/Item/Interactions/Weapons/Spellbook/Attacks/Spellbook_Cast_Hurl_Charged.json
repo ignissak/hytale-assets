@@ -1,0 +1,62 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Mana": 25
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Spellbook_Cast_Cost"
+              ]
+            },
+            "Var": "Spellbook_Cast_Hurl_Cost"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Spellbook_Cast_Launch"
+              ]
+            },
+            "Var": "Spellbook_Cast_Hurl_Launch"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Spellbook_Cast_Effect"
+              ]
+            },
+            "Var": "Spellbook_Cast_Hurl_Effect"
+          }
+        ]
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Replace",
+    "DefaultValue": {
+      "Interactions": [
+        "Spellbook_Cast_Fail"
+      ]
+    },
+    "Var": "Spellbook_Cast_Hurl_Fail"
+  }
+}

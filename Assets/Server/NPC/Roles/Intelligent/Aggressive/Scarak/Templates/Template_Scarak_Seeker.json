@@ -1,0 +1,329 @@
+{
+  "Type": "Abstract",
+  "Appearance": { "Compute": "Appearance" },
+  "StartState": "Idle",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Scarak_Seeker",
+      "Description": "Model to be used"
+    },
+    "ViewRange": {
+      "Value": 30,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 20,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 40,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "DropList": {
+      "Value": "Drop_Scarak_Fighter",
+      "Description": "Drop Items"
+    },
+    "MaxSpeed": {
+      "Value": 15,
+      "Description": "Maximum walking speed"
+    },
+    "RangedAttack": {
+      "Value": "Scarak_Seeker_Spit",
+      "Description": "The ranged attack to use"
+    },
+    "RangedAttackDistance": {
+      "Value": 24,
+      "Description": "The distance to attack at range from"
+    },
+    "Attack": {
+      "Value": "Scarak_Seeker_Sting",
+      "Description": "The close attack"
+    },
+    "AttackDistance": {
+      "Value": 3,
+      "Description": "The close distance attack range"
+    },
+    "AttitudeGroup": {
+      "Value": "Scarak",
+      "Description": "This NPCs attitude group"
+    },
+    "FollowPath": {
+      "Value": false,
+      "Description": "Whether to follow paths or be stationary"
+    },
+    "FollowPathRange": {
+      "Value": 30,
+      "Description": "The search radius when looking for a patrol path"
+    },
+    "PathShape": {
+      "Value": "Line",
+      "Description": "The shape of the path the NPC should follow. 'Chain' will result in chained paths"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DisableDamageGroups": [ "Self", "Scarak" ],
+  "KnockbackScale": 0,
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Neutral",
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": { "Compute": "MaxSpeed" },
+      "MaxSinkSpeed": 3,
+      "MaxClimbSpeed": 30,
+      "MinAirSpeed": 3,
+      "Acceleration": 10,
+      "MinHeightOverGround": 6,
+      "MaxHeightOverGround": 25,
+      "MaxRollAngle": 40,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "DropList": { "Compute": "DropList" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation"
+            },
+            {
+              "Reference": "Component_Instruction_Damage_Check",
+              "Modify": {
+                "_ExportStates": [ "Alerted", "Alerted" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile", "Neutral" ]
+                    }
+                  },
+                  {
+                    "Reference": "Component_Sensor_Sound_By_Attitude",
+                    "Modify": {
+                      "HearingRange": { "Compute": "HearingRange" },
+                      "Attitudes": [ "Hostile", "Neutral" ]
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Enabled": { "Compute": "FollowPath" },
+              "Sensor": {
+                "Type": "Path",
+                "Range": { "Compute": "FollowPathRange" }
+              },
+              "Actions": [
+                {
+                  "Type": "SetLeashPosition",
+                  "ToCurrent": true
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Path",
+                "UseNodeViewDirection": true,
+                "Shape": { "Compute": "PathShape" },
+                "NodeWidth": 0.5
+              }
+            },
+            {
+              "Reference": "Component_Instruction_Intelligent_Idle_Motion_Wander"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "SpawnParticles",
+                  "Offset": [ 0, 0.8, 0 ],
+                  "ParticleSystem": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "ViewRange" }
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Attack"
+                  }
+                }
+              ],
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "ActionsAtomic": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ]
+                },
+                {
+                  "Type": "ReleaseTarget"
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation"
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "OverrideAltitude",
+                  "DesiredAltitudeRange": [ 6, 10 ]
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "RangedAttackDistance" },
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": { "Compute": "RangedAttack" },
+                  "BallisticMode": "Short",
+                  "AimingTimeRange": [ 2, 3 ],
+                  "AttackPauseRange": [ 2, 4 ]
+                }
+              ],
+              "HeadMotion": {
+                "Type": "Aim",
+                "Spread": 0,
+                "HitProbability": 1,
+                "Deflection": true,
+                "RelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "ViewRange" }
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": { "Compute": "AttackDistance + 2" },
+                "StopDistance": { "Compute": "AttackDistance" },
+                "RelativeSpeed": 0.3
+              }
+            },
+            {
+              "ActionsAtomic": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 4 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

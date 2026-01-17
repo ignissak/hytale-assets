@@ -1,0 +1,47 @@
+{
+  "Parent": "Projectile_Config_Goblin_Lobber_Bomb",
+  "Model": "Bomb_Fire_Goblin_Dud",
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 2
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileBounce": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Goblin_Lobber_Bomb_Bounce",
+            "LocalSoundEventId": "SFX_Goblin_Lobber_Bomb_Bounce"
+          }
+        }
+      ]
+    }
+  }
+}

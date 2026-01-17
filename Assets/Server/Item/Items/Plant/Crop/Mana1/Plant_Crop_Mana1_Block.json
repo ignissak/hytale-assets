@@ -1,0 +1,194 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Mana1_Stage_0.name"
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/Azure_Flower.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Blocks/Foliage/Flowers/Mana_T1_Azure_Fern/Azure_Fern_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Flowers/Mana_T1_Azure_Fern/Azure_Fern_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.7,
+          "HitboxType": "Plant_Small",
+          "RandomRotation": "YawStep1",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Mana1_Stage_1"
+            }
+          },
+          "BlockParticleSetId": "Flower",
+          "Light": {
+            "Color": "#235"
+          }
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Flowers/Mana_T1_Azure_Fern/Azure_Fern_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Flowers/Mana_T1_Azure_Fern/Azure_Fern_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.7,
+          "HitboxType": "Plant_Medium",
+          "RandomRotation": "YawStep1",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Mana1_Stage_2"
+            }
+          },
+          "BlockParticleSetId": "Flower",
+          "Light": {
+            "Color": "#346"
+          },
+          "Particles": [
+            {
+              "SystemId": "Plant_Mana_Tier1",
+              "PositionOffset": {
+                "Z": 0.4
+              },
+              "Color": "#6215a4",
+              "Scale": 0.8
+            }
+          ]
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10350,
+              "Max": 41400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 165600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Block": "Plant_Crop_Mana1",
+            "Type": "BlockType",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 165600
+            },
+            "Type": "BlockState",
+            "State": "Stage2"
+          },
+          {
+            "Block": "Plant_Crop_Mana1",
+            "Type": "BlockType"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Plant_Crop_Mana1_Stage_0"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "ParticleColor": "#60afff",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 0.785,
+    "Translation": [
+      2.7,
+      -5.1
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Mana1_Stage_0.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

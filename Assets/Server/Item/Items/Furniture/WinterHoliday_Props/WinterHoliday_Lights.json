@@ -1,0 +1,118 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.WinterHoliday_Lights.name"
+  },
+  "Categories": [
+    "Blocks.Deco",
+    "Furniture.Lighting",
+    "Blocks.Deco"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Crystal_Red",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Green",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Blue",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Seasonal"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Lights1_Texture.png"
+      },
+      {
+        "Texture": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Lights2_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Ladder",
+    "Light": {
+      "Radius": 0,
+      "Color": "#dca"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {}
+    },
+    "BlockParticleSetId": "Glass",
+    "BlockSoundSetId": "Glass",
+    "CustomModel": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Lights.blockymodel",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "ParticleColor": "#f5f067",
+    "VariantRotation": "NESW"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.9,
+    "Rotation": [
+      0.0,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      14.0,
+      -22.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/WinterHoliday_Lights.png"
+}

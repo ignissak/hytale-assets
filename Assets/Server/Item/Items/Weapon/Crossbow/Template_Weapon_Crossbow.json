@@ -1,0 +1,401 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Weapon_Crossbow.name"
+  },
+  "PlayerAnimationsId": "Crossbow",
+  "Model": "Items/Weapons/Crossbow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Crossbow/Iron_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Crossbow_Iron.png",
+  "Reticle": "DefaultMelee",
+  "Quality": "Template",
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Utility": {
+    "Compatible": true
+  },
+  "IconProperties": {
+    "Scale": 0.5,
+    "Translation": [
+      -4.11,
+      -15.51
+    ],
+    "Rotation": [
+      330,
+      90,
+      45
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Crossbow"
+    ]
+  },
+  "Interactions": {
+    "SwapFrom": "Root_Weapon_Crossbow_Swap_From",
+    "Primary": "Root_Weapon_Crossbow_Primary_Signature",
+    "Secondary": "Root_Weapon_Crossbow_Secondary_Guard",
+    "Ability1": "Root_Weapon_Crossbow_Signature_BigArrow",
+    "Ability3": "Root_Common_StatAmmoReload_Entry"
+  },
+  "InteractionVars": {
+    "Arrow_Inventory_Condition": {
+      "Interactions": [
+        {
+          "Type": "ModifyInventory",
+          "ItemToRemove": {
+            "Id": "Weapon_Arrow_Crude",
+            "Quantity": 1
+          }
+        }
+      ]
+    },
+    "Standard_Projectile_Launch": {
+      "Interactions": [
+        {
+          "$Comment": "Launching the standard projectile",
+          "Parent": "Weapon_Crossbow_Shot_Standard_Projectile",
+          "Effects": {
+            "ItemAnimationId": "Shoot"
+          }
+        }
+      ]
+    },
+    "Standard_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Standard_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 3
+            }
+          }
+        }
+      ]
+    },
+    "Standard_Projectile_Impact": {
+      "Interactions": [
+        {
+          "$Comment": "When the standard projectile hits an entity",
+          "Parent": "Weapon_Crossbow_Effects_Standard_Projectile_Impact",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Arrow_FullCharge_Hit",
+            "WorldSoundEventId": "SFX_Arrow_FullCharge_Hit"
+          }
+        }
+      ]
+    },
+    "Standard_Projectile_Miss": {
+      "Interactions": [
+        {
+          "$Comment": "When the standard projectile hits the ground",
+          "Parent": "Common_Projectile_Miss",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Arrow_FullCharge_Miss",
+            "WorldSoundEventId": "SFX_Arrow_FullCharge_Miss"
+          }
+        }
+      ]
+    },
+    "No_Ammo_Effects": {
+      "Interactions": [
+        {
+          "Parent": "Common_Bow_No_Ammo",
+          "Effects": {
+            "ItemAnimationId": "Interact",
+            "WorldSoundEventId": "SFX_Bow_No_Ammo",
+            "LocalSoundEventId": "SFX_Bow_No_Ammo"
+          }
+        }
+      ]
+    },
+    "Combo_Projectile_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Combo_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 9
+            }
+          }
+        }
+      ]
+    },
+    "Overcharge_Start": {
+      "Interactions": [
+        {
+          "$Comment": "This is played at the start of the Overcharge ability, before loading arrows",
+          "Parent": "Weapon_Crossbow_Primary_Overcharge_Start",
+          "Effects": {
+            "ItemAnimationId": "ReloadReady",
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start",
+            "LocalSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start_Local"
+          }
+        }
+      ]
+    },
+    "Overcharge_Projectile_Launch": {
+      "Interactions": [
+        {
+          "$Comment": "Launching the overcharge projectile",
+          "Parent": "Weapon_Crossbow_Shot_Standard_Projectile"
+        }
+      ]
+    },
+    "Reload_Start": {
+      "Parent": "Root_Common_StatAmmoReload_Entry",
+      "Interactions": [
+        {
+          "Parent": "Common_StatAmmoReload_Entry",
+          "Rules": {
+            "Blocking": [
+              "SwapFrom",
+              "Primary",
+              "Secondary"
+            ]
+          },
+          "Effects": {
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start",
+            "LocalSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start_Local"
+          }
+        }
+      ]
+    },
+    "Reload_ItemConsume": {
+      "Interactions": [
+        {
+          "$Comment": "The item to consume for every iteration of reloading",
+          "Parent": "Common_StatAmmoReload_ItemConsume",
+          "ItemToRemove": {
+            "Id": "Weapon_Arrow_Crude",
+            "Quantity": 1
+          }
+        }
+      ]
+    },
+    "Reload_Effects": {
+      "Interactions": [
+        {
+          "$Comment": "The effects to trigger for every iteration of reloading",
+          "Parent": "Common_StatAmmoReload_Effects",
+          "HorizontalSpeedMultiplier": 0.75,
+          "Effects": {
+            "ItemAnimationId": "Reload",
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T2_Load",
+            "LocalSoundEventId": "SFX_Hand_Crossbow_T2_Load_Local"
+          }
+        }
+      ]
+    },
+    "Reload_StatModifier": {
+      "Interactions": [
+        {
+          "$Comment": "The stat modification to perform for every iteration of reloading",
+          "Parent": "Common_StatAmmoReload_StatModifier",
+          "HorizontalSpeedMultiplier": 0.75,
+          "EffectId": {
+            "StatModifiers": {
+              "Ammo": 1
+            }
+          }
+        }
+      ]
+    },
+    "Signature_Activate_Effects": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Bow_T2_Signature_Nock",
+            "LocalSoundEventId": "SFX_Bow_T2_Signature_Nock_Local"
+          }
+        }
+      ]
+    },
+    "Signature_BigArrow_Launch": {
+      "Interactions": [
+        {
+          "$Comment": "Signature BigArrow - Fast, flat trajectory with big impact",
+          "Parent": "Weapon_Crossbow_Signature_BigArrow_Shot"
+        }
+      ]
+    },
+    "Signature_BigArrow_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Damage_Signature_Projectile",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 46
+            }
+          }
+        }
+      ]
+    },
+    "Signature_BigArrow_Miss": {
+      "Interactions": [
+        {
+          "Parent": "Common_Projectile_Miss",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Arrow_FullCharge_Miss",
+            "WorldSoundEventId": "SFX_Arrow_FullCharge_Miss"
+          }
+        }
+      ]
+    },
+    "Guard_Start_StaminaCost": {
+      "Interactions": [
+        {
+          "$Comment": "The amount of stamina consumed upon starting guarding",
+          "Type": "ChangeStat",
+          "StatModifiers": {
+            "Stamina": -0.5
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "$Comment": "Actively guarding with the weapon",
+          "Parent": "Weapon_Crossbow_Secondary_Guard_Wield",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T1_Raise",
+            "LocalSoundEventId": "SFX_Hand_Crossbow_T1_Raise_Local"
+          },
+          "StaminaCost": {
+            "Value": 7,
+            "CostType": "Damage"
+          },
+          "BlockedEffects": {
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T1_Block_Impact"
+          }
+        }
+      ]
+    },
+    "Guard_Bash": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stamina_Broken_Immune"
+        },
+        {
+          "$Comment": "Effects and stamina consumed upon a guard bash",
+          "Parent": "Weapon_Crossbow_Secondary_Guard_Bash",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Hand_Crossbow_T1_Shove",
+            "LocalSoundEventId": "SFX_Hand_Crossbow_T1_Shove_Local"
+          },
+          "StatModifiers": {
+            "Stamina": -2
+          }
+        }
+      ]
+    },
+    "Guard_Bash_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Crossbow_Secondary_Guard_Bash_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 0
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_T1_Impact_Blunt",
+            "LocalSoundEventId": "SFX_T1_Impact_Blunt"
+          }
+        }
+      ]
+    }
+  },
+  "Weapon": {
+    "EntityStatsToClear": [
+      "SignatureEnergy",
+      "SignatureCharges",
+      "Ammo"
+    ],
+    "StatModifiers": {
+      "Ammo": [
+        {
+          "Amount": 6,
+          "CalculationType": "Additive"
+        }
+      ],
+      "SignatureEnergy": [
+        {
+          "Amount": 5,
+          "CalculationType": "Additive"
+        }
+      ],
+      "SignatureCharges": [
+        {
+          "Amount": 1,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "DisplayEntityStatsHUD": [
+    "Ammo"
+  ],
+  "ItemAppearanceConditions": {
+    "SignatureEnergy": [
+      {
+        "Condition": [
+          100,
+          100
+        ],
+        "ConditionValueType": "Percent",
+        "Particles": [
+          {
+            "SystemId": "Sword_Signature_Ready",
+            "TargetNodeName": "Main",
+            "PositionOffset": {
+              "X": 0
+            },
+            "TargetEntityPart": "PrimaryItem"
+          }
+        ]
+      }
+    ],
+    "SignatureCharges": [
+      {
+        "Condition": [
+          1,
+          100
+        ],
+        "ConditionValueType": "Percent",
+        "LocalSoundEventId": "SFX_Bow_T2_Signature_Loop_Local",
+        "WorldSoundEventId": "SFX_Bow_T2_Signature_Loop",
+        "Particles": [
+          {
+            "SystemId": "Crossbow_Signature_Status",
+            "TargetNodeName": "Main",
+            "PositionOffset": {
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Scale": 1,
+            "TargetEntityPart": "PrimaryItem"
+          }
+        ],
+        "ModelVFXId": "Crossbow_Signature_Status",
+        "FirstPersonParticles": [
+          {
+            "SystemId": "Crossbow_Signature_Status_FP"
+          }
+        ]
+      }
+    ]
+  },
+  "ClipsGeometry": false,
+  "Consumable": false,
+  "ItemSoundSetId": "ISS_Weapons_Wood",
+  "MaxDurability": 80,
+  "DurabilityLossOnHit": 0.28
+}

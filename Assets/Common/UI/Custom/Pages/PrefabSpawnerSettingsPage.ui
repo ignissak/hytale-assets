@@ -1,0 +1,100 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 532);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabSpawnerSettingsPage.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+      Label {
+        Anchor: (Bottom: 8);
+
+        Text: %server.customUI.prefabSpawnerSettingsPage.prefabPath;
+        Style: (...$C.@DefaultLabelStyle, RenderBold: true);
+      }
+
+      $C.@TextField #PrefabPath {
+        @Anchor = (Left: 0, Bottom: 8);
+      }
+
+      Label {
+        Anchor: (Bottom: 8);
+
+        Text: %server.customUI.prefabSpawnerSettingsPage.placementProperties;
+        Style: (...$C.@DefaultLabelStyle, RenderBold: true);
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+
+        $C.@CheckBoxWithLabel #FitHeightmap {
+          @Text =  %server.customUI.prefabSpawnerSettingsPage.fitHeightmap;
+          @Checked = true;
+        }
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+
+        $C.@CheckBoxWithLabel #InheritSeed {
+          @Text =  %server.customUI.prefabSpawnerSettingsPage.inheritSeed;
+          @Checked = true;
+        }
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+
+        $C.@CheckBoxWithLabel #InheritHeightCondition {
+          @Text =  %server.customUI.prefabSpawnerSettingsPage.inheritHeightCondition;
+          @Checked = true;
+        }
+      }
+
+      Label {
+        Anchor: (Bottom: 8);
+
+        Text: %server.customUI.prefabSpawnerSettingsPage.defaultWeight;
+        Style: (...$C.@DefaultLabelStyle, RenderBold: true);
+      }
+
+      $C.@NumberField #DefaultWeight {
+        @Anchor = (Left: 0, Bottom: 8);
+        Format: (MaxDecimalPlaces: 3, Step: 0.1);
+      }
+
+      Label {
+        Anchor: (Bottom: 8);
+
+        Text: %server.customUI.prefabSpawnerSettingsPage.prefabWeights;
+        Style: (...$C.@DefaultLabelStyle, RenderBold: true);
+      }
+
+      $C.@TextField #PrefabWeights {
+        @Anchor = (Left: 0, Bottom: 8);
+      }
+
+      Group {
+        Anchor: (Vertical: 16, Height: 1);
+
+        Background: #5e512c;
+      }
+
+      $C.@TextButton #SaveButton {
+        Text:  %server.customUI.saveChanges;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

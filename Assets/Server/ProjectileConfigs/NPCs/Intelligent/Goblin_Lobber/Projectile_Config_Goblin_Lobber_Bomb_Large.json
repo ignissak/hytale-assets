@@ -1,0 +1,56 @@
+{
+  "Parent": "Projectile_Config_Goblin_Lobber_Bomb",
+  "Model": "Bomb_Large_Fire_Goblin",
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 2
+        },
+        "Goblin_Lobber_Bomb_Explode_Charged",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Goblin_Lobber_Bomb_Explode_Charged",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Goblin_Lobber_Bomb_Explode_Charged",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

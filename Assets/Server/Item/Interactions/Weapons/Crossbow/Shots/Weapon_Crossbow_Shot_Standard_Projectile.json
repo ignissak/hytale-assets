@@ -1,0 +1,22 @@
+{
+  "Type": "Projectile",
+  "RunTime": 0.2,
+  "Effects": {
+    "ItemAnimationId": "ShootCharged",
+    "ClearAnimationOnFinish": true
+  },
+  "Config": "Projectile_Config_Arrow_Crossbow",
+  "Next": {
+    "Type": "ChangeStat",
+    "StatModifiers": {
+      "Ammo": -1
+    },
+    "Next": {
+      "Type": "ChangeStat",
+      "Behaviour": "Set",
+      "StatModifiers": {
+        "StaminaRegenDelay": 0
+      }
+    }
+  }
+}

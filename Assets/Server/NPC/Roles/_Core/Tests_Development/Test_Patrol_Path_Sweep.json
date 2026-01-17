@@ -1,0 +1,76 @@
+{
+  "Comment": "DisplayState",
+  "$Comment": "MotionControllerMove, Collisions, BlockCollisions",
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "JumpHeight": 1.5,
+      "MinJumpHeight": 1,
+      "JumpForce": 1.5,
+      "JumpDescentSteepness": 1,
+      "DescentAnimationType": "Fall",
+      "DescentSteepness": 2.5,
+      "DescentBlending": 1
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "MovementState",
+                "State": "Idle"
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Observe",
+            "AngleRange": [ -90, 90 ],
+            "PauseTimeRange": [ 1, 1 ],
+            "ViewSegments": 1,
+            "RelativeTurnSpeed": 0.5
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Path",
+            "PathType": "AnyPrefabPath"
+          },
+          "BodyMotion": {
+            "Type": "Path",
+            "UseNodeViewDirection": true,
+            "PickRandomAngle": false,
+            "ViewSegments": 1
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Patrol_Path_Sweep.name"
+}

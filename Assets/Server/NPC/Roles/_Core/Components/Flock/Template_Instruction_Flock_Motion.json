@@ -1,0 +1,60 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "LeashDistance": {
+      "Value": 8,
+      "Description": "Leash distance from the leader"
+    },
+    "LeashSlowDownDistance": {
+      "Value": 4,
+      "Description": "Seek slow down distance when leashing back to leader"
+    },
+    "LeashStopDistance": {
+      "Value": 3,
+      "Description": "Distance to stop when leashing back to leader"
+    },
+    "LeashRelativeSpeed": {
+      "Value": 0.65,
+      "Description": "Relative speed when seek leashing back to leader"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "FlockLeader"
+                },
+                {
+                  "Type": "Self",
+                  "Filters": [
+                    {
+                      "Type": "Flock",
+                      "FlockStatus": "Follower"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Type": "Leash",
+              "Range": { "Compute": "LeashDistance" }
+            }
+          ]
+        },
+        "BodyMotion": {
+          "Type": "Seek",
+          "SlowDownDistance": { "Compute": "LeashSlowDownDistance" },
+          "StopDistance": { "Compute": "LeashStopDistance" },
+          "RelativeSpeed": { "Compute": "LeashRelativeSpeed" }
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

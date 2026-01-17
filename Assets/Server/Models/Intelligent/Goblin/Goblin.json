@@ -1,0 +1,885 @@
+{
+  "Parent": "Player",
+  "Model": "NPC/Intelligent/Goblin/Models/Model.blockymodel",
+  "Texture": "NPC/Intelligent/Goblin/Models/Model_Textures/Moldy.png",
+  "EyeHeight": 1.4,
+  "CrouchOffset": -0.3,
+  "HitBox": {
+    "Max": {
+      "X": 0.3,
+      "Y": 1.7,
+      "Z": 0.3
+    },
+    "Min": {
+      "X": -0.3,
+      "Y": 0,
+      "Z": -0.3
+    }
+  },
+  "DefaultAttachments": [],
+  "AnimationSets": {
+    "Idle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Idle.blockyanim",
+          "Speed": 0.5
+        }
+      ]
+    },
+    "Walk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Walk.blockyanim",
+          "SoundEventId": "SFX_Goblin_Run",
+          "Speed": 0.9
+        }
+      ]
+    },
+    "WalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Walk_Backward.blockyanim",
+          "Speed": 0.9
+        }
+      ]
+    },
+    "Run": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Run.blockyanim",
+          "SoundEventId": "SFX_Goblin_Run",
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Crouch": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Crouch.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.5
+        }
+      ]
+    },
+    "CrouchWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Crouch_Walk.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "CrouchWalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Crouch_Walk_Backward.blockyanim",
+          "BlendingDuration": 0.1,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Jump": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false
+        }
+      ]
+    },
+    "JumpWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "JumpRun": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Jump_Far.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Jump_Far2.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "Fall": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Fall.blockyanim",
+          "BlendingDuration": 0.4,
+          "Looping": true
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Fall2.blockyanim",
+          "BlendingDuration": 0.4
+        }
+      ]
+    },
+    "FallFar": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Fall_Far.blockyanim",
+          "BlendingDuration": 0.4
+        }
+      ]
+    },
+    "Alerted": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Alerted.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Alerted"
+        }
+      ]
+    },
+    "FlyIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Fly/Fly_Idle.blockyanim",
+          "Speed": 0.5
+        }
+      ]
+    },
+    "Fly": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Fly/Fly.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "FlyBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Fly/Fly_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "FlyFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Fly/Fly_Fast.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Idle.blockyanim"
+        }
+      ]
+    },
+    "Swim": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Fast.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimJump": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Jump.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "Speed": 0.8
+        }
+      ]
+    },
+    "SwimFloat": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Float.blockyanim"
+        }
+      ]
+    },
+    "SwimSink": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Sink.blockyanim"
+        }
+      ]
+    },
+    "SwimDive": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Dive.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "SwimDiveBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Dive_Backward.blockyanim",
+          "Speed": 1
+        }
+      ]
+    },
+    "SwimDiveFast": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Dive_Fast.blockyanim",
+          "Speed": 0.6
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Swim/Swim_Dive_Fast2.blockyanim",
+          "Speed": 0.6
+        }
+      ]
+    },
+    "FluidIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Idle.blockyanim",
+          "Looping": true,
+          "Speed": 0.3
+        }
+      ]
+    },
+    "FluidWalk": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Walk.blockyanim",
+          "Speed": 0.51
+        }
+      ]
+    },
+    "FluidWalkBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Walk_Backward.blockyanim",
+          "Speed": 0.54
+        }
+      ]
+    },
+    "FluidRun": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Run.blockyanim",
+          "Speed": 0.48
+        }
+      ]
+    },
+    "ClimbIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Climb/Climb_Idle.blockyanim",
+          "Speed": 0.5
+        }
+      ]
+    },
+    "ClimbUp": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Climb/Climb_Up.blockyanim"
+        }
+      ]
+    },
+    "ClimbDown": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Climb/Climb_Down.blockyanim"
+        }
+      ]
+    },
+    "ClimbLeft": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Climb/Climb_Left.blockyanim"
+        }
+      ]
+    },
+    "ClimbRight": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Climb/Climb_Right.blockyanim"
+        }
+      ]
+    },
+    "Hurt": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Hurt.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Hurt"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Hurt2.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Hurt"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Hurt3.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Hurt"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Hurt4.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Hurt"
+        }
+      ]
+    },
+    "Death": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Death"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death2.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Death"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death3.blockyanim",
+          "Looping": false,
+          "Speed": 1.2,
+          "SoundEventId": "SFX_Goblin_Death"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death4.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Death"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death5.blockyanim",
+          "Looping": false,
+          "SoundEventId": "SFX_Goblin_Death"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Damage/Death6.blockyanim",
+          "Looping": false,
+          "Speed": 1.2,
+          "SoundEventId": "SFX_Goblin_Death"
+        }
+      ]
+    },
+    "Laydown": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Laydown.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Sleep": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Sleep.blockyanim"
+        }
+      ]
+    },
+    "Wake": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Wake.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Search": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Search.blockyanim"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Search2.blockyanim"
+        }
+      ]
+    },
+    "JuggleSuccess": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Juggle_Success.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "JuggleFail": {
+      "Animations": [
+        {
+          "Looping": false,
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Juggle_Fail.blockyanim"
+        }
+      ]
+    },
+    "Leap": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Jump_Far.blockyanim",
+          "Looping": false,
+          "Speed": 1.0
+        }
+      ]
+    },
+    "Interact": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Interact.blockyanim",
+          "BlendingDuration": 0.1,
+          "Looping": false
+        }
+      ]
+    },
+    "Startled": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Startled.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Eat": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Eat.blockyanim"
+        }
+      ]
+    },
+    "PlugEars": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Plug_Ears.blockyanim"
+        }
+      ]
+    },
+    "SitDown": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sit_Down.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Sit": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sit.blockyanim"
+        }
+      ]
+    },
+    "SitUp": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sit_Up.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "CrawlIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Crawl_Idle.blockyanim"
+        }
+      ]
+    },
+    "Crawl": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Crawl.blockyanim"
+        }
+      ]
+    },
+    "CrawlBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Crawl_Backward.blockyanim"
+        }
+      ]
+    },
+    "Flee": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Flee.blockyanim"
+        }
+      ]
+    },
+    "FleeBurn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Flee_Burn.blockyanim"
+        }
+      ]
+    },
+    "FixGlasses": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Fix_Glasses.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Intrigued": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Intrigued.blockyanim"
+        }
+      ]
+    },
+    "Threaten": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Threaten.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Scared": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Scared.blockyanim"
+        }
+      ]
+    },
+    "SneakIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sneak_Idle.blockyanim"
+        }
+      ]
+    },
+    "Sneak": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sneak.blockyanim"
+        }
+      ]
+    },
+    "SneakBackward": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Sneak_Backward.blockyanim"
+        }
+      ]
+    },
+    "Dig": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Dig.blockyanim"
+        }
+      ]
+    },
+    "DigFind": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Dig_Find.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "InspectItem": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Inspect_Item.blockyanim"
+        }
+      ]
+    },
+    "StoreItem": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Store_Item.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "DiscardItem": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Discard_Item.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "WakeStartled": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Wake_Startled.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "FixHat": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Fix_Hat.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "WipeSweat": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Wipe_Sweat.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "KickGround": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Kick_Ground.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "HitFaceClub": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Hit_Face_Club.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "ScratchButt": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Scratch_Butt.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Yawn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Yawn.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Whisper": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Whisper.blockyanim"
+        }
+      ]
+    },
+    "PrepareBomb": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Items/Bomb/Prepare.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Scold": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Scold.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "SwingWeaponAir": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Swing_Weapon_Air.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "CombHair": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Comb_Hair.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Laugh": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Laugh.blockyanim"
+        }
+      ]
+    },
+    "LaughEvil": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Laugh_Evil.blockyanim"
+        }
+      ]
+    },
+    "Rally": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Rally.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Tired": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Tired.blockyanim"
+        }
+      ]
+    },
+    "Angry": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Angry.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Shoo": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Shoo.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Taunt": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Taunt.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "IdleChest": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Idle_Chest.blockyanim",
+          "Speed": 0.5
+        }
+      ]
+    },
+    "PlaceChest": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Place_Chest.blockyanim",
+          "Looping": false,
+          "BlendingDuration": 0.1
+        }
+      ]
+    },
+    "PickUpChest": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Pick_Up_Chest.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "SearchChest": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Search_Chest.blockyanim"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Search_Chest2.blockyanim"
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Search_Chest3.blockyanim"
+        }
+      ],
+      "NextAnimationDelay": {
+        "Min": 1.0,
+        "Max": 2.0
+      }
+    },
+    "LookAroundChest": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Look_Around_Chest.blockyanim"
+        }
+      ]
+    },
+    "TurretEnter": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Turret_Enter.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "TurretIdle": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Turret_Idle.blockyanim"
+        }
+      ]
+    },
+    "TurretExit": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Flavor/Turret_Exit.blockyanim",
+          "Looping": false
+        }
+      ]
+    },
+    "Spawn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Spawn.blockyanim",
+          "Looping": false,
+          "BlendingDuration": 0
+        }
+      ]
+    },
+    "Despawn": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Despawn.blockyanim",
+          "Looping": false
+        },
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Despawn2.blockyanim",
+          "Looping": false
+        }
+      ],
+      "NextAnimationDelay": {
+        "Min": 1.0,
+        "Max": 2.0
+      }
+    },
+    "Dig_Find": {
+      "Animations": [
+        {
+          "Animation": "NPC/Intelligent/Goblin/Animations/Default/Crouch.blockyanim",
+          "Speed": 0.8
+        }
+      ]
+    }
+  }
+}

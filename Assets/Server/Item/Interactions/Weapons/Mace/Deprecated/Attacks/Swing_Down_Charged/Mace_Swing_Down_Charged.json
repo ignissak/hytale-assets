@@ -1,0 +1,162 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "$Comment": "Initial stage to play sounds and start the animation sequence",
+      "Type": "Simple",
+      "Effects": {
+        "ItemAnimationId": "SwingDownChargedFalling",
+        "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+        "LocalSoundEventId": "SFX_Light_Melee_T2_Swing",
+        "CameraEffect": "Mace_Jump"
+      },
+      "RunTime": 0
+    },
+    {
+      "$Comment": "Status effect on the player on cast before the animation",
+      "Type": "ApplyEffect",
+      "EffectId": "Mace_Signature"
+    },
+    {
+      "Type": "ApplyForce",
+      "Effects": {
+        "$Comment": "Spawning casting and trails on the jump up. Slashes are spawned in the effect part of the interaction",
+        "Particles": [
+          {
+            "SystemId": "Mace_Signature_Cast",
+            "DetachedFromModel": true
+          },
+          {
+            "SystemId": "Mace_Signature_Cast_End"
+          }
+        ],
+        "Trails": [
+          {
+            "TrailId": "Mace_Signature",
+            "TargetEntityPart": "PrimaryItem",
+            "TargetNodeName": "Origin_Projectile",
+            "PositionOffset": {
+              "Y": -0.2
+            }
+          },
+          {
+            "TrailId": "Mace_Signature2",
+            "RotationOffset": {
+              "Roll": 90.0
+            },
+            "TargetEntityPart": "PrimaryItem",
+            "TargetNodeName": "Origin_Projectile",
+            "PositionOffset": {
+              "Y": -0.2
+            }
+          }
+        ]
+      },
+      "Direction": {
+        "X": 0,
+        "Y": 4,
+        "Z": -1
+      },
+      "AdjustVertical": false,
+      "WaitForGround": true,
+      "Force": 15,
+      "ChangeVelocityType": "Set",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.82,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      }
+    },
+    {
+      "Type": "Simple",
+      "RunTime": 0.05
+    },
+    {
+      "Type": "Parallel",
+      "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+      "Interactions": [
+        {
+          "Interactions": [
+            {
+              "Type": "Simple",
+              "$Comment": "Prepare Delay",
+              "RunTime": 0,
+              "Effects": {
+                "ItemAnimationId": "SwingDownCharged"
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "Selector",
+              "$Comment": "Length of Combat",
+              "RunTime": 0.05,
+              "Selector": {
+                "Id": "AOECircle",
+                "Offset": {
+                  "Z": -1.5
+                },
+                "Range": 2.5
+              },
+              "HitBlock": {
+                "Interactions": [
+                  "Block_Break_Adventure"
+                ]
+              },
+              "HitEntity": {
+                "Interactions": [
+                  {
+                    "Type": "Replace",
+                    "DefaultValue": {
+                      "Interactions": [
+                        "Mace_Swing_Down_Charged_Damage"
+                      ]
+                    },
+                    "Var": "Mace_Swing_Down_Charged_Damage"
+                  }
+                ]
+              },
+              "Next": {
+                "Type": "Simple",
+                "$Comment": "Pad the interaction length",
+                "RunTime": 0.699,
+                "Effects": {
+                  "$Comment": "Particles on hitting the ground on the landing animation",
+                  "Particles": [
+                    {
+                      "SystemId": "Mace_Signature_Ground_Hit",
+                      "TargetEntityPart": "Entity",
+                      "TargetNodeName": "Hip",
+                      "PositionOffset": {
+                        "Y": 0.1
+                      }
+                    }
+                  ],
+                  "CameraEffect": "Mace_Explode"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "Replace",
+              "DefaultValue": {
+                "Interactions": [
+                  "Mace_Swing_Down_Charged_Effect"
+                ]
+              },
+              "Var": "Mace_Swing_Down_Charged_Effect"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

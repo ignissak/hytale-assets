@@ -1,0 +1,130 @@
+{
+  "Debug": "DisplayState",
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "TestType": "Normal",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ "Idle" ],
+          "To": [ "Sleep" ]
+        }
+      ],
+      "Actions": {
+        "Reference": "Component_ActionList_Sleep"
+      }
+    },
+    {
+      "States": [
+        {
+          "From": [ "Sleep" ],
+          "To": [ "Idle" ]
+        }
+      ],
+      "Actions": {
+        "Reference": "Component_ActionList_Wake"
+      }
+    }
+  ],
+  "StateEvaluator": {
+    "Options": [
+      {
+        "State": "Idle",
+        "Description": "Go to idle state",
+        "Conditions": [
+          {
+            "Type": "TimeOfDay",
+            "Curve": {
+              "ResponseCurve": "ConstantMidpoint",
+              "XRange": [ 0, 24 ]
+            }
+          }
+        ]
+      },
+      {
+        "State": "Sleep",
+        "Description": "Go to sleep state at night",
+        "Conditions": [
+          {
+            "Type": "TimeOfDay",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [ 12, 24 ]
+            }
+          }
+        ]
+      },
+      {
+        "State": "Sleep",
+        "Description": "Go to sleep state during the day",
+        "Conditions": [
+          {
+            "Type": "TimeOfDay",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [ 0, 12 ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Sleep"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Play_Animation",
+              "Modify": {
+                "Animation": "Sleep"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_State_Evaluator_Sleep.name"
+}

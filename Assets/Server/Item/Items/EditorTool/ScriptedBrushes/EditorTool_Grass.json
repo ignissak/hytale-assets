@@ -1,0 +1,77 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Grass.name",
+    "Description": "server.builderTools.tools.Grass.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "GrassBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 7,
+            "Min": 7,
+            "Max": 50
+          },
+          "Height": {
+            "Default": 7,
+            "Min": 7,
+            "Max": 50
+          },
+          "Shape": {
+            "Default": "Sphere"
+          },
+          "Origin": {
+            "Default": "Center"
+          }
+        },
+        "Args": {
+          "BrushDensity": {
+            "Type": "Int",
+            "Default": 100,
+            "Min": 1,
+            "Max": 100
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

@@ -1,0 +1,779 @@
+{
+  "MapColor": "#83a4af",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Glacier_Base",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 3,
+          "Persistence": 0.5,
+          "Scale": 0.0015
+        },
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Heightmaps.River"
+            }
+          ],
+          "Formula": "INVERTED_RIDGED",
+          "Normalize": [0, 0.8]
+        },
+        {
+          "Seed": "Snowlands-Ice",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "Jitter": 0.8,
+          "Distance2Mode": "DIV",
+          "Formula": "INVERTED_SQUARED",
+          "Scale": 0.032
+        }
+      ],
+      "Factors": [0.55, 0.4, 0.05],
+      "Threshold": [0.72, 1]
+    },
+    "BiomeMask": [
+      "Forest_Frozen",
+      "Forest_Frozen_Light",
+      "Plains_Frozen_Frost"
+    ],
+    "Priority": 2
+  },
+  "Covers": [
+    {
+      "Type": ["Plant_Crop_Mana3"],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Flowers.Wildflowers_Cliffs"
+          }
+        ],
+        "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [112, 113, 114, 115],
+        "Values": [0, 1, 1, 0]
+      },
+      "Parent": ["Soil_Gravel", "Soil_Pebbles"]
+    },
+
+    {
+      "Type": ["Rock_Ice_Permafrost"],
+      "Weight": [1],
+      "Offset": [-1],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Ice.Ice_Lake_Surface"
+          }
+        ],
+        "Threshold": [0.2, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116],
+        "Values": [1, 0]
+      },
+      "OnWater": true
+    },
+    {
+      "Type": ["Rock_Ice"],
+      "Weight": [1],
+      "Offset": [-1],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Ice.Ice_Lake_Deep"
+          }
+        ],
+        "Threshold": [0.4, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116],
+        "Values": [1, 0]
+      },
+      "OnWater": true
+    },
+    {
+      "Type": ["Soil_Gravel"],
+      "Offset": [-1],
+      "Density": 1,
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Winter_Snow",
+        "Plant_Bush_Winter_Sharp",
+        "Plant_Bush_Winter"
+      ],
+      "Weight": [0.6, 0.35, 0.05],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Bush.Bush_Bedrock_Sparse"
+          }
+        ],
+        "Threshold": [0, 0.1]
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116],
+        "Values": [0, 1]
+      },
+      "OnWater": true,
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": ["Plant_Grass_Snowy", "Plant_Grass_Snowy_Short"],
+      "Weight": [0.6, 0.4],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Cave_Dense"
+          }
+        ],
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116],
+        "Values": [0, 1]
+      },
+      "OnWater": true,
+      "Parent": ["Soil_Snow"]
+    },
+    {
+      "Type": ["Plant_Flower_Bushy_Blue", "Plant_Seaweed_Winter_Short"],
+      "Weight": [0.9, 0.1],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Flowers.Wildflowers_Cliffs"
+          }
+        ],
+        "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115, 119, 120],
+        "Values": [0, 1, 1, 0]
+      },
+      "Parent": ["Soil_Gravel", "Soil_Pebbles"]
+    },
+    {
+      "Type": [
+        "Plant_Seaweed_Winter_Blue",
+        "Plant_Seaweed_Winter_Short",
+        "Plant_Coral_Model_Blue",
+        "Plant_Coral_Model_Cyan"
+      ],
+      "Weight": [0.5, 0.3, 0.1, 0.1],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Seaweed.Seaweed_Lake"
+          }
+        ],
+        "Threshold": [0, 0.35]
+      },
+      "HeightThreshold": {
+        "Positions": [113, 114],
+        "Values": [1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Seaweed_Grass", "Plant_Seaweed_Grass_Short"],
+      "Weight": [0.6, 0.4],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Cave_Medium"
+          }
+        ],
+        "Threshold": [0, 0.45]
+      },
+      "HeightThreshold": {
+        "Positions": [113, 114],
+        "Values": [1, 0]
+      },
+      "Parent": ["Soil_Gravel"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": ["Rock_Formations.Rocks.Frozenstone.Snowy.*"],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier3.PrefabPatterns.Glacier_Boulders_Surface"
+        }
+      },
+      {
+        "Weight": [0.7, 0.15, 0.15],
+        "Prefab": [
+          "Rock_Formations.Rocks.Frozenstone.Small.*",
+          "Rock_Formations.Rocks.Shale.Ore.*",
+          "Rock_Formations.Rocks.Shale.Ore_Health.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier3.PrefabPatterns.Glacier_Boulders"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Ice_Formations.Stalactites.Ceiling.*"],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier3.PrefabPatterns.Glacier_Stalactites_Ceiling"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Ice_Formations.Stalactites.Floor.*"],
+        "Pattern": {
+          "File": "Zones.Zone3_Tier3.PrefabPatterns.Glacier_Stalactites_Floor"
+        }
+      },
+      {
+        "Weight": [50, 50],
+        "Prefab": [
+          "Monuments.Encounter.Zone3.Tier3.Outpost_Boss.*",
+          "Monuments.Encounter.Zone3.Tier3.Outpost_NoBoss.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Encounter"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Shale",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": ["Soil_Snow", "Soil_Gravel"],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Glacier_Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.0015
+                },
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Shared.Heightmaps.River"
+                    }
+                  ],
+                  "Formula": "INVERTED_RIDGED",
+                  "Normalize": [0, 0.8]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.55, 0.4, 0.05],
+              "Threshold": [0, 0.74]
+            }
+          },
+          {
+            "Blocks": ["Soil_Pebbles:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone3.Layers.Soil.Layer_Bedrock_Light_10"
+                }
+              ],
+              "Threshold": [0, 0.4]
+            }
+          },
+          {
+            "Blocks": ["Soil_Gravel:2"]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone3.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone3.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [108, 110, 114, 118, 135, 141],
+    "Values": [1, 0.94, 0.92, 0.86, 0.7, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "DISTORTED",
+    "Noise": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Heightmaps.River"
+            }
+          ],
+          "Formula": "INVERTED_RIDGED_SQRT"
+        },
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Heightmaps.Base"
+            }
+          ],
+          "Formula": "INVERTED",
+          "Normalize": [0.35, 0.55]
+        }
+      ],
+      "Factors": [0.6, 0.4],
+      "Threshold": [0, 1]
+    },
+    "Randomizer": {
+      "Generators": [
+        {
+          "Seed": "Grasslands-River-Noise",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 3,
+          "Persistence": 0.6,
+          "Scale": 0.006,
+          "Amplitude": 15
+        }
+      ]
+    }
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["487E4D", "36763C"],
+      "Weights": [50, 50],
+      "Noise": {
+        "Seed": "Biome1_Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone3_Glacial"],
+      "Weights": [1],
+      "Noise": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Block": "Rock_Ice_Permafrost",
+        "Max": [117, 159],
+        "Min": [107, 165],
+        "MinNoise": {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Seed": "Glacier_Underside_Noise",
+              "NoiseType": "SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.035,
+              "Normalize": [0, 4]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "MIN",
+                    "Noise": [
+                      {
+                        "File": "Zones.Noise.Shared.Heightmaps.River"
+                      }
+                    ],
+                    "Formula": "INVERTED_RIDGED"
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Grasslands-River-Noise",
+                        "NoiseType": "SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.6,
+                        "Scale": 0.006,
+                        "Amplitude": 15
+                      }
+                    ]
+                  },
+                  "Normalize": [0.95, 1]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.7, 0.3],
+              "Normalize": [0, 2.5]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Glacier_Base",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.0015
+                },
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Shared.Heightmaps.River"
+                    }
+                  ],
+                  "Formula": "RIDGED",
+                  "Normalize": [0.2, 1]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.55, 0.4, 0.05],
+              "Normalize": [0.27, 0.28]
+            }
+          ]
+        },
+        "MaxNoise": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "SUM",
+                    "Noise": [
+                      {
+                        "Type": "MIN",
+                        "Noise": [
+                          {
+                            "File": "Zones.Noise.Shared.Heightmaps.River"
+                          }
+                        ],
+                        "Formula": "RIDGED"
+                      },
+                      {
+                        "Type": "MIN",
+                        "Noise": [
+                          {
+                            "File": "Zones.Noise.Shared.Heightmaps.Base"
+                          }
+                        ],
+                        "Normalize": [0.4, 0.6]
+                      }
+                    ],
+                    "Factors": [0.6, 0.4]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Grasslands-River-Noise",
+                        "NoiseType": "SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.6,
+                        "Scale": 0.006,
+                        "Amplitude": 15
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Seed": "Glacier_Base",
+                      "NoiseType": "SIMPLEX",
+                      "Octaves": 3,
+                      "Persistence": 0.5,
+                      "Scale": 0.0015
+                    },
+                    {
+                      "Type": "MIN",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Shared.Heightmaps.River"
+                        }
+                      ],
+                      "Formula": "INVERTED_RIDGED",
+                      "Normalize": [0, 0.8]
+                    },
+                    {
+                      "Seed": "Snowlands-Ice",
+                      "NoiseType": "DISTANCE",
+                      "DistanceMode": "NATURAL",
+                      "Jitter": 0.8,
+                      "Distance2Mode": "DIV",
+                      "Formula": "INVERTED_SQUARED",
+                      "Scale": 0.032
+                    }
+                  ],
+                  "Factors": [0.5, 0.35, 0.15],
+                  "Normalize": [0.64, 0.77]
+                }
+              ]
+            },
+            {
+              "Seed": "Glacier_Underside_Noise",
+              "NoiseType": "SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.035
+            }
+          ],
+          "Factors": [0.85, 0.15]
+        }
+      },
+      {
+        "Block": "Rock_Ice",
+        "Max": [133, 175],
+        "Min": [107, 165],
+        "MinNoise": {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Seed": "Glacier_Underside_Noise",
+              "NoiseType": "SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.035,
+              "Normalize": [0, 4]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "MIN",
+                    "Noise": [
+                      {
+                        "File": "Zones.Noise.Shared.Heightmaps.River"
+                      }
+                    ],
+                    "Formula": "INVERTED_RIDGED"
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Grasslands-River-Noise",
+                        "NoiseType": "SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.6,
+                        "Scale": 0.006,
+                        "Amplitude": 15
+                      }
+                    ]
+                  },
+                  "Normalize": [0.95, 1]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.7, 0.3],
+              "Normalize": [0, 2.5]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Glacier_Base",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.0015
+                },
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Shared.Heightmaps.River"
+                    }
+                  ],
+                  "Formula": "RIDGED",
+                  "Normalize": [0.2, 1]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.55, 0.4, 0.05],
+              "Normalize": [0.27, 0.28]
+            }
+          ]
+        },
+        "MaxNoise": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "SUM",
+                "Noise": [
+                  {
+                    "Type": "MIN",
+                    "Noise": [
+                      {
+                        "File": "Zones.Noise.Shared.Heightmaps.River"
+                      }
+                    ],
+                    "Formula": "RIDGED"
+                  },
+                  {
+                    "Type": "MIN",
+                    "Noise": [
+                      {
+                        "File": "Zones.Noise.Shared.Heightmaps.Base"
+                      }
+                    ],
+                    "Normalize": [0.4, 0.6]
+                  }
+                ],
+                "Factors": [0.6, 0.4]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Grasslands-River-Noise",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 3,
+                    "Persistence": 0.6,
+                    "Scale": 0.006,
+                    "Amplitude": 15
+                  }
+                ]
+              }
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Glacier_Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.0015
+                },
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Shared.Heightmaps.River"
+                    }
+                  ],
+                  "Formula": "INVERTED_RIDGED",
+                  "Normalize": [0, 0.8]
+                },
+                {
+                  "Seed": "Snowlands-Ice",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQUARED",
+                  "Scale": 0.032
+                }
+              ],
+              "Factors": [0.5, 0.35, 0.15],
+              "Normalize": [0.64, 0.77]
+            }
+          ]
+        }
+      },
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

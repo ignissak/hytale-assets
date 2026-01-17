@@ -1,0 +1,87 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "RangedAttack" ],
+    "RangedDistance": {
+      "Value": 12,
+      "Description": "The minimum distance from the player before the NPC will start to want to switch to ranged attack"
+    },
+    "RangedTimer": {
+      "Value": [ 5, 5 ],
+      "Description": "How long the NPC must be more than the minimum distance form the player before switching"
+    }
+  },
+  "Content": {
+    "TreeMode": true,
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "$Comment": "We start a timer when the NPC passes beyond range",
+        "TreeMode": true,
+        "Sensor": {
+          "Once": true,
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Target",
+            "Range": { "Compute": "RangedDistance" }
+          }
+        },
+        "Actions": [
+          {
+            "Type": "TimerStart",
+            "Name": "RangedAttackTimer",
+            "StartValueRange": { "Compute": "RangedTimer" },
+            "RestartValueRange": { "Compute": "RangedTimer" }
+          },
+          {
+            "Type": "TimerRestart",
+            "Name": "RangedAttackTimer"
+          }
+        ]
+      },
+      {
+        "$Comment": "We refresh the timer whenever the NPC is close enough to the player",
+        "TreeMode": true,
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "RangedDistance" }
+        },
+        "Actions": [
+          {
+            "Type": "TimerRestart",
+            "Name": "RangedAttackTimer"
+          }
+        ]
+      },
+      {
+        "$Comment": "If the timer has stopped, and the player isn't too close, we switch to ranged",
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Timer",
+              "Name": "RangedAttackTimer",
+              "State": "Stopped"
+            },
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "RangedDistance" }
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "RangedAttack"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,73 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.AttackSequence",
+  "Parameters": {
+    "AttackDistance": {
+      "Value": 3.5,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 0.25,
+      "Description": "Modifier that decides turn speed difference in combat"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Target",
+      "Range": { "Compute": "AttackDistance" },
+      "Filters": [
+        {
+          "Type": "LineOfSight"
+        }
+      ]
+    },
+    "ActionsBlocking": true,
+    "Actions": [
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Axe_Swing_Left",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Grab",
+        "AttackPauseRange": [ 0, 0 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Backswing_Left",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Axe_Swing_Down",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Block",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Stomp",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Axe_Swing_Right",
+        "AttackPauseRange": [ 1, 2 ]
+      },
+      {
+        "Type": "Attack",
+        "Attack": "Outlander_Brute_Ground_Slam",
+        "AttackPauseRange": [ 1, 2 ]
+      }
+    ],
+    "HeadMotion": {
+      "Type": "Aim",
+      "RelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+    }
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,69 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "AttackDistance": {
+      "Value": 2,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "CombatFleeIfTooCloseDistance": {
+      "Value": 0,
+      "Description": "In combat, if the target gets within this distance for a certain amount of time, the NPC will attempt to flee to a safe distance instead of simply backing away. Set to 0 to disable behavior."
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "CombatFleeIfTooCloseDistance > 0" },
+    "TreeMode": true,
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Flag",
+          "Name": "Combat_Retreat"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": { "Compute": "AttackDistance / 2" }
+            },
+            "BodyMotion": {
+              "Type": "Flee",
+              "RelativeSpeed": 0.7,
+              "SlowDownDistance": { "Compute": "AttackDistance + 2" },
+              "StopDistance": { "Compute": "AttackDistance + 4" }
+            }
+          },
+          {
+            "Actions": [
+              {
+                "Type": "SetFlag",
+                "Name": "Combat_Retreat",
+                "SetTo": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "$Comment": "If target is too close for too long, try to retreat a bit.",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "CombatFleeIfTooCloseDistance" }
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 1, 1 ]
+          },
+          {
+            "Type": "SetFlag",
+            "Name": "Combat_Retreat",
+            "SetTo": true
+          }
+        ]
+      }
+    ]
+  }
+}

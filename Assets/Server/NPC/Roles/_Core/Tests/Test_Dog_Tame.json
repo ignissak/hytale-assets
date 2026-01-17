@@ -1,0 +1,115 @@
+{
+  "Type": "Generic",
+  "Appearance": "Wolf_Black",
+  "FlockAllowedNPC": [ "Test_Dog_Tame" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 7,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Member"
+                  }
+                ]
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 7,
+            "StopDistance": 3
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Member"
+                  }
+                ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Dog"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "Flock",
+                "FlockStatus": "NotMember"
+              },
+              {
+                "Type": "ViewSector",
+                "ViewSector": 30
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "JoinFlock",
+              "ForceJoin": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Dog_Tame.name"
+}

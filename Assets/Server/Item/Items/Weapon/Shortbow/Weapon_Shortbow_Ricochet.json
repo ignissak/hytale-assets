@@ -1,0 +1,32 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Shortbow_Ricochet.name"
+  },
+  "Parent": "Weapon_Shortbow_Combat",
+  "Model": "Items/Weapons/Bow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Bow/Ricochet_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Bow_Iron.png",
+  "Interactions": {
+    "Primary": "Bow_Ricochet_Shoot_Charging",
+    "Secondary": "Daggers_Bash",
+    "Ability1": {
+      "Interactions": [
+        {
+          "Type": "StatsCondition",
+          "Costs": {
+            "SignatureEnergy": 100
+          },
+          "ValueType": "Percent",
+          "Next": {
+            "Type": "ChangeStat",
+            "Next": "Bow_Ricochet_Trishot",
+            "StatModifiers": {
+              "SignatureEnergy": -100
+            },
+            "ValueType": "Percent"
+          }
+        }
+      ]
+    }
+  }
+}

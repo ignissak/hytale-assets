@@ -1,0 +1,80 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "DisableDamageGroups": [ "Self", "Player" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "Range": 40,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Attack",
+              "Attack": "Skeleton_Archer_Bow_Shoot",
+              "BallisticMode": "Short",
+              "AimingTimeRange": [ 3, 3 ],
+              "LineOfSight": true,
+              "AvoidFriendlyFire": true,
+              "AttackPauseRange": [ 1, 1 ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Attack_Bow.name"
+}

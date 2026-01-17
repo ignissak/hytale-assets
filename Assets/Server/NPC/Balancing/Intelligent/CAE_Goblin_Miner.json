@@ -1,0 +1,275 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 5,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            15
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Flee": {
+        "Type": "State",
+        "State": "Chase",
+        "SubState": "Flee",
+        "Target": "Hostile",
+        "PostExecuteDistanceRange": [
+          8,
+          10
+        ],
+        "WeightCoefficient": 1.5,
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "SimpleDescendingLogistic"
+          }
+        ]
+      },
+      "Melee": {
+        "Type": "State",
+        "State": "Chase",
+        "SubState": "Default",
+        "Target": "Hostile",
+        "PostExecuteDistanceRange": [
+          2,
+          2
+        ],
+        "WeightCoefficient": 1.5,
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "SimpleLogistic"
+          }
+        ]
+      },
+      "SwingDown": {
+        "Type": "Ability",
+        "Description": "Charged swing down",
+        "WeaponSlot": 0,
+        "ChargeFor": 1,
+        "SubState": "Default",
+        "Ability": "Goblin_Scrapper_Attack",
+        "InteractionVars": {
+          "Goblin_Scrapper_Swing_Down_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Goblin_Scrapper_Swing_Down_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  }
+                },
+                "DamageEffects": {
+                  "Knockback": {
+                    "Force": 0.5,
+                    "RelativeX": 0,
+                    "RelativeZ": -5,
+                    "VelocityY": 1
+                  },
+                  "WorldSoundEventId": "SFX_Unarmed_Impact",
+                  "WorldParticles": [
+                    {
+                      "SystemId": "Impact_Blade_01"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "Target": "Hostile",
+        "AttackDistanceRange": [
+          2.5,
+          2.5
+        ],
+        "PostExecuteDistanceRange": [
+          2.5,
+          2.5
+        ],
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "ResponseCurve": "Linear",
+              "XRange": [
+                0,
+                8
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Scrapper_Attack"
+          ],
+          "InteractionVars": {
+            "Goblin_Scrapper_Swing_Left_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Scrapper_Swing_Left_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 6
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": -5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Goblin_Scrapper_Swing_Right_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Scrapper_Swing_Right_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 6
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": 5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "MaxRange": 2.5,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SwingDown",
+          "Flee"
+        ]
+      },
+      "Flee": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Scrapper_Attack"
+          ],
+          "InteractionVars": {
+            "Goblin_Scrapper_Swing_Left_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Scrapper_Swing_Left_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 8
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": -5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Goblin_Scrapper_Swing_Right_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Goblin_Scrapper_Swing_Right_Damage",
+                  "DamageCalculator": {
+                    "BaseDamage": {
+                      "Physical": 8
+                    }
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5,
+                      "RelativeX": 5,
+                      "RelativeZ": -5,
+                      "VelocityY": 5
+                    },
+                    "WorldSoundEventId": "SFX_Unarmed_Impact",
+                    "WorldParticles": [
+                      {
+                        "SystemId": "Impact_Blade_01"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "MaxRange": 2.5,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "Melee"
+        ]
+      }
+    }
+  }
+}

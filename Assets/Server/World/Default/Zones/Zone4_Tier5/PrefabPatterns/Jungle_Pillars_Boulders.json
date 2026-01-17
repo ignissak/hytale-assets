@@ -1,0 +1,36 @@
+{
+  "GridGenerator": {
+  	"Seed": "Jungle-Pillars-Boulders",
+    "Density": [0.9, 1],
+    "Scale": 0.185,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+			"Type": "SUM",
+			"Noise": [
+				{
+					"Seed": "Wobble",
+					"NoiseType": "OLD_SIMPLEX",
+					"FractalMode": "OLDSCHOOL",
+					"Octaves": 4,
+					"Persistence": 0.4,
+					"Scale": 0.04
+				},
+				{
+					"Seed": "Jungle-Pillars",
+					"NoiseType": "CELL",
+					"CellMode": "DISTANCE",
+					"Density": [0.7, 0.8],
+					"Jitter": 0.75,
+					"Scale": 0.045
+				}
+			],
+			"Factors": [0.25, 0.75],
+    "Threshold": [0.3, 0.75]
+  },
+  "HeightThreshold": {
+    "Positions": [31, 32, 39, 40],
+    "Values": [0, 1, 1, 0]
+  },
+  "DeepSearch": true
+}

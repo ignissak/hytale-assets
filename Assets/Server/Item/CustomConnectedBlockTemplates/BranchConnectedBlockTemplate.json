@@ -1,0 +1,88 @@
+{
+    "ConnectsToOtherMaterials":true,
+    "DefaultShape": "Long",
+    "Shapes":{
+        "Long":{
+            "FaceTags": {
+                "Up": ["BranchFace"],
+                "Down": ["BranchFace"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Branch_Long|Pitch=90"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Branch_Long|Pitch=90"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Corner":{
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Branch_Long|Pitch=90"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Branch_Long",
+                                "Branch_Corner|Yaw=180"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "IsCardinallyRotatable": true
+                    },
+                    "YawToApplyAddReplacedBlockType": "OneEighty",
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Branch_Long|Pitch=90"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Branch_Long",
+                                "Branch_Corner"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+
+    }
+}

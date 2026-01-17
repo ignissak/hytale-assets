@@ -1,0 +1,72 @@
+{
+  "Model": "Ice_Ball",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 4.4,
+    "TerminalVelocityAir": 42.5,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "SticksVertically": true
+  },
+  "LaunchForce": 30,
+  "SpawnOffset": {
+    "X": 0.2,
+    "Y": 0.0,
+    "Z": 1.0
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Impact_Ice"
+        },
+        {
+          "Type": "DamageEntity",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 40
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Point",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Force": 20,
+              "VelocityType": "Add"
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Impact_Ice"
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

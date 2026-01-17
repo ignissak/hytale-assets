@@ -1,0 +1,44 @@
+{
+  "Type": "Condition",
+  "Crouching": false,
+  "Next": {
+    "Type": "Charging",
+    "Effects": {
+      "ItemAnimationId": "StabDoubleCharging"
+    },
+    "AllowIndefiniteHold": false,
+    "Next": {
+      "0": {
+        "Type": "Chaining",
+        "ChainingAllowance": 1,
+        "Next": [
+          "Daggers_Swing_Left_Right",
+          "Daggers_Swing_Down_Right_Left",
+          "Daggers_Swing_Right_Left",
+          "Daggers_Swing_Down_Left_Right"
+        ]
+      },
+      "2.43": "Daggers_Stab_Double_Charged"
+    }
+  },
+  "Failed": {
+    "Type": "Charging",
+    "Effects": {
+      "ItemAnimationId": "LungeDoubleCharging"
+    },
+    "AllowIndefiniteHold": false,
+    "Next": {
+      "0": {
+        "Type": "Chaining",
+        "ChainingAllowance": 1,
+        "Next": [
+          "Daggers_Swing_Left_Right",
+          "Daggers_Swing_Down_Right_Left",
+          "Daggers_Swing_Right_Left",
+          "Daggers_Swing_Down_Left_Right"
+        ]
+      },
+      "2.43": "Daggers_Lunge_Double_Charged"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "Type": "Generic",
+  "Appearance": "Trork_Hunter",
+  "HotbarItems": [ "Weapon_Daggers_Stone_Trork" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Player_Danger_Close",
+            "Range": 25,
+            "TargetSlot": "LockedTarget"
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 1,
+            "SlowDownDistance": 3,
+            "AbortDistance": 26
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 3,
+            "StopDistance": 2,
+            "RelativeSpeed": 1,
+            "AbortDistance": 26
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 2,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon_Trork_Soldier.name"
+}

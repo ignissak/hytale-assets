@@ -1,0 +1,99 @@
+$C = "../Common.ui";
+
+
+Group {
+  LayoutMode: Top;
+
+  $C.@DecoratedContainer {
+    Anchor: (Left: 50, Top: 170, Width: 360);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.tintChunkPage.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+      Group {
+        LayoutMode: Left;
+        Anchor: (Bottom: 5);
+
+        Group {
+          LayoutMode: Top;
+          FlexWeight: 1;
+
+          Label {
+            Text: %server.customUI.tintChunkPage.sigma;
+            Anchor: (Top: 6, Left: 0);
+            Style: $C.@DefaultLabelStyle;
+          }
+
+          $C.@NumberField #Sigma {
+            @Anchor = (Width: 60, Left: 0, Top: 5);
+
+            Value: 5;
+            Format: (
+              MinValue: 0
+            );
+          }
+        }
+
+        Group {
+          LayoutMode: Top;
+          FlexWeight: 1;
+
+          Label {
+            Text:  %server.customUI.tintChunkPage.radius;
+            Anchor: (Top: 6, Left: 0);
+            Style: $C.@DefaultLabelStyle;
+          }
+
+          $C.@NumberField #Radius {
+            @Anchor = (Width: 60, Left: 0, Top: 5);
+
+            Value: 10;
+            Format: (
+              MinValue: 0
+            );
+          }
+        }
+
+        Group {
+          FlexWeight: 1;
+          LayoutMode: Middle;
+
+          $C.@CheckBoxWithLabel #BlurEnabledContainer {
+            @Text =  %server.customUI.tintChunkPage.blur;
+            @Checked = true;
+          }
+        }
+      }
+
+      ColorPicker #ColorPicker {
+        Anchor: (Width: 310, Height: 290, Top: 12);
+        Format: Rgb;
+        Style: $C.@DefaultColorPickerStyle;
+      }
+
+      $C.@TextField #HexColor {
+        @Anchor = (Left: 0, Top: 12);
+
+        PlaceholderText: %server.customUI.tintChunkPage.hexColor;
+      }
+
+      Group {
+        Anchor: (Vertical: 16, Height: 1);
+        Background: #5e512c;
+      }
+
+      $C.@TextButton #ApplyButton {
+        Text:  %server.customUI.tintChunkPage.applyTint;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

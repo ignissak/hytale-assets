@@ -1,0 +1,37 @@
+{
+  "$Comment": "The actual blocking implementation. Angle is a rotation offset from Z-axis, and AngleDiustance is the actual cone in degrees",
+  "Type": "Wielding",
+  "Effects": {
+    "$Comment": "The blocking animation",
+    "ItemAnimationId": "Guard",
+    "ClearAnimationOnFinish": true
+  },
+  "AngledWielding": {
+    "Angle": 0,
+    "AngleDistance": 95,
+    "DamageModifiers": {
+      "Physical": 0,
+      "Projectile": 0,
+      "Poison": 0
+    },
+    "KnockbackModifiers": {
+      "Physical": 0.25,
+      "Projectile": 0.25
+    }
+  },
+  "StaminaCost": {
+    "Value": 10,
+    "CostType": "Damage"
+  },
+  "CancelOnOtherClick": false,
+  "BlockedEffects": {
+    "$Comment": "Effects and particles to be played when an attack is successfully blocked",
+    "WorldSoundEventId": "SFX_Shield_T2_Impact",
+    "WorldParticles": [
+      {
+        "SystemId": "Shield_Block"
+      }
+    ]
+  },
+  "Failed": "Shield_Block_Broken_Effects"
+}

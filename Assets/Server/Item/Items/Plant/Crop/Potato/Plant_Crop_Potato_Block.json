@@ -1,0 +1,195 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Potato_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Potato_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Potato_01.blockymodel",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Potato_Stage1"
+            }
+          },
+          "HitboxType": "Plant_Small",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#3c860f"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Potato_02.blockymodel",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Potato_Stage2"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#6ba410"
+        },
+        "Stage3": {
+          "CustomModel": "Resources/Ingredients/Potato_03.blockymodel",
+          "Interactions": {
+            "Primary": {
+              "Interactions": [
+                {
+                  "Type": "BreakBlock"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Breaking": {
+              "DropList": "Drops_Plant_Crop_Potato_Stage3"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#6ba410"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Potato_04.blockymodel",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Potato_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Potato_StageFinal_Harvest"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "CustomModelScale": 0.5,
+          "ParticleColor": "#cb9b20"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "StageSetAfterHarvest": "Harvested",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Potato_Block"
+      }
+    },
+    "CustomModelScale": 0.4,
+    "CustomModel": "Resources/Ingredients/Potato_Seed.blockymodel",
+    "ParticleColor": "#5c4423"
+  },
+  "IconProperties": {
+    "Scale": 1.4,
+    "Translation": [
+      0,
+      -3
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Potato_Stage_0.png",
+  "Scale": 2
+}

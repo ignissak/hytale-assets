@@ -1,0 +1,117 @@
+{
+  "DefaultSubState": "Start",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Timer",
+              "StartValueRange": [ 7, 7 ],
+              "RestartValueRange": [ 7, 7 ]
+            },
+            {
+              "Type": "TimerContinue",
+              "Name": "Timer"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 2
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Timer",
+                "Name": "Timer",
+                "State": "Stopped"
+              },
+              "Actions": [
+                {
+                  "Type": "TimerRestart",
+                  "Name": "Timer"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Timer",
+                "Name": "Timer",
+                "TimeRemainingRange": [ 0, 1 ]
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "DamageFriendlies": true,
+                  "Attack": "Root_NPC_Attack_Melee"
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Friendly fire"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Timer",
+                "Name": "Timer",
+                "TimeRemainingRange": [ 4.5, 5 ]
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": "Root_NPC_Attack_Melee"
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "No friendly fire"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 10
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 1
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Deal_Friendly_Damage.name"
+}

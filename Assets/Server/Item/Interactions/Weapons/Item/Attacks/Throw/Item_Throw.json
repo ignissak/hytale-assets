@@ -1,0 +1,36 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "Throw",
+    "WorldSoundEventId": "SFX_Unarmed_Swing"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Item_Throw_Projectile"
+              ]
+            },
+            "Var": "Item_Throw_Projectile"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ModifyInventory",
+            "AdjustHeldItemQuantity": -1
+          }
+        ]
+      }
+    ]
+  }
+}

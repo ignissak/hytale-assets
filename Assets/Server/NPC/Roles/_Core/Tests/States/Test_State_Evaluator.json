@@ -1,0 +1,104 @@
+{
+  "Debug": "DisplayState",
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "StateEvaluator": {
+    "Options": [
+      {
+        "State": "Idle",
+        "Description": "Go to idle state",
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "Linear"
+          }
+        ]
+      },
+      {
+        "State": "Flee",
+        "Description": "Go to flee state",
+        "Conditions": [
+          {
+            "Type": "OwnStatPercent",
+            "Stat": "Health",
+            "Curve": "ReverseLinear"
+          }
+        ]
+      }
+    ]
+  },
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 15
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 2,
+                "StopDistance": 1
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "$Comment": "This is here to demonstrate that the system will ignore state actions while the evaluator is running",
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "StopDistance": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_State_Evaluator.name"
+}

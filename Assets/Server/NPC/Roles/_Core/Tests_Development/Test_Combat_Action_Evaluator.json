@@ -1,0 +1,205 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "CombatConfig": "CAE_Test_Combat_Action_Evaluator",
+  "HotbarItems": [ ],
+  "DefaultPlayerAttitude": "Hostile",
+  "DefaultNPCAttitude": "Hostile",
+  "Debug": "DisplayState",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 10,
+                "GetPlayers": true,
+                "Filters": [
+                  {
+                    "Type": "Attitude",
+                    "Attitudes": [ "Hostile", "Friendly" ]
+                  }
+                ],
+                "Collector": {
+                  "Type": "CombatTargets"
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Combat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Combat"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "Range": 30,
+                    "GetPlayers": true,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Hostile", "Friendly" ]
+                      }
+                    ],
+                    "Collector": {
+                      "Type": "CombatTargets"
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Or",
+                    "Sensors": [
+                      {
+                        "Type": "State",
+                        "State": ".Default"
+                      },
+                      {
+                        "Type": "State",
+                        "State": ".Ranged",
+                        "IgnoreMissingSetState": true
+                      }
+                    ]
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 1, 1 ],
+                        "MoveThreshold": 0.3,
+                        "RelativeForwardsSpeed": 1
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 1,
+                        "StopDistance": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Charge",
+                    "IgnoreMissingSetState": true
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "BodyMotion": {
+                        "Type": "AimCharge"
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 1,
+                        "StopDistance": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Throw",
+                    "IgnoreMissingSetState": true
+                  },
+                  "Instructions": [
+                    {
+                      "Reference": "Component_Instruction_Combat_Throw_NPC",
+                      "Modify": {
+                        "_ExportStates": [ "Combat.Default" ],
+                        "ViewRange": 30
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Combat_Action_Evaluator.name"
+}

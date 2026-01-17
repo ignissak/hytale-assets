@@ -1,0 +1,112 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Palm.name",
+    "Description": "server.items.Plant_Sapling_Palm.description"
+  },
+  "Parent": "Plant_Sapling_Oak",
+  "ItemLevel": 11,
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 35
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 8
+      }
+    ]
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Palm.png",
+        "Weight": 1
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Sapling_Palm",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Palm/Stage_1/Palm_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Palm/Stage_2/Palm_Stage2_002.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Palm/Stage_3/Palm_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Palm"
+      }
+    },
+    "Opacity": "Transparent",
+    "BlockParticleSetId": "Grass",
+    "ParticleColor": "#b0af31"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Palm_Sapling.png"
+}

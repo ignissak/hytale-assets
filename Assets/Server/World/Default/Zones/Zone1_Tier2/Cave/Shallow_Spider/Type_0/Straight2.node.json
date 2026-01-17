@@ -1,0 +1,80 @@
+{
+  "Name": "Straight1",
+  "Children": [
+    {
+      "Weight": [100],
+      "Chance": 1,
+      "Node": ["Shallow_Spider.Type_0.Straight2"],
+      "PitchAdd": [-10, -5],
+      "YawAdd": [-55, -5]
+    },
+    {
+      "Weight": [100],
+      "Chance": 1,
+      "Node": ["Shallow_Spider.Type_0.Straight2"],
+      "PitchAdd": [5, 10],
+      "YawAdd": [5, 55]
+    }
+  ],
+  "Cover": [
+    {
+      "Type": ["Soil_Dirt_Poisoned"],
+      "Weight": [100],
+      "HeightThreshold": {
+        "Positions": [24, 25],
+        "Values": [0, 1]
+      }
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [100],
+        "Prefab": ["Cave.Stalagmites.Spider.Spider_Web.Ceiling.*"],
+        "Config": {
+          "HeightThreshold": {
+            "Positions": [40, 41],
+            "Values": [0, 1]
+          },
+          "Mask": {
+            "Default": ["*", "!Soil_Grass"],
+            "Specific": [
+              {
+                "Block": ["Deco_Bone_Spike_Large", "Deco_SpiderWeb"],
+                "Rule": ["Empty", "!*"]
+              }
+            ]
+          },
+          "Iterations": 4,
+          "Placement": "CEILING",
+          "Rotations": ["ROTATION_90"]
+        }
+      },
+      {
+        "Weight": [100],
+        "Prefab": ["Cave.Stalagmites.Spider.Spider_Web.Floor.*"],
+        "Config": {
+          "HeightThreshold": {
+            "Positions": [40, 41],
+            "Values": [0, 1]
+          },
+          "Mask": {
+            "Default": ["*", "!Soil_Grass"],
+            "Specific": [
+              {
+                "Block": ["Deco_Bone_Spike_Large", "Deco_SpiderWeb"],
+                "Rule": ["Empty", "!*"]
+              }
+            ]
+          },
+          "Iterations": 2,
+          "Placement": "FLOOR",
+          "Rotations": ["ROTATION_90"]
+        }
+      }
+    ]
+  },
+  "Length": [4, 6],
+  "Radius": [1.5, 2.5],
+  "ChildCountBounds": 1
+}

@@ -1,0 +1,59 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "AvailableActions": {
+      "SelectTarget": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "Conditions": [
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      }
+    },
+    "MinActionUtility": 0.01,
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Rat_Bite"
+          ],
+          "Randomise": false,
+          "MaxRange": 3,
+          "Timeout": 2,
+          "CooldownRange": [
+            0.5,
+            1.5
+          ]
+        },
+        "Actions": [
+          "SelectTarget"
+        ]
+      }
+    }
+  }
+}

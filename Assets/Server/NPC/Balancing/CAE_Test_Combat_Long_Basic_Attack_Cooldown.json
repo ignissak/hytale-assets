@@ -1,0 +1,69 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "RangedAttack": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 1
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Lobber_Attack"
+          ],
+          "Randomise": false,
+          "MaxRange": 12,
+          "Timeout": 2,
+          "CooldownRange": [
+            4,
+            6
+          ]
+        },
+        "Actions": [
+          "RangedAttack"
+        ]
+      }
+    }
+  }
+}

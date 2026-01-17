@@ -1,0 +1,110 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.WinterHoliday_Garland.name"
+  },
+  "Categories": [
+    "Blocks.Deco",
+    "Furniture.Lighting",
+    "Blocks.Deco"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Plant_Seeds_Pine",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Plant_Petals_Red",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Seasonal"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Wreath_Texture.png"
+      }
+    ],
+    "HitboxType": "Plant_Full",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {}
+    },
+    "BlockParticleSetId": "Leaves_Fir",
+    "BlockSoundSetId": "Leaves",
+    "CustomModel": "Items/Hypixel/Event_Decoration/Winter Holiday_Props/WinterHoliday_Garland.blockymodel",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "VariantRotation": "NESW",
+    "ParticleColor": "#1a521a"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.8,
+    "Rotation": [
+      0.0,
+      0.0,
+      22.5
+    ],
+    "Translation": [
+      2.0,
+      -13.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/WinterHoliday_Garland.png"
+}

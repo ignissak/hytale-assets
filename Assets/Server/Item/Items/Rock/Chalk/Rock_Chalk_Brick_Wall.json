@@ -1,0 +1,77 @@
+{
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Chalk_Brick"
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0,
+    "BenchRequirement": [
+      {
+        "Categories": [
+          "Wall"
+        ],
+        "Id": "Builders",
+        "Type": "StructuralCrafting"
+      }
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall",
+  "Icon": "Icons/ItemsGenerated/Rock_Chalk_Brick_Wall.png",
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Chalk_Brick_Wall.name"
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Structures/Fences/Dev_Fence_Texture/Rock_Chalk_Brick_Fence.png"
+      }
+    ],
+    "ParticleColor": "#d0ccc6",
+    "CustomModel": "Blocks/Structures/Fences/Dev_Fence.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Weight": 1,
+              "Texture": "Blocks/Structures/Fences/Dev_Fence_Texture/Rock_Chalk_Brick_Fence.png"
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Dev_Fence_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Chalk_Brick_Wall",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Chalk_Brick_Wall",
+        "Corner": "*Rock_Chalk_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  },
+  "Set": "Rock_Chalk_Brick"
+}

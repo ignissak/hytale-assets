@@ -1,0 +1,45 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Physical": 20
+    }
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      },
+      "Direction": {
+        "X": 0.0,
+        "Y": 0.5,
+        "Z": -1
+      },
+      "Force": 12,
+      "VelocityType": "Add"
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Stab",
+        "Scale": 1
+      }
+    ]
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 1
+    }
+  ],
+  "Next": {
+    "Type": "ApplyEffect",
+    "EffectId": "Two_Handed_Bow_Ability2_Slow",
+    "Entity": "Target"
+  }
+}

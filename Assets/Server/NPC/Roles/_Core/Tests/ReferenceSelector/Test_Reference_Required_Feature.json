@@ -1,0 +1,70 @@
+{
+  "Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Reference": "Component_Sensor_Sound",
+            "Modify": { }
+          },
+          "HeadMotion": {
+            "Type": "Aim"
+          }
+        },
+        {
+          "Continue": true,
+          "Reference": "Component_Test_Inventory_Action_Reference",
+          "Modify": {
+            "UseTarget": true
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "DroppedItem",
+                "Range": 10
+              },
+              {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 10
+                }
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Reference": "Component_Test_Action_Sequence",
+              "Modify": { }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Reference_Required_Feature.name"
+}

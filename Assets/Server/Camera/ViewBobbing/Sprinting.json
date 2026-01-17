@@ -1,0 +1,95 @@
+{
+  "FirstPerson": {
+    "EaseIn": {
+      "Time": 0.5,
+      "Type": "Linear"
+    },
+    "Offset": {
+      "X": [
+        {
+          "Type": "Sin",
+          "Frequency": 9.0,
+          "Amplitude": 0.05
+        },
+        {
+          "Type": "Perlin_Hermite",
+          "Frequency": 9.0,
+          "Amplitude": 0.01
+        }
+      ],
+      "Y": [
+        {
+          "Type": "Cos",
+          "Frequency": 18.0,
+          "Amplitude": 0.04,
+          "Clamp": {
+            "Min": -0.5,
+            "Max": 1.0
+          }
+        },
+        {
+          "Type": "Perlin_Hermite",
+          "Frequency": 18.0,
+          "Amplitude": 0.002
+        },
+        {
+          "Type": "Cos",
+          "Frequency": 18.0,
+          "Amplitude": 0.015
+        },
+        {
+          "Type": "Perlin_Hermite",
+          "Clamp": {
+            "Max": 1.0,
+            "Min": 0.99
+          },
+          "Frequency": 1.0,
+          "Amplitude": 0.15
+        }
+      ],
+      "Z": [
+        {
+          "Type": "Perlin_Hermite",
+          "Clamp": {
+            "Min": -1.0,
+            "Max": -0.9
+          },
+          "Frequency": 1.0,
+          "Amplitude": 0.1
+        }
+      ]
+    },
+    "Rotation": {
+      "Pitch": [
+        {
+          "Type": "Cos",
+          "Frequency": 18.0,
+          "Amplitude": 0.002
+        },
+        {
+          "Type": "Perlin_Hermite",
+          "Frequency": 18.0,
+          "Amplitude": 0.001
+        }
+      ],
+      "Yaw": [
+        {
+          "Type": "Sin",
+          "Frequency": 9.0,
+          "Amplitude": 0.002
+        }
+      ],
+      "Roll": [
+        {
+          "Type": "Perlin_Hermite",
+          "Frequency": 9.0,
+          "Amplitude": 0.001,
+          "Clamp": {
+            "Min": -1.0,
+            "Max": 1.0
+          }
+        }
+      ]
+    }
+  }
+}

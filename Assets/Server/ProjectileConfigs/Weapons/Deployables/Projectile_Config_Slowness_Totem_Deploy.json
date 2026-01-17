@@ -1,0 +1,78 @@
+{
+  "Model": "Slowness_Totem",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 15.0,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "None",
+    "Bounciness": 0.9,
+    "SticksVertically": false,
+    "BounceCount": 0,
+    "BounceLimit": 0.4
+  },
+  "LaunchForce": 10.0,
+  "SpawnOffset": {
+    "X": 0.3,
+    "Y": -0.5,
+    "Z": -0.6
+  },
+  "SpawnRotationOffset": {
+    "Pitch": 10.0,
+    "Yaw": 5,
+    "Roll": 0
+  },
+  "Interactions": {
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "SpawnDeployableAtHitLocation",
+          "Config": {
+            "Type": "Aoe",
+            "Id": "Slowness_Totem",
+            "LiveDuration": 10,
+            "Model": "Slowness_Totem",
+            "ModelScale": 1.0,
+            "StartRadius": 0.1,
+            "EndRadius": 5,
+            "Height": 2,
+            "RadiusChangeTime": 2,
+            "DeploySoundEventId": "SFX_Deployable_Totem_Slowing_Spawn",
+            "DespawnSoundEventId": "SFX_Deployable_Totem_Slowing_Despawn",
+            "ApplyEffects": [
+              "Slowness_Totem_Slow"
+            ],
+            "DamageInterval": 0.5,
+            "DamageAmount": 0.0,
+            "HitboxCollisionConfig": "HardCollision",
+            "SpawnParticles": [
+              {
+                "SystemId": "Explosion_Medium",
+                "TargetEntityPart": "Entity"
+              },
+              {
+                "SystemId": "Totem_Slow_Simple_Test",
+                "TargetEntityPart": "Entity",
+                "Scale": 0.6
+              },
+              {
+                "SystemId": "Totem_Slow_Extra",
+                "TargetEntityPart": "Entity"
+              }
+            ],
+            "DespawnParticles": [
+              {
+                "SystemId": "Explosion_Medium",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

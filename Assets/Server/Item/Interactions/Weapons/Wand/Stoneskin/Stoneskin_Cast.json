@@ -1,0 +1,47 @@
+{
+  "Type": "Simple",
+  "RunTime": 0.2,
+  "Effects": {
+    "ItemAnimationId": "CastLeftCharged",
+    "Particles": [
+      {
+        "SystemId": "NatureBeam",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Roll": 180
+        }
+      }
+    ],
+    "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact",
+    "LocalSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact"
+  },
+  "Next": {
+    "Type": "Selector",
+    "Selector": {
+      "Id": "Raycast",
+      "Offset": {
+        "Y": 1.6
+      }
+    },
+    "HitEntityRules": [{
+        "Matchers": [{
+            "Type": "Vulnerable"
+          }
+        ],
+        "Next": {
+          "Interactions": [{
+            "Type": "ApplyEffect",
+            "EffectId": "Stoneskin",
+            "Entity": "Target"
+          }]
+        }
+      }
+    ],
+    "FailOn": "Entity",
+    "Failed": {
+      "Type": "ApplyEffect",
+      "EffectId": "Stoneskin",
+      "Entity": "User"
+    }
+  }
+}

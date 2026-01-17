@@ -1,0 +1,89 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "Parameters": {
+    "IncludeGroups": {
+      "Value": [ "Trork" ],
+      "Description": "Include groups"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "LockOnTarget": true,
+            "Range": 10
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": { "Compute": "IncludeGroups" }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Trork!"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Player" ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Player!"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_NPCGroup_Sensor.name"
+}

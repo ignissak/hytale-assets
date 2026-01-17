@@ -1,0 +1,1032 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Default",
+  "Parameters": {
+    "_ImportStates": [
+      "Idle",
+      "Alerted",
+      "Chase",
+      "Search",
+      "Spar",
+      "Neutral",
+      "Friendly",
+      "Revered",
+      "Warn",
+      "DroppedMeat"
+    ],
+    "MotionComponent": {
+      "Value": "Component_Trork_Instruction_Idle_Motion_Wander",
+      "Description": "The component that controls how the NPC moves during idle state"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "SleepsAtNight": {
+      "Value": true,
+      "Description": "Whether this Trork is the type that will sleep at night"
+    },
+    "RainWakeupDelay": {
+      "Value": [ 9, 12 ],
+      "Description": "Delay range before Trork wakes up in the rain"
+    },
+    "PrimaryIdleTimeout": {
+      "Value": [ 15, 20 ],
+      "Description": "The time range for which a primary idle should be executed before attempting to pick again"
+    },
+    "StayAtPost": {
+      "Value": false,
+      "Description": "Whether this NPC will stay at its post rather than going to do other things on occasion"
+    },
+    "ExtraIdleComponent": {
+      "Value": "",
+      "Description": "A reference to an extra component containing further idle behaviours"
+    },
+    "ExtraIdleWeight": {
+      "Value": 15,
+      "Description": "Weight for executing extra idle"
+    },
+    "ExcludeGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    },
+    "RangedAttack": {
+      "Value": "",
+      "Description": "Ranged attack"
+    },
+    "BedBlockSet": {
+      "Value": "Trork_Bedroll",
+      "Description": "The block set designating bedrolls for this NPC"
+    },
+    "CampfireBlockSet": {
+      "Value": "Trork_Campfire",
+      "Description": "The block set designating campfires for this NPC"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "The block set designating chests for this NPC"
+    },
+    "UnderlingGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Enabled": { "Compute": "!StayAtPost" },
+        "Sensor": {
+          "Type": "Beacon",
+          "Message": "TrorkChieftainCall",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Revered"
+          }
+        ]
+      },
+      {
+        "$Comment": "This is for handling all the damage/enemy/etc sensors that are common to most states and take priority over everything else",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "State",
+              "State": ".Patrol"
+            },
+            {
+              "Type": "State",
+              "State": ".SleepMove"
+            },
+            {
+              "Type": "State",
+              "State": ".SleepYawn"
+            },
+            {
+              "Type": "State",
+              "State": ".Campfire"
+            },
+            {
+              "Type": "State",
+              "State": ".SecondaryAnimation"
+            }
+          ]
+        },
+        "Instructions": [
+          {
+            "Reference": "Component_Trork_Instruction_Pre_Checks",
+            "Modify": {
+              "_ExportStates": [
+                "Alerted",
+                "Chase",
+                "Search",
+                "Warn",
+                "Neutral",
+                "Friendly",
+                "Revered",
+                "DroppedMeat"
+              ],
+              "ViewRange": { "Compute": "ViewRange" },
+              "ViewSector": { "Compute": "ViewSector" },
+              "HearingRange": { "Compute": "HearingRange" },
+              "AlertedRange": { "Compute": "AlertedRange" },
+              "ExcludeGroups": { "Compute": "UnderlingGroups" },
+              "ChestBlockSet": { "Compute": "ChestBlockSet" }
+            }
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "State",
+              "State": ".Nap"
+            },
+            {
+              "Type": "State",
+              "State": ".Sleep"
+            }
+          ]
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Not",
+              "Sensor": {
+                "Reference": "Component_Trork_Sensor_Can_Sleep",
+                "Modify": { }
+              }
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": { "Compute": "RainWakeupDelay" },
+                "Action": {
+                  "Type": "State",
+                  "State": ".RainAwake"
+                }
+              }
+            ]
+          },
+          {
+            "Reference": "Component_Trork_Instruction_Pre_Checks",
+            "Modify": {
+              "_ExportStates": [
+                "Alerted",
+                "Chase",
+                "Search",
+                "Warn",
+                "Neutral",
+                "Friendly",
+                "Revered",
+                "DroppedMeat"
+              ],
+              "ViewRange": { "Compute": "ViewRange / 2" },
+              "ViewSector": { "Compute": "ViewSector" },
+              "HearingRange": { "Compute": "HearingRange / 2" },
+              "AlertedRange": { "Compute": "AlertedRange" },
+              "CanSee": false,
+              "CheckDroppedMeat": false,
+              "ExcludeGroups": { "Compute": "UnderlingGroups" },
+              "ChestBlockSet": { "Compute": "ChestBlockSet" }
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Default"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Enabled": { "Compute": "SleepsAtNight" },
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Reference": "Component_Sensor_Night",
+                  "Modify": { }
+                },
+                {
+                  "Reference": "Component_Trork_Sensor_Can_Sleep",
+                  "Modify": { }
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".SleepMove"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Type": "Random",
+            "Name": "IdleRandom",
+            "Instructions": [
+              {
+                "Weight": 60,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Actions": [
+                  {
+                    "Type": "State",
+                    "State": ".Patrol"
+                  }
+                ]
+              },
+              {
+                "Enabled": { "Compute": "!StayAtPost" },
+                "Weight": 5,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Actions": [
+                  {
+                    "Type": "State",
+                    "State": ".Campfire"
+                  }
+                ]
+              },
+              {
+                "Enabled": { "Compute": "!isEmpty(ExtraIdleComponent)" },
+                "Weight": { "Compute": "ExtraIdleWeight" },
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Instructions": [
+                  {
+                    "Reference": { "Compute": "ExtraIdleComponent" },
+                    "Interfaces": [ "Hytale.Component.Trork.ExtraIdle" ],
+                    "Modify": {
+                      "_ExportStates": [
+                        "Idle",
+                        "Alerted",
+                        "Chase",
+                        "Search",
+                        "Warn",
+                        "Neutral",
+                        "Friendly",
+                        "Revered",
+                        "DroppedMeat"
+                      ],
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "HearingRange": { "Compute": "HearingRange" },
+                      "AlertedRange": { "Compute": "AlertedRange" },
+                      "RangedAttack": { "Compute": "RangedAttack" },
+                      "UnderlingGroups": { "Compute": "UnderlingGroups" },
+                      "ChestBlockSet": { "Compute": "ChestBlockSet" }
+                    }
+                  }
+                ]
+              },
+              {
+                "Weight": 5,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Instructions": [
+                  {
+                    "Sensor": {
+                      "Reference": "Component_Trork_Sensor_Can_Sleep",
+                      "Modify": { }
+                    },
+                    "Actions": [
+                      {
+                        "Type": "State",
+                        "State": ".Nap"
+                      }
+                    ]
+                  },
+                  {
+                    "Sensor": {
+                      "Type": "Any"
+                    },
+                    "Actions": [
+                      {
+                        "Type": "State",
+                        "State": ".Reset"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "Weight": 10,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Actions": [
+                  {
+                    "Type": "ParentState",
+                    "State": "Spar"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "$Comment": "We use two reset states so that when switching from a secondary behaviour we don't reset the primary random idle. All Instructions with a Once that needs resetting within this state should be mentioned here.",
+        "Sensor": {
+          "Type": "State",
+          "State": ".ResetSecondary"
+        },
+        "Actions": [
+          {
+            "Type": "ResetInstructions",
+            "Instructions": [
+              "IdlePatrol",
+              "IdleSecondary",
+              "IdleNap",
+              "IdleSleep",
+              "IdleSleepMove",
+              "IdleSleepYawn",
+              "IdleSecondaryAnimation",
+              "IdleWakeUp",
+              "IdleRainAwake",
+              "IdleCampfire"
+            ]
+          },
+          {
+            "Type": "State",
+            "State": ".Default"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Reset"
+        },
+        "Actions": [
+          {
+            "Type": "ResetInstructions",
+            "Instructions": [ "IdleRandom" ]
+          },
+          {
+            "Type": "State",
+            "State": ".ResetSecondary"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Patrol"
+        },
+        "Name": "IdleSecondary",
+        "Type": "Random",
+        "Instructions": [
+          {
+            "Weight": 20,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".SecondaryAnimation"
+              }
+            ]
+          },
+          {
+            "Weight": 80,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Name": "IdlePatrol",
+            "Instructions": [
+              {
+                "Reference": "Component_Instruction_Clear_Status_Animation",
+                "Modify": { }
+              },
+              {
+                "Continue": true,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Actions": [
+                  {
+                    "Type": "SetLeashPosition",
+                    "ToCurrent": true
+                  },
+                  {
+                    "Type": "Timeout",
+                    "Delay": { "Compute": "PrimaryIdleTimeout" },
+                    "Action": {
+                      "Type": "State",
+                      "State": ".Reset"
+                    }
+                  }
+                ]
+              },
+              {
+                "Enabled": { "Compute": "!StayAtPost" },
+                "Continue": true,
+                "Sensor": {
+                  "Type": "And",
+                  "Sensors": [
+                    {
+                      "Type": "Random",
+                      "TrueDurationRange": [ 3, 3 ],
+                      "FalseDurationRange": [ 30, 45 ]
+                    },
+                    {
+                      "Type": "Flag",
+                      "Name": "ChastisingPrisoner",
+                      "Set": false
+                    },
+                    {
+                      "Type": "Mob",
+                      "Range": 10,
+                      "LockOnTarget": true,
+                      "Filters": [
+                        {
+                          "Type": "LineOfSight"
+                        },
+                        {
+                          "Type": "NPCGroup",
+                          "IncludeGroups": [ "Kweebec_Prisoner" ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "Actions": [
+                  {
+                    "Type": "SetFlag",
+                    "Name": "ChastisingPrisoner",
+                    "SetTo": true
+                  }
+                ]
+              },
+              {
+                "$Comment": "Motions",
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Instructions": [
+                  {
+                    "Enabled": { "Compute": "!StayAtPost" },
+                    "Sensor": {
+                      "Type": "Flag",
+                      "Name": "ChastisingPrisoner",
+                      "Set": true
+                    },
+                    "Instructions": [
+                      {
+                        "Sensor": {
+                          "Type": "Target",
+                          "Range": 3,
+                          "Filters": [
+                            {
+                              "Type": "LineOfSight"
+                            }
+                          ]
+                        },
+                        "Actions": [
+                          {
+                            "Type": "PlayAnimation",
+                            "Slot": "Status",
+                            "Animation": "Alerted"
+                          },
+                          {
+                            "Type": "Timeout",
+                            "Delay": [ 3, 3 ],
+                            "Action": {
+                              "Type": "Sequence",
+                              "Actions": [
+                                {
+                                  "Type": "SetFlag",
+                                  "Name": "ChastisingPrisoner",
+                                  "SetTo": false
+                                },
+                                {
+                                  "Type": "PlayAnimation",
+                                  "Slot": "Status"
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "HeadMotion": {
+                          "Type": "Watch"
+                        }
+                      },
+                      {
+                        "Sensor": {
+                          "Type": "Target",
+                          "Range": 15
+                        },
+                        "BodyMotion": {
+                          "Type": "Seek",
+                          "SlowDownDistance": 4,
+                          "StopDistance": 3
+                        }
+                      },
+                      {
+                        "Sensor": {
+                          "Type": "Any"
+                        },
+                        "Actions": [
+                          {
+                            "Type": "Timeout",
+                            "Delay": [ 5, 5 ],
+                            "Action": {
+                              "Type": "SetFlag",
+                              "Name": "ChastisingPrisoner",
+                              "SetTo": false
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Reference": { "Compute": "MotionComponent" },
+                    "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ],
+                    "Nullable": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Nap"
+        },
+        "Name": "IdleNap",
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sleep"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 15, 20 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".WakeUp"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".SleepMove"
+        },
+        "Name": "IdleSleepMove",
+        "Instructions": [
+          {
+            "Reference": "Component_Instruction_Clear_Status_Animation",
+            "Modify": { }
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 10 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "Block",
+                  "Range": 15,
+                  "Blocks": { "Compute": "BedBlockSet" },
+                  "Reserve": true
+                },
+                {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "Block",
+                    "Range": 1,
+                    "Blocks": { "Compute": "BedBlockSet" },
+                    "Reserve": true
+                  }
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 2,
+              "StopDistance": 0.1,
+              "RelativeSpeed": 0.35
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "ResetInstructions",
+                "Instructions": [ "IdleSleepMove" ]
+              },
+              {
+                "Type": "Random",
+                "Actions": [
+                  {
+                    "Action": {
+                      "Type": "State",
+                      "State": ".Sleep"
+                    },
+                    "Weight": 1
+                  },
+                  {
+                    "Action": {
+                      "Type": "State",
+                      "State": ".SleepYawn"
+                    },
+                    "Weight": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".SleepYawn"
+        },
+        "Name": "IdleSleepYawn",
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "IdleYawn"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 2, 3 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "ResetInstructions",
+                      "Instructions": [ "IdleSleepYawn" ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Sleep"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Sleep"
+        },
+        "Name": "IdleSleep",
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "Block",
+                  "Range": 15,
+                  "Blocks": { "Compute": "BedBlockSet" },
+                  "Reserve": true
+                },
+                {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "Block",
+                    "Range": 1,
+                    "Blocks": { "Compute": "BedBlockSet" },
+                    "Reserve": true
+                  }
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "ResetInstructions",
+                "Instructions": [ "IdleSleep" ]
+              },
+              {
+                "Type": "State",
+                "State": ".SleepMove"
+              }
+            ]
+          },
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sleep"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Reference": "Component_Sensor_Day",
+              "Modify": { }
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".WakeUp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".WakeUp"
+        },
+        "Name": "IdleWakeUp",
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Wake"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 4 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".RainAwake"
+        },
+        "Name": "IdleRainAwake",
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "WakeRain"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 4 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Campfire"
+        },
+        "Name": "IdleCampfire",
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Block",
+              "Range": 3,
+              "Blocks": { "Compute": "CampfireBlockSet" }
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 15 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              },
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sit"
+              }
+            ],
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 10 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Block",
+              "Range": 15,
+              "Blocks": { "Compute": "CampfireBlockSet" }
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "StopDistance": 2,
+              "SlowDownDistance": 3,
+              "RelativeSpeed": 0.4
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Reset"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".SecondaryAnimation"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "$TODO": "Add animations for yawning, swinging weapon, etc",
+            "Name": "IdleSecondaryAnimation",
+            "Instructions": [
+              {
+                "Continue": true,
+                "Sensor": {
+                  "Type": "Any"
+                },
+                "Actions": [
+                  {
+                    "Type": "Timeout",
+                    "Delay": [ 2, 4 ],
+                    "Action": {
+                      "Type": "State",
+                      "State": ".ResetSecondary"
+                    }
+                  }
+                ]
+              },
+              {
+                "Sensor": {
+                  "Type": "Any",
+                  "Once": true
+                },
+                "Actions": [
+                  {
+                    "Type": "Random",
+                    "Actions": [
+                      {
+                        "Action": {
+                          "Type": "PlayAnimation",
+                          "Slot": "Status",
+                          "Animation": "IdlePassive"
+                        },
+                        "Weight": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

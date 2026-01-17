@@ -1,0 +1,219 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Cotton_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "RandomRotation": "YawStep90",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/White02.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Blocks/Foliage/Grass/VeryTall.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/VeryTall_Textures/Cotton_Stage_1.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Cotton_Stage1"
+            }
+          },
+          "HitboxType": "Plant_Medium",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9aa53b"
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Grass/VeryTall.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/VeryTall_Textures/Cotton_Stage_2.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Cotton_Stage2"
+            }
+          },
+          "HitboxType": "Plant_Tall_Small",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9aa53b"
+        },
+        "Stage3": {
+          "CustomModel": "Blocks/Foliage/Grass/VeryTall.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/VeryTall_Textures/Cotton_Stage_3.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Cotton_Stage3"
+            }
+          },
+          "HitboxType": "Plant_Tall_Full",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9aa53b"
+        },
+        "StageFinal": {
+          "CustomModel": "Blocks/Foliage/Grass/VeryTall.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/VeryTall_Textures/Cotton.png",
+              "Weight": 1
+            }
+          ],
+          "Group": "SeaLife",
+          "Effect": [
+            "WindAttached"
+          ],
+          "Flags": {},
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Cotton_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Cotton_StageFinal_Harvest"
+            }
+          },
+          "HitboxType": "Plant_Tall_Full",
+          "BlockParticleSetId": "Flower",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#e2e3dc"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Cotton_Block"
+      }
+    },
+    "CustomModelScale": 0.9
+  },
+  "IconProperties": {
+    "Scale": 1.115,
+    "Translation": [
+      0,
+      -4.2
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Cotton_Stage_0.png"
+}

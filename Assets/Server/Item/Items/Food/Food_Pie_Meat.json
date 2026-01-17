@@ -1,0 +1,74 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Pie_Meat.name",
+    "Description": "server.items.Food_Pie_Meat.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T3"
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/Food_Pie_Meat.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Pie.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Pie_Textures/Meat.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#d69f46"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T3"
+        },
+        "HealthRegen_TierCheck_T3",
+        "Meat_TierCheck_T3"
+      ]
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Dough",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Meats",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Spices",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Salt",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Fuel",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Cookingbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Baked"
+        ]
+      }
+    ],
+    "TimeSeconds": 5,
+    "KnowledgeRequired": true
+  },
+  "ItemLevel": 12,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

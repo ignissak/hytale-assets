@@ -1,0 +1,89 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "PounceStab",
+    "CameraEffect": "Daggers_Land"
+  },
+  "RunTime": 0.025,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.069,
+            "Selector": {
+              "Id": "Stab",
+              "ExtendTop": 0.6,
+              "ExtendBottom": 0.6,
+              "ExtendLeft": 0.5,
+              "ExtendRight": 0.5,
+              "EndDistance": 2.25
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultOk": true,
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Daggers_Pounce_Stab_Damage"
+                    ]
+                  },
+                  "Var": "Daggers_Pounce_Stab_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "ApplyForce",
+              "Forces": [
+                {
+                  "Direction": {
+                    "Y": 1.0
+                  },
+                  "Force": 6.0
+                },
+                {
+                  "Direction": {
+                    "Z": 1.0
+                  },
+                  "Force": 7.0
+                }
+              ],
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.82,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Daggers_Pounce_Stab_Effect"
+              ]
+            },
+            "Var": "Daggers_Pounce_Stab_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "SignatureEnergy": 100
+  },
+  "ValueType": "Percent",
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Groundslam_Jump_EntityEffect",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            {
+              "Type": "ApplyEffect",
+              "EffectId": "Mace_Signature"
+            }
+          ]
+        }
+      },
+      {
+        "Type": "Replace",
+        "Var": "Groundslam_Jump_Force",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Mace_Signature_Groundslam_Jump_Force"
+          ]
+        }
+      },
+      {
+        "Type": "Simple",
+        "RunTime": 0.05
+      },
+      {
+        "Type": "Replace",
+        "Var": "Groundslam_Swing_Selector",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Mace_Signature_Groundslam_Swing_Selector"
+          ]
+        }
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "SignatureEnergy": -100
+        },
+        "ValueType": "Percent"
+      }
+    ]
+  }
+}

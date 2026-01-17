@@ -1,0 +1,58 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "Range": {
+      "Value": 10,
+      "Description": "The range within which the threat must be performed to be registered"
+    }
+  },
+  "Content": {
+    "Type": "And",
+    "Sensors": [
+      {
+        "Reference": "Component_Sensor_Sight_By_Attitude",
+        "Modify": {
+          "ViewRange": { "Compute": "Range" },
+          "Attitudes": [ "Hostile", "Neutral" ]
+        }
+      },
+      {
+        "Type": "Or",
+        "Sensors": [
+          {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "MovementState",
+                    "State": "Running"
+                  }
+                ]
+              },
+              {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "SpotsMe"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "Target",
+            "Filters": [
+              {
+                "Type": "Combat"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

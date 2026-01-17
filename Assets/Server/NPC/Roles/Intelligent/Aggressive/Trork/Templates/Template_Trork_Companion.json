@@ -1,0 +1,872 @@
+{
+  "Type": "Abstract",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Wolf_Trork_Shaman",
+      "Description": "Model to be used"
+    },
+    "WanderRadius": {
+      "Value": 8,
+      "Description": "General wander radius"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 50,
+      "Description": "AlertedRange"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "MaxSpeed": {
+      "Value": 8,
+      "Description": "Maximum walking speed"
+    },
+    "MasterDistance": {
+      "Value": 8,
+      "Description": "Max desired distance from master"
+    },
+    "DespawnIfIdle": {
+      "Value": false,
+      "Description": "Whether to despawn if idle"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self", "Trork" ],
+      "Description": "Groups not to take damage from"
+    },
+    "AttitudeGroup": {
+      "Value": "Trork",
+      "Description": "Attitude group"
+    },
+    "Attack": {
+      "Value": "Root_NPC_Wolf_Attack",
+      "Description": "The attack to use",
+      "MinAttackPause": 1,
+      "MaxAttackPause": 2
+    },
+    "AttackDistance": {
+      "Value": 2.5,
+      "Description": "The distance to attack from"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "DropList": { "Compute": "DropList" },
+  "Appearance": { "Compute": "Appearance" },
+  "StartState": "Idle",
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "CorpseStaysInFlock": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "RunThreshold": 0.5,
+      "RunThresholdRange": 0.1,
+      "MaxRotationSpeed": 360,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "InteractionVars": {
+    "Bite_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Wolf_Bite_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 5
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "$Comment": "This is separate so I can run it all the time regardless of the rest of the script",
+          "Continue": true,
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Follower",
+                    "Size": [ 2, 2 ]
+                  }
+                ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 0.5, 2 ],
+              "Action": {
+                "Type": "SetLeashPosition",
+                "ToTarget": true
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "CompanionAttack",
+            "TargetSlot": "LockedTarget"
+          },
+          "Actions": [
+            {
+              "Type": "State",
+              "State": "Attack"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "CompanionCeaseAttack",
+            "TargetSlot": "LockedTarget"
+          },
+          "Actions": [
+            {
+              "Type": "OverrideAttitude",
+              "Attitude": "Ignore",
+              "Duration": 300
+            },
+            {
+              "Type": "ReleaseTarget"
+            },
+            {
+              "Type": "State",
+              "State": "Idle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Self",
+                    "Filters": [
+                      {
+                        "Type": "Flock",
+                        "FlockStatus": "NotMember"
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Switch",
+                    "Switch": { "Compute": "DespawnIfIdle" }
+                  }
+                ]
+              },
+              "ActionsAtomic": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "Despawn"
+                }
+              ]
+            },
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "$TODO": "Add a panic state that alerts the master",
+              "Reference": "Component_Instruction_Damage_Check",
+              "Modify": {
+                "_ExportStates": [ "Attack", "Idle" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.6
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 1,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": { "Compute": "DisableDamageGroups" }
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 0.6
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Leash",
+                    "Range": { "Compute": "MasterDistance" }
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 5,
+                    "StopDistance": 2,
+                    "RelativeSpeed": 1,
+                    "AbortDistance": 100
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 4, 6 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": { "Compute": "WanderRadius" },
+                          "MaxHeadingChange": 60,
+                          "RelativeSpeed": 0.5
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 0, 3 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile", "Neutral", "Friendly" ]
+                    }
+                  },
+                  {
+                    "Reference": "Component_Sensor_Sound_By_Attitude",
+                    "Modify": {
+                      "HearingRange": { "Compute": "HearingRange" },
+                      "ThroughWalls": false,
+                      "Attitudes": [ "Hostile", "Neutral", "Friendly" ]
+                    }
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Trork_Instruction_Reputation_Switch",
+                  "Modify": {
+                    "_ExportStates": [ "Chase", "Chase", "Chase", "Chase" ],
+                    "SwitchTime": [ 0, 0 ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Once": true,
+                "Type": "Target"
+              },
+              "Actions": [
+                {
+                  "Type": "FlockBeacon",
+                  "Message": "CompanionAttack",
+                  "SendToSelf": false,
+                  "SendToLeaderOnly": true,
+                  "SendTargetSlot": "LockedTarget"
+                },
+                {
+                  "Type": "OverrideAttitude",
+                  "Attitude": "Hostile",
+                  "Duration": 600
+                }
+              ]
+            },
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "AttackDistance" },
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 0.2, 0.5 ],
+                  "Action": {
+                    "Type": "Attack",
+                    "Attack": { "Compute": "Attack" },
+                    "AttackPauseRange": [ 1, 2 ]
+                  }
+                }
+              ],
+              "HeadMotion": {
+                "Type": "Aim",
+                "RelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+              }
+            },
+            {
+              "Reference": "Component_Instruction_Intelligent_Chase",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Idle", "Idle" ],
+                "ViewRange": { "Compute": "AlertedRange" },
+                "HearingRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 1
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 0.75,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": { "Compute": "DisableDamageGroups" }
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 1
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 3,
+                    "StopDistance": 2,
+                    "RelativeSpeed": 0.7
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Attack"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Hostile" ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.2, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Threaten"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Neutral", "Friendly" ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.2, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Friendly"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "ReleaseTarget"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.2, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Idle"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Target",
+                  "Range": { "Compute": "ViewRange" },
+                  "AutoUnlockTarget": true,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Friendly"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Once": true,
+                "Type": "Target"
+              },
+              "Actions": [
+                {
+                  "Type": "OverrideAttitude",
+                  "Attitude": "Ignore",
+                  "Duration": 300
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 4, 6 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Idle"
+                  }
+                }
+              ]
+            },
+            {
+              "$TODO": "Maybe bark animation or be happy or wag tail or something?",
+              "Sensor": {
+                "Type": "Target",
+                "Range": 6
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Chase"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Threaten"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Once": true,
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "FlockBeacon",
+                  "Message": "CompanionAttack",
+                  "SendToSelf": false,
+                  "SendToLeaderOnly": true,
+                  "SendTargetSlot": "LockedTarget"
+                }
+              ]
+            },
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 1
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Mob",
+                    "Range": 0.5,
+                    "ExcludeOwnType": false,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": { "Compute": "DisableDamageGroups" }
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 45,
+                    "RelativeSpeed": 1
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "HeadMotion": {
+                    "Type": "Watch"
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Target",
+                  "Range": 6,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Chase"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Attack"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "ViewRange" }
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 4, 6 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Attack"
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "DeathInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Once": true,
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "FlockBeacon",
+            "Message": "CompanionDeath",
+            "SendToSelf": false,
+            "SendToLeaderOnly": true,
+            "SendTargetSlot": "LockedTarget"
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

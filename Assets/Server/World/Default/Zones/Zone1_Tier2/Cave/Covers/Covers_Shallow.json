@@ -1,0 +1,136 @@
+[
+  {
+    "Type": ["Plant_Crop_Mushroom_Flatcap_Green","Plant_Moss_Rug_Green"],
+    "Weight": [30,70],
+    "Offset": 1,
+    "Density": 0.5,
+    "NoiseMask": {
+      "Seed": "Cave_Shallow_Lightsources",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.2,
+      "Threshold": [0, 0.3]
+    },
+    "HeightThreshold": {
+      "Positions": [70, 80, 120, 130],
+      "Values": [0, 0.5, 1, 0]
+    }
+  },
+  {
+    "Type": ["Soil_Grass"],
+    "Parent": ["Rock_Stone", "Soil_Dirt"],
+    "Weight": [100],
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Grasslands-Base",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.002
+        },
+        {
+          "Seed": "Grasslands-Base-2",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 4,
+          "Persistence": 0.8,
+          "Scale": 0.004
+        },
+        {
+          "Seed": "Grasslands-Base-3",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 5,
+          "Persistence": 0.6,
+          "Scale": 0.011
+        }
+      ],
+      "Factors": [0.5, 0.25, 0.25],
+      "Threshold": [0.392, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [108, 111, 114],
+      "Values": [0, 0.5, 1]
+    }
+  },
+  {
+    "Type": ["Rock_Stone_Mossy"],
+    "Parent": ["Rock_Stone"],
+    "Weight": [100],
+    "NoiseMask": {
+      "Seed": "4743777",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.2,
+      "Threshold": [0, 0.55]
+    },
+    "HeightThreshold": {
+      "Positions": [85, 98, 104, 106, 108, 110],
+      "Values": [0, 0.5, 1, 1, 0.5, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Moss_Rug_Green"],
+    "Weight": [100],
+    "Offset": 1,
+    "Density": 0.2,
+    "HeightThreshold": {
+      "Positions": [85, 98, 104, 106, 108, 110],
+      "Values": [0, 0.5, 1, 1, 0.5, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Crop_Mushroom_Cap_Brown", "Rubble_Stone_Mossy"],
+    "Weight": [20, 80],
+    "Offset": 1,
+    "Density": 0.2,
+    "NoiseMask": {
+      "Seed": "4743777",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.35,
+      "Threshold": [0, 0.55]
+    },
+    "HeightThreshold": {
+      "Positions": [85, 98, 104, 106, 108, 110],
+      "Values": [0, 0.5, 1, 1, 0.5, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Moss_Cave_Green|Pitch=180"],
+    "Parent": ["Rock_Stone"],
+    "Weight": [100],
+    "Offset": 1,
+    "Density": 0.75,
+    "AnchorType": "CEILING",
+    "NoiseMask": {
+      "Seed": "4743777",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.35,
+      "Threshold": [0, 0.4]
+    },
+    "HeightThreshold": {
+      "Positions": [95, 100],
+      "Values": [0, 1]
+    }
+  }
+]

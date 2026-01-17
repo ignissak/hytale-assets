@@ -1,0 +1,48 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 360,
+      "MaxHeadRotationSpeed": 360
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Path",
+            "Range": 10
+          },
+          "BodyMotion": {
+            "Type": "Path"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Separate_Head_Body_Motion.name"
+}

@@ -1,0 +1,102 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Trap_Ice.name"
+  },
+  "Categories": [
+    "Blocks.Rocks"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Group": "Ice",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "DropList": "Rock_Ice",
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "BlockParticleSetId": "Ice",
+    "Textures": [
+      {
+        "All": "BlockTextures/Rock_Ice.png",
+        "Weight": 1
+      }
+    ],
+    "BlockSoundSetId": "Ice",
+    "TransitionTexture": "BlockTextures/Transition_Rock_Ice2.png",
+    "TransitionToGroups": [
+      "Stone",
+      "Grass",
+      "Sand",
+      "Dirt",
+      "Ice",
+      "Gravel"
+    ],
+    "CustomModel": "Blocks/Structures/Base_Shapes/QuarterBlock_High.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/Rock_Ice_Cracked.png"
+      }
+    ],
+    "Interactions": {
+      "CollisionEnter": {
+        "Cooldown": {
+          "Id": "Collision",
+          "Cooldown": 0
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "BlockCondition",
+              "Matchers": [
+                {
+                  "Block": {
+                    "Id": "Trap_Ice"
+                  },
+                  "Face": "Up",
+                  "StaticFace": true
+                }
+              ],
+              "Next": {
+                "Type": "ChangeBlock",
+                "Changes": {
+                  "Trap_Ice": "Empty"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "TransitionToTag": "Fluid=Water",
+    "ParticleColor": "#c0f3f4"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Ice"
+    }
+  ],
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -25.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Trap_Ice.png",
+  "Tags": {
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

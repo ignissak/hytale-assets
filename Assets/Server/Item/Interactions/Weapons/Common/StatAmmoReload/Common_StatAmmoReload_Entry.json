@@ -1,0 +1,50 @@
+{
+  "Type": "Simple",
+  "RunTime": 0.8,
+  "Effects": {
+    "ItemAnimationId": "ReloadReady",
+    "WorldSoundEventId": "SFX_Door_Crude_Open",
+    "LocalSoundEventId": "SFX_Door_Crude_Open",
+    "ClearAnimationOnFinish": true
+  },
+  "Next": {
+    "Type": "Repeat",
+    "Repeat": -1,
+    "Rules": {
+      "InterruptedBy": [
+        "Primary",
+        "Secondary"
+      ]
+    },
+    "ForkInteractions": {
+      "Interactions": [
+        {
+          "Type": "StatsCondition",
+          "LessThan": true,
+          "Costs": {
+            "Ammo": 100
+          },
+          "ValueType": "Percent",
+          "Next": {
+            "Type": "Replace",
+            "Var": "Reload_ItemConsume",
+            "DefaultValue": {
+              "Interactions": [
+                "Common_StatAmmoReload_ItemConsume"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Failed": {
+      "Type": "Replace",
+      "Var": "No_Ammo_Effects",
+      "DefaultValue": {
+        "Interactions": [
+          "Common_Bow_No_Ammo"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Shortbow_Pull.name"
+  },
+  "Parent": "Weapon_Shortbow_Combat",
+  "Interactions": {
+    "Primary": "Bow_Combat_Shoot_Charging",
+    "Secondary": "Daggers_Bash",
+    "Ability1": {
+      "Interactions": [
+        {
+          "Type": "StatsCondition",
+          "Costs": {
+            "SignatureEnergy": 100
+          },
+          "ValueType": "Percent",
+          "Next": {
+            "Type": "ChangeStat",
+            "Next": "Bow_Pull_Pullshot",
+            "StatModifiers": {
+              "SignatureEnergy": -100
+            },
+            "ValueType": "Percent"
+          }
+        }
+      ],
+      "Tags": {
+        "Attack": [
+          "Melee"
+        ]
+      }
+    }
+  }
+}

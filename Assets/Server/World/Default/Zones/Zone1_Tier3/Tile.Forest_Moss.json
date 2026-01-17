@@ -1,0 +1,864 @@
+{
+  "Weight": 12.5,
+  "SizeModifier": 1,
+  "MapColor": "#65750d",
+  "Covers": [
+        {
+      "Type": ["Rubble_Marble", "Rubble_Marble_Medium"],
+      "Weight": [60, 40],
+      "Density": 0.25,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.8,
+        "Scale": 0.02,
+        "Normalize": 0.85,
+        "Threshold": [0.8, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Pebbles"]
+    },
+    {
+      "Type": ["Rubble_Stone", "Rubble_Stone_Medium"],
+      "Weight": [60, 40],
+      "Density": 0.25,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.8,
+        "Scale": 0.02,
+        "Normalize": 0.85,
+        "Threshold": [0.8, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Gravel"]
+    },
+    {
+      "$Comment": "This cover places rubble around Monuments/Ruins",
+      "Type": ["Rubble_Stone"],
+      "Weight": [100],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+              }
+            ],
+            "DistanceRange": 40.0,
+            "Formula": "INVERTED",
+            "Normalize": 0.35
+          },
+          {
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.02,
+            "Normalize": 0.85
+          }
+        ],
+        "Factors": [1, 0.5],
+        "Threshold": [0.2, 0.9]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Leaves",
+        "Soil_Pathway",
+        "Soil_Grass",
+        "Soil_Grass_Full",
+        "Soil_Grass_Deep",
+        "Soil_Grass_Sunny"
+      ]
+    },
+    {
+      "Type": ["Plant_Flower_Flax_Blue"],
+      "Density": 0.025,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Flax_Blue_Sparse"
+          }
+        ],
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Grass_Full",
+        "Soil_Grass",
+        "Soil_Grass_Sunny",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": ["Plant_Flower_Common_White2"],
+      "Density": 0.025,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Flowers_Birch_Forest"
+          }
+        ],
+        "Threshold": [0, 0.35]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Grass_Full",
+        "Soil_Grass",
+        "Soil_Grass_Sunny",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        {
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise-2",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED_FIX",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.01,
+            "Normalize": [0, 0.98]
+          },
+          {
+            "Seed": "Grasslands-Moss-Ponds",
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "Density": 0.25,
+            "Jitter": 0.6,
+            "Formula": "INVERTED_SQUARED",
+            "Scale": 0.025
+          }
+        ],
+        "Normalize": [0.75, 0.85],
+        "Threshold": [0.9, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116, 117],
+        "Values": [0, 1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Crop_Mushroom_Common_Brown"],
+      "Density": 0.25,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Mushroom_Mixed"
+          }
+        ],
+        "Threshold": [0.5, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Full",
+        "Soil_Grass_Sunny",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": ["Plant_Flower_Tall_Purple"],
+      "Density": 0.5,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Sunflowers"
+          }
+        ],
+        "Threshold": [0, 0.28]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Full",
+        "Soil_Grass_Sunny",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": ["Plant_Moss_Rug_Yellow"],
+      "Weight": [1],
+      "Density": 0.9,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Short_Green"
+          }
+        ],
+        "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": [
+        "Soil_Grass_Full",
+        "Soil_Grass",
+        "Soil_Pathway",
+        "Plant_Moss_Block_Green",
+        "Plant_Moss_Block_Yellow"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Lush_Short",
+        "Plant_Grass_Lush",
+        "Plant_Grass_Lush_Tall"
+      ],
+      "Weight": [0.5, 0.25, 0.25],
+      "Density": 0.2,
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Full", "Soil_Grass", "Soil_Pathway"]
+    },
+    {
+      "Type": ["Plant_Flower_Bushy_Green", "Plant_Fern_Winter"],
+      "Weight": [0.43, 0.2],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Flowers_Common_Medium"
+          }
+        ],
+        "Threshold": [0.77, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Full", "Soil_Grass", "Soil_Pathway"]
+    },
+    {
+      "Type": ["Plant_Grass_Lush", "Plant_Grass_Lush_Tall"],
+      "Weight": [0.5, 0.5],
+      "Density": 0.5,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Grass_Tall"
+          }
+        ],
+        "Threshold": [0.66, 0.77]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Full", "Soil_Grass", "Soil_Pathway"]
+    },
+    {
+      "Type": ["Plant_Moss_Green"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Short_Brown"
+          }
+        ],
+        "Threshold": [0.47, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Plant_Moss_Block_Green"]
+    },
+    {
+      "Type": ["Plant_Moss_Short_Green"],
+      "Weight": [1],
+      "Density": 0.4,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Rug_Pink"
+          }
+        ],
+        "Threshold": [0, 0.47]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Plant_Moss_Block_Green"]
+    },
+    {
+      "Type": ["Plant_Moss_Yellow"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Short_Brown"
+          }
+        ],
+        "Threshold": [0.47, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Plant_Moss_Block_Yellow"]
+    },
+    {
+      "Type": ["Plant_Moss_Short_Yellow"],
+      "Weight": [1],
+      "Density": 0.4,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Moss.Moss_Rug_Pink"
+          }
+        ],
+        "Threshold": [0, 0.47]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Plant_Moss_Block_Yellow"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [70, 15, 15],
+        "Prefab": [
+          "Monuments.Incidental.Quartzite.Ruins.*",
+          "Monuments.Incidental.Grasslands.Hunting.Cabins.*",
+          "Monuments.Incidental.Grasslands.Hunting.Camps.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Monuments_Incidental"
+        }
+      },
+      {
+        "Prefab": ["Monuments.Challenge.Grass.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Monuments_Dungeon_Challenge"
+        }
+      },
+      {
+        "Prefab": ["Plants.Bush.Green.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Bushes"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Rocks.Quartzite.Moss_Large.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Mountain_Boulders"
+        }
+      },
+      {
+        "Prefab": ["Plants.Mushroom_Rings.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Mushrooms"
+        }
+      },
+      {
+        "Prefab": ["Trees.Oak.Stage_0.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Oak_Young"
+        }
+      },
+      {
+        "Prefab": ["Trees.Ash.Stage_0.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Oak_Young"
+        }
+      },
+      {
+        "Weight": [15, 30, 45],
+        "Prefab": [
+          "Trees.Oak.Stage_2.*",
+          "Trees.Oak.Stage_3.*",
+          "Trees.Oak_Moss.Stage_4.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Oak"
+        }
+      },
+      {
+        "Weight": [5, 5],
+        "Prefab": ["Trees.Ash.Stage_3.*", "Trees.Ash_Moss.Stage_3.*"],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Ash"
+        }
+      },
+      {
+        "Weight": [70, 30],
+        "Prefab": [
+          "Trees.Oak.Stage_3.*",
+          "Rock_Formations.Pillars.Rock_Quartzite.Moss_Yellow.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Oak_Small"
+        }
+      },
+      {
+        "Weight": [15, 35, 10, 25, 5, 10],
+        "Prefab": [
+          "Rock_Formations.Rocks.Quartzite.Small.*",
+          "Rock_Formations.Rocks.Quartzite.Large.*",
+          "Rock_Formations.Rocks.Quartzite.Moss_Small.*",
+          "Rock_Formations.Rocks.Quartzite.Moss_Large.*",
+          "Rock_Formations.Rocks.Quartzite.Moss_Small_Health.*",
+          "Rock_Formations.Rocks.Quartzite.Moss_Large_Health.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Boulders"
+        }
+      },
+      {
+        "Weight": [25, 25, 50],
+        "Prefab": [
+          "Rock_Formations.Rocks.Quartzite.Large.*",
+          "Rock_Formations.Rocks.Quartzite.Moss_Large.*",
+          "Rock_Formations.Pillars.Rock_Quartzite.Moss_Yellow.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone1_Tier3.PrefabPatterns.Forest_Moss_Pond_Boulders"
+        }
+      },
+      {
+        "Weight": [10, 20, 35, 35, 5],
+        "Prefab": [
+          "Monuments.Encounter.Zone1.Tier1.Outpost.*",
+          "Monuments.Encounter.Zone1.Tier2.Outpost.*",
+          "Monuments.Encounter.Zone1.Tier3.Outpost_Boss.*",
+          "Monuments.Encounter.Zone1.Tier3.Outpost_NoBoss.*",
+          "Monuments.Unique.Mage_Towers.Quartzite.Tier_3.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Encounter"
+        }
+      },
+      {
+
+        "Prefab": [
+          "Monuments.Unique.Temple.Portal.Grasslands.*"
+        ],
+        "Pattern": {
+          "File": "Zones.PrefabPatterns_Shared.Monuments_Temple_Entrances"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "$Comment": "This layer places Gravel around Monuments/Ruins",
+            "Blocks": ["Soil_Gravel:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone1.Covers.Bush.Bush_Green_Gorge"
+                }
+              ],
+              "Threshold": [0.2, 1]
+            }
+          },
+          {
+            "Blocks": ["Plant_Moss_Block_Green:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Covers.Soil.Dirt_Bedrock"
+                }
+              ],
+              "Threshold": [0, 0.34]
+            }
+          },
+          {
+            "Blocks": ["Plant_Moss_Block_Yellow:2"],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Covers.Soil.Dirt_Bedrock"
+                }
+              ],
+              "Threshold": [0, 0.34]
+            }
+          },
+          {
+            "Blocks": ["Soil_Mud_Dry:2"],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Grasslands-River-Noise-2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED_RIDGED_SQRT_FIX",
+                  "Octaves": 3,
+                  "Persistence": 0.31,
+                  "Scale": 0.01,
+                  "Normalize": [0, 0.99]
+                },
+                {
+                  "Seed": "Grasslands-River-Noise-3",
+                  "NoiseType": "SIMPLEX",
+                  "Lacunarity": 5,
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.015,
+                  "Normalize": [0, 0.5]
+                }
+              ],
+              "Threshold": [0.85, 1]
+            }
+          },
+          {
+            "Blocks": ["Soil_Mud_Dry:2"],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Grasslands-River-Noise-2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED_RIDGED_SQRT",
+                  "Octaves": 3,
+                  "Persistence": 0.3,
+                  "Scale": 0.04,
+                  "Normalize": [0, 0.85]
+                },
+                {
+                  "Seed": "Grasslands-River-Noise-3",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 1,
+                  "Persistence": 0.1,
+                  "Scale": 0.012,
+                  "Normalize": [0, 0.85]
+                }
+              ],
+              "Threshold": [0.9, 1]
+            }
+          },
+          {
+            "Blocks": ["Plant_Moss_Block_Green:2"],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Grasslands-River-Noise-2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "INVERTED_RIDGED_SQRT",
+                  "Octaves": 3,
+                  "Persistence": 0.3,
+                  "Scale": 0.04,
+                  "Normalize": [0, 0.85]
+                },
+                {
+                  "Seed": "Grasslands-River-Noise-3",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 1,
+                  "Persistence": 0.1,
+                  "Scale": 0.012,
+                  "Normalize": [0, 0.85]
+                }
+              ],
+              "Threshold": [0.87, 1]
+            }
+          },
+          {
+            "Blocks": ["Soil_Grass"]
+          }
+        ]
+      },
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [1, 2],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Seed": "Gully_Cliffs",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 1,
+              "Persistence": 0.2,
+              "Scale": 0.025,
+              "Threshold": [0, 0.4]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [1, 2],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Seed": "Gully_Cliffs",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 1,
+              "Persistence": 0.2,
+              "Scale": 0.025,
+              "Threshold": [0.6, 1]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [2, 3],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone1.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "Gully_Cliffs",
+      "NoiseType": "SIMPLEX",
+      "Octaves": 1,
+      "Persistence": 0.2,
+      "Scale": 0.025
+    },
+    "Keys": [0.4, 0.5, 0.6],
+    "Thresholds": [
+      {
+        "Positions": [115, 116, 117, 117, 118, 122, 131, 132, 133],
+        "Values": [1, 0.87, 0.835, 0.82, 0.78, 0.782, 0.625, 0.5, 0]
+      },
+      {
+        "Positions": [115, 116, 117, 117, 118, 123, 131, 132],
+        "Values": [1, 0.87, 0.835, 0.82, 0.8, 0.75, 0.625, 0]
+      },
+      {
+        "Positions": [115, 116, 117, 117, 118, 123, 127, 131, 132],
+        "Values": [1, 0.87, 0.835, 0.82, 0.8, 0.73, 0.732, 0.6, 0]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "MAX",
+    "Noise": [
+      {
+        "Type": "DISTORTED",
+        "Noise": {
+          "Seed": "Grasslands-Biomes-Distrobution",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "Formula": "SQRT",
+          "Scale": 0.004
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Grasslands-Base-Randomizer-1",
+              "NoiseType": "OLD_SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.005,
+              "Amplitude": 75
+            },
+            {
+              "Seed": "Grasslands-Base-Randomizer-2",
+              "NoiseType": "OLD_SIMPLEX",
+              "Octaves": 4,
+              "Persistence": 0.5,
+              "Scale": 0.01,
+              "Amplitude": 30
+            }
+          ]
+        },
+        "Normalize": [0, 1.2]
+      },
+      {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise-2",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED_FIX",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.01,
+            "Normalize": [0, 0.98]
+          },
+          {
+            "Seed": "Grasslands-Moss-Ponds",
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "Density": 0.25,
+            "Jitter": 0.6,
+            "Formula": "INVERTED_SQUARED",
+            "Scale": 0.025
+          }
+        ],
+        "Normalize": [0.75, 0.85]
+      },
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_FIX",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.004,
+        "Normalize": [0, 1.1]
+      },
+      {
+        "Seed": "Grasslands-River-Noise-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.01,
+        "Normalize": [0, 0.98]
+      },
+      {
+        "Seed": "Grasslands-Base",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 4,
+        "Persistence": 0.45,
+        "Scale": 0.002,
+        "Normalize": [0.52, 0.75]
+      }
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone1_Swamps"]
+    },
+    "Entries": []
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["65750d"],
+      "Weights": [100],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Forest",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.035
+      }
+    }
+  },
+  "Fade": {
+    "FadeHeightmap": 1,
+    "FadeLength": 0,
+    "FadeStart": 0,
+    "TerrainLength": 25,
+    "TerrainStart": 5
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

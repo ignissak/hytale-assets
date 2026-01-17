@@ -1,0 +1,63 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "DisableDamageGroups": [ "Self" ],
+  "PossibleInventoryItems": "Drop_Arrows",
+  "PickupDropOnDeath": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "Range": 40,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              },
+              {
+                "Type": "Altitude",
+                "AltitudeRange": [ 10, 30 ]
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          },
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Attack",
+              "ChargeFor": 3,
+              "AimingTimeRange": [ 3, 3 ],
+              "AttackType": "Secondary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Altitude_Filter.name"
+}

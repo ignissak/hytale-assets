@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Blackwood_Fence.name"
+  },
+  "Parent": "Wood_Softwood_Fence",
+  "Icon": "Icons/ItemsGenerated/Wood_Blackwood_Fence.png",
+  "Set": "Wood_Blackwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Blackwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Blackwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Blackwood_Fence",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#443f37",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Blackwood.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Blackwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Blackwood_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Blackwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Blackwood_Fence",
+        "Corner": "*Wood_Blackwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Blackwood_Fence_Gate"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Blackwood"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Lightwood_Fence_Gate.name"
+  },
+  "Parent": "Wood_Softwood_Fence_Gate",
+  "Icon": "Icons/ItemsGenerated/Wood_Lightwood_Fence_Gate.png",
+  "Set": "Wood_Lightwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Lightwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Gate"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Lightwood_Gate_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#cec1ab",
+    "State": {
+      "Definitions": {
+        "CloseDoorIn": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_In.blockyanim"
+        },
+        "CloseDoorOut": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_Out.blockyanim"
+        },
+        "DoorBlocked": {},
+        "OpenDoorIn": {
+          "HitboxType": "Fence_Gate_Open_In",
+          "InteractionHitboxType": "Fence_Gate_Open_In_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_In.blockyanim"
+        },
+        "OpenDoorOut": {
+          "HitboxType": "Fence_Gate_Open_Out",
+          "InteractionHitboxType": "Fence_Gate_Open_Out_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_Out.blockyanim"
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Gate": "Wood_Lightwood_Fence_Gate,*Wood_Lightwood_Fence_Gate_State_Definitions_OpenDoorIn,*Wood_Lightwood_Fence_Gate_State_Definitions_OpenDoorOut,*Wood_Lightwood_Fence_Gate_State_Definitions_CloseDoorIn,*Wood_Lightwood_Fence_Gate_State_Definitions_CloseDoorOut,*Wood_Lightwood_Fence_Gate_State_Definitions_DoorBlocked"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    },
+    "BlockSoundSetId": "Wood"
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Temple_Emerald_Torch.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Ancient",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      21.375
+    ],
+    "Scale": 0.6,
+    "Translation": [
+      0,
+      -15.6
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Block_Secondary"
+  },
+  "InteractionVars": {
+    "Torch_Swing_Left_Effect": "Torch_Swing_Left_Effect",
+    "Torch_Swing_Right_Effect": "Torch_Swing_Right_Effect",
+    "Torch_Swing_Left_Damage": "Torch_Swing_Left_Damage",
+    "Torch_Swing_Right_Damage": "Torch_Swing_Right_Damage"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Torch",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Emerald/Torch.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Temple_Emerald/Torch_Texture.png"
+      }
+    ],
+    "Light": {
+      "Radius": 0,
+      "Color": "#ba9"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "HitboxType": "Torch",
+    "MovementSettings": {},
+    "Particles": [
+      {
+        "SystemId": "Torch_Fire_Green",
+        "TargetNodeName": "Flame",
+        "Scale": 0.6,
+        "PositionOffset": {
+          "Y": -0.15
+        }
+      }
+    ],
+    "Material": "Solid",
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_On_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Items/Torch/Torch_Off.blockyanim"
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Torch_Default_Loop",
+    "Looping": true,
+    "ParticleColor": "#c7b885",
+    "VariantRotation": "NESW"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Scale": 1.4,
+  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Emerald_Torch.png",
+  "Utility": {
+    "Usable": true
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Temple"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

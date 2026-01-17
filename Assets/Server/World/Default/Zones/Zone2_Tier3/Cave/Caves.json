@@ -1,0 +1,528 @@
+{
+  "Types": [
+    {
+      "Name": "Drylands_Plateaus",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt", "*"]
+      },
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Drylands-Canyon-Noise",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 1,
+            "Persistence": 0.8,
+            "Scale": 0.0012
+          },
+          {
+            "Seed": "Drylands-Canyon-Noise-3",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [0.95, 0.05],
+        "Threshold": [0, 0.4]
+      },
+      "Depth": 200,
+      "Entry": "Plateaus.Entry",
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density",
+        "Density": [0, 1],
+        "Scale": 0.0075,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [115, 135],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [105, 105, 255],
+        "Values": [0, 1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Deserts"
+    },
+    {
+      "Name": "Drylands_Surface_Type_1",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Soil_Dirt_Poisoned", "!Rock_Basalt", "!Soil_Mud", "!Empty", "*"]
+      },
+      "NoiseMask": {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "Type":"DISTORTED",
+            "Noise":{
+              "Type": "SUM",
+              "Noise": [
+              {
+                "Seed": "Grasslands-River-Noise",
+                "NoiseType": "OLD_SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Formula": "INVERTED_RIDGED_SQRT",
+                "Octaves": 1,
+                "Persistence": 0.1,
+                "Scale": 0.004,
+                "Normalize": [0.5876, 0.9999]
+              },
+              {
+                "Seed": "Drylands-Canyon-Rougher",
+                "NoiseType": "SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Formula": "INVERTED",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.02
+              }
+              ],
+              "Factors": [0.85, 0.15]
+            },
+            "Randomizer":{
+              "Generators":[
+              {
+                "Seed": "Drylands-Randomizer",
+                "NoiseType":"SIMPLEX",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.0014,
+                "Amplitude": 70
+              }
+              ]
+            },
+            "Normalize": 0.45
+            },
+          {
+            "Seed": "Drylands-Pattern-Monuments-Tier-3",
+            "NoiseType": "CELL",
+            "Formula": "INVERTED_SQRT",
+            "Scale": 0.0050012,
+            "CellMode": "DISTANCE",
+            "Jitter": 0.6,
+            "Density": [0, 1],
+            "Normalize": 0.65
+          }
+        ],
+        "Threshold": [0, 0.99]
+        },
+      "Depth": 200,
+      "Entry": "Surface.Type_1.Entry",
+      "HeightThreshold": {
+        "Positions": [115, 116, 129, 130],
+        "Values": [0, 1, 1, 0]
+      },
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density-Surface",
+        "Density": [0.7501, 0.875],
+        "Scale": 0.01501,
+        "Jitter": 0.4001
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [75, 77, 255],
+        "Values": [0, 1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Savanna"
+    },
+    {
+      "Name": "Drylands_Surface_Type_2",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Soil_Dirt_Poisoned", "!Rock_Basalt", "!Soil_Mud", "!Empty", "*"]
+      },
+      "NoiseMask": {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "Type":"DISTORTED",
+            "Noise":{
+              "Type": "SUM",
+              "Noise": [
+              {
+                "Seed": "Grasslands-River-Noise",
+                "NoiseType": "OLD_SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Formula": "INVERTED_RIDGED_SQRT",
+                "Octaves": 1,
+                "Persistence": 0.1,
+                "Scale": 0.004,
+                "Normalize": [0.5876, 0.9999]
+              },
+              {
+                "Seed": "Drylands-Canyon-Rougher",
+                "NoiseType": "SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Formula": "INVERTED",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.02
+              }
+              ],
+              "Factors": [0.85, 0.15]
+            },
+            "Randomizer":{
+              "Generators":[
+              {
+                "Seed": "Drylands-Randomizer",
+                "NoiseType":"SIMPLEX",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.0014,
+                "Amplitude": 70
+              }
+              ]
+            },
+              "Normalize": 0.45
+            },
+            {
+              "Seed": "Drylands-Pattern-Monuments-Tier-3",
+              "NoiseType": "CELL",
+              "Formula": "INVERTED_SQRT",
+              "Scale": 0.0050012,
+              "CellMode": "DISTANCE",
+              "Jitter": 0.6,
+              "Density": [0, 1],
+              "Normalize": 0.6
+            }
+        ],
+        "Threshold": [0, 0.99]
+        },
+      "Depth": 200,
+      "Entry": "Surface.Type_2.Entry",
+      "HeightThreshold": {
+        "Positions": [115, 116, 129, 130],
+        "Values": [0, 1, 1, 0]
+      },
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density-Surface",
+        "Density": [0.875, 0.9999],
+        "Scale": 0.01501,
+        "Jitter": 0.4001
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [75, 77, 255],
+        "Values": [0, 1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Savanna"
+    },
+    {
+      "Name": "Drylands_Shallow",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt", "*"]
+      },
+      "NoiseMask": {
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+        "NoiseType": "CELL",
+        "Formula": "INVERTED_SQRT",
+        "Scale": 0.0050012,
+        "CellMode": "DISTANCE",
+        "Jitter": 0.6,
+        "Density": [0, 1],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Shallow.Entry",
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density",
+        "Density": [0.15, 1],
+        "Scale": 0.025,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [88, 98],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 105, 110],
+        "Values": [1, 1, 0]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Deserts"
+    },
+    {
+      "Name": "Drylands_Deep",
+      "BlockMask": {
+        "Default": ["!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Rock_Basalt", "*"]
+      },
+      "NoiseMask": {
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+        "NoiseType": "CELL",
+        "Formula": "INVERTED_SQRT",
+        "Scale": 0.0050012,
+        "CellMode": "DISTANCE",
+        "Jitter": 0.6,
+        "Density": [0, 1],
+        "Threshold": [0, 0.7]
+      },
+      "Depth": 200,
+      "Entry": "Deep.Entry",
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density-1",
+        "Density": 1,
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [63, 73],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 80, 84],
+        "Values": [1, 1, 0]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Deserts"
+    },
+    {
+      "Name": "Drylands_Volcanic",
+      "BlockMask": {
+        "Default": [{"Replace":false,"Fluid":"Water_Source"},"!Rock_Bedrock","*"]
+      },
+      "Depth": 200,
+      "Entry": "Volcanic.Entry",
+      "EntryPoints": {
+        "Seed": "Drylands-Caves-Density-2",
+        "Density": 1,
+        "Scale": 0.02,
+        "Jitter": 0.5
+      },
+      "FixedEntryHeight": [33, 43],
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 90,
+      "Yaw": [0, 360],
+      "Environment": "Env_Zone2_Caves_Volcanic_T3"
+    },
+    {
+      "Name": "Drylands_Klops_holes",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED",
+            "Octaves": 3,
+            "Persistence": 0.3,
+            "Scale": 0.004
+          },
+          {
+            "Seed": "Grasslands-Base",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 3,
+            "Persistence": 0.4,
+            "Scale": 0.002
+          }
+        ],
+        "Factors": [0.85, 0.15],
+        "Threshold": [0, 0.91]
+      },
+      "Depth": 60,
+      "Entry": "Klops.Entry",
+      "EntryPoints": {
+        "Density": [0, 1],
+        "Seed": "Caves-Klops",
+        "Scale": 0.00343, //0.00333,
+        "Jitter": 0.5
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116, 129, 130],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [129, 130],
+        "Values": [1, 0]
+      },
+      "Pitch": 0,
+      "Environment": "Env_Zone2_Caves"
+    },
+    {
+      "Name": "Drylands_Dungeons",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Drylands-Canyon-Noise",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 1,
+            "Persistence": 0.8,
+            "Scale": 0.0012
+          },
+          {
+            "Seed": "Drylands-Canyon-Noise-3",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [0.95, 0.05],
+        "Threshold": [0.55, 1]
+      },
+      "Depth": 100,
+      "Entry": "Dungeons.Entry",
+      "EntryPoints": {
+        "Density": [0, 0.0625],
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+        "Scale": 0.0050012,
+        "Jitter": 0.6
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116, 139, 140],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0,
+      "Environment": "Env_Zone2_Dungeons"
+    },
+    {
+      "Name": "Scarak_Hives",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Drylands-Canyon-Noise",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 1,
+            "Persistence": 0.8,
+            "Scale": 0.0012
+          },
+          {
+            "Seed": "Drylands-Canyon-Noise-3",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [0.95, 0.05],
+        "Threshold": [0.45, 1]
+      },
+      "Depth": 100,
+      "Entry": "Hives.Entry",
+      "EntryPoints": {
+		    "Density": [0.625, 0.8125],
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+        "Scale": 0.0050012,
+        "Jitter": 0.6
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 10
+      },
+      "HeightThreshold": {
+        "Positions": [108, 109, 139, 140],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0,
+      "Environment": "Env_Zone2_Dungeons"
+    },
+    {
+      "Name": "Env_Zone2_Mineshafts",
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Drylands-Canyon-Noise",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 1,
+            "Persistence": 0.8,
+            "Scale": 0.0012
+          },
+          {
+            "Seed": "Drylands-Canyon-Noise-3",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [0.95, 0.05],
+        "Threshold": [0.55, 1]
+      },
+      "Depth": 60,
+      "Entry": "Mineshaft.Entry",
+      "EntryPoints": {
+        "Seed": "Drylands-Pattern-Monuments-Tier-3",
+    		"Density": [0.1025, 0.1875],
+            "Scale": 0.0050012,
+    		"Jitter": 0.6
+      },
+      "FluidLevel": {
+        "Fluid": "Lava_Source",
+        "Height": 24
+      },
+      "HeightThreshold": {
+        "Positions": [115, 116, 139, 140],
+        "Values": [0, 1, 1, 0]
+      },
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": 0,
+      "Environment": "Env_Zone2_Mineshafts"
+    },
+    {
+      "Name": "Drylands_Ores",
+      "BlockMask": {
+        "Default": ["Rock_Sandstone_Red", "Rock_Sandstone", "Rock_Sandstone_White", "Soil_Clay", "Rock_Volcanic"]
+      },
+      "Depth": 150,
+      "Entry": "Ores.Entry",
+      "EntryPoints": {
+        "Seed": "Caves-Ores-Entry",
+        "Scale": 0.0156,
+        "Jitter": 0
+      },
+      "FixedEntryHeight": 0,
+      "HeightRadiusFactor": {
+        "Positions": [0, 255],
+        "Values": [1, 1]
+      },
+      "Pitch": -180
+    }
+  ]
+}

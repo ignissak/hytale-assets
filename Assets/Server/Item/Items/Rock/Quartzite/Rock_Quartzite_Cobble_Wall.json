@@ -1,0 +1,78 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Quartzite_Cobble_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Quartzite_Cobble_Wall.png",
+  "Set": "Rock_Quartzite_Cobble",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Quartzite"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Rock_Cobble_Textures/Quartzite.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Quartzite_Cobble_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#9b884f",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Rock_Cobble_Textures/Quartzite.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Cobble_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Quartzite_Cobble_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Quartzite_Cobble_Wall",
+        "Corner": "*Rock_Quartzite_Cobble_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Quartzite"
+    ]
+  },
+  "Parent": "Rock_Stone_Cobble_Wall"
+}

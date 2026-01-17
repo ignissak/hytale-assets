@@ -1,0 +1,103 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Soil_Clay_Ocean_Brick_Wall.name"
+  },
+  "ItemLevel": 15,
+  "Icon": "Icons/ItemsGenerated/Soil_Clay_Ocean_Brick_Wall.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "PlayerAnimationsId": "Block",
+  "Set": "Soil_Clay_Ocean_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Soil_Clay_Ocean_Brick",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick03.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick03_Clay_Ocean.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "HitboxType": "Fence_Thin",
+    "VariantRotation": "Wall",
+    "BlockParticleSetId": "Stone",
+    "Supporting": {
+      "Down": [
+        {
+          "FaceType": "Wall"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Wall"
+        }
+      ]
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#6a887b",
+    "BlockSoundSetId": "Stone",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick_Corner03_Clay.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick_Corner03.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Soil_Clay_Ocean_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Soil_Clay_Ocean_Brick_Wall",
+        "Corner": "*Soil_Clay_Ocean_Brick_Wall_State_Definitions_Corner"
+      }
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Soil"
+    ],
+    "Family": [
+      "Clay"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Soft"
+}

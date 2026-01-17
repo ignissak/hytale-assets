@@ -1,0 +1,113 @@
+{
+  "GridGenerator": {
+	"Seed": "HiddenOasis-PalmTrees",
+    "Density": 0.75,
+    "Scale": 0.25,
+    "Jitter": 0.4
+  },
+  "NoiseMask": {
+	"Type": "MULTIPLY",
+	"Noise": [
+		{
+			"Type": "DISTORTED",
+			"Noise": {
+			"Type": "MULTIPLY",
+			"Noise": [
+				{
+					"Seed": "Drylands-Biomes-Distrobution",
+					"Scale": 0.0011,
+					"Jitter": 0.5,
+					"DistanceRange": 70,
+					"NoiseType": "CELL",
+					"Formula" : "INVERTED",
+					"CellMode": "DISTANCE",
+					"Density": 1,
+					"Normalize": [0, 0.35]
+				  },
+				  {
+					"Seed": "Drylands-HiddenOasis2",
+					"NoiseType": "OLD_SIMPLEX",
+					"FractalMode": "OLDSCHOOL",
+					"Octaves": 2,
+					"Persistence": 0.3,
+					"Scale": 0.015
+				  }
+				]
+			},
+			"Randomizer": {
+				"Generators": [
+					{
+						"Seed": "Drylands-Randomizer",
+						"NoiseType":"OLD_SIMPLEX",
+						"Formula": "SQUARED",
+						"Octaves": 3,
+						"Persistence": 0.8,
+						"Scale": 0.02,
+						"Amplitude": 10
+					}
+				]
+			}
+		},
+		{
+			"Seed": "HiddenOasis-Trees",
+			"NoiseType": "OLD_SIMPLEX",
+			"FractalMode": "OLDSCHOOL",
+			"Octaves": 2,
+			"Persistence": 0.3,
+			"Formula": "RIDGED",
+			"Scale": 0.025,
+			"Normalize": [0.25, 0.25]
+		},
+		{
+			"Seed": "HiddenOasis-Boulders",
+			"Scale": 0.08,
+			"Jitter": 0.7,
+			"DistanceRange": 3,
+			"NoiseType": "CELL",
+			"CellMode": "DISTANCE",
+			"Density": 0.1,
+			"Normalize": [0.5, 0.5]
+		},
+		{
+			"Seed": "HiddenOasis-Pillars",
+			"Scale": 0.05,
+			"Jitter": 0.75,
+			"DistanceRange": 1.5,
+			"NoiseType": "CELL",
+			"CellMode": "DISTANCE",
+			"Density": 0.08,
+			"Normalize":[0.7, 0.7]
+		},
+		{
+			"Seed": "HiddenOasis-DryTrees",
+			"Scale": 0.25,
+			"Jitter": 0.4,
+			"DistanceRange": 1,
+			"NoiseType": "CELL",
+			"CellMode": "DISTANCE",
+			"Density": 0.1,
+			"Normalize": [0.99, 0.99]
+		},
+		{
+			"Seed": "HiddenOasis-Monuments",
+			"Scale": 0.015,
+			"Jitter": 0.5,
+			"DistanceRange": 6,
+			"NoiseType": "CELL",
+			"CellMode": "DISTANCE",
+			"Density": 0.2,
+			"Normalize":[0.3, 0.3]
+		}
+	],
+    "Threshold": [0.1, 0.65]
+},
+  "HeightThreshold": {
+    "Positions": [100, 100, 106, 106],
+    "Values": [0, 1, 1, 0]
+  },
+  "Parent":["Soil_Grass","Soil_Dirt", "Soil_Dirt_Dry", "Soil_Grass_Dry"],
+  "Mask": {
+    "File": "Zones.Masks.Shared.Trees"
+  },
+  "DeepSearch": false
+}

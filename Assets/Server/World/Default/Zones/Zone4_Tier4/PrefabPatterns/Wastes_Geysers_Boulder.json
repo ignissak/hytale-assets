@@ -1,0 +1,79 @@
+{
+  "GridGenerator": {
+		"Seed": "Lava_Cracks",
+    "Density": [0, 0.2],
+    "Scale": 0.05,
+    "Jitter": 1
+  },
+  "HeightThreshold": {
+    "Positions": [169, 170],
+    "Values": [1, 0]
+  },
+  "NoiseMask": {
+    "Type": "MIN",
+    "Noise": [
+      {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "Seed": "Calderas",
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "DistanceRange": [1, 5],
+            "Density": [0, 0.7],
+            "Scale": 0.02,
+            "Octaves": 2,
+            "Jitter": 0.7
+          },
+          {
+            "Seed": "Calderas",
+            "NoiseType": "CELL",
+            "CellMode": "NOISE_LOOKUP",
+            "DistanceRange": [1, 5],
+            "NoiseLookup": {
+              "Seed": "Firelands_Biomes_Pattern",
+              "NoiseType": "DISTANCE",
+              "DistanceMode": "NATURAL",
+              "Distance2Mode": "DIV",
+              "Scale": 0.15,
+              "Jitter": 0.711
+            },
+            "Scale": 0.02,
+            "Jitter": 0.7,
+            "Normalize": 0.65
+          }
+        ]
+      },
+      {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "NoiseType": "SIMPLEX",
+            "Octaves": 3,
+            "Persistence": 0.5,
+            "Scale": 0.01,
+            "Normalize": 0.75
+          },
+          {
+            "Seed": "Calderas",
+            "NoiseType": "CELL",
+            "CellMode": "NOISE_LOOKUP",
+            "DistanceRange": [1, 5],
+            "NoiseLookup": {
+              "Seed": "Firelands_Biomes_Pattern",
+              "NoiseType": "DISTANCE",
+              "DistanceMode": "NATURAL",
+              "Distance2Mode": "DIV",
+              "Scale": 0.15,
+              "Jitter": 0.711
+            },
+            "Scale": 0.02,
+            "Jitter": 0.7,
+            "Normalize": 0.65
+          }
+        ]
+      }	
+    ],
+    "Threshold": [0.99, 1]
+  }
+}

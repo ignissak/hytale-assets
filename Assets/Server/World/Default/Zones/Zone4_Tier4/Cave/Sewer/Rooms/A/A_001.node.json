@@ -1,0 +1,39 @@
+{
+
+	"Children": [
+	
+        { //Above
+        	"Node": ["Sewer.Pipe.Long.Empty.Empty_001"],
+			"Weights": [20], 
+			"Offset": [-2, 6, 8], 
+			"Rotation": 180,
+			"Chance": 1
+		},		
+		{ //Bellow
+        	"Node": ["Sewer.Pipe.Long.Full.Full_001"],
+			"Weights": [20], 
+			"Offset": [-3, -5, 7], 
+			"Rotation": 180,
+			"Chance": 1
+		}
+	],
+	
+	
+  "Mask": {
+    "Default": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"],
+    "Specific": [
+      {
+        "Block": ["Empty"],
+        "Rule": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"]
+      }
+    ]
+  },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Dungeon.Sewer.Tier_1.Rooms.A.*"
+	]
+}

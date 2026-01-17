@@ -1,0 +1,91 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Weapon_Battleaxe.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Model": "Items/Weapons/Battleaxe/Iron.blockymodel",
+  "Texture": "Items/Weapons/Battleaxe/Iron_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Battleaxe_Iron.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "PlayerAnimationsId": "Battleaxe",
+  "Reticle": "DefaultMelee",
+  "Quality": "Template",
+  "ItemLevel": 15,
+  "Interactions": {
+    "Primary": "Root_Weapon_Battleaxe_Primary",
+    "Secondary": "Root_Weapon_Battleaxe_Secondary_Guard",
+    "Ability1": "Root_Weapon_Battleaxe_Signature_Whirlwind"
+  },
+  "IconProperties": {
+    "Scale": 0.3,
+    "Translation": [
+      -19.2,
+      -19.8
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {
+    "EntityStatsToClear": [
+      "SignatureEnergy"
+    ],
+    "StatModifiers": {
+      "SignatureEnergy": [
+        {
+          "Amount": 9,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "ItemAppearanceConditions": {
+    "SignatureEnergy": [
+      {
+        "Condition": [
+          100,
+          100
+        ],
+        "ConditionValueType": "Percent",
+        "Particles": [
+          {
+            "SystemId": "Sword_Signature_Ready",
+            "TargetNodeName": "Handle",
+            "PositionOffset": {
+              "X": 0.8
+            },
+            "TargetEntityPart": "PrimaryItem"
+          },
+          {
+            "SystemId": "Sword_Signature_Status_Spawn",
+            "TargetNodeName": "Handle",
+            "PositionOffset": {
+              "X": 0.5
+            },
+            "TargetEntityPart": "PrimaryItem"
+          },
+          {
+            "SystemId": "Sword_Signature_Status",
+            "TargetNodeName": "Handle",
+            "PositionOffset": {
+              "X": 0.5
+            },
+            "TargetEntityPart": "PrimaryItem"
+          }
+        ]
+      }
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapon_Blunt_Large",
+  "MaxDurability": 80,
+  "DurabilityLossOnHit": 0.45
+}

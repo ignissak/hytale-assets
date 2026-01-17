@@ -1,0 +1,887 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "BusyStates": [ "Shoot", "Search", "ReturnHome" ],
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "Parameters": {
+    "Appearance": {
+      "Value": "Trork_Hunter",
+      "Description": "Model to be used"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Trork_Instruction_Idle_Motion_Wander",
+      "Description": "The component that controls how the NPC moves during idle state"
+    },
+    "ViewRange": {
+      "Value": 30,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 50,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "MaxSpeed": {
+      "Value": 8,
+      "Description": "Maximum walking speed"
+    },
+    "Weapons": {
+      "Value": [ "Weapon_Spear_Stone_Trork", "Weapon_Spear_Stone_Trork" ],
+      "Description": "NPC Weapon"
+    },
+    "RangedAttack": {
+      "Value": "Trork_Sentry_Spear_Throw",
+      "Description": "Ranged attack"
+    },
+    "RangedAttackSequence": {
+      "Value": "Component_Instruction_Attack_Sequence_Temp",
+      "Description": "The ranged attack sequence to use"
+    },
+    "DesiredRangedAttackDistanceRange": {
+      "Value": [ 10, 20 ],
+      "Description": "Desired ranged attack distance range"
+    },
+    "AttackSequence": {
+      "Value": "Component_Instruction_Attack_Sequence_Trork_Sentry",
+      "Description": "The attack sequence to use in combat"
+    },
+    "AttackDistance": {
+      "Value": 3,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "FollowPath": {
+      "Value": false,
+      "Description": "Whether this NPC should follow the nearest patrol path"
+    },
+    "FollowPathRange": {
+      "Value": 30,
+      "Description": "The search radius when looking for a patrol path"
+    },
+    "PathShape": {
+      "Value": "Line",
+      "Description": "The shape of the path the NPC should follow. 'Chain' will result in chained paths"
+    },
+    "SleepsAtNight": {
+      "Value": false,
+      "Description": "Whether this NPC will sleep at night"
+    },
+    "AlertedTime": {
+      "Value": [ 1, 2 ],
+      "Description": "The duration for which the NPC is alert before switching to attack"
+    },
+    "LeashDistance": {
+      "Value": 30,
+      "Description": "The range after which an NPC will start to want to return to their spawn point"
+    },
+    "LeashMinPlayerDistance": {
+      "Value": 7,
+      "Description": "The minimum distance from the player before the NPC will be willing to give up on the chase"
+    },
+    "LeashTimer": {
+      "Value": [ 8, 8 ],
+      "Description": "How long the NPC must be more than the minimum distance form the player and too far from leash before giving up"
+    },
+    "BreakOffRange": {
+      "Value": 8,
+      "Description": "The range when the NPC will switch from melee back to ranged attacks"
+    },
+    "TargetGroups": {
+      "Value": [ "Trork" ],
+      "Description": "Beacon target groups"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "The block set designating chests for this NPC"
+    },
+    "BedBlockSet": {
+      "Value": "Trork_Bedroll",
+      "Description": "The block set designating bedrolls for this NPC"
+    },
+    "CampfireBlockSet": {
+      "Value": "Trork_Campfire",
+      "Description": "The block set designating campfires for this NPC"
+    },
+    "UnderlingGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self", "Trork" ],
+      "Description": "Groups not to take damage from"
+    },
+    "AttitudeGroup": {
+      "Value": "Trork_Ranged",
+      "Description": "Attitude group"
+    },
+    "CrouchToAttack": {
+      "$TODO": "Remove this when Outlanders have their own template",
+      "Value": false,
+      "Description": "Whether this NPC should crouch during its attack phase"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "HotbarItems": { "Compute": "Weapons" },
+  "HotbarSize": 5,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 10,
+      "RunThreshold": 0.3,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 10,
+      "MinJumpHeight": 0.8
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "Inventory",
+              "Operation": "EquipHotbar",
+              "Slot": 0,
+              "UseTarget": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Beacon",
+                "Message": "TrorkEnemySighted",
+                "TargetSlot": "LockedTarget"
+              },
+              {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Or",
+                  "Sensors": [
+                    {
+                      "Type": "State",
+                      "State": "Converge"
+                    },
+                    {
+                      "Type": "State",
+                      "State": "Shoot"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "State",
+              "State": "Converge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Trork_Instruction_Idle",
+                  "Modify": {
+                    "_ExportStates": [
+                      "Idle",
+                      "Alerted",
+                      "Shoot.Ranged",
+                      "Search",
+                      "Spar",
+                      "NeutralPlayer",
+                      "FriendlyPlayer",
+                      "Revered",
+                      "Warn",
+                      "DroppedMeat"
+                    ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" },
+                    "SleepsAtNight": { "Compute": "SleepsAtNight" },
+                    "MotionComponent": { "Compute": "IdleMotionComponent" },
+                    "PrimaryIdleTimeout": [ 60, 60 ],
+                    "StayAtPost": true,
+                    "RangedAttack": { "Compute": "RangedAttack" },
+                    "ExtraIdleComponent": "Component_Trork_Instruction_Hybrid_Idle_Extra",
+                    "ExtraIdleWeight": 15,
+                    "BedBlockSet": { "Compute": "BedBlockSet" },
+                    "CampfireBlockSet": { "Compute": "CampfireBlockSet" },
+                    "ExcludeGroups": { "Compute": "UnderlingGroups" },
+                    "ChestBlockSet": { "Compute": "ChestBlockSet" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "NeutralPlayer"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Greeting",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Shoot.Ranged", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "FriendlyPlayer"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Greeting",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Shoot.Ranged", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "Greet": true,
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Revered"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Greeting",
+              "$TODO": "Change greeting",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Shoot.Ranged", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "Greet": true,
+                "Greeting": "Kneel",
+                "Approach": true
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target",
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Birds" ]
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": 0,
+                      "UseTarget": false
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Instruction_Damage_Check",
+                  "Modify": {
+                    "_ExportStates": [ "Shoot.Ranged", "Search" ],
+                    "AlertedRange": { "Compute": "AlertedRange" }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "ViewRange" },
+                    "AutoUnlockTarget": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Sequence",
+                      "Blocking": true,
+                      "Actions": [
+                        {
+                          "Type": "Attack",
+                          "AimingTimeRange": [ 3, 3 ],
+                          "Attack": { "Compute": "RangedAttack" },
+                          "AttackPauseRange": [ 1, 2 ]
+                        },
+                        {
+                          "Type": "Sequence",
+                          "Actions": [
+                            {
+                              "Type": "OverrideAttitude",
+                              "Attitude": "Ignore",
+                              "Duration": 300
+                            },
+                            {
+                              "Type": "State",
+                              "State": "Idle"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "HeadMotion": {
+                    "Type": "Aim",
+                    "Spread": 1,
+                    "HitProbability": 0.8
+                  }
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Trork_Instruction_Alerted",
+                  "Modify": {
+                    "_ExportStates": [ "Search", "SignalAlarm", "Search" ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" },
+                    "AlertedTime": { "Compute": "AlertedTime" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "SignalAlarm"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Range": 30,
+                  "Message": "TrorkEnemySighted",
+                  "TargetGroups": { "Compute": "TargetGroups" },
+                  "SendTargetSlot": "LockedTarget"
+                },
+                {
+                  "$TODO": "Make this a blow horn or roar animation",
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 2, 2 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Shoot.Ranged"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Shoot"
+          },
+          "$TODO": "Must not kill Kweebec young!",
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Once": true,
+                "Type": "Target"
+              },
+              "Actions": [
+                {
+                  "Type": "OverrideAttitude",
+                  "Attitude": "Hostile",
+                  "Duration": 600
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Ranged"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Instruction_Clear_Status_Animation",
+                  "Modify": { }
+                },
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": 0,
+                      "UseTarget": false
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": 3,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": ".Melee"
+                    }
+                  ]
+                },
+                {
+                  "Enabled": { "Compute": "CrouchToAttack" },
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": true
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Instruction_Target_Adjusted_Attack",
+                  "Modify": {
+                    "TargetSwitchTimer": [ 5, 5 ],
+                    "AttackSequence": { "Compute": "RangedAttackSequence" },
+                    "AttackDistance": { "Compute": "AlertedRange" },
+                    "TargetRange": 5,
+                    "CombatRelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" },
+                    "DesiredDistanceRange": { "Compute": "DesiredRangedAttackDistanceRange" },
+                    "RelativeForwardsSpeed": 1,
+                    "RelativeBackwardsSpeed": 0.4,
+                    "MaintainDistanceRange": { "Compute": "AlertedRange" }
+                  }
+                },
+                {
+                  "Enabled": { "Compute": "CrouchToAttack" },
+                  "Continue": true,
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "Range": { "Compute": "AlertedRange" },
+                      "Filters": [
+                        {
+                          "Type": "LineOfSight"
+                        }
+                      ]
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "ReturnHome"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Melee"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": 1,
+                      "UseTarget": false
+                    }
+                  ]
+                },
+                {
+                  "Enabled": { "Compute": "CrouchToAttack" },
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Instruction_Target_Adjusted_Attack_Melee",
+                  "Modify": {
+                    "TargetSwitchTimer": [ 5, 5 ],
+                    "AttackSequence": { "Compute": "AttackSequence" },
+                    "AttackDistance": { "Compute": "AttackDistance" },
+                    "TargetRange": 4,
+                    "CombatRelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Soft_Leash",
+                  "Modify": {
+                    "_ExportStates": [ "ReturnHome" ],
+                    "LeashDistance": { "Compute": "LeashDistance" },
+                    "LeashMinPlayerDistance": { "Compute": "LeashMinPlayerDistance" },
+                    "LeashTimer": { "Compute": "LeashTimer" }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "BreakOffRange" },
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 3,
+                    "StopDistance": 1.5,
+                    "RelativeSpeed": 0.6
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "AlertedRange" },
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": ".Ranged"
+                      }
+                    }
+                  ],
+                  "HeadMotion": {
+                    "Type": "Watch"
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "ReturnHome"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Converge"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Converge",
+              "Modify": {
+                "_ExportStates": [ "Shoot.Ranged", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Spar"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "$TODO": "Maybe also an animation",
+                  "Type": "SpawnParticles",
+                  "Offset": [ 0, 2.1, 0 ],
+                  "ParticleSystem": "Question"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Idle"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Warn"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Warning_Shot",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Shoot.Ranged", "Search" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "RangedAttack": { "Compute": "RangedAttack" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "ReturnHome"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Return_Home",
+              "Modify": {
+                "_ExportStates": [ "Idle", "Alerted", "Shoot.Ranged", "Search", "Warn" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "LeashDistance": { "Compute": "LeashDistance" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "DroppedMeat"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Trork_Instruction_Dropped_Meat",
+              "Modify": {
+                "_ExportStates": [
+                  "Idle",
+                  "Alerted",
+                  "Shoot.Ranged",
+                  "Search",
+                  "Warn",
+                  "NeutralPlayer",
+                  "FriendlyPlayer",
+                  "Revered",
+                  "DroppedMeat"
+                ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "TargetGroups": { "Compute": "TargetGroups" },
+                "UnderlingGroups": { "Compute": "UnderlingGroups" },
+                "ChestBlockSet": { "Compute": "ChestBlockSet" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

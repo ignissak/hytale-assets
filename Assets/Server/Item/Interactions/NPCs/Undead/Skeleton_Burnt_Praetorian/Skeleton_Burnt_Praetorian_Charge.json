@@ -1,0 +1,118 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Skeleton_Wand",
+    "ItemAnimationId": "CastLeftCharging",
+    "WorldSoundEventId": "SFX_Skeleton_Praetorian_Spawn_1",
+    "MovementEffects": {
+      "DisableAll": true
+    }
+  },
+  "RunTime": 1,
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "Stamina": -5
+        }
+      },
+      {
+        "Type": "Simple",
+        "Effects": {
+          "ItemAnimationId": "StabDashCharged"
+        },
+        "$Comment": "Prepare Delay",
+        "RunTime": 0,
+        "Next": {
+          "Type": "Parallel",
+          "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+          "Interactions": [
+            {
+              "Interactions": [
+                {
+                  "Type": "ApplyForce",
+                  "Direction": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": -1
+                  },
+                  "AdjustVertical": true,
+                  "WaitForGround": false,
+                  "Force": 3000,
+                  "ChangeVelocityType": "Set",
+                  "VelocityConfig": {
+                    "AirResistance": 0.97,
+                    "AirResistanceMax": 0.96,
+                    "GroundResistance": 0.94,
+                    "GroundResistanceMax": 0.82,
+                    "Threshold": 3.0,
+                    "Style": "Exp"
+                  }
+                }
+              ]
+            },
+            {
+              "Interactions": [
+                {
+                  "Type": "Selector",
+                  "$Comment": "Length of Combat",
+                  "RunTime": 0.5,
+                  "Selector": {
+                    "Id": "Stab",
+                    "TestLineOfSight": false,
+                    "ExtendTop": 0.0,
+                    "ExtendLeft": 0.75,
+                    "ExtendRight": 0.75,
+                    "ExtendBottom": 2.0,
+                    "StartDistance": 0.2,
+                    "EndDistance": 2
+                  },
+                  "HitEntity": {
+                    "Interactions": [
+                      {
+                        "Type": "Replace",
+                        "DefaultValue": {
+                          "Interactions": [
+                            "Skeleton_Burnt_Praetorian_Charge_Damage"
+                          ]
+                        },
+                        "Var": "Charge_Damage"
+                      }
+                    ]
+                  },
+                  "Next": {
+                    "Type": "Simple",
+                    "$Comment": "Pad the interaction length",
+                    "RunTime": 0.251
+                  }
+                }
+              ]
+            },
+            {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Skeleton_Burnt_Praetorian_Charge_Effect"
+                    ]
+                  },
+                  "Var": "Charge_Effect"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      { 
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -0.75
+        },
+        "Behaviour": "Set"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Mushroom_Glowing_Red.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Mushroom_Glowing_Yellow.png",
+  "Categories": [
+    "Blocks.Plants",
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "RequiredGameMode": "Adventure",
+          "Crouching": false,
+          "Next": {
+            "Parent": "Consume_Charge",
+            "Effects": {
+              "ItemAnimationId": "Consume",
+              "ClearAnimationOnFinish": true
+            }
+          },
+          "Failed": "Block_Secondary"
+        }
+      ]
+    }
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "Parent": "Poison",
+            "Duration": 2,
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    }
+  },
+  "Utility": {
+    "Compatible": true
+  },
+  "Consumable": true,
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Foliage/Plants/Mushroom_Thin.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Mushroom_Thin_Textures/Yellow.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Plant",
+    "HitboxType": "Plant_Full",
+    "Light": {
+      "Color": "#a94"
+    },
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockParticleSetId": "Dust",
+    "ParticleColor": "#ca7540",
+    "BlockSoundSetId": "Mushroom"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Mushrooms"
+    },
+    {
+      "Id": "Vegetables"
+    }
+  ],
+  "PlayerAnimationsId": "Item",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage",
+  "DropOnDeath": true
+}

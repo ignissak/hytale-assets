@@ -1,0 +1,113 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Chase", "Search", "Idle" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range in blocks"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector in degrees"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range in blocks"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status"
+          },
+          {
+            "Type": "SpawnParticles",
+            "Offset": [ 0, 2.1, 0 ],
+            "ParticleSystem": "Question"
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Reference": "Component_Instruction_Sight_Or_Sound_Check",
+        "Modify": {
+          "_ExportStates": [ "Alerted" ],
+          "ViewRange": { "Compute": "ViewRange" },
+          "ViewSector": { "Compute": "ViewSector" },
+          "HearingRange": { "Compute": "HearingRange" },
+          "ThroughWalls": false,
+          "Attitudes": [ "Hostile" ]
+        }
+      },
+      {
+        "ActionsAtomic": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 10, 15 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ],
+        "BodyMotion": {
+          "Type": "Sequence",
+          "Motions": [
+            {
+              "Type": "Timer",
+              "Time": [ 2, 3 ],
+              "Motion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 1,
+                "RelativeSpeed": 0.6
+              }
+            },
+            {
+              "Type": "Sequence",
+              "Looped": true,
+              "Motions": [
+                {
+                  "Type": "Timer",
+                  "Time": [ 2, 3 ],
+                  "Motion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 5,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.6
+                  }
+                },
+                {
+                  "Type": "Timer",
+                  "Time": [ 1, 2 ],
+                  "Motion": {
+                    "Type": "Nothing"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

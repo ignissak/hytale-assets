@@ -1,0 +1,61 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Deployable_Turret.name"
+  },
+  "Categories": [
+    "Items.Weapons",
+    "Items.Debug",
+    "Items.CombatMilestone2",
+    "Items.Utility"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 40,
+  "Model": "Items/Deployables/Crossbow_Turret/Crossbow_Turret_Item.blockymodel",
+  "Texture": "Items/Weapons/Crossbow/Iron_Texture.png",
+  "PlayerAnimationsId": "Item",
+  "MaxStack": 1,
+  "Interactions": {
+    "Primary": {
+      "Cooldown": {
+        "Id": "DeployableUtility",
+        "Cooldown": 10
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0.25,
+          "Effects": {
+            "ItemPlayerAnimationsId": "Item",
+            "ItemAnimationId": "Throw"
+          }
+        },
+        {
+          "Type": "Projectile",
+          "Config": "Projectile_Config_Turret_Deploy"
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Rotation": [
+      18.0,
+      45.0,
+      20.0
+    ],
+    "Translation": [
+      -4.0,
+      -16.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Deployable_Turret.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Stick"
+    ]
+  }
+}

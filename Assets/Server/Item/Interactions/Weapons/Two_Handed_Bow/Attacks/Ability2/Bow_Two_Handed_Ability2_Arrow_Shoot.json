@@ -1,0 +1,24 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Simple",
+      "Effects": {
+        "ItemAnimationId": "Shoot",
+        "WorldSoundEventId": "SFX_Bow_T2_Draw",
+        "LocalSoundEventId": "SFX_Bow_T2_Draw",
+        "ClearAnimationOnFinish": true
+      },
+      "RunTime": 0.3
+    },
+    {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Failed": "Bow_Shoot_Charged_Fail",
+      "Next": "Bow_Two_Handed_Ability2_Projectile"
+    }
+  ]
+}

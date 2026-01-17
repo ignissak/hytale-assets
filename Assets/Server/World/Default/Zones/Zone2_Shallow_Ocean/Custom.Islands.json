@@ -1,0 +1,158 @@
+{
+  "MapColor": "#1c86ed",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Seed": "12512515134634",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "INVERTED",
+      "Octaves": 2,
+      "Persistence": 0.7,
+      "Scale": 0.008,
+      "Threshold": [0.7, 1]
+    },
+    "BiomeMask": ["Coral_Red", "Coral_Yellow", "Coral_Orange", "Shallow_Sand", "Grass_Yellow"]
+  },
+  "Covers": [
+    {
+      "Type": ["Plant_Fruit_Coconut"],
+      "Weight": [1],
+      "Density": 0.02,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+            {
+              "Seed": "Island_Forest_Palm",
+              "NoiseType": "CELL",
+              "CellMode": "DISTANCE",
+              "Density": 0.2,
+              "Scale": 0.13,
+              "Jitter": 0.3,
+              "Threshold": [0, 0.5]
+            },
+            {
+              "Seed": "LightForest",
+              "NoiseType": "SIMPLEX",
+              "Formula": "INVERTED",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.02,
+              "Normalize": [0.4, 0.5]
+            }
+          ],
+          "Factors": [0.5, 0.5],
+          "Threshold": [0, 0.25]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115, 143, 160],
+        "Values": [0, 1, 1, 0]
+      },
+      "Parent": ["Soil_Sand_White"]
+    },
+    {
+      "Type": ["Deco_Coral_Shell"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.09,
+        "Threshold": [0.75, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Sand_White"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": ["Trees.Palm.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Shallow_Ocean.PrefabPatterns.Shore_Palm"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Blocks": [
+          {
+            "Type": "Soil_Sand_White",
+            "Repeat": [6, 8],
+            "RepeatNoise": {
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 2,
+              "Persistence": 0.7,
+              "Scale": 0.05
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Zone2_Shallow_Ocean.Layers.Static"
+      },
+      {
+        "File": "Zones.Zone2_Shallow_Ocean.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [110, 113, 114, 115, 116, 117, 118],
+    "Values": [1, 0.8, 0.75, 0.3, 0.25, 0.2, 0]
+  },
+  "HeightmapNoise": {
+    "Seed": "12512515134634",
+    "NoiseType": "OLD_SIMPLEX",
+    "FractalMode": "OLDSCHOOL",
+    "Formula": "NORMAL",
+    "Octaves": 2,
+    "Persistence": 0.7,
+    "Scale": 0.008
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["#D5BA6E", "#cfbe6d", "CDB868"],
+      "Weight": [0.4, 0.27, 0.33],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Shores"]
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

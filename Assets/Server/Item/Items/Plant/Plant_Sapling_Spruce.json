@@ -1,0 +1,146 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Spruce.name",
+    "Description": "server.items.Plant_Sapling_Spruce.description"
+  },
+  "Parent": "Plant_Sapling_Oak",
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 15
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 4
+      }
+    ]
+  },
+  "ItemLevel": 6,
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Spruce.png",
+        "Weight": 1
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Sapling_Spruce",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Fir/Stage_00/Trees_Fir_Stage_00_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Fir/Stage_0/Trees_Fir_Stage_0_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Fir/Stage_1/Fir_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Fir/Stage_2/Fir_Stage2_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Fir/Stage_3/Fir_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Spruce"
+      }
+    },
+    "Opacity": "Transparent",
+    "BlockParticleSetId": "Grass",
+    "ParticleColor": "#4c8849"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Spruce_Sapling.png"
+}

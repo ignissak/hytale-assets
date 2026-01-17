@@ -1,0 +1,36 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Skeleton_Wand",
+    "ItemAnimationId": "CastLeftCharging",
+    "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Charge"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 1,
+  "Next": {
+    "Type": "LaunchProjectile",
+    "RunTime": 0.2,
+    "Effects": {
+      "ItemAnimationId": "CastLeftCharged",
+      "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Impact",
+      "Particles": [
+        {
+          "SystemId": "GreenOrbTrail",
+          "TargetEntityPart": "Entity",
+          "TargetNodeName": "L-Hand",
+          "Color": "#679d43"
+        },
+        {
+          "SystemId": "GreenOrbTrail",
+          "TargetEntityPart": "PrimaryItem",
+          "Color": "#679d43",
+          "TargetNodeName": "Handle",
+          "PositionOffset": {
+            "X": 0.25
+          }
+        }
+      ]
+    },
+    "ProjectileId": "Skeleton_Mage_Corruption_Orb"
+  }
+}

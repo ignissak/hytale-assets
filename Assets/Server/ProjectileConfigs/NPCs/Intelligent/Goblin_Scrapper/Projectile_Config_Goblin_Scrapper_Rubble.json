@@ -1,0 +1,73 @@
+{
+  "Model": "Rubble_Stone",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 30,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.5,
+    "SticksVertically": false
+  },
+  "LaunchForce": 30,
+  "SpawnOffset": {
+    "X": 0.1,
+    "Y": 0.0,
+    "Z": 0.5
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stone_Death"
+        },
+        {
+          "Type": "DamageEntity",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 12
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Point",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Force": 15,
+              "VelocityType": "Add"
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stone_Death"
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

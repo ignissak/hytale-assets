@@ -1,0 +1,127 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Prototype_NumericalState_Candle3.name"
+  },
+  "Quality": "Developer",
+  "Icon": "Icons/ItemsGenerated/Prototype_NumericalState_Candle3.png",
+  "Categories": [
+    "Blocks.Deco",
+    "Furniture.Lighting",
+    "Blocks.Deco"
+  ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/NumericalStatePrototype_Candle3.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/NumericalStatePrototype_Candle_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Plant_Full",
+    "Light": {
+      "Radius": 0,
+      "Color": "#baa"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Looping": true,
+    "ParticleColor": "#cca159",
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 0.8
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter2",
+        "Color": "#ffcd10",
+        "Scale": 0.75
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter3",
+        "Color": "#ffcd10",
+        "Scale": 0.7
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+  },
+  "Model": "Blocks/Decorative_Sets/Tavern/Lantern.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Tavern/Lantern_Texture.png",
+  "IconProperties": {
+    "Scale": 0.5,
+    "Rotation": [
+      25.0,
+      0.0,
+      0.0
+    ],
+    "Translation": [
+      0.0,
+      -16.8
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Temple"
+    ]
+  },
+  "Scale": 1.5,
+  "Utility": {
+    "Usable": true
+  },
+  "PlayerAnimationsId": "Torch",
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

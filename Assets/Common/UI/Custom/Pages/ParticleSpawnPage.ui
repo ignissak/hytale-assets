@@ -1,0 +1,115 @@
+$C = "../Common.ui";
+
+@ContainerHeight = 730;
+
+$C.@Container {
+  Anchor: (Left: 50, Top: 170, Width: 360, Bottom: 120);
+
+  #Title {
+    Group {
+      LayoutMode: Left;
+      $C.@Title {
+        @Text = %server.customUI.particleSpawnPage.spawn;
+      }
+    }
+
+    $C.@HeaderSearch {}
+  }
+
+  #Content {
+    Group #ParticleSystemList {
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      FlexWeight: 1;
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 20);
+      Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+      Padding: (Bottom:18);
+
+      Label #ParticleSystemName {
+        Padding: 8;
+        Style: (
+          FontSize: 18,
+          RenderUppercase: true,
+          RenderBold: true,
+          HorizontalAlignment: Center,
+          TextColor: #94969a
+        );
+      }
+
+      $C.@PanelSeparatorFancy {}
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: %server.customUI.particleSpawnPage.systemLifespan;
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        Label #SystemLifespan {
+          Anchor: (Left: 25);
+          Style: (
+            HorizontalAlignment: Center
+          );
+        }
+      }
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: %server.customUI.particleSpawnPage.particleGroupLifespan;
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        Label #ParticleGroupLifespan {
+          Anchor: (Left: 25);
+          Style: (
+            HorizontalAlignment: Center
+          );
+        }
+      }
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: %server.customUI.generic.rotate;
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        Slider #RotationOffset {
+          Anchor: (Left: 25, Width: 180, Height: 5, Right: 0);
+          Style: $C.@DefaultSliderStyle;
+          Min: -180;
+          Max: 180;
+          Step: 1;
+        }
+      }
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 15);
+
+      $C.@TextButton #Spawn {
+        Text: %server.customUI.particleSpawnPage.spawn;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

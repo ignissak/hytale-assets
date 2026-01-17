@@ -1,0 +1,632 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "PickupDropOnDeath": true,
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Scavanger",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Drop_Goblin_Duke",
+      "Description": "Drop Items"
+    },
+    "AttitudeGroup": {
+      "Value": "Goblin",
+      "Description": "This NPCs attitude group"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self" ],
+      "Description": "Groups not to take damage from"
+    },
+    "AttackChangeDelay": {
+      "Value": [ 1, 2 ]
+    },
+    "RelativeForwardSpeed": {
+      "Value": 0.5
+    },
+    "RelativeBackwardSpeed": {
+      "Value": 0.25
+    },
+    "Burn": {
+      "Value": false
+    },
+    "ViewRange": {
+      "Value": 30,
+      "Description": "View range"
+    },
+    "ArenaRadius": {
+      "Value": 12,
+      "Description": "Radius of the arena from the \"Arena\" path marker"
+    },
+    "ArenaSize": {
+      "Value": 50,
+      "Description": "A generous range to check for beacons & paths within the arena"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Appearance": { "Compute": "Appearance" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "DropList": { "Compute": "DropList" },
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "HotbarItems": [ "Weapon_Mace_Scrap_NPC" ],
+  "OffHandItems": [ "Weapon_Shield_Scrap_Spiked" ],
+  "OffHandSlots": 1,
+  "DefaultOffHandSlot": 0,
+  "DeathAnimationTime": 1,
+  "KnockbackScale": 0.5,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 20,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 145
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ ],
+          "To": [ "EnterArena", "Leash" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status",
+          "Animation": "Leap"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 0.5, 0.5 ]
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "EnterArena" ],
+          "To": [ "Chase" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status"
+        },
+        {
+          "Type": "PlaySound",
+          "SoundEventId": "SFX_Golem_Earth_Slam_Impact"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 1, 1 ]
+        },
+        {
+          "Type": "SetLeashPosition",
+          "ToCurrent": true
+        },
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status"
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "Leash" ],
+          "To": [ "Chase" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status"
+        },
+        {
+          "Type": "PlaySound",
+          "SoundEventId": "SFX_Golem_Earth_Slam_Impact"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 1, 1 ]
+        },
+        {
+          "Type": "PlayAnimation",
+          "Slot": "Status"
+        }
+      ]
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "$Comment": "This way of applying a burn effect isn't great - could replace with an unlimited length effect and apply just once",
+          "Sensor": {
+            "Type": "Any",
+            "Enabled": { "Compute": "Burn" }
+          },
+          "Continue": true,
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "ApplyEntityEffect",
+              "EntityEffect": "Burn",
+              "UseTarget": false
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Reference": "Component_Sensor_Sight_By_Attitude",
+                "Modify": {
+                  "ViewRange": { "Compute": "ViewRange" },
+                  "ViewSector": 360,
+                  "Attitudes": [ "Hostile" ]
+                }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "ResetPath"
+                },
+                {
+                  "Type": "State",
+                  "State": "EnterArena"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "EnterArena"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Path",
+                    "PathType": "CurrentPrefabPath",
+                    "Path": "Arena",
+                    "Range": { "Compute": "ArenaSize" }
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim"
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ]
+                    },
+                    {
+                      "Type": "Attack",
+                      "Attack": "Goblin_Duke_Jump"
+                    },
+                    {
+                      "$Comment": "This could be moved into a substate under Chase that can also be triggered by the CAE",
+                      "Type": "TriggerSpawnBeacon",
+                      "BeaconSpawn": "Goblin_Duke_Phase_2",
+                      "TargetSlot": "LockedTarget",
+                      "Range": { "Compute": "ArenaSize" }
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Jump"
+                    }
+                  ]
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Chase"
+                    },
+                    {
+                      "Type": "TimerStart",
+                      "Name": "Goblin_Duke_Block",
+                      "StartValueRange": [ 4, 4 ],
+                      "RestartValueRange": [ 4, 4 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Goblin_Duke_Block"
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Goblin_Duke_Block"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Jump"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Path",
+                    "PathType": "CurrentPrefabPath",
+                    "Path": "Arena",
+                    "Range": { "Compute": "ArenaSize" }
+                  },
+                  "BodyMotion": {
+                    "Type": "Teleport"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Chase"
+                    },
+                    {
+                      "Type": "TimerStart",
+                      "Name": "Goblin_Duke_Block",
+                      "StartValueRange": [ 4, 4 ],
+                      "RestartValueRange": [ 4, 4 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Goblin_Duke_Block"
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Goblin_Duke_Block"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Leash"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Leash",
+                    "Range": 5
+                  },
+                  "HeadMotion": {
+                    "Type": "Aim"
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 1 ]
+                    },
+                    {
+                      "Type": "Attack",
+                      "Attack": "Goblin_Duke_Jump"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Jump"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Jump"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Leash",
+                    "Range": 5
+                  },
+                  "BodyMotion": {
+                    "Type": "Teleport"
+                  }
+                },
+                {
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.25, 0.25 ]
+                    },
+                    {
+                      "Type": "TimerStart",
+                      "Name": "Goblin_Duke_Block",
+                      "StartValueRange": [ 4, 4 ],
+                      "RestartValueRange": [ 4, 4 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Goblin_Duke_Block"
+                    },
+                    {
+                      "Type": "TimerContinue",
+                      "Name": "Goblin_Duke_Block"
+                    },
+                    {
+                      "Type": "State",
+                      "State": "Chase"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Hard leashing - if the duke falls off the arena the experience is damaged",
+              "Sensor": {
+                "Type": "Leash",
+                "Range": 12
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Leash"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": 270,
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "$Comment": "Default substate is defined to differentiate from Spawning substate",
+                    "Type": "State",
+                    "State": ".Default"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "Timer",
+                        "Name": "Goblin_Duke_Block",
+                        "State": "Running"
+                      },
+                      "Instructions": [
+                        {
+                          "Sensor": {
+                            "Type": "CombatActionEvaluator",
+                            "TargetInRange": true
+                          },
+                          "HeadMotion": {
+                            "Type": "Aim"
+                          },
+                          "BodyMotion": {
+                            "Type": "MaintainDistance",
+                            "DesiredDistanceRange": [ 5, 5 ],
+                            "MoveThreshold": 0.2,
+                            "RelativeForwardsSpeed": 0.8,
+                            "RelativeBackwardsSpeed": 0.45
+                          },
+                          "ActionsBlocking": true,
+                          "Actions": [
+                            {
+                              "Type": "Attack",
+                              "ChargeFor": 4,
+                              "Attack": "Shield_Block",
+                              "AttackType": "Secondary"
+                            }
+                          ]
+                        },
+                        {
+                          "Sensor": {
+                            "Type": "CombatActionEvaluator",
+                            "TargetInRange": false
+                          },
+                          "HeadMotion": {
+                            "Type": "Aim"
+                          },
+                          "BodyMotion": {
+                            "Type": "MaintainDistance",
+                            "DesiredDistanceRange": [ 5, 5 ],
+                            "MoveThreshold": 0.2,
+                            "RelativeForwardsSpeed": 0.8,
+                            "RelativeBackwardsSpeed": 0.45
+                          },
+                          "ActionsBlocking": true,
+                          "Actions": [
+                            {
+                              "Type": "Attack",
+                              "ChargeFor": 4,
+                              "Attack": "Shield_Block",
+                              "AttackType": "Secondary"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.2,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.45
+                      },
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        },
+                        {
+                          "Type": "TimerStart",
+                          "Name": "Goblin_Duke_Block",
+                          "StartValueRange": [ 4, 4 ],
+                          "RestartValueRange": [ 4, 4 ]
+                        },
+                        {
+                          "Type": "TimerRestart",
+                          "Name": "Goblin_Duke_Block"
+                        },
+                        {
+                          "Type": "TimerContinue",
+                          "Name": "Goblin_Duke_Block"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.2,
+                        "RelativeForwardsSpeed": 0.8,
+                        "RelativeBackwardsSpeed": 0.45
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "$Comment": "Spawn NPC waves",
+                    "Type": "State",
+                    "State": ".Spawn",
+                    "IgnoreMissingSetState": true
+                  },
+                  "Instructions": [
+                    {
+                      "ActionsBlocking": true,
+                      "Actions": [
+                        {
+                          "Type": "TriggerSpawnBeacon",
+                          "BeaconSpawn": "Goblin_Duke_Phase_2",
+                          "TargetSlot": "LockedTarget",
+                          "Range": { "Compute": "ArenaSize" }
+                        },
+                        {
+                          "Type": "State",
+                          "State": ".Default"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "DeathInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Once": true,
+          "Type": "Any"
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "Spawn",
+            "Kind": "Mouse",
+            "CountRange": [ 1, 1 ]
+          },
+          {
+            "Type": "SpawnParticles",
+            "Offset": [ 0, 1.5, 0 ],
+            "ParticleSystem": "Explosion_Medium"
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

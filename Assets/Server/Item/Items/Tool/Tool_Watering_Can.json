@@ -1,0 +1,108 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Watering_Can.name",
+    "Description": "server.items.Tool_Watering_Can.description"
+  },
+  "Categories": [
+    "Items.Tools"
+  ],
+  "ItemLevel": 4,
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Farming"
+        ],
+        "Id": "Farmingbench"
+      }
+    ]
+  },
+  "Quality": "Common",
+  "Tool": {},
+  "PlayerAnimationsId": "Watering_Can",
+  "IconProperties": {
+    "Scale": 0.55,
+    "Rotation": [
+      45,
+      60,
+      0
+    ],
+    "Translation": [
+      -11.4,
+      -10.8
+    ]
+  },
+  "Texture": "Items/Tools/Watering_Can/Watering_Can_Texture.png",
+  "Model": "Items/Tools/Watering_Can/Watering_Can_Empty.blockymodel",
+  "Icon": "Icons/ItemsGenerated/Tool_Watering_Can.png",
+  "Interactions": {
+    "Primary": "Watering_Can_Fill",
+    "Secondary": "Watering_Can_Fill"
+  },
+  "State": {
+    "Filled_Water": {
+      "Variant": true,
+      "TranslationProperties": {
+        "Name": "server.items.Tool_Watering_Can_Full.name",
+        "Description": "server.items.Tool_Watering_Can_Full.description"
+      },
+      "$Comment": "FOLLOWING PROPERTIES DUPLICATED BECAUSE OF SERVER BUG",
+      "Recipe": null,
+      "Quality": "Common",
+      "ItemLevel": 40,
+      "Tool": {},
+      "PlayerAnimationsId": "Watering_Can",
+      "IconProperties": {
+        "Scale": 0.55,
+        "Translation": [
+          -11.4,
+          -10.8
+        ],
+        "Rotation": [
+          45,
+          60,
+          0
+        ]
+      },
+      "Texture": "Items/Tools/Watering_Can/Watering_Can_Texture.png",
+      "Model": "Items/Tools/Watering_Can/Watering_Can.blockymodel",
+      "Icon": "Icons/ItemsGenerated/Tool_Watering_Can_Full.png",
+      "Interactions": {
+        "Primary": {
+          "Interactions": [
+            {
+              "Parent": "Watering_Can_Fill",
+              "Failed": "Watering_Can_Use"
+            }
+          ]
+        },
+        "Secondary": {
+          "Interactions": [
+            {
+              "Parent": "Watering_Can_Fill",
+              "Failed": "Watering_Can_Use"
+            }
+          ]
+        }
+      },
+      "MaxDurability": 20,
+      "DurabilityLossOnHit": 1,
+      "Weapon": {}
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Tool"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

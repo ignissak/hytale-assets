@@ -1,0 +1,128 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Sapling_Ash.name",
+    "Description": "server.items.Plant_Sapling_Ash.description"
+  },
+  "Parent": "Plant_Sapling_Oak",
+  "Recipe": {
+    "TimeSeconds": 0,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 15
+      }
+    ],
+    "OutputQuantity": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Saplings"
+        ],
+        "RequiredTierLevel": 4
+      }
+    ]
+  },
+  "ItemLevel": 5,
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Tree/Sapling_Textures/Ash.png",
+        "Weight": 1
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Sapling_Ash",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Ash/Stage_0/Ash_Stage0_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Ash/Stage_1/Ash_Stage1_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Ash/Stage_2/Ash_Stage2_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Prefabs": [
+              {
+                "Path": "Trees/Ash/Stage_3/Ash_Stage3_001.prefab.json",
+                "Weight": 1
+              }
+            ],
+            "Type": "Prefab",
+            "ReplaceMaskTags": [
+              "Soil"
+            ],
+            "SoundEventId": "SFX_Crops_Grow"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Plant_Sapling_Ash"
+      }
+    },
+    "Opacity": "Transparent",
+    "ParticleColor": "#306c3e"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Ash_Sapling.png"
+}

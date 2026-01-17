@@ -1,0 +1,61 @@
+{
+  "Type": "SpawnDeployableFromRaycast",
+  "Config": {
+    "Type": "Aoe",
+    "Id": "FireTrap",
+    "Shape": "Cylinder",
+    "LiveDuration": 5,
+    "MaxLiveCount": 3,
+    "Model": "Deployable_Fire_Trap",
+    "ModelPreview": "Deployable_Fire_Trap_Preview",
+    "ModelScale": 1,
+    "StartRadius": 1,
+    "EndRadius": 5,
+    "Height": 2,
+    "RadiusChangeTime": 4,
+    "DamageInterval": 2,
+    "DamageAmount": 1,
+    "DamageCause": "Fire",
+    "ApplyEffects": [
+      "Flame_Staff_Burn"
+    ],
+    "Invulnerable": true,
+    "AttackOwner": false,
+    "AttackTeam": false,
+    "DebugVisuals": false,
+    "WireframeDebugVisuals": true
+  },
+  "MaxPlacementDistance": 20,
+  "PreviewStatConditions": {
+    "DeployablePreview": 1
+  },
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "DeployablePreview": 0,
+          "SignatureEnergy": 0
+        },
+        "Behaviour": "Set"
+      },
+      {
+        "Type": "TriggerCooldown",
+        "Cooldown": {
+          "Id": "FireTrap",
+          "Cooldown": 20
+        }
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Simple",
+        "RunTime": 0.5
+      }
+    ]
+  }
+}

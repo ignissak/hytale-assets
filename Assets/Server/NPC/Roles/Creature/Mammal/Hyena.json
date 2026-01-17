@@ -1,0 +1,96 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "Appearance": "Hyena",
+    "FlockArray": [
+      "Hyena"
+    ],
+    "DropList": "Drop_Hyena",
+    "MaxHealth": 103,
+    "MaxSpeed": 10,
+    "WanderRadius": 15,
+    "ViewRange": 10,
+    "HearingRange": 12,
+    "AbsoluteDetectionRange": 2,
+    "AlertedRange": 18,
+    "ChanceToBeAlertedWhenFlockAlerted": 70,
+    "IsMemory": true,
+    "MemoriesCategory": "Predator",
+    "AlertedTime": [
+      2,
+      2
+    ],
+    "MaintainDistanceWhileAlerted": false,
+    "FleeIfNotThreatened": false,
+    "FleeRange": 11,
+    "HardLeashDistance": 60,
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 7,
+    "LeashTimer": [
+      4,
+      5
+    ],
+    "CombatBehaviorDistance": 6,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatBackOffAfterAttack": true,
+    "CombatBackOffDistanceRange": [
+      3,
+      5
+    ],
+    "Attack": "Root_NPC_Hyena_Attack",
+    "AttackDistance": 2.5,
+    "ChaseRelativeSpeed": 0.6,
+    "AlwaysSleepAtNight": true,
+    "DayTimeNapWeight": 4,
+    "DayTimeNapTimeRange": [
+      10,
+      12
+    ],
+    "TimidDuringDay": false,
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Hyena_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Hyena_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.167
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Hyena_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 27
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Hyena.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

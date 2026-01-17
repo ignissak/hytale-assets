@@ -1,0 +1,87 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Hub_Portal_Flat.name",
+    "Description": "server.items.Hub_Portal_Flat.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Portal_Device.png",
+  "Categories": [
+    "Blocks.Portals"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Platform_MagicInactive.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Blue2.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Pad_Portal",
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "VariantRotation": "NESW",
+    "Flags": {
+      "IsUsable": false
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Unbreakable"
+      }
+    },
+    "Light": {
+      "Color": "#7f7",
+      "Radius": 3
+    },
+    "AmbientSoundEventId": "SFX_Portal_Neutral",
+    "Particles": [
+      {
+        "SystemId": "MagicPortal_Flat",
+        "PositionOffset": {
+          "Y": 2.0
+        },
+        "Scale": 0.8
+      }
+    ],
+    "Interactions": {
+      "CollisionEnter": {
+        "Interactions": [
+          {
+            "Type": "HubPortal",
+            "WorldName": "flat_world",
+            "InstanceTemplate": "Flat",
+            "Next": {
+              "Type": "Simple",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Portal_Neutral_Teleport_Local"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "CustomModelAnimation": "Blocks/Miscellaneous/Platform_Magic_Idle.blockyanim"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Portal",
+      "HubPortal"
+    ]
+  },
+  "Quality": "Developer",
+  "IconProperties": {
+    "Scale": 0.35,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

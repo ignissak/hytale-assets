@@ -1,0 +1,111 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Mushroom_Glowing_Purple.name"
+  },
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "RequiredGameMode": "Adventure",
+          "Crouching": false,
+          "Next": {
+            "Parent": "Consume_Charge",
+            "Effects": {
+              "ItemAnimationId": "Consume",
+              "ClearAnimationOnFinish": true
+            }
+          },
+          "Failed": "Block_Secondary"
+        }
+      ]
+    }
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "Parent": "Poison",
+            "Duration": 2,
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    }
+  },
+  "Utility": {
+    "Compatible": true
+  },
+  "Consumable": true,
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Semitransparent",
+    "CustomModel": "Blocks/Foliage/Plants/Mushroom_Balls.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Mushroom_Balls_Corrupted.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Plant",
+    "HitboxType": "Mushroom_Medium",
+    "Light": {
+      "Color": "#979"
+    },
+    "Flags": {
+      "IsStackable": false
+    },
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "RandomRotation": "YawStep1",
+    "BlockParticleSetId": "Dust",
+    "ParticleColor": "#723862",
+    "BlockSoundSetId": "Mushroom"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Mushrooms"
+    },
+    {
+      "Id": "Vegetables"
+    }
+  ],
+  "PlayerAnimationsId": "Item",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Translation": [
+      -2.1,
+      -12.3
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Mushroom_Glowcap_Purple.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage",
+  "DropOnDeath": true
+}

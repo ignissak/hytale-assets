@@ -1,0 +1,28 @@
+{
+  "Parent": "Projectile_Config_Arrow_Shortbow",
+  "LaunchForce": 60,
+  "Physics": {
+    "Gravity": 50
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Parent": "Bow_Combat_Projectile_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 10
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1
+            }
+          ]
+        },
+        "Bow_Combat_Projectile_Damage_End"
+      ]
+    }
+  }
+}

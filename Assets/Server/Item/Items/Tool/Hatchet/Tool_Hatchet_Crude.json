@@ -1,0 +1,145 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Hatchet_Crude.name",
+    "Description": "server.items.Tool_Hatchet_Crude.description"
+  },
+  "Categories": [
+    "Items.Tools"
+  ],
+  "Set": "Tool_Stone",
+  "Icon": "Icons/ItemsGenerated/Tool_Hatchet_Crude.png",
+  "Model": "Items/Tools/Hatchet/Crude.blockymodel",
+  "Texture": "Items/Tools/Hatchet/Crude_Texture.png",
+  "Quality": "Common",
+  "ItemLevel": 9,
+  "Recipe": {
+    "TimeSeconds": 1,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ResourceTypeId": "Rubble",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Fieldcraft",
+        "Type": "Crafting",
+        "Categories": [
+          "Tools"
+        ]
+      },
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tools"
+        ]
+      }
+    ]
+  },
+  "Tool": {
+    "Specs": [
+      {
+        "Power": 1,
+        "GatherType": "SoftBlocks"
+      },
+      {
+        "Power": 0.05,
+        "GatherType": "Soils"
+      },
+      {
+        "Power": 0.15,
+        "GatherType": "Woods"
+      },
+      {
+        "Power": 0.05,
+        "GatherType": "Rocks"
+      },
+      {
+        "Power": 0.5,
+        "GatherType": "Benches"
+      },
+      {
+        "Power": 0.017,
+        "GatherType": "VolcanicRocks"
+      }
+    ],
+    "DurabilityLossBlockTypes": [
+      {
+        "BlockSets": [
+          "Stone",
+          "Rock",
+          "Ores",
+          "Soil"
+        ],
+        "DurabilityLossOnHit": 0.25
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Hatchet",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Hatchet_Attack",
+    "Secondary": "Hatchet_Attack"
+  },
+  "InteractionVars": {
+    "Hatchet_Chop_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Tool_T1_Swing",
+            "LocalSoundEventId": "SFX_Hatchet_T1_Swing_RL_Local"
+          }
+        }
+      ]
+    },
+    "Hatchet_Chop_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T1_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.5,
+    "Translation": [
+      18,
+      -15
+    ],
+    "Rotation": [
+      45,
+      270,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 150,
+  "Tags": {
+    "Type": [
+      "Tool"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

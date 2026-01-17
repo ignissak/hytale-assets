@@ -1,0 +1,76 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Kebab_Fruit.name",
+    "Description": "server.items.Food_Kebab_Fruit.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T2"
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/Food_Skewer_Fruit.png",
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Eat_Side/Eat_Side_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Eat_Side/Eat_Side.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Fruit_Skewer.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Fruit_Skewer_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#f2de88"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T2"
+        },
+        "HealthRegen_TierCheck_T2",
+        "FruitVeggie_TierCheck_T2"
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Stick"
+      },
+      {
+        "ResourceTypeId": "Fruits",
+        "Quantity": 4
+      }
+    ],
+    "Output": [
+      {
+        "ItemId": "Food_Kebab_Fruit"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Prepared"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 2,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

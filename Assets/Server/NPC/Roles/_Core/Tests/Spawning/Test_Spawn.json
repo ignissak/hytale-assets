@@ -1,0 +1,69 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Sheep",
+  "SpawnParticles": "Explosion_Medium",
+  "SpawnParticlesOffset": [ 0, 1, 0 ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 1,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander",
+            "RelativeSpeed": 1,
+            "MinWalkTime": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 5 ],
+                  "Action": {
+                    "Type": "SpawnParticles",
+                    "Offset": [ 0, 0.5, 2 ],
+                    "ParticleSystem": "Explosion_Medium"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Spawn.name"
+}

@@ -1,0 +1,143 @@
+$C = "../../Common.ui";
+
+@TitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@MemoryTitleStyle = LabelStyle(
+  FontSize: 25,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Height: 825, Width: 1070);
+
+    #Title {
+      Group {
+        LayoutMode: Center;
+
+        Label #TitleLabel {
+          Style: (...@TitleStyle, FontName: "Default", LetterSpacing: 0.5);
+          Text: %server.memories.general.title;
+        }
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 9);
+
+      Group {
+        LayoutMode: Left;
+        FlexWeight: 1;
+
+        // Left Panel - Memory Grid
+        Group #LeftPanel {
+          LayoutMode: Top;
+          FlexWeight: 1;
+          Padding: (Left: 20, Right: 5, Vertical: 16);
+
+          // Category Title
+          Group #CategoryHeader {
+            LayoutMode: Left;
+
+            Label #CategoryTitle {
+              Style: (...@TitleStyle, TextColor: #89899f);
+              // Text added dynamically
+            }
+
+            Group {
+              FlexWeight: 1;
+            }
+
+            Label #CategoryCount {
+              Style: (...@TitleStyle, TextColor: #89899f);
+              Text: "0/0";
+            }
+          }
+
+          // Memory Grid
+          Group {
+            FlexWeight: 1;
+            Group {
+              LayoutMode: TopScrolling;
+              Anchor: (Vertical: 16);
+              ScrollbarStyle: $C.@DefaultScrollbarStyle;
+              FlexWeight: 1;
+
+              Group #IconList {
+                LayoutMode: LeftCenterWrap;
+              }
+            }
+          }
+
+          // Back Button
+          Group {
+            LayoutMode: Left;
+
+            $C.@SecondaryTextButton #BackButton {
+              Anchor: (Width: 150, Height: 42);
+              Text: %client.general.button.back;
+            }
+          }
+        }
+
+        // Right Panel - Memory Details
+        Group #RightPanel {
+          LayoutMode: Top;
+          FlexWeight: 1;
+          Padding: (Right: 20, Left: 5, Vertical: 16);
+
+          Group #Background {
+            Background: (TexturePath: "ContainerBackgroundSecondary.png", Border: 23);
+            LayoutMode: Top;
+            FlexWeight: 1;
+
+            // Memory Name
+            Label #MemoryName {
+              Style: (...@MemoryTitleStyle, HorizontalAlignment: Center, Wrap: true);
+              Anchor: (Top: 35);
+              Text: "";
+            }
+
+            Group { FlexWeight: 1; }
+
+            // Memory Icon (Large)
+            Group {
+              Anchor: (Height: 300, Width: 300);
+              LayoutMode: Middle;
+              Padding: (Top: 16, Bottom: 16);
+
+              AssetImage #MemoryIcon {
+                Anchor: (Width: 200, Height: 200);
+              }
+            }
+
+            Group { FlexWeight: 1; }
+
+            Label #MemoryTimeLocation {
+              Style: (...@TitleStyle, TextColor: #565a68, HorizontalAlignment: Center, Wrap: true, RenderUppercase: false);
+              Anchor: (Bottom: 35);
+              Padding: (Horizontal: 15);
+              Text: "";
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "$Interaction" ],
+    "TasksById": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Tasks to check for for completion"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "CanInteract"
+              },
+              {
+                "Type": "HasTask",
+                "TasksById": { "Compute": "TasksById" }
+              }
+            ]
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "HasInteracted"
+            },
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "IsBusy"
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "CompleteTask",
+            "Slot": "Status"
+          },
+          {
+            "Type": "ParentState",
+            "State": "$Interaction"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

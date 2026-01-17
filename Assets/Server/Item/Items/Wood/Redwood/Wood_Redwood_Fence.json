@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Redwood_Fence.name"
+  },
+  "Parent": "Wood_Softwood_Fence",
+  "Icon": "Icons/ItemsGenerated/Wood_Redwood_Fence.png",
+  "Set": "Wood_Redwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Redwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Redwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Redwood_Fence",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#6b3820",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Redwood.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Redwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Redwood_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Redwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Redwood_Fence",
+        "Corner": "*Wood_Redwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Redwood_Fence_Gate"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Redwood"
+    ]
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "MapColor": "#1c86ed",
+  "Weight": 30,
+  "Covers": [
+    {
+      "Type": [
+        {
+          "Block": "Plant_Seaweed_Grass_Bulbs",
+          "Fluid": "Water_Source"
+        },
+        {
+          "Block": "Plant_Seaweed_Grass_Green",
+          "Fluid": "Water_Source"
+        },
+        {
+          "Block": "Plant_Seaweed_Winter_Blue",
+          "Fluid": "Water_Source"
+        },
+        {
+          "Block": "Plant_Seaweed_Winter_Short",
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weight": [
+        0.15,
+        0.3,
+        0.3,
+        0.25
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Grass.Grass_Cave_Sparse"
+          }
+        ],
+        "Threshold": [
+          0.5,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          113,
+          114
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Gravel",
+        "Soil_Gravel_Mossy"
+      ]
+    },
+    {
+      "Type": [
+        {
+          "Block": "Rubble_Shale",
+          "Fluid": "Water_Source"
+        },
+        {
+          "Block": "Rubble_Shale_Medium",
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weight": [
+        0.5,
+        0.5
+      ],
+      "Density": 0.375,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone3.Covers.Rubble.Stone_Trenches"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.12
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          77,
+          78,
+          113,
+          114
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Rock_Ice"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": [
+        -1
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Snowlands-Ice",
+            "NoiseType": "DISTANCE",
+            "DistanceMode": "NATURAL",
+            "Jitter": 0.8,
+            "Distance2Mode": "DIV",
+            "FractalMode": "MAX",
+            "Octaves": 3,
+            "Formula": "SQUARED",
+            "Scale": 0.012
+          },
+          {
+            "Seed": "Shore_Ice",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.008,
+            "Normalize": [
+              0.3,
+              0.45
+            ]
+          }
+        ],
+        "Factors": [
+          0.6,
+          0.4
+        ],
+        "Threshold": [
+          0,
+          0.575
+        ]
+      },
+      "OnWater": true
+    },
+    {
+      "Type": [
+        "Rock_Ice"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Snowlands-Ice",
+            "NoiseType": "DISTANCE",
+            "DistanceMode": "NATURAL",
+            "Jitter": 0.8,
+            "Distance2Mode": "DIV",
+            "FractalMode": "MAX",
+            "Octaves": 3,
+            "Formula": "SQUARED",
+            "Scale": 0.012
+          },
+          {
+            "Seed": "Shore_Ice",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.008,
+            "Normalize": [
+              0.25,
+              0.325
+            ]
+          }
+        ],
+        "Factors": [
+          0.6,
+          0.4
+        ],
+        "Threshold": [
+          0,
+          0.575
+        ]
+      },
+      "OnWater": true
+    },
+    {
+      "Type": [
+        "Rock_Ice_Permafrost"
+      ],
+      "Weight": [
+        1
+      ],
+      "Offset": [
+        -2
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Snowlands-Ice",
+            "NoiseType": "DISTANCE",
+            "DistanceMode": "NATURAL",
+            "Jitter": 0.8,
+            "Distance2Mode": "DIV",
+            "FractalMode": "MAX",
+            "Octaves": 3,
+            "Formula": "SQUARED",
+            "Scale": 0.012
+          },
+          {
+            "Seed": "Shore_Ice",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.008,
+            "Normalize": [
+              0.3,
+              0.45
+            ]
+          }
+        ],
+        "Factors": [
+          0.6,
+          0.4
+        ],
+        "Threshold": [
+          0,
+          0.575
+        ]
+      },
+      "OnWater": true
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Rock_Formations.Ice_Formations.Iceberg.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone3_Shallow_Ocean_Tier1.PrefabPatterns.Iceberg"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Shale",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Rock_Shale"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone3.Layers.Rock.Bedrock_Trenches"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.36
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Pebbles_Frozen:3"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone3.Layers.Soil.Layer_Bedrock_Light_15"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.3
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Gravel:4"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone3.Layers.Soil.Layer_Bedrock_Light_14"
+                }
+              ],
+              "Threshold": [
+                0.6,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt_Cold",
+                "Repeat": [
+                  3,
+                  6
+                ],
+                "RepeatNoise": {
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 2,
+                  "Persistence": 0.4,
+                  "Scale": 0.05
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "Blocks": "Rock_Bedrock",
+        "Max": [
+          1,
+          10
+        ],
+        "MaxNoise": {
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 3,
+          "Persistence": 0.8,
+          "Scale": 1
+        },
+        "Min": 0
+      },
+      {
+        "File": "Zones.Layers.Zone3.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "Rock_Outcrops",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 4,
+      "Persistence": 0.4,
+      "Scale": 0.05
+    },
+    "Keys": [
+      0.28,
+      0.36
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          105,
+          113,
+          115
+        ],
+        "Values": [
+          1,
+          0.3,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          100,
+          113
+        ],
+        "Values": [
+          1,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.River"
+          }
+        ],
+        "Formula": "INVERTED_RIDGED_SQRT"
+      },
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.Base"
+          }
+        ],
+        "Normalize": [
+          0.35,
+          0.55
+        ]
+      },
+      {
+        "Seed": "Grasslands-Height-Threshold",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 4,
+        "Persistence": 0.3,
+        "Scale": 0.02
+      }
+    ],
+    "Factors": [
+      0.3,
+      0.4,
+      0.3
+    ],
+    "Normalize": [
+      0.15,
+      0.95
+    ]
+  },
+  "Tint": {
+    "Colors": [
+      "0x3cb878"
+    ],
+    "Weight": [
+      1
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone3_Shores"
+      ]
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

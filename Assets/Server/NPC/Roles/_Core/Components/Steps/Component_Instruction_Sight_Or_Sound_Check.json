@@ -1,0 +1,85 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Alerted" ],
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which a target will be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which a target needs to be to be seen"
+    },
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which a target will be heard"
+    },
+    "ThroughWalls": {
+      "Value": true,
+      "Description": "Whether the NPC can hear a target through obstacles"
+    },
+    "Attitudes": {
+      "Value": [ "Hostile", "Revered", "Friendly", "Neutral" ],
+      "Description": "A prioritised list of attitudes to respond to"
+    },
+    "ExcludeGroups": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Groups to exclude"
+    },
+    "GetNPCs": {
+      "Value": true,
+      "Description": "Whether to include NPCs in this sensor"
+    },
+    "IgnoreLockedTarget": {
+      "Value": false,
+      "Description": "Whether to ignore the current locked target"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Or",
+      "Sensors": [
+        {
+          "Type": "Player",
+          "Range": 2,
+          "LockOnTarget": true,
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        },
+        {
+          "Reference": "Component_Sensor_Sight_By_Attitude",
+          "Modify": {
+            "ViewRange": { "Compute": "ViewRange" },
+            "ViewSector": { "Compute": "ViewSector" },
+            "Attitudes": { "Compute": "Attitudes" },
+            "ExcludeGroups": { "Compute": "ExcludeGroups" },
+            "GetNPCs": { "Compute": "GetNPCs" },
+            "IgnoreLockedTarget": { "Compute": "IgnoreLockedTarget" }
+          }
+        },
+        {
+          "Reference": "Component_Sensor_Sound_By_Attitude",
+          "Modify": {
+            "HearingRange": { "Compute": "HearingRange" },
+            "ThroughWalls": { "Compute": "ThroughWalls" },
+            "Attitudes": { "Compute": "Attitudes" },
+            "ExcludeGroups": { "Compute": "ExcludeGroups" },
+            "GetNPCs": { "Compute": "GetNPCs" },
+            "IgnoreLockedTarget": { "Compute": "IgnoreLockedTarget" }
+          }
+        }
+      ]
+    },
+    "Actions": [
+      {
+        "Type": "ParentState",
+        "State": "Alerted"
+      }
+    ]
+  }
+}

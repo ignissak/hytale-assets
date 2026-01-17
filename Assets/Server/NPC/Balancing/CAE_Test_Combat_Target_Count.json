@@ -1,0 +1,156 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "MeleeAttack": {
+        "Type": "Ability",
+        "Description": "Use melee attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "Ability": "Sword_Swing_Left_Fast",
+        "SubState": "Default",
+        "InteractionVars": {
+          "Sword_Swing_Left_Fast_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Swing_Left_Fast_Damage",
+                "DamageCalculator": {
+                  "Type": "Absolute",
+                  "BaseDamage": {
+                    "Physical": 6
+                  },
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "KnownTargetCount",
+            "Curve": {
+              "Type": "Switch",
+              "InitialState": 1,
+              "FinalState": 0,
+              "SwitchPoint": 2
+            }
+          }
+        ]
+      },
+      "MeleeAttack2": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          5
+        ],
+        "PostExecuteDistanceRange": [
+          3,
+          3
+        ],
+        "Ability": "Sword_Attack",
+        "SubState": "Default",
+        "ChargeFor": 1.565,
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "KnownTargetCount",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 2
+            }
+          }
+        ]
+      },
+      "SelfHeal": {
+        "Type": "Ability",
+        "Description": "Heal self",
+        "Target": "Self",
+        "AttackDistanceRange": [
+          1,
+          1
+        ],
+        "Ability": "Test_Heal",
+        "WeightCoefficient": 1.2,
+        "Conditions": [
+          {
+            "Type": "KnownTargetCount",
+            "TargetType": "Friendly",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 2
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "Actions": [
+          "MeleeAttack",
+          "MeleeAttack2",
+          "SelfHeal"
+        ]
+      }
+    }
+  }
+}

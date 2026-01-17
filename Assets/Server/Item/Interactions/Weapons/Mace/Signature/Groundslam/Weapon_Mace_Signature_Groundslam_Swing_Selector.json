@@ -1,0 +1,80 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.05,
+  "Effects": {
+    "ItemAnimationId": "SwingDownCharged",
+    "WorldSoundEventId": "SFX_Mace_T2_Signature_Impact",
+    "LocalSoundEventId": "SFX_Mace_T2_Signature_Impact_Local",
+    "Particles": [
+      {
+        "SystemId": "Mace_Signature_Slash",
+        "TargetEntityPart": "Entity",
+        "TargetNodeName": "Hip",
+        "PositionOffset": {
+          "Y": 1.5,
+          "Z": 0.5
+        },
+        "RotationOffset": {
+          "Pitch": 0
+        }
+      }
+    ],
+    "Trails": [
+      {
+        "TrailId": "Mace_Signature",
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Origin_Projectile",
+        "PositionOffset": {
+          "Y": -0.2
+        }
+      },
+      {
+        "TrailId": "Mace_Signature2",
+        "RotationOffset": {
+          "Roll": 90.0
+        },
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Origin_Projectile",
+        "PositionOffset": {
+          "Y": -0.2
+        }
+      }
+    ]
+  },
+  "Selector": {
+    "Id": "AOECircle",
+    "Offset": {
+      "Z": -1.5
+    },
+    "Range": 2.5
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Groundslam_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Mace_Signature_Groundslam_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Replace",
+    "Var": "Groundslam_Explosion",
+    "DefaultOk": true,
+    "DefaultValue": {
+      "Interactions": [
+        "Weapon_Mace_Signature_Groundslam_Explosion"
+      ]
+    }
+  }
+}

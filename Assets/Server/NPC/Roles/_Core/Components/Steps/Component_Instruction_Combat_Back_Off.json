@@ -1,0 +1,115 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "TimerName": {
+      "Value": "Combat_Back_Off",
+      "Description": "The timer, started by the parent template, that controls when this behavior should run and for how long."
+    },
+    "CombatBackOffAfterAttack": {
+      "Value": true,
+      "Description": "Whether to back off after performing an attack."
+    },
+    "CombatBackOffDistanceRange": {
+      "Value": [ 4, 4 ],
+      "Description": "How far to back off after performing an attack. Max should be lower than the CombatBehaviorDistance."
+    },
+    "CombatBackOffDurationRange": {
+      "Value": [ 2, 3 ],
+      "Description": "How long to back off for after performing an attack."
+    },
+    "BlockAbility": {
+      "Value": "Shield_Block",
+      "Description": "The interaction to use for blocking when backing away. Set to empty to disable blocking."
+    },
+    "BlockProbability": {
+      "Value": 50,
+      "Description": "The probability this NPC will block when backing away if a BlockAbility is set."
+    },
+    "CombatStrafingDurationRange": {
+      "Value": [ 1, 1 ],
+      "Description": "How long to strafe for when in the combat strafing movement behavior. Only applies if CombatStrafeWeight is greater than 0."
+    },
+    "CombatStrafingFrequencyRange": {
+      "Value": [ 2, 2 ],
+      "Description": "How frequently to strafe when in the combat strafing movement behavior. Only applies if CombatStrafeWeight is greater than 0."
+    },
+    "CombatBehaviorDistance": {
+      "Value": 5,
+      "Description": "The distance within which to switch from smart chasing to combat-oriented movement behavior."
+    },
+    "CombatMovingRelativeSpeed": {
+      "Value": 0.6,
+      "Description": "Relative speed to use during combat specific movement (e.g. to achieve slower strafing)."
+    }
+  },
+  "Content": {
+    "$TODO": "Note for when we have descriptions: Using this component requires starting the timer in the template using this for it to run.",
+    "$Comment": "If we're running the BackOffTimer, we back off temporarily.",
+    "Enabled": { "Compute": "CombatBackOffAfterAttack" },
+    "Sensor": {
+      "Type": "And",
+      "Sensors": [
+        {
+          "Type": "Timer",
+          "Name": { "Compute": "TimerName" },
+          "State": "Running"
+        },
+        {
+          "Type": "Target",
+          "Range": { "Compute": "CombatBehaviorDistance" }
+        }
+      ]
+    },
+    "Instructions": [
+      {
+        "$Comment": "Block for a bit if we're backing off.",
+        "Enabled": { "Compute": "!isEmpty(BlockAbility)" },
+        "Continue": true,
+        "Type": "Random",
+        "ExecuteFor": { "Compute": "CombatBackOffDurationRange" },
+        "Instructions": [
+          {
+            "Enabled": { "Compute": "BlockProbability < 100 " },
+            "Weight": { "Compute": "100 - BlockProbability" },
+            "Actions": [
+              {
+                "Type": "Nothing"
+              }
+            ]
+          },
+          {
+            "Enabled": { "Compute": "BlockProbability > 0" },
+            "Weight": { "Compute": "BlockProbability" },
+            "Actions": [
+              {
+                "Type": "Attack",
+                "Attack": { "Compute": "BlockAbility" },
+                "ChargeFor": 2,
+                "AttackPauseRange": [ 1, 1 ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "CombatBehaviorDistance" }
+        },
+        "$TODO": "Maybe we want this to also use or not use strafing depending on the weights defined for combat movement",
+        "HeadMotion": {
+          "Type": "Watch"
+        },
+        "BodyMotion": {
+          "Type": "MaintainDistance",
+          "DesiredDistanceRange": { "Compute": "CombatBackOffDistanceRange" },
+          "StrafingDurationRange": { "Compute": "CombatStrafingDurationRange" },
+          "StrafingFrequencyRange": { "Compute": "CombatStrafingFrequencyRange" },
+          "RelativeForwardsSpeed": { "Compute": "CombatMovingRelativeSpeed" },
+          "RelativeBackwardsSpeed": { "Compute": "CombatMovingRelativeSpeed" }
+        }
+      }
+    ]
+  }
+}

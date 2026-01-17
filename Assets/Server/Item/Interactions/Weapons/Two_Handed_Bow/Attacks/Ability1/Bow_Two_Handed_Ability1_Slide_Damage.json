@@ -1,0 +1,46 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Physical": 1
+    }
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      },
+      "Direction": {
+        "X": 0.0,
+        "Y": 2,
+        "Z": -3
+      },
+      "Force": 30,
+      "VelocityType": "Add"
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Stab",
+        "Scale": 1
+      }
+    ]
+  },
+  "Effects": {
+    "MovementEffects": {
+      "DisableForward": true,
+      "DisableBackward": true
+    }
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 2
+    }
+  ]
+}

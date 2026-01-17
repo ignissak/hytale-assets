@@ -1,0 +1,173 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-4228,
+		"$y":	-4226
+	},
+	"Name":	"Basic",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-3394,
+			"$y":	-4947
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-3185,
+				"$y":	-4890
+			},
+			"Type":	"Sum",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-2456,
+						"$y":	-5336
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-1817,
+							"$y":	-5017
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-1166,
+									"$y":	-5201
+								},
+								"In":	1,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-1161,
+									"$y":	-5055
+								},
+								"In":	0,
+								"Out":	0
+							}, {
+								"$Position":	{
+									"$x":	-1164,
+									"$y":	-4908
+								},
+								"In":	-1,
+								"Out":	-0.1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1819,
+								"$y":	-5368
+							},
+							"Type":	"SimplexNoise2D",
+							"Skip":	false,
+							"Lacunarity":	2,
+							"Persistence":	0.5,
+							"Octaves":	1,
+							"Scale":	100,
+							"Seed":	"A"
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-2531,
+						"$y":	-4715
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-1910,
+							"$y":	-4479
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-1257,
+									"$y":	-4621
+								},
+								"In":	0,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-1250,
+									"$y":	-4469
+								},
+								"In":	200,
+								"Out":	-1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1893,
+								"$y":	-4725
+							},
+							"Type":	"BaseHeight",
+							"Skip":	false,
+							"BaseHeightName":	"Base",
+							"Distance":	true
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-3132,
+			"$y":	-4137
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-2333,
+				"$y":	-4105
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-1703,
+						"$y":	-4115
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-1060,
+							"$y":	-4123
+						},
+						"Solid":	"Rock_Stone"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-2330,
+				"$y":	-3812
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1634,
+					"$y":	-3783
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-3315,
+			"$y":	-3714
+		},
+		"Type":	"Constant",
+		"Environment":	"Zone1_Overground"
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-3283,
+			"$y":	-3483
+		},
+		"Type":	"Constant",
+		"Color":	"#5b9e28"
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[]
+}

@@ -1,0 +1,228 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Chilli_StageFinal.name"
+  },
+  "Parent": "Plant_Crop_Chilli_Block",
+  "BlockType": {
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Chilli_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Chilli_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Small",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_Stage1"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#529f2b"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Chilli_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Chilli_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Large",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_Stage2"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#529f2b"
+        },
+        "Stage3": {
+          "CustomModel": "Resources/Ingredients/Chilli_03.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Chilli_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 1,
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_Stage3"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Full",
+          "ParticleColor": "#529f2b"
+        },
+        "Stage4": {
+          "CustomModel": "Resources/Ingredients/Chilli_04.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Chilli_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.9,
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_Stage4"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Full",
+          "ParticleColor": "#529f2b"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Chilli_05.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Chilli_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.9,
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Chilli_Eternal_StageFinal_Harvest"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Full",
+          "ParticleColor": "#739f2b"
+        }
+      }
+    },
+    "Particles": [
+      {
+        "SystemId": "Plant_Eternal",
+        "DetachedFromModel": false
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage4"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Duration": {
+              "Min": 18975,
+              "Max": 18975
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage4"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Chilli_Eternal_Block"
+      }
+    }
+  },
+  "Quality": "Uncommon"
+}

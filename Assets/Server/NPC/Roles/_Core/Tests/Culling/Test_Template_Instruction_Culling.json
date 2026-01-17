@@ -1,0 +1,50 @@
+{
+  "Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "Parameters": {
+    "Wander": {
+      "Value": false,
+      "Description": ""
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Enabled": { "Compute": "Wander" },
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Template_Instruction_Culling.name"
+}

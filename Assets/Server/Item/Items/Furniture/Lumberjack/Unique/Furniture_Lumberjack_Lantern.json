@@ -1,0 +1,180 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Lumberjack_Lantern.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Lumberjack",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Furniture_Crude_Candle",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Lumberjack_Lantern.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.58823,
+    "Translation": [
+      -0.885,
+      -15.285
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Lumberjack/Lantern.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Lumberjack/Lantern_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "Light": {
+      "Color": "#baa",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#793e21",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "CustomModelScale": 0.8,
+    "HitboxType": "Plant_Full",
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 0.75
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter2",
+        "Color": "#ffcd10",
+        "Scale": 0.6
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter3",
+        "Color": "#ffcd10",
+        "Scale": 0.6
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Looping": true
+  },
+  "Model": "Blocks/Decorative_Sets/Lumberjack/Lantern.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Lumberjack/Lantern_Texture.png",
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Lumberjack"
+    ]
+  },
+  "Scale": 1.3,
+  "Utility": {
+    "Usable": true
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

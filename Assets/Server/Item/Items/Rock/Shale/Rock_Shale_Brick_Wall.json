@@ -1,0 +1,80 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Shale_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Shale_Brick_Wall.png",
+  "Set": "Rock_Shale_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Shale_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Shale_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Shale_Brick_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Shale_Brick_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#3d4a52",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Shale_Brick_Corner_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Shale_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Shale_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Shale_Brick_Wall",
+        "Corner": "*Rock_Shale_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Shale"
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall"
+}

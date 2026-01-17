@@ -1,0 +1,88 @@
+{
+  "Type": "MAX",
+  "Noise": [
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Zone2.Heightmaps.Plateau"
+                    }
+                  ],
+                  "Normalize": [0.075, 0.4]
+                },
+                {
+                  "Seed": "DrylandTerrain",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 1,
+                  "Persistence": 0.5,
+                  "Scale": 0.01,
+                  "Normalize": [0.2, 1]
+                }
+              ],
+              "Factors": [1, 0.3]
+            },
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MIN",
+                "Noise": [
+                  {
+                    "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Eroded"
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "DrylandsErosion3",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 4,
+                    "Persistence": 0.5,
+                    "Scale": 0.005,
+                    "Amplitude": 20
+                  },
+                  {
+                    "Seed": "DrylandsErosion4",
+                    "NoiseType": "SIMPLEX",
+                    "Formula": "RIDGED_FIX",
+                    "Octaves": 2,
+                    "Persistence": 0.1,
+                    "Scale": 0.03,
+                    "Amplitude": 5
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "Seed": "DrylandTerrain",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 4,
+          "Persistence": 0.5,
+          "Scale": 0.01
+        }
+      ],
+      "Factors": [1, 0.1]
+    },
+    {
+      "Type": "MAX",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone2.Heightmaps.River"
+        }
+      ],
+      "Normalize": [0, 0.5]
+    }
+  ]
+}

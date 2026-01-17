@@ -1,0 +1,90 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Bear_Polar_Default",
+    "ItemAnimationId": "Stomp"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.5,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.333,
+            "Selector": {
+              "Id": "AOECircle",
+              "Range": 4
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Bear_Polar_Stomp_Damage"
+                    ]
+                  },
+                  "Var": "Stomp_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.334
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.167,
+            "Effects": {
+              "Trails": [
+                {
+                  "TrailId": "Bear_Claw",
+                  "TargetNodeName": "R-Hand",
+                  "TargetEntityPart": "Entity",
+                  "RotationOffset": {
+                    "Yaw": 0,
+                    "Pitch": 0,
+                    "Roll": 90
+                  },
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": -0.1,
+                    "Z": 0.25
+                  }
+                },
+                {
+                  "TrailId": "Bear_Claw",
+                  "TargetNodeName": "L-Hand",
+                  "TargetEntityPart": "Entity",
+                  "RotationOffset": {
+                    "Yaw": 0,
+                    "Pitch": 0,
+                    "Roll": 90
+                  },
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": -0.1,
+                    "Z": 0.25
+                  }
+                }
+              ],
+              "WorldSoundEventId": "SFX_Bear_Grizzly_Attack"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

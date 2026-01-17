@@ -1,0 +1,48 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "Debug": "PathFinder",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1.3
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 0
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Flee",
+            "StopDistance": 10,
+            "SlowDownDistance": 6,
+            "Falloff": 3
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Walk_Flee.name"
+}

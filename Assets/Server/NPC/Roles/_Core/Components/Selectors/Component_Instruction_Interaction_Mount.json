@@ -1,0 +1,66 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Component.Mount",
+  "Parameters": {
+    "AnchorX": {
+      "Value": 0
+    },
+    "AnchorY": {
+      "Value": 0
+    },
+    "AnchorZ": {
+      "Value": 0
+    },
+    "MovementConfig": {
+      "Value": "Mount"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "CanInteract",
+            "ViewSector": 360
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true,
+            "Hint": "server.interactionHints.mount"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "HasInteracted"
+        },
+        "Actions": [
+          {
+            "Type": "Mount",
+            "AnchorX": { "Compute": "AnchorX" },
+            "AnchorY": { "Compute": "AnchorY" },
+            "AnchorZ": { "Compute": "AnchorZ" },
+            "MovementConfig": { "Compute": "MovementConfig" }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

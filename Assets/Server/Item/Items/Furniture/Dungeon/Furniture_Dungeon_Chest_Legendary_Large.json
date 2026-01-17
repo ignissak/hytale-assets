@@ -1,0 +1,107 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Dungeon_Chest_Legendary_Large.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Adventure",
+  "Icon": "Icons/ItemsGenerated/Furniture_Dungeon_Chest_Legendary_Large.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.5,
+    "Translation": [
+      13,
+      -10
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "CustomModel": "Blocks/Dungeons/Chest_Legendary.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Dungeons/Chest_Legendary_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Chest_Large_Legendary",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "State": {
+      "Id": "container",
+      "Capacity": 1,
+      "Definitions": {
+        "OpenWindow": {
+          "Particles": [
+            {
+              "SystemId": "Magic_Hit",
+              "TargetNodeName": "Button",
+              "Scale": 1,
+              "PositionOffset": {}
+            }
+          ],
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim",
+          "State": {
+            "Definitions": {
+              "CloseWindow": {
+                "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+                "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+              },
+              "OpenWindow": {
+                "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+                "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    },
+    "ParticleColor": "#7a3d27"
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Dungeon"
+    ]
+  },
+  "Scale": 0.6,
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "MaxStack": 10
+}

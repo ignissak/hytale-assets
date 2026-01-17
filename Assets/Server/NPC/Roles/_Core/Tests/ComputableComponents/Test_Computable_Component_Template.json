@@ -1,0 +1,56 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Zombie",
+  "Parameters": {
+    "Component": {
+      "Value": "Test_Component_Instruction_Flee",
+      "Description": "The component to use"
+    },
+    "Range": {
+      "Value": 10,
+      "Description": "Desired range"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Reference": { "Compute": "Component" },
+          "Interfaces": [ "Hytale.Test.Component.Flee", "Hytale.Test.Component.Seek" ],
+          "Nullable": true,
+          "Modify": {
+            "_InterfaceParameters": {
+              "Hytale.Test.Component.Seek": {
+                "Range": { "Compute": "Range" },
+                "RelativeSpeed": 1
+              }
+            },
+            "Range": 5
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Computable_Component_Template.name"
+}

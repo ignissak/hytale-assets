@@ -1,0 +1,49 @@
+{
+  "GridGenerator": {
+    "Density": 0.19,
+    "Scale": 0.1,
+    "Jitter": 0.8
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Heightmaps.Base"
+          }
+        ],
+        "Formula": "INVERTED"
+      },
+      {
+        "Seed": "Grasslands-Base-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 4,
+        "Persistence": 0.6,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "Grasslands-Base",
+        "NoiseType": "CELL",
+        "Formula": "INVERTED_SQUARED",
+        "Scale": 0.025,
+        "CellMode": "DISTANCE",
+        "Jitter": 0.7
+      },
+      {
+        "Seed": "Grasslands-Base",
+        "NoiseType": "CELL",
+        "Formula": "INVERTED_SQUARED",
+        "Scale": 0.011,
+        "CellMode": "DISTANCE",
+        "Jitter": 0.7
+      }
+    ],
+    "Factors": [0.52, 0.31, 0.075, 0.125],
+    "Threshold": [0.47, 0.53]
+  },
+  "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Cold", "Soil_Gravel", "Soil_Leaves", "Soil_Pathway", "Rock_Basalt", "Rock_Shale", "Rock_Slate", "Soil_Dirt_Cold"]
+}

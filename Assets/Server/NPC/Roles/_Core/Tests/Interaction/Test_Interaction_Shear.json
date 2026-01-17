@@ -1,0 +1,184 @@
+{
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "Sensor": {
+                "Type": "Alarm",
+                "Name": "Wool_Regrowing",
+                "State": "Passed",
+                "Clear": true
+              },
+              "Actions": [
+                {
+                  "Type": "ModelAttachment",
+                  "Slot": "Fleece",
+                  "Attachment": "Wool"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "$Shear"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "SpawnParticles",
+                  "Offset": [ 0, 2.1, 0 ],
+                  "ParticleSystem": "Alerted"
+                },
+                {
+                  "Type": "ModelAttachment",
+                  "Slot": "Fleece",
+                  "Attachment": ""
+                },
+                {
+                  "Type": "DropItem",
+                  "DropList": "Drop_Sheep_Harvest",
+                  "Distance": [ 0.2, 0.5 ],
+                  "Delay": [ 0, 0 ],
+                  "DropSector": [ -360, 360 ],
+                  "PitchHigh": false,
+                  "ThrowSpeed": 9
+                },
+                {
+                  "Type": "SetAlarm",
+                  "Name": "Wool_Regrowing",
+                  "DurationRange": [ "P1D", "P1D" ]
+                }
+              ]
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 3 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "InteractionInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+          "Type": "Not",
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "Alarm",
+                "Name": "Wool_Regrowing",
+                "State": "Unset"
+              },
+              {
+                "Type": "CanInteract",
+                "Attitudes": [ "Friendly", "Neutral", "Hostile", "Ignore", "Revered" ]
+              }
+            ]
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "$Comment": "Allow contextual shearing but hide F key prompt",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true,
+            "ShowPrompt": false
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "InteractionContext",
+              "Context": "Shear"
+            },
+            {
+              "Type": "Alarm",
+              "Name": "Wool_Regrowing",
+              "State": "Unset"
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "LockOnInteractionTarget"
+          },
+          {
+            "Type": "State",
+            "State": "$Shear"
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": "server.npcRoles.Test_Interaction_Shear.name"
+}

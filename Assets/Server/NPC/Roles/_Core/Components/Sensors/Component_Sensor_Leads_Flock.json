@@ -1,0 +1,35 @@
+{
+  "Class": "Sensor",
+  "Content": {
+    "Type": "Or",
+    "Sensors": [
+      {
+        "Type": "Self",
+        "Filters": [
+          {
+            "Type": "Flock",
+            "FlockStatus": "NotMember"
+          }
+        ]
+      },
+      {
+        "Type": "And",
+        "Sensors": [
+          {
+            "Type": "FlockLeader"
+          },
+          {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Flock",
+                "FlockStatus": "Leader"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

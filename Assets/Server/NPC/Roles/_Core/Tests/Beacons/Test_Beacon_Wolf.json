@@ -1,0 +1,99 @@
+{
+  "Type": "Generic",
+  "Appearance": "Wolf_Black",
+  "ApplySeparation": true,
+  "SeparationDistance": 2,
+  "SeparationWeight": 1,
+  "SeparationDistanceTarget": 0.5,
+  "SeparationNearRadiusTarget": 1,
+  "SeparationFarRadiusTarget": 5,
+  "FlockAllowedNPC": [ "Test_Beacon_Trork_Hunter" ],
+  "FlockCanLead": false,
+  "FlockInfluenceRange": 4,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Group_Up",
+            "Range": 25,
+            "TargetSlot": "LockedTarget"
+          },
+          "Tag": "prey",
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 1,
+            "StopDistance": 1,
+            "RelativeSpeed": 1,
+            "AbortDistance": 26
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Leash",
+            "Range": 10
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 3,
+            "RelativeSpeed": 1,
+            "StopDistance": 1,
+            "AbortDistance": 100
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "NPCGroup",
+                "IncludeGroups": [ "Tests" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Attack",
+              "Attack": "Root_NPC_Attack_Melee"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon_Wolf.name"
+}

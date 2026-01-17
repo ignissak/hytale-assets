@@ -1,0 +1,87 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.083,
+  "Effects": {
+    "ItemAnimationId": "DownstrikeCharged",
+    "Trails": [
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Charged"
+      }
+    ],
+    "WorldSoundEventId": "SFX_Battleaxe_T2_Swing_Charged",
+    "LocalSoundEventId": "SFX_Battleaxe_T2_Swing_Charged_Local",
+    "CameraEffect": "Battleaxe_Downstrike"
+  },
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToLeft",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0.1,
+    "EndDistance": 4,
+    "Length": 120,
+    "RollOffset": 90,
+    "YawStartOffset": -60
+  },
+  "HitBlock": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Downstrike_Hit_Block",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Block_Break_Adventure"
+          ]
+        }
+      }
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Downstrike_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Primary_Downstrike_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.199,
+    "Next": {
+      "Type": "Replace",
+      "Var": "Downstrike_StaminaRegenDelay",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          {
+            "Type": "ChangeStat",
+            "Behaviour": "Set",
+            "StatModifiers": {
+              "StaminaRegenDelay": -1.5
+            }
+          }
+        ]
+      }
+    }
+  }
+}

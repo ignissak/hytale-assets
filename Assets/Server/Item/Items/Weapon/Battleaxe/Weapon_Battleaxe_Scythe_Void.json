@@ -1,0 +1,135 @@
+{
+  "Parent": "Template_Weapon_Battleaxe",
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Battleaxe_Scythe_Void.name"
+  },
+  "Model": "NPC/Undead/Wraith/Models/Weapons/Battleaxe/Scythe_Void.blockymodel",
+  "Texture": "NPC/Undead/Wraith/Models/Weapons/Battleaxe/Scythe_Void_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Battleaxe_Scythe_Void.png",
+  "PlayerAnimationsId": "Spear",
+  "Quality": "Common",
+  "ItemLevel": 30,
+  "MaxStack": 1,
+  "Interactions": {
+    "Primary": "Battleaxe_Scythe_Void_Attack",
+    "Secondary": "Spear_Block"
+  },
+  "InteractionVars": {
+    "Spear_Block_Damage": "Spear_Block_Damage",
+    "Spear_Spin_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Left_Effect",
+          "Effects": {
+            "Trails": []
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Left_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 112
+            },
+            "RandomPercentageModifier": 0.2,
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Right_Effect",
+          "Effects": {
+            "Trails": []
+          }
+        }
+      ]
+    },
+    "Spear_Spin_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Spin_Swing_Right_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 112
+            },
+            "RandomPercentageModifier": 0.2,
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Battleaxe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Battleaxe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "TrailId": "Void",
+                "PositionOffset": {
+                  "X": 0.9,
+                  "Y": -1,
+                  "Z": 0
+                },
+                "TargetNodeName": "Handle",
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 75
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Battleaxe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Battleaxe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 224
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T2_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T2_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "Trails": [
+    {
+      "TrailId": "Void_Green",
+      "PositionOffset": {
+        "X": 0.9,
+        "Y": -1,
+        "Z": 0
+      },
+      "TargetNodeName": "Handle",
+      "RotationOffset": {
+        "Yaw": 0,
+        "Pitch": 0,
+        "Roll": 75
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Club_Doomed.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Rare",
+  "ItemLevel": 60,
+  "Model": "NPC/Intelligent/Outlander/Models/Weapons/Club/Doomed.blockymodel",
+  "Texture": "NPC/Intelligent/Outlander/Models/Weapons/Club/Doomed_Texture.png",
+  "PlayerAnimationsId": "Club",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Club_Attack"
+  },
+  "InteractionVars": {
+    "Club_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 43
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 43
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Down_Charged_Effect": "Club_Swing_Down_Charged_Effect",
+    "Club_Swing_Down_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Down_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 86
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.37,
+    "Translation": [
+      -13.8,
+      -16.8
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Club_Doomed.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 135,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Club"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

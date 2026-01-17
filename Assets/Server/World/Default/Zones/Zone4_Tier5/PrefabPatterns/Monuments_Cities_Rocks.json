@@ -1,0 +1,57 @@
+{
+  "GridGenerator": {
+		"Seed": "Monuments-Firelands",
+    "Density": [0.45, 0.673],
+    "Scale": 0.1,
+    "Jitter": 1
+  },
+ "NoiseMask": {
+		"Type": "SUM",
+			"Noise": [
+				{
+					"Seed": "Gully_Cliffs",
+					"NoiseType": "OLD_SIMPLEX",
+					"FractalMode": "OLDSCHOOL",
+					"Octaves": 4,
+					"Persistence": 0.4,
+					"Scale": 0.05
+				},
+				{
+				"NoiseType": "CELL",
+				"CellMode": "DISTANCE",
+				"Jitter": 0.5,
+				"Density": [0, 0.3],
+				"Scale": 0.12,
+    "Threshold": [0, 0.36]
+				},
+				{
+				"Seed": "Monuments-Firelands",
+				"NoiseType": "DISTANCE",
+					"DistanceMode": "NATURAL",
+					"Distance2Mode": "DIV",
+					"Scale": 0.003,
+					"Jitter": 0.75
+				}
+			],
+			"Factors": [0.12, 0.15, 1],
+    "Threshold": [0.58, 0.765]
+  },
+	"Mask": {
+		"Default": ["*"],
+		"Specific": [
+			{
+				"Block": ["Rock_Stone_Cobble_Half", "Wood_Deadwood_Planks_Half", "Wood_Deadwood_Stairs", "Wood_Deadwood_Beam", "Wood_Softwood_Stairs", "Furniture_Ancient_Ladder"],
+				"Rule": ["Empty", "Plant_Grass_Gnarled_Short", "Plant_Grass_Gnarled", "Plant_Grass_Gnarled_Tall", "Plant_Crop_Wheat_Stage_4_Burnt", "Plant_Reeds_Water"]
+			},
+			{
+				"Block": ["Plant_Bush_Crystal", "Plant_Grass_Cave_Short", "Rock_Crystal_Red_Small", "Plant_Bush_Dead_Tall", "Plant_Bush_Dead", "Rubble_Slate_Medium", "Rubble_Slate"],
+				"Rule": ["Empty"]
+			},
+			{
+				"Block": ["Empty"],
+				"Rule": ["Plant_Grass_Gnarled_Short", "Plant_Grass_Gnarled", "Plant_Grass_Gnarled_Tall", "Plant_Crop_Wheat_Stage_4_Burnt", "Plant_Reeds_Water", "Soil_Dirt_Burnt", "Soil_Dirt_Cold", "Soil_Grass_Burnt", "Soil_Dirt_Poisoned", "Rock_Basalt", "Soil_Sand_Ashen", "Soil_Ash", "Rock_Slate"]
+			}
+		]
+	},
+  "FitHeightmap": false
+}

@@ -1,0 +1,72 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Tropicalwood_Fence.name"
+  },
+  "Parent": "Wood_Softwood_Fence",
+  "Icon": "Icons/ItemsGenerated/Wood_Tropicalwood_Fence.png",
+  "Set": "Wood_Tropicalwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Tropicalwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Tropicalwood_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#c39f5d",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Tropicalwood.blockymodel",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Fence_Tropicalwood_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Fence_Tropicalwood_Corner.blockymodel",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Wood_Tropicalwood_Fence",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Wood_Tropicalwood_Fence",
+        "Corner": "*Wood_Tropicalwood_Fence_State_Definitions_Corner",
+        "Gate": "Wood_Tropicalwood_Fence_Gate"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Tropicalwood"
+    ]
+  }
+}

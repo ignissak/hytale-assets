@@ -1,0 +1,72 @@
+{
+  "Class": "Instruction",
+  "Type": "Component",
+  "Parameters": {
+    "TargetSwitchTimer": {
+      "Value": [ 5, 5 ],
+      "Description": "Minimum time the NPC will be locked onto a single target before switching"
+    },
+    "AttackSequence": {
+      "Value": "Component_Instruction_Attack_Sequence_Temp",
+      "Description": "The attack sequence to use in combat"
+    },
+    "AttackDistance": {
+      "Value": 2,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "TargetRange": {
+      "Value": 4,
+      "Description": "The distance the target needs to be within to maintain priority over other targets"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaintainDistance": {
+      "Value": true,
+      "Description": "Whether this NPC should try to maintain distance to the target"
+    },
+    "MaintainDistanceRange": {
+      "Value": 5,
+      "Description": "The distance within which the distance maintaining logic will kick in"
+    },
+    "MoveThreshold": {
+      "Value": 0.5,
+      "Description": "Threshold outside the desired distance range before NPC will move to maintain distance"
+    },
+    "StrafingDurationRange": {
+      "Value": [ 0.5, 1 ],
+      "Description": "How long to strafe for when strafing"
+    },
+    "StrafingFrequencyRange": {
+      "Value": [ 2, 4 ],
+      "Description": "How often to strafe"
+    },
+    "RelativeForwardsSpeed": {
+      "Value": 1,
+      "Description": "Relative forwards move speed when maintaining distance"
+    },
+    "RelativeBackwardsSpeed": {
+      "Value": 0.4,
+      "Description": "Relative backwards move speed when maintaining distance"
+    }
+  },
+  "Content": {
+    "Reference": "Component_Instruction_Target_Adjusted_Attack",
+    "Modify": {
+      "TargetSwitchTimer": { "Compute": "TargetSwitchTimer" },
+      "AttackSequence": { "Compute": "AttackSequence" },
+      "AttackDistance": { "Compute": "AttackDistance" },
+      "TargetRange": { "Compute": "TargetRange" },
+      "CombatRelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" },
+      "MaintainDistance": { "Compute": "MaintainDistance" },
+      "MaintainDistanceRange": { "Compute": "MaintainDistanceRange" },
+      "MoveThreshold": { "Compute": "MoveThreshold" },
+      "StrafingDurationRange": { "Compute": "StrafingDurationRange" },
+      "StrafingFrequencyRange": { "Compute": "StrafingFrequencyRange" },
+      "RelativeForwardsSpeed": { "Compute": "RelativeForwardsSpeed" },
+      "RelativeBackwardsSpeed": { "Compute": "RelativeBackwardsSpeed" },
+      "DesiredDistanceRange": { "Compute": "makeRange(AttackDistance - 0.2)" }
+    }
+  }
+}

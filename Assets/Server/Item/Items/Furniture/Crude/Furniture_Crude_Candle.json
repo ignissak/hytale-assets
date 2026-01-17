@@ -1,0 +1,144 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Crude_Candle.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Crude",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bar_Copper",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Crude_Candle.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.7,
+    "Translation": [
+      1.8,
+      -13.5
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Metal",
+    "CustomModel": "Blocks/Decorative_Sets/Crude/Candle.blockymodel",
+    "CustomModelScale": 0.7,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Crude/Candle_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Torch_Small",
+    "Light": {
+      "Color": "#987",
+      "Radius": 0
+    },
+    "Opacity": "Transparent",
+    "RandomRotation": "YawStep1",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        }
+      ]
+    },
+    "Looping": true,
+    "Material": "Solid",
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 1.1
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Candle_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Crude"
+    ]
+  },
+  "Utility": {
+    "Usable": true
+  },
+  "Scale": 1.5,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

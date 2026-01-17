@@ -1,0 +1,72 @@
+{
+  "Model": "Rubble_Default",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "SticksVertically": true
+  },
+  "LaunchForce": 45,
+  "SpawnOffset": {
+    "X": 0.2,
+    "Y": 0.2,
+    "Z": 0.0
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "SFX_Rubble_Hit"
+        },
+        {
+          "Type": "DamageEntity",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 1
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Point",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Force": 19,
+              "VelocityType": "Add"
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Rubble_Miss"
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

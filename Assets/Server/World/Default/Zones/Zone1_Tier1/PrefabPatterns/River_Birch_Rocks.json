@@ -1,0 +1,75 @@
+{
+  "GridGenerator": {
+		"Seed": "Grasslands-Pattern-Aspen-River-Boulders",
+    "Density": [0.4, 0.9],
+    "Scale": 0.14,
+    "Jitter": 0.9
+  },
+  "HeightThreshold": {
+    "Positions": [112, 113, 115, 116],
+    "Values": [0, 1, 1, 0]
+  },
+	"NoiseMask": {
+    "$Comment": "Keeps boulders spawning only on soil pebbles, since the parent field stopped working",
+		"Type":"DISTORTED",
+		"Noise":{
+			"Type": "SUM",
+			"Noise": [
+				{
+					"Type": "MIN",
+					"Noise": [
+					  {
+					    "File": "Zones.Noise.Shared.Heightmaps.River"
+					  }
+					],
+					"Formula": "INVERTED_RIDGED_SQRT",
+					"Normalize": [0.5876, 0.9999]
+				},
+				{
+
+				  "Type": "MIN",
+
+				  "Noise": [
+
+				    {
+
+
+				      "File": "Zones.Noise.Shared.Heightmaps.Base"
+
+
+				    }
+
+				  ],
+
+				  "Normalize": [0.32, 0.55]
+
+				}
+			],
+			"Factors": [0.85, 0.15]
+		},
+		"Randomizer":{
+			"Generators":[
+				{
+					"Seed": "Gravel_Patches",
+					"NoiseType": "OLD_SIMPLEX",
+					"FractalMode": "OLDSCHOOL",
+					"Formula": "NORMAL",
+					"Octaves": 3,
+					"Persistence": 0.5,
+					"Scale": 0.06,
+					"Amplitude": 13
+				}
+			]
+		},
+    "Threshold": [0.675, 1]
+	},
+  "Mask": {
+    "Default": ["Empty"],
+    "Specific": [
+      {
+        "Block": ["Rock_Stone", "Rock_Stone_Mossy", "Rock_Chalk", "Rock_Marble"],
+        "Rule": ["*"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "ReturnHome", "Chase", "Alerted", "Panic" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "$Comment": "Animations",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status"
+          },
+          {
+            "Type": "SpawnParticles",
+            "Offset": [ 0, 2.1, 0 ],
+            "ParticleSystem": "Question"
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Panic" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Eval",
+              "Expression": "blocked"
+            },
+            "BodyMotion": {
+              "Type": "Timer",
+              "Time": [ 2, 3 ],
+              "Motion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 45,
+                "RelativeSpeed": 0.6
+              }
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": 1,
+              "ExcludeOwnType": false,
+              "LockOnTarget": false,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": [ "Self" ]
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Wander",
+              "MaxHeadingChange": 45,
+              "RelativeSpeed": 1
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "BodyMotion": {
+              "Type": "Sequence",
+              "Motions": [
+                {
+                  "Type": "Timer",
+                  "Time": [ 2, 3 ],
+                  "Motion": {
+                    "Type": "Wander",
+                    "MaxHeadingChange": 1,
+                    "RelativeSpeed": 0.6
+                  }
+                },
+                {
+                  "Type": "Sequence",
+                  "Looped": true,
+                  "Motions": [
+                    {
+                      "Type": "Timer",
+                      "Time": [ 1, 2 ],
+                      "Motion": {
+                        "Type": "WanderInCircle",
+                        "Radius": 5,
+                        "MaxHeadingChange": 60,
+                        "RelativeSpeed": 0.6
+                      }
+                    },
+                    {
+                      "Type": "Timer",
+                      "Time": [ 1, 2 ],
+                      "Motion": {
+                        "Type": "Nothing"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "Mob",
+              "Range": 2,
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ],
+              "Prioritiser": {
+                "Type": "Attitude",
+                "AttitudesByPriority": [ "Hostile" ]
+              },
+              "GetPlayers": true,
+              "GetNPCs": false
+            },
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": [ "Hostile" ]
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "Attitudes": [ "Hostile" ]
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Alerted"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 8, 10 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "ReturnHome"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

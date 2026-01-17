@@ -1,0 +1,46 @@
+{
+  "Parent": "Projectile_Config_Arrow_Base",
+  "LaunchForce": 40,
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 10,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "LaunchLocalSoundEventId": "SFX_Bow_T2_Shoot_Local",
+  "LaunchWorldSoundEventId": "SFX_Bow_T2_Shoot",
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        "Weapon_Crossbow_Primary_Combo_Condition",
+        {
+          "Type": "Replace",
+          "Var": "Standard_Projectile_Impact",
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Crossbow_Effects_Standard_Projectile_Impact"
+            ]
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Standard_Projectile_Miss",
+          "DefaultValue": {
+            "Interactions": [
+              "Common_Projectile_Miss"
+            ]
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    }
+  }
+}

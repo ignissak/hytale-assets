@@ -1,0 +1,65 @@
+$C = "../../Common.ui";
+$Sounds = "../../Sounds.ui";
+
+Group {
+  Anchor: (Width: 144, Height: 176, Right: 16, Bottom: 16);
+  Padding: (Full: 0);
+
+  Group #EmptyBackground {
+    Visible: false;
+    Background: (TexturePath: "Tiles/TileEmpty.png", Border: 8);
+    TooltipText: %server.memories.general.undiscovered.tooltipText;
+    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+  }
+
+  TextButton #ButtonNotSelected {
+    Visible: false;
+    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center,
+        ),
+        Background: (TexturePath: "Tiles/TileDefault.png", Border: 8),
+      ),
+      Hovered: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center,
+        ),
+        Background: (TexturePath: "Tiles/TileHovered.png", Border: 8),
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  TextButton #ButtonSelected {
+    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+    Visible: false;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center,
+        ),
+        Background: (TexturePath: "Tiles/TileSelected.png", Border: 8),
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  Group {
+    LayoutMode: Middle;
+    Anchor: (Full: 0);
+
+    AssetImage #Icon {
+      Anchor: (Width: 128, Height: 128);
+    }
+  }
+}

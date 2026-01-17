@@ -1,0 +1,53 @@
+{
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 10,
+            "Filters": [
+              {
+                "Type": "Flock",
+                "CheckCanJoin": true
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Joinable flock in range!"
+            }
+          ]
+        },
+        {
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "No joinable flock in range"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Can_Join_Flock.name"
+}

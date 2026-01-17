@@ -1,0 +1,112 @@
+{
+  "Type": "MAX",
+  "Noise": [
+    {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Grasslands-Plains-Heightmap",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Formula": "INVERTED",
+              "Octaves": 4,
+              "Persistence": 0.4,
+              "Scale": 0.025,
+              "Normalize": [-1, 1]
+            },
+            {
+              "File": "Zones.Noise.Zone1.Heightmaps.Gorges_Grid"
+            }
+          ],
+          "Factors": [1, 0.2]
+        },
+        {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "File": "Zones.Noise.Zone1.Heightmaps.Gorges_Plateau"
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "GrasslandsErosion",
+                    "NoiseType": "SIMPLEX",
+                    "Formula": "NORMAL",
+                    "Octaves": 4,
+                    "Persistence": 0.5,
+                    "Scale": 0.025,
+                    "Amplitude": 8
+                  }
+                ]
+              },
+              "Normalize": [0.75, 0.8]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "GrasslandsErosion",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "NORMAL",
+                  "Octaves": 3,
+                  "Persistence": 0.2,
+                  "Scale": 0.025
+                },
+                {
+                  "Type": "MIN",
+                  "Noise": [
+                    {
+                      "File": "Zones.Noise.Zone1.Heightmaps.Gorges_Grid"
+                    }
+                  ],
+                  "Normalize": [0, 0.5]
+                }
+              ],
+              "Factors": [0.6, 0.4],
+              "Normalize": [-0.5, 2]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.NoiseMasks.Faction_Undead"
+          },
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Zone1.NoiseMasks.Dungeons"
+              }
+            ],
+            "Normalize": [-0.2, 1]
+          }
+        ],
+        "Formula": "INVERTED",
+        "Normalize": [0.4, 0.7]
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Randomizer",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 4,
+            "Persistence": 0.5,
+            "Scale": 0.0075,
+            "Amplitude": 20
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "Type": "Selector",
+  "Selector": {
+    "Id": "AOECircle",
+    "Range": 5
+  },
+  "Effects": {
+    "Particles": [
+      {
+        "SystemId": "Explosion_Medium",
+        "TargetEntityPart": "Entity"
+      }
+    ],
+    "WorldSoundEventId": "SFX_Goblin_Lobber_Bomb_Death",
+		"LocalSoundEventId": "SFX_Goblin_Lobber_Bomb_Death"
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Parent": "DamageEntityParent",
+        "DamageCalculator": {
+          "BaseDamage": {
+            "Physical": 20
+          }
+        },
+        "DamageEffects": {
+          "Knockback": {
+            "Type": "Point",
+            "VelocityConfig": {
+              "AirResistance": 0.97,
+              "AirResistanceMax": 0.96,
+              "GroundResistance": 0.94,
+              "GroundResistanceMax": 0.3,
+              "Threshold": 3.0,
+              "Style": "Exp"
+            },
+            "Force": 30,
+            "VelocityType": "Set"
+          },
+          "WorldParticles": [
+            {
+              "SystemId": "Impact_Mace_Charged",
+              "Scale": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "RunTime": 1
+  }
+}

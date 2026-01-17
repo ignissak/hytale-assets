@@ -1,0 +1,401 @@
+{
+  "Type": "Abstract",
+  "KnockbackScale": 0.5,
+  "StartState": "Idle",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Mouse",
+      "Description": "Model to be used"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 15,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "DistractedSenseRange": {
+      "Value": 5,
+      "Description": "Hearing range when distracted by dropped fish"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Motion_Configurable_Leashed_Wander",
+      "Description": "The component that controls how the NPC moves during idle state"
+    },
+    "AttractiveItems": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Item to look for in players hand"
+    },
+    "WanderRadius": {
+      "Value": 10,
+      "Description": "Wander Radius"
+    },
+    "MotionWander1Timer": {
+      "Value": [ 3, 6 ],
+      "Description": "How long the NPC will perform the Wander motion for, in seconds"
+    },
+    "MotionWander2Timer": {
+      "Value": [ 3, 6 ],
+      "Description": "How long the NPC will perform the WanderInCircle motion for, in seconds"
+    },
+    "MotionNothingTimer": {
+      "Value": [ 1, 2 ],
+      "Description": "How long the NPC will stop for between wandering motions, in seconds"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop items"
+    },
+    "MaxSpeed": {
+      "Value": 9,
+      "Description": "Max NPC walk speed"
+    },
+    "AttitudeGroup": {
+      "Value": "Critters",
+      "Description": "This NPCs attitude group"
+    },
+    "DefaultPlayerAttitude": {
+      "Value": "Hostile",
+      "Description": "Default attitude towards players"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "FlockArray": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "Array containing NPCs for this flock type"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "FlockSpawnTypes": { "Compute": "FlockArray" },
+  "DropList": { "Compute": "DropList" },
+  "Appearance": { "Compute": "Appearance" },
+  "DisableDamageGroups": [ "Self" ],
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": { "Compute": "DefaultPlayerAttitude" },
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 180
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation"
+            },
+            {
+              "Reference": "Component_Instruction_Damage_Check",
+              "Modify": {
+                "_ExportStates": [ "Flee", "Panic" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Player",
+                    "Range": 4,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  },
+                  {
+                    "Reference": "Component_Sensor_Sound_By_Attitude",
+                    "Modify": {
+                      "HearingRange": { "Compute": "HearingRange" },
+                      "ThroughWalls": false,
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Enabled": { "Compute": "!isEmptyStringArray(AttractiveItems)" },
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Items": { "Compute": "AttractiveItems" }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Curious"
+                }
+              ]
+            },
+            {
+              "Reference": { "Compute": "IdleMotionComponent" },
+              "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion.ConfigurableWander" ],
+              "Nullable": true,
+              "Modify": {
+                "WanderRadius": { "Compute": "WanderRadius" },
+                "MotionWander1Timer": { "Compute": "MotionWander1Timer" },
+                "MotionWander2Timer": { "Compute": "MotionWander2Timer" },
+                "MotionNothingTimer": { "Compute": "MotionNothingTimer" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Alerted",
+              "Modify": {
+                "_ExportStates": [ "Panic", "Idle", "Flee" ],
+                "AlertedRange": { "Compute": "AlertedRange" },
+                "WaitTime": [ 0.5, 0.5 ]
+              }
+            }
+          ]
+        },
+        {
+          "Enabled": { "Compute": "!isEmptyStringArray(AttractiveItems)" },
+          "Sensor": {
+            "Type": "State",
+            "State": "Curious"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation"
+            },
+            {
+              "Reference": "Component_Instruction_Damage_Check",
+              "Modify": {
+                "_ExportStates": [ "Flee", "Panic" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Player",
+                    "Range": 4,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  {
+                    "Reference": "Component_Sensor_Sight_By_Attitude",
+                    "Modify": {
+                      "ViewRange": { "Compute": "DistractedSenseRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "Attitudes": [ "Hostile" ]
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Curious"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 2 ]
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Seek"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Seek"
+              },
+              "Instructions": [
+                {
+                  "Reference": "Component_Instruction_Clear_Status_Animation"
+                },
+                {
+                  "Sensor": {
+                    "$TODO": "This may need some adjustments to be more lenient",
+                    "Type": "DroppedItem",
+                    "Range": 0.5,
+                    "Items": { "Compute": "AttractiveItems" }
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Curious"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 2 ]
+                    },
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Eat"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 5, 10 ]
+                    },
+                    {
+                      "Type": "PickUpItem",
+                      "Range": 0.5,
+                      "StorageTarget": "Destroy"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "$TODO": "This may need some adjustments to be more lenient",
+                    "Type": "DroppedItem",
+                    "Range": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "Items": { "Compute": "AttractiveItems" }
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 2,
+                    "StopDistance": 0.5,
+                    "RelativeSpeed": 0.2
+                  }
+                },
+                {
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Multitarget_Flee",
+              "Modify": {
+                "_ExportStates": [ "Panic", "Idle", "Panic" ],
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "HearingRange": { "Compute": "HearingRange" },
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Panic"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Generic_Panic",
+              "Modify": {
+                "_ExportStates": [ "Idle" ],
+                "AlertedRange": { "Compute": "AlertedRange" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

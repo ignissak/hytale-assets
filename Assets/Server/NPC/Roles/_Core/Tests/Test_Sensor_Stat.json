@@ -1,0 +1,170 @@
+{
+  "Type": "Generic",
+  "Appearance": "Zombie",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.49 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 50%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.59 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 60%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.69 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 70%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.79 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 80%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.89 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 90%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Stat",
+                "StatTarget": "Value",
+                "RelativeTo": "Health",
+                "Stat": "Health",
+                "RelativeToTarget": "Max",
+                "ValueRange": [ 0, 0.99 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP < 100%"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HP 100%"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_Stat.name"
+}

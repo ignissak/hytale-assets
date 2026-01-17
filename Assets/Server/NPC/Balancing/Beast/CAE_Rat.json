@@ -1,0 +1,80 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "SelectTarget": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Rat_Bite"
+          ],
+          "Randomise": false,
+          "MaxRange": 2,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SelectTarget"
+        ]
+      },
+      "Attack": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Rat_Bite"
+          ],
+          "Randomise": false,
+          "UseProjectedDistance": true,
+          "MaxRange": 2,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.3
+          ]
+        },
+        "Actions": [
+          "SelectTarget"
+        ]
+      }
+    }
+  }
+}

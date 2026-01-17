@@ -1,0 +1,201 @@
+{
+  "Type": "Generic",
+  "Appearance": "Player",
+  "CombatConfig": "CAE_Test_Combat_Knight",
+  "HotbarItems": [ "Weapon_Sword_Iron" ],
+  "DefaultPlayerAttitude": "Hostile",
+  "DefaultNPCAttitude": "Hostile",
+  "OffHandItems": [ "Weapon_Shield_Iron" ],
+  "Armor": [ "Armor_Iron_Head", "Armor_Iron_Chest", "Armor_Iron_Hands", "Armor_Iron_Legs" ],
+  "OffHandSlots": 1,
+  "DefaultOffHandSlot": 0,
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 15,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 30,
+                "GetPlayers": true,
+                "Filters": [
+                  {
+                    "Type": "Attitude",
+                    "Attitudes": [ "Hostile", "Friendly" ]
+                  }
+                ],
+                "Collector": {
+                  "Type": "CombatTargets"
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Combat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Combat"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "Range": 30,
+                    "GetPlayers": true,
+                    "LockOnTarget": false,
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Hostile", "Friendly" ]
+                      }
+                    ],
+                    "Collector": {
+                      "Type": "CombatTargets"
+                    }
+                  },
+                  {
+                    "Type": "HasHostileTargetMemory"
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Or",
+                    "Sensors": [
+                      {
+                        "Type": "State",
+                        "State": ".Default"
+                      }
+                    ]
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim",
+                        "RelativeTurnSpeed": 0.4
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "MoveThreshold": 0.1,
+                        "RelativeForwardsSpeed": 0.45,
+                        "RelativeBackwardsSpeed": 0.45
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 1,
+                        "StopDistance": 1,
+                        "RelativeSpeed": 0.45
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "State",
+                    "State": ".Strafe",
+                    "IgnoreMissingSetState": true
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": true
+                      },
+                      "HeadMotion": {
+                        "Type": "Aim",
+                        "RelativeTurnSpeed": 0.4
+                      },
+                      "BodyMotion": {
+                        "Type": "MaintainDistance",
+                        "DesiredDistanceRange": [ 2, 3 ],
+                        "StrafingFrequencyRange": [ 0.1, 0.5 ],
+                        "StrafingDurationRange": [ 2, 4 ],
+                        "MoveThreshold": 0.1,
+                        "RelativeForwardsSpeed": 0.38,
+                        "RelativeBackwardsSpeed": 0.28
+                      },
+                      "Actions": [
+                        {
+                          "Type": "CombatAbility"
+                        }
+                      ]
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "CombatActionEvaluator",
+                        "TargetInRange": false
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 1,
+                        "StopDistance": 1,
+                        "RelativeSpeed": 0.45
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Combat_Knight.name"
+}

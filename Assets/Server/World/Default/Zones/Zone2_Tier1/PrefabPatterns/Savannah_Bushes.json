@@ -1,0 +1,44 @@
+{
+  "GridGenerator": {
+    "Seed": "Drylands-Savannah-Trees",
+    "Density": [0.18, 0.3],
+    "Scale": 0.015,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+    "Noise": [
+		{
+			"Seed": "Drylands-Pattern-Monuments-Tier-1",
+			"NoiseType": "CELL",
+			"Formula": "INVERTED_SQRT",
+			"Scale": 0.005,
+			"CellMode": "DISTANCE",
+			"Jitter": 0.75,
+			"Density": [0, 1],
+			"Normalize": 0.6
+		},
+    {
+      "Seed": "Drylands-Caves-Density-Surface",
+      "Scale": 0.01501,
+      "Jitter": 0.4001,
+      "DistanceRange": 6,
+      "NoiseType": "CELL",
+      "Formula" : "INVERTED",
+      "CellMode": "DISTANCE",
+      "Density": [0.7501, 0.9999],
+      "Normalize": 0.4501
+    }
+    ],
+    "Threshold": [0, 0.99]
+},
+  "Mask": {
+    "File": "Zones.Masks.Shared.Bushes"
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115],
+    "Values": [0, 1]
+  },
+  "FitHeightmap": true,
+  "Parent": ["Soil_Grass_Dry", "Soil_Gravel_Sand_White", "Soil_Mud_Dry", "Soil_Leaves"]
+}

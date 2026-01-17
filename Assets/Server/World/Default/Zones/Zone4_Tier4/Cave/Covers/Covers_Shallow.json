@@ -1,0 +1,248 @@
+[
+  {
+    "Type": ["Soil_Dirt_Burnt"],
+    "Weight": [1],
+    "Density": 1,
+    "NoiseMask": {
+      "Seed": "4743777",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 2,
+      "Persistence": 0.2,
+      "Scale": 0.2,
+      "Threshold": [0, 0.45]
+    },
+    "HeightThreshold": {
+      "Positions": [90, 100, 150, 151],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Soil_Dirt_Burnt"],
+    "Weight": [1],
+    "Offset": -1,
+    "Density": 1,
+    "NoiseMask": {
+      "Seed": "4743777",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "NORMAL",
+      "Octaves": 2,
+      "Persistence": 0.2,
+      "Scale": 0.2,
+      "Threshold": [0, 0.45]
+    },
+    "HeightThreshold": {
+      "Positions": [90, 100, 150, 151],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Soil_Grass_Deep"],
+    "Weight": [1],
+    "Density": 1,
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Soil_Dirt"],
+    "Weight": [1],
+    "Offset": -1,
+    "Density": 1,
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Grass_Jungle_Tall", "Plant_Grass_Jungle"],
+    "Weight": [0.4, 0.6],
+    "Density": 0.5,
+    "Offset": 1,
+    "NoiseMask": {
+      "Seed": "Grasslands-Base-Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08,
+      "Threshold": [0.75, 1]
+    },
+    "Parent": ["Soil_Grass", "Soil_Grass_Deep"],
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Grass_Jungle", "Plant_Grass_Jungle_Short"],
+    "Weight": [0.4, 0.6],
+    "Density": 0.6,
+    "Offset": 1,
+    "NoiseMask": {
+      "Seed": "Grasslands-Base-Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08,
+      "Threshold": [0.64, 1]
+    },
+    "Parent": ["Soil_Grass", "Soil_Grass_Deep"],
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Grass_Jungle_Short"],
+    "Density": 0.05,
+    "Offset": 1,
+    "Parent": ["Soil_Grass", "Soil_Grass_Deep"],
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Moss_Rug_Lime"],
+    "Weight": [1],
+    "Density": 0.7,
+    "Offset": 1,
+    "NoiseMask": {
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.12,
+      "Threshold": [0.55, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  },
+  {
+    "Type": ["Plant_Leaves_Jungle_Floor"],
+    "Weight": [1],
+    "Density": 0.4,
+    "Offset": 1,
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Jungle_Forests",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.017,
+          "Normalize": [0.5, 0.7]
+        },
+        {
+          "Seed": "Jungle_Trees",
+          "NoiseType": "CELL",
+          "CellMode": "DISTANCE",
+          "Density": 0.8,
+          "Scale": 0.04,
+          "Jitter": 0.6
+        }
+      ],
+      "Factors": [0.5, 0.5],
+      "Threshold": [0, 0.2]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass"],
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    }
+  },
+  {
+    "Type": ["Plant_Bush_Arid_Palm"],
+    "Weight": [1],
+    "Density": 0.4,
+    "Offset": 1,
+    "NoiseMask": {
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.06,
+      "Threshold": [0.65, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  },
+  {
+    "Type": ["Plant_Flower_Common_Pink", "Plant_Flower_Bushy_Cyan"],
+    "Weight": [0.3, 0.7],
+    "Density": 0.4,
+    "Offset": 1,
+    "NoiseMask": {
+      "NoiseType": "SIMPLEX",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.042,
+      "Threshold": [0.85, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  },
+  {
+    "Type": ["Plant_Bush_Jungle"],
+    "Weight": [1],
+    "Density": 0.62,
+    "Offset": 1,
+    "NoiseMask": {
+      "NoiseType": "SIMPLEX",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.042,
+      "Threshold": [0.85, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  },
+  {
+    "Type": ["Plant_Crop_Mushroom_Flatcap_Green"],
+    "Weight": [1],
+    "Density": 0.4,
+    "Offset": 1,
+    "NoiseMask": {
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.07,
+      "Threshold": [0.72, 1]
+    },
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  },
+  {
+    "Type": ["Plant_Flower_Tall_Cyan2"],
+    "Weight": [1],
+    "Offset": 1,
+    "Density": 0.001,
+    "HeightThreshold": {
+      "Positions": [31, 32, 80, 90],
+      "Values": [0, 1, 1, 0]
+    },
+    "Parent": ["Soil_Dirt", "Soil_Grass", "Soil_Grass_Deep"]
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "CollisionDistance": 3,
+  "CollisionForceFalloff": 0.25,
+  "CollisionRadius": 0.2,
+  "EntityAvoidanceStrength": 0.29,
+  "ApplyAvoidance": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 13,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Count",
+            "Count": [ 2, 4 ],
+            "Range": [ 0, 10 ],
+            "ExcludeGroups": [ "Player" ],
+            "IncludeGroups": [ "Tests" ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Count Passed"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Count Not Passed"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Count_Sheep.name"
+}

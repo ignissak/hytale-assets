@@ -1,0 +1,57 @@
+{
+  "Model": "Fireball",
+  "SpawnRotationOffset": {
+    "Pitch": 0,
+    "Yaw": 0.25,
+    "Roll": 0
+  },
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 0,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "LaunchForce": 50,
+  "SpawnOffset": {
+    "X": 0.15,
+    "Y": -0.25,
+    "Z": -0.5
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Fireball_Impact_0",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Stick_Fire_Impact_Base"
+            ]
+          }
+        },
+        "Weapon_Stick_Fire_Projectile_Despawn_Delay",
+        "Weapon_Stick_Fire_Projectile_Despawn"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Fireball_Impact_0",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Stick_Fire_Impact_Base"
+            ]
+          }
+        },
+        "Weapon_Stick_Fire_Projectile_Despawn_Delay",
+        "Weapon_Stick_Fire_Projectile_Despawn"
+      ]
+    }
+  }
+}

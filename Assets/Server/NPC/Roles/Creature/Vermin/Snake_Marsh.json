@@ -1,0 +1,103 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Snake_Marsh",
+      "Description": "Model to be used."
+    },
+    "DropList": {
+      "Value": "Drop_Snake_Marsh",
+      "Description": "Drop Items."
+    },
+    "MaxHealth": {
+      "Value": 25,
+      "Description": "Max Health."
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Snake_Marsh.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "Appearance": {
+      "Compute": "Appearance"
+    },
+    "DropList": {
+      "Compute": "DropList"
+    },
+    "MaxHealth": 36,
+    "MaxSpeed": 8,
+    "WanderRadius": 20,
+    "ViewRange": 6,
+    "HearingRange": 8,
+    "AlertedRange": 10,
+    "AlertedTime": [
+      2,
+      3
+    ],
+    "FleeIfNotThreatened": true,
+    "HardLeashDistance": 60,
+    "LeashDistance": 20,
+    "LeashMinPlayerDistance": 5,
+    "LeashTimer": [
+      3,
+      3
+    ],
+    "CombatBehaviorDistance": 4.5,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatBackOffAfterAttack": true,
+    "CombatBackOffDistanceRange": [
+      3,
+      4
+    ],
+    "Attack": "Root_NPC_Snake_Attack",
+    "AttackDistance": 2.5,
+    "ChaseRelativeSpeed": 0.8,
+    "CombatMovingRelativeSpeed": 0.6,
+    "AlwaysSleepAtNight": true,
+    "DayTimeNapWeight": 0,
+    "TimidDuringDay": false,
+    "DayFlavorAnimation": "Alerted",
+    "IsMemory": true,
+    "MemoriesCategory": "Critter",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Snake_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Snake_Marsh_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.25
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Snake_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 14
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Zombie",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "SetBlockToPlace",
+              "Block": "Rock_Marble_Cobble"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "CanPlaceBlock",
+            "Direction": "Backward",
+            "Offset": "BodyPosition"
+          },
+          "Actions": [
+            {
+              "Type": "PlaceBlock"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Place_Block.name"
+}

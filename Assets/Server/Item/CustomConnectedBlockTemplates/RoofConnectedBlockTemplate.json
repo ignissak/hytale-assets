@@ -1,0 +1,557 @@
+{
+    "ConnectsToOtherMaterials":true,
+    "DefaultShape": "Straight",
+    "Shapes":{
+        "Empty":{
+            "FaceTags": {
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": []
+        },
+        "Hollow":{
+            "FaceTags": {
+                "North": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":-1 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "South": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Roof_Corner|Yaw=90",
+                                "Roof_Corner",
+                                "Roof_Hollow_Corner|Yaw=90",
+                                "Roof_Hollow_Corner"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Roof_Flat|Yaw=270",
+                                "Roof_Flat|Yaw=90"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Roof_Flat",
+                                "Roof_Flat|Yaw=180"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Straight":{
+            "FaceTags": {
+                "North": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Flat":{
+            "FaceTags": {
+                "North": ["FlatFace"],
+                "South": ["FlatFace"],
+                "East": ["FlatFace"],
+                "West": ["FlatFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "South": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":1 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "South": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":1, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "West": ["RoofFace"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Flat|Yaw=270",
+                                "Roof_Flat|Yaw=90"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Flat",
+                                "Roof_Flat|Yaw=180"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight",
+                                "Roof_Hollow",
+                                "Roof_Corner|Yaw=90",
+                                "Roof_Corner",
+                                "Roof_Hollow_Corner|Yaw=90",
+                                "Roof_Hollow_Corner"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight|Yaw=180",
+                                "Roof_Hollow|Yaw=180",
+                                "Roof_Corner|Yaw=180",
+                                "Roof_Corner|Yaw=270",
+                                "Roof_Hollow_Corner|Yaw=180",
+                                "Roof_Hollow_Corner|Yaw=270"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Flat"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Flat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":1, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "West": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"],
+                                "East": ["RoofFace"],
+                                "South": ["RoofFace"],
+                                "West": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":1, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "West": ["RoofFace"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Corner":{
+            "FaceTags": {
+                "South": ["RoofFace"],
+                "West": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf":[
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Roof_Straight",
+                                "Roof_Hollow"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270",
+                                "Roof_Corner|Yaw=270",
+                                "Roof_Corner_Inverted",
+                                "Roof_Hollow_Corner|Yaw=270",
+                                "Roof_Hollow_Corner_Inverted"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Corner_Inverted":{
+            "FaceTags": {
+                "North": ["RoofFace"],
+                "East": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch": [
+                        {
+                            "Position":{ "X":0, "Y":1, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Straight",
+                                "Roof_Hollow"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":1, "Y":1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch": [
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270",
+                                "Roof_Corner",
+                                "Roof_Corner_Inverted|Yaw=270",
+                                "Roof_Hollow_Corner",
+                                "Roof_Hollow_Corner_Inverted|Yaw=270"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Hollow_Corner":{
+            "FaceTags": {
+                "South": ["RoofFace"],
+                "West": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf":[
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "Shapes":[
+                                "Roof_Straight",
+                                "Roof_Hollow"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270",
+                                "Roof_Corner|Yaw=270",
+                                "Roof_Corner_Inverted",
+                                "Roof_Hollow_Corner|Yaw=270",
+                                "Roof_Hollow_Corner_Inverted"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Hollow_Corner_Inverted":{
+            "FaceTags": {
+                "North": ["RoofFace"],
+                "East": ["RoofFace"],
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch": [
+                        {
+                            "Position":{ "X":0, "Y":1, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Straight",
+                                "Roof_Hollow"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":1, "Y":1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes": [
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations": {
+                        "MirrorX": true
+                    },
+                    "TransformRulesToOrientation": true,
+                    "RulesToMatch": [
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "Shapes":[
+                                "Roof_Straight|Yaw=270",
+                                "Roof_Hollow|Yaw=270",
+                                "Roof_Corner",
+                                "Roof_Corner_Inverted|Yaw=270",
+                                "Roof_Hollow_Corner",
+                                "Roof_Hollow_Corner_Inverted|Yaw=270"
+                            ]
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "Up": ["Empty"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "Topper":{
+            "FaceTags": {
+                "Up": ["Empty"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":1, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "West": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":-1, "Z":-1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "South": ["RoofFace"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":-1, "Y":-1, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "East": ["RoofFace"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+
+    }
+}

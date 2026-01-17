@@ -1,0 +1,116 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "DeployablePreview": 1
+  },
+  "Next": {
+    "Type": "ChangeStat",
+    "StatModifiers": {
+      "DeployablePreview": 0
+    },
+    "Behaviour": "Set"
+  },
+  "Failed": {
+    "Type": "ModifyInventory",
+    "ItemToRemove": {
+      "Id": "Ingredient_Fire_Essence",
+      "Quantity": 1
+    },
+    "AdjustHeldItemDurability": -0.5,
+    "Failed": "Staff_Cast_Fail",
+    "Next": {
+      "Type": "StatsCondition",
+      "Costs": {
+        "Stamina": 0.51
+      },
+      "Next": {
+        "Type": "Parallel",
+        "Interactions": [
+          {
+            "Interactions": [
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "FlamethrowerSource"
+              },
+              {
+                "Type": "Simple",
+                "RunTime": 0.4,
+                "Effects": {
+                  "Particles": [
+                    {
+                      "PositionOffset": {
+                        "X": 2.8,
+                        "Y": 0,
+                        "Z": 0
+                      },
+                      "RotationOffset": {
+                        "Pitch": 0,
+                        "Roll": 0,
+                        "Yaw": -90
+                      },
+                      "TargetNodeName": "Handle",
+                      "SystemId": "Flamethrower"
+                    }
+                  ],
+                  "ItemPlayerAnimationsId": "Stick",
+                  "ItemAnimationId": "Cast_Magic",
+                  "ClearAnimationOnFinish": true
+                }
+              }
+            ]
+          },
+          {
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "Stamina": -0.5
+                }
+              },
+              {
+                "Type": "ChangeStat",
+                "Behaviour": "Set",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -2
+                }
+              }
+            ]
+          },
+          {
+            "Interactions": [
+              {
+                "Type": "Selector",
+                "$Comment": "Length of Combat",
+                "RunTime": 0.1,
+                "Selector": {
+                  "Id": "Stab",
+                  "TestLineOfSight": true,
+                  "ExtendTop": 0.175,
+                  "ExtendLeft": 0.175,
+                  "ExtendRight": 0.175,
+                  "ExtendBottom": 0.175,
+                  "StartDistance": 0.1,
+                  "EndDistance": 5.5
+                },
+                "HitEntity": {
+                  "Interactions": [
+                    {
+                      "Type": "Replace",
+                      "Var": "Flamethrower_Damage",
+                      "DefaultOk": true,
+                      "DefaultValue": {
+                        "Interactions": [
+                          "Weapon_Stick_Fire_Secondary_Damage"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

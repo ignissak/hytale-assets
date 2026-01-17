@@ -1,0 +1,46 @@
+{
+  "InitialValue": 100,
+  "Min": 0,
+  "Max": 100,
+  "Shared": true,
+  "ResetType": "MaxValue",
+  "Regenerating": [
+    {
+      "$Comment": "NPC",
+      "Interval": 0.5,
+      "Amount": 0.05,
+      "RegenType": "Percentage",
+      "Conditions": [
+        {
+          "Id": "Alive"
+        },
+        {
+          "Id": "Player",
+          "Inverse": true
+        },
+        {
+          "Id": "NoDamageTaken",
+          "Delay": 15
+        },
+        {
+          "Id": "RegenHealth"
+        }
+      ]
+    },
+    {
+      "$Comment": "Player in creative mode",
+      "Interval": 0.5,
+      "Amount": 1.0,
+      "RegenType": "Percentage",
+      "Conditions": [
+        {
+          "Id": "Alive"
+        },
+        {
+          "Id": "Player",
+          "GameMode": "Creative"
+        }
+      ]
+    }
+  ]
+}

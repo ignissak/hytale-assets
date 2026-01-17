@@ -1,0 +1,89 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Crude_Brazier.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Deco_Campfire.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Benches/Campfire.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Benches/Campfire_Texture.png"
+      }
+    ],
+    "CustomModelScale": 1,
+    "HitboxType": "Brazier_Small",
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "CustomModelAnimation": "Blocks/Animations/Fire/Fire_Burn.blockyanim",
+    "BlockParticleSetId": "Dust",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "BlockSoundSetId": "Campfire",
+    "Light": {
+      "Color": "#dba"
+    },
+    "Particles": [
+      {
+        "SystemId": "Campfire_New_Cartoon",
+        "Scale": 0.9,
+        "TargetNodeName": "",
+        "PositionOffset": {
+          "Y": 0.25
+        }
+      }
+    ],
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Looping": true,
+    "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "BurnEffect",
+          "Cooldown": 1
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "Simple",
+              "RunTime": 0.1,
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": "Burn"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Crude"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

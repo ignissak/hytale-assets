@@ -1,0 +1,34 @@
+{
+  "Class": "BodyMotion",
+  "TestType": "Normal",
+  "Parameters": {
+    "Radius": {
+      "Value": 5,
+      "Description": "Wander radius",
+      "Validate": "v>0.1 && v<200"
+    }
+  },
+  "Content": {
+    "Type": "Sequence",
+    "Looped": true,
+    "Motions": [
+      {
+        "Type": "Timer",
+        "Time": [ 2, 5 ],
+        "Motion": {
+          "Type": "WanderInCircle",
+          "Radius": { "Compute": "Radius" },
+          "MaxHeadingChange": 135
+        }
+      },
+      {
+        "Type": "Timer",
+        "Time": [ 3, 5 ],
+        "Motion": {
+          "Type": "Nothing"
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

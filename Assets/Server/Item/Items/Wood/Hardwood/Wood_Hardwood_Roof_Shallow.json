@@ -1,0 +1,140 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Hardwood_Roof_Shallow.name"
+  },
+  "Set": "Wood_Hardwood_Planks",
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Roofs/Slope_Shallow.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Hardwood.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Hardwood_Roof_Shallow",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#693e2a",
+    "State": {
+      "Definitions": {
+        "Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Shallow_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Shallow_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Woods",
+              "Quantity": 2
+            }
+          }
+        },
+        "Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Shallow_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Shallow_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Woods",
+              "Quantity": 2
+            }
+          }
+        },
+        "Inverted_Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Shallow_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Shallow_Inverted_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Woods",
+              "Quantity": 2
+            }
+          }
+        },
+        "Inverted_Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Shallow_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Shallow_Inverted_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "Gathering": {
+            "Breaking": {
+              "GatherType": "Woods",
+              "Quantity": 2
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "Roof",
+      "Width": 2,
+      "Regular": {
+        "Straight": {
+          "State": "default"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left"
+        }
+      },
+      "MaterialName": "Roof_Shallow"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Wood_Hardwood_Roof_Shallow.png",
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Hardwood"
+    ]
+  },
+  "Parent": "Wood_Softwood_Roof_Shallow",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Hardwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Roof"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  }
+}

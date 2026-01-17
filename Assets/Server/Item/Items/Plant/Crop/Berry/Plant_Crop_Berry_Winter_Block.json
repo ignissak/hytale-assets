@@ -1,0 +1,142 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Bush_Winter_Berry.name",
+    "Description": "server.items.Plant_Crop_Berry_Winter_Block.description"
+  },
+  "Parent": "Template_Crop_Berry_Block",
+  "ItemLevel": 12,
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Bush_Big_Textures/Winter.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "StageFinal": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Bush_Big_Textures/Winter_Berry.png",
+              "Weight": 1
+            }
+          ],
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Support": {
+            "Down": [
+              {
+                "FaceType": "Full"
+              },
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Supporting": {
+            "Up": [
+              {
+                "FaceType": "Bushes"
+              }
+            ]
+          },
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Berry_Winter_StageFinal",
+              "IsWeaponBreakable": false
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Berry_Winter_StageFinal_Harvest"
+            }
+          }
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 80000,
+              "Max": 80000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ],
+        "Harvested": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 20000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Crops_Grow"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Bushes"
+        }
+      ]
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Bushes"
+        }
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Berry_Winter_Block",
+        "IsWeaponBreakable": false
+      },
+      "UseDefaultDropWhenPlaced": true
+    },
+    "BlockParticleSetId": "Leaves_Branches",
+    "ParticleColor": "#57433d",
+    "BlockSoundSetId": "Bush"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Bush_Winter_Berry.png",
+  "IconProperties": {
+    "Scale": 0.345,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      2.5,
+      -26.3
+    ]
+  }
+}

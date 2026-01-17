@@ -1,0 +1,88 @@
+{
+  "Type": "Generic",
+  "Appearance": "Emberwulf",
+  "Parameters": {
+    "Invert": {
+      "Value": false,
+      "Description": ""
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "TreeMode": true,
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Instructions": [
+            {
+              "TreeMode": true,
+              "InvertTreeModeResult": { "Compute": "Invert" },
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 5
+                  },
+                  "Actions": [
+                    {
+                      "Type": "DisplayName",
+                      "DisplayName": "Match in branch"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "No match in deep branch"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "TreeMode result inverted"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_TreeMode_Instruction.name"
+}

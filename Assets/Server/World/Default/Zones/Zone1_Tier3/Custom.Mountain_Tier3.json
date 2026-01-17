@@ -1,0 +1,573 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+        }
+      ],
+      "Threshold": [0, 0.98]
+    },
+    "BiomeMask": [
+      "Forest_Autumn",
+      "Forest_Azure",
+      "Forest_Moss",
+      "Forest_Swamp",
+      "Plains_Gorge"
+    ],
+    "Priority": 10
+  },
+  "MapColor": "#9ec752",
+  "Covers": [
+    {
+      "Type": [
+        "Rubble_Marble",
+        "Rubble_Marble_Medium"
+      ],
+      "Weight": [
+        0.7,
+        0.3
+      ],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Rubble.Stone_Mossy_Forest"
+          }
+        ],
+        "Threshold": [
+          0.7,
+          1
+        ]
+      },
+      "Parent": [
+        "Rock_Marble"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Stone",
+        "Rubble_Stone_Medium"
+      ],
+      "Weight": [
+        0.7,
+        0.3
+      ],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Rubble.Stone_Mossy_Forest"
+          }
+        ],
+        "Threshold": [
+          0.7,
+          1
+        ]
+      },
+      "Parent": [
+        "Rock_Stone",
+        "Soil_Gravel"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Sharp_Short",
+        "Plant_Grass_Lush_Short",
+        "Plant_Grass_Lush",
+        "Plant_Grass_Lush_Tall",
+        "Plant_Bush_Lush"
+      ],
+      "Weight": [
+        0.2,
+        0.37,
+        0.236,
+        0.07,
+        0.01
+      ],
+      "Density": 0.75,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Lush_Sparse"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.56
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Full",
+        "Soil_Grass_Sunny",
+        "Soil_Leaves"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Crop_Stamina2"
+      ],
+      "Density": 0.04,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Wheat_Small"
+          }
+        ],
+        "Threshold": [
+          0.6,
+          0.65
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          140,
+          160
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Pebbles"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [
+          80,
+          5
+        ],
+        "Prefab": [
+          "Trees.Ash.Stage_0.*",
+          "Trees.Ash.Stage_2.*"
+        ],
+        "Pattern": {
+          "GridGenerator": {
+            "Seed": "GrasslandsMountainTrees",
+            "Density": [
+              0,
+              0.025
+            ],
+            "Scale": 0.5,
+            "Jitter": 1
+          },
+          "NoiseMask": {
+            "Seed": "GrasslandsMountainTrees",
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.6,
+            "Scale": 0.07,
+            "Threshold": [
+              0,
+              0.6
+            ]
+          },
+          "HeightThreshold": {
+            "Positions": [
+              100,
+              160
+            ],
+            "Values": [
+              1,
+              0
+            ]
+          },
+          "Mask": {
+            "File": "Zones.Masks.Shared.Trees"
+          },
+          "Parent": [
+            "Soil_Grass_Full",
+            "Soil_Grass",
+            "Soil_Grass_Deep",
+            "Soil_Leaves"
+          ]
+        }
+      },
+      {
+        "Prefab": [
+          "Plants.Bush.Lush.*"
+        ],
+        "Pattern": {
+          "GridGenerator": {
+            "Seed": "GrasslandsMountainBushes",
+            "Density": [
+              0,
+              0.025
+            ],
+            "Scale": 0.5,
+            "Jitter": 1
+          },
+          "NoiseMask": {
+            "Seed": "GrasslandsMountainBushes",
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.6,
+            "Scale": 0.07,
+            "Threshold": [
+              0,
+              0.6
+            ]
+          },
+          "HeightThreshold": {
+            "Positions": [
+              100,
+              145
+            ],
+            "Values": [
+              1,
+              0
+            ]
+          },
+          "Mask": {
+            "File": "Zones.Masks.Shared.Trees"
+          },
+          "FitHeightmap": true,
+          "Parent": [
+            "Soil_Grass_Full",
+            "Soil_Grass",
+            "Soil_Grass_Deep",
+            "Soil_Leaves"
+          ]
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Rocks.Stone.Small.*"
+        ],
+        "Pattern": {
+          "GridGenerator": {
+            "Seed": "GrasslandsMountainRocks",
+            "Density": [
+              0,
+              0.1
+            ],
+            "Scale": 0.5,
+            "Jitter": 1
+          },
+          "NoiseMask": {
+            "Seed": "GrasslandsMountainRocks",
+            "NoiseType": "SIMPLEX",
+            "Formula": "NORMAL",
+            "Octaves": 3,
+            "Persistence": 0.6,
+            "Scale": 0.07,
+            "Threshold": [
+              0,
+              0.6
+            ]
+          },
+          "HeightThreshold": {
+            "Positions": [
+              100,
+              160
+            ],
+            "Values": [
+              1,
+              0
+            ]
+          },
+          "Parent": [
+            "Soil_Grass_Full",
+            "Soil_Grass",
+            "Soil_Grass_Deep",
+            "Soil_Leaves",
+            "Soil_Gravel"
+          ]
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Dynamic": [
+      {
+        "Blocks": ["Soil_Pebbles"],
+        "NoiseMask": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Type": "SUM",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Grid"
+                        },
+                        {
+                          "Type": "MIN",
+                          "Noise": [
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak1"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak2"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak3"
+                            }
+                          ]
+                        }
+                      ],
+                      "Factors": [1, 1]
+                    },
+                    {
+                      "Seed": "MountainNoise",
+                      "NoiseType": "DISTANCE",
+                      "Measurement": "BORDER_DISTANCE",
+                      "Distance2Mode": "MIN",
+                      "CellType": "HEX",
+                      "Octaves": 2,
+                      "Jitter": 0.5,
+                      "DistanceRange": 10.0,
+                      "Scale": 0.01
+                    }
+                  ],
+                  "Factors": [1, 0.4],
+                  "Normalize": [0.8, 0.81]
+                }
+              ],
+              "Normalize": [-1, 1]
+            },
+            {
+              "Seed": "MountainSimplex",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 4,
+              "Scale": 0.015,
+              "Normalize": [0.2, 0.81]
+            }
+          ],
+          "Factors": [1, 0.2],
+          "Threshold": [0.55, 0.6]
+        }
+      },
+      {
+        "Entries": [
+          {
+            "Blocks": ["Rock_Chalk:10"],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Type": "SUM",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Grid"
+                        },
+                        {
+                          "Type": "MIN",
+                          "Noise": [
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak1"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak2"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak3"
+                            }
+                          ]
+                        }
+                      ],
+                      "Factors": [1, 1]
+                    },
+                    {
+                      "Seed": "MountainNoise",
+                      "NoiseType": "DISTANCE",
+                      "Measurement": "BORDER_DISTANCE",
+                      "Distance2Mode": "MIN",
+                      "CellType": "HEX",
+                      "Octaves": 2,
+                      "Jitter": 0.5,
+                      "DistanceRange": 10.0,
+                      "Scale": 0.01
+                    }
+                  ],
+                  "Factors": [1, 0.4],
+                  "Normalize": [0.8, 0.81]
+                },
+                {
+                  "Seed": "MountainSimplex",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 4,
+                  "Scale": 0.015,
+                  "Normalize": [0.24, 0.25]
+                }
+              ],
+              "Factors": [1, 0.2],
+              "Threshold": [0, 0.01]
+            }
+          },
+          {
+            "Blocks": ["Rock_Marble:10"],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Type": "SUM",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Grid"
+                        },
+                        {
+                          "Type": "MIN",
+                          "Noise": [
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak1"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak2"
+                            },
+                            {
+                              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Peak3"
+                            }
+                          ]
+                        }
+                      ],
+                      "Factors": [1, 1]
+                    },
+                    {
+                      "Seed": "MountainNoise",
+                      "NoiseType": "DISTANCE",
+                      "Measurement": "BORDER_DISTANCE",
+                      "Distance2Mode": "MIN",
+                      "CellType": "HEX",
+                      "Octaves": 2,
+                      "Jitter": 0.5,
+                      "DistanceRange": 10.0,
+                      "Scale": 0.01
+                    }
+                  ],
+                  "Factors": [1, 0.4],
+                  "Normalize": [0.8, 0.81]
+                },
+                {
+                  "Seed": "MountainSimplex",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 4,
+                  "Scale": 0.015,
+                  "Normalize": [0.5, 0.51]
+                }
+              ],
+              "Factors": [1, 0.2],
+              "Threshold": [0, 0.01]
+            }
+          }
+        ]
+      },
+      {
+        "Blocks": ["Soil_Grass", "Soil_Dirt:3"],
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+            }
+          ],
+          "Gradient": {
+            "Mode": "MAGNITUDE",
+            "Distance": 2.0,
+            "Normalize": 0.1
+          },
+          "Threshold": [0, 0.1]
+        }
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone1.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone1.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T2"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [115, 240],
+    "Values": [1, 0]
+  },
+  "HeightmapNoise": {
+    "File": "Zones.Noise.Zone1.Heightmaps.Mountain_Full"
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "7f9b1f",
+        "69970f"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone1_Mountains"
+      ],
+      "Weights": [
+        1
+      ],
+      "Noise": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

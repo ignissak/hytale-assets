@@ -1,0 +1,70 @@
+$C = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 620);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.prefabEditorExitConfirm.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 20);
+
+      Label #WarningTitle {
+        Anchor: (Bottom: 12, Horizontal: 8);
+        Style: (...$C.@DefaultLabelStyle, HorizontalAlignment: Center, FontSize: 32, TextColor: #ffcc00);
+        Text: %server.customUI.prefabEditorExitConfirm.warningTitle;
+      }
+
+      Label #WarningMessage {
+        Anchor: (Bottom: 16, Horizontal: 8);
+        Style: (...$C.@DefaultLabelStyle, HorizontalAlignment: Center, Wrap: true, FontSize: 16);
+        Text: %server.customUI.prefabEditorExitConfirm.warningMessage;
+      }
+
+      Label {
+        Anchor: (Bottom: 8, Horizontal: 4);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #96a9be);
+        Text: %server.customUI.prefabEditorExitConfirm.modifiedPrefabs;
+      }
+
+      Group #PrefabList {
+        Anchor: (Height: 150, Bottom: 20);
+        LayoutMode: TopScrolling;
+        ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      }
+
+      Group {
+        LayoutMode: Center;
+        Anchor: (Top: 8);
+
+        $C.@TextButton #SaveAndExitButton {
+          @Sounds = $Sounds.@SaveSettings;
+          @Anchor = (Width: 150, Right: 6);
+          Text: %server.customUI.prefabEditorExitConfirm.saveAndExit;
+        }
+
+        $C.@SecondaryTextButton #ConfirmExitButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Width: 170, Left: 6, Right: 6);
+          Text: %server.customUI.prefabEditorExitConfirm.confirmExit;
+        }
+
+        $C.@SecondaryTextButton #CancelButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Width: 220, Left: 6);
+          Text: %server.customUI.prefabEditorExitConfirm.cancel;
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

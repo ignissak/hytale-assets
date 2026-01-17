@@ -1,0 +1,52 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Wild.Panic.Passive",
+  "Parameters": {
+    "_ImportStates": [ "Idle" ],
+    "RunRadius": {
+      "Value": 20,
+      "Description": "The desired range within which to run"
+    },
+    "Duration": {
+      "Value": [ 5, 8 ],
+      "Description": "The desired duration to panic for"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status",
+            "Animation": "Alerted"
+          }
+        ]
+      },
+      {
+        "ActionsAtomic": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 8 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ],
+        "BodyMotion": {
+          "Type": "WanderInCircle",
+          "Radius": { "Compute": "RunRadius" },
+          "MaxHeadingChange": 90,
+          "RelativeSpeed": 1
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

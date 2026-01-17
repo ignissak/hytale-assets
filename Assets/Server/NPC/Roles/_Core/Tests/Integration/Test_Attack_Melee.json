@@ -1,0 +1,69 @@
+{
+  "Type": "Generic",
+  "Parameters": {
+    "AttackDistance": {
+      "Value": 2,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Appearance": "Mannequin",
+  "HotbarItems": [ ],
+  "AttitudeGroup": "Attack_Dummy",
+  "DefaultPlayerAttitude": "Ignore",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Target",
+            "Range": { "Compute": "AttackDistance" }
+          },
+          "Actions": [
+            {
+              "Type": "Attack",
+              "BallisticMode": "Short",
+              "AimingTimeRange": [ 3, 3 ],
+              "LineOfSight": true,
+              "AttackPauseRange": [ 1, 1 ]
+            }
+          ],
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        },
+        {
+          "Sensor": {
+            "Reference": "Component_Sensor_Sound_By_Attitude",
+            "Modify": {
+              "HearingRange": 25,
+              "Attitudes": [ "Hostile" ]
+            }
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": { "Compute": "AttackDistance + 1" },
+            "StopDistance": { "Compute": "AttackDistance" }
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Attack_Melee.name"
+}

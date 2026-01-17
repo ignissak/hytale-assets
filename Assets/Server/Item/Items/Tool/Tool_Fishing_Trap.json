@@ -1,0 +1,231 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Fishing_Trap.name",
+    "Description": "server.items.Tool_Fishing_Trap.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "ItemLevel": 10,
+  "Recipe": {
+    "TimeSeconds": 5,
+    "Input": [
+      {
+        "Quantity": 10,
+        "ResourceTypeId": "Wood_All"
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Farming"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ]
+  },
+  "BlockType": {
+    "Effect": [
+      "WindFractal"
+    ],
+    "VariantRotation": "NESW",
+    "Support": {
+      "Down": [
+        {
+          "FluidId": "Water_Source"
+        },
+        {
+          "FluidId": "Water"
+        }
+      ]
+    },
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Group": "Props",
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Tool_Fishing_Trap",
+        "IsWeaponBreakable": false
+      }
+    },
+    "Flags": {
+      "IsStackable": false
+    },
+    "BlockParticleSetId": "Water",
+    "ParticleColor": "#ffffff",
+    "BlockSoundSetId": "Wood",
+    "State": {
+      "Definitions": {
+        "StageFinal": {
+          "CustomModel": "Blocks/Farming/Trap_Fishing_Full.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Farming/Trap_Fishing_Full.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Tool_Fishing_Trap_Full",
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Soft": {
+              "ItemId": "Tool_Fishing_Trap"
+            },
+            "Harvest": {
+              "DropList": "Drops_Fishing_Trap_Crude"
+            }
+          }
+        },
+        "Baited": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Farming/Trap_Fishing_Baited.png",
+              "Weight": 1
+            }
+          ],
+          "Gathering": {
+            "Soft": {
+              "ItemId": "Tool_Fishing_Trap"
+            }
+          }
+        },
+        "Baited_StageFinal": {
+          "CustomModel": "Blocks/Farming/Trap_Fishing_Full.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Farming/Trap_Fishing_Full.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Tool_Fishing_Trap_Full",
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Soft": {
+              "ItemId": "Tool_Fishing_Trap"
+            },
+            "Harvest": {
+              "DropList": "Drops_Fishing_Trap_Crude_Baited_Wild"
+            }
+          }
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 40000,
+              "Max": 60000
+            },
+            "State": "default",
+            "SoundEventId": "SFX_Water_MoveOut"
+          },
+          {
+            "Type": "BlockState",
+            "State": "StageFinal",
+            "SoundEventId": "SFX_Water_MoveIn"
+          }
+        ],
+        "Baited": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 20000,
+              "Max": 40000
+            },
+            "State": "Baited",
+            "SoundEventId": "SFX_Water_MoveOut"
+          },
+          {
+            "Type": "BlockState",
+            "State": "Baited_StageFinal",
+            "SoundEventId": "SFX_Water_MoveIn"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "StageSetAfterHarvest": "Default",
+      "ActiveGrowthModifiers": [
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    },
+    "CustomModel": "Blocks/Farming/Trap_Fishing.blockymodel",
+    "CustomModelScale": 0.8,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Farming/Trap_Fishing.png"
+      }
+    ],
+    "Textures": [
+      {
+        "Sides": "Items/Tools/Traps/Fishing_Trap_Full.png",
+        "UpDown": "Items/Tools/Traps/Fishing_Trap_Empty.png"
+      }
+    ],
+    "BlockBreakingDecalId": "Breaking_Decals_Wood",
+    "HitboxType": "Tool_Fishing_Trap"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Village",
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "IconProperties": {
+    "Scale": 0.4,
+    "Rotation": [
+      0,
+      322,
+      340
+    ],
+    "Translation": [
+      4,
+      -1
+    ]
+  }
+}

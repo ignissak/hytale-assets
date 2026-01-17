@@ -1,0 +1,58 @@
+{
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Longsword_Iron" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Inventory",
+                "Items": [ "Beech*" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "HasItem"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_ItemInInventory.name"
+}

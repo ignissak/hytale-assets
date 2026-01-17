@@ -1,0 +1,52 @@
+{
+  "GridGenerator": {
+    "Seed": "Wasteland-Canyon-Boulders",
+    "Density": 1,
+    "Scale": 0.08,
+    "Jitter": 0.7
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type":"DISTORTED",
+        "Noise":{
+          "Seed": "Firelands_Biomes_Pattern",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "Distance2Mode": "DIV",
+          "Scale": 0.003,
+          "Jitter": 0.711
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Firelands-Hills",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 4,
+              "Persistence": 0.3,
+              "Scale": 0.008,
+              "Amplitude": 30
+            }
+          ]
+        }
+      },
+      {
+        "Seed": "Lava_Cracks",
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "DistanceRange": [1, 3],
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Scale": 0.05,
+        "Jitter": 0.75
+      }
+    ],
+    "Factors": [0.925, 0.075],
+    "Threshold": [0.8, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [112, 113, 122, 123],
+    "Values": [0, 1, 1, 0]
+  }
+}

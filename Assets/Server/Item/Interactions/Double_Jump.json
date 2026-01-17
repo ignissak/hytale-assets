@@ -1,0 +1,76 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 2.01
+  },
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ApplyForce",
+        "Direction": {
+          "X": 0,
+          "Y": 2,
+          "Z": 0
+        },
+        "AdjustVertical": false,
+        "WaitForGround": false,
+        "Force": 15
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "Stamina": -2
+        }
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -0.3
+        },
+        "Behaviour": "Set",
+        "ValueType": "Absolute"
+      },
+      {
+        "Type": "Simple",
+        "RunTime": 1,
+        "Effects": {
+          "LocalSoundEventId": "SFX_Chicken_Alerted",
+          "WorldSoundEventId": "SFX_Chicken_Alerted",
+          "Particles": [
+            {
+              "PositionOffset": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 0,
+                "Yaw": 0
+              },
+              "TargetEntityPart": "Entity",
+              "TargetNodeName": "L-Foot",
+              "SystemId": "Impact_Feathers_Black"
+            },
+            {
+              "PositionOffset": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 0,
+                "Yaw": 0
+              },
+              "TargetEntityPart": "Entity",
+              "TargetNodeName": "R-Foot",
+              "SystemId": "Impact_Feathers_Black"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

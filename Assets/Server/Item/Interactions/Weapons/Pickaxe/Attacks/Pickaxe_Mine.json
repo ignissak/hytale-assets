@@ -1,0 +1,76 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "Mine"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.083,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Block break delay",
+            "RunTime": 0.05,
+            "Next": "Pickaxe_Block_Break"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.083,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 2.5,
+              "Length": 30,
+              "RollOffset": 60,
+              "YawStartOffset": -15
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Pickaxe_Mine_Damage"
+                    ]
+                  },
+                  "Var": "Pickaxe_Mine_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.084
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Pickaxe_Mine_Effect"
+              ]
+            },
+            "Var": "Pickaxe_Mine_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

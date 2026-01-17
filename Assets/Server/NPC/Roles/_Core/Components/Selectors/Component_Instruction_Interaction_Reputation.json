@@ -1,0 +1,62 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "$Interaction" ],
+    "ViewSector": {
+      "Value": 0,
+      "Description": "Sector the player must be in to be interactable"
+    },
+    "Attitudes": {
+      "Value": [ "Neutral", "Friendly", "Revered" ],
+      "Description": "Required attitude for interaction"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "CanInteract",
+            "ViewSector": { "Compute": "ViewSector" },
+            "Attitudes": { "Compute": "Attitudes" }
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "HasInteracted"
+        },
+        "Actions": [
+          {
+            "Type": "LockOnInteractionTarget"
+          },
+          {
+            "Type": "ParentState",
+            "State": "$Interaction"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

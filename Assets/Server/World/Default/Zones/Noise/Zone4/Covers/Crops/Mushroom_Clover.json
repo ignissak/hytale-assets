@@ -1,0 +1,47 @@
+{
+  "Type": "MIN",
+  "Noise": [
+    {
+      "Seed": "Forest_Ghost_Trees",
+      "NoiseType": "CELL",
+      "CellMode": "DISTANCE",
+      "Formula": "INVERTED",
+      "Jitter": 0.5,
+      "Density": [
+        0,
+        0.3
+      ],
+      "Scale": 0.12,
+      "Normalize": 0.74
+    },
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Monuments-Firelands",
+          "NoiseType": "CELL",
+          "CellMode": "DISTANCE",
+          "Scale": 0.005,
+          "Jitter": 0.7
+        },
+        {
+          "Seed": "GhostForest",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 4,
+          "Persistence": 0.6,
+          "Scale": 0.01
+        }
+      ],
+      "Factors": [
+        0.35,
+        0.65
+      ],
+      "Normalize": 0.53
+    }
+  ],
+  "Threshold": [
+    0.01,
+    1
+  ]
+}

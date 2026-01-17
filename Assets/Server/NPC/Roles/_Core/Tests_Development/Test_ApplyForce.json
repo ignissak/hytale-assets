@@ -1,0 +1,58 @@
+{
+  "Type": "Generic",
+  "Appearance": "Pig_Wild",
+  "HotbarItems": [ ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5
+          },
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status",
+              "Animation": "Alerted"
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ]
+            },
+            {
+              "Type": "Attack",
+              "Attack": "Test_ApplyForce"
+            },
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_ApplyForce.name"
+}

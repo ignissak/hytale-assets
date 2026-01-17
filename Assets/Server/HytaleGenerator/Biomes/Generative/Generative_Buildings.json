@@ -1,0 +1,1518 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-7683,
+		"$y":	-4345
+	},
+	"Name":	"Basic",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-6920,
+			"$y":	-5265
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-6606,
+				"$y":	-5292
+			},
+			"Type":	"Max",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-5293,
+						"$y":	-6488
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-4649,
+								"$y":	-6627
+							},
+							"Type":	"SimplexNoise2D",
+							"Skip":	false,
+							"Lacunarity":	2,
+							"Persistence":	0.5,
+							"Octaves":	1,
+							"Scale":	250,
+							"Seed":	"A"
+						}, {
+							"$Position":	{
+								"$x":	-4653,
+								"$y":	-6283
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	-3998,
+									"$y":	-6043
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	-3393,
+											"$y":	-6000
+										},
+										"In":	0,
+										"Out":	1
+									}, {
+										"$Position":	{
+											"$x":	-3384,
+											"$y":	-5852
+										},
+										"In":	5,
+										"Out":	-1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-3993,
+										"$y":	-6281
+									},
+									"Type":	"BaseHeight",
+									"Skip":	false,
+									"BaseHeightName":	"Base",
+									"Distance":	true
+								}]
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-5923,
+						"$y":	-5269
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-5285,
+								"$y":	-5290
+							},
+							"Type":	"Mix",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-3607,
+										"$y":	-5295
+									},
+									"Type":	"CurveMapper",
+									"Skip":	false,
+									"Curve":	{
+										"$Position":	{
+											"$x":	-2930,
+											"$y":	-4986
+										},
+										"Type":	"Manual",
+										"Points":	[{
+												"$Position":	{
+													"$x":	-2281,
+													"$y":	-5072
+												},
+												"In":	1,
+												"Out":	-1
+											}, {
+												"$Position":	{
+													"$x":	-2285,
+													"$y":	-4925
+												},
+												"In":	0.05,
+												"Out":	0.05
+											}, {
+												"$Position":	{
+													"$x":	-2284,
+													"$y":	-4781
+												},
+												"In":	0,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2283,
+													"$y":	-4634
+												},
+												"In":	-1,
+												"Out":	-1
+											}]
+									},
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-2766,
+												"$y":	-5292
+											},
+											"Type":	"Exported",
+											"ExportAs":	"Generative_Buildings_Walls",
+											"SingleInstance":	true,
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	-2021,
+														"$y":	-5278
+													},
+													"Type":	"Sum",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	-869,
+																"$y":	-6209
+															},
+															"Type":	"Max",
+															"Skip":	false,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	47,
+																		"$y":	-8244
+																	},
+																	"Type":	"YOverride",
+																	"Skip":	false,
+																	"Value":	0,
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	689,
+																				"$y":	-8242
+																			},
+																			"Type":	"Cache",
+																			"Skip":	false,
+																			"Capacity":	3,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	1310,
+																						"$y":	-8233
+																					},
+																					"Type":	"PositionsCellNoise",
+																					"Skip":	false,
+																					"MaxDistance":	200,
+																					"Positions":	{
+																						"$Position":	{
+																							"$x":	3476,
+																							"$y":	-8254
+																						},
+																						"Type":	"FieldFunction",
+																						"Skip":	false,
+																						"FieldFunction":	{
+																							"$Position":	{
+																								"$x":	4130,
+																								"$y":	-8235
+																							},
+																							"Type":	"Imported",
+																							"Skip":	false,
+																							"Name":	"Generative_Buildings_Mask"
+																						},
+																						"Delimiters":	[{
+																								"$Position":	{
+																									"$x":	4136,
+																									"$y":	-8053
+																								},
+																								"Min":	0.35,
+																								"Max":	0.55
+																							}],
+																						"Positions":	{
+																							"$Position":	{
+																								"$x":	4145,
+																								"$y":	-8490
+																							},
+																							"Type":	"Occurrence",
+																							"Skip":	false,
+																							"Seed":	"A",
+																							"FieldFunction":	{
+																								"$Position":	{
+																									"$x":	4802,
+																									"$y":	-8319
+																								},
+																								"Type":	"Constant",
+																								"Skip":	false,
+																								"Value":	0.5
+																							},
+																							"Positions":	{
+																								"$Position":	{
+																									"$x":	4805,
+																									"$y":	-8497
+																								},
+																								"Type":	"Union",
+																								"Skip":	false,
+																								"OffsetX":	"OffsetX",
+																								"OffsetY":	"OffsetY",
+																								"OffsetZ":	"OffsetZ",
+																								"Positions":	[{
+																										"$Position":	{
+																											"$x":	5441,
+																											"$y":	-8517
+																										},
+																										"Type":	"Mesh2D",
+																										"Skip":	false,
+																										"PointsY":	0,
+																										"PointGenerator":	{
+																											"$Position":	{
+																												"$x":	6108,
+																												"$y":	-8523
+																											},
+																											"Type":	"Mesh",
+																											"Jitter":	0,
+																											"ScaleX":	25,
+																											"ScaleY":	25,
+																											"ScaleZ":	25,
+																											"Seed":	"A"
+																										}
+																									}]
+																							}
+																						}
+																					},
+																					"ReturnType":	{
+																						"$Position":	{
+																							"$x":	2026,
+																							"$y":	-7901
+																						},
+																						"Type":	"Density",
+																						"ChoiceDensity":	{
+																							"$Position":	{
+																								"$x":	2537,
+																								"$y":	-7898
+																							},
+																							"Type":	"Constant",
+																							"Skip":	false,
+																							"Value":	0
+																						},
+																						"Delimiters":	[{
+																								"$Position":	{
+																									"$x":	2541,
+																									"$y":	-7717
+																								},
+																								"From":	-1,
+																								"To":	1,
+																								"Density":	{
+																									"$Position":	{
+																										"$x":	2969,
+																										"$y":	-7716
+																									},
+																									"Type":	"Anchor",
+																									"Skip":	false,
+																									"Reversed":	false,
+																									"Inputs":	[{
+																											"$Position":	{
+																												"$x":	3583,
+																												"$y":	-7711
+																											},
+																											"Type":	"YOverride",
+																											"Skip":	false,
+																											"Value":	0,
+																											"Inputs":	[{
+																													"$Position":	{
+																														"$x":	4190,
+																														"$y":	-7709
+																													},
+																													"Type":	"Cache",
+																													"Skip":	false,
+																													"Capacity":	3,
+																													"Inputs":	[{
+																															"$Position":	{
+																																"$x":	4801,
+																																"$y":	-7700
+																															},
+																															"Type":	"Cube",
+																															"Skip":	false,
+																															"Curve":	{
+																																"$Position":	{
+																																	"$x":	5373,
+																																	"$y":	-7694
+																																},
+																																"Type":	"Manual",
+																																"Points":	[{
+																																		"$Position":	{
+																																			"$x":	6002,
+																																			"$y":	-7676
+																																		},
+																																		"In":	0,
+																																		"Out":	1
+																																	}, {
+																																		"$Position":	{
+																																			"$x":	6017,
+																																			"$y":	-7520
+																																		},
+																																		"In":	40,
+																																		"Out":	-1
+																																	}]
+																															}
+																														}]
+																												}]
+																										}]
+																								}
+																							}],
+																						"DefaultValue":	-1
+																					},
+																					"DistanceFunction":	{
+																						"$Position":	{
+																							"$x":	2014,
+																							"$y":	-8035
+																						},
+																						"Type":	"Euclidean"
+																					}
+																				}]
+																		}]
+																}, {
+																	"$Position":	{
+																		"$x":	-122,
+																		"$y":	-6181
+																	},
+																	"Type":	"Min",
+																	"Skip":	false,
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	546,
+																				"$y":	-6867
+																			},
+																			"Type":	"YOverride",
+																			"Skip":	false,
+																			"Value":	0,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	1188,
+																						"$y":	-6865
+																					},
+																					"Type":	"Cache",
+																					"Skip":	false,
+																					"Capacity":	3,
+																					"Inputs":	[{
+																							"$Position":	{
+																								"$x":	1809,
+																								"$y":	-6856
+																							},
+																							"Type":	"PositionsCellNoise",
+																							"Skip":	false,
+																							"MaxDistance":	150,
+																							"Positions":	{
+																								"$Position":	{
+																									"$x":	2528,
+																									"$y":	-6844
+																								},
+																								"Type":	"Imported",
+																								"Name":	"Generative_Buildings_Offset_Pos",
+																								"Skip":	false
+																							},
+																							"ReturnType":	{
+																								"$Position":	{
+																									"$x":	2525,
+																									"$y":	-6524
+																								},
+																								"Type":	"Density",
+																								"ChoiceDensity":	{
+																									"$Position":	{
+																										"$x":	3036,
+																										"$y":	-6521
+																									},
+																									"Type":	"Constant",
+																									"Skip":	false,
+																									"Value":	0
+																								},
+																								"Delimiters":	[{
+																										"$Position":	{
+																											"$x":	3040,
+																											"$y":	-6340
+																										},
+																										"From":	-1,
+																										"To":	1,
+																										"Density":	{
+																											"$Position":	{
+																												"$x":	3468,
+																												"$y":	-6339
+																											},
+																											"Type":	"Anchor",
+																											"Skip":	false,
+																											"Reversed":	false,
+																											"Inputs":	[{
+																													"$Position":	{
+																														"$x":	4082,
+																														"$y":	-6334
+																													},
+																													"Type":	"YOverride",
+																													"Skip":	false,
+																													"Value":	0,
+																													"Inputs":	[{
+																															"$Position":	{
+																																"$x":	4689,
+																																"$y":	-6332
+																															},
+																															"Type":	"Cache",
+																															"Skip":	false,
+																															"Capacity":	3,
+																															"Inputs":	[{
+																																	"$Position":	{
+																																		"$x":	5300,
+																																		"$y":	-6323
+																																	},
+																																	"Type":	"Cube",
+																																	"Skip":	false,
+																																	"Curve":	{
+																																		"$Position":	{
+																																			"$x":	5872,
+																																			"$y":	-6318
+																																		},
+																																		"Type":	"Manual",
+																																		"Points":	[{
+																																				"$Position":	{
+																																					"$x":	6501,
+																																					"$y":	-6300
+																																				},
+																																				"In":	0,
+																																				"Out":	-1
+																																			}, {
+																																				"$Position":	{
+																																					"$x":	6516,
+																																					"$y":	-6144
+																																				},
+																																				"In":	100,
+																																				"Out":	1
+																																			}]
+																																	}
+																																}]
+																														}]
+																												}]
+																										}
+																									}],
+																								"DefaultValue":	-1
+																							},
+																							"DistanceFunction":	{
+																								"$Position":	{
+																									"$x":	2513,
+																									"$y":	-6658
+																								},
+																								"Type":	"Euclidean"
+																							}
+																						}]
+																				}]
+																		}, {
+																			"$Position":	{
+																				"$x":	503,
+																				"$y":	-5294
+																			},
+																			"Type":	"YOverride",
+																			"Skip":	false,
+																			"Value":	0,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	1145,
+																						"$y":	-5292
+																					},
+																					"Type":	"Cache",
+																					"Skip":	false,
+																					"Capacity":	3,
+																					"Inputs":	[{
+																							"$Position":	{
+																								"$x":	1763,
+																								"$y":	-5280
+																							},
+																							"Type":	"PositionsCellNoise",
+																							"Skip":	false,
+																							"MaxDistance":	150,
+																							"Positions":	{
+																								"$Position":	{
+																									"$x":	2809,
+																									"$y":	-5172
+																								},
+																								"Type":	"FieldFunction",
+																								"Skip":	false,
+																								"FieldFunction":	{
+																									"$Position":	{
+																										"$x":	3655,
+																										"$y":	-4955
+																									},
+																									"Type":	"SimplexNoise2D",
+																									"ExportAs":	"Generative_Buildings_Area_Mask",
+																									"Skip":	false,
+																									"Lacunarity":	2,
+																									"Persistence":	0.5,
+																									"Octaves":	1,
+																									"Scale":	350,
+																									"Seed":	"A"
+																								},
+																								"Delimiters":	[{
+																										"$Position":	{
+																											"$x":	3495,
+																											"$y":	-4585
+																										},
+																										"Min":	0,
+																										"Max":	1
+																									}],
+																								"Positions":	{
+																									"$Position":	{
+																										"$x":	3632,
+																										"$y":	-5170
+																									},
+																									"Type":	"FieldFunction",
+																									"Skip":	false,
+																									"FieldFunction":	{
+																										"$Position":	{
+																											"$x":	4424,
+																											"$y":	-5069
+																										},
+																										"Type":	"YOverride",
+																										"ExportAs":	"Generative_Buildings_Mask",
+																										"Skip":	false,
+																										"Value":	0,
+																										"Inputs":	[{
+																												"$Position":	{
+																													"$x":	5064,
+																													"$y":	-5067
+																												},
+																												"Type":	"Cache",
+																												"Skip":	false,
+																												"Capacity":	3,
+																												"Inputs":	[{
+																														"$Position":	{
+																															"$x":	5677,
+																															"$y":	-5065
+																														},
+																														"Type":	"PositionsCellNoise",
+																														"Skip":	false,
+																														"MaxDistance":	300,
+																														"Positions":	{
+																															"$Position":	{
+																																"$x":	6452,
+																																"$y":	-5156
+																															},
+																															"Type":	"Offset",
+																															"ExportAs":	"Generative_Buildings_Offset_Pos",
+																															"Skip":	false,
+																															"OffsetX":	50,
+																															"OffsetY":	0,
+																															"OffsetZ":	50,
+																															"Positions":	{
+																																"$Position":	{
+																																	"$x":	7106,
+																																	"$y":	-5148
+																																},
+																																"Type":	"Mesh2D",
+																																"Skip":	false,
+																																"PointsY":	0,
+																																"PointGenerator":	{
+																																	"$Position":	{
+																																		"$x":	7762,
+																																		"$y":	-5156
+																																	},
+																																	"Type":	"Mesh",
+																																	"Jitter":	0,
+																																	"ScaleX":	300,
+																																	"ScaleY":	300,
+																																	"ScaleZ":	300,
+																																	"Seed":	"A"
+																																}
+																															}
+																														},
+																														"ReturnType":	{
+																															"$Position":	{
+																																"$x":	6383,
+																																"$y":	-4737
+																															},
+																															"Type":	"Curve",
+																															"Curve":	{
+																																"$Position":	{
+																																	"$x":	6638,
+																																	"$y":	-4740
+																																},
+																																"Type":	"Manual",
+																																"Points":	[{
+																																		"$Position":	{
+																																			"$x":	7255,
+																																			"$y":	-4735
+																																		},
+																																		"In":	0,
+																																		"Out":	1
+																																	}, {
+																																		"$Position":	{
+																																			"$x":	7259,
+																																			"$y":	-4564
+																																		},
+																																		"In":	300,
+																																		"Out":	-1
+																																	}]
+																															}
+																														},
+																														"DistanceFunction":	{
+																															"$Position":	{
+																																"$x":	6381,
+																																"$y":	-4870
+																															},
+																															"Type":	"Euclidean"
+																														}
+																													}]
+																											}]
+																									},
+																									"Delimiters":	[{
+																											"$Position":	{
+																												"$x":	4384,
+																												"$y":	-4853
+																											},
+																											"Min":	0,
+																											"Max":	2
+																										}],
+																									"Positions":	{
+																										"$Position":	{
+																											"$x":	4383,
+																											"$y":	-5375
+																										},
+																										"Type":	"Mesh2D",
+																										"ExportAs":	"Generative_Buildings_Pos",
+																										"Skip":	false,
+																										"PointsY":	0,
+																										"PointGenerator":	{
+																											"$Position":	{
+																												"$x":	5039,
+																												"$y":	-5381
+																											},
+																											"Type":	"Mesh",
+																											"Jitter":	0,
+																											"ScaleX":	100,
+																											"ScaleY":	100,
+																											"ScaleZ":	100,
+																											"Seed":	"A"
+																										}
+																									}
+																								}
+																							},
+																							"ReturnType":	{
+																								"$Position":	{
+																									"$x":	2526,
+																									"$y":	-3984
+																								},
+																								"Type":	"Density",
+																								"ChoiceDensity":	{
+																									"$Position":	{
+																										"$x":	3037,
+																										"$y":	-3981
+																									},
+																									"Type":	"Constant",
+																									"Skip":	false,
+																									"Value":	0
+																								},
+																								"Delimiters":	[{
+																										"$Position":	{
+																											"$x":	3031,
+																											"$y":	-3803
+																										},
+																										"From":	-1,
+																										"To":	1,
+																										"Density":	{
+																											"$Position":	{
+																												"$x":	3469,
+																												"$y":	-3799
+																											},
+																											"Type":	"Anchor",
+																											"Skip":	false,
+																											"Reversed":	false,
+																											"Inputs":	[{
+																													"$Position":	{
+																														"$x":	4073,
+																														"$y":	-3797
+																													},
+																													"Type":	"YOverride",
+																													"Skip":	false,
+																													"Value":	0,
+																													"Inputs":	[{
+																															"$Position":	{
+																																"$x":	4680,
+																																"$y":	-3795
+																															},
+																															"Type":	"Cache",
+																															"Skip":	false,
+																															"Capacity":	3,
+																															"Inputs":	[{
+																																	"$Position":	{
+																																		"$x":	5291,
+																																		"$y":	-3786
+																																	},
+																																	"Type":	"Cube",
+																																	"Skip":	false,
+																																	"Curve":	{
+																																		"$Position":	{
+																																			"$x":	5898,
+																																			"$y":	-3782
+																																		},
+																																		"Type":	"Manual",
+																																		"Points":	[{
+																																				"$Position":	{
+																																					"$x":	6503,
+																																					"$y":	-3861
+																																				},
+																																				"In":	0,
+																																				"Out":	1
+																																			}, {
+																																				"$Position":	{
+																																					"$x":	6515,
+																																					"$y":	-3682
+																																				},
+																																				"In":	80,
+																																				"Out":	-1
+																																			}]
+																																	}
+																																}]
+																														}]
+																												}]
+																										}
+																									}],
+																								"DefaultValue":	-1
+																							},
+																							"DistanceFunction":	{
+																								"$Position":	{
+																									"$x":	2528,
+																									"$y":	-4117
+																								},
+																								"Type":	"Euclidean"
+																							}
+																						}]
+																				}]
+																		}]
+																}, {
+																	"$Position":	{
+																		"$x":	630,
+																		"$y":	-2593
+																	},
+																	"Type":	"YOverride",
+																	"Skip":	false,
+																	"Value":	0,
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	1272,
+																				"$y":	-2591
+																			},
+																			"Type":	"Cache",
+																			"Skip":	false,
+																			"Capacity":	3,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	1890,
+																						"$y":	-2579
+																					},
+																					"Type":	"PositionsCellNoise",
+																					"Skip":	false,
+																					"MaxDistance":	150,
+																					"Positions":	{
+																						"$Position":	{
+																							"$x":	2647,
+																							"$y":	-2528
+																						},
+																						"Type":	"FieldFunction",
+																						"Skip":	false,
+																						"FieldFunction":	{
+																							"$Position":	{
+																								"$x":	3337,
+																								"$y":	-2554
+																							},
+																							"Type":	"Imported",
+																							"Skip":	false,
+																							"Name":	"Generative_Buildings_Area_Mask"
+																						},
+																						"Delimiters":	[{
+																								"$Position":	{
+																									"$x":	3328,
+																									"$y":	-2345
+																								},
+																								"Min":	-1,
+																								"Max":	0
+																							}],
+																						"Positions":	{
+																							"$Position":	{
+																								"$x":	4107,
+																								"$y":	-2500
+																							},
+																							"Type":	"FieldFunction",
+																							"Skip":	false,
+																							"FieldFunction":	{
+																								"$Position":	{
+																									"$x":	4761,
+																									"$y":	-2481
+																								},
+																								"Type":	"Imported",
+																								"Skip":	false,
+																								"Name":	"Generative_Buildings_Mask"
+																							},
+																							"Delimiters":	[{
+																									"$Position":	{
+																										"$x":	4767,
+																										"$y":	-2299
+																									},
+																									"Min":	0.35,
+																									"Max":	0.55
+																								}],
+																							"Positions":	{
+																								"$Position":	{
+																									"$x":	4771,
+																									"$y":	-2710
+																								},
+																								"Type":	"Mesh2D",
+																								"Skip":	false,
+																								"PointsY":	0,
+																								"PointGenerator":	{
+																									"$Position":	{
+																										"$x":	5427,
+																										"$y":	-2716
+																									},
+																									"Type":	"Mesh",
+																									"Jitter":	0,
+																									"ScaleX":	100,
+																									"ScaleY":	100,
+																									"ScaleZ":	100,
+																									"Seed":	"A"
+																								}
+																							}
+																						}
+																					},
+																					"ReturnType":	{
+																						"$Position":	{
+																							"$x":	2645,
+																							"$y":	-2008
+																						},
+																						"Type":	"Density",
+																						"ChoiceDensity":	{
+																							"$Position":	{
+																								"$x":	3156,
+																								"$y":	-2005
+																							},
+																							"Type":	"Constant",
+																							"Skip":	false,
+																							"Value":	0
+																						},
+																						"Delimiters":	[{
+																								"$Position":	{
+																									"$x":	3150,
+																									"$y":	-1827
+																								},
+																								"From":	-1,
+																								"To":	1,
+																								"Density":	{
+																									"$Position":	{
+																										"$x":	3588,
+																										"$y":	-1823
+																									},
+																									"Type":	"Anchor",
+																									"Skip":	false,
+																									"Reversed":	false,
+																									"Inputs":	[{
+																											"$Position":	{
+																												"$x":	4192,
+																												"$y":	-1821
+																											},
+																											"Type":	"YOverride",
+																											"Skip":	false,
+																											"Value":	0,
+																											"Inputs":	[{
+																													"$Position":	{
+																														"$x":	4799,
+																														"$y":	-1819
+																													},
+																													"Type":	"Cache",
+																													"Skip":	false,
+																													"Capacity":	3,
+																													"Inputs":	[{
+																															"$Position":	{
+																																"$x":	5410,
+																																"$y":	-1810
+																															},
+																															"Type":	"Cube",
+																															"Skip":	false,
+																															"Curve":	{
+																																"$Position":	{
+																																	"$x":	6017,
+																																	"$y":	-1806
+																																},
+																																"Type":	"Manual",
+																																"Points":	[{
+																																		"$Position":	{
+																																			"$x":	6622,
+																																			"$y":	-1885
+																																		},
+																																		"In":	0,
+																																		"Out":	1
+																																	}, {
+																																		"$Position":	{
+																																			"$x":	6634,
+																																			"$y":	-1706
+																																		},
+																																		"In":	80,
+																																		"Out":	-1
+																																	}]
+																															}
+																														}]
+																												}]
+																										}]
+																								}
+																							}],
+																						"DefaultValue":	-1
+																					},
+																					"DistanceFunction":	{
+																						"$Position":	{
+																							"$x":	2647,
+																							"$y":	-2141
+																						},
+																						"Type":	"Euclidean"
+																					}
+																				}]
+																		}]
+																}]
+														}, {
+															"$Position":	{
+																"$x":	-1404,
+																"$y":	-4889
+															},
+															"Type":	"CurveMapper",
+															"Skip":	false,
+															"Curve":	{
+																"$Position":	{
+																	"$x":	-749,
+																	"$y":	-4649
+																},
+																"Type":	"Manual",
+																"Points":	[{
+																		"$Position":	{
+																			"$x":	-115,
+																			"$y":	-5209
+																		},
+																		"In":	-1,
+																		"Out":	-1
+																	}, {
+																		"$Position":	{
+																			"$x":	-119,
+																			"$y":	-5041
+																		},
+																		"In":	0,
+																		"Out":	0.01
+																	}, {
+																		"$Position":	{
+																			"$x":	-124,
+																			"$y":	-4884
+																		},
+																		"In":	8,
+																		"Out":	0.01
+																	}, {
+																		"$Position":	{
+																			"$x":	-129,
+																			"$y":	-4727
+																		},
+																		"In":	9,
+																		"Out":	0
+																	}, {
+																		"$Position":	{
+																			"$x":	-126,
+																			"$y":	-4559
+																		},
+																		"In":	63,
+																		"Out":	0
+																	}, {
+																		"$Position":	{
+																			"$x":	-128,
+																			"$y":	-4412
+																		},
+																		"In":	64,
+																		"Out":	0.01
+																	}, {
+																		"$Position":	{
+																			"$x":	-130,
+																			"$y":	-4253
+																		},
+																		"In":	67,
+																		"Out":	0.01
+																	}, {
+																		"$Position":	{
+																			"$x":	-122,
+																			"$y":	-4105
+																		},
+																		"In":	68,
+																		"Out":	-1
+																	}]
+															},
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	-744,
+																		"$y":	-4887
+																	},
+																	"Type":	"BaseHeight",
+																	"Skip":	false,
+																	"BaseHeightName":	"Base",
+																	"Distance":	true
+																}]
+														}]
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-4393,
+										"$y":	-5059
+									},
+									"Type":	"Imported",
+									"Skip":	false,
+									"Name":	"Generative_Buildings_Walls"
+								}, {
+									"$Position":	{
+										"$x":	-4441,
+										"$y":	-4007
+									},
+									"Type":	"CurveMapper",
+									"Skip":	false,
+									"Curve":	{
+										"$Position":	{
+											"$x":	-3778,
+											"$y":	-3597
+										},
+										"Type":	"Manual",
+										"ExportAs":	"Generative_Buildings_Floors",
+										"Points":	[{
+												"$Position":	{
+													"$x":	-3107,
+													"$y":	-3980
+												},
+												"In":	10,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1785,
+													"$y":	-3979
+												},
+												"In":	25,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2661,
+													"$y":	-3979
+												},
+												"In":	15,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2219,
+													"$y":	-3972
+												},
+												"In":	20,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-3105,
+													"$y":	-3814
+												},
+												"In":	11,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-1783,
+													"$y":	-3813
+												},
+												"In":	26,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2659,
+													"$y":	-3813
+												},
+												"In":	16,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2217,
+													"$y":	-3806
+												},
+												"In":	21,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-3096,
+													"$y":	-3666
+												},
+												"In":	12,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1774,
+													"$y":	-3665
+												},
+												"In":	27,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2218,
+													"$y":	-3658
+												},
+												"In":	22,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2653,
+													"$y":	-3648
+												},
+												"In":	17,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-3094,
+													"$y":	-3450
+												},
+												"In":	30,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1771,
+													"$y":	-3449
+												},
+												"In":	45,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2648,
+													"$y":	-3449
+												},
+												"In":	35,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2206,
+													"$y":	-3442
+												},
+												"In":	40,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-3092,
+													"$y":	-3284
+												},
+												"In":	31,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2646,
+													"$y":	-3283
+												},
+												"In":	36,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-1769,
+													"$y":	-3283
+												},
+												"In":	46,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2204,
+													"$y":	-3276
+												},
+												"In":	41,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-3083,
+													"$y":	-3136
+												},
+												"In":	32,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1760,
+													"$y":	-3135
+												},
+												"In":	47,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2205,
+													"$y":	-3128
+												},
+												"In":	42,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2640,
+													"$y":	-3118
+												},
+												"In":	37,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-3088,
+													"$y":	-2920
+												},
+												"In":	50,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2642,
+													"$y":	-2919
+												},
+												"In":	55,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1765,
+													"$y":	-2919
+												},
+												"In":	65,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2200,
+													"$y":	-2912
+												},
+												"In":	60,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-3086,
+													"$y":	-2754
+												},
+												"In":	51,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-1763,
+													"$y":	-2753
+												},
+												"In":	66,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2640,
+													"$y":	-2753
+												},
+												"In":	56,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-2198,
+													"$y":	-2746
+												},
+												"In":	61,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-3077,
+													"$y":	-2606
+												},
+												"In":	52,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-1754,
+													"$y":	-2605
+												},
+												"In":	67,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2199,
+													"$y":	-2598
+												},
+												"In":	62,
+												"Out":	0
+											}, {
+												"$Position":	{
+													"$x":	-2634,
+													"$y":	-2588
+												},
+												"In":	57,
+												"Out":	0
+											}]
+									},
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-3781,
+												"$y":	-4005
+											},
+											"Type":	"BaseHeight",
+											"Skip":	false,
+											"BaseHeightName":	"Base",
+											"Distance":	true
+										}]
+								}]
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-7018,
+			"$y":	-275
+		},
+		"Type":	"Queue",
+		"Queue":	[{
+				"$Position":	{
+					"$x":	-4877,
+					"$y":	-929
+				},
+				"Type":	"FieldFunction",
+				"FieldFunction":	{
+					"$Position":	{
+						"$x":	-4045,
+						"$y":	-1164
+					},
+					"Type":	"PositionsCellNoise",
+					"Skip":	false,
+					"MaxDistance":	2,
+					"Positions":	{
+						"$Position":	{
+							"$x":	-3291,
+							"$y":	-1444
+						},
+						"Type":	"Mesh2D",
+						"Skip":	false,
+						"PointsY":	98,
+						"PointGenerator":	{
+							"$Position":	{
+								"$x":	-2636,
+								"$y":	-1452
+							},
+							"Type":	"Mesh",
+							"Jitter":	0,
+							"ScaleX":	150,
+							"ScaleY":	150,
+							"ScaleZ":	150,
+							"Seed":	"A"
+						}
+					},
+					"ReturnType":	{
+						"$Position":	{
+							"$x":	-3353,
+							"$y":	-1007
+						},
+						"Type":	"Curve",
+						"Curve":	{
+							"$Position":	{
+								"$x":	-3104,
+								"$y":	-971
+							},
+							"Type":	"Manual",
+							"Points":	[{
+									"$Position":	{
+										"$x":	-2468,
+										"$y":	-970
+									},
+									"In":	0.5,
+									"Out":	0.5
+								}, {
+									"$Position":	{
+										"$x":	-2464,
+										"$y":	-821
+									},
+									"In":	0.6,
+									"Out":	-1
+								}]
+						}
+					},
+					"DistanceFunction":	{
+						"$Position":	{
+							"$x":	-3315,
+							"$y":	-1176
+						},
+						"Type":	"Euclidean"
+					}
+				},
+				"Delimiters":	[{
+						"$Position":	{
+							"$x":	-4054,
+							"$y":	-694
+						},
+						"From":	0,
+						"To":	1,
+						"Material":	{
+							"$Position":	{
+								"$x":	-3617,
+								"$y":	-660
+							},
+							"Type":	"Constant",
+							"Material":	{
+								"$Position":	{
+									"$x":	-2983,
+									"$y":	-649
+								},
+								"Solid":	"Editor_Anchor"
+							}
+						}
+					}]
+			}, {
+				"$Position":	{
+					"$x":	-6377,
+					"$y":	-312
+				},
+				"Type":	"Solidity",
+				"Solid":	{
+					"$Position":	{
+						"$x":	-5578,
+						"$y":	-280
+					},
+					"Type":	"Queue",
+					"Queue":	[{
+							"$Position":	{
+								"$x":	-4948,
+								"$y":	-290
+							},
+							"Type":	"Constant",
+							"Material":	{
+								"$Position":	{
+									"$x":	-4305,
+									"$y":	-298
+								},
+								"Solid":	"Rock_Stone"
+							}
+						}]
+				},
+				"Empty":	{
+					"$Comment":	"REQUIRED",
+					"$Position":	{
+						"$x":	-5575,
+						"$y":	13
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-4879,
+							"$y":	42
+						},
+						"Solid":	"Empty"
+					}
+				}
+			}]
+	},
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-6796,
+			"$y":	-1686
+		},
+		"Type":	"Constant",
+		"Environment":	"Zone1_Overground"
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-6764,
+			"$y":	-1455
+		},
+		"Type":	"Constant",
+		"Color":	"#5b9e28"
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	404.4375,
+				"$y":	-5682.8125
+			},
+			"$width":	7990.9375,
+			"$height":	2362,
+			"$name":	"Base"
+		}, {
+			"$Position":	{
+				"$x":	-2.0625,
+				"$y":	-8677.8125
+			},
+			"$width":	6578.9375,
+			"$height":	1410.9375,
+			"$name":	"Random1"
+		}, {
+			"$Position":	{
+				"$x":	497.8125,
+				"$y":	-6970.75
+			},
+			"$width":	6578.9375,
+			"$height":	1154.4375,
+			"$name":	"Courtyard"
+		}, {
+			"$Position":	{
+				"$x":	532.125,
+				"$y":	-2981.8125
+			},
+			"$width":	6710.6875,
+			"$height":	1595.5,
+			"$name":	"Base"
+		}]
+}

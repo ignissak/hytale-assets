@@ -1,0 +1,235 @@
+{
+  "Type": "Generic",
+  "$Comment": "DoubleTestCheck",
+  "Appearance": "Zombie",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "StateTransitions": [
+    {
+      "States": [
+        {
+          "From": [ ],
+          "To": [ "State2", "State5" ]
+        },
+        {
+          "From": [ "State2" ],
+          "To": [ "State3" ]
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "DisplayName",
+          "DisplayName": "Running transition 1!"
+        },
+        {
+          "Type": "Attack",
+          "Attack": "Skeleton_Archer_Bow_Shoot"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 2, 3 ]
+        }
+      ]
+    },
+    {
+      "States": [
+        {
+          "From": [ "State3" ],
+          "To": [ ]
+        },
+        {
+          "From": [ "State4" ],
+          "To": [ "State5" ],
+          "Priority": 1
+        }
+      ],
+      "Actions": [
+        {
+          "Type": "DisplayName",
+          "DisplayName": "Running transition 2!"
+        },
+        {
+          "Type": "Attack",
+          "Attack": "Skeleton_Archer_Bow_Shoot"
+        },
+        {
+          "Type": "Timeout",
+          "Delay": [ 2, 3 ]
+        }
+      ]
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "State2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "State2"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Transition over in State2"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Flee"
+              }
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "State3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "State3"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Transition over in State3"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "State4"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 20
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 5,
+                "StopDistance": 4
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "State4"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Transition over in State4"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "BodyMotion": {
+                "Type": "Flee"
+              }
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "State5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "State5"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Transition over in State5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_State_Transitions.name"
+}

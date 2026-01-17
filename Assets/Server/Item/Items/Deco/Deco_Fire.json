@@ -1,0 +1,88 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Deco_Fire.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Deco_Fire.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Flame",
+    "CustomModel": "Items/Projectiles/Projectile.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Projectiles/Tornado_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Opacity": "Transparent",
+    "Light": {
+      "Color": "#ec9"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "DropList": "Empty"
+      }
+    },
+    "HitboxType": "Plant_Large",
+    "BlockParticleSetId": "Dust",
+    "Particles": [
+      {
+        "SystemId": "Campfire_New_Cartoon",
+        "TargetNodeName": "Flame",
+        "Scale": 0.9,
+        "RotationOffset": {
+          "Yaw": 0,
+          "Pitch": -90
+        }
+      }
+    ],
+    "ParticleColor": "#655d5d",
+    "AmbientSoundEventId": "SFX_Flame_Default_Loop",
+    "Looping": true,
+    "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "BurnEffect",
+          "Cooldown": 1
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "Simple",
+              "RunTime": 0.1,
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": "Burn"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "Material": "Empty"
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.665,
+    "Translation": [
+      0,
+      -13.5
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

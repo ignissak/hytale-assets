@@ -1,0 +1,98 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Chase", "Search" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "RangedAttack": {
+      "Value": "Trork_Sentry_Spear_Throw",
+      "Description": "Ranged attack"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "Inventory",
+            "Operation": "EquipHotbar",
+            "Slot": 0,
+            "UseTarget": false
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "ViewRange" },
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Sequence",
+            "Blocking": true,
+            "Actions": [
+              {
+                "Type": "Attack",
+                "Attack": { "Compute": "RangedAttack" },
+                "AimingTimeRange": [ 3, 3 ],
+                "AttackPauseRange": [ 1, 2 ]
+              },
+              {
+                "Type": "ParentState",
+                "State": "Idle"
+              }
+            ]
+          }
+        ],
+        "HeadMotion": {
+          "Type": "Aim",
+          "HitProbability": 1,
+          "Spread": 0
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Target",
+            "Range": { "Compute": "ViewRange" }
+          }
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 2, 2 ],
+            "Action": {
+              "Type": "ParentState",
+              "State": "Idle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

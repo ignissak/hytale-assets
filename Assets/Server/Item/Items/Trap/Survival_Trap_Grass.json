@@ -1,0 +1,108 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Survival_Trap_Grass.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Shelves"
+  ],
+  "Set": "Furniture_Crude",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.58823,
+    "Translation": [
+      0,
+      -30.3
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 3
+      }
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Grass",
+    "CustomModel": "Blocks/Tinkering/Trap_Grass.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Tinkering/Trap_Grass_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "Group": "Wood",
+    "HitboxType": "Trapdoor",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "BlockSoundSetId": "Wood",
+    "RandomRotation": "YawStep90",
+    "BiomeTint": 100,
+    "Tint": [
+      "#a2b24e"
+    ],
+    "Interactions": {
+      "CollisionEnter": {
+        "Cooldown": {
+          "Id": "Collision",
+          "Cooldown": 0
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "BlockCondition",
+              "Matchers": [
+                {
+                  "Block": {
+                    "Id": "Survival_Trap_Grass"
+                  },
+                  "Face": "Up",
+                  "StaticFace": true
+                }
+              ],
+              "Next": {
+                "Type": "ChangeBlock",
+                "Changes": {
+                  "Survival_Trap_Grass": "Empty"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Icon": "Icons/ItemsGenerated/Survival_Trap_Grass.png",
+  "Tags": {
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

@@ -1,0 +1,131 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.River.name",
+    "Description": "server.builderTools.tools.River.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "RiverBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 3,
+            "Min": 1,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Cylinder"
+          },
+          "Origin": {
+            "Default": "Center"
+          }
+        },
+        "Args": {
+          "FluidType": {
+            "Type": "Block",
+            "Default": "Fluid_Water",
+            "AllowPattern": true
+          },
+          "SurfaceMaterial": {
+            "Type": "Block",
+            "Default": "Soil_Sand,Soil_Gravel_Sand",
+            "AllowPattern": true
+          },
+          "SurfaceMaterialDensity": {
+            "Type": "Int",
+            "Default": 50,
+            "Min": 1,
+            "Max": 100
+          },
+          "SubsurfaceMaterial": {
+            "Type": "Block",
+            "Default": "Soil_Gravel,Soil_Gravel_Mossy",
+            "AllowPattern": true
+          },
+          "SubsurfaceMaterialDensity": {
+            "Type": "Int",
+            "Default": 100,
+            "Min": 1,
+            "Max": 100
+          },
+          "zMaterialInFluid": {
+            "Type": "Block",
+            "Default": "Plant_Seaweed_Grass_Green,Rubble_Stone,Rubble_Stone_Medium",
+            "AllowPattern": true
+          },
+          "zMaterialInFluidDensity": {
+            "Type": "Int",
+            "Default": 40,
+            "Min": 1,
+            "Max": 100
+          },
+          "yMaterialOutFluid": {
+            "Type": "Block",
+            "Default": "Plant_Reeds_Marsh,Plant_Reeds_Water",
+            "AllowPattern": true
+          },
+          "yMaterialOutFluidDensity": {
+            "Type": "Int",
+            "Default": 20,
+            "Min": 1,
+            "Max": 100
+          },
+          "xMaterialTopFluid": {
+            "Type": "Block",
+            "Default": "Plant_Flower_Water_White,Plant_Flower_Water_Duckweed",
+            "AllowPattern": true
+          },
+          "xMaterialTopFluidDensity": {
+            "Type": "Int",
+            "Default": 10,
+            "Min": 1,
+            "Max": 100
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

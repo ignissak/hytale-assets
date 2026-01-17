@@ -1,0 +1,288 @@
+{
+	"$Title":	"[ROOT] Mix Density",
+	"$Position":	{
+		"$x":	-2393,
+		"$y":	-9215
+	},
+	"Type":	"Mix",
+	"ExportAs":	"Plains1_Caves_Deeproot_Terrain",
+	"Skip":	false,
+	"Inputs":	[{
+			"$Position":	{
+				"$x":	-1579,
+				"$y":	-9638
+			},
+			"Type":	"Max",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-266,
+						"$y":	-10119
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	425,
+								"$y":	-10335
+							},
+							"Type":	"Inverter",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	1073,
+										"$y":	-10305
+									},
+									"Type":	"Imported",
+									"Skip":	false,
+									"Name":	"Plains1_Mountains_Cave_Deeproot_Snakes"
+								}]
+						}, {
+							"$Position":	{
+								"$x":	435,
+								"$y":	-9951
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	1078,
+									"$y":	-9842
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	1714,
+											"$y":	-9995
+										},
+										"In":	-90,
+										"Out":	1
+									}, {
+										"$Position":	{
+											"$x":	1711,
+											"$y":	-9836
+										},
+										"In":	60,
+										"Out":	-1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	1086,
+										"$y":	-10124
+									},
+									"Type":	"BaseHeight",
+									"Skip":	false,
+									"BaseHeightName":	"Base",
+									"Distance":	true
+								}]
+						}]
+				}, {
+					"$Position":	{
+						"$x":	499,
+						"$y":	-8775
+					},
+					"Type":	"Mix",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	1221,
+								"$y":	-9088
+							},
+							"Type":	"Sum",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	1911,
+										"$y":	-9471
+									},
+									"Type":	"SimplexNoise2D",
+									"ExportAs":	"Plains1_Mountains_Cave_Deeproot_Snakes",
+									"Skip":	false,
+									"Lacunarity":	4,
+									"Persistence":	0.25,
+									"Octaves":	3,
+									"Scale":	300,
+									"Seed":	"Cave-Floor"
+								}, {
+									"$Position":	{
+										"$x":	1912,
+										"$y":	-9055
+									},
+									"Type":	"CurveMapper",
+									"Skip":	false,
+									"Curve":	{
+										"$Position":	{
+											"$x":	2572,
+											"$y":	-9036
+										},
+										"Type":	"Manual",
+										"Points":	[{
+												"$Title":	"Curve Point0.5",
+												"$Position":	{
+													"$x":	3208,
+													"$y":	-9189
+												},
+												"In":	-80,
+												"Out":	-1
+											}, {
+												"$Position":	{
+													"$x":	3205,
+													"$y":	-9030
+												},
+												"In":	70,
+												"Out":	1
+											}]
+									},
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	2580,
+												"$y":	-9318
+											},
+											"Type":	"BaseHeight",
+											"Skip":	false,
+											"BaseHeightName":	"Base",
+											"Distance":	true
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	1242,
+								"$y":	-8768
+							},
+							"Type":	"Constant",
+							"Skip":	false,
+							"Value":	1
+						}, {
+							"$Position":	{
+								"$x":	1239,
+								"$y":	-8360
+							},
+							"Type":	"Pow",
+							"Skip":	false,
+							"Exponent":	3,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	1958,
+										"$y":	-8363
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	0,
+									"FromMax":	1,
+									"ToMin":	0.3,
+									"ToMax":	1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	2590,
+												"$y":	-8359
+											},
+											"Type":	"Abs",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	3195,
+														"$y":	-8361
+													},
+													"Type":	"SimplexNoise2D",
+													"Skip":	false,
+													"Lacunarity":	2,
+													"Persistence":	0.5,
+													"Octaves":	1,
+													"Scale":	75,
+													"Seed":	"Caves-Snakes"
+												}]
+										}]
+								}]
+						}]
+				}]
+		}, {
+			"$Position":	{
+				"$x":	-1564,
+				"$y":	-9416
+			},
+			"Type":	"Constant",
+			"Skip":	false,
+			"Value":	1
+		}, {
+			"$Position":	{
+				"$x":	-1605,
+				"$y":	-8826
+			},
+			"Type":	"CurveMapper",
+			"Skip":	false,
+			"Curve":	{
+				"$Position":	{
+					"$x":	-945,
+					"$y":	-8807
+				},
+				"Type":	"Manual",
+				"Points":	[{
+						"$Position":	{
+							"$x":	-312,
+							"$y":	-8801
+						},
+						"In":	-90,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-314,
+							"$y":	-8647
+						},
+						"In":	-80,
+						"Out":	0
+					}, {
+						"$Position":	{
+							"$x":	-328,
+							"$y":	-8475
+						},
+						"In":	20,
+						"Out":	0
+					}, {
+						"$Title":	"Curve Point0.5",
+						"$Position":	{
+							"$x":	-329,
+							"$y":	-8313
+						},
+						"In":	30,
+						"Out":	1
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-937,
+						"$y":	-9089
+					},
+					"Type":	"BaseHeight",
+					"Skip":	false,
+					"BaseHeightName":	"Base",
+					"Distance":	true
+				}]
+		}],
+	"$WorkspaceID":	"HytaleGenerator - Density",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-321.1875,
+				"$y":	-10420.375
+			},
+			"$width":	2451.0625,
+			"$height":	763,
+			"$name":	"Snake Floors"
+		}, {
+			"$Position":	{
+				"$x":	1163.4375,
+				"$y":	-9546.25
+			},
+			"$width":	2446.375,
+			"$height":	708.4375,
+			"$name":	"Snake Ceilings"
+		}, {
+			"$Position":	{
+				"$x":	1130.5625,
+				"$y":	-8512.625
+			},
+			"$width":	2676.6875,
+			"$height":	660.4375,
+			"$name":	"Snake Walls"
+		}]
+}

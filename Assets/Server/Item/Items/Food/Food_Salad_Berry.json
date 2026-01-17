@@ -1,0 +1,65 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Salad_Berry.name",
+    "Description": "server.items.Food_Salad_Berry.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T2"
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/Food_Salad_Berry.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Salad_Berries.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Salad_Berries_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#a0784d"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T2"
+        },
+        "HealthRegen_TierCheck_T2",
+        "FruitVeggie_TierCheck_T2"
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 1,
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Prepared"
+        ]
+      }
+    ],
+    "Input": [
+      {
+        "ItemId": "Plant_Crop_Lettuce_Item"
+      },
+      {
+        "ItemId": "Plant_Fruit_Berries_Red",
+        "Quantity": 5
+      }
+    ],
+    "Output": [
+      {
+        "ItemId": "Food_Salad_Berry"
+      }
+    ]
+  },
+  "ItemLevel": 6,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

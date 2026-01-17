@@ -1,0 +1,36 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The view sector within which the player needs to be to be seen"
+    },
+    "Enabled": {
+      "Value": true,
+      "Description": "Whether this sensor should be enabled"
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "Enabled" },
+    "Type": "Player",
+    "Range": { "Compute": "ViewRange" },
+    "LockOnTarget": true,
+    "Filters": [
+      {
+        "Type": "LineOfSight"
+      },
+      {
+        "Type": "ViewSector",
+        "ViewSector": { "Compute": "ViewSector" }
+      }
+    ],
+    "Collector": {
+      "Type": "CombatTargets"
+    }
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,2400 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Seed": "Drylands-Biomes-Distrobution",
+            "Scale": 0.0011,
+            "Jitter": 0.5,
+            "DistanceRange": 70,
+            "NoiseType": "CELL",
+            "Formula": "INVERTED",
+            "CellMode": "DISTANCE",
+            "Density": 1,
+            "Normalize": [
+              0,
+              0.35
+            ]
+          },
+          {
+            "Seed": "Drylands-HiddenOasis2",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Scale": 0.015
+          }
+        ]
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Drylands-Randomizer",
+            "NoiseType": "OLD_SIMPLEX",
+            "Formula": "SQUARED",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.02,
+            "Amplitude": 10
+          }
+        ]
+      },
+      "Threshold": [
+        0.2,
+        1
+      ]
+    },
+    "BiomeMask": [
+      "Desert_Barren",
+      "Desert_Mushroom"
+    ],
+    "Priority": 3
+  },
+  "MapColor": "#d4e199",
+  "Covers": [
+    {
+      "Type": [
+        "Plant_Crop_Mana3"
+      ],
+      "Density": 0.15,
+      "NoiseMask": {
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.12,
+        "Threshold": [
+          0,
+          0.25
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          96,
+          97,
+          100,
+          101
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Soil_Grass_Dry"
+      ],
+      "Offset": -1,
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Grass.Grass_Oasis_Hidden"
+          }
+        ],
+        "Threshold": [
+          0.4,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          114,
+          116,
+          116,
+          124,
+          126,
+          128,
+          130
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Soil_Dirt_Dry"
+      ],
+      "Offset": -2,
+      "Weight": [
+        1
+      ],
+      "Density": 1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Grass.Grass_Oasis_Hidden"
+          }
+        ],
+        "Threshold": [
+          0.4,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          113,
+          113,
+          116,
+          116,
+          124,
+          126,
+          128,
+          130
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_Grey2"
+      ],
+      "$Comment": "This cover places flowers in the shade of dry trees in the oasis.",
+      "Weight": [
+        1
+      ],
+      "Density": 0.08,
+      "NoiseMask": {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Drylands-Biomes-Distrobution",
+                  "Scale": 0.0011,
+                  "Jitter": 0.5,
+                  "DistanceRange": 70,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": 1,
+                  "Normalize": [
+                    0,
+                    0.35
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.015
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 10
+                }
+              ]
+            }
+          },
+          {
+            "Seed": "HiddenOasis_Trees2",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Octaves": 2,
+            "Persistence": 0.3,
+            "Formula": "RIDGED",
+            "Scale": 0.025,
+            "Normalize": [
+              0.07,
+              0.07
+            ]
+          },
+          {
+            "Seed": "HiddenOasis_DryTrees",
+            "Scale": 0.25,
+            "Jitter": 0.4,
+            "DistanceRange": 1,
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "Formula": "INVERTED",
+            "Density": 0.08,
+            "Normalize": [
+              0.1,
+              0.1
+            ]
+          }
+        ],
+        "Threshold": [
+          0.1,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          106,
+          106
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Poisoned_Short",
+        "Plant_Grass_Poisoned"
+      ],
+      "$Comment": "This cover places poison grass on poison dirt",
+      "Weight": [
+        0.5,
+        0.5
+      ],
+      "Density": 0.7,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.2,
+        "Threshold": [
+          0.5,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          127,
+          127
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Dirt_Poisoned"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Bushy_Poisoned",
+        "Plant_Flower_Orchid_Purple",
+        "Deco_Bone_Skulls",
+        "Deco_Bone_Pile"
+      ],
+      "$Comment": "This cover places stuff on poison dirt",
+      "Weight": [
+        0.75,
+        0.75,
+        0.05,
+        0.05
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.05,
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          105,
+          105
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Dirt_Poisoned"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Dry",
+        "Plant_Grass_Arid",
+        "Plant_Grass_Dry_Tall"
+      ],
+      "$Comment": "This cover places dry grass at the bottom of the oasis",
+      "Weight": [
+        0.5,
+        0.3,
+        0.05
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Seed": "HiddenOasis_Flowers",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 1,
+        "Persistence": 0.2,
+        "Scale": 0.05,
+        "Threshold": [
+          0.4,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          110,
+          130
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Dry",
+        "Soil_Grass_Full",
+        "Soil_Dirt"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Arid"
+      ],
+      "$Comment": "This cover places less dry grass at the bottom of the oasis",
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Seed": "HiddenOasis_Flowers",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 1,
+        "Persistence": 0.2,
+        "Scale": 0.05,
+        "Threshold": [
+          0.6,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          110,
+          130
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Dry",
+        "Soil_Grass_Full",
+        "Soil_Dirt"
+      ]
+    },
+    {
+      "Type": [
+        "*Plant_Crop_Tomato_Block_State_Definitions_Stage5",
+        "*Plant_Crop_Tomato_Block_State_Definitions_Stage4"
+      ],
+      "Weight": [
+        0.9,
+        0.1
+      ],
+      "Density": 0.9,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Crops.Sandstone_Beach"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.2
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          110,
+          130
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Dry",
+        "Soil_Grass_Full",
+        "Soil_Dirt"
+      ]
+    },
+    {
+      "Type": [
+        "Rubble_Sandstone",
+        "Rubble_Sandstone_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.5,
+        "Scale": 0.07,
+        "Threshold": [
+          0,
+          0.35
+        ]
+      },
+      "Parent": [
+        "Rock_Sandstone"
+      ]
+    },
+    {
+      "$Comment": "This cover places lavender near water.",
+      "Weight": [
+        1
+      ],
+      "Type": [
+        "Plant_Flower_Tall_Purple"
+      ],
+      "Density": 0.3,
+      "NoiseMask": {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Drylands-Biomes-Distrobution",
+                  "Scale": 0.0011,
+                  "Jitter": 0.5,
+                  "DistanceRange": 70,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": 1,
+                  "Normalize": [
+                    0,
+                    0.35
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.015
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 10
+                }
+              ]
+            },
+            "Normalize": [
+              0.68,
+              0.68
+            ]
+          },
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MAX",
+              "Noise": [
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "Scale": 0.1,
+                  "Jitter": 1,
+                  "DistanceRange": 1,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": [
+                    0.5,
+                    1
+                  ],
+                  "Normalize": [
+                    0.5,
+                    0.5
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "Scale": 0.1,
+                  "Jitter": 1,
+                  "DistanceRange": 2,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": [
+                    0.4,
+                    1
+                  ],
+                  "Normalize": [
+                    0.5,
+                    0.5
+                  ]
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 5
+                }
+              ]
+            }
+          }
+        ],
+        "Threshold": [
+          0.01,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          105,
+          105
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Dirt"
+      ]
+    },
+    {
+      "$Comment": "This cover places pink bushes and Poisoned plants.",
+      "Weight": [
+        0.95,
+        0.07,
+        0.05
+      ],
+      "Type": [
+        "Plant_Flower_Flax_Pink",
+        "Plant_Flower_Common_Poisoned",
+        "Plant_Bush_Arid_Sharp"
+      ],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Drylands-Biomes-Distrobution",
+                  "Scale": 0.0011,
+                  "Jitter": 0.5,
+                  "DistanceRange": 70,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": 1,
+                  "Normalize": [
+                    0,
+                    0.35
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.015
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 10
+                }
+              ]
+            },
+            "Normalize": [
+              0.57,
+              0.57
+            ]
+          },
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.5,
+                  "Formula": "INVERTED",
+                  "Scale": 0.08,
+                  "Normalize": [
+                    0.5,
+                    0.5
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Formula": "RIDGED",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.02,
+                  "Normalize": [
+                    0.1,
+                    0.1
+                  ]
+                },
+                {
+                  "Seed": "HiddenOasis-Boulders",
+                  "Scale": 0.08,
+                  "Jitter": 0.75,
+                  "DistanceRange": 3,
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "Density": 0.33,
+                  "Normalize": [
+                    0.95,
+                    0.95
+                  ]
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 5
+                }
+              ]
+            }
+          }
+        ],
+        "Threshold": [
+          0.01,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          102,
+          102,
+          107,
+          107
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Common_Red"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.04,
+      "NoiseMask": {
+        "Type": "DISTORTED",
+        "Noise": {
+          "Type": "MULTIPLY",
+          "Noise": [
+            {
+              "Seed": "Drylands-Biomes-Distrobution",
+              "Scale": 0.0011,
+              "Jitter": 0.5,
+              "DistanceRange": 70,
+              "NoiseType": "CELL",
+              "Formula": "INVERTED",
+              "CellMode": "DISTANCE",
+              "Density": 1,
+              "Normalize": [
+                0,
+                0.35
+              ]
+            },
+            {
+              "Seed": "Drylands-HiddenOasis2",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.015
+            }
+          ]
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Drylands-Randomizer",
+              "NoiseType": "OLD_SIMPLEX",
+              "Formula": "SQUARED",
+              "Octaves": 3,
+              "Persistence": 0.8,
+              "Scale": 0.02,
+              "Amplitude": 13
+            }
+          ]
+        },
+        "Threshold": [
+          0.69,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          102,
+          102
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Bushy_Green",
+        "Plant_Grass_Arid_Tall",
+        "Plant_Grass_Arid"
+      ],
+      "Weight": [
+        0.6,
+        0.3,
+        0.9
+      ],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MAX",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Seed": "Drylands-Biomes-Distrobution",
+                  "Scale": 0.0011,
+                  "Jitter": 0.5,
+                  "DistanceRange": 70,
+                  "NoiseType": "CELL",
+                  "Formula": "INVERTED",
+                  "CellMode": "DISTANCE",
+                  "Density": 1,
+                  "Normalize": [
+                    0,
+                    0.35
+                  ]
+                },
+                {
+                  "Seed": "Drylands-HiddenOasis2",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.015
+                }
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "Formula": "SQUARED",
+                  "Octaves": 3,
+                  "Persistence": 0.8,
+                  "Scale": 0.02,
+                  "Amplitude": 13
+                }
+              ]
+            },
+            "Normalize": [
+              0.65,
+              0.65
+            ]
+          },
+          {
+            "Seed": "HiddenOasis-Boulders",
+            "Scale": 0.08,
+            "Jitter": 0.75,
+            "DistanceRange": 3.5,
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "Density": 0.33,
+            "Normalize": [
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "Threshold": [
+          0,
+          0.01
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          101,
+          101,
+          105,
+          105
+        ],
+        "Values": [
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Dirt"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [
+          100
+        ],
+        "Prefab": [
+          "Rock_Formations.Rocks.Sandstone.Oasis.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Boulders"
+        }
+      },
+      {
+        "Weight": [
+          100
+        ],
+        "Prefab": [
+          "Rock_Formations.Rocks.Sandstone.Pillars.Medium.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Pillars"
+        }
+      },
+      {
+        "Weight": [
+          100
+        ],
+        "Prefab": [
+          "Monuments.Incidental.Sandstone.Oasis.Rock_Camp.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Incidental"
+        }
+      },
+      {
+        "Weight": [
+          10,
+          45,
+          45
+        ],
+        "Prefab": [
+          "Trees.Dry.Stage_1_Dead.*",
+          "Trees.Dry.Stage_2.*",
+          "Trees.Dry.Stage_3.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Trees_Dry"
+        }
+      },
+      {
+        "Prefab": [
+          "Trees.Palm.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Trees_Palm"
+        }
+      },
+      {
+        "Prefab": [
+          "Trees.Palo.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Trees_Palo"
+        }
+      },
+      {
+        "Weight": [
+          100
+        ],
+        "Prefab": [
+          "Rock_Formations.Fossils.Small.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier3.PrefabPatterns.Hidden_Oasis_Fossils"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places poison dirt around the water.",
+                "Type": "Soil_Dirt_Poisoned"
+              },
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [
+                  1,
+                  3
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "MULTIPLY",
+                    "Noise": [
+                      {
+                        "Seed": "Drylands-Biomes-Distrobution",
+                        "Scale": 0.0011,
+                        "Jitter": 0.5,
+                        "DistanceRange": 70,
+                        "NoiseType": "CELL",
+                        "Formula": "INVERTED",
+                        "CellMode": "DISTANCE",
+                        "Density": 1,
+                        "Normalize": [
+                          0,
+                          0.35
+                        ]
+                      },
+                      {
+                        "Seed": "Drylands-HiddenOasis2",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "FractalMode": "OLDSCHOOL",
+                        "Octaves": 2,
+                        "Persistence": 0.3,
+                        "Scale": 0.015
+                      }
+                    ]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Randomizer",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Formula": "SQUARED",
+                        "Octaves": 3,
+                        "Persistence": 0.8,
+                        "Scale": 0.02,
+                        "Amplitude": 10
+                      }
+                    ]
+                  },
+                  "Normalize": [
+                    0.66,
+                    0.66
+                  ]
+                },
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "MAX",
+                    "Noise": [
+                      {
+                        "Seed": "Drylands-HiddenOasis2",
+                        "Scale": 0.1,
+                        "Jitter": 1,
+                        "DistanceRange": 1,
+                        "NoiseType": "CELL",
+                        "Formula": "INVERTED",
+                        "CellMode": "DISTANCE",
+                        "Density": [
+                          0.6,
+                          1
+                        ],
+                        "Normalize": [
+                          0.73,
+                          0.73
+                        ]
+                      },
+                      {
+                        "Seed": "Drylands-HiddenOasis2",
+                        "Scale": 0.1,
+                        "Jitter": 1,
+                        "DistanceRange": 2,
+                        "NoiseType": "CELL",
+                        "Formula": "INVERTED",
+                        "CellMode": "DISTANCE",
+                        "Density": [
+                          0.4,
+                          1
+                        ],
+                        "Normalize": [
+                          0.73,
+                          0.73
+                        ]
+                      }
+                    ]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Randomizer",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Formula": "SQUARED",
+                        "Octaves": 3,
+                        "Persistence": 0.8,
+                        "Scale": 0.02,
+                        "Amplitude": 5
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Threshold": [
+                0.01,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places Mud in the water.",
+                "Type": "Soil_Mud",
+                "Repeat": [
+                  0,
+                  2
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              },
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [
+                  2,
+                  3
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              },
+              {
+                "Type": "Rock_Sandstone",
+                "Repeat": [
+                  3,
+                  8
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Threshold": [
+                0.72,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places dirt at the bottom.",
+                "Type": "Soil_Dirt",
+                "Repeat": [
+                  0,
+                  3
+                ],
+                "repeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "MULTIPLY",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "MULTIPLY",
+                    "Noise": [
+                      {
+                        "Seed": "Drylands-Biomes-Distrobution",
+                        "Scale": 0.0011,
+                        "Jitter": 0.5,
+                        "DistanceRange": 70,
+                        "NoiseType": "CELL",
+                        "Formula": "INVERTED",
+                        "CellMode": "DISTANCE",
+                        "Density": 1,
+                        "Normalize": [
+                          0,
+                          0.35
+                        ]
+                      },
+                      {
+                        "Seed": "Drylands-HiddenOasis2",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "FractalMode": "OLDSCHOOL",
+                        "Octaves": 2,
+                        "Persistence": 0.3,
+                        "Scale": 0.015
+                      }
+                    ]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Randomizer",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Formula": "SQUARED",
+                        "Octaves": 3,
+                        "Persistence": 0.8,
+                        "Scale": 0.02,
+                        "Amplitude": 10
+                      }
+                    ]
+                  },
+                  "Normalize": [
+                    0.5,
+                    0.5
+                  ]
+                },
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Seed": "Drylands-DirtPatches",
+                    "Scale": 0.06,
+                    "Jitter": 1,
+                    "DistanceRange": [
+                      1,
+                      4
+                    ],
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 0.6,
+                    "Normalize": [
+                      0.6,
+                      0.6
+                    ]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Randomizer",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Formula": "SQUARED",
+                        "Octaves": 3,
+                        "Persistence": 0.8,
+                        "Scale": 0.02,
+                        "Amplitude": 5
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Threshold": [
+                0.01,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places grass at the bottom.",
+                "Type": "Soil_Grass"
+              },
+              {
+                "Type": "Soil_Dirt",
+                "Repeat": [
+                  1,
+                  3
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              },
+              {
+                "Type": "Rock_Sandstone",
+                "Repeat": [
+                  3,
+                  8
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Threshold": [
+                0.5,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places sandstone around the edge of the biome.",
+                "Type": "Rock_Sandstone",
+                "Repeat": [
+                  -1,
+                  2
+                ],
+                "repeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Threshold": [
+                [
+                  0,
+                  0.26
+                ],
+                [
+                  0.46,
+                  0.48
+                ]
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "$Comment": "This layer places dry grass at the top.",
+                "Type": "Soil_Grass_Dry"
+              },
+              {
+                "Type": "Soil_Dirt_Dry",
+                "Repeat": [
+                  1,
+                  2
+                ],
+                "repeatNoise": {
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ],
+            "NoiseMask": {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 90,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Threshold": [
+                0.25,
+                0.5
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static_Oasis"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Seed": "Drylands-HiddenOasis",
+      "NoiseType": "SIMPLEX",
+      "Octaves": 2,
+      "Persistence": 0.2,
+      "Scale": 0.02
+    },
+    "Keys": [
+      0.18,
+      0.2,
+      0.65,
+      0.67
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          95,
+          97,
+          100,
+          104,
+          125,
+          127,
+          133,
+          140
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.72,
+          0.5,
+          0.45,
+          0.42,
+          0.37,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          95,
+          97,
+          100,
+          103,
+          105,
+          115,
+          115,
+          126,
+          127,
+          134,
+          140
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.72,
+          0.5,
+          0.45,
+          0.43,
+          0.4,
+          0.35,
+          0.29,
+          0.21,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          95,
+          97,
+          100,
+          102,
+          105,
+          112,
+          115,
+          125,
+          127,
+          133,
+          140
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.72,
+          0.5,
+          0.48,
+          0.47,
+          0.4,
+          0.35,
+          0.29,
+          0.21,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          95,
+          97,
+          100,
+          103,
+          105,
+          109,
+          116,
+          122,
+          133,
+          140
+        ],
+        "Values": [
+          1,
+          0.8,
+          0.72,
+          0.5,
+          0.48,
+          0.47,
+          0.4,
+          0.35,
+          0.21,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "DISTORTED",
+    "Noise": {
+      "Type": "MULTIPLY",
+      "Noise": [
+        {
+          "Seed": "Drylands-Biomes-Distrobution",
+          "Scale": 0.0011,
+          "Jitter": 0.5,
+          "DistanceRange": 70,
+          "NoiseType": "CELL",
+          "Formula": "INVERTED",
+          "CellMode": "DISTANCE",
+          "Density": 1,
+          "Normalize": [
+            0,
+            0.35
+          ]
+        },
+        {
+          "Seed": "Drylands-HiddenOasis2",
+          "NoiseType": "OLD_SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.015
+        }
+      ]
+    },
+    "Randomizer": {
+      "Generators": [
+        {
+          "Seed": "Drylands-Randomizer",
+          "NoiseType": "OLD_SIMPLEX",
+          "Formula": "SQUARED",
+          "Octaves": 3,
+          "Persistence": 0.8,
+          "Scale": 0.02,
+          "Amplitude": 10
+        }
+      ]
+    }
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "#bfb237"
+      ]
+    },
+    "Entries": [
+      {
+        "Colors": [
+          "#50265e"
+        ],
+        "$Comment": "Purple tint patches",
+        "Weights": [
+          1
+        ],
+        "NoiseMask": {
+          "Type": "MULTIPLY",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Normalize": [
+                0.66,
+                0.66
+              ]
+            },
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MAX",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "Scale": 0.1,
+                    "Jitter": 1,
+                    "DistanceRange": 1,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": [
+                      0.5,
+                      1
+                    ],
+                    "Normalize": [
+                      0.5,
+                      0.5
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "Scale": 0.1,
+                    "Jitter": 1,
+                    "DistanceRange": 2,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": [
+                      0.4,
+                      1
+                    ],
+                    "Normalize": [
+                      0.5,
+                      0.5
+                    ]
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 5
+                  }
+                ]
+              }
+            }
+          ],
+          "Threshold": [
+            0.01,
+            1
+          ]
+        }
+      },
+      {
+        "Colors": [
+          "#73a832"
+        ],
+        "$Comment": "Brighter green tint around oasis",
+        "Weights": [
+          1
+        ],
+        "NoiseMask": {
+          "Type": "MULTIPLY",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Normalize": [
+                0.65,
+                0.65
+              ]
+            },
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MIN",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "Scale": 0.1,
+                    "Jitter": 1,
+                    "DistanceRange": 1,
+                    "NoiseType": "CELL",
+                    "CellMode": "DISTANCE",
+                    "Density": [
+                      0.5,
+                      1
+                    ],
+                    "Normalize": [
+                      0.5,
+                      0.5
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "Scale": 0.1,
+                    "Jitter": 1,
+                    "DistanceRange": 2,
+                    "NoiseType": "CELL",
+                    "CellMode": "DISTANCE",
+                    "Density": [
+                      0.4,
+                      1
+                    ],
+                    "Normalize": [
+                      0.5,
+                      0.5
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Formula": "INVERTED_RIDGED",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.02,
+                    "Normalize": [
+                      0.95,
+                      0.95
+                    ]
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 5
+                  }
+                ]
+              }
+            }
+          ],
+          "Threshold": [
+            0.01,
+            1
+          ]
+        }
+      },
+      {
+        "Colors": [
+          "#5b7d2a"
+        ],
+        "$Comment": "Green tint around oasis",
+        "Weights": [
+          1
+        ],
+        "NoiseMask": {
+          "Type": "DISTORTED",
+          "Noise": {
+            "Type": "MULTIPLY",
+            "Noise": [
+              {
+                "Seed": "Drylands-Biomes-Distrobution",
+                "Scale": 0.0011,
+                "Jitter": 0.5,
+                "DistanceRange": 70,
+                "NoiseType": "CELL",
+                "Formula": "INVERTED",
+                "CellMode": "DISTANCE",
+                "Density": 1,
+                "Normalize": [
+                  0,
+                  0.35
+                ]
+              },
+              {
+                "Seed": "Drylands-HiddenOasis2",
+                "NoiseType": "OLD_SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Octaves": 2,
+                "Persistence": 0.3,
+                "Scale": 0.015
+              }
+            ]
+          },
+          "Randomizer": {
+            "Generators": [
+              {
+                "Seed": "Drylands-Randomizer",
+                "NoiseType": "OLD_SIMPLEX",
+                "Formula": "SQUARED",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.02,
+                "Amplitude": 13
+              }
+            ]
+          },
+          "Threshold": [
+            0.69,
+            1
+          ]
+        }
+      },
+      {
+        "Colors": [
+          "#5b7d2a"
+        ],
+        "$Comment": "Green tint around boulder prefabs",
+        "Weights": [
+          1
+        ],
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Normalize": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "Seed": "HiddenOasis-Boulders",
+              "Scale": 0.08,
+              "Jitter": 0.75,
+              "DistanceRange": 1.5,
+              "NoiseType": "CELL",
+              "Formula": "INVERTED",
+              "CellMode": "DISTANCE",
+              "Density": 0.33,
+              "Normalize": [
+                0.4,
+                0.4
+              ]
+            }
+          ],
+          "Threshold": [
+            0.01,
+            1
+          ]
+        }
+      },
+      {
+        "Colors": [
+          "#8a7437"
+        ],
+        "$Comment": "Brown ish scattered tint",
+        "Weights": [
+          1
+        ],
+        "NoiseMask": {
+          "Type": "MULTIPLY",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MULTIPLY",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "Scale": 0.0011,
+                    "Jitter": 0.5,
+                    "DistanceRange": 70,
+                    "NoiseType": "CELL",
+                    "Formula": "INVERTED",
+                    "CellMode": "DISTANCE",
+                    "Density": 1,
+                    "Normalize": [
+                      0,
+                      0.35
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis2",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.015
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 10
+                  }
+                ]
+              },
+              "Normalize": [
+                0.4,
+                0.4
+              ]
+            },
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "MAX",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-HiddenOasis",
+                    "Scale": 0.13,
+                    "Jitter": 1,
+                    "DistanceRange": 1,
+                    "NoiseType": "CELL",
+                    "CellMode": "DISTANCE",
+                    "Density": [
+                      0.5,
+                      1
+                    ],
+                    "Normalize": [
+                      0.85,
+                      0.85
+                    ]
+                  },
+                  {
+                    "Seed": "Drylands-HiddenOasis",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Octaves": 2,
+                    "Formula": "RIDGED",
+                    "Scale": 0.03,
+                    "Normalize": [
+                      0.95,
+                      0.95
+                    ]
+                  }
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "OLD_SIMPLEX",
+                    "Formula": "SQUARED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02,
+                    "Amplitude": 5
+                  }
+                ]
+              }
+            }
+          ],
+          "Threshold": [
+            0.01,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone2_Oasis"
+      ]
+    },
+    "Entries": [
+      {
+        "Names": [
+          "Env_Zone2_Oasis"
+        ],
+        "NoiseMask": {
+          "Type": "DISTORTED",
+          "Noise": {
+            "Type": "MULTIPLY",
+            "Noise": [
+              {
+                "Seed": "Drylands-Biomes-Distribution",
+                "Scale": 0.0011,
+                "Jitter": 0.5,
+                "DistanceRange": 70,
+                "NoiseType": "CELL",
+                "Formula": "INVERTED",
+                "CellMode": "DISTANCE",
+                "Density": 1,
+                "Normalize": [
+                  0,
+                  0.35
+                ]
+              },
+              {
+                "Seed": "Drylands-HiddenOasis2",
+                "NoiseType": "OLD_SIMPLEX",
+                "FractalMode": "OLDSCHOOL",
+                "Octaves": 2,
+                "Persistence": 0.3,
+                "Scale": 0.015
+              }
+            ]
+          },
+          "Randomizer": {
+            "Generators": [
+              {
+                "Seed": "Drylands-Randomizer",
+                "NoiseType": "OLD_SIMPLEX",
+                "Formula": "SQUARED",
+                "Octaves": 3,
+                "Persistence": 0.8,
+                "Scale": 0.02,
+                "Amplitude": 10
+              }
+            ]
+          },
+          "Threshold": [
+            0.3,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 100
+      }
+    ]
+  },
+  "Fade": {
+    "FadeHeightmap": 0.8,
+    "FadeLength": 12,
+    "FadeStart": 4,
+    "TerrainLength": 15,
+    "TerrainStart": 5
+  }
+}

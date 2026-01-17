@@ -1,0 +1,79 @@
+{
+  "Type": "Generic",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Sheep",
+      "Description": "Model to be used",
+      "Validate": "true"
+    },
+    "WanderRadius": {
+      "Value": 5,
+      "Description": "Wander Radius",
+      "Validate": "v>0.1 && v<200"
+    },
+    "MaxSpeed": {
+      "Value": 3,
+      "Description": "Maximum speed of NPC",
+      "Validate": "v>0 && v<20"
+    },
+    "Count": {
+      "Value": [ 5, 6 ],
+      "Description": "Count"
+    },
+    "Range": {
+      "Value": [ 0, 8 ],
+      "Description": "Range"
+    },
+    "DisplayName": {
+      "Value": "Original",
+      "Description": "DisplayName"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Appearance": { "Compute": "Appearance" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 20,
+      "MaxFallSpeed": 8,
+      "Acceleration": { "Compute": "MaxSpeed * 3" }
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": { "Compute": "DisplayName" }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Count",
+            "Range": { "Compute": "Range" },
+            "Count": { "Compute": "Count" }
+          },
+          "Actions": [ ],
+          "Tag": "idle",
+          "BodyMotion": {
+            "Reference": "Test_Template_Wander",
+            "Modify": {
+              "Radius": { "Compute": "WanderRadius" }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Template_Sheep.name"
+}

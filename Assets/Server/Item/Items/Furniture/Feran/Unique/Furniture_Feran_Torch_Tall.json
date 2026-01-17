@@ -1,0 +1,143 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Feran_Torch_Tall.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Feran",
+  "Icon": "Icons/ItemsGenerated/Furniture_Feran_Torch_Tall.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.3,
+    "Translation": [
+      2.4,
+      -36
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Block_Secondary"
+  },
+  "InteractionVars": {
+    "Torch_Swing_Left_Effect": "Torch_Swing_Left_Effect",
+    "Torch_Swing_Right_Effect": "Torch_Swing_Right_Effect",
+    "Torch_Swing_Left_Damage": "Torch_Swing_Left_Damage",
+    "Torch_Swing_Right_Damage": "Torch_Swing_Right_Damage"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Torch",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Feran/Torch_Tall.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Feran/Torch_Tall_Texture.png"
+      }
+    ],
+    "Light": {
+      "Radius": 0,
+      "Color": "#ba9"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "HitboxType": "Plant_Tall_Large",
+    "MovementSettings": {},
+    "Particles": [
+      {
+        "SystemId": "Torch_Fire",
+        "PositionOffset": {
+          "Y": 1
+        }
+      }
+    ],
+    "Material": "Solid",
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_On_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Items/Torch/Torch_Off.blockyanim"
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Torch_Default_Loop",
+    "Looping": true,
+    "ParticleColor": "#c7b885",
+    "VariantRotation": "NESW",
+    "CustomModelScale": 0.8
+  },
+  "Scale": 1.5,
+  "Utility": {
+    "Usable": true
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Feran"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

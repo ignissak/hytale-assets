@@ -1,0 +1,58 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Reference": "Template_Age_Sensor_Test",
+            "Modify": {
+              "AgeRange": [ "T0H", "T5M" ]
+            }
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Young"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Old :("
+            },
+            {
+              "Type": "Role",
+              "Role": "Test_Dummy",
+              "ChangeAppearance": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_Age.name"
+}

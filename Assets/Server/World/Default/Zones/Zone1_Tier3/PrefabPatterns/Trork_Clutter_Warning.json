@@ -1,0 +1,42 @@
+{
+  "GridGenerator": {
+    "Seed": "Trork-Clutter-Lumber",
+    "Density": [0.43, 0.5],
+    "Scale": 0.075,
+    "Jitter": 0.7
+  },
+   "NoiseMask": {
+			"Type": "SUM",
+			"Noise": [
+				{
+					"Seed": "Gully_Cliffs",
+					"NoiseType": "OLD_SIMPLEX",
+					"FractalMode": "OLDSCHOOL",
+					"Octaves": 4,
+					"Persistence": 0.4,
+					"Scale": 0.05
+				},
+				{
+					"Seed": "Pattern_Monuments",
+					"NoiseType": "CELL",
+					"CellMode": "DISTANCE",
+					"DistanceRange": [2.5, 3],
+					"Density": [0.625, 0.8125],
+          "Scale": 0.005,
+          "Jitter": 0.75
+				}
+			],
+			"Factors": [0.25, 0.75],
+    "Threshold": [0.22, 0.325]
+},
+	"Parent":["Soil_Pathway", "Soil_Dirt"],
+	"Mask": {
+		"Default": ["*"],
+		"Specific": [
+			{
+				"Block": ["Deco_Rope_Diagonal", "Deco_Rope", "Plant_Leaves_Bramble", "Wood_Beech_Branch_Long", "Wood_Beech_Branch_Corner", "Wood_Beech_Branch_Short", "Wood_Softwood_Beam", "Wood_Softwood_Fence", "Wood_Softwood_Stairs", "Rock_Stone_Cobble_Half", "Deco_Bone_Ribs", "Deco_Bone_Ribs_Long", "Wood_Oak_Branch_Long", "Cloth_Roof_Hide", "*Cloth_Roof_Hide_State_Definitions_Corner_Right", "*Cloth_Roof_Hide_State_Definitions_Corner_Left", "Cloth_Roof_Hide_Flat", "Soil_Pathway_Half", "Rubble_Stone", "Rubble_Stone_Medium", "Deco_Bone_Pile", "Deco_Bone_Skulls", "Wood_Hardwood_Fence", "Furniture_Crude_Sign", "Furniture_Crude_Ladder"],
+				"Rule": ["Empty", "Plant_Grass_Sharp", "Plant_Grass_Sharp_Tall", "Plant_Grass_Lush_Short", "Plant_Grass_Lush", "Plant_Bush", "*Plant_Crop_Berry_Block_State_Definitions_StageFinal", "Plant_Fern_Winter", "Plant_Fern_Forest", "Plant_Bush_Green"]
+			}
+    	]
+	}
+}

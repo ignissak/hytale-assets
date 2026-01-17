@@ -1,0 +1,205 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Spider",
+      "Description": "Model to be used."
+    },
+    "DropList": {
+      "Value": "Drop_Spider",
+      "Description": "Drop Items."
+    },
+    "MaxHealth": {
+      "Value": 45,
+      "Description": "Max Health."
+    },
+    "BlockStepDetectionBlockSet": {
+      "Value": "",
+      "Description": "The name of the passive detection component"
+    },
+    "BlockStepDetectionIncludeNPCs": {
+      "Value": true,
+      "Description": "Whether block steps from NPCs will be detected."
+    },
+    "BlockStepDetectionRange": {
+      "Value": 20,
+      "Description": "The name of the blockset used for passive detection"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Spider.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "Appearance": {
+      "Compute": "Appearance"
+    },
+    "DropList": {
+      "Compute": "DropList"
+    },
+    "MaxHealth": 61,
+    "AttitudeGroup": "Vermin",
+    "MaxSpeed": 8,
+    "WanderRadius": 20,
+    "ViewRange": 6,
+    "HearingRange": 8,
+    "AlertedRange": 10,
+    "AlertedTime": [
+      2,
+      2
+    ],
+    "FleeIfNotThreatened": false,
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 5,
+    "LeashTimer": [
+      3,
+      3
+    ],
+    "CombatBackOffAfterAttack": false,
+    "CombatBehaviorDistance": 4,
+    "CombatRelativeTurnSpeed": 1,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatStrafingFrequencyRange": [
+      1,
+      2
+    ],
+    "CombatStrafingDurationRange": [
+      2,
+      3
+    ],
+    "Attack": "Root_NPC_Spider_Attack",
+    "AttackDistance": 3,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.8,
+    "BlockStepDetectionBlockSet": {
+      "Compute": "BlockStepDetectionBlockSet"
+    },
+    "BlockStepDetectionIncludeNPCs": {
+      "Compute": "BlockStepDetectionIncludeNPCs"
+    },
+    "BlockStepDetectionRange": {
+      "Compute": "BlockStepDetectionRange"
+    },
+    "DayTimePeriod": [
+      17.99,
+      6.01
+    ],
+    "AlwaysSleepAtNight": false,
+    "DayTimeNapWeight": 0,
+    "TimidDuringDay": false,
+    "DayFlavorAnimation": "Prey",
+    "NightFlavorAnimation": "Prey",
+    "IsMemory": true,
+    "MemoriesCategory": "Critter",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Spider_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Spider_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.333
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Type": "CooldownCondition",
+            "Id": "Spider_Poison",
+            "Next": {
+              "Type": "Serial",
+              "Interactions": [
+                {
+                  "Type": "TriggerCooldown",
+                  "Cooldown": {
+                    "Id": "Spider_Poison",
+                    "Cooldown": 8
+                  }
+                },
+                {
+                  "Type": "Simple",
+                  "RunTime": 0.1,
+                  "Effects": {
+                    "Particles": [
+                      {
+                        "SystemId": "Placeholder_Poison_Melee_Slash",
+                        "TargetEntityPart": "Entity",
+                        "PositionOffset": {
+                          "X": 0,
+                          "Y": 0.75,
+                          "Z": 1.5
+                        },
+                        "RotationOffset": {
+                          "Pitch": -30,
+                          "Roll": 0,
+                          "Yaw": 90
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Parent": "Spider_Bite_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 23
+                    },
+                    "RandomPercentageModifier": 0.1
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5
+                    }
+                  },
+                  "Next": {
+                    "Type": "EffectCondition",
+                    "Entity": "Target",
+                    "EntityEffectIds": [
+                      "Antidote"
+                    ],
+                    "Match": "None",
+                    "Next": {
+                      "Type": "ClearEntityEffect",
+                      "Entity": "Target",
+                      "EntityEffectId": "Poison_T1",
+                      "Next": {
+                        "Type": "ApplyEffect",
+                        "Entity": "Target",
+                        "EffectId": "Poison_T1"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "Failed": {
+              "Parent": "Spider_Bite_Damage",
+              "DamageCalculator": {
+                "Type": "Absolute",
+                "BaseDamage": {
+                  "Physical": 23
+                },
+                "RandomPercentageModifier": 0.1
+              },
+              "DamageEffects": {
+                "Knockback": {
+                  "Force": 0.5
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

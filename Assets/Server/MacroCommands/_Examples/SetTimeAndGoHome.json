@@ -1,0 +1,26 @@
+{
+  "Name": "setTimeAndGoHome",
+  "Aliases": ["macrotest"],
+  "Description": "Sets the time of day and teleports the user",
+  "Parameters": [
+    {
+      "Name": "timeOfDay",
+      "Description": "The time of day to set the world to",
+      "Requirement": "Required",
+      "ArgType": "Integer"
+    },
+    {
+      "Name": "world",
+      "Description": "The world to tp to",
+      "Requirement": "Default",
+      "ArgType": "World",
+      "DefaultValue": "Default",
+      "DefaultValueDescription": "The default world"
+    }
+  ],
+  "Commands": [
+    "time set {timeOfDay}",
+    "wait 2",
+    "tp home --world={world}"
+  ]
+}

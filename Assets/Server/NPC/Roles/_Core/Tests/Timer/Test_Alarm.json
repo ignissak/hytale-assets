@@ -1,0 +1,72 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Alarm",
+            "Name": "TestAlarm",
+            "State": "Passed",
+            "Clear": true
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Passed"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Alarm",
+            "Name": "TestAlarm",
+            "State": "Unset"
+          },
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Passed"
+            },
+            {
+              "Type": "Timeout",
+              "Delay": [ 15, 15 ]
+            },
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Waiting"
+            },
+            {
+              "Type": "SetAlarm",
+              "Name": "TestAlarm",
+              "DurationRange": [ "P1D", "P1D" ]
+            }
+          ],
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Alarm.name"
+}

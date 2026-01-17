@@ -1,0 +1,77 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Limestone_Cobble_Wall.name"
+  },
+  "Parent": "Rock_Stone_Cobble_Wall",
+  "Set": "Rock_Limestone_Cobble",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Lime"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Fences/Dev_Fence.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Dev_Fence_Texture/Rock_Limestone_Cobble_Fence.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#dccd97",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Fences/Dev_Fence_Texture/Rock_Limestone_Cobble_Fence.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Fences/Dev_Fence_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Lime_Cobble_Wall",
+              "GatherType": "Woods"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Lime_Cobble_Wall",
+        "Corner": "*Rock_Lime_Cobble_Wall_State_Definitions_Corner"
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Limestone_Cobble_Fence.png",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  }
+}

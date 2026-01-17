@@ -1,0 +1,110 @@
+$C = "../Common.ui";
+
+$C.@Container {
+  Anchor: (Left: 50, Top: 170, Width: 360, Bottom: 120);
+
+  #Title {
+    Group {
+      LayoutMode: Left;
+      $C.@Title {
+        @Text = %server.customUI.playSoundPage.play;
+      }
+    }
+
+    $C.@HeaderSearch {}
+  }
+
+  #Content {
+    Group #SoundList {
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+      FlexWeight: 1;
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 20);
+      Background: (TexturePath: "../Common/ContainerPanelPatch.png", Border: 4);
+      Padding: (Bottom:18);
+
+      Label #SoundName {
+        Padding: 8;
+        Style: (
+          FontSize: 18,
+          RenderUppercase: true,
+          RenderBold: true,
+          HorizontalAlignment: Center,
+          TextColor: #94969a
+        );
+      }
+
+      $C.@PanelSeparatorFancy {}
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: "Volume (dB)";
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        Slider #VolumeSlider {
+          Anchor: (Left: 25, Width: 150, Height: 5);
+          Style: $C.@DefaultSliderStyle;
+          Min: -100;
+          Max: 10;
+          Step: 1;
+          Value: 0;
+        }
+
+        Label #VolumeValue {
+          Anchor: (Left: 10, Width: 50);
+          Text: "0";
+          Style: (HorizontalAlignment: Center, VerticalAlignment: Center);
+        }
+      }
+
+      Group {
+        Anchor: (Top: 20);
+        LayoutMode: Left;
+        Padding: (Horizontal: 15);
+
+        Label {
+          Anchor: (Width: 80);
+          Text: "Pitch (st)";
+          Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+        }
+
+        Slider #PitchSlider {
+          Anchor: (Left: 25, Width: 150, Height: 5);
+          Style: $C.@DefaultSliderStyle;
+          Min: -12;
+          Max: 12;
+          Step: 0.5;
+          Value: 0;
+        }
+
+        Label #PitchValue {
+          Anchor: (Left: 10, Width: 50);
+          Text: "0";
+          Style: (HorizontalAlignment: Center, VerticalAlignment: Center);
+        }
+      }
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 15);
+
+      $C.@TextButton #Play {
+        @Sounds = (Activate: ());
+        Text: %server.customUI.playSoundPage.play;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

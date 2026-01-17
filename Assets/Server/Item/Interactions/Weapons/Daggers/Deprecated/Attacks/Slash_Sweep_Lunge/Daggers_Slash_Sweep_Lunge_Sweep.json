@@ -1,0 +1,78 @@
+{
+  "Type": "Simple",
+  "$Comment": "Prepare Delay",
+  "Effects": {
+    "$Comment": "The sweep step, hook vfx here",
+    "ItemAnimationId": "SlashSweepLungeSweep"
+  },
+  "RunTime": 0.15,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.1,
+            "Selector": {
+              "Id": "Stab",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.3,
+              "ExtendLeft": 1.5,
+              "ExtendRight": 1.5,
+              "ExtendBottom": 0.3,
+              "StartDistance": 0.1,
+              "EndDistance": 2.25
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.1
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                "Daggers_Slash_Sweep_Lunge_Sweep_Damage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          "Daggers_Slash_Sweep_Lunge_Sweep_Effect"
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ApplyForce",
+            "Direction": {
+              "X": 0,
+              "Y": 0,
+              "Z": -1
+            },
+            "AdjustVertical": true,
+            "WaitForGround": false,
+            "Force": 3,
+            "VelocityConfig": {
+              "AirResistance": 0.97,
+              "AirResistanceMax": 0.96,
+              "GroundResistance": 0.94,
+              "GroundResistanceMax": 0.82,
+              "Threshold": 3.0,
+              "Style": "Exp"
+            },
+            "ChangeVelocityType": "Add"
+          }
+        ]
+      }
+    ]
+  }
+}

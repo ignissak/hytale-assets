@@ -1,0 +1,93 @@
+{
+  "Model": "Kunai",
+  "SpawnRotationOffset": {
+    "Pitch": 2.5,
+    "Yaw": -0.5,
+    "Roll": -50
+  },
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0,
+    "SticksVertically": true
+  },
+  "LaunchForce": 45,
+  "SpawnOffset": {
+    "X": -0.15,
+    "Y": -0.25,
+    "Z": -1
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Parent": "DamageEntityParent",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 6
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 1.0,
+                "Z": -1
+              },
+              "Force": 5.5,
+              "VelocityType": "Set"
+            },
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Dagger_Stab",
+                "Scale": 1
+              }
+            ]
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Daggers_T2_Stab_Impact",
+            "WorldSoundEventId": "SFX_Daggers_T2_Stab_Impact"
+          }
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 5,
+          "Effects": {
+            "LocalSoundEventId": "SFX_Daggers_T2_Stab_Impact",
+            "WorldSoundEventId": "SFX_Daggers_T2_Stab_Impact"
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

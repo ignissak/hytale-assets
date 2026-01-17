@@ -1,0 +1,348 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+        }
+      ],
+ "Threshold": [0, 0.99]
+    },
+    "BiomeMask": ["Savannah_Boab"],
+    "Priority": 3
+  },
+  "MapColor": "#d2d2b1",
+  "Covers": [
+    {
+      "Type": [
+        {
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weights": [100],
+      "Density": 1,
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Water.Water_Pools"
+          }
+        ],
+        "Threshold": [0.86, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [171, 172],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Cactus_Ball_1"],
+      "Weight": [1],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Cacti.Cacti_Ball_Patches"
+          }
+        ],
+        "Threshold": [0.775, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Crop_Stamina1"],
+      "Density": 0.003,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Wheat_Small"
+          }
+        ],
+        "Threshold": [0.6, 0.65]
+      },
+      "HeightThreshold": {
+        "Positions": [145, 150],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Fern_Arid"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Fern.Fern_Arid_Patches"
+          }
+        ],
+        "Threshold": [0.75, 1]
+      }
+    },
+    {
+      "Type": ["Rubble_Sandstone", "Rubble_Sandstone_Medium"],
+      "Weight": [0.7, 0.3],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Rubble.Sandstone_Plateau"
+          }
+        ],
+        "Threshold": [0.7, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Grass_Arid_Short", "Plant_Grass_Arid"],
+      "Weight": [40, 60],
+      "Density": 0.42,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Oceans.Covers.Grass.Island_Grass_Lush"
+          }
+        ],
+        "Threshold": [0.6, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": ["Plant_Grass_Dry_Tall", "Plant_Grass_Dry"],
+      "Weight": [0.43, 0.2],
+      "Density": 0.35,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Lush_Plains"
+          }
+        ],
+        "Threshold": [0.75, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Arid_Short",
+        "Plant_Grass_Arid",
+        "Plant_Grass_Arid_Tall"
+      ],
+      "Weight": [40, 40, 20],
+      "Density": 0.8,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Grass.Grass_Sharp"
+          }
+        ],
+        "Threshold": [0.64, 0.75]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Blue"],
+      "Weight": [1],
+      "Density": 0.0125,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [0.695, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Purple"],
+      "Weight": [1],
+      "Density": 0.0125,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Wildflowers_Mixed"
+          }
+        ],
+        "Threshold": [0.695, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": ["Plant_Flower_Common_Cyan"],
+      "Weight": [1],
+      "Density": 0.0085,
+      "NoiseMask": {
+        "Seed": "Savannah_Boab_Plateau_Boab",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": 1.0,
+        "Formula": "NORMAL",
+        "Density": [0, 0.5525],
+        "Scale": 0.045,
+        "Jitter": 0.6,
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry", "Soil_Grass_Dry"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Vertical_Savannah.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Cave_Entrance_Type1"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Diagonal_Savannah.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Cave_Entrance_Type2"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Rocks.Sandstone.Small.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Rock_Boulders"
+        }
+      },
+      {
+        "Weight": [20, 35, 10],
+        "Prefab": [
+          "Trees.Boab.Stage_0.*",
+          "Trees.Boab.Stage_1.*",
+          "Trees.Boab.Stage_3.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Boab_Plateau_Boab"
+        }
+      },
+      {
+        "Weight": [25, 10],
+        "Prefab": ["Trees.Dry.Stage_2.*", "Trees.Dry.Stage_3.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Boab_Plateau_Dry"
+        }
+      },
+      {
+        "Prefab": ["Plants.Bush.Arid.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Desert_Plateau_Bush"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+            }
+          ],
+          "Gradient": {
+            "Mode": "MAGNITUDE",
+            "Distance": 2.0,
+            "Normalize": 0.1
+          },
+          "Threshold": [0, 0.1]
+        },
+        "Entries": [
+          {
+            "Blocks": ["Soil_Grass_Dry", "Soil_Dirt_Dry:2"]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static_Savannah"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [116, 210],
+    "Values": [1, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "MIN",
+    "Noise": [
+      {
+        "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+      }
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["#d8af49", "#d39e3d"],
+      "Weights": [0.7, 0.3],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Plateaus"]
+    },
+    "Entries": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "Type": "Parallel",
+  "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+  "Interactions": [
+    {
+      "Interactions": [
+        {
+          "Type": "Selector",
+          "$Comment": "Length of Combat",
+          "RunTime": 0.2,
+          "Selector": {
+            "Id": "Horizontal",
+            "Direction": "ToLeft",
+            "TestLineOfSight": false,
+            "ExtendTop": 0.5,
+            "ExtendBottom": 0.5,
+            "StartDistance": 0.1,
+            "EndDistance": 3,
+            "Length": 120,
+            "RollOffset": -45,
+            "YawStartOffset": -60
+          },
+          "HitBlock": {
+            "Interactions": [
+              "Block_Break_Adventure"
+            ]
+          },
+          "HitEntity": {
+            "Interactions": [
+              {
+                "Type": "Replace",
+                "DefaultValue": {
+                  "Interactions": [
+                    "Mace_Swing_Up_Left_Right_Charged_Damage"
+                  ]
+                },
+                "Var": "Mace_Swing_Up_Left_Right_Charged_Damage"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "DefaultValue": {
+            "Interactions": [
+              "Mace_Swing_Up_Left_Right_Charged_Effect"
+            ]
+          },
+          "Var": "Mace_Swing_Up_Left_Right_Charged_Effect"
+        }
+      ]
+    }
+  ]
+}

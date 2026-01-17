@@ -1,0 +1,70 @@
+{
+  "Type": "Generic",
+  "Appearance": "Zombie",
+  "Debug": "DisplayLightLevel",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 1,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Continue": true,
+          "BodyMotion": {
+            "Type": "Wander",
+            "RelativeSpeed": 1,
+            "MinWalkTime": 0.5
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Light",
+            "LightRange": [ 0, 49 ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Wolf_Black"
+            }
+          ],
+          "Continue": true
+        },
+        {
+          "Sensor": {
+            "Type": "Light",
+            "LightRange": [ 50, 100 ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "PlayerTestModel_V"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Light_Sensor.name"
+}

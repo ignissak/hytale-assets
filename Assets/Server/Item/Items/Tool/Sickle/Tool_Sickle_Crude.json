@@ -1,0 +1,107 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tool_Sickle_Crude.name",
+    "Description": "server.items.Tool_Sickle.description"
+  },
+  "Categories": [
+    "Items.Tools"
+  ],
+  "Set": "Tool_Stone",
+  "Model": "Items/Tools/Sickle/Crude.blockymodel",
+  "Texture": "Items/Tools/Sickle/Crude_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Tool_Sickle_Crude.png",
+  "Quality": "Common",
+  "ItemLevel": 20,
+  "Recipe": {
+    "TimeSeconds": 3,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Rock",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Farming"
+        ],
+        "Id": "Workbench"
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Sickle",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Sickle_Attack",
+    "Secondary": "Sickle_Attack"
+  },
+  "InteractionVars": {
+    "Sickle_Swing_Left_Effect": "Sickle_Swing_Left_Effect",
+    "Sickle_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Sickle_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    },
+    "Sickle_Swing_Right_Effect": "Sickle_Swing_Right_Effect",
+    "Sickle_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Sickle_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Sword_T2_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.37,
+    "Translation": [
+      31.2,
+      -30
+    ],
+    "Rotation": [
+      45,
+      270,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 60,
+  "Tags": {
+    "Type": [
+      "Tool"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood",
+  "MaxStack": 1
+}

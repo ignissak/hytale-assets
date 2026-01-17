@@ -1,0 +1,116 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "ReturnHome" ],
+    "LeashDistance": {
+      "Value": 30,
+      "Description": "The range after which an NPC will start to want to return to their spawn point"
+    },
+    "LeashMinPlayerDistance": {
+      "Value": 6,
+      "Description": "The minimum distance from the player before the NPC will be willing to give up on the chase"
+    },
+    "LeashTimer": {
+      "Value": [ 5, 5 ],
+      "Description": "How long the NPC must be more than the minimum distance form the player and too far from leash before giving up"
+    },
+    "HardLeashDistance": {
+      "Value": 160,
+      "Description": "An absolute maximum from the the leash position the NPC can go before turning back"
+    }
+  },
+  "Content": {
+    "TreeMode": true,
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "$Comment": "We start a timer when the NPC passes beyond its leash range",
+        "TreeMode": true,
+        "Sensor": {
+          "Once": true,
+          "Type": "Leash",
+          "Range": { "Compute": "LeashDistance" }
+        },
+        "Actions": [
+          {
+            "Type": "TimerStart",
+            "Name": "AggroTimer",
+            "StartValueRange": { "Compute": "LeashTimer" },
+            "RestartValueRange": { "Compute": "LeashTimer" }
+          },
+          {
+            "Type": "TimerRestart",
+            "Name": "AggroTimer"
+          }
+        ]
+      },
+      {
+        "$Comment": "We refresh the timer whenever the NPC takes damage or is close enough to the player",
+        "TreeMode": true,
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "Damage"
+            },
+            {
+              "Type": "Target",
+              "Range": { "Compute": "LeashMinPlayerDistance" }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "TimerRestart",
+            "Name": "AggroTimer"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Leash",
+          "Range": { "Compute": "HardLeashDistance" }
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "ReturnHome"
+          }
+        ]
+      },
+      {
+        "$Comment": "If the timer has stopped, the leash position is far enough away, and the player isn't too close, we go home",
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Timer",
+              "Name": "AggroTimer",
+              "State": "Stopped"
+            },
+            {
+              "Type": "Leash",
+              "Range": { "Compute": "LeashDistance" }
+            },
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "LeashMinPlayerDistance" }
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "ReturnHome"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

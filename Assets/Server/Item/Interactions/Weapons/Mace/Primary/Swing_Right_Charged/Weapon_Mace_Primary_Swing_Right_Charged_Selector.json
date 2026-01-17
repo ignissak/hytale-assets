@@ -1,0 +1,82 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingRightCharged",
+    "WorldSoundEventId": "SFX_Mace_T2_Swing_Charged",
+    "LocalSoundEventId": "SFX_Mace_T2_Swing_Charged_LR_Local",
+    "CameraEffect": "Mace_Swing_Horizontal"
+  },
+  "RunTime": 0.083,
+  "Next": {
+    "Type": "Selector",
+    "RunTime": 0.25,
+    "Effects": {
+      "Trails": [
+        {
+          "PositionOffset": {
+            "X": 0.8,
+            "Y": 0,
+            "Z": 0
+          },
+          "RotationOffset": {
+            "Pitch": 0,
+            "Roll": 90,
+            "Yaw": 0
+          },
+          "TargetNodeName": "Handle",
+          "TrailId": "Medium_Charged"
+        },
+        {
+          "PositionOffset": {
+            "X": 0.8,
+            "Y": 0,
+            "Z": 0
+          },
+          "RotationOffset": {
+            "Pitch": 90,
+            "Roll": 0,
+            "Yaw": 0
+          },
+          "TargetNodeName": "Handle",
+          "TrailId": "Medium_Charged"
+        }
+      ]
+    },
+    "Selector": {
+      "Id": "Horizontal",
+      "Direction": "ToRight",
+      "TestLineOfSight": false,
+      "ExtendTop": 0.75,
+      "ExtendBottom": 0.75,
+      "StartDistance": 0.1,
+      "EndDistance": 3,
+      "Length": 180,
+      "RollOffset": 0,
+      "YawStartOffset": -90
+    },
+    "HitBlock": {
+      "Interactions": [
+        "Block_Break_Adventure"
+      ]
+    },
+    "HitEntity": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Swing_Right_Charged_Damage",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Mace_Primary_Swing_Right_Charged_Damage"
+            ]
+          }
+        }
+      ]
+    },
+    "Next": {
+      "Type": "Simple",
+      "$Comment": "Pad the interaction length",
+      "RunTime": 0.25
+    }
+  }
+}

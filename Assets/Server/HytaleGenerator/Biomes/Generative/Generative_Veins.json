@@ -1,0 +1,473 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-6430,
+		"$y":	-4170
+	},
+	"Name":	"Basic",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-5800,
+			"$y":	-4874
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-5602,
+				"$y":	-4396
+			},
+			"Type":	"SmoothMin",
+			"Skip":	false,
+			"Range":	1,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-4949,
+						"$y":	-4390
+					},
+					"Type":	"SmoothMin",
+					"Skip":	false,
+					"Range":	0.5,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-4254,
+								"$y":	-4723
+							},
+							"Type":	"Normalizer",
+							"Skip":	false,
+							"FromMin":	-1,
+							"FromMax":	0.6,
+							"ToMin":	-1,
+							"ToMax":	1,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-3631,
+										"$y":	-4737
+									},
+									"Type":	"Inverter",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-2957,
+												"$y":	-4745
+											},
+											"Type":	"Abs",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	-2319,
+														"$y":	-4750
+													},
+													"Type":	"SimplexNoise3D",
+													"Skip":	false,
+													"Lacunarity":	2,
+													"Persistence":	0.5,
+													"Octaves":	1,
+													"ScaleXZ":	30,
+													"ScaleY":	30,
+													"Seed":	"B"
+												}]
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-4306,
+								"$y":	-4121
+							},
+							"Type":	"Normalizer",
+							"Skip":	false,
+							"FromMin":	-1,
+							"FromMax":	0.6,
+							"ToMin":	-1,
+							"ToMax":	1,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-3683,
+										"$y":	-4135
+									},
+									"Type":	"Inverter",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-3009,
+												"$y":	-4143
+											},
+											"Type":	"Abs",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	-2371,
+														"$y":	-4148
+													},
+													"Type":	"SimplexNoise3D",
+													"Skip":	false,
+													"Lacunarity":	2,
+													"Persistence":	0.5,
+													"Octaves":	1,
+													"ScaleXZ":	30,
+													"ScaleY":	30,
+													"Seed":	"A"
+												}]
+										}]
+								}]
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-4305,
+						"$y":	-3489
+					},
+					"Type":	"PositionsCellNoise",
+					"Skip":	false,
+					"MaxDistance":	20,
+					"Positions":	{
+						"$Position":	{
+							"$x":	-3625,
+							"$y":	-3720
+						},
+						"Type":	"Mesh2D",
+						"Skip":	false,
+						"PointsY":	75,
+						"PointGenerator":	{
+							"$Position":	{
+								"$x":	-2929,
+								"$y":	-3705
+							},
+							"Type":	"Mesh",
+							"Jitter":	0.0001,
+							"ScaleX":	60,
+							"ScaleY":	60,
+							"ScaleZ":	60,
+							"Seed":	"A"
+						}
+					},
+					"ReturnType":	{
+						"$Position":	{
+							"$x":	-3613,
+							"$y":	-3332
+						},
+						"Type":	"Curve",
+						"Curve":	{
+							"$Position":	{
+								"$x":	-3335,
+								"$y":	-3325
+							},
+							"Type":	"Manual",
+							"Points":	[{
+									"$Position":	{
+										"$x":	-2706,
+										"$y":	-3315
+									},
+									"In":	0,
+									"Out":	1
+								}, {
+									"$Position":	{
+										"$x":	-2690,
+										"$y":	-3166
+									},
+									"In":	10,
+									"Out":	1
+								}, {
+									"$Position":	{
+										"$x":	-2678,
+										"$y":	-3013
+									},
+									"In":	14,
+									"Out":	-1
+								}]
+						}
+					},
+					"DistanceFunction":	{
+						"$Position":	{
+							"$x":	-3575,
+							"$y":	-3501
+						},
+						"Type":	"Euclidean"
+					}
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-4771,
+			"$y":	-1934
+		},
+		"Type":	"Queue",
+		"Queue":	[{
+				"$Position":	{
+					"$x":	-4038,
+					"$y":	-2199
+				},
+				"Type":	"FieldFunction",
+				"FieldFunction":	{
+					"$Position":	{
+						"$x":	-3206,
+						"$y":	-2434
+					},
+					"Type":	"PositionsCellNoise",
+					"Skip":	false,
+					"MaxDistance":	20,
+					"Positions":	{
+						"$Position":	{
+							"$x":	-2526,
+							"$y":	-2665
+						},
+						"Type":	"Mesh2D",
+						"Skip":	false,
+						"PointsY":	75,
+						"PointGenerator":	{
+							"$Position":	{
+								"$x":	-1830,
+								"$y":	-2650
+							},
+							"Type":	"Mesh",
+							"Jitter":	0.0001,
+							"ScaleX":	60,
+							"ScaleY":	60,
+							"ScaleZ":	60,
+							"Seed":	"A"
+						}
+					},
+					"ReturnType":	{
+						"$Position":	{
+							"$x":	-2514,
+							"$y":	-2277
+						},
+						"Type":	"Curve",
+						"Curve":	{
+							"$Position":	{
+								"$x":	-2265,
+								"$y":	-2241
+							},
+							"Type":	"Manual",
+							"Points":	[{
+									"$Position":	{
+										"$x":	-1628,
+										"$y":	-2240
+									},
+									"In":	0.5,
+									"Out":	0.5
+								}, {
+									"$Position":	{
+										"$x":	-1624,
+										"$y":	-2091
+									},
+									"In":	0.6,
+									"Out":	-1
+								}]
+						}
+					},
+					"DistanceFunction":	{
+						"$Position":	{
+							"$x":	-2476,
+							"$y":	-2446
+						},
+						"Type":	"Euclidean"
+					}
+				},
+				"Delimiters":	[{
+						"$Position":	{
+							"$x":	-3215,
+							"$y":	-1964
+						},
+						"From":	0,
+						"To":	1,
+						"Material":	{
+							"$Position":	{
+								"$x":	-2778,
+								"$y":	-1930
+							},
+							"Type":	"Constant",
+							"Material":	{
+								"$Position":	{
+									"$x":	-2144,
+									"$y":	-1919
+								},
+								"Solid":	"Editor_Anchor"
+							}
+						}
+					}]
+			}, {
+				"$Position":	{
+					"$x":	-4041,
+					"$y":	-1611
+				},
+				"Type":	"Solidity",
+				"Solid":	{
+					"$Position":	{
+						"$x":	-3345,
+						"$y":	-1647
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-2721,
+							"$y":	-1651
+						},
+						"Solid":	"Ore_Iron_Stone"
+					}
+				},
+				"Empty":	{
+					"$Comment":	"REQUIRED",
+					"$Position":	{
+						"$x":	-3377,
+						"$y":	-1476
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-2681,
+							"$y":	-1447
+						},
+						"Solid":	"Empty"
+					}
+				}
+			}]
+	},
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-7988,
+			"$y":	-3157
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-7323,
+				"$y":	-3307
+			},
+			"Type":	"Constant",
+			"Skip":	false,
+			"Value":	0
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-7317,
+					"$y":	-3075
+				},
+				"Environment":	{
+					"$Position":	{
+						"$x":	-7079,
+						"$y":	-3082
+					},
+					"Type":	"Constant",
+					"Environment":	"Zone1_Overground"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-7070,
+						"$y":	-2922
+					},
+					"MinInclusive":	-2,
+					"MaxExclusive":	2
+				}
+			}]
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-7718,
+			"$y":	-1751
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-6063,
+				"$y":	-1933
+			},
+			"Type":	"SimplexNoise2D",
+			"Skip":	false,
+			"Lacunarity":	5,
+			"Persistence":	0.2,
+			"Octaves":	2,
+			"Scale":	100,
+			"Seed":	"tints"
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-6975,
+					"$y":	-1646
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-6636,
+						"$y":	-1736
+					},
+					"Type":	"Constant",
+					"Color":	"#5b9e28"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-6642,
+						"$y":	-1578
+					},
+					"MinInclusive":	-1,
+					"MaxExclusive":	-0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-6946,
+					"$y":	-1273
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-6640,
+						"$y":	-1336
+					},
+					"Type":	"Constant",
+					"Color":	"#6ca229"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-6653,
+						"$y":	-1190
+					},
+					"MinInclusive":	-0.33,
+					"MaxExclusive":	0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-6928,
+					"$y":	-828
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-6668,
+						"$y":	-901
+					},
+					"Type":	"Constant",
+					"Color":	"#7ea629"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-6662,
+						"$y":	-756
+					},
+					"MinInclusive":	0.33,
+					"MaxExclusive":	1
+				}
+			}]
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-8057.0625,
+				"$y":	-3435
+			},
+			"$width":	2483.875,
+			"$height":	1251.4375,
+			"$name":	"Environments"
+		}, {
+			"$Position":	{
+				"$x":	-7890.5625,
+				"$y":	-1996.4375
+			},
+			"$width":	2394.5,
+			"$height":	1432.875,
+			"$name":	"Tint"
+		}, {
+			"$Position":	{
+				"$x":	-5010.8125,
+				"$y":	-4231.3125
+			},
+			"$width":	231.25,
+			"$height":	1310.8125,
+			"$name":	"Large"
+		}]
+}

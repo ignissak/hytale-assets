@@ -1,0 +1,116 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Spiral.name",
+    "Description": "server.builderTools.tools.Spiral.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "SpiralBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 3,
+            "Min": 1,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Cylinder"
+          },
+          "Origin": {
+            "Default": "Bottom"
+          }
+        },
+        "Args": {
+          "aaMaterial": {
+            "Type": "Block",
+            "Default": "Rock_Stone",
+            "AllowPattern": true
+          },
+          "aNumPoints": {
+            "Type": "Int",
+            "Default": 5,
+            "Min": 1,
+            "Max": 50
+          },
+          "bRadius": {
+            "Type": "Int",
+            "Default": 5,
+            "Min": 1,
+            "Max": 50
+          },
+          "cFlip": {
+            "Type": "Bool",
+            "Default": false
+          },
+          "dRotate": {
+            "Type": "Bool",
+            "Default": false
+          },
+          "eSmooth": {
+            "Type": "Int",
+            "Default": 0,
+            "Min": 0,
+            "Max": 10
+          },
+          "fHeight": {
+            "Type": "Int",
+            "Default": 0,
+            "Min": 0,
+            "Max": 20
+          },
+          "dHeightInvertDirection": {
+            "Type": "Bool",
+            "Default": false
+          },
+          "hHollowCenter": {
+            "Type": "Bool",
+            "Default": false
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

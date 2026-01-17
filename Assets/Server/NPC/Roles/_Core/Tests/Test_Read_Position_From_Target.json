@@ -1,0 +1,61 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 2,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 1,
+      "DescendFlatness": 0.7,
+      "DescendSpeedCompensation": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15,
+            "LockOnTarget": true,
+            "LockedTargetSlot": "Test_Slot"
+          },
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 2 ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "ReadPosition",
+            "Slot": "Test_Slot",
+            "UseMarkedTarget": true,
+            "Range": 15
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 3,
+            "StopDistance": 1
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Read_Position_From_Target.name"
+}

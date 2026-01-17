@@ -1,0 +1,38 @@
+$C = "../Common.ui";
+$Browser = "PrefabBrowser.ui";
+
+$C.@PageOverlay {}
+
+$C.@Container {
+  Anchor: (Width: 600, Height: 700);
+
+  #Title {
+    Group {
+      LayoutMode: Left;
+      $C.@Title {
+        @Text = %server.customUI.prefabTeleportPage.title;
+      }
+    }
+
+    $C.@HeaderSearch {}
+  }
+
+  #Content {
+    LayoutMode: Top;
+    Padding: (Full: 16);
+
+    $C.@TextField #SearchInput {
+      @Anchor = (Bottom: 10);
+      PlaceholderText: %server.customUI.prefabTeleportPage.searchPlaceholder;
+    }
+
+    Group #FileList {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+  }
+}
+
+$C.@BackButton {}
+

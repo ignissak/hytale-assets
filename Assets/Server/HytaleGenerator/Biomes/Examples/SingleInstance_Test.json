@@ -1,0 +1,355 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-4228,
+		"$y":	-4226
+	},
+	"Name":	"SingleInstance_Test",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-3394,
+			"$y":	-4947
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2822,
+				"$y":	-4907
+			},
+			"Type":	"Offset",
+			"Skip":	false,
+			"FunctionForY":	{
+				"$Position":	{
+					"$x":	-2111,
+					"$y":	-4697
+				},
+				"Points":	[{
+						"$Position":	{
+							"$x":	-1844,
+							"$y":	-4722
+						},
+						"Y":	100,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1842,
+							"$y":	-4508
+						},
+						"Y":	200,
+						"Out":	-1
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1946,
+						"$y":	-4973
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1206,
+								"$y":	-5052
+							},
+							"Type":	"Abs",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-516,
+										"$y":	-5059
+									},
+									"Type":	"Imported",
+									"Skip":	false,
+									"Name":	"Horses"
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-855,
+								"$y":	-4769
+							},
+							"Type":	"Cache",
+							"ExportAs":	"Horses",
+							"Skip":	false,
+							"SingleInstance":	true,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	187,
+										"$y":	-4815
+									},
+									"Type":	"SimplexNoise2D",
+									"Skip":	false,
+									"Lacunarity":	2,
+									"Persistence":	0.5,
+									"Octaves":	6,
+									"Scale":	1000,
+									"Seed":	"A"
+								}]
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-3550,
+			"$y":	-4191
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1126,
+				"$y":	-4204
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-496,
+						"$y":	-4214
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	174,
+							"$y":	-4214
+						},
+						"Solid":	"Rock_Stone"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Position":	{
+				"$x":	-2553,
+				"$y":	-3980
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-1873,
+						"$y":	-4045
+					},
+					"Type":	"SimpleHorizontal",
+					"TopY":	153,
+					"BottomY":	0,
+					"Material":	{
+						"$Position":	{
+							"$x":	-1114,
+							"$y":	-3994
+						},
+						"Type":	"Constant",
+						"Material":	{
+							"$Position":	{
+								"$x":	-457,
+								"$y":	-3973
+							},
+							"Fluid":	"Water_Source"
+						}
+					}
+				}, {
+					"$Comment":	"REQUIRED",
+					"$Position":	{
+						"$x":	-1915,
+						"$y":	-3687
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-1205,
+							"$y":	-3680
+						},
+						"Solid":	"Empty"
+					}
+				}]
+		}
+	},
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-3066,
+			"$y":	-3234
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2414,
+				"$y":	-3267
+			},
+			"Type":	"CurveMapper",
+			"Skip":	false,
+			"Curve":	{
+				"$Position":	{
+					"$x":	-1827,
+					"$y":	-3154
+				},
+				"Type":	"Manual",
+				"Points":	[{
+						"$Position":	{
+							"$x":	-1215,
+							"$y":	-3166
+						},
+						"In":	100.1,
+						"Out":	1
+					}, {
+						"$Position":	{
+							"$x":	-1219,
+							"$y":	-2994
+						},
+						"In":	100,
+						"Out":	0
+					}]
+			},
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1818,
+						"$y":	-3381
+					},
+					"Type":	"BaseHeight",
+					"Skip":	false,
+					"BaseHeightName":	"Base",
+					"Distance":	true
+				}]
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-2405,
+					"$y":	-2957
+				},
+				"Environment":	{
+					"$Position":	{
+						"$x":	-2167,
+						"$y":	-2964
+					},
+					"Type":	"Constant",
+					"Environment":	"Zone1_Overground"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-2158,
+						"$y":	-2804
+					},
+					"MinInclusive":	0.5,
+					"MaxExclusive":	1.5
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2413,
+					"$y":	-2580
+				},
+				"Environment":	{
+					"$Position":	{
+						"$x":	-2174,
+						"$y":	-2584
+					},
+					"Type":	"Constant",
+					"Environment":	"Zone1_Underground"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-2176,
+						"$y":	-2428
+					},
+					"MinInclusive":	-0.5,
+					"MaxExclusive":	0.5
+				}
+			}]
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-2907,
+			"$y":	-1824
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-1252,
+				"$y":	-2006
+			},
+			"Type":	"SimplexNoise2D",
+			"Skip":	false,
+			"Lacunarity":	5,
+			"Persistence":	0.2,
+			"Octaves":	2,
+			"Scale":	100,
+			"Seed":	"tints"
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-2164,
+					"$y":	-1719
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1825,
+						"$y":	-1809
+					},
+					"Type":	"Constant",
+					"Color":	"#5b9e28"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1831,
+						"$y":	-1651
+					},
+					"MinInclusive":	-1,
+					"MaxExclusive":	-0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2135,
+					"$y":	-1346
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1829,
+						"$y":	-1409
+					},
+					"Type":	"Constant",
+					"Color":	"#6ca229"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1842,
+						"$y":	-1263
+					},
+					"MinInclusive":	-0.33,
+					"MaxExclusive":	0.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-2117,
+					"$y":	-901
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-1857,
+						"$y":	-974
+					},
+					"Type":	"Constant",
+					"Color":	"#7ea629"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-1851,
+						"$y":	-829
+					},
+					"MinInclusive":	0.33,
+					"MaxExclusive":	1
+				}
+			}]
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-3134.625,
+				"$y":	-3511.125
+			},
+			"$width":	2483.875,
+			"$height":	1251.4375,
+			"$name":	"Environments"
+		}, {
+			"$Position":	{
+				"$x":	-3078.3125,
+				"$y":	-2068.3125
+			},
+			"$width":	2394.5,
+			"$height":	1432.875,
+			"$name":	"Tint"
+		}]
+}

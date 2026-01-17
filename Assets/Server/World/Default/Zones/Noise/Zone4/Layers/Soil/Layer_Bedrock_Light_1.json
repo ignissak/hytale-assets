@@ -1,0 +1,45 @@
+{
+  "Type": "MIN",
+  "Noise": [
+    {
+      "Seed": "GhostForest",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.01,
+      "Normalize": 0.47
+    },
+    {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Seed": "Pathway_Cracks",
+        "NoiseType": "DISTANCE",
+        "DistanceMode": "NATURAL",
+        "DistanceRange": 2,
+        "Distance2Mode": "DIV",
+        "Formula": "SQUARED",
+        "Scale": 0.01,
+        "Jitter": 0.75,
+        "Normalize": 0.915
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Firelands-Hills",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 4,
+            "Persistence": 0.3,
+            "Scale": 0.008,
+            "Amplitude": 25
+          }
+        ]
+      },
+      "Normalize": 0.5
+    }
+  ],
+  "Threshold": [
+    0.01,
+    1
+  ]
+}

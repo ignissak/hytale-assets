@@ -1,0 +1,58 @@
+{
+  "Parent": "Potion_Template",
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Regen_Mana_Large.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Regen_Mana_Large.png",
+  "InteractionVars": {
+    "RemoveEffect": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    },
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "Duration": 1.5,
+            "StatModifiers": {
+              "Mana": 10
+            },
+            "StatusEffectIcon": "UI/StatusEffects/Health_Potion.png",
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Mana": 100
+          },
+          "ValueType": "Percent",
+          "LessThan": true
+        }
+      ]
+    }
+  },
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion_Large.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Cyan.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#7efff1",
+    "Light": {
+      "Color": "#133"
+    }
+  },
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

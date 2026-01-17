@@ -1,0 +1,56 @@
+{
+  "Type": "ApplyForce",
+  "Effects": {
+    "ItemAnimationId": "SwingDownChargedFalling",
+    "WorldSoundEventId": "SFX_Mace_T2_Signature_Launch",
+    "LocalSoundEventId": "SFX_Mace_T2_Signature_Launch_Local",
+    "CameraEffect": "Mace_Jump",
+    "Particles": [
+      {
+        "SystemId": "Mace_Signature_Cast",
+        "DetachedFromModel": true
+      },
+      {
+        "SystemId": "Mace_Signature_Cast_End"
+      }
+    ],
+    "Trails": [
+      {
+        "TrailId": "Mace_Signature",
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Origin_Projectile",
+        "PositionOffset": {
+          "Y": -0.2
+        }
+      },
+      {
+        "TrailId": "Mace_Signature2",
+        "RotationOffset": {
+          "Roll": 90.0
+        },
+        "TargetEntityPart": "PrimaryItem",
+        "TargetNodeName": "Origin_Projectile",
+        "PositionOffset": {
+          "Y": -0.2
+        }
+      }
+    ]
+  },
+  "Force": 20,
+  "Direction": {
+    "X": 0,
+    "Y": 4,
+    "Z": -1
+  },
+  "AdjustVertical": false,
+  "WaitForGround": true,
+  "ChangeVelocityType": "Set",
+  "VelocityConfig": {
+    "AirResistance": 0.97,
+    "AirResistanceMax": 0.96,
+    "GroundResistance": 0.94,
+    "GroundResistanceMax": 0.82,
+    "Threshold": 3.0,
+    "Style": "Exp"
+  }
+}

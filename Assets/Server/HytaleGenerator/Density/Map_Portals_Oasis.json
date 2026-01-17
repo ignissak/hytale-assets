@@ -1,0 +1,182 @@
+{
+	"$Title":	"[ROOT] Exported Density",
+	"$Position":	{
+		"$x":	-3585,
+		"$y":	-6003
+	},
+	"Type":	"Exported",
+	"ExportAs":	"Biome-Map-Portals-Oasis",
+	"SingleInstance":	true,
+	"Skip":	false,
+	"Inputs":	[{
+			"$Position":	{
+				"$x":	-2901,
+				"$y":	-6003
+			},
+			"Type":	"YOverride",
+			"Skip":	false,
+			"Value":	0,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-2284,
+						"$y":	-5999
+					},
+					"Type":	"Cache",
+					"Skip":	false,
+					"Capacity":	1,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1666,
+								"$y":	-6005
+							},
+							"Type":	"Sum",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-1005,
+										"$y":	-6976
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.1,
+									"ToMax":	0.1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-380,
+												"$y":	-6977
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	1,
+											"Scale":	250,
+											"Seed":	"A"
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-999,
+										"$y":	-6455
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.4,
+									"ToMax":	0.4,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-368,
+												"$y":	-6454
+											},
+											"Type":	"Inverter",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	235,
+														"$y":	-6455
+													},
+													"Type":	"PositionsCellNoise",
+													"Skip":	false,
+													"MaxDistance":	60,
+													"Positions":	{
+														"$Position":	{
+															"$x":	948,
+															"$y":	-6573
+														},
+														"Type":	"Mesh2D",
+														"Skip":	false,
+														"PointsY":	0,
+														"PointGenerator":	{
+															"$Position":	{
+																"$x":	1657,
+																"$y":	-6606
+															},
+															"Type":	"Mesh",
+															"Jitter":	0.4,
+															"ScaleX":	30,
+															"ScaleY":	30,
+															"ScaleZ":	30,
+															"Seed":	"A"
+														}
+													},
+													"ReturnType":	{
+														"$Position":	{
+															"$x":	939,
+															"$y":	-6235
+														},
+														"Type":	"Distance2Div"
+													},
+													"DistanceFunction":	{
+														"$Position":	{
+															"$x":	942,
+															"$y":	-6361
+														},
+														"Type":	"Manhattan"
+													}
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-919,
+										"$y":	-6004
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.5,
+									"ToMax":	0.5,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-260,
+												"$y":	-6003
+											},
+											"Type":	"FastGradientWarp",
+											"Skip":	false,
+											"WarpScale":	250,
+											"WarpPersistence":	0.5,
+											"WarpLacunarity":	2,
+											"WarpOctaves":	1,
+											"WarpFactor":	50,
+											"Seed":	"A",
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	432,
+														"$y":	-5999
+													},
+													"Type":	"Distance",
+													"Skip":	false,
+													"Curve":	{
+														"$Position":	{
+															"$x":	1045,
+															"$y":	-6002
+														},
+														"Type":	"Manual",
+														"Points":	[{
+																"$Position":	{
+																	"$x":	1653,
+																	"$y":	-6006
+																},
+																"In":	535,
+																"Out":	1
+															}, {
+																"$Position":	{
+																	"$x":	1659,
+																	"$y":	-5823
+																},
+																"In":	635,
+																"Out":	-2
+															}]
+													}
+												}]
+										}]
+								}]
+						}]
+				}]
+		}],
+	"$WorkspaceID":	"HytaleGenerator - Density",
+	"$Groups":	[]
+}

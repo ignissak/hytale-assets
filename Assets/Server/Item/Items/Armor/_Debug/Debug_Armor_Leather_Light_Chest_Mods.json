@@ -1,0 +1,170 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Armor_Leather_Light_Chest_Mods.name"
+  },
+  "Quality": "Debug",
+  "ItemLevel": 15,
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Items.Armors"
+  ],
+  "Icon": "Icons/ItemsGenerated/Armor_Leather_Light_Chest.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.43,
+    "Translation": [
+      0,
+      -8.7
+    ]
+  },
+  "Model": "Items/Armors/Leather_Light/Chest.blockymodel",
+  "Texture": "Items/Armors/Leather_Light/Chest_Texture.png",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 6
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Bolt_Wool",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "TODO",
+        "Type": "Crafting",
+        "Categories": [
+          "Armor_Chest"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
+  },
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    }
+  },
+  "Armor": {
+    "ArmorSlot": "Chest",
+    "BaseDamageResistance": 8,
+    "DamageResistance": {
+      "Physical": [
+        {
+          "Amount": 0.0,
+          "CalculationType": "Multiplicative"
+        }
+      ],
+      "Fall": [
+        {
+          "Amount": 0.1,
+          "CalculationType": "Multiplicative"
+        }
+      ],
+      "Projectile": [
+        {
+          "Amount": 5,
+          "CalculationType": "Additive"
+        }
+      ]
+    },
+    "DamageEnhancement": {
+      "Physical": [
+        {
+          "Amount": 0.0,
+          "CalculationType": "Multiplicative"
+        }
+      ],
+      "Projectile": [
+        {
+          "Amount": 0.1,
+          "CalculationType": "Multiplicative"
+        }
+      ]
+    },
+    "KnockbackResistances": {
+      "Physical": 0.5,
+      "Projectile": 0.25
+    },
+    "KnockbackEnhancements": {
+      "Physical": 3.0,
+      "Projectile": 2.0
+    },
+    "InteractionModifiers": {
+      "Dodge": {
+        "Stamina": {
+          "Amount": 0.5,
+          "CalculationType": "Multiplicative"
+        }
+      }
+    },
+    "Regenerating": {
+      "Stamina": [
+        {
+          "$Comment": "Positive stamina regeneration values",
+          "Interval": 0.1,
+          "Amount": -0.5,
+          "RegenType": "Additive",
+          "Conditions": [
+            {
+              "Id": "Sprinting"
+            }
+          ]
+        }
+      ],
+      "Health": [
+        {
+          "$Comment": "Positive health regeneration values",
+          "Interval": 0.1,
+          "Amount": 0.2,
+          "RegenType": "Additive",
+          "Conditions": [
+            {
+              "Id": "Stat",
+              "Stat": "Health",
+              "Amount": 0,
+              "Comparison": "Gte"
+            }
+          ]
+        }
+      ]
+    },
+    "StatModifiers": {
+      "Health": [
+        {
+          "Amount": 6,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Armor"
+    ],
+    "Family": [
+      "Leather"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Armor_Leather"
+}

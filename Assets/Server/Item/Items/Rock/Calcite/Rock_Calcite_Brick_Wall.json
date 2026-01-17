@@ -1,0 +1,80 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Calcite_Brick_Wall.name"
+  },
+  "Set": "Rock_Calcite_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Calcite_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Calcite_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Calcite_Brick_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Calcite_Brick_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#d4ece7",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Calcite_Brick_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Calcite_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Calcite_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Calcite_Brick_Wall",
+        "Corner": "*Rock_Calcite_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Family": [
+      "Calcite"
+    ],
+    "Type": [
+      "Rock"
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Calcite_Brick_Wall.png",
+  "Parent": "Rock_Stone_Brick_Wall"
+}

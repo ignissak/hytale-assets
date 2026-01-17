@@ -1,0 +1,145 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Apple_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "RandomRotation": "YawStep1",
+    "VariantRotation": "NESW",
+    "Effect": [
+      "WindFractal"
+    ],
+    "CustomModel": "Blocks/Foliage/Plants/Fruit/Apple_Stage0.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/Fruit/Apple_Stage0.png"
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "StageFinal": {
+          "CustomModel": "Blocks/Foliage/Plants/Fruit/Apple_StageFinal.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Apple_Red.png",
+              "Weight": 2
+            },
+            {
+              "Texture": "Resources/Ingredients/Apple_Green.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.6,
+          "InteractionHint": "server.interactionHints.harvest",
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Apple_StageFinal_Harvest"
+            },
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Apple_StageFinal",
+              "IsWeaponBreakable": false
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#1e951c",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 86400,
+              "Max": 86400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 43200,
+              "Max": 43200
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "default"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": {},
+        "IsWeaponBreakable": false
+      }
+    },
+    "PlacementSettings": {
+      "WallPlacementOverrideBlockId": "Plant_Crop_Apple_Block_Wall",
+      "AllowRotationKey": false
+    },
+    "Support": {
+      "Up": [
+        {
+          "TagId": "Family=Leaves"
+        },
+        {
+          "TagId": "Trunk"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Crop_Apple_Block",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "ParticleColor": "#7a633a",
+    "CustomModelScale": 0.75,
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "IconProperties": {
+    "Scale": 1.1,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      2.4,
+      -29
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Apple_Block.png"
+}

@@ -1,0 +1,139 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Wolf_Black",
+      "Description": "Model to be used."
+    },
+    "DropList": {
+      "Value": "Drop_Wolf_Black",
+      "Description": "Drop Items."
+    },
+    "MaxHealth": {
+      "Value": 70,
+      "Description": "Max health for the NPC"
+    },
+    "FlockArray": {
+      "Value": [
+        "Wolf_Black"
+      ],
+      "Description": "The NPC's flock array"
+    },
+    "HardLeashDistance": {
+      "Value": 80,
+      "Description": "An absolute maximum from the the leash position the NPC can go before turning back."
+    },
+    "MemoriesNameOverride": {
+      "Value": "Wolf_Black",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Wolf_Black.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "Appearance": {
+      "Compute": "Appearance"
+    },
+    "FlockArray": {
+      "Compute": "FlockArray"
+    },
+    "AttitudeGroup": "PredatorsBig",
+    "DropList": {
+      "Compute": "DropList"
+    },
+    "MaxHealth": 103,
+    "MaxSpeed": 10,
+    "WanderRadius": 15,
+    "ViewRange": 10,
+    "HearingRange": 12,
+    "AbsoluteDetectionRange": 2,
+    "AlertedRange": 18,
+    "ChanceToBeAlertedWhenFlockAlerted": 70,
+    "IsMemory": true,
+    "MemoriesCategory": "Predator",
+    "MemoriesNameOverride": {
+      "Compute": "MemoriesNameOverride"
+    },
+    "AlertedTime": [
+      3,
+      3
+    ],
+    "MaintainDistanceWhileAlerted": false,
+    "ThreatenDelayRange": [
+      2,
+      2
+    ],
+    "ThreatenAnimation": "Howl",
+    "FleeIfNotThreatened": false,
+    "FleeRange": 11,
+    "HardLeashDistance": {
+      "Compute": "HardLeashDistance"
+    },
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 7,
+    "LeashTimer": [
+      4,
+      5
+    ],
+    "CombatBehaviorDistance": 6,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatBackOffAfterAttack": true,
+    "CombatBackOffDistanceRange": [
+      3,
+      5
+    ],
+    "Attack": "Root_NPC_Wolf_Attack",
+    "AttackDistance": 2.5,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.6,
+    "AlwaysSleepAtNight": false,
+    "NightFlavorAnimation": "Howl",
+    "DayTimeNapWeight": 4,
+    "DayTimeNapTimeRange": [
+      10,
+      12
+    ],
+    "TimidDuringDay": false,
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Wolf_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Wolf_Black_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.167
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Wolf_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 27
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

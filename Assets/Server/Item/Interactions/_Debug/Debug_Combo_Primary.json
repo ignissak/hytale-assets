@@ -1,0 +1,79 @@
+{
+  "Type": "Chaining",
+  "ChainId": "Debug_Combo",
+  "ChainingAllowance": 0.8,
+  "Next": [
+    {
+      "Type": "SendMessage",
+      "Message": "First - Primary",
+      "RunTime": 0.5,
+      "Effects": {
+        "ItemAnimationId": "Swing_Right"
+      }
+    },
+    {
+      "Type": "FirstClick",
+      "Click": {
+        "Type": "SendMessage",
+        "Message": "Second click - Primary",
+        "RunTime": 0.5,
+        "Effects": {
+          "ItemAnimationId": "Swing_Left"
+        }
+      },
+      "Held": {
+        "Type": "SendMessage",
+        "Message": "Second held - Primary",
+        "RunTime": 0.5,
+        "Effects": {
+          "ItemAnimationId": "Hook_Left"
+        },
+        "Next": {
+          "Type": "ChainFlag",
+          "ChainId": "Debug_Combo",
+          "Flag": "Held_Second"
+        }
+      }
+    },
+    {
+      "Type": "FirstClick",
+      "Click": {
+        "Type": "SendMessage",
+        "Message": "Third click - Primary",
+        "RunTime": 0.5,
+        "Effects": {
+          "ItemAnimationId": "Uppercut_Right"
+        }
+      },
+      "Held": {
+        "Type": "SendMessage",
+        "Message": "Third held - Primary",
+        "RunTime": 0.5,
+        "Effects": {
+          "ItemAnimationId": "Hook_Right"
+        }
+      }
+    }
+  ],
+  "Flags": {
+    "Special_Second": {
+      "Type": "SendMessage",
+      "Message": "Flag hit!",
+      "Effects": {
+        "ItemAnimationId": "StabDashCharged"
+      },
+      "Next": {
+        "Type": "ApplyForce",
+        "RunTime": 0.5,
+        "Direction": {
+          "Z": -5
+        },
+        "Force": 30,
+        "VelocityConfig": {
+          "AirResistance": 0.9,
+          "GroundResistance": 0.9
+        }
+      }
+    }
+  }
+}

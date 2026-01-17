@@ -1,0 +1,848 @@
+{
+  "Type": "Abstract",
+  "SpawnParticles": "Undead_Digging",
+  "SpawnParticlesOffset": [ 0, 1, 0 ],
+  "StartState": "Idle",
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": "Hostile",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Zombie",
+      "Description": "Appearance of NPC"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "AttackSequence": {
+      "Value": "Component_Instruction_Attack_Sequence_Zombie",
+      "Description": "The attack sequence to use in combat"
+    },
+    "AttackDistance": {
+      "Value": 1.5,
+      "Description": "The distance at which an NPC will execute attacks"
+    },
+    "CombatRelativeTurnSpeed": {
+      "Value": 1.5,
+      "Description": "Modifier that decides turn speed difference in combat"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "CollisionDistance": 1,
+  "CollisionForceFalloff": 0.15,
+  "CollisionRadius": 0.1,
+  "EntityAvoidanceStrength": 0.1,
+  "ApplyAvoidance": false,
+  "DisableDamageGroups": [ "Self", "Aggressive" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 9,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 15
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.2
+                    }
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 10 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 40,
+                          "MaxHeadingChange": 80,
+                          "RelativeSpeed": 0.1
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 10, 30 ],
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 0.6,
+                "ExcludeOwnType": false,
+                "LockOnTarget": false,
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Zombie" ]
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 20,
+                "RelativeSpeed": 0.8
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Target"
+              },
+              "HeadMotion": {
+                "Type": "Aim",
+                "Spread": 0,
+                "HitProbability": 1
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Eval",
+                "Expression": "blocked"
+              },
+              "BodyMotion": {
+                "Type": "Timer",
+                "Time": [ 0.5, 1 ],
+                "Motion": {
+                  "Type": "Wander",
+                  "MaxHeadingChange": 45,
+                  "RelativeSpeed": 0.6
+                }
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 0.6,
+                "ExcludeOwnType": false,
+                "LockOnTarget": false,
+                "Filters": [
+                  {
+                    "Type": "NPCGroup",
+                    "IncludeGroups": [ "Zombie" ]
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 20,
+                "RelativeSpeed": 0.8
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Or",
+                "Sensors": [
+                  {
+                    "Type": "Beacon",
+                    "Message": "Zombie_Target",
+                    "Range": 80
+                  },
+                  {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "Range": 20,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": 100
+                      }
+                    ],
+                    "Prioritiser": {
+                      "Type": "Attitude",
+                      "AttitudesByPriority": [ "Hostile" ]
+                    },
+                    "GetNPCs": false
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 2,
+                "StopDistance": 1.2,
+                "RelativeSpeed": 0.5,
+                "AbortDistance": 80
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Angry"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": false,
+                "Other": true
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Zombie_Target",
+                "Range": 80,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 3 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Alerted"
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "GetPlayers": true,
+                "Range": 2,
+                "LockOnTarget": true,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ],
+                "Prioritiser": {
+                  "Type": "Attitude",
+                  "AttitudesByPriority": [ "Hostile" ]
+                },
+                "GetNPCs": false
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Angry"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "Range": 15,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": 100
+                      }
+                    ],
+                    "Prioritiser": {
+                      "Type": "Attitude",
+                      "AttitudesByPriority": [ "Hostile" ]
+                    },
+                    "GetNPCs": false
+                  },
+                  {
+                    "Type": "Target",
+                    "TargetSlot": "LockedTarget",
+                    "Filters": [
+                      {
+                        "Type": "MovementState",
+                        "State": "Crouching"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "Range": 15,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ],
+                    "Prioritiser": {
+                      "Type": "Attitude",
+                      "AttitudesByPriority": [ "Hostile" ]
+                    },
+                    "GetNPCs": false
+                  },
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "TargetSlot": "LockedTarget",
+                      "Filters": [
+                        {
+                          "Type": "MovementState",
+                          "State": "Crouching"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Search"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Player",
+                "Range": 20,
+                "LockOnTarget": true
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Zombie_Target",
+                  "Range": 80,
+                  "TargetGroups": [ "Zombie" ],
+                  "ExpirationTime": 0.5,
+                  "SendTargetSlot": "LockedTarget"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "TargetSlot": "LockedTarget"
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Angry"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": false,
+                "Other": true
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "GetPlayers": true,
+                "Range": 5,
+                "LockOnTarget": true,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ],
+                "Prioritiser": {
+                  "Type": "Attitude",
+                  "AttitudesByPriority": [ "Hostile" ]
+                },
+                "GetNPCs": false
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Angry"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Mob",
+                      "GetPlayers": true,
+                      "Range": 20,
+                      "LockOnTarget": true,
+                      "Prioritiser": {
+                        "Type": "Attitude",
+                        "AttitudesByPriority": [ "Hostile" ]
+                      },
+                      "GetNPCs": false
+                    }
+                  },
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Beacon",
+                      "Message": "Zombie_Target",
+                      "Range": 80,
+                      "TargetSlot": "LockedTarget"
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Angry"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Run"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 20,
+                "LockOnTarget": true,
+                "Prioritiser": {
+                  "Type": "Attitude",
+                  "AttitudesByPriority": [ "Hostile" ]
+                },
+                "GetPlayers": true,
+                "GetNPCs": false
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Zombie_Target",
+                  "Range": 80,
+                  "TargetGroups": [ "Zombie" ],
+                  "ExpirationTime": 0.5,
+                  "SendTargetSlot": "LockedTarget"
+                }
+              ]
+            },
+            {
+              "Reference": { "Compute": "AttackSequence" },
+              "Interfaces": [ "Hytale.Instruction.AttackSequence" ],
+              "Modify": {
+                "AttackDistance": { "Compute": "AttackDistance" },
+                "CombatRelativeTurnSpeed": { "Compute": "CombatRelativeTurnSpeed" }
+              }
+            },
+            {
+              "Reference": "Component_Instruction_Simple_Soft_Leash",
+              "Modify": {
+                "_ExportStates": [ "Idle" ]
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Target"
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": 1.4,
+                "StopDistance": 1.4,
+                "RelativeSpeed": 0.6,
+                "AbortDistance": 80
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Mob",
+                  "GetPlayers": true,
+                  "Range": 5,
+                  "LockOnTarget": true,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ],
+                  "Prioritiser": {
+                    "Type": "Attitude",
+                    "AttitudesByPriority": [ "Hostile" ]
+                  },
+                  "GetNPCs": false
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Chase"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Mob",
+                      "GetPlayers": true,
+                      "Range": 20,
+                      "LockOnTarget": true,
+                      "Prioritiser": {
+                        "Type": "Attitude",
+                        "AttitudesByPriority": [ "Hostile" ]
+                      },
+                      "GetNPCs": false
+                    }
+                  },
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Beacon",
+                      "Message": "Zombie_Target",
+                      "Range": 80
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Run"
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Mob",
+                "Range": 20,
+                "LockOnTarget": true,
+                "Prioritiser": {
+                  "Type": "Attitude",
+                  "AttitudesByPriority": [ "Hostile" ]
+                },
+                "GetPlayers": true,
+                "GetNPCs": false
+              },
+              "Actions": [
+                {
+                  "Type": "Beacon",
+                  "Message": "Zombie_Target",
+                  "Range": 80,
+                  "TargetGroups": [ "Zombie" ],
+                  "ExpirationTime": 0.5,
+                  "SendTargetSlot": "LockedTarget"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Mob",
+                "GetPlayers": true,
+                "Range": 5,
+                "LockOnTarget": true,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ],
+                "Prioritiser": {
+                  "Type": "Attitude",
+                  "AttitudesByPriority": [ "Hostile" ]
+                },
+                "GetNPCs": false
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Angry"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Mob",
+                      "GetPlayers": true,
+                      "Range": 15,
+                      "LockOnTarget": true,
+                      "Prioritiser": {
+                        "Type": "Attitude",
+                        "AttitudesByPriority": [ "Hostile" ]
+                      },
+                      "GetNPCs": false
+                    }
+                  },
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Beacon",
+                      "Message": "Zombie_Target",
+                      "Range": 80
+                    }
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Alerted"
+                },
+                {
+                  "Type": "SpawnParticles",
+                  "Offset": [ 0, 2.1, 0 ],
+                  "ParticleSystem": "Alerted"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Search"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

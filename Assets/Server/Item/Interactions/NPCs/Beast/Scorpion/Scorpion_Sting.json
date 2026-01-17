@@ -1,0 +1,47 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Scorpion_Default",
+    "ItemAnimationId": "Sting"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.25,
+  "Next": {
+    "Type": "Selector",
+    "Effects": {
+      "WorldSoundEventId": "SFX_NPC_Unarmed_Swing"
+    },
+    "$Comment": "Length of Combat",
+    "RunTime": 0.83,
+    "Selector": {
+      "Id": "Horizontal",
+      "Direction": "ToLeft",
+      "TestLineOfSight": false,
+      "ExtendTop": 0.5,
+      "ExtendBottom": 0.5,
+      "StartDistance": 0.5,
+      "EndDistance": 3,
+      "Length": 90,
+      "RollOffset": 90,
+      "YawStartOffset": -60
+    },
+    "HitEntity": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "DefaultValue": {
+            "Interactions": [
+              "Scorpion_Sting_Damage"
+            ]
+          },
+          "Var": "Sting_Damage"
+        }
+      ]
+    },
+    "Next": {
+      "Type": "Simple",
+      "$Comment": "Pad the interaction length",
+      "RunTime": 0.333
+    }
+  }
+}

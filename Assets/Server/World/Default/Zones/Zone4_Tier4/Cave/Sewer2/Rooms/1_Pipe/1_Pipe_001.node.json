@@ -1,0 +1,55 @@
+{
+
+	
+	"Children": [
+	
+		{ //Left Turn
+        	"Node": ["Sewer2.Pipe.Turns.Left.Left_001"],
+			"Weights": [20], 
+			"Offset": [-27, -6, 5], 
+			"Rotation": 0,
+			"Chance": 1
+		},		
+		{ //Right Turn
+        	"Node": ["Sewer2.Pipe.Turns.Right.Right_001"],
+			"Weights": [20], 
+			"Offset": [27, -6, 5], 
+			"Rotation": 0,
+			"Chance": 1
+		},
+
+		{ //Right Pipe
+        	"Node": ["Sewer2.Pipe.Small.1_Pipe.Left.Left_001"],
+			"Weights": [20], 
+			"Offset": [-11, 5, 23], 
+			"Rotation": 270,
+			"Chance": 1
+		},		
+		{ //left Pipe
+        	"Node": ["Sewer2.Pipe.Small.1_Pipe.Right.Right_001"],
+			"Weights": [20], 
+			"Offset": [11, 5, 23], 
+			"Rotation": 90,
+			"Chance": 1
+		}
+	],
+	
+	
+  "Mask": {
+    "Default": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"],
+    "Specific": [
+      {
+        "Block": ["Empty"],
+        "Rule": ["!Empty",{"Replace":false,"Fluid":"Water_Source"},{"Replace":false,"Fluid":"Lava_Source"},"*"]
+      }
+    ]
+  },
+	
+	"Type": "PREFAB",
+	
+	"Priority": 1,
+	
+	"Prefab": [
+		"Dungeon.Sewer.Tier_2.Rooms.1_Pipe.*"
+	]
+}

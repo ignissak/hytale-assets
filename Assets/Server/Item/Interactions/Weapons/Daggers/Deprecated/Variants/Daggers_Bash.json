@@ -1,0 +1,51 @@
+{
+  "$Comment": "The base wrapper for the dagger secondary",
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 1.51
+  },
+  "Next": {
+    "Type": "Serial",
+    "$Comment": "Effects and VFX/SFX would be applied here in the Serial interaction chain",
+    "Interactions": [
+      {
+        "Type": "ApplyEffect",
+        "EffectId": "Dagger_Dash"
+      },
+      {
+        "Type": "Simple",
+        "RunTime": 0,
+        "Effects": {}
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "Stamina": -1.5
+        },
+        "ValueType": "Absolute"
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -0.7
+        },
+        "Behaviour": "Set",
+        "ValueType": "Absolute"
+      },
+      {
+        "$Comment": "Each of these dashes is a Serial interaction with ApplyForce and Daggers_Dash_Effect",
+        "Type": "MovementCondition",
+        "Failed": "Daggers_Dash_Forward",
+        "Forward": "Daggers_Dash_Forward",
+        "Back": "Daggers_Dash_Backward",
+        "Left": "Daggers_Dash_Left",
+        "Right": "Daggers_Dash_Right",
+        "ForwardLeft": "Daggers_Dash_Forward_Left",
+        "ForwardRight": "Daggers_Dash_Forward_Right",
+        "BackLeft": "Daggers_Dash_Backward_Left",
+        "BackRight": "Daggers_Dash_Backward_Right"
+      }
+    ]
+  },
+  "Failed": "Stamina_Bar_Flash"
+}

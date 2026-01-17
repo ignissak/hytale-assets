@@ -1,0 +1,120 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Temple_Light_Lantern.name"
+  },
+  "Parent": "Furniture_Temple_Light_Lantern",
+  "Set": "Furniture_Temple_Light",
+  "BlockType": {
+    "PlacementSettings": {
+      "RotationMode": "BlockNormal",
+      "PlaceInEmptyBlocks": true,
+      "FloorPlacementOverrideBlockId": "Furniture_Temple_Light_Lantern"
+    },
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Light/Lantern_Ceiling.blockymodel",
+    "CustomModelScale": 0.8,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Temple_Light/Lantern_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "ItemId": "Furniture_Temple_Light_Lantern"
+      }
+    },
+    "HitboxType": "Lantern_Village_Ceiling",
+    "Light": {
+      "Color": "#abb",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Particles": [
+      {
+        "SystemId": "Temple_Light_Lantern",
+        "TargetNodeName": "Light",
+        "PositionOffset": {
+          "Y": 0.7
+        }
+      }
+    ],
+    "Support": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Full",
+          "Filler": []
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        },
+        {
+          "FaceType": "Rope"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chain_Small"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chains_Vertical"
+        }
+      ]
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff"
+  },
+  "Variant": true
+}

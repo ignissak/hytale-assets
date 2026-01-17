@@ -1,0 +1,71 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingLeftCharged"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.146,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 90,
+              "RollOffset": 40,
+              "YawStartOffset": -45
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Longsword_Swing_Left_Charged_Damage"
+                    ]
+                  },
+                  "Var": "Longsword_Swing_Left_Charged_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.167
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Longsword_Swing_Left_Charged_Effect"
+              ]
+            },
+            "Var": "Longsword_Swing_Left_Charged_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

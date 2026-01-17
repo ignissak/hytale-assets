@@ -1,0 +1,48 @@
+﻿{
+  "Discovery": {
+    "ZoneName": "Emerald_Wilds",
+    "Display": true,
+    "Major": true,
+    "Duration": 4.0,
+    "FadeInDuration": 1.5,
+    "FadeOutDuration": 1.5
+  },
+  "BiomeGenerator": {
+    "GridGenerator": {
+      "Seed": "Grasslands-Biomes-Distrobution",
+      "Scale": 0.004
+    }
+  },
+  "UniquePrefabs": {
+    "Entries": [
+      {
+        "Name": "Spawn",
+        "Weights": [1],
+        "Prefab": ["Spawn.Room.*"],
+        "Config": {
+          "IsSpawn": true,
+          "SpawnOffset": [0, 3, 16],
+          "Rotations": ["ROTATION_270"],
+          "Mask": {
+            "Default": ["*"],
+            "Specific": [
+              {
+                "Block": ["Rock_Quartzite_Brick_Stairs","Rock_Quartzite_Cobble_Half","Rock_Quartzite_Cobble_Stairs", "Rock_Quartzite_Brick_Half"],
+                "Rule": ["Empty", "Plant_Grass_Sharp", "Plant_Grass_Sharp_Tall", "Plant_Grass_Lush_Short", "Plant_Grass_Lush", "Plant_Bush", "*Plant_Crop_Berry_Block_State_Definitions_StageFinal", "Plant_Fern_Winter", "Plant_Fern_Forest", "Plant_Bush_Green"]
+              },
+              {
+                "Block": ["Wood_Oak_Branch_Long", "Plant_Leaves_Oak","Plant_Leaves_Birch","Wood_Oak_Branch_Short", "Wood_Oak_Branch_Corner","Wood_Birch_Branch_Short","Wood_Birch_Branch_Long", "Wood_Birch_Branch_Corner"],
+                "Rule": ["Empty", "Plant_Grass_Sharp", "Plant_Grass_Sharp_Tall", "Plant_Grass_Lush_Short", "Plant_Grass_Lush", "Plant_Bush", "*Plant_Crop_Berry_Block_State_Definitions_StageFinal", "Plant_Fern_Winter", "Plant_Fern_Forest", "Plant_Bush_Green"]
+              }
+            ]
+          },
+          "ExclusionRadius": 300,
+          "BorderExclusion": 30,
+          "Anchor": [0, 0],
+          "MaxDistance": 30,
+          "BiomeMask": ["Plains_Spawn"]
+        }
+      }
+    ]
+  }
+}

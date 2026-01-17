@@ -1,0 +1,91 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "HearingRange": 4,
+    "ViewSector": 250,
+    "DropList": "Drop_Fen_Stalker",
+    "Appearance": "Fen_Stalker",
+    "WanderRadius": 15,
+    "ViewRange": 15,
+    "MaxSpeed": 10,
+    "Attack": "Root_NPC_Attack_Melee",
+    "MaxHealth": 74,
+    "IsMemory": true,
+    "MemoriesCategory": "Reptile",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Simple",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Fen_Stalker_Default",
+              "ItemAnimationId": "ScratchLeft"
+            },
+            "RunTime": 0.333
+          }
+        ]
+      },
+      "Melee_Selector": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Selector_Left",
+            "$Comment": "Sets Hit shape and padding to allow effect to play and wait till animation is over",
+            "RunTime": 0.167,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 1,
+              "EndDistance": 2.5,
+              "Length": 90,
+              "RollOffset": 30,
+              "YawStartOffset": -45
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.5
+            }
+          }
+        ]
+      },
+      "Melee_Damage": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Damage",
+            "$Comment": "Sets damage and onhit effects",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 29
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5,
+                "RelativeX": -5,
+                "RelativeZ": -5,
+                "VelocityY": 5
+              },
+              "WorldSoundEventId": "SFX_Fen_Stalker_Attack_Swipe"
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Fen_Stalker.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

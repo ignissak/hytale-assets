@@ -1,0 +1,125 @@
+{
+  "DisplayNames": [ "Pretend I'm a carrot" ],
+  "Type": "Generic",
+  "Appearance": "Spirit_Ember",
+  "DefaultPlayerAttitude": "Neutral",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [ ],
+  "InteractionInstruction": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "CanInteract"
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "LockOnInteractionTarget"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Type": "HasInteracted"
+                },
+                {
+                  "Type": "Target",
+                  "Range": 5
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Inventory",
+                "Operation": "Remove",
+                "UseTarget": true,
+                "Item": "Food_Kebab_Meat"
+              },
+              {
+                "Type": "Inventory",
+                "UseTarget": true,
+                "Item": "Plant_Crop_Carrot_Item"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "TargetSlot": "LockedTarget",
+              "Filters": [
+                {
+                  "Type": "Inventory",
+                  "Items": [ "Food_Kebab_Meat" ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "SetInteractable",
+                "Interactable": true
+              },
+              {
+                "Type": "ReleaseTarget"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "SetInteractable",
+                "Interactable": false
+              },
+              {
+                "Type": "ReleaseTarget"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "NameTranslationKey": "server.npcRoles.Test_Interaction_Purchase.name"
+}

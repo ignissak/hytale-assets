@@ -1,0 +1,85 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Intelligent",
+  "Parameters": {
+    "WanderRadius": {
+      "Value": 3,
+      "Description": "General wander radius for idle wander and wander on the break."
+    },
+    "FollowPatrolPath": {
+      "Value": false,
+      "Description": "Whether this NPC will follow patrol paths at all."
+    },
+    "Patrol": {
+      "Value": false,
+      "Description": "Whether or not this NPC will patrol during its waking hours, either alone or as part of a group."
+    },
+    "FlockArray": {
+      "Value": [
+        "Skeleton_Frost_Knight",
+        "Skeleton_Frost_Mage"
+      ],
+      "TypeHint": "String",
+      "Description": "Array containing NPCs for this flock type."
+    },
+    "ApplySeparation": {
+      "Value": false,
+      "Description": "When set to false, NPCs wont try to avoid each other or player, it can lead to them stacking together, but can help to avoid jerky-like movemenet in enclosed space."
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Skeleton_Frost_Archmage.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "MaxHealth": 61,
+    "HearingRange": 8,
+    "ViewSector": 270,
+    "WakingPeriod": [
+      0,
+      24
+    ],
+    "DropList": "Drop_Skeleton_Frost_Archmage",
+    "Appearance": "Skeleton_Frost_Archmage",
+    "Weapons": [
+      "Weapon_Staff_Frost"
+    ],
+    "FlockArray": {
+      "Compute": "FlockArray"
+    },
+    "FollowPatrolPath": {
+      "Compute": "FollowPatrolPath"
+    },
+    "Patrol": {
+      "Compute": "Patrol"
+    },
+    "WanderRadius": {
+      "Compute": "WanderRadius"
+    },
+    "Attack": "Skeleton_Archmage_Staff_Corruption_Orb",
+    "CombatBackOffAfterAttack": false,
+    "AttackDistance": 15,
+    "CombatStrafeWeight": 3,
+    "CombatFleeIfTooCloseDistance": 1.5,
+    "CombatBackOffDistanceRange": [
+      5,
+      5
+    ],
+    "DesiredAttackDistanceRange": [
+      5,
+      15
+    ],
+    "CombatBehaviorDistance": 15,
+    "TargetRange": 15,
+    "LeashMinPlayerDistance": 18,
+    "ApplySeparation": {
+      "Compute": "ApplySeparation"
+    },
+    "IsMemory": true,
+    "MemoriesCategory": "Undead",
+    "MemoriesNameOverride": "Skeleton_Frost_Archmage",
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

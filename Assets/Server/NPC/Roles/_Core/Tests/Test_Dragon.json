@@ -1,0 +1,58 @@
+{
+  "Type": "Generic",
+  "$Comment": "MotionControllerMove, MotionControllerSteer",
+  "Appearance": "Dragon_Fire",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 50,
+      "MaxSinkSpeed": 10,
+      "MaxClimbSpeed": 10,
+      "MinAirSpeed": 10,
+      "Acceleration": 10,
+      "MinHeightOverGround": 40,
+      "MaxHeightOverGround": 45,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 45
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "WanderInCircle",
+            "Radius": 60
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Dragon.name"
+}

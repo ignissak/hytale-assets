@@ -1,0 +1,61 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Idle" ]
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Leash",
+            "Range": 3
+          }
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Leash",
+          "Range": 2
+        },
+        "BodyMotion": {
+          "Type": "Seek",
+          "StopDistance": 1,
+          "SlowDownDistance": 5,
+          "AbortDistance": 192
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "ApplyEntityEffect",
+            "UseTarget": false,
+            "EntityEffect": "Return_Home_Healing"
+          },
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 8 ]
+          },
+          {
+            "Type": "SetLeashPosition",
+            "ToCurrent": true
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  }
+}

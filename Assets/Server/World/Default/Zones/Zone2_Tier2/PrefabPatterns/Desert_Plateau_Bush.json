@@ -1,0 +1,40 @@
+{
+  "GridGenerator": {
+    "Density": 0.6,
+    "Scale": 0.1,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Drylands-Canyon-Noise",
+        "NoiseType": "SIMPLEX",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 4,
+        "Persistence": 0.8,
+        "Scale": 0.0006
+      }, {
+        "Seed": "Drylands-Canyon-Noise-2",
+        "NoiseType": "SIMPLEX",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 2,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }, {
+        "Seed": "Drylands-Canyon-Noise-3",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 1,
+        "Persistence": 0.1,
+        "Scale": 0.04
+      }
+    ],
+    "Factors": [0.85, 0.055, 0.085],
+    "Threshold": [0.58, 0.59]
+  },
+  "Mask": {
+    "Default": ["Empty", "Plant_Grass_Arid_Tall", "Plant_Grass_Dry_Tall", "Plant_Bush_Arid", "Plant_Bramble_Dry_Twisted"]
+  },
+  "FitHeightmap": true,
+  "Parent": ["Soil_Grass_Dry", "Soil_Gravel_Sand_White"]
+}

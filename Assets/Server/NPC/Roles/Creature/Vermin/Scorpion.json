@@ -1,0 +1,119 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "DropList": "Drop_Scorpion",
+    "Appearance": "Scorpion",
+    "AttitudeGroup": "Vermin",
+    "MaxHealth": 124,
+    "MaxSpeed": 8,
+    "WanderRadius": 20,
+    "ViewRange": 6,
+    "HearingRange": 8,
+    "AlertedRange": 10,
+    "AlertedTime": [
+      2,
+      2
+    ],
+    "FleeIfNotThreatened": false,
+    "HardLeashDistance": 60,
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 5,
+    "LeashTimer": [
+      3,
+      3
+    ],
+    "CombatBackOffAfterAttack": false,
+    "CombatBehaviorDistance": 4,
+    "CombatRelativeTurnSpeed": 1,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatStrafingFrequencyRange": [
+      1,
+      2
+    ],
+    "CombatStrafingDurationRange": [
+      2,
+      3
+    ],
+    "Attack": "Root_NPC_Scorpion_Attack",
+    "AttackDistance": 3,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.8,
+    "AlwaysSleepAtNight": false,
+    "DayTimeNapWeight": 0,
+    "TimidDuringDay": false,
+    "DayFlavorAnimation": "Prey",
+    "NightFlavorAnimation": "Prey",
+    "IsMemory": true,
+    "MemoriesCategory": "Critter",
+    "_InteractionVars": {
+      "Snap_Left_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Scorpion_Snap_Left_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 35
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      },
+      "Snap_Right_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Scorpion_Snap_Right_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 35
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      },
+      "Sting_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Scorpion_Sting_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 35
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Scorpion.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

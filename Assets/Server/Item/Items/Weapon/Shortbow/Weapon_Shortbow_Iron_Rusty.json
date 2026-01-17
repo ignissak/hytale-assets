@@ -1,0 +1,180 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Shortbow_Iron_Rusty.name"
+  },
+  "Parent": "Template_Weapon_Shortbow",
+  "Quality": "Common",
+  "Icon": "Icons/ItemsGenerated/Weapon_Bow_Iron_Rusty.png",
+  "Model": "Items/Weapons/Bow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Bow/Iron_Texture_Rusty.png",
+  "ItemLevel": 15,
+  "MaxDurability": 120,
+  "DurabilityLossOnHit": 0.58,
+  "InteractionVars": {
+    "Primary_Shoot_Damage_Strength_0": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Primary_Shoot_Damage_Strength_0",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 5
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 0,
+              "VelocityType": "Add"
+            }
+          }
+        }
+      ]
+    },
+    "Primary_Shoot_Damage_Strength_1": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Primary_Shoot_Damage_Strength_1",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 9
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 0,
+              "VelocityType": "Add"
+            }
+          }
+        }
+      ]
+    },
+    "Primary_Shoot_Damage_Strength_2": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Primary_Shoot_Damage_Strength_2",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 12
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 0,
+              "VelocityType": "Add"
+            }
+          }
+        }
+      ]
+    },
+    "Primary_Shoot_Damage_Strength_3": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Primary_Shoot_Damage_Strength_3",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 14
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 4,
+              "VelocityType": "Add"
+            }
+          }
+        }
+      ]
+    },
+    "Primary_Shoot_Damage_Strength_4": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Primary_Shoot_Damage_Strength_4",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 17
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0,
+                "Y": 0.5,
+                "Z": -1
+              },
+              "Force": 8,
+              "VelocityType": "Set"
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1
+            }
+          ],
+          "TargetedDamage": {
+            "Head": {
+              "DamageCalculator": {
+                "BaseDamage": {
+                  "Projectile": 22
+                }
+              },
+              "DamageEffects": {
+                "Knockback": {
+                  "Type": "Force",
+                  "VelocityConfig": {
+                    "AirResistance": 0.99,
+                    "AirResistanceMax": 0.98,
+                    "GroundResistance": 0.94,
+                    "GroundResistanceMax": 0.3,
+                    "Threshold": 3.0,
+                    "Style": "Linear"
+                  },
+                  "Direction": { "X": 0.0, "Y": 0.5, "Z": -1 },
+                  "Force": 8,
+                  "VelocityType": "Set"
+                },
+                "WorldParticles": [
+                  {
+                    "SystemId": "Impact_Critical",
+                    "Scale": 1,
+                    "RotationOffset": { "Yaw": 180, "Pitch": 0, "Roll": 0 }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 8.89,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    },
+    "Signature_Volley_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Shortbow_Signature_Volley_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Projectile": 12
+            }
+          }
+        }
+      ]
+    }
+  }
+}

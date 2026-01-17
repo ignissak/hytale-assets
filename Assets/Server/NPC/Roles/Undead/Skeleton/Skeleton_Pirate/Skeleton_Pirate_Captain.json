@@ -1,0 +1,78 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Intelligent",
+  "Parameters": {
+    "WanderRadius": {
+      "Value": 3,
+      "Description": "General wander radius for idle wander and wander on the break."
+    },
+    "FollowPatrolPath": {
+      "Value": false,
+      "Description": "Whether this NPC will follow patrol paths at all."
+    },
+    "Patrol": {
+      "Value": false,
+      "Description": "Whether or not this NPC will patrol during its waking hours, either alone or as part of a group."
+    },
+    "FlockArray": {
+      "Value": [
+        "Skeleton_Pirate_Striker",
+        "Skeleton_Pirate_Gunner"
+      ],
+      "TypeHint": "String",
+      "Description": "Array containing NPCs for this flock type."
+    },
+    "ApplySeparation": {
+      "Value": false,
+      "Description": "When set to false, NPCs wont try to avoid each other or player, it can lead to them stacking together, but can help to avoid jerky-like movemenet in enclosed space."
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Skeleton_Pirate_Captain.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "MaxHealth": 61,
+    "HearingRange": 8,
+    "ViewSector": 270,
+    "WakingPeriod": [
+      0,
+      24
+    ],
+    "DropList": "Drop_Skeleton_Pirate_Captain",
+    "Appearance": "Skeleton_Pirate_Captain",
+    "Weapons": [
+      "Weapon_Sword_Cutlass"
+    ],
+    "FlockArray": {
+      "Compute": "FlockArray"
+    },
+    "FollowPatrolPath": {
+      "Compute": "FollowPatrolPath"
+    },
+    "Patrol": {
+      "Compute": "Patrol"
+    },
+    "WanderRadius": {
+      "Compute": "WanderRadius"
+    },
+    "Attack": "Root_NPC_Skeleton_Pirate_Captain_Attack",
+    "AttackDistance": 3,
+    "DesiredAttackDistanceRange": [
+      2,
+      2.5
+    ],
+    "CombatMessageTargetGroups": [
+      "Skeleton"
+    ],
+    "ApplySeparation": {
+      "Compute": "ApplySeparation"
+    },
+    "IsMemory": true,
+    "MemoriesCategory": "Undead",
+    "MemoriesNameOverride": "Skeleton_Pirate_Captain",
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "Type": "Generic",
+  "Debug": "DisplayState",
+  "Appearance": "Parrot",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 2,
+      "MaxHeightOverGround": 10,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180
+    },
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "MotionController",
+                "MotionController": "Walk"
+              },
+              "Instructions": [
+                {
+                  "BodyMotion": {
+                    "Type": "TakeOff",
+                    "JumpSpeed": 1
+                  }
+                }
+              ]
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 5 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Land"
+                }
+              ],
+              "BodyMotion": {
+                "Type": "WanderInCircle",
+                "Radius": 10
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Land"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Nav",
+                "NavStates": [ "Defer", "Blocked", "Aborted" ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "MotionController",
+                    "MotionController": "Fly"
+                  },
+                  {
+                    "Type": "BlockType",
+                    "BlockSet": "Empty",
+                    "Sensor": {
+                      "Type": "AdjustPosition",
+                      "Offset": [ 0, 1, 0 ],
+                      "Sensor": {
+                        "Type": "Block",
+                        "Range": 30,
+                        "Blocks": "Hay",
+                        "Random": true,
+                        "MaxHeight": 10
+                      }
+                    }
+                  }
+                ]
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 10 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Land",
+                "SlowDownDistance": 3,
+                "StopDistance": 0.5,
+                "GoalLenience": 0.5
+              }
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 10 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Land.name"
+}

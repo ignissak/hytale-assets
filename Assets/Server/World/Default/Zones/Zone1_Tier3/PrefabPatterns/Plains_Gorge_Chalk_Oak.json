@@ -1,0 +1,43 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Plains-Gorge-Chalk",
+    "Density": [0.2575, 0.4875],
+    "Scale": 0.067,
+    "Jitter": 0.9
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "Grasslands-Height-Threshold",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.1,
+        "Scale": 0.02
+      }
+    ],
+    "Factors": [0.8, 0.2],
+    "Threshold": [0, 0.75]
+  },
+  "Mask": {
+    "Default": ["*"],
+    "Specific": [
+      {
+        "Block": ["Plant_Leaves_Oak", "Plant_Leaves_Ash", "Plant_Leaves_Azure", "Plant_Leaves_Birch", "Plant_Leaves_Aspen", "Plant_Leaves_Dry", "Plant_Leaves_Maple", "Wood_Oak_Roots", "Wood_Birch_Roots", "Wood_Fir_Roots", "Wood_Azure_Roots", "Wood_Beech_Roots", "Wood_Oak_Branch_Corner", "Wood_Oak_Branch_Short", "Wood_Oak_Branch_Long"],
+        "Rule": ["Empty", "!*"]
+      }
+    ]
+  },
+  "Parent": ["Soil_Grass", "Soil_Grass_Full", "Soil_Grass_Deep", "Soil_Leaves"]
+}

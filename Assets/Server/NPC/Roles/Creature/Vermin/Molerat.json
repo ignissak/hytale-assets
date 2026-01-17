@@ -1,0 +1,87 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "Appearance": "Molerat",
+    "DropList": "Drop_Molerat",
+    "MaxSpeed": 6,
+    "Attack": "Root_NPC_Attack_Melee",
+    "TimidDuringDay": true,
+    "MaxHealth": 61,
+    "WanderRadius": 10,
+    "ViewRange": 12,
+    "HearingRange": 8,
+    "AbsoluteDetectionRange": 2,
+    "AlertedRange": 18,
+    "AlertedTime": [
+      3,
+      5
+    ],
+    "MaintainDistanceWhileAlerted": false,
+    "ThreatenDelayRange": [
+      2,
+      2
+    ],
+    "ThreatenAnimation": "",
+    "FleeIfNotThreatened": true,
+    "FleeRange": 15,
+    "HardLeashDistance": 60,
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 7,
+    "LeashTimer": [
+      4,
+      5
+    ],
+    "CombatBehaviorDistance": 6,
+    "CombatDirectWeight": 10,
+    "CombatStrafeWeight": 10,
+    "CombatBackOffAfterAttack": false,
+    "AttackDistance": 3,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.3,
+    "AlwaysSleepAtNight": false,
+    "NightFlavorAnimation": "",
+    "DayTimeNapWeight": 0,
+    "IsMemory": true,
+    "MemoriesCategory": "Critter",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Simple",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Hyena_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.333
+          }
+        ]
+      },
+      "Melee_Damage": {
+        "Interactions": [
+          {
+            "$Comment": "When NPC overrides the InteractionVars, this info in Template not applicable anymore",
+            "Parent": "NPC_Attack_Melee_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 23
+              },
+              "RandomPercentageModifier": 0.1
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Molerat.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

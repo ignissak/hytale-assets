@@ -1,0 +1,127 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Softwood_Fence_Gate.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Doors"
+  ],
+  "Set": "Wood_Softwood_Planks",
+  "Icon": "Icons/ItemsGenerated/Wood_Softwood_Fence_Gate.png",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Softwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Gate"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "CustomModel": "Blocks/Structures/Fences/Fence_Wood_Gate.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Softwood_Gate_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "HitboxType": "Fence_Gate",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#65482d",
+    "State": {
+      "Definitions": {
+        "CloseDoorIn": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_In.blockyanim"
+        },
+        "CloseDoorOut": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_Out.blockyanim"
+        },
+        "DoorBlocked": {},
+        "OpenDoorIn": {
+          "HitboxType": "Fence_Gate_Open_In",
+          "InteractionHitboxType": "Fence_Gate_Open_In_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_In.blockyanim"
+        },
+        "OpenDoorOut": {
+          "HitboxType": "Fence_Gate_Open_Out",
+          "InteractionHitboxType": "Fence_Gate_Open_Out_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_Out.blockyanim"
+        }
+      }
+    },
+    "VariantRotation": "NESW",
+    "BlockSoundSetId": "Wood",
+    "IsDoor": true,
+    "Interactions": {
+      "Use": "Door"
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Fence"
+        }
+      ],
+      "Down": [
+        {
+          "FaceType": "Fence"
+        }
+      ]
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Gate": "Wood_Softwood_Fence_Gate,*Wood_Softwood_Fence_Gate_State_Definitions_OpenDoorIn,*Wood_Softwood_Fence_Gate_State_Definitions_OpenDoorOut,*Wood_Softwood_Fence_Gate_State_Definitions_CloseDoorIn,*Wood_Softwood_Fence_Gate_State_Definitions_CloseDoorOut,*Wood_Softwood_Fence_Gate_State_Definitions_DoorBlocked"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Feran"
+    ]
+  },
+  "Scale": 1,
+  "Model": "Blocks/Structures/Fences/Fence_Goldenwood_Gate.blockymodel",
+  "ItemLevel": 15,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

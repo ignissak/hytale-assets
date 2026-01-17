@@ -1,0 +1,59 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Candy_Cane.name"
+  },
+  "Parent": "Template_Food",
+  "Icon": "Icons/ItemsGenerated/Food_Candy_Cane.png",
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Eat_Side/Eat_Side_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Eat_Side/Eat_Side.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Candy_Cane.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Candy_Cane_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#ffe7e7"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "StatModifiers": {
+              "Health": 10
+            },
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Health": 100
+          },
+          "ValueType": "Percent",
+          "LessThan": true
+        }
+      ]
+    }
+  },
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

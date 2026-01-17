@@ -1,0 +1,174 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Stick_Slow.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Developer",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Stick/Stick.blockymodel",
+  "Texture": "Items/Halloween_Props/Broomstick_Texture.png",
+  "PlayerAnimationsId": "Stick",
+  "Interactions": {
+    "Primary": "Stick_Attack",
+    "Secondary": "Stick_Block"
+  },
+  "InteractionVars": {
+    "Stick_Block_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Block_Damage"
+        }
+      ]
+    },
+    "Stick_Swing_Left_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Left_Fast_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+            "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Left_Fast_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Left_Fast_Damage",
+          "Next": {
+            "Type": "EffectCondition",
+            "Entity": "Target",
+            "EntityEffectIds": [
+              "Immune"
+            ],
+            "Match": "None",
+            "Next": {
+              "Type": "Serial",
+              "Interactions": [
+                {
+                  "Type": "ChangeStat",
+                  "Entity": "Target",
+                  "StatModifiers": {
+                    "Immunity": 25
+                  }
+                },
+                {
+                  "Type": "ApplyEffect",
+                  "Entity": "Target",
+                  "EffectId": "Slow"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Right_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Right_Fast_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+            "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Right_Fast_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Right_Fast_Damage",
+          "Next": {
+            "Type": "EffectCondition",
+            "Entity": "Target",
+            "EntityEffectIds": [
+              "Immune"
+            ],
+            "Match": "None",
+            "Next": {
+              "Type": "Serial",
+              "Interactions": [
+                {
+                  "Type": "ChangeStat",
+                  "Entity": "Target",
+                  "StatModifiers": {
+                    "Immunity": 25
+                  }
+                },
+                {
+                  "Type": "ApplyEffect",
+                  "Entity": "Target",
+                  "EffectId": "Slow"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Down_Strong_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Down_Strong_Damage",
+          "Next": {
+            "Type": "EffectCondition",
+            "Entity": "Target",
+            "EntityEffectIds": [
+              "Immune"
+            ],
+            "Match": "None",
+            "Next": {
+              "Type": "Serial",
+              "Interactions": [
+                {
+                  "Type": "ChangeStat",
+                  "Entity": "Target",
+                  "StatModifiers": {
+                    "Immunity": 25
+                  }
+                },
+                {
+                  "Type": "ApplyEffect",
+                  "Entity": "Target",
+                  "EffectId": "Slow"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Down_Strong_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Down_Strong_Effect"
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.25,
+    "Rotation": [
+      45.0,
+      90.0,
+      0.0
+    ],
+    "Translation": [
+      -37.0,
+      -41.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Debug_Stick.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Staff"
+    ]
+  },
+  "Weapon": {}
+}

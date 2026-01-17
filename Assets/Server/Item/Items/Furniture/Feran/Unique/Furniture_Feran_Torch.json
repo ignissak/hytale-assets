@@ -1,0 +1,161 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Feran_Torch.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Feran",
+  "Icon": "Icons/ItemsGenerated/Furniture_Feran_Torch.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.45,
+    "Translation": [
+      3,
+      -15.6
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Block_Secondary"
+  },
+  "InteractionVars": {
+    "Torch_Swing_Left_Effect": "Torch_Swing_Left_Effect",
+    "Torch_Swing_Right_Effect": "Torch_Swing_Right_Effect",
+    "Torch_Swing_Left_Damage": "Torch_Swing_Left_Damage",
+    "Torch_Swing_Right_Damage": "Torch_Swing_Right_Damage"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Torch",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Feran/Torch.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Feran/Torch_Texture.png"
+      }
+    ],
+    "CustomModelScale": 0.8,
+    "Light": {
+      "Radius": 0,
+      "Color": "#ba9"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Dust",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "HitboxType": "Mushroom_Medium",
+    "MovementSettings": {},
+    "Material": "Solid",
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_On_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Torch_Default_Loop",
+    "Looping": true,
+    "ParticleColor": "#c7b885",
+    "VariantRotation": "NESW",
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 0.68
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter2",
+        "Color": "#ffcd10",
+        "Scale": 0.8
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter3",
+        "Color": "#ffcd10",
+        "Scale": 0.7
+      },
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter4",
+        "Color": "#ffcd10",
+        "Scale": 0.65
+      }
+    ]
+  },
+  "Scale": 1.5,
+  "Utility": {
+    "Usable": true
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Feran"
+    ]
+  },
+  "Animation": "Blocks/Animations/Candle/Candle_Burn.blockyanim",
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

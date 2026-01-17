@@ -1,0 +1,67 @@
+{
+  "Conditions": {
+    "DayTime": {
+      "Min": 5,
+      "Max": 19
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Equals",
+          "Tag": "Autumn"
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    },
+    "Altitude": {
+      "Min": 0,
+      "Max": 200
+    }
+  },
+  "Sounds": [
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Autumn_Day_Birds",
+      "Frequency": {
+        "Min": 1,
+        "Max": 4
+      },
+      "Radius": {
+        "Min": 3,
+        "Max": 10
+      }
+    },
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Autumn_Day_Insects",
+      "Radius": {
+        "Min": 0,
+        "Max": 0
+      }
+    },
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Autumn_Day_Wind",
+      "Frequency": {
+        "Min": 2,
+        "Max": 3
+      },
+      "Radius": {
+        "Min": 5,
+        "Max": 10
+      }
+    }
+  ]
+}

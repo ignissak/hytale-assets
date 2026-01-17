@@ -1,0 +1,97 @@
+{
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "TestType": "Normal",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "StateEvaluator": {
+    "Options": [
+      {
+        "State": "Idle",
+        "Description": "Go to idle state",
+        "Conditions": [
+          {
+            "Type": "NearbyCount",
+            "Range": 10,
+            "NPCGroup": "Tests",
+            "Curve": {
+              "ResponseCurve": "ReverseLinear",
+              "XRange": [ 0, 10 ]
+            }
+          }
+        ]
+      },
+      {
+        "State": "Flee",
+        "Description": "Go to flee state",
+        "Conditions": [
+          {
+            "Type": "NearbyCount",
+            "Range": 10,
+            "NPCGroup": "Tests",
+            "Curve": {
+              "ResponseCurve": "Linear",
+              "XRange": [ 0, 10 ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "5 or less"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "6 or more"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_State_Evaluator_Nearby.name"
+}

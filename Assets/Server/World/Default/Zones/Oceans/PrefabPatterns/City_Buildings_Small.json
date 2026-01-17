@@ -1,0 +1,61 @@
+{
+  "GridGenerator": {
+		"Seed": "Oceans-City-Buildings-Small",
+    "Scale": 0.07,
+    "Density": 0.4,
+    "Jitter": 0
+  },
+  "NoiseMask": {
+    "Type": "MULTIPLY",
+    "Noise": [
+      {
+    		"Seed": "Oceans-City",
+        "NoiseType": "CELL",
+	      "Formula": "INVERTED",
+        "Density": [0, 0.25],
+      	"Jitter": 0.5,
+      	"DistanceRange": 2.0,
+      	"CellMode": "DISTANCE",
+      	"Scale": 0.003,
+      	"Normalize": 0.6
+      },
+      {
+	      "Seed": "Oceans-City",
+        "NoiseType": "CELL",
+      	"Jitter": 0.5,
+      	"DistanceRange": 2.0,
+      	"CellMode": "DISTANCE",
+      	"Scale": 0.003,
+      	"Normalize": 0.15
+      },
+      {
+    		"Seed": "Oceans-City-Roads-Large",
+        "NoiseType": "DISTANCE",
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Jitter": 0.75,
+        "Normalize": 0.3,
+        "Scale": 0.008
+      },
+      {
+    		"Seed": "Oceans-City-Buildings-Small",
+        "NoiseType": "CELL",
+      	"CellMode": "DISTANCE",
+      	"DistanceRange": 3.0,
+    		"Offset": 7,
+    		"Scale": 0.035,
+    		"Density": 0.5,
+    		"Jitter": 0,
+    		"Normalize": 0.8
+      }
+    ],
+    "Threshold": [0.5, 1]
+  },
+	"Mask": {
+		"Default": ["*"],
+		"Specific": [{
+			"Block": ["Rock_Sandstone_Brick_Smooth_Half", "Rock_Sandstone_Brick_Half", "Wood_Goldenwood_Fence"],
+			"Rule": ["Empty"]
+		}]
+	}
+}

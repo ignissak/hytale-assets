@@ -1,0 +1,60 @@
+{
+  "Conditions": {
+    "DayTime": {
+      "Min": 5,
+      "Max": 19
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Equals",
+          "Tag": "Azure"
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    },
+    "Altitude": {
+      "Min": 0,
+      "Max": 200
+    }
+  },
+  "Sounds": [
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Azure_Day_Insects",
+      "Frequency": {
+        "Min": 1,
+        "Max": 5
+      },
+      "Radius": {
+        "Min": 3,
+        "Max": 8
+      }
+    },
+    {
+      "SoundEventId": "SFX_Z1_Emit_Forest_Azure_Day_Wind",
+      "Radius": {
+        "Min": 2,
+        "Max": 5
+      },
+      "Frequency": {
+        "Min": 1,
+        "Max": 5
+      }
+    }
+  ]
+}

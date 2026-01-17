@@ -1,0 +1,53 @@
+{
+  "GridGenerator": {
+    "Seed": "Firelands-Boulders-Caldera",
+    "Density": 0.75,
+    "Scale": 0.1,
+    "Jitter": 0.7
+  },
+  "Noisemask":{
+    "Type": "MIN",
+    "Noise": [
+      {
+        "Seed": "Monuments-Firelands",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "Scale": 0.005,
+        "Jitter": 0.7,
+        "Normalize": [0.3]
+      },
+      {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Lava_Cracks",
+            "NoiseType": "DISTANCE",
+            "DistanceMode": "NATURAL",
+            "DistanceRange": [1, 3],
+            "Distance2Mode": "DIV",
+            "Formula": "INVERTED",
+            "Scale": 0.05
+          },
+          {
+            "Seed": "Calderas",
+            "NoiseType": "CELL",
+            "CellMode": "DISTANCE",
+            "DistanceRange": [2, 7],
+            "Density": 0.35,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [0.3, 0.7],
+        "Normalize": [0.4, 0.7]
+      }
+    ],
+    "Threshold": [0.01, 0.99]
+  },
+  "HeightThreshold": {
+    "Positions": [169, 170],
+    "Values": [1, 0]
+  },
+  "Mask": {
+    "Default": ["*"]
+  }
+}

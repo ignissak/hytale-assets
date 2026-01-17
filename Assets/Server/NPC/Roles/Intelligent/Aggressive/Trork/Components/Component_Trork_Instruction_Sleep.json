@@ -1,0 +1,226 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Sleep",
+  "ResetOnStateChange": true,
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Chase", "Search" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether the NPC can currently see"
+    },
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether the NPC can hear"
+    },
+    "ExcludeGroups": {
+      "Value": [ "Trork" ],
+      "Description": "Groups to exclude from sensors"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "State",
+                "State": ".WakeUp"
+              }
+            },
+            {
+              "Type": "Or",
+              "Sensors": [
+                {
+                  "Type": "Player",
+                  "Range": 2,
+                  "LockOnTarget": true,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                },
+                {
+                  "Reference": "Component_Sensor_Sight_By_Attitude",
+                  "Modify": {
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "Enabled": { "Compute": "CanSee" },
+                    "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                  }
+                },
+                {
+                  "Reference": "Component_Sensor_Sound_By_Attitude",
+                  "Modify": {
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "ThroughWalls": false,
+                    "Enabled": { "Compute": "CanHear" },
+                    "ExcludeGroups": { "Compute": "ExcludeGroups" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "State",
+            "State": ".WakeUp"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Sleep"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sleep"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Reference": "Component_Sensor_Day",
+              "Modify": { }
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".WakeUp"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Not",
+              "Sensor": {
+                "Reference": "Component_Trork_Sensor_Can_Sleep",
+                "Modify": { }
+              }
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".RainAwake"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".WakeUp"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Wake"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 4 ],
+                "Action": {
+                  "Type": "ParentState",
+                  "State": "Idle"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".RainAwake"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "WakeRain"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 4 ],
+                "Action": {
+                  "Type": "ParentState",
+                  "State": "Idle"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

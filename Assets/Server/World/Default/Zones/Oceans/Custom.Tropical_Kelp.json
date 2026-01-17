@@ -1,0 +1,164 @@
+{
+  "MapColor": "#1e3e80",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+    	  {
+      		"Seed": "233333",
+      		"NoiseType": "OLD_SIMPLEX",
+      		"FractalMode": "OLDSCHOOL",
+      		"Octaves": 2,
+      		"Persistence": 0.3,
+      		"Scale": 0.02
+        },
+    	  {
+      		"Seed": "3.14159",
+      		"NoiseType": "OLD_SIMPLEX",
+      		"FractalMode": "OLDSCHOOL",
+      		"Octaves": 2,
+      		"Persistence": 0.3,
+      		"Scale": 0.006
+        }
+      ],
+      "Factors": [0.25, 0.75],
+      "Threshold": [0, 0.35]
+		},
+    "BiomeMask": ["Tropical_Kelp"],
+    "Priority": 5
+  },
+  "Covers": [
+    {
+      "Type": ["Rubble_Stone", "Rubble_Stone_Medium", "Rubble_Stone_Mossy", "Rubble_Stone_Mossy_Medium", "Deco_Coral_Shell"],
+      "Weight": [0.4, 0.3, 0.18, 0.1, 0.02],
+      "Density": 0.25,
+      "NoiseMask": {
+				"Type": "SUM",
+				"Noise": [
+					{
+						"Seed": "Bed_Rocks",
+						"NoiseType": "CELL",
+						"CellMode": "DISTANCE",
+            "Density": 0.85,
+            "Scale": 0.1,
+            "Jitter": 0.9,
+						"DistanceRange": [1, 3]
+					},
+					{
+						"Seed": "3.14159",
+						"NoiseType": "SIMPLEX",
+						"Octaves": 3,
+						"Persistence": 0.5,
+						"Scale": 0.008,
+						"Normalize": 0.15
+					}
+				],
+				"Factors": [0.5, 0.5],
+				"Threshold": [0, 0.3]
+			}
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Monuments.Incidental.Shipwrecks.Tropical.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Monuments_Shipwrecks"
+        }
+      },
+      {
+        "Prefab": ["Rock_Formations.Rocks.Stone.Oceans.Large.*", "Rock_Formations.Rocks.Stone.Oceans.Small.*"],
+        "Pattern": {
+          "File": "Zones.Oceans.PrefabPatterns.Bed_Rocks"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Stone",
+    "Static": [
+      {
+        "File": "Zones.Oceans.Layers.Static_Tropical"
+      },
+      {
+        "File": "Zones.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Ocean.Cave_Environments_Ocean"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [38, 58, 88, 128],
+    "Values": [1, 0.4, 0.2, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+  	  {
+    		"Seed": "233333",
+    		"NoiseType": "OLD_SIMPLEX",
+    		"FractalMode": "OLDSCHOOL",
+    		"Octaves": 2,
+    		"Persistence": 0.3,
+    		"Scale": 0.08
+      },
+  	  {
+    		"Seed": "3.14159",
+    		"NoiseType": "OLD_SIMPLEX",
+    		"FractalMode": "OLDSCHOOL",
+    		"Octaves": 2,
+    		"Persistence": 0.3,
+    		"Scale": 0.006
+      },
+      {
+        "Seed": "Grasslayer3",
+        "NoiseType": "SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "RIDGED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.0075
+      }
+    ],
+    "Factors": [0.1, 0.5, 0.4]
+  },
+  "Tint": {
+    "Colors": ["0x3cb878"],
+    "Weights": [1],
+    "Noise": {
+      "Seed": "Biome1_Tint",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Octaves": 3,
+      "Persistence": 0.5,
+      "Scale": 0.08
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone0_Warm"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Grasslands-Tint-Plains",
+        "NoiseType": "OLD_SIMPLEX",
+        "Formula": "NORMAL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

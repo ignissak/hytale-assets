@@ -1,0 +1,56 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "BlockChange",
+            "Range": 10,
+            "EventType": "Interaction",
+            "BlockSet": "Gaia",
+            "SearchType": "PlayerFirst"
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 2,
+            "StopDistance": 1
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "BlockChange",
+            "Range": 10,
+            "EventType": "Damage",
+            "BlockSet": "Gaia",
+            "SearchType": "PlayerFirst"
+          },
+          "BodyMotion": {
+            "Type": "Flee"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Block_Change.name"
+}

@@ -1,0 +1,95 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Survival_Trap_Spike_Wood.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Trap_Spikes_Wood.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ]
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Tinkering/Traps/Spikes.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Tinkering/Traps/Spikes_Wood.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {},
+    "HitboxType": "Block_Three_Quarter",
+    "RandomRotation": "YawStep90",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Branch",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#684127",
+    "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "SlowEffect",
+          "Cooldown": 1
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "ApplyEffect",
+              "EffectId": {
+                "Locale": "spikes",
+                "Duration": 0.1,
+                "OverlapBehavior": "Overwrite",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 10
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "VariantRotation": "DoublePipe"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

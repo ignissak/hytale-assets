@@ -1,0 +1,36 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "ThrowCharged",
+    "WorldSoundEventId": "SFX_Unarmed_Swing"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Knife_Throw_Charged_Projectile"
+              ]
+            },
+            "Var": "Knife_Throw_Charged_Projectile"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "ModifyInventory",
+            "AdjustHeldItemQuantity": -1
+          }
+        ]
+      }
+    ]
+  }
+}

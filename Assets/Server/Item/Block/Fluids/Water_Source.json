@@ -1,0 +1,49 @@
+{
+  "MaxFluidLevel": 1,
+  "Effect": [
+    "Water"
+  ],
+  "Opacity": "Transparent",
+  "Textures": [
+    {
+      "Weight": 1,
+      "All": "BlockTextures/Fluid_Water.png"
+    }
+  ],
+  "BlockParticleSetId": "Water",
+  "BlockSoundSetId": "Water",
+  "FluidFXId": "Water",
+  "Interactions": {
+    "Collision": {
+      "Cooldown": {
+        "Id": "ClearBurn",
+        "Cooldown": 1
+      },
+      "Interactions": [
+        {
+          "Type": "ClearEntityEffect",
+          "EntityEffectId": "Burn"
+        }
+      ]
+    }
+  },
+  "Ticker": {
+    "CanDemote": false,
+    "SpreadFluid": "Water",
+    "Collisions": {
+      "Lava": {
+        "BlockToPlace": "Rock_Stone_Cobble",
+        "SoundEvent": "SFX_Flame_Break"
+      },
+      "Lava_Source": {
+        "BlockToPlace": "Rock_Magma_Cooled",
+        "SoundEvent": "SFX_Flame_Break"
+      }
+    }
+  },
+  "Tags": {
+    "Fluid": [
+      "Water"
+    ]
+  }
+}

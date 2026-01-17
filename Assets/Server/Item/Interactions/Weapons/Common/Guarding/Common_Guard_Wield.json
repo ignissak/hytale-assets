@@ -1,0 +1,78 @@
+{
+  "Type": "Wielding",
+  "Effects": {
+    "ItemAnimationId": "Guard",
+    "ClearAnimationOnFinish": true,
+    "WorldSoundEventId": "SFX_Light_Melee_T2_Block",
+    "LocalSoundEventId": "SFX_Sword_T2_Block_Local"
+  },
+  "Forks": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Guard_Shove_Animation",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Common_Guard_Shove_Animation"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "AngledWielding": {
+    "Angle": 0,
+    "AngleDistance": 90,
+    "DamageModifiers": {
+      "Physical": 0,
+      "Projectile": 0,
+      "Poison": 0
+    },
+    "KnockbackModifiers": {
+      "Physical": 0.25,
+      "Projectile": 0.25
+    }
+  },
+  "StaminaCost": {
+    "Value": 7,
+    "CostType": "Damage"
+  },
+  "CancelOnOtherClick": false,
+  "Failed": {
+    "Type": "Replace",
+    "Var": "Guard_Break",
+    "DefaultOk": true,
+    "DefaultValue": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Shield_Shatter"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "BlockedEffects": {
+    "WorldSoundEventId": "SFX_Shield_T2_Impact",
+    "WorldParticles": [
+      {
+        "SystemId": "Shield_Block"
+      }
+    ]
+  },
+  "Next": {
+    "$Comment": "Standard regen delay upon ending guarding on all weapons",
+    "Type": "ChangeStat",
+    "Behaviour": "Set",
+    "StatModifiers": {
+      "StaminaRegenDelay": -1
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Deployable_Slowness_Totem.name"
+  },
+  "Categories": [
+    "Items.Weapons",
+    "Items.Utility"
+  ],
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Ice_Essence",
+        "Quantity": 30
+      },
+      {
+        "ItemId": "Ingredient_Bar_Cobalt",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Rock_Ice",
+        "Quantity": 40
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  },
+  "Scale": 0.305,
+  "Quality": "Common",
+  "ItemLevel": 40,
+  "MaxStack": 1,
+  "Model": "Blocks/Decorative_Sets/Temple_Emerald/Statue.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Temple_Emerald/Statue_Texture.png",
+  "PlayerAnimationsId": "Item",
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "Serial",
+          "Interactions": [
+            {
+              "Type": "Simple",
+              "RunTime": 0.25,
+              "Effects": {
+                "ItemPlayerAnimationsId": "Item",
+                "ItemAnimationId": "Throw"
+              }
+            },
+            {
+              "Type": "Projectile",
+              "Config": "Projectile_Config_Slowness_Totem_Deploy"
+            }
+          ]
+        }
+      ],
+      "Cooldown": {
+        "Id": "DeployableUtility",
+        "Cooldown": 10
+      }
+    }
+  },
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.305,
+    "Translation": [
+      0,
+      -39.6
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Emerald_Statue.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Stick"
+    ]
+  }
+}

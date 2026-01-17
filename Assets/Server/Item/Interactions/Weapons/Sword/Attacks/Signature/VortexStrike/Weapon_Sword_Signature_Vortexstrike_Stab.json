@@ -1,0 +1,55 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SpinRightStabDashCharging"
+  },
+  "RunTime": 0.5,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "Var": "Vortexstrike_Stab_Force",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Sword_Signature_Vortexstrike_Stab_Force"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "Var": "Vortexstrike_Stab_Selector",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Sword_Signature_Vortexstrike_Stab_Selector"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "Var": "Vortexstrike_Stab_Effect",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Sword_Signature_Vortexstrike_Stab_Effect"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

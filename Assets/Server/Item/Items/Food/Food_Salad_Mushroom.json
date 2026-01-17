@@ -1,0 +1,65 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Salad_Mushroom.name",
+    "Description": "server.items.Food_Salad_Mushroom.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T2"
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/Food_Salad_Mushroom.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Salad_Mushroom.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Salad_Mushroom_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#a0784d"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T2"
+        },
+        "HealthRegen_TierCheck_T2",
+        "FruitVeggie_TierCheck_T2"
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ItemId": "Plant_Crop_Lettuce_Item"
+      },
+      {
+        "ResourceTypeId": "Mushrooms",
+        "Quantity": 3
+      }
+    ],
+    "Output": [
+      {
+        "ItemId": "Food_Salad_Mushroom"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Prepared"
+        ]
+      }
+    ]
+  },
+  "ItemLevel": 5,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

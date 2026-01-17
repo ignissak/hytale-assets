@@ -1,0 +1,137 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Royal_Magic_Potion_Glow.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Crude",
+  "Icon": "Icons/ItemsGenerated/Furniture_Royal_Magic_Potion_Glow.png",
+  "BlockType": {
+    "PlacementSettings": {
+      "RotationMode": "BlockNormal",
+      "PlaceInEmptyBlocks": true,
+      "FloorPlacementOverrideBlockId": "Furniture_Royal_Magic_Potion_Glow"
+    },
+    "BlockParticleSetId": "GlassMagic",
+    "BlockSoundSetId": "Metal",
+    "CustomModel": "Blocks/Decorative_Sets/Royal_Magic/Potion_Glow_Ceiling.blockymodel",
+    "CustomModelScale": 0.7,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Royal_Magic/Potion_Glow_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "ItemId": "Furniture_Royal_Magic_Potion_Glow"
+      }
+    },
+    "HitboxType": "Lantern_Village_Ceiling",
+    "Light": {
+      "Color": "#eb9",
+      "Radius": 0
+    },
+    "Opacity": "Transparent",
+    "Material": "Solid",
+    "Particles": [
+      {
+        "SystemId": "Block_Gem_Sparks",
+        "TargetNodeName": "Glow",
+        "Color": "#fff2bf",
+        "Scale": 1,
+        "DetachedFromModel": false,
+        "PositionOffset": {
+          "Y": 0.6
+        }
+      }
+    ],
+    "Support": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Full",
+          "Filler": []
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        },
+        {
+          "FaceType": "Rope"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chain_Small"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chains_Vertical"
+        }
+      ]
+    },
+    "Looping": true,
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "ParticleColor": "#ff9927"
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Crude"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Variant": true
+}

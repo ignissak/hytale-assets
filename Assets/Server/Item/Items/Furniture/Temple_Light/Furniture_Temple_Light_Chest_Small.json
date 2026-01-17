@@ -1,0 +1,120 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Temple_Light_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Temple_Light",
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Rock_Marble",
+        "Quantity": 3
+      },
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Shale"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Storage"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 4
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Temple_Light_Chest_Small.png",
+  "BlockType": {
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "CustomModel": "Blocks/Decorative_Sets/Temple_Light/Chest_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Temple_Light/Chest_Small_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "ChestConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Default": "Furniture_Temple_Light_Chest_Small",
+        "Double": "Furniture_Temple_Light_Chest_Large"
+      }
+    },
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Temple"
+    ]
+  },
+  "IconProperties": {
+    "Scale": 0.55,
+    "Translation": [
+      0,
+      -15
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "ItemLevel": 16,
+  "MaxStack": 10
+}

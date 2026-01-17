@@ -1,0 +1,52 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Fish_Raw.name",
+    "Description": "server.items.Food_Fish_Raw.description"
+  },
+  "Parent": "Template_Food",
+  "Quality": "Common",
+  "Icon": "Icons/ItemsGenerated/Food_Fish_Raw.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Resources/Ingredients/Fish_Piece.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Fish_Piece_Raw_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#d97676"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T1"
+        }
+      ]
+    }
+  },
+  "Scale": 1,
+  "MaxStack": 25,
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ResourceTypeId": "Fish"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Ingredients"
+        ]
+      }
+    ]
+  },
+  "DropOnDeath": true,
+  "ItemLevel": 1
+}

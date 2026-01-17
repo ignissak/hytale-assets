@@ -1,0 +1,42 @@
+{
+  "Name": "Entry",
+  "Environment": "Env_Zone2_Caves_Deserts",
+  "Children": [
+    {
+      "Weights": [100],
+      "Chance": 1,
+      "ChildrenLimit": [15, 21],
+      "Node": ["Shallow.Type_7.Line1"],
+      "PitchAdd": [85], //upDown
+      "YawSet": [100] //leftRight
+    },
+    {
+      "Weights": [100],
+      "Chance": 1,
+      "ChildrenLimit": [15, 21],
+      "Node": ["Shallow.Type_7.Line2"],
+      "PitchAdd": [90],
+      "YawSet": [-85]
+    }
+
+  ],
+	"Type": "PREFAB",
+
+	"Priority": 1,
+  "Mask": {
+    "Default": ["!Empty", "!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Soil_Dirt_Poisoned", "!Rock_Basalt", "!Soil_Mud", "*"],
+    "Specific":[
+      {
+      "Block": ["Soil_Gravel_Sand_White", "Soil_Sand_White", "Rock_Sandstone_Stalactite_Large", "Rock_Sandstone_Stalactite_Small"],
+      "Rule": ["!Empty", "!Rock_Bedrock", "!Rock_Stone", "!Soil_Dirt", "!Soil_Grass", "!Soil_Dirt_Poisoned", "!Rock_Basalt", "!Soil_Mud", "!Rubble_Sandstone", "!Rubble_Sandstone_Medium", "!Plant_Moss_Cave_Yellow", "!Plant_Fern_Arid", "!Plant_Crop_Mushroom_Cap_White", "*"]
+      },
+      {
+        "Block": ["Wood_Drywood_Planks", "Wood_Dry_Trunk", "Wood_Dry_Trunk_Full", "Deco_Iron_Bars", "Furniture_Temple_Dark_Window"],
+        "Rule": ["*"]
+      }
+    ]
+  },
+  "Prefab": [
+    "Cave.Nodes.Rock_Sandstone.Surface_Straight.*"
+  ]
+}

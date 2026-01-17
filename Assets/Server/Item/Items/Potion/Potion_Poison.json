@@ -1,0 +1,52 @@
+{
+  "Parent": "Potion_Template",
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Poison.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Poison.png",
+  "InteractionVars": {
+    "RemoveEffect": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    },
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Poison"
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Health": 1
+          },
+          "ValueType": "Percent",
+          "LessThan": false
+        }
+      ]
+    }
+  },
+  "BlockType": {
+    "BlockParticleSetId": "GlassPoison",
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Green.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#a2da1d",
+    "Light": {
+      "Color": "#241"
+    }
+  },
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

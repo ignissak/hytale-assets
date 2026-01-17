@@ -1,0 +1,38 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.167,
+  "Effects": {
+    "ItemAnimationId": "WhirlwindCharged"
+  },
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToLeft",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendBottom": 1.5,
+    "StartDistance": 0.1,
+    "EndDistance": 3,
+    "Length": 210,
+    "RollOffset": 0,
+    "YawStartOffset": -180
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Signature_Whirlwind_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Signature_Whirlwind_Damage"
+          ]
+        }
+      }
+    ]
+  }
+}

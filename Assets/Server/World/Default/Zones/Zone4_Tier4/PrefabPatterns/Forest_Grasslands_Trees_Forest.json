@@ -1,0 +1,38 @@
+{
+  "GridGenerator": {
+    "Seed": "Wasteland_Trees",
+    "Density": 1,
+    "Scale": 0.068,
+    "Jitter": 0.7
+  },
+  "NoiseMask": {
+    "Type": "MIN",
+    "Noise": [
+      {
+        "Seed": "Monuments-Firelands",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "Scale": 0.003,
+        "Jitter": 0.75,
+        "Normalize": [0.25]
+      },
+      {
+        "Seed": "Wastes_Grasslands_Road",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 1,
+        "Persistence": 0.4,
+        "Scale": 0.008,
+        "Normalize": 0.55
+      }
+    ],
+    "Threshold": [0.6, 1]
+  },
+  "HeightThreshold": {
+    "Positions": [115, 116, 169, 170],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "File": "Zones.Zone4_Tier4.Masks.Trees"
+  },
+  "Parent": ["Soil_Dirt_Burnt", "Soil_Grass", "Soil_Grass_Burnt", "Soil_Leaves", "Soil_Sand_Ashen", "Soil_Mud_Dry", "Soil_Ash"]
+}

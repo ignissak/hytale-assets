@@ -1,0 +1,112 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Forking.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Debug_Block.png",
+  "Categories": [],
+  "Quality": "Debug",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Cube",
+    "VariantRotation": "Debug",
+    "Textures": [
+      {
+        "Weight": 1,
+        "Up": "BlockTextures/_Debug/Up.png",
+        "Down": "BlockTextures/_Debug/Down.png",
+        "North": "BlockTextures/_Debug/North.png",
+        "South": "BlockTextures/_Debug/South.png",
+        "East": "BlockTextures/_Debug/East.png",
+        "West": "BlockTextures/_Debug/West.png"
+      }
+    ],
+    "ParticleColor": "#0000f4"
+  },
+  "Interactions": {
+    "Primary": {
+      "Cooldown": {
+        "Cooldown": 2
+      },
+      "Interactions": [
+        {
+          "Type": "SendMessage",
+          "Message": "Interaction start",
+          "Next": {
+            "Type": "Repeat",
+            "ForkInteractions": {
+              "Interactions": [
+                {
+                  "Type": "SendMessage",
+                  "Message": "> Fork started"
+                },
+                {
+                  "Type": "Charging",
+                  "Next": {
+                    "0": {
+                      "Type": "SendMessage",
+                      "Message": "> Short"
+                    },
+                    "1.5": {
+                      "Type": "SendMessage",
+                      "Message": "> Long"
+                    }
+                  }
+                }
+              ]
+            },
+            "Next": {
+              "Type": "SendMessage",
+              "Message": "Fork (charge) complete"
+            }
+          }
+        }
+      ]
+    },
+    "Secondary": {
+      "Cooldown": {
+        "Cooldown": 2
+      },
+      "Interactions": [
+        {
+          "Type": "SendMessage",
+          "Message": "Interaction start",
+          "Next": {
+            "Type": "Repeat",
+            "Repeat": 5,
+            "ForkInteractions": {
+              "Interactions": [
+                {
+                  "Type": "SendMessage",
+                  "Message": "> I'm a fork",
+                  "Effects": {
+                    "ItemAnimationId": "Interact",
+                    "WaitForAnimationToFinish": true
+                  }
+                },
+                {
+                  "Type": "ApplyEffect",
+                  "EffectId": {
+                    "Duration": 0.1,
+                    "ApplicationEffects": {
+                      "EntityTopTint": "#FF0000"
+                    }
+                  }
+                }
+              ]
+            },
+            "Next": {
+              "Type": "SendMessage",
+              "Message": "Fork complete"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Debug"
+    ]
+  }
+}

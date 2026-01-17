@@ -1,0 +1,53 @@
+{
+  "GridGenerator": {
+    "Seed": "Jungle-Forest-Young",
+    "Density": 0.65,
+    "Scale": 0.13,
+    "Jitter": 0.65
+  },
+  "NoiseMask": {
+  	"Type": "MAX",
+  	"Noise": [
+      {
+    		"Seed": "Firelands-Hills",
+    		"NoiseType": "SIMPLEX",
+        "Formula": "INVERTED",
+    		"Octaves": 4,
+    		"Persistence": 0.3,
+    		"Scale": 0.008,
+        "Normalize": 0.65
+      },
+  		{
+        "Seed": "Jungle-Forest",
+        "NoiseType": "CELL",
+  			"Formula": "INVERTED",
+        "Scale": 0.01,
+      	"CellMode": "DISTANCE",
+        "Density": [0, 1],
+        "Scale": 0.05,
+        "Jitter": 0.65,
+        "Normalize": 0.7
+  		},
+  		{
+        "Seed": "Jungle-Forest-Small",
+        "NoiseType": "CELL",
+  			"Formula": "INVERTED",
+        "Scale": 0.01,
+      	"CellMode": "DISTANCE",
+        "Density": [0, 1],
+        "Scale": 0.055,
+        "Jitter": 0.65,
+        "Normalize": 0.7
+  		}
+  	],
+    "Threshold": [0, 0.5]
+  },
+  "HeightThreshold": {
+    "Positions": [31, 32, 38, 39],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "File": "Zones.Zone4_Tier5.Masks.Trees"
+  },
+  "DeepSearch": true
+}

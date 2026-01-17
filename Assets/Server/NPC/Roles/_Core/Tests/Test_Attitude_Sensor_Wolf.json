@@ -1,0 +1,81 @@
+{
+  "DefaultSubState": "Start",
+  "Type": "Generic",
+  "Appearance": "Wolf_Black",
+  "DefaultPlayerAttitude": "Hostile",
+  "AttitudeGroup": "Trork",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Damage",
+            "Combat": true
+          },
+          "Actions": [
+            {
+              "Type": "OverrideAttitude",
+              "Attitude": "Hostile",
+              "Duration": 5
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10,
+            "Filters": [
+              {
+                "Type": "ItemInHand",
+                "Items": [ "*meat*" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "OverrideAttitude",
+              "Attitude": "Friendly",
+              "Duration": 5
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 10,
+            "Prioritiser": {
+              "Type": "Attitude",
+              "AttitudesByPriority": [ "Hostile", "Friendly" ]
+            },
+            "GetPlayers": true,
+            "GetNPCs": true
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Attitude_Sensor_Wolf.name"
+}

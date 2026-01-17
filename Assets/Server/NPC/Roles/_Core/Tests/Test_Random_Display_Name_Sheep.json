@@ -1,0 +1,57 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "DisplayNames": [ "Sheep1", "Sheep2", "Sheep3" ],
+  "CollisionDistance": 3,
+  "CollisionForceFalloff": 0.25,
+  "CollisionRadius": 0.2,
+  "EntityAvoidanceStrength": 0.29,
+  "ApplyAvoidance": true,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 13,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Random_Display_Name_Sheep.name"
+}

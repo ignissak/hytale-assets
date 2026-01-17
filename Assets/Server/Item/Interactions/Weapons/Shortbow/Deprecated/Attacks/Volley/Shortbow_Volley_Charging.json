@@ -1,0 +1,29 @@
+{
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Charging",
+      "AllowIndefiniteHold": true,
+      "DisplayProgress": false,
+      "Effects": {
+        "ItemAnimationId": "ShootCharging",
+        "ClearAnimationOnFinish": true,
+        "WorldSoundEventId": "SFX_Bow_T2_Draw",
+        "LocalSoundEventId": "SFX_Bow_T2_Draw_Local"
+      },
+      "HorizontalSpeedMultiplier": 0.5,
+      "Next": {
+        "0": "Shortbow_Volley_Shoot_Charge_0",
+        "0.4": "Shortbow_Volley_Shoot_Charge_1",
+        "1.5": "Shortbow_Volley_Shoot_Charge_2"
+      }
+    },
+    {
+      "Type": "ChangeStat",
+      "StatModifiers": {
+        "SignatureCharges": -100
+      },
+      "ValueType": "Percent"
+    }
+  ]
+}

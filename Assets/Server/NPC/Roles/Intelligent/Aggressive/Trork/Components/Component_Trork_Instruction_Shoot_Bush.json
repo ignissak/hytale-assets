@@ -1,0 +1,126 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Default",
+  "ResetOnStateChange": true,
+  "Parameters": {
+    "_ImportStates": [ "Idle" ],
+    "ShootRange": {
+      "Value": 20,
+      "Description": "How far away to shoot at a bush"
+    },
+    "RangedAttack": {
+      "Value": "Trork_Sentry_Spear_Throw",
+      "Description": "Ranged attack"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Block",
+      "Blocks": "Bushes",
+      "Range": { "Compute": "ShootRange" },
+      "Random": true,
+      "MaxHeight": 15
+    },
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Default"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Once": true,
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              },
+              {
+                "Type": "SpawnParticles",
+                "Offset": [ 0, 2.1, 0 ],
+                "ParticleSystem": "Alerted"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 1, 2 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Throw"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Throw"
+        },
+        "Instructions": [
+          {
+            "Reference": "Component_Instruction_Clear_Status_Animation",
+            "Modify": { }
+          },
+          {
+            "Sensor": {
+              "Type": "Block",
+              "Blocks": "Bushes",
+              "Range": { "Compute": "ShootRange" },
+              "Random": true,
+              "MaxHeight": 15
+            },
+            "Actions": [
+              {
+                "Type": "Sequence",
+                "Blocking": true,
+                "Actions": [
+                  {
+                    "Type": "Attack",
+                    "Attack": { "Compute": "RangedAttack" },
+                    "AttackPauseRange": [ 1, 2 ]
+                  },
+                  {
+                    "Type": "Sequence",
+                    "Actions": [
+                      {
+                        "Type": "ResetBlockSensors",
+                        "BlockSets": [ "Bushes" ]
+                      },
+                      {
+                        "Type": "State",
+                        "State": ".Default"
+                      },
+                      {
+                        "Type": "ParentState",
+                        "State": "Idle"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "HeadMotion": {
+              "Type": "Aim",
+              "HitProbability": 1,
+              "Spread": 0.3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

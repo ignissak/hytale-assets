@@ -1,0 +1,91 @@
+{
+  "Model": "Scarak_Seeker_Spitball",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 5,
+    "TerminalVelocityAir": 150,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "Velocity",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "LaunchForce": 150,
+  "SpawnOffset": {
+    "X": 0,
+    "Y": 0,
+    "Z": 0.5
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "DamageEntity",
+          "Entity": "Target",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Poison": 10
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Scarak_Seeker_Spitball_Death",
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Poison"
+              }
+            ]
+          },
+          "Next": {
+            "Type": "EffectCondition",
+            "Entity": "Target",
+            "EntityEffectIds": [
+              "Antidote"
+            ],
+            "Match": "None",
+            "Next": {
+              "Type": "ClearEntityEffect",
+              "Entity": "Target",
+              "EntityEffectId": "Poison_T2",
+              "Next": {
+                "Type": "ApplyEffect",
+                "Entity": "Target",
+                "EffectId": "Poison_T2"
+              }
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Scarak_Seeker_Spitball_Death",
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Poison"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "InitialValue": 100,
+  "Min": 0,
+  "Max": 100,
+  "Shared": false,
+  "Regenerating": [
+    {
+      "Interval": 0.5,
+      "Amount": 25,
+      "RegenType": "Additive",
+      "Conditions": [
+        {
+          "Id": "Alive"
+        },
+        {
+          "Id": "Suffocating",
+          "Inverse": true
+        }
+      ]
+    },
+    {
+      "$Comment": "Player in creative mode",
+      "Interval": 0.5,
+      "Amount": 1.0,
+      "RegenType": "Percentage",
+      "Conditions": [
+        {
+          "Id": "Alive"
+        },
+        {
+          "Id": "Player",
+          "GameMode": "Creative"
+        }
+      ]
+    },
+    {
+      "Interval": 0.5,
+      "Amount": -3,
+      "RegenType": "Additive",
+      "Conditions": [
+        {
+          "Id": "Alive"
+        },
+        {
+          "Id": "Suffocating"
+        }
+      ]
+    }
+  ]
+}

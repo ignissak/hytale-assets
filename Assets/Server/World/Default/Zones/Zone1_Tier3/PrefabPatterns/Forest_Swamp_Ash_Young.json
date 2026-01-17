@@ -1,0 +1,52 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Forest-Moss-Young",
+    "Density": [0, 0.5],
+    "Scale": 0.075,
+    "Jitter": 0.65
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+          }
+        ],
+        "Density": [0, 1],
+        "Normalize": 0.57
+      },
+      {
+        "Seed": "Grasslands-Pattern-Forest-Moss-Oak",
+        "NoiseType": "CELL",
+        "Formula": "INVERTED",
+
+        "CellMode": "DISTANCE",
+        "Density": [0, 1],
+        "Scale": 0.04,
+        "Jitter": 0.65,
+        "Normalize": 0.7
+      },
+      {
+        "Seed": "Grasslands-Pattern-Forest-Moss-Beech",
+        "NoiseType": "CELL",
+
+        "CellMode": "DISTANCE",
+        "Density": [0, 1],
+        "Scale": 0.07,
+        "Jitter": 0.65,
+        "Normalize": 0.7
+      }
+    ],
+    "Threshold": [0, 0.9]
+  },
+  "HeightThreshold": {
+    "Positions": [112, 113],
+    "Values": [0, 1]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Trees"
+  }
+}

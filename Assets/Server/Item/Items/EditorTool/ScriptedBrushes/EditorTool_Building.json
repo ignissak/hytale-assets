@@ -1,0 +1,151 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Building.name",
+    "Description": "server.builderTools.tools.Building.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "BuildingBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 5,
+            "Min": 1,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Cube"
+          },
+          "Origin": {
+            "Default": "Bottom"
+          }
+        },
+        "Args": {
+          "aNumFloors": {
+            "Type": "Int",
+            "Default": 0,
+            "Min": 0,
+            "Max": 10
+          },
+          "bEnableWindows": {
+            "Type": "Bool",
+            "Default": true
+          },
+          "bWindowRadius": {
+            "Type": "Int",
+            "Default": 2,
+            "Min": 0,
+            "Max": 20
+          },
+          "bWindowWidth": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 0,
+            "Max": 10
+          },
+          "bWindowHeight": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 0,
+            "Max": 10
+          },
+          "bNumWindows": {
+            "Type": "Int",
+            "Default": 4,
+            "Min": 0,
+            "Max": 20
+          },
+          "bWindowBlock": {
+            "Type": "Block",
+            "Default": "Furniture_Crude_Window",
+            "AllowPattern": true
+          },
+          "cEnableRoof": {
+            "Type": "Bool",
+            "Default": true
+          },
+          "dMainMaterial": {
+            "Type": "Block",
+            "Default": "Rock_Quartzite_Brick",
+            "AllowPattern": true
+          },
+          "eFloorSeparator": {
+            "Type": "Block",
+            "Default": "Rock_Quartzite_Brick_Decorative",
+            "AllowPattern": true
+          },
+          "fFloorBlock": {
+            "Type": "Block",
+            "Default": "Wood_Drywood_Planks",
+            "AllowPattern": true
+          },
+          "gRoofBlock": {
+            "Type": "Block",
+            "Default": "Soil_Clay_Ocean_Brick_Smooth",
+            "AllowPattern": true
+          },
+          "cRoofWidth": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 0,
+            "Max": 10
+          },
+          "cRoofHeight": {
+            "Type": "Int",
+            "Default": 1,
+            "Min": 0,
+            "Max": 10
+          },
+          "cRoofzShape": {
+            "Type": "Option",
+            "Default": "Cone",
+            "Options": ["Cube", "Sphere", "Cylinder", "Cone", "Inverted_Cone", "Pyramid", "Inverted_Pyramid"]
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

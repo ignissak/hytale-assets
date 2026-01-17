@@ -1,0 +1,148 @@
+$C = "../../Common.ui";
+$Sounds = "../../Sounds.ui";
+
+@TitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  LetterSpacing: 0
+);
+
+@progressBarWidth = 1018;
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Height: 825, Width: 1070);
+
+    #Title {
+      Group {
+        LayoutMode: Left;
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Label #TitleLabel {
+          Style: (...@TitleStyle, FontName: "Default", RenderBold: true, TextColor: #b4c8c9, LetterSpacing: 0.5);
+          Text: %server.memories.general.title;
+        }
+
+        Group #Completed {
+          LayoutMode: Right;
+          FlexWeight: 1;
+          Anchor: (Right: 16);
+        }
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 9);
+
+      Group #Categories {
+        Background: (TexturePath: "MemoriesRunes.png", Border: 15);
+        FlexWeight: 1;
+        Group {
+          LayoutMode: TopScrolling;
+          Anchor: (Top: 15);
+          ScrollbarStyle: $C.@DefaultScrollbarStyle;
+          FlexWeight: 1;
+
+          Group #IconList {
+            LayoutMode: LeftCenterWrap;
+          }
+        }
+      }
+
+      Group #Footer {
+        Anchor: (Height: 175);
+        LayoutMode: Top;
+        Background: (TexturePath: "ContainerBackground.png", Border: 23);
+        Padding: (Horizontal: 20, Vertical: 15);
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Group #ChestMarkers {
+          Anchor: (Bottom: -15, Left: -14);
+          // Chest markers will be added here
+        }
+
+        Group {
+          Background: "MemoriesProgress/MemoriesBarBg.png";
+          Anchor: (Height: 22, Width: @progressBarWidth, Bottom: 30);
+          Padding: (Full: 6);
+
+          ProgressBar #MemoriesProgressBar {
+            BarTexturePath: "MemoriesProgress/MemoriesBarFill.png";
+            EffectTexturePath: "MemoriesProgress/MemoriesBarTipOfTheBar.png";
+            EffectWidth: 114;
+            EffectHeight: 32;
+            EffectOffset: 104;
+          }
+
+          ProgressBar #MemoriesProgressBarTexture {
+            BarTexturePath: "MemoriesProgress/MemoriesBarTexture.png";
+          }
+
+        }
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Group {
+          LayoutMode: Left;
+
+          Group {
+            FlexWeight: 1;
+            LayoutMode: Left;
+
+            Label {
+              Style: (...@TitleStyle, FontName: "Default", RenderBold: true, TextColor: #b4c8c9, LetterSpacing: 0.5, VerticalAlignment: End);
+              Text: %server.memories.general.totalCollected + " ";
+            }
+            Label #TotalCollected {
+              Style: (...@TitleStyle, FontName: "Default", RenderBold: true, TextColor: #b4c8c9, LetterSpacing: 0.5, VerticalAlignment: End);
+              Text: "0";
+            }
+            Label {
+              Style: (...@TitleStyle, FontName: "Default", RenderBold: true, TextColor: #b4c8c9, LetterSpacing: 0.5, VerticalAlignment: End);
+              Text: "/";
+            }
+            Label #MemoriesTotal {
+              Style: (...@TitleStyle, FontName: "Default", RenderBold: true, TextColor: #b4c8c9, LetterSpacing: 0.5, VerticalAlignment: End);
+              Text: "0";
+            }
+          }
+
+          $C.@TextButton #RecordButton {
+            @Sounds = $Sounds.@ButtonsMain;
+
+            Anchor: (Width: 330, Height: 42);
+            Text: %server.memories.general.noMemories;
+            Visible: false;
+          }
+
+          $C.@CancelTextButton #BackButton {
+            Anchor: (Width: 330, Height: 42);
+            Text: %client.general.button.back;
+            Visible: false;
+          }
+
+          Group {
+            FlexWeight: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

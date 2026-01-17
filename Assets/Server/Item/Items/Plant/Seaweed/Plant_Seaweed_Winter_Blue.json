@@ -1,0 +1,47 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Seaweed_Winter_Blue.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Seaweed_Winter_Blue.png",
+  "Parent": "Plant_Seaweed_Grass",
+  "BlockType": {
+    "CustomModel": "Blocks/Foliage/Grass/VeryTall.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Grass/VeryTall_Textures/Winter_Unique2.png",
+        "Weight": 1
+      }
+    ],
+    "BiomeTint": 0,
+    "Tint": [],
+    "HitboxType": "Plant_Tall_Full",
+    "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "SlowEffect",
+          "Cooldown": 0.2
+        },
+        "Interactions": [
+          {
+            "Type": "ApplyEffect",
+            "EffectId": {
+              "StatModifiers": {
+                "Oxygen": 2
+              },
+              "ApplicationEffects": {
+                "Particles": [
+                  {
+                    "SystemId": "Water_Splash"
+                  }
+                ]
+              },
+              "Duration": 0.2,
+              "OverlapBehavior": "Overwrite"
+            }
+          }
+        ]
+      }
+    },
+    "ParticleColor": "#89d1e8"
+  }
+}

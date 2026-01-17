@@ -1,0 +1,50 @@
+{
+  "GridGenerator": {
+    "Seed": "Grasslands-Pattern-Gully-Mixed",
+    "Density": [0.2775, 0.5275],
+    "Scale": 0.09,
+    "Jitter": 0.7
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+          }
+        ],
+        "Density": [0, 1],
+    "Threshold": [0, 0.6]
+      },
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter_Mask"
+          }
+        ],
+        "DistanceRange": [3, 4],
+    "Threshold": [0.3, 0.4]
+      }
+    ],
+    "Factors": [0.25, 0.75],
+    "Threshold": [0, 0.9]
+  },
+  "HeightThreshold": {
+    "Positions": [116, 117],
+    "Values": [0, 1]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Trees"
+  },
+  "Parent": [
+    "Soil_Grass",
+    "Soil_Grass_Full",
+    "Soil_Grass_Deep",
+    "Soil_Leaves",
+    "Soil_Pathway",
+    "Soil_Mud"
+  ]
+}

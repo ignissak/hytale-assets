@@ -1,0 +1,118 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Armor_D_Hands_Of_Regeneration.name"
+  },
+  "Quality": "Debug",
+  "ItemLevel": 15,
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Items.Armors"
+  ],
+  "Icon": "Icons/ItemsGenerated/Armor_Leather_Light_Hands.png",
+  "IconProperties": {
+    "Rotation": [
+      29.815,
+      45.565,
+      25.315
+    ],
+    "Scale": 0.645,
+    "Translation": [
+      0.9,
+      -0.9
+    ]
+  },
+  "Model": "Items/Armors/Leather_Light/Hands.blockymodel",
+  "Texture": "Items/Armors/Leather_Light/Hands_Texture.png",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 2
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bolt_Wool",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "TODO",
+        "Type": "Crafting",
+        "Categories": [
+          "Armor_Hands"
+        ]
+      }
+    ],
+    "KnowledgeRequired": false
+  },
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    }
+  },
+  "Armor": {
+    "ArmorSlot": "Hands",
+    "Regenerating": {
+      "Stamina": [
+        {
+          "$Comment": "Positive stamina regeneration values",
+          "Interval": 0.1,
+          "Amount": -0.5,
+          "RegenType": "Additive",
+          "Conditions": [
+            {
+              "Id": "Sprinting"
+            }
+          ]
+        }
+      ],
+      "Health": [
+        {
+          "$Comment": "Positive health regeneration values",
+          "Interval": 0.1,
+          "Amount": 0.2,
+          "RegenType": "Additive",
+          "Conditions": [
+            {
+              "Id": "Stat",
+              "Stat": "Health",
+              "Amount": 0,
+              "Comparison": "Gte"
+            }
+          ]
+        }
+      ]
+    },
+    "StatModifiers": {
+      "Health": [
+        {
+          "Amount": 3,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Armor"
+    ],
+    "Family": [
+      "Leather"
+    ]
+  }
+}

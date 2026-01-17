@@ -1,0 +1,23 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.TrorkShaman.FleeSequence",
+  "Parameters": {
+    "CloseRange": {
+      "Value": 10,
+      "Description": "The distance the NPC considers to be close to the target"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Target",
+      "Range": { "Compute": "CloseRange" }
+    },
+    "BodyMotion": {
+      "Type": "Flee",
+      "StopDistance": { "Compute": "CloseRange" },
+      "SlowDownDistance": { "Compute": "CloseRange - 1" },
+      "RelativeSpeed": 1
+    }
+  },
+  "Type": "Component"
+}

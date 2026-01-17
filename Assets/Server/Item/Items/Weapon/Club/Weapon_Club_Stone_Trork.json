@@ -1,0 +1,119 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Club_Stone_Trork.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Uncommon",
+  "ItemLevel": 5,
+  "Model": "NPC/Intelligent/Trork/Models/Weapons/Club/Stone.blockymodel",
+  "Texture": "NPC/Intelligent/Trork/Models/Weapons/Club/Stone_Texture.png",
+  "PlayerAnimationsId": "Club",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Club_Attack"
+  },
+  "InteractionVars": {
+    "Club_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 10
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 10
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Down_Charged_Effect": "Club_Swing_Down_Charged_Effect",
+    "Club_Swing_Down_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Down_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 20
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -36,
+      -36
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Icon": "Icons/ItemsGenerated/Weapon_Club_Stone_Trork.png",
+  "MaxDurability": 45,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Family": [
+      "Club"
+    ],
+    "Type": [
+      "Weapon"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

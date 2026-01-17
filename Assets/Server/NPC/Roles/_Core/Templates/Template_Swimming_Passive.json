@@ -1,0 +1,417 @@
+{
+  "Type": "Abstract",
+  "KnockbackScale": 0.5,
+  "StartState": "Idle",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Bluegill",
+      "Description": "Model to be used"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "FlockArray": {
+      "Value": [ "Template_Swimming_Passive" ],
+      "Description": "Array containing NPCs for this flock type"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "DropList": { "Compute": "DropList" },
+  "FlockSpawnTypes": { "Compute": "FlockArray" },
+  "DisableDamageGroups": [ "Self" ],
+  "Appearance": { "Compute": "Appearance" },
+  "BreathesInWater": true,
+  "MotionControllerList": [
+    {
+      "Type": "Dive",
+      "MaxSwimSpeed": 10,
+      "Acceleration": 10,
+      "MaxDiveSpeed": 8,
+      "SwimDepth": 0.6,
+      "SinkRatio": 0.5,
+      "MinDiveDepth": 0,
+      "MaxDiveDepth": 100,
+      "MinDepthAboveGround": 1,
+      "MinDepthBelowSurface": 1,
+      "Gravity": 10,
+      "MaxRotationSpeed": 360,
+      "MaxSwimTurnAngle": 180
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "$Comment": "This is a separate Instruction so we are always open to receiving beacon messages",
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Flock_Pos"
+          },
+          "Actions": [
+            {
+              "Type": "SetLeashPosition",
+              "ToTarget": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.2
+                    }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Spread_Out",
+                  "Modify": {
+                    "Range": 1,
+                    "RelativeSpeed": 0.25
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Not",
+                        "Sensor": {
+                          "Reference": "Component_Sensor_Leads_Flock",
+                          "Modify": { }
+                        }
+                      },
+                      {
+                        "Type": "Leash",
+                        "Range": 4
+                      }
+                    ]
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 1.5,
+                    "StopDistance": 1,
+                    "RelativeSpeed": 0.25
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 4,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.25
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Reference": "Component_Sensor_Leads_Flock",
+                    "Modify": { }
+                  },
+                  {
+                    "Type": "Leash",
+                    "Range": 5
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "FlockBeacon",
+                  "Message": "Flock_Pos",
+                  "SendToSelf": false,
+                  "ExpirationTime": 0.5
+                },
+                {
+                  "Type": "SetLeashPosition",
+                  "ToCurrent": true
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true,
+                "Environment": true,
+                "Other": true
+              },
+              "Actions": [
+                {
+                  "Type": "FlockState",
+                  "State": "Panic"
+                },
+                {
+                  "Type": "State",
+                  "State": "Panic"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Flee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 2, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 0.2
+                    }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Spread_Out",
+                  "Modify": {
+                    "Range": 1,
+                    "RelativeSpeed": 0.25
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 5,
+                    "LockOnTarget": true
+                  },
+                  "BodyMotion": {
+                    "Type": "Flee",
+                    "SlowDownDistance": 9,
+                    "StopDistance": 12,
+                    "RelativeSpeed": 0.75
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 5,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 1, 1 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Idle"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Panic",
+            "IgnoreMissingSetState": true
+          },
+          "Instructions": [
+            {
+              "Reference": "Component_Instruction_Clear_Status_Animation",
+              "Modify": { }
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Eval",
+                    "Expression": "blocked"
+                  },
+                  "BodyMotion": {
+                    "Type": "Timer",
+                    "Time": [ 1, 3 ],
+                    "Motion": {
+                      "Type": "Wander",
+                      "MaxHeadingChange": 45,
+                      "RelativeSpeed": 1
+                    }
+                  }
+                },
+                {
+                  "Reference": "Component_Instruction_Spread_Out",
+                  "Modify": {
+                    "Range": 1,
+                    "RelativeSpeed": 1
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": [ 1, 2 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 10,
+                          "MaxHeadingChange": 45,
+                          "RelativeSpeed": 1
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": [ 0.5, 1 ],
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": 10,
+                          "MaxHeadingChange": 90,
+                          "RelativeSpeed": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Flee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 3, 6 ],
+                  "Action": {
+                    "Type": "State",
+                    "State": "Idle"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

@@ -1,0 +1,49 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Intelligent.Idle.Motion",
+  "Parameters": {
+    "FollowPathRange": {
+      "Value": 30,
+      "Description": "The search radius when looking for a patrol path"
+    },
+    "PathShape": {
+      "Value": "Line",
+      "Description": "The shape of the path the NPC should follow. 'Chain' will result in chained paths"
+    },
+    "ViewSegments": {
+      "Value": 1,
+      "Description": "The number of view segments when rotating at a path node"
+    },
+    "NodePauseScaleRange": {
+      "Value": [ 0.2, 0.4 ],
+      "Description": "The range from which to pick to decide the fraction of the total pause time that will be spent looking in a given direction"
+    },
+    "NodePauseExtraPercentRange": {
+      "Value": [ 0, 0.2 ],
+      "Description": "An additional random percentage to add to this pause time"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Path",
+      "Range": { "Compute": "FollowPathRange" }
+    },
+    "Actions": [
+      {
+        "Type": "SetLeashPosition",
+        "ToCurrent": true
+      }
+    ],
+    "BodyMotion": {
+      "Type": "Path",
+      "UseNodeViewDirection": true,
+      "MinRelSpeed": 0.35,
+      "MaxRelSpeed": 0.35,
+      "Shape": { "Compute": "PathShape" },
+      "ViewSegments": { "Compute": "ViewSegments" },
+      "NodePauseScaleRange": { "Compute": "NodePauseScaleRange" },
+      "NodePauseExtraPercentRange": { "Compute": "NodePauseExtraPercentRange" }
+    }
+  },
+  "Type": "Component"
+}

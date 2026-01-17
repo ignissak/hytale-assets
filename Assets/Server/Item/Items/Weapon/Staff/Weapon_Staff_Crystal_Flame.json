@@ -1,0 +1,339 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Staff_Crystal_Flame.name",
+    "Description": "server.items.Weapon_Staff_Crystal_Flame.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Staff_Crystal_Flame.png",
+  "Quality": "Rare",
+  "ItemLevel": 50,
+  "Recipe": {
+    "TimeSeconds": 5,
+    "Input": [
+      {
+        "ItemId": "Rock_Gem_Ruby",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bar_Silver",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 8
+      },
+      {
+        "ItemId": "Ingredient_Fire_Essence",
+        "Quantity": 20
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  },
+  "Model": "Items/Weapons/Staff/Crystal_Flame.blockymodel",
+  "Texture": "Items/Weapons/Staff/Crystal_Flame_Texture.png",
+  "IconProperties": {
+    "Scale": 0.28,
+    "Translation": [
+      -26.31,
+      -23.91
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Animation": "Items/Weapons/Stick/Fire_Stick/SpinningFire4.blockyanim",
+  "PlayerAnimationsId": "Staff",
+  "Reticle": "DefaultMelee",
+  "RenderDeployablePreview": true,
+  "InteractionConfig": {
+    "UseDistance": {
+      "Adventure": 20,
+      "Creative": 20
+    }
+  },
+  "Light": {
+    "Radius": 0,
+    "Color": "#ba9"
+  },
+  "Interactions": {
+    "Primary": "Root_Weapon_Stick_Fire_Primary_Entry",
+    "Secondary": "Root_Weapon_Stick_Fire_Secondary_Entry",
+    "Ability1": "Root_Weapon_Stick_Fire_Ability1_Entry"
+  },
+  "InteractionVars": {
+    "Fireball_Impact_0": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Impact_Base",
+          "Config": {
+            "EntityDamage": 10.0,
+            "EntityDamageRadius": 2,
+            "EntityDamageFalloff": 0
+          }
+        }
+      ]
+    },
+    "Fireball_Impact_1": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Impact_Base",
+          "Config": {
+            "EntityDamage": 20.0,
+            "EntityDamageRadius": 3,
+            "EntityDamageFalloff": 0
+          }
+        }
+      ]
+    },
+    "Fireball_Impact_2": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Impact_Base",
+          "Config": {
+            "EntityDamage": 30.0,
+            "EntityDamageRadius": 4,
+            "EntityDamageFalloff": 0
+          },
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Explosion_Medium",
+                "TargetEntityPart": "Entity",
+                "Scale": 1,
+                "PositionOffset": {
+                  "Y": -0.5
+                }
+              }
+            ]
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    "Fireball_Impact_3": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Impact_Base",
+          "Config": {
+            "EntityDamage": 40.0,
+            "EntityDamageRadius": 5,
+            "EntityDamageFalloff": 0
+          },
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Explosion_Big",
+                "TargetEntityPart": "Entity",
+                "Scale": 1,
+                "PositionOffset": {
+                  "Y": -0.5
+                }
+              }
+            ]
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    "Flamethrower_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Secondary_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Fire": 12
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Direction": {
+                "X": 0,
+                "Y": 2.0,
+                "Z": -3.0
+              },
+              "Force": 8.0,
+              "VelocityType": "Add"
+            },
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Sword_Charged"
+              }
+            ]
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    "Fire_Trap_Config": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Stick_Fire_Spawn_Trap",
+          "MaxPlacementDistance": 20,
+          "Config": {
+            "LiveDuration": 5,
+            "Model": "Deployable_Fire_Trap",
+            "ModelPreview": "Deployable_Fire_Trap_Preview",
+            "StartRadius": 1,
+            "EndRadius": 5,
+            "Height": 2,
+            "RadiusChangeTime": 4,
+            "DamageInterval": 1,
+            "DamageAmount": 0,
+            "DamageCause": "Fire",
+            "ApplyEffects": [
+              "Flame_Staff_Burn"
+            ],
+            "DeploySoundEventId": "SFX_Staff_Flame_Trap_Deploy",
+            "DespawnSoundEventId": "SFX_Staff_Flame_Trap_Despawn",
+            "AmbientSoundEventId": "SFX_Staff_Flame_Trap_Loop"
+          }
+        }
+      ]
+    }
+  },
+  "Weapon": {
+    "EntityStatsToClear": [
+      "MagicCharges",
+      "SignatureEnergy"
+    ],
+    "StatModifiers": {
+      "MagicCharges": [
+        {
+          "Amount": 4,
+          "CalculationType": "Additive"
+        }
+      ],
+      "SignatureEnergy": [
+        {
+          "Amount": 10,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "ItemAppearanceConditions": {
+    "MagicCharges": [
+      {
+        "Condition": [
+          4,
+          4
+        ],
+        "Particles": [
+          {
+            "TargetNodeName": "Attachment_Spin1",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin2",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin3",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin4",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          }
+        ]
+      },
+      {
+        "Condition": [
+          3,
+          3
+        ],
+        "Particles": [
+          {
+            "TargetNodeName": "Attachment_Spin1",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin2",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin3",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          }
+        ]
+      },
+      {
+        "Condition": [
+          2,
+          2
+        ],
+        "Particles": [
+          {
+            "TargetNodeName": "Attachment_Spin1",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          },
+          {
+            "TargetNodeName": "Attachment_Spin2",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          }
+        ]
+      },
+      {
+        "Condition": [
+          1,
+          1
+        ],
+        "Particles": [
+          {
+            "TargetNodeName": "Attachment_Spin1",
+            "SystemId": "Torch_Fire",
+            "Scale": 0.2
+          }
+        ]
+      }
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Magic"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood",
+  "MaxDurability": 300,
+  "DurabilityLossOnHit": 0.5
+}

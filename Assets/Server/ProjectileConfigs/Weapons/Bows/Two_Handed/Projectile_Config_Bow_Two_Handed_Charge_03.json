@@ -1,0 +1,36 @@
+{
+  "Parent": "Projectile_Config_Arrow_Two_Handed_Bow",
+  "LaunchForce": 24,
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Parent": "Bow_Two_Handed_Projectile_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 6
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 5
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1.08
+            }
+          ]
+        },
+        "Bow_Two_Handed_Projectile_Damage_End"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        "Bow_Two_Handed_Projectile_Miss",
+        "Bow_Two_Handed_Projectile_Miss_End"
+      ]
+    }
+  }
+}

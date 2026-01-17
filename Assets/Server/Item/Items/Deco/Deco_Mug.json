@@ -1,0 +1,183 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Deco_Mug.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Deco_Mug.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Planks",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Misc"
+        ]
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Root_Mug_Fill"
+  },
+  "Consumable": true,
+  "Utility": {
+    "Compatible": true
+  },
+  "State": {
+    "Filled_Water": {
+      "Variant":  true,
+      "TranslationProperties": {
+        "Name": "server.items.Deco_Mug_Water.name"
+      },
+      "Recipe": null,
+      "Consumable": true,
+      "MaxDurability": 3,
+      "MaxStack": 1,
+      "BlockType": {
+        "$TODO": "Parent: Container_Crude_Mug",
+        "CustomModelTexture": [
+          {
+            "Weight": 1,
+            "Texture": "Blocks/Miscellaneous/Mug_Texture.png"
+          }
+        ],
+        "$Comment": "FOLLOWING PROPERTIES DUPLICATED BECAUSE OF SERVER BUG",
+        "DrawType": "Model",
+        "Opacity": "Transparent",
+        "CustomModel": "Blocks/Miscellaneous/Mug.blockymodel",
+        "CustomModelScale": 0.5,
+        "CustomModelAnimation": "Blocks/Miscellaneous/Mug_Full.blockyanim",
+        "HitboxType": "Plant_Small",
+        "Flags": {
+          "IsStackable": false
+        },
+        "RandomRotation": "YawStep1",
+        "BlockSoundSetId": "Wood",
+        "Gathering": {
+          "Harvest": {},
+          "Soft": {}
+        }
+      },
+      "Scale": 2,
+      "IconProperties": {
+        "Scale": 0.8,
+        "Rotation": [
+          22.5,
+          278.0,
+          328.0
+        ],
+        "Translation": [
+          0.0,
+          -9.0
+        ]
+      },
+      "Icon": "Icons/ItemsGenerated/Deco_Mug_Water.png",
+      "Interactions": {
+        "Secondary": "Root_Secondary_Consume_Drink"
+      },
+      "InteractionVars": {
+        "Effect": {
+          "Interactions": [
+            {
+              "Type": "ApplyEffect",
+              "EffectId": "Food_Health_Restore_Small"
+            }
+          ]
+        },
+        "ConsumeSFX": {
+          "Interactions": [
+            {
+              "Parent": "Consume_SFX",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+              }
+            }
+          ]
+        },
+        "ConsumedSFX": {
+          "Interactions": [
+            {
+              "Parent": "Consume_SFX",
+              "Effects": {
+                "LocalSoundEventId": "SFX_WATER_MoveOut"
+              }
+            }
+          ]
+        },
+        "DurabilityModify": {
+          "Interactions": [
+            {
+              "Type": "ModifyInventory",
+              "AdjustHeldItemDurability": -1,
+              "BrokenItem": "Deco_Mug"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Mug.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Miscellaneous/Mug_Texture.png"
+      }
+    ],
+    "CustomModelScale": 0.7,
+    "HitboxType": "Plant_Small",
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Soft": {}
+    },
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Wood"
+  },
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "Scale": 1.43,
+  "IconProperties": {
+    "Scale": 0.8,
+    "Rotation": [
+      22.5,
+      278.0,
+      328.0
+    ],
+    "Translation": [
+      0.0,
+      -9.0
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

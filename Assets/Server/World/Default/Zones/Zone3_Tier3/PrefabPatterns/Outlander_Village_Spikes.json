@@ -1,0 +1,54 @@
+{
+  "GridGenerator": {
+    "Density": 0.75,
+    "Scale": 1,
+    "Jitter": 0
+  },
+  "HeightThreshold": {
+    "Positions": [112, 113, 154, 155],
+    "Values": [0, 1, 1, 0]
+  },
+  "NoiseMask": {
+    "Type": "DISTORTED",
+    "Noise": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone3.NoiseMasks.Faction_Outlanders"
+        }
+      ],
+      "Formula": "INVERTED",
+      "Normalize": [0, 0.8]
+    },
+    "Randomizer": {
+      "Generators": [
+        {
+          "Seed": "Grasslands-River-Noise",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 3,
+          "Persistence": 0.6,
+          "Scale": 0.006,
+          "Amplitude": 20
+        }
+      ]
+    },
+    "Threshold": [0.795, 0.8]
+  },
+  "Displacement": [-8, -2],
+  "Mask": {
+    "Default": ["*", "!Rock_Shale", "!Rock_Basalt", "!Rock_Slate"],
+    "Specific": [
+      {
+        "Block": ["Wood_Fir_Branch_Long", "Survival_Trap_Spike_Wood_Large"],
+        "Rule": ["Empty", "!*"]
+      }
+    ]
+  },
+  "Parent": [
+    "Soil_Snow",
+    "Soil_Dirt_Cold",
+    "Soil_Dirt_Poisoned",
+    "Rock_Shale",
+    "Rock_Slate"
+  ]
+}

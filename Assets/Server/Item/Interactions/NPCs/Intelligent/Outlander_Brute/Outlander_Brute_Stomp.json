@@ -1,0 +1,58 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Outlander_Brute_Default",
+    "ItemAnimationId": "Stomp"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.417,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.333,
+            "Selector": {
+              "Id": "AOECircle",
+              "Range": 4
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.084
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.417,
+            "Effects": {
+              "WorldSoundEventId": "SFX_Light_Melee_T2_Swing"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

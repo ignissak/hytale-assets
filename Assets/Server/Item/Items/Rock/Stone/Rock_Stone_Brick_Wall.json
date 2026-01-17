@@ -1,0 +1,104 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Stone_Brick_Wall.name"
+  },
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Icon": "Icons/ItemsGenerated/Rock_Stone_Brick_Wall.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "PlayerAnimationsId": "Block",
+  "Set": "Rock_Stone_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Rock_Stone_Brick",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick_Stone.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "HitboxType": "Fence",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "VariantRotation": "Wall",
+    "BlockParticleSetId": "Stone",
+    "Supporting": {
+      "Down": [
+        {
+          "FaceType": "Wall"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Wall"
+        }
+      ]
+    },
+    "ParticleColor": "#737055",
+    "BlockSoundSetId": "Stone",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick_Stone.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Stone_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Stone_Brick_Wall",
+        "Corner": "*Rock_Stone_Brick_Wall_State_Definitions_Corner"
+      }
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Stone"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

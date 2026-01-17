@@ -1,0 +1,44 @@
+{
+  "Conditions": {
+    "Walls": {
+      "Min": 0,
+      "Max": 3
+    },
+    "Altitude": {
+      "Min": 0,
+      "Max": 200
+    },
+    "DayTime": {
+      "Min": 19,
+      "Max": 5
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Equals",
+          "Tag": "Plains"
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    }
+  },
+  "AmbientBed": {
+    "Track": "Sounds/Environments/Zone1/Environments/Plains/Night/Z1_Plains_Night_Stereo_LOOP.ogg",
+    "Volume": -9.0
+  }
+}

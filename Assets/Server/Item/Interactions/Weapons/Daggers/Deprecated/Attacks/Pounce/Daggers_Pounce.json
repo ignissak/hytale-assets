@@ -1,0 +1,107 @@
+{
+  "Type": "ApplyForce",
+  "Effects": {
+    "ItemAnimationId": "Pounce",
+    "MovementEffects": {
+      "DisableForward": true,
+      "DisableBackward": true
+    },
+    "Trails": [
+      {
+        "PositionOffset": {
+          "X": 0.5,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Small_Charged"
+      },
+      {
+        "PositionOffset": {
+          "X": 0.5,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Small_Charged",
+        "TargetEntityPart": "SecondaryItem"
+      }
+    ],
+    "FirstPersonParticles": [
+      {
+        "SystemId": "Daggers_Pounce_FP",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Roll": 90.0
+        },
+        "PositionOffset": {
+          "X": 0.3
+        }
+      },
+      {
+        "SystemId": "Daggers_Pounce_FP",
+        "TargetNodeName": "Handle",
+        "RotationOffset": {
+          "Roll": 90.0
+        },
+        "PositionOffset": {
+          "X": 0.3
+        },
+        "TargetEntityPart": "SecondaryItem"
+      }
+    ],
+    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local",
+    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+    "CameraEffect": "Daggers_Jump"
+  },
+  "ChangeVelocityType": "Set",
+  "WaitForGround": true,
+  "WaitForCollision": true,
+  "Force": 15.0,
+  "RaycastHeightOffset": 1.8,
+  "RaycastDistance": 2,
+  "VelocityConfig": {
+    "AirResistance": 0.995,
+    "AirResistanceMax": 0.96,
+    "GroundResistance": 0.94,
+    "GroundResistanceMax": 0.82,
+    "Threshold": 3.0,
+    "Style": "Exp"
+  },
+  "GroundCheckDelay": 0.4,
+  "RunTime": 10,
+  "GroundNext": "Daggers_Pounce_Sweep",
+  "CollisionNext": "Daggers_Pounce_Stab",
+  "Forces": [
+    {
+      "Direction": {
+        "Z": -1.0,
+        "Y": 0.0
+      },
+      "AdjustVertical": true,
+      "Force": 11.0
+    },
+    {
+      "Direction": {
+        "Y": 1.0
+      },
+      "AdjustVertical": false,
+      "Force": 6.0
+    }
+  ],
+  "Next": "Daggers_Pounce_Sweep",
+  "VerticalClamp": [
+    -60.0,
+    90.0
+  ]
+}

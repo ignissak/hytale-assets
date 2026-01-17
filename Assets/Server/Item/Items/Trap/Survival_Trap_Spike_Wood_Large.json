@@ -1,0 +1,87 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Survival_Trap_Spike_Wood_Large.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Trap_Spike_Wood_Large.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "HitboxType": "Trap_Spike",
+    "CustomModel": "Blocks/Tinkering/Traps/Spike_Large.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Tinkering/Traps/Spike_Large_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {},
+    "RandomRotation": "YawStep90",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Branch",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        }
+      ]
+    },
+    "ParticleColor": "#bd9f6a",
+    "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "SlowEffect",
+          "Cooldown": 1
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "ApplyEffect",
+              "EffectId": {
+                "Locale": "spikes",
+                "Duration": 0.1,
+                "OverlapBehavior": "Overwrite",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 10
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.91,
+    "Translation": [
+      0,
+      -8.1
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

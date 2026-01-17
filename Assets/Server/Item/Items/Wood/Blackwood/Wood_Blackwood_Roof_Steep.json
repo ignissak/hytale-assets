@@ -1,0 +1,131 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Blackwood_Roof_Steep.name"
+  },
+  "Set": "Wood_Blackwood_Planks",
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Roofs/Slope_Steep.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Blackwood.png",
+        "Weight": 5
+      },
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Blackwood_02.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Wood_Blackwood_Roof_Steep",
+        "GatherType": "Woods"
+      }
+    },
+    "ParticleColor": "#443f37",
+    "State": {
+      "Definitions": {
+        "Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Right.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Left.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Inverted_Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Roofs/Slope_Textures/Blackwood.png",
+              "Weight": 1
+            }
+          ]
+        },
+        "Inverted_Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          },
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Roofs/Slope_Textures/Blackwood.png",
+              "Weight": 1
+            }
+          ]
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "Roof",
+      "Regular": {
+        "Straight": {
+          "State": "default"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left"
+        }
+      },
+      "MaterialName": "Roof_Steep"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Wood_Blackwood_Roof_Steep.png",
+  "Tags": {
+    "Type": [
+      "Wood"
+    ],
+    "Family": [
+      "Blackwood"
+    ]
+  },
+  "Parent": "Wood_Softwood_Roof_Steep",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Blackwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Roof"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  }
+}

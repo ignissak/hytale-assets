@@ -1,0 +1,60 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MinHover": 0.5,
+      "MaxHover": 1,
+      "HoverFreq": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 20,
+            "Once": false,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 45
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 1, 1 ],
+              "Action": {
+                "Type": "Spawn",
+                "FanOut": true,
+                "SpawnDirection": 0,
+                "SpawnAngle": 180,
+                "DistanceRange": [ 1, 1 ],
+                "CountRange": [ 5, 5 ],
+                "DelayRange": [ 0.1, 0.1 ],
+                "Kind": "Test_Walk_Stay"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Spawn_Action.name"
+}

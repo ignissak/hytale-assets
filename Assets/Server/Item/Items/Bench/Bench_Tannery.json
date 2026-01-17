@@ -1,0 +1,150 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Bench_Tannery.name",
+    "Description": "server.items.Bench_Tannery.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Bench_Tannery.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Semitransparent",
+    "CustomModel": "Blocks/Benches/Tannery.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Tannery_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Bench_Tannery",
+    "VariantRotation": "NESW",
+    "Bench": {
+      "Type": "Processing",
+      "Input": [
+        {
+          "FilterValidIngredients": true
+        },
+        {
+          "FilterValidIngredients": true
+        }
+      ],
+      "OutputSlotsCount": 2,
+      "LocalOpenSoundEventId": "SFX_Lumbermill_Bench_Open",
+      "LocalCloseSoundEventId": "SFX_Lumbermill_Bench_Close",
+      "BenchUpgradeSoundEventId": "SFX_Workbench_Upgrade_Start_Default",
+      "BenchUpgradeCompletedSoundEventId": "SFX_Workbench_Upgrade_Complete_Default",
+      "Id": "Tannery",
+      "TierLevels": [
+        {
+          "UpgradeRequirement": {
+            "Material": [
+              {
+                "ItemId": "Ingredient_Leather_Light",
+                "Quantity": 5
+              },
+              {
+                "ItemId": "Ingredient_Leather_Medium",
+                "Quantity": 5
+              },
+              {
+                "ItemId": "Ingredient_Leather_Heavy",
+                "Quantity": 5
+              },
+              {
+                "ItemId": "Ingredient_Chitin_Sturdy",
+                "Quantity": 5
+              }
+            ],
+            "TimeSeconds": 3
+          },
+          "CraftingTimeReductionModifier": 0.0
+        },
+        {
+          "CraftingTimeReductionModifier": 0.4,
+          "ExtraInputSlot": 1,
+          "ExtraOutputSlot": 2
+        }
+      ]
+    },
+    "State": {
+      "Id": "processingBench",
+      "Definitions": {
+        "Processing": {
+          "Looping": true,
+          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
+        },
+        "ProcessCompleted": {
+          "Looping": true,
+          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#63422b",
+    "BlockSoundSetId": "Wood",
+    "Interactions": {
+      "Use": "Open_Processing_Bench"
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      11.4,
+      -9
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "Quantity": 6,
+        "ResourceTypeId": "Wood_Trunk"
+      },
+      {
+        "Quantity": 3,
+        "ResourceTypeId": "Rock"
+      },
+      {
+        "ItemId": "Ingredient_Hide_Light",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Crafting"
+        ]
+      }
+    ]
+  },
+  "MaxStack": 1,
+  "ItemLevel": 3,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

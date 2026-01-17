@@ -1,0 +1,73 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.1,
+  "Effects": {
+    "CameraEffect": "Mace_Swing_Horizontal",
+    "Trails": [
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Default"
+      },
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 90,
+          "Roll": 0,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Default"
+      }
+    ]
+  },
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToLeft",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.75,
+    "ExtendBottom": 0.75,
+    "StartDistance": 0.1,
+    "EndDistance": 3,
+    "Length": 120,
+    "RollOffset": 0,
+    "YawStartOffset": -60
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Swing_Left_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Mace_Primary_Swing_Left_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.417
+  }
+}

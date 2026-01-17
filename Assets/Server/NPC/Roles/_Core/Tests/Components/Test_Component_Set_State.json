@@ -1,0 +1,41 @@
+{
+  "Class": "Instruction",
+  "TestType": "Normal",
+  "Parameters": {
+    "_ImportStates": [ "Main", "Test" ],
+    "Delay": {
+      "Value": [ 3, 5 ],
+      "Description": "The amount of time to wait before transitioning"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Player",
+          "Range": 10
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "Delay" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Main"
+            }
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_State_Timeout",
+        "Modify": {
+          "_ExportStates": [ "Test" ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

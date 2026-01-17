@@ -1,0 +1,119 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Club_Mithril.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Epic",
+  "ItemLevel": 50,
+  "Model": "Items/Weapons/Club/Mithril.blockymodel",
+  "Texture": "Items/Weapons/Club/Mithril_Texture.png",
+  "PlayerAnimationsId": "Club",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Club_Attack"
+  },
+  "InteractionVars": {
+    "Club_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 75
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Swing"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 75
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Steel_Impact"
+          }
+        }
+      ]
+    },
+    "Club_Swing_Down_Charged_Effect": "Club_Swing_Down_Charged_Effect",
+    "Club_Swing_Down_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Club_Swing_Down_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 150
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Club_Wood_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "IconProperties": {
+    "Scale": 0.37,
+    "Translation": [
+      -34,
+      -34
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Club_Mithril.png",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Club"
+    ]
+  },
+  "MaxDurability": 160,
+  "DurabilityLossOnHit": 0.56,
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

@@ -1,0 +1,61 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Pig_Default",
+    "ItemAnimationId": "RamImpact"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.5,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 1,
+              "ExtendBottom": 1,
+              "StartDistance": 0.1,
+              "EndDistance": 2,
+              "Length": 30,
+              "RollOffset": -90,
+              "YawStartOffset": -15
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.25,
+            "Effects": {
+              "WorldSoundEventId": "SFX_NPC_Unarmed_Swing"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

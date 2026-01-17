@@ -1,0 +1,70 @@
+{
+  "Type": "Generic",
+  "$Comment": "MotionControllerMove, MotionControllerSteer",
+  "Appearance": "Crow",
+  "TestType": "Normal",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    },
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MaxClimbAngle": 45,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 8,
+      "MaxHeightOverGround": 20,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "MotionController",
+            "MotionController": "Walk"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5
+              },
+              "BodyMotion": {
+                "Type": "TakeOff",
+                "JumpSpeed": 5
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 20
+          },
+          "BodyMotion": {
+            "Type": "Flee"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_TakeOff.name"
+}

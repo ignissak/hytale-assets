@@ -1,0 +1,63 @@
+{
+  "GridGenerator": {
+    "Seed": "Snowlands-Pattern-Monuments-Tier-1",
+    "Density": [0, 0.35],
+    "Scale": 0.004,
+    "Jitter": 0.6
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+    "Noise": [
+      {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.River"
+              }
+            ],
+            "Formula": "INVERTED_RIDGED_SQRT"
+          },
+          {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Shared.Heightmaps.Base"
+              }
+            ],
+            "Formula": "INVERTED",
+            "Normalize": [0.35, 0.55]
+          }
+        ],
+        "Factors": [0.6, 0.4]
+      },
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Shared.Grids.Monuments_Encounter"
+          }
+        ],
+        "Normalize": [0.4, 0.5]
+      }
+    ],
+    "Threshold": [0, 0.8]
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115, 170, 171],
+    "Values": [0, 1, 1, 0]
+  },
+  "Mask": {
+    "Default": ["*", "!Rock_Ice", "!Rock_Ice_Permafrost"],
+    "Specific": [
+      {
+        "Block": ["Furniture_Kweebec_Ladder"],
+        "Rule": ["Empty", "!*"]
+      }
+    ]
+  },
+  "MaxSize": 100,
+  "FitHeightmap": true
+}

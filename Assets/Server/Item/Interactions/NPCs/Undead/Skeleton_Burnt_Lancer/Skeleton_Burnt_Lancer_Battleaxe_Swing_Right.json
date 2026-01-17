@@ -1,0 +1,82 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Skeleton_Battleaxe",
+    "ItemAnimationId": "SwingRight"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.4,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.15,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 3,
+              "Length": 90,
+              "RollOffset": 0,
+              "YawStartOffset": -45
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.45
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.233,
+            "Effects": {
+              "Trails": [
+                {
+                  "PositionOffset": {
+                    "X": 0.8,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "RotationOffset": {
+                    "Pitch": 0,
+                    "Roll": 90,
+                    "Yaw": 0
+                  },
+                  "TargetNodeName": "Handle",
+                  "TrailId": "Medium_Default"
+                }
+              ],
+              "WorldSoundEventId": "SFX_Light_Melee_T2_Swing"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

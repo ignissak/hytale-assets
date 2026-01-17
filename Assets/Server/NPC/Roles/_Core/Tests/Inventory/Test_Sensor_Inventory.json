@@ -1,0 +1,153 @@
+{
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Not",
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Inventory",
+                  "CountRange": [ 0, 100 ],
+                  "FreeSlotRange": [ 0, 0 ]
+                }
+              ]
+            }
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "DroppedItem",
+                "Range": 5
+              },
+              "Actions": [
+                {
+                  "Type": "PickUpItem",
+                  "Hoover": true
+                }
+              ],
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Inventory",
+                "CountRange": [ 0, 100 ],
+                "FreeSlotRange": [ 3, 3 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "3 slots remaining"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Inventory",
+                "CountRange": [ 0, 100 ],
+                "FreeSlotRange": [ 2, 2 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "2 slots remaining"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Inventory",
+                "CountRange": [ 0, 100 ],
+                "FreeSlotRange": [ 1, 1 ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "1 slot remaining"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Inventory",
+                    "Items": [ "Weapon*" ],
+                    "CountRange": [ 2, 100 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "2+ weapons"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Full not 2+ weapons"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_Inventory.name"
+}

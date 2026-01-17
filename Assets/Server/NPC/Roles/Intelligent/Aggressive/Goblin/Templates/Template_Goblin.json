@@ -1,0 +1,191 @@
+{
+  "Type": "Abstract",
+  "StartState": "Idle",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Goblin_Scrapper",
+      "Description": "Model to be used"
+    },
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "DropList": {
+      "Value": "Empty",
+      "Description": "Drop Items"
+    },
+    "IdleComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Goblin",
+      "Description": "The component to use for idle state"
+    },
+    "IdleMotionComponent": {
+      "Value": "Component_Instruction_Intelligent_Idle_Motion_Wander",
+      "Description": "The component that controls how the NPC moves during idle state"
+    },
+    "MaxSpeed": {
+      "Value": 10,
+      "Description": "Maximum walking speed"
+    },
+    "Weapons": {
+      "Value": [ "Weapon_Club_Scrap" ],
+      "Description": "NPC Weapons"
+    },
+    "AttitudeGroup": {
+      "Value": "Empty",
+      "Description": "This NPCs attitude group"
+    },
+    "DefaultPlayerAttitude": {
+      "Value": "Hostile",
+      "Description": "Default attitude towards players"
+    },
+    "DisableDamageGroups": {
+      "Value": [ "Self" ],
+      "Description": "Groups not to take damage from"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Appearance": { "Compute": "Appearance" },
+  "DropList": { "Compute": "DropList" },
+  "DisableDamageGroups": { "Compute": "DisableDamageGroups" },
+  "OffHandSlots": 1,
+  "DefaultNPCAttitude": "Ignore",
+  "DefaultPlayerAttitude": { "Compute": "DefaultPlayerAttitude" },
+  "AttitudeGroup": { "Compute": "AttitudeGroup" },
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 10,
+      "RunThreshold": 0.3,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 10,
+      "AscentAnimationType": "Climb",
+      "JumpHeight": 2,
+      "MaxClimbHeight": 6
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Reference": { "Compute": "IdleComponent" },
+                  "Interfaces": [ "Hytale.Instruction.Intelligent.Idle" ],
+                  "Modify": {
+                    "_ExportStates": [ "Alerted", "Search", "Chase" ],
+                    "ViewRange": { "Compute": "ViewRange" },
+                    "ViewSector": { "Compute": "ViewSector" },
+                    "HearingRange": { "Compute": "HearingRange" },
+                    "AlertedRange": { "Compute": "AlertedRange" },
+                    "MotionComponent": { "Compute": "IdleMotionComponent" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Alerted"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Chase"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Search"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Actions": [
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

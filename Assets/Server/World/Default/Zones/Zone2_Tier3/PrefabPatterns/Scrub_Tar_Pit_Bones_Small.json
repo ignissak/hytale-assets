@@ -1,0 +1,44 @@
+{
+  "GridGenerator": {
+		"Seed": "Scrub_Tar_Pit_Bones",
+    "Density": [0, 0.35],
+    "Scale": 0.077,
+    "Jitter": 0.7
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+				"Seed": "Drylands-Pattern-Monuments-Tier-3",
+				"NoiseType": "CELL",
+				"CellMode": "DISTANCE",
+				"Formula": "INVERTED",
+				"DistanceRange": [1, 5],
+				"Density": [0.625, 0.8125],
+				"Jitter": 0.6,
+				"Scale": 0.0050012
+      },
+      {
+				"Seed": "Tar_Pits_Noise",
+				"NoiseType": "DISTANCE",
+				"Distance2Mode": "DIV",
+				"DistanceMode": "NATURAL",
+				"Formula": "INVERTED",
+				"Scale": 0.035
+      }
+    ],
+    "Factors": [0.8, 0.2],
+		"Normalize": [-0.35, 1],
+    "Threshold": [[0, 0.35], [0.5, 0.75]]
+  },
+  "Mask": {
+    "Default": ["*"],
+    "Specific": [
+      {
+        "Block": ["Empty", "Deco_Bone_Ribs", "Deco_Bone_Ribs_Long", "Deco_Bone_Spine"],
+        "Rule": ["Empty", "Plant_Grass_Sharp_Tall", "Plant_Grass_Sharp", "Plant_Grass_Dry_Tall", "Plant_Grass_Arid", "Deco_Bone_Skulls", "Deco_Bone_Pile", "Rubble_Sandstone_Red", "Rubble_Sandstone_Red_Medium", "Plant_Bramble_Dry_Magic", "Plant_Crop_Mushroom_Glowing_Red", "Plant_Flower_Common_Poisoned"]
+      }
+    ]
+  },
+  "FitHeightmap": true
+}

@@ -1,0 +1,153 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Ancient_Torch.name"
+  },
+  "PlayerAnimationsId": "Torch",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Ancient",
+  "Utility": {
+    "Usable": true
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Ancient_Torch.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.45,
+    "Translation": [
+      0,
+      -10.8
+    ]
+  },
+  "Interactions": {
+    "Primary": "Root_Unarmed_Attack_Swing_Left",
+    "Secondary": "Block_Secondary"
+  },
+  "InteractionVars": {
+    "Torch_Swing_Left_Effect": "Torch_Swing_Left_Effect",
+    "Torch_Swing_Right_Effect": "Torch_Swing_Right_Effect",
+    "Torch_Swing_Left_Damage": "Torch_Swing_Left_Damage",
+    "Torch_Swing_Right_Damage": "Torch_Swing_Right_Damage"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "BlockSoundSetId": "Torch",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Ancient/Torch.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Ancient/Torch_Texture.png"
+      }
+    ],
+    "CustomModelScale": 0.85,
+    "Light": {
+      "Radius": 0,
+      "Color": "#ba9"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        }
+      ]
+    },
+    "HitboxType": "Torch",
+    "MovementSettings": {},
+    "Particles": [
+      {
+        "SystemId": "Torch_Fire",
+        "TargetNodeName": "Flame",
+        "Scale": 0.55,
+        "PositionOffset": {
+          "Y": -0.18
+        }
+      }
+    ],
+    "Material": "Empty",
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_On_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Items/Torch/Torch_Off.blockyanim"
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Torch_Default_Loop",
+    "Looping": true,
+    "ParticleColor": "#484023",
+    "VariantRotation": "NESW"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Scale": 1.6,
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Ancient"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

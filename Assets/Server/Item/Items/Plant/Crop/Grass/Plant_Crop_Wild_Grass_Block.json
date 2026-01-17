@@ -1,0 +1,207 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Wild_Grass_Stage_0.name"
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/SmallBlack02.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Blocks/Foliage/Plants/Cross_17px.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Cross_10px_Textures/Grass_Sharp_Short_GS.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Plant_Small",
+          "Effect": [
+            "WindAttached"
+          ],
+          "BiomeTint": 100
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Grass/Dense_Tall_3Rows.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/Dense_Tall_4Rows_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Wild_Grass_2_Harvest"
+            },
+            "Soft": {
+              "DropList": "Wild_Grass_2"
+            }
+          },
+          "HitboxType": "Plant_Small",
+          "Effect": [
+            "WindAttached"
+          ],
+          "BiomeTint": 100
+        },
+        "Stage3": {
+          "CustomModel": "Blocks/Foliage/Grass/Dense_VeryTall_4Rows.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Grass/Dense_VeryTall_4Rows_Sharp.png",
+              "Weight": 1
+            }
+          ],
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Wild_Grass_3_Harvest"
+            },
+            "Soft": {
+              "DropList": "Wild_Grass_3"
+            }
+          },
+          "HitboxType": "Plant_Small",
+          "Effect": [
+            "WindAttached"
+          ],
+          "BiomeTint": 100
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 1000,
+              "Max": 3000
+            },
+            "State": "default"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 1000,
+              "Max": 3000
+            },
+            "State": "Stage1"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 1000,
+              "Max": 3000
+            },
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "State": "Stage3"
+          }
+        ],
+        "Harvested": [
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 1000,
+              "Max": 3000
+            },
+            "State": "Stage1"
+          },
+          {
+            "Type": "BlockState",
+            "Duration": {
+              "Min": 1000,
+              "Max": 3000
+            },
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "State": "Stage3"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Wild_Grass_0"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "CustomModelScale": 0.9,
+    "ParticleColor": "#aa946e",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 1.115,
+    "Translation": [
+      1.2,
+      -4.2
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Lettuce_Block.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

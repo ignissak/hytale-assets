@@ -1,0 +1,86 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.25,
+  "Selector": {
+    "Id": "Stab",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.75,
+    "ExtendBottom": 0.75,
+    "ExtendLeft": 0.75,
+    "ExtendRight": 0.75,
+    "StartDistance": 0.1,
+    "EndDistance": 2.5
+  },
+  "Effects": {
+    "Particles": [
+      {
+        "PositionOffset": {
+          "X": -1.0,
+          "Y": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 0,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "SystemId": "Daggers_Signature_Dash",
+        "TargetEntityPart": "PrimaryItem",
+        "Scale": 1.0
+      },
+      {
+        "PositionOffset": {
+          "X": -1.0,
+          "Y": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 0,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "SystemId": "Daggers_Signature_Dash",
+        "TargetEntityPart": "SecondaryItem",
+        "Scale": 1.0
+      },
+      {
+        "SystemId": "Daggers_Lunge_Trail",
+        "TargetEntityPart": "Entity",
+        "PositionOffset": {
+          "Y": 0.5,
+          "Z": 0.5
+        },
+        "TargetNodeName": "Hip",
+        "RotationOffset": {
+          "Yaw": -90.0
+        }
+      }
+    ],
+    "CameraEffect": "Daggers_Stab"
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.1
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Razorstrike_Lunge_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Signature_Razorstrike_Lunge_Damage"
+          ]
+        }
+      }
+    ]
+  }
+}

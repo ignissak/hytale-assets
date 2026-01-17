@@ -1,0 +1,140 @@
+{
+  "Parent": "Template_Weapon_Battleaxe",
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Battleaxe_Copper.name"
+  },
+  "Model": "Items/Weapons/Battleaxe/Copper.blockymodel",
+  "Texture": "Items/Weapons/Battleaxe/Copper_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Battleaxe_Copper.png",
+  "Quality": "Common",
+  "ItemLevel": 10,
+  "Recipe": {
+    "TimeSeconds": 3,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Copper",
+        "Quantity": 6
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Battleaxe"
+        ],
+        "Id": "Weapon_Bench"
+      }
+    ]
+  },
+  "InteractionVars": {
+    "Swing_Down_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Primary_Swing_Down_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 29
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T1_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T1_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Down_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Primary_Swing_Down_Left_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 15
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T1_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T1_Impact"
+          }
+        }
+      ]
+    },
+    "Swing_Down_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Primary_Swing_Down_Right_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 18
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T1_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T1_Impact"
+          }
+        }
+      ]
+    },
+    "Downstrike_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Primary_Downstrike_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 23
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 2
+            }
+          ],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T1_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T1_Impact"
+          }
+        }
+      ]
+    },
+    "Signature_Whirlwind_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Signature_Whirlwind_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 11
+            }
+          },
+          "EntityStatsOnHit": [],
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Battleaxe_T1_Impact",
+            "LocalSoundEventId": "SFX_Battleaxe_T1_Impact"
+          }
+        }
+      ]
+    },
+    "Guard_Wield": {
+      "Interactions": [
+        {
+          "Parent": "Weapon_Battleaxe_Secondary_Guard_Wield",
+          "StaminaCost": {
+            "Value": 8.89,
+            "CostType": "Damage"
+          }
+        }
+      ]
+    }
+  },
+  "MaxDurability": 100,
+  "DurabilityLossOnHit": 0.45
+}

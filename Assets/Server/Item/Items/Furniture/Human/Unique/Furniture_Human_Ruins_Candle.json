@@ -1,0 +1,121 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Human_Ruins_Candle.name"
+  },
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Human_Ruins",
+  "IconProperties": {
+    "Rotation": [
+      25,
+      0,
+      0
+    ],
+    "Scale": 0.5,
+    "Translation": [
+      0,
+      -21.6
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Metal",
+    "CustomModel": "Blocks/Decorative_Sets/Human_Ruins/Candle.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Human_Ruins/Candle_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Torch_Large",
+    "Light": {
+      "Color": "#baa",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Looping": true,
+    "Particles": [
+      {
+        "SystemId": "Candle_Fire",
+        "TargetNodeName": "Flame-Emitter",
+        "Color": "#ffcd10",
+        "Scale": 1.0
+      }
+    ],
+    "InteractionHint": "server.interactionHints.turnoff",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Candle_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Candle_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "AmbientSoundEventId": "SFX_Candle_Default_Loop",
+    "ParticleColor": "#63412c"
+  },
+  "Model": "Blocks/Decorative_Sets/Tavern/Lantern.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Tavern/Lantern_Texture.png",
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Icon": "Icons/ItemsGenerated/Furniture_Human_Ruins_Candle.png",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Human"
+    ]
+  },
+  "Scale": 1.5,
+  "Utility": {
+    "Usable": true
+  },
+  "PlayerAnimationsId": "Torch",
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

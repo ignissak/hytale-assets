@@ -1,0 +1,44 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "PounceSweep",
+    "LocalSoundEventId": "SFX_Daggers_T2_Swing_Double_Local",
+    "WorldSoundEventId": "SFX_Daggers_T2_Swing_Double",
+    "CameraEffect": "Daggers_Land"
+  },
+  "RunTime": 0.133,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "Var": "Pounce_Sweep_Selector",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Daggers_Primary_Pounce_Sweep_Selector"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "Var": "Pounce_Sweep_Effect",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Daggers_Primary_Pounce_Sweep_Effect"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "Type": "Generic",
+  "$Comment": "MotionControllerMove, MotionControllerSteer",
+  "Appearance": "Parrot",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    },
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 2,
+      "MaxHeightOverGround": 10,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "MotionController",
+            "MotionController": "Walk"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 5
+              },
+              "BodyMotion": {
+                "Type": "TakeOff",
+                "JumpSpeed": 1
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 6
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "StopDistance": 9
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "PlayAnimation",
+              "Slot": "Status",
+              "Animation": "Fly"
+            }
+          ]
+        },
+        {
+          "BodyMotion": {
+            "Type": "WanderInCircle",
+            "Radius": 20,
+            "RelativeSpeed": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Flee.name"
+}

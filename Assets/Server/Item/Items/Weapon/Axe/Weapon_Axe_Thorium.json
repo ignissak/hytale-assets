@@ -1,0 +1,156 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Axe_Thorium.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Axe_Thorium.png",
+  "Quality": "Rare",
+  "ItemLevel": 30,
+  "Recipe": {
+    "TimeSeconds": 4,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Thorium",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Leather_Medium",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Axe"
+        ],
+        "Id": "Weapon_Bench",
+        "RequiredTierLevel": 2
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Axe_Attack"
+  },
+  "InteractionVars": {
+    "Axe_Swing_Down_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Down_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 24
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 24
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 48
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Crude_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "Model": "Items/Weapons/Axe/Thorium.blockymodel",
+  "Texture": "Items/Weapons/Axe/Thorium_Texture.png",
+  "PlayerAnimationsId": "Axe",
+  "Utility": {
+    "Compatible": true
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -30,
+      -30
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 130,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Axe"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

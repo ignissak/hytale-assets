@@ -1,0 +1,136 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Feran_Chandelier.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Lighting"
+  ],
+  "Set": "Furniture_Feran",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Furniture_Crude_Candle",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Wood_Drywood_Planks",
+        "Quantity": 2
+      },
+      {
+        "ResourceTypeId": "Bone",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Leather_Light"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Lighting"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Feran_Chandelier.png",
+  "IconProperties": {
+    "Rotation": [
+      27.185,
+      0,
+      0
+    ],
+    "Scale": 0.385,
+    "Translation": [
+      0.7,
+      -0.5
+    ]
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Bone",
+    "CustomModel": "Blocks/Decorative_Sets/Feran/Chandelier.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Feran/Chandelier_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "Light": {
+      "Color": "#ba9",
+      "Radius": 0
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#c7b885",
+    "Support": {
+      "Up": [
+        {
+          "FaceType": "Full",
+          "Filler": [
+            {
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            }
+          ]
+        }
+      ]
+    },
+    "HitboxType": "Chandelier",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "Off": "default"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
+    "Looping": true
+  },
+  "Model": "Blocks/Decorative_Sets/Tavern/Chandelier.blockymodel",
+  "Texture": "Blocks/Decorative_Sets/Tavern/Chandelier_Texture.png",
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Feran"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

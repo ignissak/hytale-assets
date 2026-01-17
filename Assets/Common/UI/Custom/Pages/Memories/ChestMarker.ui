@@ -1,0 +1,36 @@
+$Common = "../../Common.ui";
+
+@ChestGroup = Group {
+  Anchor: (Left: 0, Bottom: 0, Width: 40, Height: 40);
+  Visible: false;
+
+  TextTooltipShowDelay: 0.1;
+  LayoutMode: Bottom;
+  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+};
+
+Group {
+  Group #ChestContainer {
+    Anchor: (Bottom: 18, Left: -2);
+
+    @ChestGroup #ChestDisabled {
+      Group {
+        Background: "MemoriesProgress/IconChestDisabled.png";
+        Anchor: (Width: 22, Height: 22, Bottom: 10);
+      }
+    }
+
+    @ChestGroup #ChestActive {
+      Group {
+        Background: "MemoriesProgress/IconChestActive.png";
+        Anchor: (Width: 22, Height: 22, Bottom: 10);
+      }
+    }
+
+    Group #Arrow {
+      Background: "MemoriesProgress/MemoriesBarArrow.png";
+      Anchor: (Left: 14, Width: 10, Height: 8, Bottom: 0);
+      Visible: false;
+    }
+  }
+}

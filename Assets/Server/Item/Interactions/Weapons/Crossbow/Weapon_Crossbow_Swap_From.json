@@ -1,0 +1,99 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Ammo": 6
+  },
+  "Next": {
+    "Type": "ModifyInventory",
+    "ItemToAdd": {
+      "Id": "Weapon_Arrow_Crude",
+      "Quantity": 6
+    },
+    "Next": {
+      "Type": "ChangeActiveSlot"
+    }
+  },
+  "Failed": {
+    "Type": "StatsCondition",
+    "Costs": {
+      "Ammo": 5
+    },
+    "Next": {
+      "Type": "ModifyInventory",
+      "ItemToAdd": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 5
+      },
+      "Next": {
+        "Type": "ChangeActiveSlot"
+      }
+    },
+    "Failed": {
+      "Type": "StatsCondition",
+      "Costs": {
+        "Ammo": 4
+      },
+      "Next": {
+        "Type": "ModifyInventory",
+        "ItemToAdd": {
+          "Id": "Weapon_Arrow_Crude",
+          "Quantity": 4
+        },
+        "Next": {
+          "Type": "ChangeActiveSlot"
+        }
+      },
+      "Failed": {
+        "Type": "StatsCondition",
+        "Costs": {
+          "Ammo": 3
+        },
+        "Next": {
+          "Type": "ModifyInventory",
+          "ItemToAdd": {
+            "Id": "Weapon_Arrow_Crude",
+            "Quantity": 3
+          },
+          "Next": {
+            "Type": "ChangeActiveSlot"
+          }
+        },
+        "Failed": {
+          "Type": "StatsCondition",
+          "Costs": {
+            "Ammo": 2
+          },
+          "Next": {
+            "Type": "ModifyInventory",
+            "ItemToAdd": {
+              "Id": "Weapon_Arrow_Crude",
+              "Quantity": 2
+            },
+            "Next": {
+              "Type": "ChangeActiveSlot"
+            }
+          },
+          "Failed": {
+            "Type": "StatsCondition",
+            "Costs": {
+              "Ammo": 1
+            },
+            "Next": {
+              "Type": "ModifyInventory",
+              "ItemToAdd": {
+                "Id": "Weapon_Arrow_Crude",
+                "Quantity": 1
+              },
+              "Next": {
+                "Type": "ChangeActiveSlot"
+              }
+            },
+            "Failed": {
+              "Type": "ChangeActiveSlot"
+            }
+          }
+        }
+      }
+    }
+  }
+}

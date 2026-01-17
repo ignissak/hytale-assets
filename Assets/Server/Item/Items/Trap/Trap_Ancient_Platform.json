@@ -1,0 +1,103 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Trap_Ancient_Platform.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Shelves"
+  ],
+  "Set": "Furniture_Ancient",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.635,
+    "Translation": [
+      0,
+      -27.3
+    ]
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "CustomModel": "Blocks/Decorative_Sets/Ancient/Platform.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Ancient/Platform_Cracked_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "Group": "Wood",
+    "HitboxType": "Platform",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ParticleColor": "#4e462c",
+    "VariantRotation": "Wall",
+    "BlockSoundSetId": "Wood_Breakable",
+    "Interactions": {
+      "CollisionEnter": {
+        "Cooldown": {
+          "Id": "Collision",
+          "Cooldown": 0
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "Condition",
+              "Crouching": false,
+              "Next": {
+                "Type": "Simple",
+                "RunTime": 0.2,
+                "Next": {
+                  "Type": "ChangeBlock",
+                  "Changes": {
+                    "Trap_Ancient_Platform": "Empty"
+                  },
+                  "Next": {
+                    "Type": "Simple",
+                    "RunTime": 0.5,
+                    "Effects": {
+                      "WorldSoundEventId": "SFX_Wood_Break"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Icon": "Icons/ItemsGenerated/Trap_Ancient_Platform.png",
+  "Tags": {
+    "Family": [
+      "Ancient"
+    ],
+    "Type": [
+      "Trap"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

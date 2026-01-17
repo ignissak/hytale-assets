@@ -1,0 +1,87 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Hub_Portal_Default.name",
+    "Description": "server.items.Hub_Portal_Default.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Portal_Device.png",
+  "Categories": [
+    "Blocks.Portals"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Platform_MagicInactive.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Blue2.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Pad_Portal",
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "VariantRotation": "NESW",
+    "Flags": {
+      "IsUsable": false
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Unbreakable"
+      }
+    },
+    "Light": {
+      "Color": "#77f",
+      "Radius": 3
+    },
+    "AmbientSoundEventId": "SFX_Portal_Neutral",
+    "Particles": [
+      {
+        "SystemId": "MagicPortal_Default",
+        "PositionOffset": {
+          "Y": 2.0
+        },
+        "Scale": 0.8
+      }
+    ],
+    "Interactions": {
+      "CollisionEnter": {
+        "Interactions": [
+          {
+            "Type": "HubPortal",
+            "WorldName": "default_world",
+            "WorldGenType": "Hytale",
+            "Next": {
+              "Type": "Simple",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Portal_Neutral_Teleport_Local"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "CustomModelAnimation": "Blocks/Miscellaneous/Platform_Magic_Idle.blockyanim"
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Portal",
+      "HubPortal"
+    ]
+  },
+  "Quality": "Developer",
+  "IconProperties": {
+    "Scale": 0.35,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

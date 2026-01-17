@@ -1,0 +1,71 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Launchpad.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Platform_Launcher.png",
+  "Categories": [
+    "Blocks.Structural"
+  ],
+  "PlayerAnimationsId": "Block",
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "CustomModel": "Blocks/Miscellaneous/Platform_Magic.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Red.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Pad_Portal",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "BlockEntity": {
+      "Components": {
+        "LaunchPad": {}
+      }
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "OpenCustomUI",
+            "Page": {
+              "Id": "LaunchPad"
+            }
+          }
+        ]
+      },
+      "CollisionEnter": {
+        "Interactions": [
+          {
+            "Type": "LaunchPad"
+          }
+        ]
+      }
+    },
+    "ParticleColor": "#4c474f"
+  },
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.305,
+    "Translation": [
+      0,
+      -11.3
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "Quality": "Developer"
+}

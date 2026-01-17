@@ -1,0 +1,432 @@
+{
+  "Type": "Abstract",
+  "KnockbackScale": 0.5,
+  "StartState": "Idle",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Kweebec_Sapling",
+      "Description": "Model to be used"
+    },
+    "GreetRange": {
+      "Value": 4,
+      "Description": "Greet range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "MaxSpeed": {
+      "Value": 5,
+      "Description": "Hearing range"
+    },
+    "HotbarItems": {
+      "Value": [ ],
+      "TypeHint": "String",
+      "Description": "The items this NPC carries in its hotbar"
+    },
+    "PlayerGreetTimeout": {
+      "Value": 120,
+      "Description": "How often the NPC should greet the same player, in seconds"
+    },
+    "GeneralGreetTimeout": {
+      "Value": [ 4, 12 ],
+      "Description": "The minimum elapsed time between greets, in seconds"
+    },
+    "GeneralWatchTimeout": {
+      "Value": [ 4, 12 ],
+      "Description": "The minimum elapsed time between NPC observations, in seconds"
+    },
+    "GreetAnimation": {
+      "Value": "Alerted",
+      "Description": "The flavor animation the NPC executes when it sees a player"
+    },
+    "MotionStatic": {
+      "Value": false,
+      "Description": "Whether this NPC will stay in the same place"
+    },
+    "MotionWander": {
+      "Value": false,
+      "Description": "Whether this NPC will wander"
+    },
+    "MotionPath": {
+      "Value": false,
+      "Description": "Whether this NPC will follow a named patrol path"
+    },
+    "MotionPathName": {
+      "Value": "",
+      "Description": "The name of the patrol path this NPC will follow"
+    },
+    "MotionPathRange": {
+      "Value": 20,
+      "Description": "The max range at which the NPC can detect paths"
+    },
+    "MotionPathShape": {
+      "Value": "Line",
+      "Description": "The shape of the path the NPC will follow"
+    },
+    "MotionWanderWalkTime": {
+      "Value": [ 4, 6 ],
+      "Description": "How long the NPC will wander around for, in seconds"
+    },
+    "MotionWanderStopTime": {
+      "Value": [ 6, 12 ],
+      "Description": "How long the NPC will rest for, in seconds"
+    },
+    "MotionWanderRadius": {
+      "Value": 8,
+      "Description": "The radius of the circle the NPC will wander inside of"
+    },
+    "IsMemory": {
+      "Value": false,
+      "Description": "Defines if the NPC is a memory"
+    },
+    "MemoriesCategory": {
+      "Value": "Other",
+      "Description": "Defines the category of the memory"
+    },
+    "MemoriesNameOverride": {
+      "Value": "",
+      "Description": "Overrides the memory name if set"
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Template.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "IsMemory": { "Compute": "IsMemory" },
+  "MemoriesCategory": { "Compute": "MemoriesCategory" },
+  "MemoriesNameOverride": { "Compute": "MemoriesNameOverride" },
+  "Invulnerable": true,
+
+  "MaxHealth": 1,
+  "Appearance": { "Compute": "Appearance" },
+  "HotbarItems": { "Compute": "HotbarItems" },
+  "DisableDamageGroups": [ "Self" ],
+  "DefaultPlayerAttitude": "Neutral",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": { "Compute": "MaxSpeed" },
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 180,
+      "MaxClimbHeight": 0.5
+    }
+  ],
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "$Comment": "Start a timer to prevent the NPC from spamming greetings",
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Greet",
+              "StartValueRange": [ 1, 1 ],
+              "RestartValueRange": { "Compute": "GeneralGreetTimeout" }
+            },
+            {
+              "Type": "TimerStart",
+              "Name": "Watch",
+              "StartValueRange": [ 1, 1 ],
+              "RestartValueRange": { "Compute": "GeneralWatchTimeout" }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Greet an unknown player",
+              "Sensor": {
+                "Type": "State",
+                "State": ".Greet"
+              },
+              "Instructions": [
+                {
+                  "$Comment": "Go back to idle if target is lost",
+                  "Sensor": {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "Range": { "Compute": "GreetRange" }
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status"
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Greet"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                },
+                {
+                  "$Comment": "Greet the target within the defined range",
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "GreetRange" }
+                  },
+                  "HeadMotion": {
+                    "Type": "Watch"
+                  },
+                  "BodyMotion": {
+                    "Type": "MatchLook"
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "OverrideAttitude",
+                      "Attitude": "Friendly",
+                      "Duration": { "Compute": "PlayerGreetTimeout" }
+                    },
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": { "Compute": "GreetAnimation" }
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 2, 3 ]
+                    },
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status"
+                    },
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 1, 2 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Greet"
+                    },
+                    {
+                      "$Comment": "Prevent an instant greet -> watch interaction",
+                      "Type": "TimerRestart",
+                      "Name": "Watch"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$Comment": "Watch a player",
+              "Sensor": {
+                "Type": "State",
+                "State": ".Watch"
+              },
+              "Instructions": [
+                {
+                  "$Comment": "Go back to idle if target is lost",
+                  "Sensor": {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "Range": { "Compute": "GreetRange" }
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Watch"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                },
+                {
+                  "$Comment": "Watch the target within the defined range",
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": { "Compute": "GreetRange" }
+                  },
+                  "HeadMotion": {
+                    "Type": "Watch"
+                  },
+                  "ActionsBlocking": true,
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 3, 6 ]
+                    },
+                    {
+                      "Type": "TimerRestart",
+                      "Name": "Watch"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$Comment": "Reset animations on the way out from the substates",
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "$Comment": "Greet a nearby, unknown player",
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "GetNPCs": false,
+                    "Range": { "Compute": "GreetRange" },
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Neutral" ]
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": { "Compute": "ViewSector" }
+                      },
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Timer",
+                    "State": "Stopped",
+                    "Name": "Greet"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": ".Greet"
+                }
+              ]
+            },
+            {
+              "$Comment": "Look at a nearby, known player",
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "GetNPCs": false,
+                    "Range": { "Compute": "GreetRange" },
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "Attitude",
+                        "Attitudes": [ "Friendly" ]
+                      },
+                      {
+                        "Type": "ViewSector",
+                        "ViewSector": { "Compute": "ViewSector" }
+                      },
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Timer",
+                    "State": "Stopped",
+                    "Name": "Watch"
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": ".Watch"
+                }
+              ]
+            },
+            {
+              "$Comment": "Execute motions depending on the configured flags",
+              "Type": "Random",
+              "ExecuteFor": [ 15, 20 ],
+              "Instructions": [
+                {
+                  "Enabled": { "Compute": "MotionWander" },
+                  "BodyMotion": {
+                    "Type": "Sequence",
+                    "Looped": true,
+                    "Motions": [
+                      {
+                        "Type": "Timer",
+                        "Time": { "Compute": "MotionWanderWalkTime" },
+                        "Motion": {
+                          "Type": "WanderInCircle",
+                          "Radius": { "Compute": "MotionWanderRadius" },
+                          "RelativeSpeed": 0.4,
+                          "DesiredAltitudeWeight": 1
+                        }
+                      },
+                      {
+                        "Type": "Timer",
+                        "Time": { "Compute": "MotionWanderStopTime" },
+                        "Motion": {
+                          "Type": "Nothing"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Enabled": { "Compute": "MotionPath && !isEmpty(MotionPathName)" },
+                  "Sensor": {
+                    "Type": "Path",
+                    "Path": { "Compute": "MotionPathName" },
+                    "Range": { "Compute": "MotionPathRange" }
+                  },
+                  "BodyMotion": {
+                    "Type": "Path",
+                    "MinRelSpeed": 0.18,
+                    "MaxRelSpeed": 0.25,
+                    "Shape": { "Compute": "MotionPathShape" }
+                  }
+                },
+                {
+                  "Enabled": { "Compute": "MotionStatic" },
+                  "BodyMotion": {
+                    "Type": "Nothing"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": { "Compute": "NameTranslationKey" }
+}

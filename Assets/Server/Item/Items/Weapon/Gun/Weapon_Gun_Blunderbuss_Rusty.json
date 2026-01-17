@@ -1,0 +1,111 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Gun_Blunderbuss_Rusty.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Gun_Blunderbuss_Rusty.png",
+  "Texture": "Items/Weapons/Gun/Blunderbuss_Rusty_Texture.png",
+  "PlayerAnimationsId": "Rifle",
+  "Interactions": {
+    "Primary": "Gun_Shoot_Flintlock_Charging",
+    "Secondary": "Gun_Attack"
+  },
+  "InteractionVars": {
+    "Gun_Swing_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Swing_Left_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "TrailId": "Small_Default",
+                "TargetEntityPart": "PrimaryItem",
+                "PositionOffset": {
+                  "X": 0,
+                  "Y": 0.1,
+                  "Z": -0.3
+                },
+                "RotationOffset": {
+                  "Yaw": 0,
+                  "Pitch": 0,
+                  "Roll": 0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Gun_Swing_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Swing_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            },
+            "RandomPercentageModifier": 0.1
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Unarmed_Impact"
+          }
+        }
+      ]
+    },
+    "Gun_Shoot": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Shoot",
+          "ProjectileId": "Gun_Blunderbuss_Bullet"
+        }
+      ]
+    },
+    "Gun_Shoot_Flintlock_Charged": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Shoot_Flintlock_Charged",
+          "Costs": {
+            "Mana": 50
+          }
+        }
+      ]
+    },
+    "Gun_Shoot_Cost": {
+      "Interactions": [
+        {
+          "Parent": "Gun_Shoot_Cost",
+          "StatModifiers": {
+            "Mana": -50
+          }
+        }
+      ]
+    },
+    "Gun_Shoot_Fail": "Gun_Shoot_Fail"
+  },
+  "IconProperties": {
+    "Scale": 0.38,
+    "Translation": [
+      -14,
+      -25
+    ],
+    "Rotation": [
+      320,
+      90,
+      0
+    ]
+  },
+  "Quality": "Technical",
+  "Model": "Items/Weapons/Gun/Blunderbuss.blockymodel",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Gun"
+    ]
+  },
+  "Weapon": {}
+}

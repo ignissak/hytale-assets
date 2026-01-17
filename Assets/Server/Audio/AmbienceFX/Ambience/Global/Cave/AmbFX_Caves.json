@@ -1,0 +1,41 @@
+{
+  "Conditions": {
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Caves"
+        },
+        {
+          "Op": "Not",
+          "Pattern": {
+            "Op": "Or",
+            "Patterns": [
+              {
+                "Op": "Equals",
+                "Tag": "Volcanic"
+              },
+              {
+                "Op": "Equals",
+                "Tag": "Spiders"
+              },
+              {
+                "Op": "Equals",
+                "Tag": "Dungeons"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "SunLightLevel": {
+      "Min": 0,
+      "Max": 9
+    }
+  },
+  "AmbientBed": {
+    "Track": "Sounds/Environments/Global/Cave/Cave_Shallow/Cave_Shallow_Stereo_LOOP.ogg",
+    "Volume": -11.0
+  }
+}

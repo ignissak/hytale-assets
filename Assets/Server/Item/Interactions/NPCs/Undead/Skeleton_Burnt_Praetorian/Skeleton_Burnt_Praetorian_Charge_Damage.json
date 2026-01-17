@@ -1,0 +1,44 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "BaseDamage": {
+      "Physical": 15
+    }
+  },
+  "Effects": {
+    "CameraEffect": "Impact_Strong"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.97,
+        "AirResistanceMax": 0.96,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Exp"
+      },
+      "Direction": {
+        "X": 0.0,
+        "Y": 1.0,
+        "Z": -2.0
+      },
+      "Force": 13.0,
+      "VelocityType": "Set"
+    },
+    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+    "LocalSoundEventId": "SFX_Sword_T2_Impact",
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Sword_Charged"
+      }
+    ]
+  },
+  "EntityStatsOnHit": [
+    {
+      "EntityStatId": "SignatureEnergy",
+      "Amount": 2
+    }
+  ]
+}

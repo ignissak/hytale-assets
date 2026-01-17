@@ -1,0 +1,66 @@
+{
+  "Debug": "DisplayState, DisplayFlock, DisplayTarget",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "MaxRotationSpeed": 360,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Sequence",
+            "Looped": true,
+            "Motions": [
+              {
+                "Type": "Timer",
+                "Time": [ 2, 2 ],
+                "Motion": {
+                  "Type": "Flee",
+                  "SlowDownDistance": 9,
+                  "StopDistance": 10,
+                  "RelativeSpeed": 0.7
+                }
+              },
+              {
+                "Type": "Timer",
+                "Time": [ 2, 2 ],
+                "Motion": {
+                  "Type": "Wander",
+                  "MaxHeadingChange": 0,
+                  "RelativeSpeed": 0.7
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Flee.name"
+}

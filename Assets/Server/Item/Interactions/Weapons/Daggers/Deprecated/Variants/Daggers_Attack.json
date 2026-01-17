@@ -1,0 +1,168 @@
+{
+  "$Comment": "See Daggers_Swings for attack, Daggers_Pounce for charged attack, Daggers_Bash for special attack, Daggers_Slash_Sweep_Lunge- for signature",
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 3.01
+  },
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -5
+        },
+        "Behaviour": "Set"
+      },
+      {
+        "Type": "Charging",
+        "DisplayProgress": false,
+        "Effects": {
+          "ItemAnimationId": "PounceStabCharging",
+          "FirstPersonParticles": [
+            {
+              "PositionOffset": {
+                "X": -0.3,
+                "Y": 0.5,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Dagger_Charging_FP"
+            },
+            {
+              "PositionOffset": {
+                "X": -0.3,
+                "Y": 0.5,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Dagger_Charging_FP",
+              "TargetEntityPart": "SecondaryItem"
+            }
+          ],
+          "Particles": [
+            {
+              "PositionOffset": {
+                "X": 0.3,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Dagger_Charging"
+            },
+            {
+              "PositionOffset": {
+                "X": 0.3,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Dagger_Charging",
+              "TargetEntityPart": "SecondaryItem"
+            }
+          ]
+        },
+        "AllowIndefiniteHold": false,
+        "Next": {
+          "0": {
+            "Type": "Serial",
+            "Interactions": [
+              "Daggers_Swings",
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -0.5
+                },
+                "Behaviour": "Set"
+              }
+            ]
+          },
+          "0.35": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "Stamina": -3
+                },
+                "ValueType": "Absolute"
+              },
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Dagger_Pounce"
+              },
+              "Daggers_Pounce",
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -0.75
+                },
+                "Behaviour": "Set"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Charging",
+        "AllowIndefiniteHold": false,
+        "Next": {
+          "0": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -0.75
+                },
+                "Behaviour": "Set"
+              },
+              "Daggers_Swings"
+            ]
+          },
+          "0.2": {
+            "Type": "Serial",
+            "Interactions": [
+              "Stamina_Bar_Flash",
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "StaminaRegenDelay": 0
+                },
+                "Behaviour": "Set"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Effects": {
+    "ClearSoundEventOnFinish": false
+  }
+}

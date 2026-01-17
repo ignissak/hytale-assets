@@ -1,0 +1,78 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Salad_Caesar.name",
+    "Description": "server.items.Food_Salad_Caesar.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T3"
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/Food_Salad_Cheese.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Salad_Caesar.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Salad_Caesar_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#a0784d"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T3"
+        },
+        "HealthRegen_TierCheck_T3",
+        "FruitVeggie_TierCheck_T3"
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 1,
+    "Input": [
+      {
+        "ItemId": "Plant_Crop_Lettuce_Item"
+      },
+      {
+        "Quantity": 1,
+        "ItemId": "Food_Cheese"
+      },
+      {
+        "ResourceTypeId": "Meats",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Salt",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Spices",
+        "Quantity": 1
+      }
+    ],
+    "Output": [
+      {
+        "ItemId": "Food_Salad_Caesar"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Prepared"
+        ]
+      }
+    ],
+    "KnowledgeRequired": true
+  },
+  "ItemLevel": 9,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

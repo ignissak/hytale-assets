@@ -1,0 +1,109 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Stick_Stun.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Developer",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Stick/Stick.blockymodel",
+  "Texture": "Items/Halloween_Props/Broomstick_Texture.png",
+  "PlayerAnimationsId": "Stick",
+  "Interactions": {
+    "Primary": "Stick_Attack",
+    "Secondary": "Stick_Block"
+  },
+  "InteractionVars": {
+    "Stick_Block_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Block_Damage"
+        }
+      ]
+    },
+    "Stick_Swing_Left_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Left_Fast_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+            "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Left_Fast_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Left_Fast_Damage"
+        }
+      ]
+    },
+    "Stick_Swing_Right_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Right_Fast_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+            "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+          }
+        }
+      ]
+    },
+    "Stick_Swing_Right_Fast_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Right_Fast_Damage"
+        }
+      ]
+    },
+    "Stick_Swing_Down_Strong_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Down_Strong_Damage"
+        },
+        {
+          "Type": "Interrupt",
+          "Entity": "Target",
+          "ExcludedTag": "Uninterruptable"
+        }
+      ]
+    },
+    "Stick_Swing_Down_Strong_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Stick_Swing_Down_Strong_Effect"
+        },
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Stick_Stun",
+          "Entity": "Target"
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.2,
+    "Rotation": [
+      45.0,
+      90.0,
+      0.0
+    ],
+    "Translation": [
+      -53.0,
+      -53.0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Debug_Stick_Stun.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Staff"
+    ]
+  },
+  "Weapon": {}
+}

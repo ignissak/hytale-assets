@@ -1,0 +1,52 @@
+{
+  "Type": "Charging",
+  "AllowIndefiniteHold": true,
+  "Effects": {
+    "ItemAnimationId": "ShootCharging",
+    "ClearAnimationOnFinish": true,
+    "WorldSoundEventId": "SFX_Bow_T2_Draw",
+    "LocalSoundEventId": "SFX_Bow_T2_Draw_Local"
+  },
+  "HorizontalSpeedMultiplier": 0.5,
+  "Next": {
+    "1": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Bow_Shoot_Charged",
+        "ProjectileId": "Arrow_FullCharge",
+        "Tags": {
+          "AimingReference": []
+        }
+      },
+      "Failed": "Bow_Shoot_Charged_Fail"
+    },
+    "0.2": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Bow_Shoot_Charged",
+        "ProjectileId": "Arrow_NoCharge"
+      },
+      "Failed": "Bow_Shoot_Charged_Fail"
+    },
+    "0.6": {
+      "Type": "ModifyInventory",
+      "ItemToRemove": {
+        "Id": "Weapon_Arrow_Crude",
+        "Quantity": 1
+      },
+      "Next": {
+        "Parent": "Bow_Shoot_Charged",
+        "ProjectileId": "Arrow_HalfCharge"
+      },
+      "Failed": "Bow_Shoot_Charged_Fail"
+    }
+  }
+}

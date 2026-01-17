@@ -1,0 +1,975 @@
+{
+  "MapColor": "#602020",
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Firelands-Base",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.4,
+          "Scale": 0.001
+        },
+        {
+          "Seed": "Firelands-Hills",
+          "NoiseType": "SIMPLEX",
+          "Formula": "INVERTED",
+          "Octaves": 4,
+          "Persistence": 0.3,
+          "Scale": 0.008
+        },
+        {
+          "Seed": "4554845555",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "Formula": "INVERTED_SQUARED",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.008
+        }
+      ],
+      "Factors": [
+        0.75,
+        0.15,
+        0.1
+      ],
+      "Threshold": [
+        0,
+        0.43
+      ]
+    },
+    "BiomeMask": [
+      "Wastes_Lava"
+    ],
+    "Priority": 8
+  },
+  "Covers": [
+    {
+      "Type": [
+        "Rubble_Volcanic",
+        "Rubble_Volcanic_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Rubble.Stone_Quartzite"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.99
+        ]
+      },
+      "Parent": [
+        "Rock_Basalt",
+        "Soil_Grass",
+        "Soil_Grass_Burnt",
+        "Soil_Dirt_Burnt",
+        "Rock_Volcanic",
+        "Soil_Ash"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Dead_Twisted",
+        "Plant_Bramble_Dead_Lavathorn"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.6,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Bush.Bush_Bedrock_Dense"
+          }
+        ],
+        "Threshold": [
+          0.85,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Burnt",
+        "Soil_Dirt_Burnt",
+        "Soil_Ash"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Bushy_Red",
+        "Rock_Crystal_Red_Large",
+        "Rock_Crystal_Red_Medium",
+        "Rock_Crystal_Red_Small"
+      ],
+      "Weight": [
+        0.6,
+        0.1,
+        0.1,
+        0.2
+      ],
+      "Density": 0.25,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone4.Covers.Flowers.Flowers_Wastes"
+          }
+        ],
+        "Threshold": [
+          0,
+          0.2
+        ]
+      },
+      "Parent": [
+        "Soil_Ash",
+        "Soil_Sand_Ashen"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Dead_Tall"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.001,
+      "Parent": [
+        "Soil_Grass",
+        "Soil_Grass_Burnt",
+        "Soil_Dirt_Burnt",
+        "Soil_Sand_Ashen",
+        "Soil_Ash",
+        "Rock_Volcanic"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Trees.Burnt_dead.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Lava_Fields_Stumps"
+        }
+      },
+      {
+        "Weight": [
+          0.7,
+          0.3
+        ],
+        "Prefab": [
+          "Rock_Formations.Rocks.Volcanic.Spiked.Large.*",
+          "Rock_Formations.Rocks.Volcanic.Spiked.Small.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone4_Tier5.PrefabPatterns.Wastes_Lava_Boulder"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Volcanic",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Empty:3",
+              "fluid#Lava_Source:3",
+              "Rock_Volcanic_Cracked_Lava:2"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone4.Layers.Rock.Bedrock_Cave_2"
+                }
+              ],
+              "Threshold": [
+                0.85,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Empty",
+              "Rock_Volcanic_Cracked_Lava:2"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "Lava_Cracks_Mountain",
+                  "NoiseType": "DISTANCE",
+                  "Jitter": 0.8,
+                  "Distance2Mode": "DIV",
+                  "FractalMode": "MAX",
+                  "Octaves": 1,
+                  "Formula": "SQUARED",
+                  "Scale": 0.018,
+                  "Normalize": [
+                    0,
+                    0.95
+                  ]
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_RIDGED",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008,
+                  "Normalize": [
+                    0.3,
+                    1
+                  ]
+                }
+              ],
+              "Factors": [
+                0.5,
+                0.38,
+                0.12
+              ],
+              "Threshold": [
+                0.83,
+                1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Empty"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "Formula": "INVERTED",
+                  "Scale": 0.008,
+                  "Density": [
+                    0,
+                    0.3
+                  ]
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQRT",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQUARED",
+                  "Scale": 0.05,
+                  "Jitter": 0.75
+                }
+              ],
+              "Factors": [
+                0.15,
+                0.2,
+                0.5,
+                0.15
+              ],
+              "Threshold": [
+                0,
+                0.1
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Ash:3"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Formula": "INVERTED",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED",
+                  "Scale": 0.05,
+                  "Normalize": [
+                    0,
+                    0.5
+                  ]
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQUARED",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                }
+              ],
+              "Factors": [
+                0.8,
+                0.05,
+                0.15
+              ],
+              "Threshold": [
+                0.3,
+                1
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "Blocks": [
+          "Rock_Volcanic_Cracked_Lava"
+        ],
+        "NoiseMask": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "4554845555",
+              "NoiseType": "CELL",
+              "CellMode": "DISTANCE",
+              "Formula": "INVERTED",
+              "Scale": 0.008,
+              "Density": [
+                0,
+                0.3
+              ]
+            },
+            {
+              "Seed": "Firelands-Base",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.001
+            },
+            {
+              "Seed": "4554845555",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED_SQRT",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.008
+            },
+            {
+              "Seed": "Lava_Cracks",
+              "NoiseType": "DISTANCE",
+              "DistanceMode": "NATURAL",
+              "DistanceRange": [
+                1,
+                3
+              ],
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED_SQUARED",
+              "Scale": 0.05,
+              "Jitter": 0.75
+            }
+          ],
+          "Factors": [
+            0.15,
+            0.2,
+            0.5,
+            0.15
+          ],
+          "Threshold": [
+            0,
+            0.24
+          ]
+        },
+        "Max": [
+          121,
+          146
+        ],
+        "MaxNoise": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Firelands-Base",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.001
+            },
+            {
+              "Seed": "4554845555",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "SQUARED",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.008
+            }
+          ],
+          "Factors": [
+            0.86,
+            0.14
+          ]
+        },
+        "Min": 120
+      },
+      {
+        "Blocks": [
+          "Empty"
+        ],
+        "NoiseMask": {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "Firelands-Hills",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 4,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQUARED",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                }
+              ],
+              "Factors": [
+                0.75,
+                0.15,
+                0.1
+              ],
+              "Normalize": [
+                0.6
+              ]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "Formula": "INVERTED",
+                  "Scale": 0.008,
+                  "Density": [
+                    0,
+                    0.3
+                  ]
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQRT",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED_SQUARED",
+                  "Scale": 0.05,
+                  "Jitter": 0.75
+                }
+              ],
+              "Factors": [
+                0.15,
+                0.2,
+                0.5,
+                0.15
+              ]
+            }
+          ],
+          "Threshold": [
+            0,
+            0.22
+          ]
+        },
+        "MaxNoise": {
+          "Seed": "Lava_Cracks",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "DistanceRange": [
+            1,
+            3
+          ],
+          "Distance2Mode": "DIV",
+          "Scale": 0.05,
+          "Normalize": [
+            0.7,
+            1
+          ]
+        },
+        "Max": [
+          121,
+          154
+        ],
+        "Min": 120
+      },
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Mountain"
+      },
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Jungle"
+      },
+      {
+        "File": "Zones.Zone4_Tier5.Layers.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone4.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T3"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [
+      141,
+      143,
+      154,
+      184,
+      210,
+      230,
+      235
+    ],
+    "Values": [
+      1,
+      0.6,
+      0.4,
+      0.28,
+      0.2,
+      0.1,
+      0
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Firelands-Base",
+        "NoiseType": "SIMPLEX",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.001,
+        "Normalize": [
+          0.045,
+          0.7
+        ]
+      },
+      {
+        "Seed": "5683568",
+        "NoiseType": "DISTANCE",
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.025
+      },
+      {
+        "Seed": "4554845555",
+        "NoiseType": "DISTANCE",
+        "Distance2Mode": "DIV",
+        "Formula": "INVERTED_SQUARED",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.008
+      },
+      {
+        "Type": "DISTORTED",
+        "Noise": {
+          "Seed": "Firelands_Biomes_Pattern",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "Distance2Mode": "DIV",
+          "Scale": 0.003,
+          "Jitter": 0.711
+        },
+        "Randomizer": {
+          "Generators": [
+            {
+              "Seed": "Firelands-Hills",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 4,
+              "Persistence": 0.3,
+              "Scale": 0.008,
+              "Amplitude": 30
+            }
+          ]
+        },
+        "Normalize": [
+          0.75,
+          1
+        ]
+      }
+    ],
+    "Factors": [
+      0.76,
+      0.02,
+      0.12,
+      0.1
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "333634"
+      ],
+      "Weights": [
+        1
+      ],
+      "Noise": {
+        "Seed": "Grasslands-Base-Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone4_Wastes"
+      ]
+    }
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Block": "Rock_Magma_Cooled",
+        "NoiseMask": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "4554845555",
+              "NoiseType": "CELL",
+              "CellMode": "DISTANCE",
+              "Scale": 0.008,
+              "Density": [
+                0,
+                0.3
+              ]
+            },
+            {
+              "Seed": "Firelands-Base",
+              "NoiseType": "SIMPLEX",
+              "Formula": "INVERTED",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.001
+            },
+            {
+              "Seed": "4554845555",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "INVERTED_SQRT",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.008
+            },
+            {
+              "Seed": "Lava_Cracks",
+              "NoiseType": "DISTANCE",
+              "DistanceMode": "NATURAL",
+              "DistanceRange": [
+                1,
+                3
+              ],
+              "Distance2Mode": "DIV",
+              "Scale": 0.05,
+              "Jitter": 0.75
+            }
+          ],
+          "Factors": [
+            0.2,
+            0.3,
+            0.46,
+            0.04
+          ],
+          "Threshold": [
+            0,
+            0.333
+          ]
+        },
+        "Max": [
+          100,
+          205
+        ],
+        "MaxNoise": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "Formula": "INVERTED_SQRT",
+                  "Scale": 0.008,
+                  "Density": [
+                    0,
+                    0.3
+                  ],
+                  "Normalize": [
+                    0,
+                    0.9
+                  ]
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001,
+                  "Normalize": [
+                    0.2,
+                    0.8
+                  ]
+                },
+                {
+                  "Seed": "5683568",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.025
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                }
+              ],
+              "Factors": [
+                0.34,
+                0.41,
+                0.1,
+                0.15
+              ]
+            },
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "Formula": "INVERTED",
+                  "Scale": 0.008,
+                  "Density": [
+                    0,
+                    0.3
+                  ]
+                },
+                {
+                  "Seed": "Firelands-Base",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 3,
+                  "Persistence": 0.4,
+                  "Scale": 0.001
+                },
+                {
+                  "Seed": "4554845555",
+                  "NoiseType": "DISTANCE",
+                  "Distance2Mode": "DIV",
+                  "Formula": "SQRT",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.008
+                },
+                {
+                  "Seed": "Lava_Cracks",
+                  "NoiseType": "DISTANCE",
+                  "DistanceMode": "NATURAL",
+                  "DistanceRange": [
+                    1,
+                    3
+                  ],
+                  "Distance2Mode": "DIV",
+                  "Formula": "INVERTED",
+                  "Scale": 0.05,
+                  "Jitter": 0.75
+                }
+              ],
+              "Factors": [
+                0.2,
+                0.3,
+                0.46,
+                0.04
+              ],
+              "Normalize": [
+                0.62,
+                0.735
+              ]
+            }
+          ]
+        },
+        "MinNoise": {
+          "Seed": "Lava_Cracks",
+          "NoiseType": "DISTANCE",
+          "DistanceMode": "NATURAL",
+          "DistanceRange": [
+            1,
+            3
+          ],
+          "Distance2Mode": "DIV",
+          "Scale": 0.05,
+          "Normalize": [
+            0.8,
+            1
+          ]
+        },
+        "Min": [
+          121,
+          154
+        ]
+      },
+      {
+        "Fluid": "Lava_Source",
+        "Min": 108,
+        "Max": [
+          120,
+          145
+        ],
+        "NoiseMask": {
+          "Seed": "4554845555",
+          "NoiseType": "CELL",
+          "CellMode": "DISTANCE",
+          "Formula": "INVERTED",
+          "Scale": 0.008,
+          "Density": [
+            0,
+            0.3
+          ],
+          "Threshold": [
+            0,
+            0.8
+          ]
+        },
+        "MaxNoise": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Firelands-Base",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.001
+            },
+            {
+              "Seed": "4554845555",
+              "NoiseType": "DISTANCE",
+              "Distance2Mode": "DIV",
+              "Formula": "SQUARED",
+              "Octaves": 2,
+              "Persistence": 0.3,
+              "Scale": 0.008
+            }
+          ],
+          "Factors": [
+            0.86,
+            0.14
+          ]
+        }
+      },
+      {
+        "Fluid": "Lava_Source",
+        "Min": 0,
+        "Max": 31
+      }
+    ]
+  },
+  "Fade": {
+    "FadeHeightmap": 0.6,
+    "FadeLength": 0,
+    "FadeStart": 0,
+    "TerrainLength": 200,
+    "TerrainStart": -100
+  }
+}

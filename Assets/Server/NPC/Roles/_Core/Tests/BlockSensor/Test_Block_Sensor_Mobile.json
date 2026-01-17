@@ -1,0 +1,52 @@
+{
+  "DefaultSubState": "Start",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 5,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Block",
+            "Range": 20,
+            "Blocks": "Ore_Gold"
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 1
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 1
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Block_Sensor_Mobile.name"
+}

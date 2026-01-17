@@ -1,0 +1,81 @@
+{
+  "Parent": "DamageEntityParent",
+  "DamageCalculator": {
+    "Class": "Signature"
+  },
+  "Effects": {
+    "CameraEffect": "Impact"
+  },
+  "DamageEffects": {
+    "Knockback": {
+      "Type": "Force",
+      "VelocityConfig": {
+        "AirResistance": 0.99,
+        "AirResistanceMax": 0.98,
+        "GroundResistance": 0.94,
+        "GroundResistanceMax": 0.3,
+        "Threshold": 3.0,
+        "Style": "Linear"
+      },
+      "Force": 7,
+      "VelocityType": "Add",
+      "Direction": {
+        "X": 0,
+        "Y": 1,
+        "Z": -2
+      }
+    },
+    "WorldParticles": [
+      {
+        "SystemId": "Impact_Dagger_Slash",
+        "Scale": 1,
+        "RotationOffset": {
+          "Yaw": 180,
+          "Pitch": 0,
+          "Roll": 0
+        }
+      }
+    ],
+    "CameraEffect": "Impact_Light"
+  },
+  "EntityStatsOnHit": [],
+  "AngledDamage": [
+    {
+      "Angle": 180,
+      "AngleDistance": 80,
+      "DamageEffects": {
+        "Knockback": {
+          "Direction": {
+            "X": 0,
+            "Y": 1,
+            "Z": -2
+          },
+          "Type": "Force",
+          "Force": 7,
+          "VelocityType": "Add",
+          "VelocityConfig": {
+            "AirResistance": 0.99,
+            "AirResistanceMax": 0.98,
+            "GroundResistance": 0.94,
+            "GroundResistanceMax": 0.3,
+            "Threshold": 3.0,
+            "Style": "Linear"
+          }
+        },
+        "WorldParticles": [
+          {
+            "SystemId": "Impact_Critical",
+            "Scale": 1,
+            "RotationOffset": {
+              "Yaw": 180,
+              "Pitch": 0,
+              "Roll": 0
+            }
+          }
+        ],
+        "WorldSoundEventId": "SFX_Daggers_T2_Slash_Impact",
+        "LocalSoundEventId": "SFX_Daggers_T2_Slash_Impact"
+      }
+    }
+  ]
+}

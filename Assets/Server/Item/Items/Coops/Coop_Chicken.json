@@ -1,0 +1,113 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Coop_Chicken.name",
+    "Description": "server.items.Coop_Chicken.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Coop_Chicken.png",
+  "Categories": [
+    "Furniture.Benches"
+  ],
+  "ItemLevel": 8,
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_All",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Ingredient_Life_Essence",
+        "Quantity": 50
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 10
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Farming"
+        ],
+        "Id": "Farmingbench",
+        "RequiredTierLevel": 5
+      }
+    ],
+    "TimeSeconds": 4
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Farming/ChickenCoop.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Farming/ChickenCoop_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "VariantRotation": "NESW",
+    "State": {
+      "Id": "coop",
+      "Definitions": {
+        "Produce_Ready": {
+          "CustomModel": "Blocks/Farming/ChickenCoop_WithProduce.blockymodel"
+        }
+      }
+    },
+    "BlockEntity": {
+      "Components": {
+        "Coop": {
+          "FarmingCoopId": "Coop_Chicken"
+        }
+      }
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Benches"
+      }
+    },
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "UseCoop"
+          }
+        ]
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#815835",
+    "HitboxType": "Coop_Chicken",
+    "BlockSoundSetId": "Wood",
+    "CustomModelScale": 0.85
+  },
+  "PlayerAnimationsId": "Block",
+  "IconProperties": {
+    "Scale": 0.46,
+    "Translation": [
+      9.59,
+      -41.1
+    ],
+    "Rotation": [
+      22.5,
+      43.315,
+      22.5
+    ]
+  },
+  "Scale": 0.5,
+  "Tags": {
+    "Type": [
+      "Bench"
+    ]
+  },
+  "MaxStack": 1,
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

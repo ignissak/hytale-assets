@@ -1,0 +1,57 @@
+{
+  "Parent": "Potion_Template",
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Stamina.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Potion_Stamina.png",
+  "InteractionVars": {
+    "RemoveEffect": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    },
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": {
+            "StatModifiers": {
+              "Stamina": 10
+            },
+            "StatusEffectIcon": "UI/StatusEffects/Health_Potion.png",
+            "OverlapBehavior": "Extend"
+          }
+        }
+      ]
+    },
+    "Stat_Check": {
+      "Interactions": [
+        {
+          "Parent": "Stat_Check",
+          "Costs": {
+            "Stamina": 100
+          },
+          "ValueType": "Percent",
+          "LessThan": true
+        }
+      ]
+    }
+  },
+  "BlockType": {
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Yellow.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#fdd540",
+    "Light": {
+      "Color": "#431"
+    }
+  },
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

@@ -1,0 +1,104 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Calcite_Brick_Half.name"
+  },
+  "Categories": [
+    "Blocks.Rocks"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Calcite_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "HalfSlab"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Parent": "Half_Block",
+          "Matchers": [
+            {
+              "Block": {
+                "Id": "Rock_Gold_Brick_Half",
+                "State": "default"
+              },
+              "Face": "Up",
+              "StaticFace": false
+            }
+          ]
+        }
+      ],
+      "Cooldown": {
+        "Id": "BlockInteraction",
+        "Cooldown": 0.3,
+        "ClickBypass": true
+      },
+      "Settings": {
+        "Creative": {
+          "AllowSkipChainOnClick": true
+        }
+      }
+    }
+  },
+  "Set": "Rock_Calcite_Brick",
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Base_Shapes/HalfBlock_CustomSide.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Base_Shapes/HalfBlock_CustomSide_Calcite.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "RandomRotation": "YawStep90",
+    "BlockSoundSetId": "Metal",
+    "State": {
+      "Definitions": {
+        "Block": {
+          "Material": "Solid",
+          "DrawType": "Cube",
+          "HitboxType": "Full",
+          "Textures": [
+            {
+              "All": "BlockTextures/Rock_Gold_Brick_Side.png",
+              "Weight": 1
+            }
+          ],
+          "Supporting": {
+            "BlockSides": [
+              {}
+            ]
+          }
+        }
+      }
+    },
+    "ParticleColor": "#d4ece7"
+  },
+  "Tags": {
+    "Family": [
+      "Calcite"
+    ],
+    "Type": [
+      "Rock"
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Calcite_Brick_Half.png",
+  "Parent": "Rock_Stone_Brick_Half"
+}

@@ -1,0 +1,42 @@
+{
+  "Conditions": {
+    "DayTime": {
+      "Min": 5,
+      "Max": 19
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Or",
+          "Patterns": [
+            {
+              "Op": "Equals",
+              "Tag": "Plains"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Encounters"
+            }
+          ]
+        }
+      ]
+    },
+    "Walls": {
+      "Min": 0,
+      "Max": 3
+    }
+  },
+  "AmbientBed": {
+    "Track": "Sounds/Environments/Zone1/Environments/Plains/Day/Z1_Plains_Gen_Day_Stereo_LOOP.ogg",
+    "Volume": 1.0
+  }
+}

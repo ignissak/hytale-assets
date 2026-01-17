@@ -1,0 +1,35 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "Effects": {
+    "ItemAnimationId": "SpinRightStabDashCharged"
+  },
+  "RunTime": 0.3,
+  "Selector": {
+    "Id": "Stab",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendRight": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0.1,
+    "EndDistance": 2.5
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Sword_Signature_Vortexstrike_Stab_Damage"
+          ]
+        },
+        "Var": "Vortexstrike_Stab_Damage"
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.153
+  }
+}

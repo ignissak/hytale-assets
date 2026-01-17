@@ -1,0 +1,68 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.15,
+  "Effects": {
+    "Trails": [
+      {
+        "PositionOffset": {
+          "X": 0.8,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Default"
+      }
+    ],
+    "CameraEffect": "Battleaxe_Swing_Diagonal_Right"
+  },
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToRight",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0.1,
+    "EndDistance": 3,
+    "Length": 90,
+    "RollOffset": -50,
+    "YawStartOffset": -45
+  },
+  "HitBlock": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Swing_Down_Right_Hit_Block",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Block_Break_Adventure"
+          ]
+        }
+      }
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Swing_Down_Right_Damage",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Battleaxe_Primary_Swing_Down_Right_Damage"
+          ]
+        }
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.45
+  }
+}

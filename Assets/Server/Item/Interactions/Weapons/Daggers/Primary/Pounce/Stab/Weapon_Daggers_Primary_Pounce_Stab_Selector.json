@@ -1,0 +1,80 @@
+{
+  "Type": "Selector",
+  "RunTime": 0.05,
+  "Selector": {
+    "Id": "Stab",
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.75,
+    "ExtendLeft": 1,
+    "ExtendRight": 1,
+    "EndDistance": 2.75
+  },
+  "Effects": {
+    "Trails": [
+      {
+        "PositionOffset": {
+          "X": 0.5,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Sword_Strong"
+      },
+      {
+        "PositionOffset": {
+          "X": 0.5,
+          "Y": 0,
+          "Z": 0
+        },
+        "RotationOffset": {
+          "Pitch": 0,
+          "Roll": 90,
+          "Yaw": 0
+        },
+        "TargetNodeName": "Handle",
+        "TrailId": "Medium_Sword_Strong",
+        "TargetEntityPart": "SecondaryItem"
+      }
+    ],
+    "CameraEffect": "Daggers_Stab"
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Primary_Pounce_Stab_Damage"
+          ]
+        },
+        "Var": "Pounce_Stab_Damage"
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Replace",
+    "DefaultOk": true,
+    "DefaultValue": {
+      "Interactions": [
+        "Weapon_Daggers_Primary_Pounce_Stab_Force"
+      ]
+    },
+    "Var": "Pounce_Stab_Force",
+    "Next": {
+      "Type": "Simple",
+      "$Comment": "Pad the interaction length",
+      "RunTime": 0.333
+    }
+  }
+}

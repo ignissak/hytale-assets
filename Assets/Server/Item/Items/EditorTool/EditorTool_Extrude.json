@@ -1,0 +1,54 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Extrude.name",
+    "Description": "server.builderTools.tools.Extrude.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Extrude.png",
+  "Categories": [
+    "Tool.BuilderToolSecondPage"
+  ],
+  "Model": "Items/Tools/Brush/Brush.blockymodel",
+  "Texture": "Items/Tools/Brush/Brush_Texture.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Extrude",
+        "IsBrush": false,
+        "Args": {
+          "ExtrudeRadius": {
+            "Type": "Int",
+            "Default": 3,
+            "Min": 1,
+            "Max": 100
+          },
+          "ExtrudeDepth": {
+            "Type": "Int",
+            "Default": 3,
+            "Min": 1,
+            "Max": 100
+          },
+          "ExtrudeMaterial": {
+            "Type": "Block",
+            "Default": "Rock_Stone"
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "Quality": "Tool"
+}

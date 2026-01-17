@@ -1,0 +1,142 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Onion_StageFinal.name"
+  },
+  "Parent": "Plant_Crop_Onion_Block",
+  "BlockType": {
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Onion_01.blockymodel",
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Small",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Onion_Eternal_Stage1"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9fc348"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Onion_02.blockymodel",
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Medium",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Onion_Eternal_Stage2"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#9cc247"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Onion_03.blockymodel",
+          "CustomModelScale": 0.6,
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Onion_Eternal_StageFinal_Harvest"
+            },
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Onion_Eternal_StageFinal"
+            }
+          },
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Large",
+          "ParticleColor": "#376020"
+        }
+      }
+    },
+    "Particles": [
+      {
+        "SystemId": "Plant_Eternal",
+        "DetachedFromModel": false
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 37950,
+              "Max": 37950
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Onion_Eternal_Block"
+      }
+    }
+  },
+  "Quality": "Uncommon"
+}

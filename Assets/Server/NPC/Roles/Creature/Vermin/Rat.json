@@ -1,0 +1,80 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "DropList": "Drop_Rat",
+    "Appearance": "Rat",
+    "AttitudeGroup": "Vermin",
+    "MaxHealth": 21,
+    "MaxSpeed": 8,
+    "WanderRadius": 20,
+    "ViewRange": 8,
+    "HearingRange": 10,
+    "AlertedRange": 12,
+    "AlertedTime": [
+      2,
+      3
+    ],
+    "FleeIfNotThreatened": false,
+    "FleeRange": 15,
+    "HardLeashDistance": 60,
+    "LeashDistance": 30,
+    "CombatBehaviorDistance": 3,
+    "CombatBackOffAfterAttack": false,
+    "Attack": "Root_NPC_Rat_Attack",
+    "AttackDistance": 2,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.6,
+    "AlwaysSleepAtNight": false,
+    "DayTimeNapWeight": 0,
+    "TimidDuringDay": true,
+    "DayFlavorAnimation": "IdlePassive",
+    "NightFlavorAnimation": "IdlePassive",
+    "IsMemory": true,
+    "MemoriesCategory": "Critter",
+    "MemoriesNameOverride": "Rat",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Rat_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Rat_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.117
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Rat_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 9
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Rat.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

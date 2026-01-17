@@ -1,0 +1,172 @@
+$C = "../Common.ui";
+
+@NumberInput = Group {
+  @Visible = false;
+  @Left = 32;
+  LayoutMode: Left;
+  Anchor: (Left: @Left, Top: 6);
+  Visible: @Visible;
+
+  Label {
+    Text: @Label;
+    Anchor: (Top: 6, Left: 6, Right: 16);
+    Style: $C.@DefaultLabelStyle;
+  }
+
+  $C.@NumberField #Input {
+    @Anchor = (Width: 60, Left: 0, Right: 16);
+
+    Format: (
+      MaxDecimalPlaces: 2,
+      Step: 0.5
+    );
+  }
+};
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Width: 532);
+
+    #Title {
+      $C.@Title {
+        @Text = %server.customUI.configureInstanceBlockPage.title;
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 16);
+
+      Group #Instance {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        Label {
+          Text: %server.customUI.configureInstanceBlockPage.instances;
+          Anchor: (Top: 6, Left: 6, Right: 16);
+          Style: $C.@DefaultLabelStyle;
+        }
+
+        $C.@DropdownBox #Input {
+          @Anchor = (Left: 0, Right: 16);
+        }
+      }
+
+      Group #InstanceKey {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        Label {
+          Text: %server.customUI.configureInstanceBlockPage.instanceKey;
+          Anchor: (Top: 6, Left: 6, Right: 16);
+          Style: $C.@DefaultLabelStyle;
+        }
+
+        $C.@TextField #Input {
+          @Anchor = (Width: 350, Left: 0, Right: 16);
+        }
+      }
+
+      Group #PositionOffset {
+        LayoutMode: Top;
+        Anchor: (Bottom: 16);
+
+        Group #Use {
+          LayoutMode: Left;
+          Anchor: (Left: 0, Top: 6);
+
+          Label {
+            Text: %server.customUI.configureInstanceBlockPage.positionOffset;
+            Anchor: (Top: 6, Left: 6, Right: 16);
+            Style: $C.@DefaultLabelStyle;
+          }
+
+          $C.@CheckBox #CheckBox {}
+        }
+
+        @NumberInput #X {
+          @Label = %server.customUI.configureInstanceBlockPage.positionOffset.x;
+        }
+        @NumberInput #Y {
+          @Label = %server.customUI.configureInstanceBlockPage.positionOffset.y;
+        }
+        @NumberInput #Z {
+          @Label = %server.customUI.configureInstanceBlockPage.positionOffset.z;
+        }
+      }
+
+      Group #Rotation {
+        LayoutMode: Top;
+        Anchor: (Bottom: 16);
+
+        Group #Use {
+          LayoutMode: Left;
+          Anchor: (Left: 0, Top: 6);
+
+          Label {
+            Text: %server.customUI.configureInstanceBlockPage.rotation;
+            Anchor: (Top: 6, Left: 6, Right: 16);
+            Style: $C.@DefaultLabelStyle;
+          }
+
+          $C.@CheckBox #CheckBox {}
+        }
+
+        @NumberInput #Pitch {
+          @Label = %server.customUI.configureInstanceBlockPage.rotation.pitch;
+        }
+        @NumberInput #Yaw {
+          @Label = %server.customUI.configureInstanceBlockPage.rotation.yaw;
+        }
+        @NumberInput #Roll {
+          @Label = %server.customUI.configureInstanceBlockPage.rotation.roll;
+        }
+      }
+
+      Group #PersonalReturnPoint {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        Label {
+          Text: %server.customUI.configureInstanceBlockPage.personalReturnPoint;
+          Anchor: (Top: 6, Left: 6, Right: 16);
+          Style: $C.@DefaultLabelStyle;
+        }
+
+        $C.@CheckBox #CheckBox {}
+      }
+
+      Group #CloseOnBlockRemove {
+        LayoutMode: Left;
+        Anchor: (Bottom: 16);
+
+        Label {
+          Text: %server.customUI.configureInstanceBlockPage.closeOnBlockRemove;
+          Anchor: (Top: 6, Left: 6, Right: 16);
+          Style: $C.@DefaultLabelStyle;
+        }
+
+        $C.@CheckBox #CheckBox {}
+      }
+
+      @NumberInput #RemoveBlockAfter {
+        @Visible = true;
+        @Left = 0;
+        @Label = %server.customUI.configureInstanceBlockPage.removeBlockAfter;
+      }
+
+      Group {
+        Anchor: (Vertical: 16, Height: 1);
+        Background: #5e512c;
+      }
+
+      $C.@TextButton #SaveButton {
+        Text: %server.customUI.saveChanges;
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

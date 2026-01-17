@@ -1,0 +1,54 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Fish_Grilled.name",
+    "Description": "server.items.Food_Fish_Grilled.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T2"
+  },
+  "Quality": "Uncommon",
+  "Icon": "Icons/ItemsGenerated/Food_Fish_Grilled.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Resources/Ingredients/Fish_Piece.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Fish_Piece_Roasted_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#8d7661"
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Food_Fish_Raw",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Campfire",
+        "Type": "Processing"
+      }
+    ],
+    "TimeSeconds": 2
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T2"
+        },
+        "HealthRegen_TierCheck_T2",
+        "Meat_TierCheck_T2"
+      ]
+    }
+  },
+  "Scale": 1,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

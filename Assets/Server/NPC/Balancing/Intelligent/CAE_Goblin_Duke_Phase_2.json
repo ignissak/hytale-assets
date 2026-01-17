@@ -1,0 +1,157 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Spawn": {
+        "Type": "State",
+        "Description": "Spawn Goblin waves",
+        "State": "Chase",
+        "SubState": "Spawn",
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          },
+          {
+            "Type": "NearbyCount",
+            "NPCGroup": "Goblin",
+            "Range": 18,
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 2,
+              "FinalState": 0,
+              "InitialState": 1
+            }
+          }
+        ]
+      },
+      "Ice": {
+        "Type": "Ability",
+        "Description": "Use Ice attack",
+        "Target": "Hostile",
+        "AttackDistanceRange": [
+          5,
+          5
+        ],
+        "Ability": "Goblin_Duke_Magic_1",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.8,
+            "MaxValue": 1
+          }
+        ]
+      },
+      "Fire": {
+        "Type": "Ability",
+        "Description": "Use Fire attack",
+        "Target": "Hostile",
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "PostExecuteDistanceRange": [
+          5,
+          5
+        ],
+        "Ability": "Goblin_Duke_Magic_2",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.8,
+            "MaxValue": 1
+          }
+        ]
+      },
+      "Lightning": {
+        "Type": "Ability",
+        "Description": "Use Lightning attack",
+        "Target": "Hostile",
+        "AttackDistanceRange": [
+          2,
+          2
+        ],
+        "PostExecuteDistanceRange": [
+          5,
+          5
+        ],
+        "Ability": "Goblin_Duke_Magic_3",
+        "WeaponSlot": 0,
+        "FailureTimeout": 5,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.8,
+            "MaxValue": 1
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "Actions": [
+          "Spawn",
+          "Ice",
+          "Fire",
+          "Lightning"
+        ]
+      }
+    }
+  }
+}

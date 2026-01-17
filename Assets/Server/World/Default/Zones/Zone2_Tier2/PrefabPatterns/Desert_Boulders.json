@@ -1,0 +1,61 @@
+{
+  "GridGenerator": {
+    "Seed": "Drylands-Patter-Desert-Boulders",
+    "Density": [0, 0.42],
+    "Scale": 0.056,
+    "Jitter": 0.5
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+    "Noise": [
+		{
+			"Type": "SUM",
+			"Noise": [
+			  {
+				"Seed": "desert_patches",
+				"NoiseType": "OLD_SIMPLEX",
+				"FractalMode": "OLDSCHOOL",
+				"Octaves": 2,
+				"Persistence": 0.3,
+				"Scale": 0.05
+			  },
+			  {
+				"Seed": "Grasslands-River-Noise",
+				"NoiseType": "OLD_SIMPLEX",
+				"FractalMode": "OLDSCHOOL",
+				"Formula": "RIDGED",
+				"Octaves": 4,
+				"Persistence": 0.4,
+				"Scale": 0.004
+			  }
+			],
+			"Factors": [0.5, 0.5]
+		},
+		{
+			"Seed": "Drylands-Caves-Density-Surface",
+			"Scale": 0.01501,
+			"Jitter": 0.4001,
+			"DistanceRange": 6,
+			"NoiseType": "CELL",
+			"Formula" : "INVERTED",
+			"CellMode": "DISTANCE",
+			"Density": [0.7501, 0.9999],
+			"Normalize": 0.4501
+		}
+    ],
+    "Threshold": [0.4, 0.99]
+},
+  "Mask": {
+    "Default": ["*"],
+    "Specific": [
+      {
+        "Block": ["Soil_Sand_White"],
+        "Rule": ["Soil_Sand_White", "Rock_Sandstone", "Rock_Sandstone_White"]
+      },
+      {
+        "Block": ["Empty"],
+        "Rule": ["Soil_Sand_White"]
+      }
+    ]
+  }
+}

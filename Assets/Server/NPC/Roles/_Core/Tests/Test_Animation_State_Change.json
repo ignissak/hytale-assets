@@ -1,0 +1,154 @@
+{
+  "Type": "Generic",
+  "Appearance": "Trork_Warrior",
+  "StartState": "Idle",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Animation",
+            "Slot": "Status",
+            "Animation": "Sleep"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Sleep Anim"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Not Sleep Anim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Actions": [
+            {
+              "Type": "State",
+              "State": "Sleep"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Sleep"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default"
+              },
+              "Instructions": [
+                {
+                  "$Comment": "Animations",
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Sleep"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 4, 4 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": ".Wake"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Wake"
+              },
+              "Instructions": [
+                {
+                  "$Comment": "Animations",
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status",
+                      "Animation": "Wake"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 4, 4 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Sleep"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Animation_State_Change.name"
+}

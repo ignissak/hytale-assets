@@ -1,0 +1,36 @@
+{
+  "Parent": "Projectile_Config_Arrow_Ricochet_Base",
+  "LaunchForce": 30,
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Parent": "Bow_Combat_Projectile_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 10
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 7
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 1.62
+            }
+          ]
+        },
+        "Bow_Combat_Projectile_Damage_End"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        "Bow_Combat_Projectile_Miss",
+        "Bow_Combat_Projectile_Miss_End"
+      ]
+    }
+  }
+}

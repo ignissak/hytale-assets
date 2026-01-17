@@ -1,0 +1,144 @@
+{
+  "Type": "Charging",
+  "AllowIndefiniteHold": false,
+  "DisplayProgress": false,
+  "HorizontalSpeedMultiplier": 1,
+  "Effects": {
+    "ItemAnimationId": "ReloadReady",
+    "WorldSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start",
+    "LocalSoundEventId": "SFX_Hand_Crossbow_T2_Reload_Start_Local",
+    "ClearAnimationOnFinish": true
+  },
+  "Next": {
+    "0": {
+      "Type": "StatsCondition",
+      "Costs": {
+        "Ammo": 1
+      },
+      "Failed": {
+        "Type": "Replace",
+        "Var": "Reload_Start",
+        "DefaultValue": "Root_Common_StatAmmoReload_Entry"
+      },
+      "Next": {
+        "Type": "Replace",
+        "Var": "Standard_Projectile_Launch",
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Crossbow_Shot_Standard_Projectile"
+          ]
+        }
+      }
+    },
+    "0.8": {
+      "Parent": "Weapon_Crossbow_Arrow_Inventory_Condition",
+      "Failed": {
+        "Type": "StatsCondition",
+        "Costs": {
+          "Ammo": 1
+        },
+        "Next": {
+          "Type": "Replace",
+          "Var": "Standard_Projectile_Launch",
+          "DefaultValue": {
+            "Interactions": [
+              "Weapon_Crossbow_Shot_Standard_Projectile"
+            ]
+          }
+        }
+      },
+      "Next": {
+        "Parent": "Weapon_Crossbow_Primary_Overcharge_Load_Single",
+        "Effects": {
+          "ItemAnimationId": "ReloadCharged"
+        },
+        "Next": {
+          "0": {
+            "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+            "Repeat": 1
+          },
+          "0.5": {
+            "Parent": "Weapon_Crossbow_Primary_Overcharge_Load_Single",
+            "Effects": {
+              "ItemAnimationId": "ReloadCharged2"
+            },
+            "Next": {
+              "0": {
+                "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                "Repeat": 1
+              },
+              "0.75": {
+                "Parent": "Weapon_Crossbow_Arrow_Inventory_Condition",
+                "Failed": {
+                  "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                  "Repeat": 1
+                },
+                "Next": {
+                  "Parent": "Weapon_Crossbow_Primary_Overcharge_Load_Single",
+                  "Effects": {
+                    "ItemAnimationId": "ReloadCharged3"
+                  },
+                  "Next": {
+                    "0": {
+                      "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                      "Repeat": 2
+                    },
+                    "1": {
+                      "Parent": "Weapon_Crossbow_Arrow_Inventory_Condition",
+                      "Failed": {
+                        "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                        "Repeat": 2
+                      },
+                      "Next": {
+                        "Parent": "Weapon_Crossbow_Primary_Overcharge_Load_Single",
+                        "Effects": {
+                          "ItemAnimationId": "ReloadCharged4"
+                        },
+                        "Next": {
+                          "0": {
+                            "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                            "Repeat": 3
+                          },
+                          "1.25": {
+                            "Parent": "Weapon_Crossbow_Arrow_Inventory_Condition",
+                            "Failed": {
+                              "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                              "Repeat": 3
+                            },
+                            "Next": {
+                              "Parent": "Weapon_Crossbow_Primary_Overcharge_Load_Single",
+                              "Effects": {
+                                "ItemAnimationId": "ReloadCharged5"
+                              },
+                              "Next": {
+                                "0": {
+                                  "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                                  "Repeat": 4
+                                },
+                                "1.5": {
+                                  "Parent": "Weapon_Crossbow_Arrow_Inventory_Condition",
+                                  "Failed": {
+                                    "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                                    "Repeat": 4
+                                  },
+                                  "Next": {
+                                    "Parent": "Weapon_Crossbow_Primary_Overcharge_Shoot",
+                                    "Repeat": 5
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "Type": "Generic",
+  "Appearance": "Parrot",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    },
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 4,
+      "MaxHeightOverGround": 20,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "MotionController",
+                "MotionController": "Walk"
+              },
+              {
+                "Type": "Beacon",
+                "Message": "Fly_Danger_Close",
+                "Range": 25,
+                "TargetSlot": "LockedTarget"
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "TakeOff"
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "MotionController",
+            "MotionController": "Fly"
+          },
+          "BodyMotion": {
+            "Type": "WanderInCircle",
+            "Radius": 5
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "MotionController",
+            "MotionController": "Walk"
+          },
+          "BodyMotion": {
+            "Type": "WanderInCircle",
+            "Radius": 3
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "LockOnTarget": true,
+            "Range": 9
+          },
+          "Actions": [
+            {
+              "Type": "Beacon",
+              "Message": "Fly_Danger_Close",
+              "Range": 25,
+              "TargetGroups": [ "Birds" ],
+              "ExpirationTime": 2,
+              "SendTargetSlot": "LockedTarget"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon_Bird.name"
+}

@@ -1,0 +1,129 @@
+{
+  "Discovery": {
+    "Display": true,
+    "SoundEventId": "SFX_Discovered_Zone_Zone_Goblin_M1",
+    "Major": true,
+    "Duration": 4.0,
+    "FadeInDuration": 1.5,
+    "FadeOutDuration": 1.5
+  },
+  "BiomeGenerator": {
+    "GridGenerator": {
+      "Seed": "Grasslands-Biomes-Distrobution",
+      "Scale": 0.004,
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Grasslands-Base-Randomizer-1",
+            "NoiseType": "OLD_SIMPLEX",
+            "Octaves": 3,
+            "Persistence": 0.5,
+            "Scale": 0.005,
+            "Amplitude": 75
+          },
+          {
+            "Seed": "Grasslands-Base-Randomizer-2",
+            "NoiseType": "OLD_SIMPLEX",
+            "Octaves": 4,
+            "Persistence": 0.5,
+            "Scale": 0.01,
+            "Amplitude": 30
+          }
+        ]
+      }
+    }
+  },
+  "UniquePrefabs": {
+    "Entries": [
+      {
+        "Name": "Camp",
+        "Weights": [1],
+        "Prefab": ["Monuments.Unique.Start_Camp.*"],
+        "Config": {
+          "IsSpawn": true,
+          "SpawnOffset": [0, 1, 0],
+          "NoiseMask": {
+            "Type": "MAX",
+            "Noise": [
+              {
+                "Seed": "Grasslands-Pattern-Monuments-Tier-1",
+                "NoiseType": "CELL",
+                "Formula": "INVERTED_SQRT",
+                "Scale": 0.005,
+                "CellMode": "DISTANCE",
+                "Jitter": 0.75,
+                "Normalize": 0.3
+              },
+              {
+                "Seed": "Grasslands-Pattern-Plains-Chalk-Ash",
+                "NoiseType": "CELL",
+                "CellMode": "DISTANCE",
+                "DistanceRange": 1.0,
+                "Formula": "INVERTED",
+                "Density": [0, 0.3],
+                "Scale": 0.067,
+                "Jitter": 0.9,
+                "Normalize": 0.6
+              },
+              {
+                "Seed": "Grasslands-Pattern-Plains-Ash",
+                "NoiseType": "CELL",
+                "CellMode": "DISTANCE",
+                "DistanceRange": 1.0,
+                "Formula": "INVERTED",
+                "Jitter": 0.75,
+                "Scale": 0.006,
+                "Normalize": 0.97
+              },
+              {
+                "Seed": "Grasslands-Pattern-Forest-Mixed",
+                "NoiseType": "CELL",
+                "CellMode": "DISTANCE",
+                "DistanceRange": 1.0,
+                "Formula": "INVERTED",
+                "Density": 1,
+                "Scale": 0.09,
+                "Jitter": 0.7,
+                "Normalize": 0.7
+              },
+              {
+                "Seed": "Forests-Azure-Normal",
+                "NoiseType": "CELL",
+                "CellMode": "DISTANCE",
+                "DistanceRange": 1.0,
+                "Formula": "INVERTED",
+                "Density": 1,
+                "Scale": 0.07,
+                "Jitter": 0.7,
+                "Normalize": 0.7
+              }
+            ],
+            "Threshold": [0, 0.5]
+          },
+          "HeightThreshold": {
+            "Positions": [116, 117],
+            "Values": [0, 1]
+          },
+          "Mask": {
+            "Default": ["*"],
+            "Specific": [
+              {
+                "Block": ["Wood_Hardwood_Stairs"],
+                "Rule": ["*", "!Soil_Grass", "!Soil_Dirt", "Soil_Grass_Full", "Soil_Grass_Deep", "Soil_Leaves", "!Rock_Stone"]
+              },
+              {
+                "Block": ["Plant_Bush", "*Plant_Crop_Berry_Block_State_Definitions_StageFinal", "Plant_Vine_Wall", "Plant_Vine", "Plant_Moss_Rug_Green", "Plant_Moss_Short_Green", "Plant_Grass_Lush", "Plant_Grass_Lush_Short"],
+                "Rule": ["Empty"]
+              }
+            ]
+          },
+          "ExclusionRadius": 300,
+          "BorderExclusion": 30,
+          "Anchor": [3800, -1800],
+          "MaxDistance": 500,
+	        "BiomeMask": ["Biome"]
+        }
+      }
+    ]
+  }
+}

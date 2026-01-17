@@ -1,0 +1,4240 @@
+{
+	"$NodeId":	"Root-ad35342d-bb06-4ed5-a17e-07a7be3b456b",
+	"Operations":	[{
+			"$NodeId":	"SaveBrushConfig-43d9306b-21a4-41aa-9b99-a66e3d3dc739",
+			"Id":	"savebrushconfig",
+			"StoredName":	"Original"
+		}, {
+			"$NodeId":	"EchoOnce-f5ca2346-3951-4094-92e8-e69491da0804",
+			"Id":	"echoonce",
+			"Message":	"-------------------------------------\n  FOREST BRUSH\n-------------------------------------\nThis brush gives you the ability to create forests.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create a forest floor.\n\nLeft Click: Adds decorations to the forest floor (Boulders, Trees, Foliage). Use the Decoration Types dropdown to select the type of decoration. If using Foliage, use the inputs with the word \"Foliage\" to control these settings.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nDecoration Types = The decorations offered by the brush. Here are the current settings:\n\n          Boulders: Places down boulder prefabs\n\n          Trees: Places down tree prefabs (use \"Tree Types\" dropdown to select what trees)\n\n          Foliage: Places down plants and other materials on top of the forest floor\n\nTree Types = Dropdown of available trees to place as decorations.\n\nFoliage Blocks = The materials that make up the plants that will be placed on top of the forest floor.\n\nFoliage Density = How dense the Foliage Blocks will be.\n\nPrimary Blocks = The primary materials to make up the forest floor.\n\nPrimary Density = How dense the Primary Blocks will be.\n\nPatch Blocks = The materials to make up patches within the Primary Blocks.\n\nPatch Density = How dense the Patch Blocks will be.\n\nSecondary Blocks = The secondary materials to make up the forest floor. This will be the outline around the forest floor.\n\nSecondary Density = How dense the Secondary Blocks will be.\n\n-------------------------------------------\n  FOREST BRUSH - Read the Above ^\n-------------------------------------------"
+		}, {
+			"$NodeId":	"JumpIfClickType-9dfcb132-40f2-4fef-a753-246f77772d6a",
+			"Id":	"jumpifclicktype",
+			"StoredIndexName":	"decoration",
+			"ClickType":	"Left"
+		}, {
+			"$NodeId":	"HistoryMask-374cfe16-0612-44b2-9f83-d798c9e74693",
+			"Id":	"historymask",
+			"HistoryMask":	"None"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-e782f02d-c7a1-4451-8182-7a29bb9594fc",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundPatchMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Mask-c8eb21cb-be14-4feb-92b2-248afaef9f64",
+			"Id":	"mask",
+			"Mask":	"!Empty"
+		}, {
+			"$NodeId":	"AppendMask-f46b6fb9-bd83-47cb-83b0-f2321ea9ecbc",
+			"$Comment":	"Mask to not destroy any and all plants",
+			"Id":	"appendmask",
+			"AppendMask":	"!Plant_Coral_Model_Red,!Plant_Leaves_Autumn,!Plant_Grass_Winter_Short,!Plant_Moss_Short_Green,!Plant_Moss_Block_Green,!Plant_Vine_Thick_Roots,!Plant_Crop_Mushroom_Glowing_Red,!Plant_Seeds_Fire,!Plant_Coral_Block_Cyan,!Plant_Crop_Carrot,!Plant_Reeds_Arid,!Plant_Crop_Mushroom_Glowing_Violet,!Plant_Seeds_Rice,!Plant_Crop_Mushroom_Boomshroom_Small,!Plant_Flower_Flax_Blue,!Plant_Barnacles,!Plant_Coral_Block_Yellow,!Plant_Cactus_1,!Plant_Grass_Snowy_Short,!Plant_Leaves_Redwood,!Plant_Flower_Bushy_Purple,!Plant_Coral_Model_White,!Plant_Seeds_Stamina2,!Plant_Coral_Bush_White,!Plant_Crop_Mushroom_Cap_White,!Plant_Seeds_Palo,!Plant_Coral_Model_Lime,!Plant_Coral_Block_Pink,!Plant_Grass_Dry_Tall,!Plant_Coral_Block_White,!Plant_Flower_Bushy_Grey,!Plant_Roots_Cave_Small,!Plant_Grass_Arid,!Plant_Seeds_Lettuce,!Plant_Crop_Mushroom_Block_Yellow_Branch,!Plant_Crop_Mana2,!Plant_Flower_Common_Red2,!Plant_Leaves_Palm_Oasis,!Plant_Petals_Green,!Plant_Grass_Wet_Wild,!Plant_Petals_Azure,!Plant_Grass_Jungle,!Plant_Seeds_Fir,!Plant_Sapling_Windwillow,!Plant_Leaves_Fir_Red,!Plant_Flower_Water_Duckweed,!Plant_Cactus_Flat_1,!Plant_Leaves_Bramble,!Plant_Moss_Cave_Green_Dark,!Plant_Sapling_Poisoned,!Plant_Coral_Block_Green,!Plant_Petals_Cyan,!Plant_Seaweed_Dead_Short,!Plant_Reeds_Lava,!Plant_Coral_Model_Pink,!Plant_Vine_Jungle,!Plant_Seeds_Aubergine,!Plant_Sapling_Dry,!Plant_Crop_Mushroom_Cap_Poison,!Plant_Coral_Bush_Red,!Plant_Moss_Block_Blue,!Plant_Moss_Rug_Red,!Plant_Flower_Bushy_Poisoned,!Plant_Seaweed_Dead_Tall,!Plant_Crop_Stamina3,!Plant_Grass_Wet_Short,!Plant_Leaves_Palm_Arid,!Plant_Crop_Mushroom_Boomshroom_Large,!Plant_Crop_Mushroom_Glowing_Purple,!Plant_Leaves_Cedar,!Plant_Leaves_Jungle_Floor,!Plant_Petals_Blue,!Plant_Grass_Lush_Tall,!Plant_Fern_Wet_Big,!Plant_Bramble_Dry_Sandthorn,!Plant_Seeds_Aspen,!Plant_Seaweed_Winter_Stack,!Plant_Seeds_Mana3,!Plant_Flower_Common_Lime2,!Plant_Seeds_Redwood,!Plant_Sapling_Redwood,!Plant_Grass_Cave_Short,!Plant_Vine_Wall_Dry,!Plant_Crop_Pumpkin,!Plant_Moss_Rug_Blue,!Plant_Flower_Tall_Violet,!Plant_Cactus_Flat_3,!Plant_Seeds_Stamina1,!Plant_Seaweed_Grass,!Plant_Sapling_Spruce_Frozen,!Plant_Flower_Common_Poisoned2,!Plant_Seeds_Carrot,!Plant_Moss_Block_Green_Dark,!Plant_Roots_Cave,!Plant_Crop_Lettuce,!Plant_Moss_Block_Red,!Plant_Flower_Bushy_Red,!Plant_Crop_Stamina2,!Plant_Fruit_Azure,!Plant_Leaves_Burnt,!Plant_Coral_Block_Poison,!Plant_Flower_Common_White,!Plant_Seeds_Health2,!Plant_Crop_Mushroom_Block_Blue_Trunk,!Plant_Leaves_Sallow,!Plant_Leaves_Ash,!Plant_Leaves_Aspen,!Plant_Crop_Mushroom_Block_Green_Trunk,!Plant_Crop_Mushroom_Block_Green,!Plant_Flower_Common_Orange,!Plant_Vine_Red_Hanging,!Plant_Crop_Mana3,!Plant_Seeds_Ice,!Plant_Crop_Mushroom_Block_Yellow,!Plant_Crop_Mushroom_Common_Lime,!Plant_Sapling_Birch,!Plant_Seeds_Azure,!Plant_Flower_Flax_White,!Plant_Crop_Mushroom_Block_Yellow_Trunk,!Plant_Flower_Common_Poisoned,!Plant_Moss_Rug_Yellow,!Plant_Bramble_Dead_Lavathorn,!Plant_Coral_Bush_Poisoned,!Plant_Seaweed_Arid_Yellow,!Plant_Seaweed_Arid_Stack,!Plant_Moss_Block_Yellow,!Plant_Fern_Arid,!Plant_Leaves_Spiral,!Plant_Vine_Wall,!Plant_Leaves_Fire,!Plant_Vine_Liana_End,!Plant_Cactus_2,!Plant_Flower_Common_Cyan2,!Plant_Bush_Berry,!Plant_Flower_Water_White,!Plant_Crop_Mushroom_Block_White_Mycelium,!Plant_Crop_Mushroom_Cap_Green,!Plant_Leaves_Snow,!Plant_Bush_Arid,!Plant_Reeds_Marsh,!Plant_Seeds_Palm,!Plant_Reeds_Poison,!Plant_Bush_Wet_Berry,!Plant_Leaves_Gumboab,!Plant_Bush_Arid_Palm,!Plant_Crop_Mushroom_Common_Brown,!Plant_Flower_Common_Red,!Plant_Leaves_Maple,!Plant_Seaweed_Wet_Stack,!Plant_Seeds_Mana2,!Plant_Moss_Rug_Green,!Plant_Leaves_Beech,!Plant_Seeds_Spiral,!Plant_Fruit_Coconut,!Plant_Flower_Orchid_Orange,!Plant_Crop_Wheat,!Plant_Flower_Orchid_Poisoned,!Plant_Moss_Rug_Pink,!Plant_Grass_Gnarled_Tall,!Plant_Coral_Model_Green,!Plant_Crop_Mushroom_Block_White_Trunk,!Plant_Leaves_Amber,!Plant_Grass_Rocky,!Plant_Grass_Jungle_Tall,!Plant_Crop_Mushroom_Glowing_Green,!Plant_Petals_Blood,!Plant_Fruit_Apple,!Plant_Leaves_Palm,!Plant_Crop_Aubergine,!Plant_Fern_Jungle_Trunk,!Plant_Seaweed_Grass_Tall,!Plant_Vine_Hanging,!Plant_Crop_Mushroom_Block_Blue,!Plant_Coral_Bush_Grey,!Plant_Coral_Model_Orange,!Plant_Bush,!Plant_Leaves_Camphor,!Plant_Leaves_Oak,!Plant_Crop_Mushroom_Block_Purple,!Plant_Flower_Poisoned_Orange,!Plant_Crop_Mushroom_Glowing_Blue,!Plant_Seeds_Willow,!Plant_Bramble_Dry_Magic,!Plant_Fruit_Mango,!Plant_Flower_Common_White2,!Plant_Seaweed_Dead_Stack,!Plant_Leaves_Goldentree,!Plant_Crop_Cotton,!Plant_Fruit_Orange,!Plant_Seeds_Gumboab,!Plant_Bush_Dead_Tall,!Plant_Grass_Sharp_Overgrown,!Plant_Grass_Arid_Tall,!Plant_Coral_Bush_Green,!Plant_Coral_Bush_Violet,!Plant_Flower_Flax_Yellow,!Plant_Seeds_Maple,!Plant_Leaves_Fig_Blue,!Plant_Flower_Common_Yellow,!Plant_Crop_Mushroom_Glowing_Orange,!Plant_Bush_Crystal,!Plant_Seaweed_Winter_Tall,!Plant_Flower_Tall_Pink,!Plant_Moss_Short_Green_Dark,!Plant_Flower_Bushy_Blue,!Plant_Cactus_Flat_2,!Plant_Bush_Arid_Sharp,!Plant_Seeds_Mushroom,!Plant_Grass_Dry,!Plant_Crop_Stamina1,!Plant_Grass_Gnarled_Short,!Plant_Seeds_Beans_Purple,!Plant_Petals_White,!Plant_Bush_Arid_Red,!Plant_Sapling_Cedar,!Plant_Flower_Tall_Red,!Plant_Bush_Bramble,!Plant_Crop_Mushroom_Block_Brown_Trunk,!Plant_Bush_Jungle,!Plant_Crop_Mushroom_Block_White,!Plant_Flower_Common_Blue2,!Plant_Moss_Wall_Green,!Plant_Leaves_Windwillow,!Plant_Crop_Onion,!Plant_Seeds_Cauliflower,!Plant_Flower_Bushy_Yellow,!Plant_Grass_Lush_Short,!Plant_Leaves_Azure,!Plant_Moss_Cave_Green,!Plant_Flower_Tall_Yellow,!Plant_Seeds_Wild,!Plant_Leaves_Poisoned_Floor,!Plant_Reeds_Winter,!Plant_Seeds_Frostwood,!Plant_Seeds_Pine,!Plant_Bush_Winter_Red,!Plant_Fruit_Pear,!Plant_Leaves_Dry,!Plant_Coral_Block_Violet,!Plant_Leaves_Jungle,!Plant_Petals_Yellow,!Plant_Grass_Snowy,!Plant_Vine_Liana,!Plant_Petals_Red,!Plant_Crop_Mushroom_Block_Yellow_Mycelium,!Plant_Sapling_Beech,!Plant_Roots_Leafy,!Plant_Seaweed_Arid_Tall,!Plant_Moss_Yellow,!Plant_Grass_Rocky_Tall,!Plant_Bush_Hanging,!Plant_Fruit_Berries_Red,!Plant_Seeds_Health1,!Plant_Seaweed_Winter_Aurora,!Plant_Crop_Mushroom_Block_Red_Branch,!Plant_Grass_Jungle_Short,!Plant_Cactus_Ball_1,!Plant_Grass_Poisoned_Short,!Plant_Moss_Short_Yellow,!Plant_Flower_Orchid_Pink,!Plant_Flower_Common_Purple,!Plant_Coral_Model_Blue,!Plant_Vine_Wall_Winter,!Plant_Hay_Bundle,!Plant_Leaves_Stormbark,!Plant_Seeds_Birch,!Plant_Moss_Short_Red,!Plant_Flower_Flax_Pink,!Plant_Coral_Bush_Purple,!Plant_Leaves_Poisoned,!Plant_Flower_Bushy_White,!Plant_Moss_Wall_Yellow,!Plant_Sapling_Crystal,!Plant_Moss_Rug_Green_Dark,!Plant_Vine_Wall_Dead,!Plant_Crop_Mushroom_Flatcap_Green,!Plant_Fruit_Poison,!Plant_Moss_Wall_Green_Dark,!Plant_Seaweed_Winter_Short,!Plant_Seeds_Stamina3,!Plant_Moss_Cave_Blue,!Plant_Flower_Bushy_Cyan,!Plant_Leaves_Birch,!Plant_Seeds_Sallow,!Plant_Coral_Model_Grey,!Plant_Leaves_Fir_Tip_Snow,!Plant_Sapling_Ash,!Plant_Fern_Winter,!Plant_Crop_Mushroom_Block_Green_Mycelium,!Plant_Bush_Green,!Plant_Crop_Mushroom_Block_Red_Trunk,!Plant_Leaves_Bamboo,!Plant_Coral_Bush_Cyan,!Plant_Crop_Health1,!Plant_Flower_Common_Pink2,!Plant_Crop_Mushroom_Block_Purple_Mycelium,!Plant_Coral_Block_Lime,!Plant_Flower_Water_Blue,!Plant_Coral_Bush_Yellow,!Plant_Fern,!Plant_Flower_Common_Grey2,!Plant_Flower_Water_Green,!Plant_Seeds_Test_Tree,!Plant_Grass_Sharp_Wild,!Plant_Grass_Winter_Tall,!Plant_Reeds_Water,!Plant_Fern_Jungle,!Plant_Flower_Water_Red,!Plant_Fern_Forest,!Plant_Seaweed_Grass_Short,!Plant_Coral_Model_Violet,!Plant_Grass_Poisoned,!Plant_Flower_Hemlock,!Plant_Bush_Winter_Snow,!Plant_Seeds_Crystal,!Plant_Flower_Common_Lime,!Plant_Grass_Lush,!Plant_Leaves_Autumn_Floor,!Plant_Crop_Corn,!Plant_Bush_Wet,!Plant_Flower_Tall_Cyan2,!Plant_Grass_Sharp_Tall,!Plant_Moss_Green_Dark,!Plant_Coral_Model_Purple,!Plant_Seeds_Ash,!Plant_Bush_Dead_Hanging,!Plant_Crop_Chilli,!Plant_Flower_Orchid_Blue,!Plant_Coral_Bush_Orange,!Plant_Crop_Mushroom_Block_Blue_Branch,!Plant_Vine_Wall_Poisoned,!Plant_Seeds_Bamboo,!Plant_Petals_Purple,!Plant_Flower_Common_Orange2,!Plant_Bush_Winter_Berry,!Plant_Fern_Tall,!Plant_Bush_Winter,!Plant_Grass_Gnarled,!Plant_Moss_Wall_Red,!Plant_Bush_Lush,!Plant_Grass_Sharp_Short,!Plant_Flower_Common_Yellow2,!Plant_Coral_Bush_Blue,!Plant_Cactus_Flower,!Plant_Flower_Flax_Purple,!Plant_Crop_Mushroom_Block_Red_Mycelium,!Plant_Crop_Mushroom_Block_White_Branch,!Plant_Grass_Wet_Overgrown,!Plant_Crop_Rice,!Plant_Seeds_Jungle,!Plant_Bush_Dead_Twisted,!Plant_Reeds_Wet,!Plant_Flower_Tall_Blue,!Plant_Flower_Common_Cyan,!Plant_Flower_Tall_Purple,!Plant_Seaweed_Grass_Stack,!Plant_Seeds_Pumpkin,!Plant_Crop_Health2,!Plant_Seeds_Health3,!Plant_Seeds_Chilli,!Plant_Crop_Mushroom_Cap_Brown,!Plant_Bush_Winter_Sharp,!Plant_Seaweed_Grass_Bulbs,!Plant_Fruit_Windwillow,!Plant_Crop_Mana1,!Plant_Coral_Block_Purple,!Plant_Flower_Tall_Cyan,!Plant_Leaves_Dead,!Plant_Vine_Rug,!Plant_Flower_Orchid_Cyan,!Plant_Grass_Winter,!Plant_Flower_Water_Purple,!Plant_Crop_Mushroom_Shelve_Brown,!Plant_Seaweed_Arid_Short,!Plant_Leaves_Fir,!Plant_Crop_Mushroom_Shelve_Green,!Plant_Flower_Common_Purple2,!Plant_Leaves_Wisteria_Wild,!Plant_Moss_Blue,!Plant_Seaweed_Dead_Eerie,!Plant_Crop_Mushroom_Block_Red,!Plant_Leaves_Banyan,!Plant_Vine_Green_Hanging,!Plant_Crop_Tomato,!Plant_Flower_Common_Violet2,!Plant_Flower_Orchid_Purple,!Plant_Bramble_Dry_Twisted,!Plant_Leaves_Fir_Tip,!Plant_Bramble_Dead_Twisted,!Plant_Seeds_Cotton,!Plant_Crop_Mushroom_Common_Blue,!Plant_Flower_Orchid_Yellow,!Plant_Seaweed_Winter_Blue,!Plant_Crop_Mushroom_Block_Purple_Branch,!Plant_Fruit_Berries_Blue,!Plant_Leaves_Petrified,!Plant_Bramble_Winter,!Plant_Leaves_Palo,!Plant_Seeds_Tomato,!Plant_Crop_Mushroom_Cap_Red,!Plant_Leaves_Fir_Snow,!Plant_Seeds_Potato,!Plant_Crop_Mushroom_Block_Green_Branch,!Plant_Flower_Bushy_Violet,!Plant_Crop_Potato,!Plant_Fruit_Spiral,!Plant_Moss_Short_Blue,!Plant_Seaweed_Dead_Ghostly,!Plant_Moss_Wall_Blue,!Plant_Moss_Red,!Plant_Seeds_Cedar,!Plant_Seeds_Mana1,!Plant_Seeds_Wheat,!Plant_Coral_Block_Orange,!Plant_Coral_Block_Blue,!Plant_Seaweed_Arid_Red,!Plant_Flower_Orchid_Red,!Plant_Seeds_Sunflower,!Plant_Flower_Common_Grey,!Plant_Coral_Bush_Lime,!Plant_Leaves_Crystal,!Plant_Mushroom_Red,!Plant_Coral_Model_Cyan,!Plant_Crop_Mushroom_Shelve_Yellow,!Plant_Mushroom_Brown,!Plant_Crop_Mushroom_Block_Brown_Branch,!Plant_Petals_Storm,!Plant_Sapling_Oak,!Plant_Seeds_Dry,!Plant_Seaweed_Grass_Green,!Plant_Moss_Cave_Red,!Plant_Crop_Cauliflower,!Plant_Grass_Wet,!Plant_Fruit_Pinkberry,!Plant_Crop_Mushroom_Block_Brown_Mycelium,!Plant_Crop_Mushroom_Block_Purple_Trunk,!Plant_Coral_Block_Grey,!Plant_Sapling_Palm,!Plant_Fern_Wet_Giant_Trunk,!Plant_Flower_Common_Violet,!Plant_Crop_Health3,!Plant_Crop_Mushroom_Flatcap_Blue,!Plant_Flower_Common_Pink,!Plant_Bush_Dead,!Plant_Flower_Orchid_White,!Plant_Grass_Rocky_Short,!Plant_Grass_Arid_Short,!Plant_Grass_Wet_Tall,!Plant_Moss_Rug_Lime,!Plant_Sapling_Spruce,!Plant_Vine,!Plant_Fern_Wet_Giant,!Plant_Seeds_Bottletree,!Plant_Crop_Mushroom_Block_Brown,!Plant_Vine_Thick_Vertical,!Plant_Grass_Sharp,!Plant_Seeds_Turnip,!Plant_Seeds_Oak,!Plant_Crop_Turnip,!Plant_Coral_Block_Red,!Plant_Coral_Model_Yellow,!Plant_Coral_Bush_Pink,!Plant_Bramble_Moss_Twisted,!Plant_Grass_Snowy_Tall,!Plant_Leaves_Bottle,!Plant_Seeds_Onion,!Plant_Flower_Bushy_Green,!Plant_Flower_Common_Blue,!Plant_Moss_Cave_Yellow,!Plant_Seeds_Berry,!Plant_Flower_Flax_Orange,!Plant_Flower_Bushy_Orange,!Plant_Seeds_Beech,!Plant_Moss_Green,!Plant_Crop_Mushroom_Block_Blue_Mycelium,!Plant_Cactus_3,!Plant_Seeds_Corn,!Plant_Petals_Pink\r\n"
+		}, {
+			"$NodeId":	"LoadMaterial-d9d19625-256b-4e83-9c36-af2e9d853c62",
+			"Id":	"loadmaterial",
+			"ArgName":	"GroundMainMaterial"
+		}, {
+			"$NodeId":	"SetDensity-c0f5fd06-5763-4ee5-98f1-23c854564dc4",
+			"Id":	"density",
+			"Density":	100
+		}, {
+			"$NodeId":	"Set-3bf43d1e-4230-43a2-9fcd-3678cecb8080",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-a7276538-998e-4f2d-904e-de8e6e87a30f",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	3,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	3,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-f1ae017a-a665-4f22-8068-30e1b5501c2d",
+			"Id":	"loadint",
+			"ArgName":	"GroundMainMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-fcc3df2a-12cf-48bb-987b-628a303e9aa9",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"HistoryMask-153ef4e1-d50f-4425-8e76-2e32ee179f67",
+			"Id":	"historymask",
+			"HistoryMask":	"None"
+		}, {
+			"$NodeId":	"Dimensions-0ab1ae6d-5380-4a6c-843b-96d00e9d7cea",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	5,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	5,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-c219036f-91e5-41b9-9bf5-63d64944054d",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundMainMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-31c4298d-7c90-44e1-ba44-916c8a892731",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundPatchMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-edf24e37-fa1f-4cdc-86f8-4e14a193487b",
+			"Id":	"loadmaterial",
+			"ArgName":	"GroundSecondaryMaterial"
+		}, {
+			"$NodeId":	"SetDensity-7d6bb08c-eb2e-4908-a5f4-f85e51ecd449",
+			"Id":	"density",
+			"Density":	100
+		}, {
+			"$NodeId":	"Set-0cb8325f-d4ca-497d-a5f4-0f992bf68d8f",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-e9e20753-95fe-4221-bd08-7120b444211a",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	3,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	3,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-41395c9a-16b6-4564-baf2-ad4a787fb177",
+			"Id":	"loadint",
+			"ArgName":	"GroundSecondaryMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-da7779b7-9238-4f01-a1a0-948a5f45b502",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-d449abbc-d8eb-478e-8a3f-179806154ca4",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	3,
+				"Relative":	false
+			},
+			"Height":	{
+				"Value":	3,
+				"Relative":	false
+			}
+		}, {
+			"$NodeId":	"ClearOperationMask-cc62ad3b-69a2-49af-a1e6-7ea69b45fae0",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"AppendMask-ba2c8256-2b99-4662-8236-2b31f4d0bf16",
+			"Id":	"appendmask",
+			"AppendMask":	"!Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-98ea21d1-33c3-4a02-841e-efcb354f3b06",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundMainMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-f57f07d3-3460-40aa-ac5e-2b736dbfd7b4",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundSecondaryMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadMaterial-39ec61f2-3ee5-4a43-86c1-3017a432b060",
+			"Id":	"loadmaterial",
+			"ArgName":	"GroundPatchMaterial"
+		}, {
+			"$NodeId":	"SaveIndex-95a50093-82ea-420d-970e-5b7ee8c4c3dd",
+			"Id":	"saveindex",
+			"StoredIndexName":	"patch_loop"
+		}, {
+			"$NodeId":	"RandomOffset-9c6f90c8-a85d-4c8d-ad77-1f0a994c95a0",
+			"Id":	"randomoffset",
+			"XOffsetRange":	{
+				"Min":	{
+					"Value":	-5,
+					"Relative":	false
+				},
+				"Max":	{
+					"Value":	5,
+					"Relative":	false
+				}
+			},
+			"YOffsetRange":	{
+				"Min":	{
+					"Value":	0,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	0,
+					"Relative":	true
+				}
+			},
+			"ZOffsetRange":	{
+				"Min":	{
+					"Value":	-5,
+					"Relative":	false
+				},
+				"Max":	{
+					"Value":	5,
+					"Relative":	false
+				}
+			}
+		}, {
+			"$NodeId":	"SetDensity-6b82e663-d9d2-4d4e-b510-bd168166469c",
+			"Id":	"density",
+			"Density":	100
+		}, {
+			"$NodeId":	"Set-5845dfa7-e7fa-4039-864e-77e3b31b251f",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Dimensions-5b08f0b9-b43e-47f6-9f8c-d4677cc7e5a8",
+			"Id":	"dimensions",
+			"Width":	{
+				"Value":	2,
+				"Relative":	true
+			},
+			"Height":	{
+				"Value":	2,
+				"Relative":	true
+			}
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-000449d2-1358-4106-bbdb-a7f6fcd1f65e",
+			"Id":	"loadint",
+			"ArgName":	"GroundPatchMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Loop-53601ec0-cf60-426a-822e-ae71d0c84df6",
+			"Id":	"loop",
+			"StoredIndexName":	"patch_loop",
+			"AdditionalRepetitions":	2
+		}, {
+			"$NodeId":	"Exit-c37cdc6f-f3ff-47ec-8375-a02e56b8f668",
+			"Id":	"exit"
+		}, {
+			"$NodeId":	"SaveIndex-e4d88c21-f738-4ddf-b8ed-aa00165153ce",
+			"Id":	"saveindex",
+			"StoredIndexName":	"decoration"
+		}, {
+			"$NodeId":	"JumpIfToolArg-6d0c3f03-07f0-4f67-9716-dddbb8a70745",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TaDecorationOptions",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Boulders",
+			"StoredIndexName":	"decoration_prefab"
+		}, {
+			"$NodeId":	"JumpIfToolArg-1bc1edfb-e9c1-4548-9c97-26207d92b59e",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TaDecorationOptions",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Trees",
+			"StoredIndexName":	"decoration_prefab"
+		}, {
+			"$NodeId":	"JumpIfToolArg-2c28998c-27ce-4409-8e73-7e5faf6d9701",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TaDecorationOptions",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Foliage",
+			"StoredIndexName":	"decoration_foliage"
+		}, {
+			"$NodeId":	"SaveIndex-beb34d59-39c0-4e83-8de0-2a67bcbf618c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"decoration_prefab"
+		}, {
+			"$NodeId":	"RandomOffset-d6712e71-6353-43a9-a353-bcbfb5d5d6ca",
+			"Id":	"randomoffset",
+			"XOffsetRange":	{
+				"Min":	{
+					"Value":	-2,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	2,
+					"Relative":	true
+				}
+			},
+			"YOffsetRange":	{
+				"Min":	{
+					"Value":	0,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	0,
+					"Relative":	true
+				}
+			},
+			"ZOffsetRange":	{
+				"Min":	{
+					"Value":	-2,
+					"Relative":	true
+				},
+				"Max":	{
+					"Value":	2,
+					"Relative":	true
+				}
+			}
+		}, {
+			"$NodeId":	"SaveIndex-8246a47a-e36f-444a-a17a-5b4aef788618",
+			"Id":	"saveindex",
+			"StoredIndexName":	"prefab_paste_task"
+		}, {
+			"$NodeId":	"JumpIfToolArg-d18f61db-8433-4ab2-9fc7-c40bdd4baf93",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TaDecorationOptions",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Trees",
+			"StoredIndexName":	"paste_tree_prefab"
+		}, {
+			"$NodeId":	"JumpIfToolArg-eae4f182-5b9b-42c3-a5c9-1f593acdef1e",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TaDecorationOptions",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Boulders",
+			"StoredIndexName":	"paste_boulder_prefab"
+		}, {
+			"$NodeId":	"SaveIndex-84e2da68-9154-459a-b148-f6ee1efd124b",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_boulder_prefab"
+		}, {
+			"$NodeId":	"PastePrefab-0db55757-b8cc-4edb-815c-371bb9732901",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"ForestBrush_Boulders"
+		}, {
+			"$NodeId":	"JumpToIndex-5b63a98b-4960-4a69-ba50-c3ff108f0545",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-cf018433-4ca9-4113-9763-acfcde12f508",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_tree_prefab"
+		}, {
+			"$NodeId":	"JumpIfToolArg-37199cfd-a96f-4df2-9719-8fa9286f6342",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Amber",
+			"StoredIndexName":	"paste_amber"
+		}, {
+			"$NodeId":	"JumpIfToolArg-58ecc90f-2b51-47da-9309-53c8667df211",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Amber_Trunk",
+			"StoredIndexName":	"paste_amber_trunk"
+		}, {
+			"$NodeId":	"JumpIfToolArg-840f07e3-41e3-47b6-92e9-7df5a901111a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash",
+			"StoredIndexName":	"paste_ash"
+		}, {
+			"$NodeId":	"JumpIfToolArg-67bf7e4c-106e-40dc-9eb0-594f8c06b0c3",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_Dead",
+			"StoredIndexName":	"paste_ash_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-0c30e979-d617-4d0c-99b7-8b81d65e1dd4",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_Moss",
+			"StoredIndexName":	"paste_ash_moss"
+		}, {
+			"$NodeId":	"JumpIfToolArg-09008607-0c8d-4d0b-b5ad-409d59ba3b81",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_swamp",
+			"StoredIndexName":	"paste_ash_swamp"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b2afdcb3-672d-4b96-90a7-a740103b408b",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_swamp_dead",
+			"StoredIndexName":	"paste_ash_swamp_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-9f6bf652-b2b4-4bc3-80da-5b3c14a1a9d6",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_twisted",
+			"StoredIndexName":	"paste_ash_twisted"
+		}, {
+			"$NodeId":	"JumpIfToolArg-2d619adc-7ca1-4345-bd18-7cbfe68005cc",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_twisted_Giant",
+			"StoredIndexName":	"paste_ash_twisted_giant"
+		}, {
+			"$NodeId":	"JumpIfToolArg-80e6d4c7-ccd3-485d-bfde-9607afdacad7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Ash_twisted_Large",
+			"StoredIndexName":	"paste_ash_twisted_large"
+		}, {
+			"$NodeId":	"JumpIfToolArg-94ffb4ba-abd0-4be4-a545-8879c7d562fd",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Aspen",
+			"StoredIndexName":	"paste_aspen"
+		}, {
+			"$NodeId":	"JumpIfToolArg-6d7df9b5-eb56-4005-b889-99c4e7c60c69",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Autumn",
+			"StoredIndexName":	"paste_autumn"
+		}, {
+			"$NodeId":	"JumpIfToolArg-42751f8c-e0bf-4c37-af29-4118de2bb8e3",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Autumn_Stumps",
+			"StoredIndexName":	"paste_autumn_stumps"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b439b58e-6c9c-4059-8bb4-c59512e6e578",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Azure",
+			"StoredIndexName":	"paste_azure"
+		}, {
+			"$NodeId":	"JumpIfToolArg-87c14112-457a-4ec3-873a-55da36c326ad",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Bamboo",
+			"StoredIndexName":	"paste_bamboo"
+		}, {
+			"$NodeId":	"JumpIfToolArg-6c3433c1-fb5e-4ce2-a6ec-1ff0ef5cb501",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Beech",
+			"StoredIndexName":	"paste_beech"
+		}, {
+			"$NodeId":	"JumpIfToolArg-35c5dfb4-e3d0-412c-a9a6-fd158b29af0c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Beech_Dry",
+			"StoredIndexName":	"paste_beech_dry"
+		}, {
+			"$NodeId":	"JumpIfToolArg-bb80a1bc-1a41-40b2-9752-728c932c42cd",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Beech_Mountain",
+			"StoredIndexName":	"paste_beech_mountain"
+		}, {
+			"$NodeId":	"JumpIfToolArg-a66df4f8-7315-40e3-85e5-5f18e1b53baf",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Birch",
+			"StoredIndexName":	"paste_birch"
+		}, {
+			"$NodeId":	"JumpIfToolArg-5bf4b7dc-76c0-4839-813f-8c44a649a92f",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Boab",
+			"StoredIndexName":	"paste_boab"
+		}, {
+			"$NodeId":	"JumpIfToolArg-13360296-1faa-492b-a6fe-de0f3da6cb9a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Burnt",
+			"StoredIndexName":	"paste_burnt"
+		}, {
+			"$NodeId":	"JumpIfToolArg-14dca352-2fb0-4536-ad0f-7b4bae48b2a7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Burnt_dead",
+			"StoredIndexName":	"paste_burnt_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-5538d424-62d1-4c71-a32d-ebb17ff0eab6",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Burnt_Roots",
+			"StoredIndexName":	"paste_burnt_roots"
+		}, {
+			"$NodeId":	"JumpIfToolArg-2823c02a-af21-4bd7-9418-8b9c0d504cd5",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cedar",
+			"StoredIndexName":	"paste_cedar"
+		}, {
+			"$NodeId":	"JumpIfToolArg-33ff416a-8f71-4a48-80be-841636d8cca9",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cedar_Burnt",
+			"StoredIndexName":	"paste_cedar_burnt"
+		}, {
+			"$NodeId":	"JumpIfToolArg-4d6c9cec-e23c-4039-9894-aba421e3701a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Cedar_Logs",
+			"StoredIndexName":	"paste_cedar_logs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-64cc4265-db8a-40e4-abd4-be91fbc9c937",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Crystal",
+			"StoredIndexName":	"paste_crystal"
+		}, {
+			"$NodeId":	"JumpIfToolArg-625224e4-a5e4-4c9f-8ccc-ba85798402b7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Dry",
+			"StoredIndexName":	"paste_dry"
+		}, {
+			"$NodeId":	"JumpIfToolArg-f37f7a18-71c2-4968-9e17-6ca5a235bc0c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Dry_Dead",
+			"StoredIndexName":	"paste_dry_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-bc1798aa-2403-4ee4-b106-773449ce5aa5",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fig_Blue",
+			"StoredIndexName":	"paste_fig_blue"
+		}, {
+			"$NodeId":	"JumpIfToolArg-8c17cebb-2b21-4cf4-af0a-21ab3b958953",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir",
+			"StoredIndexName":	"paste_fir"
+		}, {
+			"$NodeId":	"JumpIfToolArg-da0361cd-cfaf-43fd-8080-381bf21136f6",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fire_Burning",
+			"StoredIndexName":	"paste_fire_burning"
+		}, {
+			"$NodeId":	"JumpIfToolArg-6604a77d-e1be-442a-a5ce-ecd74237c3d6",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_Autumn",
+			"StoredIndexName":	"paste_fir_autumn"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b6b37a71-b5fe-492e-be13-7ba4cad4123d",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_Dead",
+			"StoredIndexName":	"paste_fir_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-fc7a38b2-8d10-455d-9a8e-5217a4616a4a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_Dead_Large",
+			"StoredIndexName":	"paste_fir_dead_large"
+		}, {
+			"$NodeId":	"JumpIfToolArg-0cbad6e7-8be5-4278-ae0d-47c1983c37ad",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_Logs",
+			"StoredIndexName":	"paste_fir_logs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-d8474561-c6d3-4a79-99ed-7c977086cd0a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_red",
+			"StoredIndexName":	"paste_fir_red"
+		}, {
+			"$NodeId":	"JumpIfToolArg-9587a425-0067-4d5c-b4d9-e7e370fd36f7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Fir_Snow",
+			"StoredIndexName":	"paste_fir_snow"
+		}, {
+			"$NodeId":	"JumpIfToolArg-c71b558c-994e-4dda-b007-65ffffb1170c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Gum",
+			"StoredIndexName":	"paste_gum"
+		}, {
+			"$NodeId":	"JumpIfToolArg-a5d49796-b708-4ace-98e5-4ff5aebab0d8",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle",
+			"StoredIndexName":	"paste_jungle"
+		}, {
+			"$NodeId":	"JumpIfToolArg-ce103ab8-7ff5-4588-9e59-40104ba8ce41",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle1",
+			"StoredIndexName":	"paste_jungle1"
+		}, {
+			"$NodeId":	"JumpIfToolArg-4f7cc01d-c6ee-4008-9052-df5383799ba3",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle2",
+			"StoredIndexName":	"paste_jungle2"
+		}, {
+			"$NodeId":	"JumpIfToolArg-762dd461-d280-4a8f-ac65-734ac5cef485",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle3",
+			"StoredIndexName":	"paste_jungle3"
+		}, {
+			"$NodeId":	"JumpIfToolArg-392b3f51-91fd-4a2e-aae8-1c8e5f804147",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Canopy_Lower",
+			"StoredIndexName":	"paste_jungle_canopy_lower"
+		}, {
+			"$NodeId":	"JumpIfToolArg-62e91e00-f5be-46b2-af92-89ce913ed494",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Canopy_Middle",
+			"StoredIndexName":	"paste_jungle_canopy_middle"
+		}, {
+			"$NodeId":	"JumpIfToolArg-eb85dfca-132c-4021-b3fa-ee0a089236c0",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Canopy_Upper",
+			"StoredIndexName":	"paste_jungle_canopy_upper"
+		}, {
+			"$NodeId":	"JumpIfToolArg-f27997e3-9c6a-4a0d-bcd1-937a65412ece",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Crystal",
+			"StoredIndexName":	"paste_jungle_crystal"
+		}, {
+			"$NodeId":	"JumpIfToolArg-1a689fe8-c2af-48f7-8591-9dc1ee6f8a0f",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Crystal_Red",
+			"StoredIndexName":	"paste_jungle_crystal_red"
+		}, {
+			"$NodeId":	"JumpIfToolArg-a992d58a-9814-4a4a-b34a-3f84752c8c6a",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Ferns",
+			"StoredIndexName":	"paste_jungle_ferns"
+		}, {
+			"$NodeId":	"JumpIfToolArg-35e8a5c1-d14b-4678-a149-6629c2dd6c5d",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Island1",
+			"StoredIndexName":	"paste_jungle_island1"
+		}, {
+			"$NodeId":	"JumpIfToolArg-aaeedc9b-f39f-4f9c-b633-39a5f7772d51",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Island2",
+			"StoredIndexName":	"paste_jungle_island2"
+		}, {
+			"$NodeId":	"JumpIfToolArg-c6775d1c-0a02-4c72-93af-00a9e7c83865",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Jungle_Mushroom",
+			"StoredIndexName":	"paste_jungle_mushroom"
+		}, {
+			"$NodeId":	"JumpIfToolArg-367abf22-bec5-4175-93ab-547a47d38061",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Logs",
+			"StoredIndexName":	"paste_logs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-21d0ae5c-400a-4786-95da-a4df2275fa2c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Maple",
+			"StoredIndexName":	"paste_maple"
+		}, {
+			"$NodeId":	"JumpIfToolArg-22bfa403-1a53-4c31-8d1a-6d42815b5ed3",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Maple_Stumps",
+			"StoredIndexName":	"paste_maple_stumps"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b11fad12-293a-4dcf-a908-9e2d871495e7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Mushroom",
+			"StoredIndexName":	"paste_mushroom"
+		}, {
+			"$NodeId":	"JumpIfToolArg-04293685-e1a6-4cb4-a752-a2e69664336e",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Oak",
+			"StoredIndexName":	"paste_oak"
+		}, {
+			"$NodeId":	"JumpIfToolArg-42453fdf-97c8-4eb3-9885-a145320fb2cb",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Oak_Moss",
+			"StoredIndexName":	"paste_oak_moss"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b82186d1-1ca3-4a69-855a-29914a68eb70",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Oak_Stumps",
+			"StoredIndexName":	"paste_oak_stumps"
+		}, {
+			"$NodeId":	"JumpIfToolArg-b35abd6d-4558-4c88-b6d2-22f046d6fa2d",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Palm",
+			"StoredIndexName":	"paste_palm"
+		}, {
+			"$NodeId":	"JumpIfToolArg-95dd631e-c9c1-477e-9124-31e96bf886c1",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Palm_Green",
+			"StoredIndexName":	"paste_palm_green"
+		}, {
+			"$NodeId":	"JumpIfToolArg-35d1f38e-88de-401d-ae21-db56cb34799c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Palo",
+			"StoredIndexName":	"paste_palo"
+		}, {
+			"$NodeId":	"JumpIfToolArg-656ac840-aea1-485c-947d-beb79da97995",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Petrified",
+			"StoredIndexName":	"paste_petrified"
+		}, {
+			"$NodeId":	"JumpIfToolArg-bc93bd17-f068-4338-aaf5-5a4ba98723bd",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Petrified_Coral_Bulbs",
+			"StoredIndexName":	"paste_petrified_coral_bulbs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-896136c3-c957-4927-8da2-404c74dccdf1",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Petrified_Dead",
+			"StoredIndexName":	"paste_petrified_dead"
+		}, {
+			"$NodeId":	"JumpIfToolArg-a1feac70-18a9-4b1b-8511-4c4bc347941e",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Petrified_Logs",
+			"StoredIndexName":	"paste_petrified_logs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-76898bc4-83b0-4528-b585-2ddbf6949fae",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Poisoned",
+			"StoredIndexName":	"paste_poisoned"
+		}, {
+			"$NodeId":	"JumpIfToolArg-f3376ff9-d7d3-4b91-b73a-6e87f48a8c26",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Redwood",
+			"StoredIndexName":	"paste_redwood"
+		}, {
+			"$NodeId":	"JumpIfToolArg-95539aba-eaf7-4c29-aa55-e60c5632ba28",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Redwood_Logs",
+			"StoredIndexName":	"paste_redwood_logs"
+		}, {
+			"$NodeId":	"JumpIfToolArg-0958b286-8c26-420b-814b-b844dbef0e3c",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Redwood_Stumps",
+			"StoredIndexName":	"paste_redwood_stumps"
+		}, {
+			"$NodeId":	"JumpIfToolArg-61a65624-eb05-40e0-a0e8-c0f4b166a067",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Rocks",
+			"StoredIndexName":	"paste_rocks"
+		}, {
+			"$NodeId":	"JumpIfToolArg-cbfbd248-d9f8-4ca4-9874-3c7c55d9d9b6",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Sallow",
+			"StoredIndexName":	"paste_sallow"
+		}, {
+			"$NodeId":	"JumpIfToolArg-2a03563e-bccc-4025-92fa-dd18527acc64",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Silver",
+			"StoredIndexName":	"paste_silver"
+		}, {
+			"$NodeId":	"JumpIfToolArg-6cc918ae-1f6b-4761-b490-a9bdc1682205",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Stormbark_Stumps",
+			"StoredIndexName":	"paste_stormbark_stumps"
+		}, {
+			"$NodeId":	"JumpIfToolArg-fdc38002-e4ae-4470-b4fd-816c164d4cbb",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Willow",
+			"StoredIndexName":	"paste_willow"
+		}, {
+			"$NodeId":	"JumpIfToolArg-cb58f9ee-39cd-4a2d-837d-962a3d801549",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Wisteria",
+			"StoredIndexName":	"paste_wisteria"
+		}, {
+			"$NodeId":	"JumpIfToolArg-278d2257-824b-4645-b3f7-b968b206ed58",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"TreesTypes",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"Zone5",
+			"StoredIndexName":	"paste_zone5"
+		}, {
+			"$NodeId":	"SaveIndex-9a88e1db-4426-4f41-913e-394c3cf71de5",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_amber"
+		}, {
+			"$NodeId":	"PastePrefab-e8b04fdd-b15b-4f32-b9f2-7f7748a98aea",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Amber"
+		}, {
+			"$NodeId":	"JumpToIndex-7551da70-963d-4c0d-9cf0-079b8d1686c6",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-aa142bfa-160a-4fb1-9d05-7f65ee30c71a",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_amber_trunk"
+		}, {
+			"$NodeId":	"PastePrefab-8a43d66d-61d2-4636-9168-1329e0fbdbd7",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Amber_Trunk"
+		}, {
+			"$NodeId":	"JumpToIndex-4be035d9-22b3-4dd1-9836-ce9a5c36ec18",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-4baaa58d-54a0-47e7-9d00-e0a8c4333ae0",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash"
+		}, {
+			"$NodeId":	"PastePrefab-fa8fa4f3-816e-44d1-ac40-5f9cf9faf367",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash"
+		}, {
+			"$NodeId":	"JumpToIndex-9df8b972-2094-4507-9d67-91efbbaa5b60",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-20e630cf-c8c3-43fe-ae9c-cbe53cccaa5a",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_dead"
+		}, {
+			"$NodeId":	"PastePrefab-9771f1ae-57b0-4f43-b1db-4797e8d1d8bc",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_Dead"
+		}, {
+			"$NodeId":	"JumpToIndex-5aaf4de4-30a3-4e15-a512-30f08bd113d7",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-45d51c77-1bfb-43cc-a4ef-2d880450f814",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_moss"
+		}, {
+			"$NodeId":	"PastePrefab-76017e0c-3397-4e58-827f-62ef2b948131",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_Moss"
+		}, {
+			"$NodeId":	"JumpToIndex-e6f69378-dba8-4d3d-8b36-8f02407e2ec4",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-31770c75-b291-4fc9-ac2d-0f3742ea672c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_swamp"
+		}, {
+			"$NodeId":	"PastePrefab-5779b8e9-744c-4550-94cf-bec3cf96730a",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_swamp"
+		}, {
+			"$NodeId":	"JumpToIndex-1896b671-5c2d-486f-9d15-a89b711da9ab",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-3de963be-d2d2-4bc6-835f-a1f98ae04088",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_swamp_dead"
+		}, {
+			"$NodeId":	"PastePrefab-d0c31cf5-3c02-40fc-a44b-7574b948f39c",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_swamp_dead"
+		}, {
+			"$NodeId":	"JumpToIndex-a890762e-cd2e-4d2d-89f2-a639c7c0e19f",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-cac09921-4888-4c91-96c0-0358e604150f",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_twisted"
+		}, {
+			"$NodeId":	"PastePrefab-c031df58-d51e-4f8d-b843-456b72924d67",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_twisted"
+		}, {
+			"$NodeId":	"JumpToIndex-abe8b8ff-ce7c-4b23-a4ea-2435138eb639",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-ce4b5122-0abb-4703-a349-04060029bafb",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_twisted_giant"
+		}, {
+			"$NodeId":	"PastePrefab-0bdb34ee-6e3f-486c-99dc-490cf474a205",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_twisted_Giant"
+		}, {
+			"$NodeId":	"JumpToIndex-9254df11-d1c4-4f36-a293-1da0fd0337af",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-29c7e686-628e-4b1d-a9b2-a0456398cdd6",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_ash_twisted_large"
+		}, {
+			"$NodeId":	"PastePrefab-6db800e8-6955-4bd7-b5e1-f7ad3eabbaa8",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Ash_twisted_Large"
+		}, {
+			"$NodeId":	"JumpToIndex-8b38d77e-f5b0-454b-bd3c-8380abea6782",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-c843db04-933c-4ff4-95f5-3a0a08a5cb36",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_aspen"
+		}, {
+			"$NodeId":	"PastePrefab-ff11994f-d037-4de4-918d-1aed4096231c",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Aspen"
+		}, {
+			"$NodeId":	"JumpToIndex-415fa5d1-9819-4b1a-b522-09c6c55ffd7a",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-5b98deed-f1bc-4997-851c-4523d5d21156",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_autumn"
+		}, {
+			"$NodeId":	"PastePrefab-9b854ee8-e63b-422b-9fd1-fb81fc81558e",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Autumn"
+		}, {
+			"$NodeId":	"JumpToIndex-2faad27b-617c-4a07-9590-6b42c26e91fb",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-161ace52-2db4-427b-bb4e-f179fd163834",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_autumn_stumps"
+		}, {
+			"$NodeId":	"PastePrefab-d3be0189-aee4-4c5d-8d8a-c5d2be69aa11",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Autumn_Stumps"
+		}, {
+			"$NodeId":	"JumpToIndex-2ceef15f-445c-42f2-982d-6d9571e9bad6",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-ba8607b5-769b-494c-94a7-880933592d80",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_azure"
+		}, {
+			"$NodeId":	"PastePrefab-f8212e2f-8dee-41ec-88c1-7d6f06090779",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Azure"
+		}, {
+			"$NodeId":	"JumpToIndex-64956a71-31a8-4050-8f5e-f1bec07e43a0",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-fec3514e-0c0c-469c-bce1-494b00d98ebb",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_bamboo"
+		}, {
+			"$NodeId":	"PastePrefab-258282af-cb06-4d80-a176-cad3130149aa",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Bamboo"
+		}, {
+			"$NodeId":	"JumpToIndex-58df17f8-db22-430c-b0c1-e23cb9bf4bdd",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-89107088-4850-496d-9050-644612d9cf5f",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_beech"
+		}, {
+			"$NodeId":	"PastePrefab-a6079bce-b128-4a59-ba5c-9de99d036164",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Beech"
+		}, {
+			"$NodeId":	"JumpToIndex-2ca54d1c-db83-4788-8a86-809dfac6832a",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-fde3ccb3-cfc1-4410-bcf1-bd183920d57c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_beech_dry"
+		}, {
+			"$NodeId":	"PastePrefab-a68bdcff-be28-4eef-bdd4-942c009b1f82",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Beech_Dry"
+		}, {
+			"$NodeId":	"JumpToIndex-60c45053-d75e-4cca-84de-ef03645a3574",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-8711d904-7726-4aeb-a5ba-140aff7b45a1",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_beech_mountain"
+		}, {
+			"$NodeId":	"PastePrefab-50d4acdd-df92-41d9-b012-3c4a1922e324",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Beech_Mountain"
+		}, {
+			"$NodeId":	"JumpToIndex-2a725762-be14-4f8d-a1aa-3fc27edc96fc",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-c86c5ad9-ba43-412d-bead-8c5526c7759b",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_birch"
+		}, {
+			"$NodeId":	"PastePrefab-51a626bc-7021-4cd5-acd2-12db80bf5aaf",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Birch"
+		}, {
+			"$NodeId":	"JumpToIndex-e9e34b34-a6ea-4fce-9678-4979536c0acb",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-d324d87a-45b7-4eac-b3ae-e2d6d5b348b1",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_boab"
+		}, {
+			"$NodeId":	"PastePrefab-68f399af-2f75-414a-8676-ec0cb61966c5",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Boab"
+		}, {
+			"$NodeId":	"JumpToIndex-5de492ae-10d8-46e8-a3a2-2474b1f0a119",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-91968d15-d6d4-4a89-a1e9-97b00c89e75d",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_burnt"
+		}, {
+			"$NodeId":	"PastePrefab-0e7f5869-5326-42fc-8092-129db48edfc1",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Burnt"
+		}, {
+			"$NodeId":	"JumpToIndex-2f9c43ec-c88a-4ef5-97e5-c0152e0d9eba",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-c1b086f5-aaaf-487d-a78b-a44c7aa1ba00",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_burnt_dead"
+		}, {
+			"$NodeId":	"PastePrefab-b2aa9497-7365-47b6-b103-ea985fd3b385",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Burnt_dead"
+		}, {
+			"$NodeId":	"JumpToIndex-b1ee7699-a3da-42ab-bc1f-169d04f2430b",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-1b03d90a-6276-420b-82c0-fe9d4b97e12b",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_burnt_roots"
+		}, {
+			"$NodeId":	"PastePrefab-b434adf1-0cd7-4dee-9664-bdf8a5c55615",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Burnt_Roots"
+		}, {
+			"$NodeId":	"JumpToIndex-18acad5c-97ef-41a5-bb06-68b6117e408c",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-5e4b72d4-e699-4700-a836-50d1097b52dd",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_cedar"
+		}, {
+			"$NodeId":	"PastePrefab-058dd3e5-3f79-4f6b-91e6-559e30bedaaa",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Cedar"
+		}, {
+			"$NodeId":	"JumpToIndex-861a91cd-f1cc-496b-a08f-1686761128cf",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-3091b63e-d442-47d5-a773-836dffcdec73",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_cedar_burnt"
+		}, {
+			"$NodeId":	"PastePrefab-e66fa051-4b97-4bc9-a563-806f7197d9cf",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Cedar_Burnt"
+		}, {
+			"$NodeId":	"JumpToIndex-1b1768e2-0219-46f4-b831-f51d2dceb1c9",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-0f0e6504-6ec5-4c15-8e47-168f90033d08",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_cedar_logs"
+		}, {
+			"$NodeId":	"PastePrefab-ecf25c2e-46a6-4a74-ae95-c83efcdcf16e",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Cedar_Logs"
+		}, {
+			"$NodeId":	"JumpToIndex-8912187a-addb-4e26-94b2-b0319cae3033",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-4ffc5f52-44f3-42d4-862b-893ee7a62d1a",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_crystal"
+		}, {
+			"$NodeId":	"PastePrefab-7adebaff-25fa-46f8-9cbd-5cb227cd2c8d",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Crystal"
+		}, {
+			"$NodeId":	"JumpToIndex-10a94110-a54d-4aab-ae99-37b31b6d8679",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-ac6b8d12-64d8-42d3-84d1-991dab5a4165",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_dry"
+		}, {
+			"$NodeId":	"PastePrefab-7a0d7d26-cfe0-4493-88c1-a6c9d3791b56",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Dry"
+		}, {
+			"$NodeId":	"JumpToIndex-d514faa3-e1f5-4295-8b35-b95db2f21080",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-dc5f42dd-3d0a-49a6-9aeb-e9f8ac7c0ccb",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_dry_dead"
+		}, {
+			"$NodeId":	"PastePrefab-9c7b01f5-6b0b-4754-8ab9-98a5dbd3c5b6",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Dry_Dead"
+		}, {
+			"$NodeId":	"JumpToIndex-aa7e2bb2-5570-4701-9e22-ef903691d863",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-30853773-5d9c-4452-ae5b-865dee52a7de",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fig_blue"
+		}, {
+			"$NodeId":	"PastePrefab-72cd7a67-f8bf-4f95-8e04-dd6e3c7b48fc",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fig_Blue"
+		}, {
+			"$NodeId":	"JumpToIndex-b6904abb-ceb8-4f42-959e-a11664693c61",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-c3e63d40-9f7d-44f5-9a74-202d39f9d331",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir"
+		}, {
+			"$NodeId":	"PastePrefab-0e9d3b2e-69b8-404a-b0e2-c952f190cc97",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir"
+		}, {
+			"$NodeId":	"JumpToIndex-a56527e6-4807-4681-93b0-14bad6d9d8e2",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-9644cebf-9569-4636-8f33-364a7f419f7d",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fire_burning"
+		}, {
+			"$NodeId":	"PastePrefab-6248e185-e0e9-4244-91ae-3877ae5d6d5d",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fire_Burning"
+		}, {
+			"$NodeId":	"JumpToIndex-58d2ba30-f1d7-4d5e-bf9f-649e2a6da5c1",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-bde2c06b-311b-4836-8392-91cad79ae981",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_autumn"
+		}, {
+			"$NodeId":	"PastePrefab-47a313a0-bdee-4086-8545-dad62b23c4eb",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_Autumn"
+		}, {
+			"$NodeId":	"JumpToIndex-7268f528-e89f-4787-89ad-50a6dcb2f103",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-f9b63ba2-5d5e-4d13-b2d6-6fc36a687820",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_dead"
+		}, {
+			"$NodeId":	"PastePrefab-1f162b9f-b2c9-4567-ada7-e3a943c3af0a",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_Dead"
+		}, {
+			"$NodeId":	"JumpToIndex-85860c18-382d-480d-8f46-4dfac6e293ea",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-3c82ee49-bb93-49dc-b0fd-6227a9338264",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_dead_large"
+		}, {
+			"$NodeId":	"PastePrefab-7a47b166-be3f-4bde-9820-a0904e21a6f1",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_Dead_Large"
+		}, {
+			"$NodeId":	"JumpToIndex-cbb3c1e4-7b38-4504-9c4b-c0bbf3dc7918",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-dd058596-5ffb-438f-8611-bc2fd9dbcbd7",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_logs"
+		}, {
+			"$NodeId":	"PastePrefab-7b7950f3-5800-4cb9-986e-01baf358391f",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_Logs"
+		}, {
+			"$NodeId":	"JumpToIndex-5fce5cc9-4962-416a-a55e-1ce961813c2f",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-442738b7-ac50-4e71-a68d-9a41a444a0c5",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_red"
+		}, {
+			"$NodeId":	"PastePrefab-a9f85136-9ac6-4783-bb2d-b5be74e212c8",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_red"
+		}, {
+			"$NodeId":	"JumpToIndex-65ef58ee-973f-4469-b786-0062d870a248",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-e2c37ce4-32fc-4bc1-a57c-665d6bd753e1",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_fir_snow"
+		}, {
+			"$NodeId":	"PastePrefab-5c472737-cac3-4d8b-8491-6cab537585ae",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Fir_Snow"
+		}, {
+			"$NodeId":	"JumpToIndex-a4bd2546-2f87-4a27-b43a-bc9997001806",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-4865fd97-0700-4ebf-992e-411b2883e7d5",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_gum"
+		}, {
+			"$NodeId":	"PastePrefab-bc6911dd-333b-4a9a-b3e4-cf21e5b7427f",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Gum"
+		}, {
+			"$NodeId":	"JumpToIndex-cd5ddcd4-d07a-4b48-8a4c-f126632365af",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-fb71f5d5-26ec-4ed1-925c-f310cda9a82e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle"
+		}, {
+			"$NodeId":	"PastePrefab-26a3a9d5-0197-419e-9982-c671b74f5c55",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle"
+		}, {
+			"$NodeId":	"JumpToIndex-78e3c30a-a924-49c5-9e45-f3f0ca1bda5b",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-9d4df8a5-8400-4e3a-8e16-0fff405b09ad",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle1"
+		}, {
+			"$NodeId":	"PastePrefab-8fce7333-7ae0-402b-9873-dea78c154852",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle1"
+		}, {
+			"$NodeId":	"JumpToIndex-68a291f2-9d0d-4ba8-8b9f-8aa31b8e14c4",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-160e18e4-0bed-4801-b716-9a03f499b49c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle2"
+		}, {
+			"$NodeId":	"PastePrefab-033ab61a-b026-42d9-9a07-4f22b9ed8760",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle2"
+		}, {
+			"$NodeId":	"JumpToIndex-ff42794e-187b-4074-8667-a2e549801ad3",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-8e23f64f-6fc6-4c6e-bb9d-a6dce5ddbdd2",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle3"
+		}, {
+			"$NodeId":	"PastePrefab-5a57e3d8-b3de-4060-ae22-814b3190e427",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle3"
+		}, {
+			"$NodeId":	"JumpToIndex-8a752497-a1ac-4482-9908-17e49bf31dcf",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-7ab423ae-9ed8-4caa-b4bc-5962a7c996a3",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_canopy_lower"
+		}, {
+			"$NodeId":	"PastePrefab-58553612-45c4-4de8-9ed2-e625a78654c4",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Canopy_Lower"
+		}, {
+			"$NodeId":	"JumpToIndex-87c98230-4c31-401f-90b4-ca9774ca2c21",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-d25f465b-4aab-48a3-811a-cb9fcb3d6818",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_canopy_middle"
+		}, {
+			"$NodeId":	"PastePrefab-4fc78fbd-8183-4440-be57-9e0578f03a0e",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Canopy_Middle"
+		}, {
+			"$NodeId":	"JumpToIndex-a56fb533-0f7e-4fd3-a8c5-8c5bdd50deb5",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-0bea0a2c-96c8-4987-b2a9-86730bc80124",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_canopy_upper"
+		}, {
+			"$NodeId":	"PastePrefab-a497a3f0-fbe3-484f-a5e0-4ad588cfc9bb",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Canopy_Upper"
+		}, {
+			"$NodeId":	"JumpToIndex-7c4d3a64-94a7-47a1-9876-102a897c81b9",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-0a668a95-5bf1-4eb0-b2dc-1f85bbb7560d",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_crystal"
+		}, {
+			"$NodeId":	"PastePrefab-4662cf73-5537-44dc-bba2-57c1daff9bdb",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Crystal"
+		}, {
+			"$NodeId":	"JumpToIndex-4d9f0411-1440-4ced-93cf-3c77c7743dc4",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-21c9f457-f721-4f59-a19c-62b09b5f9eb0",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_crystal_red"
+		}, {
+			"$NodeId":	"PastePrefab-d6eb58cf-b7f1-474e-9cf0-cd7706acd199",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Crystal_Red"
+		}, {
+			"$NodeId":	"JumpToIndex-89dae385-08e7-4189-aced-8daf990f1830",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-c1578b75-bc90-483f-9021-5ec4520bf9b9",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_ferns"
+		}, {
+			"$NodeId":	"PastePrefab-0272a4dc-d336-41f0-b7f2-7fd3c52a4951",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Ferns"
+		}, {
+			"$NodeId":	"JumpToIndex-cf58ea1e-8c17-4341-ae90-772ce9474a01",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-93869366-2901-4156-bef4-80e524735d73",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_island1"
+		}, {
+			"$NodeId":	"PastePrefab-4e024428-c077-4e8f-bdf4-d40c5c4182f8",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Island1"
+		}, {
+			"$NodeId":	"JumpToIndex-bb2acf53-7fe4-419e-afc5-6b79d98a012b",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-2c918fc0-2c8c-4259-8fa3-a6104826b7c9",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_island2"
+		}, {
+			"$NodeId":	"PastePrefab-6f1a0c10-3501-45f7-b5c1-d0790867471d",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Island2"
+		}, {
+			"$NodeId":	"JumpToIndex-07432093-3c25-442c-9558-78bda792857b",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-769399ec-fd1d-4b31-9890-913ad7e63eb7",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_jungle_mushroom"
+		}, {
+			"$NodeId":	"PastePrefab-7b5bcc31-0ea2-4a0c-9299-ddcf3997b857",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Jungle_Mushroom"
+		}, {
+			"$NodeId":	"JumpToIndex-52c9c76c-55c6-4aef-95d0-58a91c0fd2be",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-b3954057-5cdc-42d6-b95a-c7a68d036d6e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_logs"
+		}, {
+			"$NodeId":	"PastePrefab-5dabd909-3d8d-456b-81c5-3b607dedd284",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Logs"
+		}, {
+			"$NodeId":	"JumpToIndex-388206ca-7d76-43f2-b6ca-a499b8706dfe",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-3cdce8e0-59b0-414c-acb3-01e71694e231",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_maple"
+		}, {
+			"$NodeId":	"PastePrefab-a1f361d7-04c1-40bf-a066-cdbde51c1e13",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Maple"
+		}, {
+			"$NodeId":	"JumpToIndex-2025b167-fb04-46d7-9261-2e0f67dc7daf",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-4779deb0-e230-4672-ac6b-72e0bacc3b3e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_maple_stumps"
+		}, {
+			"$NodeId":	"PastePrefab-6f447031-5ddf-4f40-818b-2faec5a5fa70",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Maple_Stumps"
+		}, {
+			"$NodeId":	"JumpToIndex-84afb219-5991-428c-8849-bbddd3d28cd5",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-a3a1cdb5-6564-4cc0-a630-ffdaefb093ce",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_mushroom"
+		}, {
+			"$NodeId":	"PastePrefab-1ae35eb1-6862-4ef8-9c72-bdc60349d503",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Mushroom"
+		}, {
+			"$NodeId":	"JumpToIndex-3a8aee3d-f570-4615-9197-ccd62e2a17a3",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-b4632d78-0fe9-4e15-9c27-90b0d7faba14",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_oak"
+		}, {
+			"$NodeId":	"PastePrefab-15f9bdc0-b383-40a5-b867-fa1e331f85ce",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Oak"
+		}, {
+			"$NodeId":	"JumpToIndex-348e75e1-0dac-4835-a922-9f31b7b458ae",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-2498dd52-9d63-4919-a2fb-29acc34a8048",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_oak_moss"
+		}, {
+			"$NodeId":	"PastePrefab-c8febdf0-69cd-4906-a2e5-cbae658aab58",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Oak_Moss"
+		}, {
+			"$NodeId":	"JumpToIndex-2610c727-ce29-445c-aa2a-4c44c8603a3a",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-565fc9cd-8984-445c-a55f-ed00456aecee",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_oak_stumps"
+		}, {
+			"$NodeId":	"PastePrefab-0bc738c5-3ff2-4af0-8d87-9db396e85224",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Oak_Stumps"
+		}, {
+			"$NodeId":	"JumpToIndex-8c7b9319-483c-415a-8c75-9afd291a631c",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-1debb0f6-020b-4aad-bb23-b1977209a428",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_palm"
+		}, {
+			"$NodeId":	"PastePrefab-eecfc848-4e6c-47dc-96ae-9faab4fce5cd",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Palm"
+		}, {
+			"$NodeId":	"JumpToIndex-b438fcc4-84a6-4d8b-ac80-67625dc78913",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-8c29a898-acc2-4d6f-bd6d-c1a35fbc334e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_palm_green"
+		}, {
+			"$NodeId":	"PastePrefab-9f808492-47af-4c8c-952a-35409a74256f",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Palm_Green"
+		}, {
+			"$NodeId":	"JumpToIndex-6628436f-ecbf-4a5f-9589-d03b74d72d30",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-8530b3c0-8836-4a4e-bf5d-68c66868bf8c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_palo"
+		}, {
+			"$NodeId":	"PastePrefab-4e489015-7d0c-4da2-8149-3f431964890e",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Palo"
+		}, {
+			"$NodeId":	"JumpToIndex-a3c77ced-b73d-46e6-a84b-e98392c374b7",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-e7c7222c-c272-4d9f-b798-6bed990435d9",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_petrified"
+		}, {
+			"$NodeId":	"PastePrefab-ac306377-10a4-4d30-a4d6-367ef75fd1fd",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Petrified"
+		}, {
+			"$NodeId":	"JumpToIndex-90dc61ae-7bb2-45da-b621-53c8e6c7ba23",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-a8f94d23-2def-4eca-a3a2-0c2114978e0e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_petrified_coral_bulbs"
+		}, {
+			"$NodeId":	"PastePrefab-3b46115e-ff10-4777-b8be-a70cbe514dd9",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Petrified_Coral_Bulbs"
+		}, {
+			"$NodeId":	"JumpToIndex-15f31510-8616-4775-801d-f10b9fc55a15",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-f5b83760-e400-4450-a19a-13770198d3c6",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_petrified_dead"
+		}, {
+			"$NodeId":	"PastePrefab-f15be421-ddc3-4dae-b6fc-955c71b76e94",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Petrified_Dead"
+		}, {
+			"$NodeId":	"JumpToIndex-177af2a5-74fc-455f-9273-3fd478cac71a",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-11f184d1-e161-44c4-b7be-ef632503885f",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_petrified_logs"
+		}, {
+			"$NodeId":	"PastePrefab-1e2ffd49-cfaf-480a-bb9d-2f9d8cc1fdfc",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Petrified_Logs"
+		}, {
+			"$NodeId":	"JumpToIndex-c32aff86-c066-4788-ac36-4fcb4e273e79",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-f6e5a2cd-8e76-4a2a-9956-b74e4715b90d",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_poisoned"
+		}, {
+			"$NodeId":	"PastePrefab-e5e9aca8-dbb8-4f36-9608-b450d7ce4e38",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Poisoned"
+		}, {
+			"$NodeId":	"JumpToIndex-68ab60b1-f358-4f54-b5cd-87db09c97b64",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-55109c10-ce4c-43a8-9874-34d448027423",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_redwood"
+		}, {
+			"$NodeId":	"PastePrefab-1b3350f6-26a6-4e09-9800-39630fb7ae19",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Redwood"
+		}, {
+			"$NodeId":	"JumpToIndex-f0f4da02-5a87-4fa2-a7fc-d96943589f53",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-99d31276-d310-40dd-a4dd-bd5ef475f7a2",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_redwood_logs"
+		}, {
+			"$NodeId":	"PastePrefab-10d9ac4a-00e6-48bd-ae7c-71e85be98705",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Redwood_Logs"
+		}, {
+			"$NodeId":	"JumpToIndex-a32f5321-7453-4278-83f7-5863eae250e3",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-8717fee8-d597-42a4-a696-540a0dea0c56",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_redwood_stumps"
+		}, {
+			"$NodeId":	"PastePrefab-921cb2c3-be22-491e-9626-aa459fb6d00f",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Redwood_Stumps"
+		}, {
+			"$NodeId":	"JumpToIndex-33e35ab7-087e-49c9-8d8a-fb5de36bf6d7",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-a076026f-dfcb-4cf6-ad6c-4ec5f49af64e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_rocks"
+		}, {
+			"$NodeId":	"PastePrefab-d40db874-74e6-4b8b-89c1-2b83a2d1560a",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Rocks"
+		}, {
+			"$NodeId":	"JumpToIndex-1ead4fe7-7c63-4214-97b7-57180b15b5dc",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-1da2ff6c-eb96-496a-96c4-9ffa4b34b983",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_sallow"
+		}, {
+			"$NodeId":	"PastePrefab-3141595e-7260-4da2-9600-cb8e32c1aa40",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Sallow"
+		}, {
+			"$NodeId":	"JumpToIndex-0019085b-3d01-439e-be2a-622b2a07178f",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-239d1fd7-1aa0-4048-a98b-46a5f6fdfa16",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_silver"
+		}, {
+			"$NodeId":	"PastePrefab-748b514f-6be3-476e-9e91-93814cc4bf8f",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Silver"
+		}, {
+			"$NodeId":	"JumpToIndex-93eb3af8-82ec-459f-baa9-60a4355a22a1",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-bfe418b8-c75c-4f14-a56d-802af6edf750",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_stormbark_stumps"
+		}, {
+			"$NodeId":	"PastePrefab-956d3254-f6c4-4e59-89f3-9995ef16f3fb",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Stormbark_Stumps"
+		}, {
+			"$NodeId":	"JumpToIndex-9a625d01-daec-40a3-8686-b788d589b45b",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-59effad4-a6fe-4fa8-9860-a3cd922866d0",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_willow"
+		}, {
+			"$NodeId":	"PastePrefab-75881f75-e83f-461d-9976-0356d8800d7a",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Willow"
+		}, {
+			"$NodeId":	"JumpToIndex-a7c38227-8365-4d02-a1ab-d43dbeaf5db7",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-867cc5d1-5636-43c2-afbc-65838d3a83fa",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_wisteria"
+		}, {
+			"$NodeId":	"PastePrefab-5fc126f3-1c3c-4fb0-ac7e-3f0988f767cb",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Wisteria"
+		}, {
+			"$NodeId":	"JumpToIndex-ac9596b0-3d2a-4eac-850e-b5400de35e1f",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-aea945b5-a481-4fca-ba21-d0c1dcddbb0b",
+			"Id":	"saveindex",
+			"StoredIndexName":	"paste_zone5"
+		}, {
+			"$NodeId":	"PastePrefab-7a7b055c-a291-4423-8921-38ef6dc2e008",
+			"Id":	"pasteprefab",
+			"PrefabListAssetName":	"Trees_Zone5"
+		}, {
+			"$NodeId":	"JumpToIndex-9b1f6945-683c-497e-a4a7-ac1c1553b2a9",
+			"Id":	"jump",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"SaveIndex-a82d56cc-8e4d-4e5f-b4d4-edcf6c57298f",
+			"Id":	"saveindex",
+			"StoredIndexName":	"decoration_prefab_end"
+		}, {
+			"$NodeId":	"JumpIfToolArg-405a9362-200d-4852-907f-aca8a2c91461",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"zNumPrefabs",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"1",
+			"StoredIndexName":	"skip_decoration"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-b519b363-fbc3-4a37-89bc-968ecb8023ec",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"decoration_prefab",
+			"NumberCirclePointsArg":	"zNumPrefabs",
+			"CircleRadiusArg":	"zPrefabSpacing",
+			"FlipDirection":	false,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"SaveIndex-e867ce6c-c15f-4c21-a17d-d91412fe59dc",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_decoration"
+		}, {
+			"$NodeId":	"Exit-2572ad6d-5961-4293-a773-192deb96bf57",
+			"Id":	"exit"
+		}, {
+			"$NodeId":	"SaveIndex-545d0c68-2758-410e-ba4c-436343cef256",
+			"Id":	"saveindex",
+			"StoredIndexName":	"decoration_foliage"
+		}, {
+			"$NodeId":	"LoadMaterial-2f922dfc-d0b5-472d-af0f-7b3af39cdb00",
+			"Id":	"loadmaterial",
+			"ArgName":	"FoliageMaterial"
+		}, {
+			"$NodeId":	"Offset-d35ed58d-81b4-41a9-82cc-bbf24f7320a4",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-99965cd8-aeb2-42d1-b433-223130b3de48",
+			"Id":	"loadint",
+			"ArgName":	"FoliageMaterialDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Mask-67819d72-f423-49d7-b2d4-131ad0517c3f",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-bb22feb3-0983-485a-8f13-89be3f8e3b6b",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundMainMaterial",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-14efe22e-a7b0-408a-bb90-a55bc88c4a65",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-a5ba864c-9a65-4aec-831f-069f20397f98",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"Mask-6c766f8b-e051-4009-9156-9010c419b552",
+			"Id":	"mask",
+			"Mask":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-1f06d52b-bc84-4bcb-9b8c-ecdf03b2d4a9",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"GroundPatchMaterial",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-12dac710-62a2-4a84-926c-ccdbdc624223",
+			"Id":	"set"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-ad35342d-bb06-4ed5-a17e-07a7be3b456b":	{
+				"$Position":	{
+					"$x":	-2188,
+					"$y":	15790
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"SaveBrushConfig-43d9306b-21a4-41aa-9b99-a66e3d3dc739":	{
+				"$Position":	{
+					"$x":	411,
+					"$y":	-1171
+				}
+			},
+			"EchoOnce-f5ca2346-3951-4094-92e8-e69491da0804":	{
+				"$Position":	{
+					"$x":	402,
+					"$y":	-989
+				}
+			},
+			"JumpIfClickType-9dfcb132-40f2-4fef-a753-246f77772d6a":	{
+				"$Position":	{
+					"$x":	394,
+					"$y":	-744
+				}
+			},
+			"HistoryMask-374cfe16-0612-44b2-9f83-d798c9e74693":	{
+				"$Position":	{
+					"$x":	388,
+					"$y":	126
+				}
+			},
+			"AppendMaskFromToolArg-e782f02d-c7a1-4451-8182-7a29bb9594fc":	{
+				"$Position":	{
+					"$x":	386,
+					"$y":	295
+				}
+			},
+			"Mask-c8eb21cb-be14-4feb-92b2-248afaef9f64":	{
+				"$Position":	{
+					"$x":	384,
+					"$y":	571
+				}
+			},
+			"AppendMask-f46b6fb9-bd83-47cb-83b0-f2321ea9ecbc":	{
+				"$Position":	{
+					"$x":	386,
+					"$y":	761
+				}
+			},
+			"LoadMaterial-d9d19625-256b-4e83-9c36-af2e9d853c62":	{
+				"$Position":	{
+					"$x":	386,
+					"$y":	954
+				}
+			},
+			"SetDensity-c0f5fd06-5763-4ee5-98f1-23c854564dc4":	{
+				"$Position":	{
+					"$x":	387,
+					"$y":	1156
+				}
+			},
+			"Set-3bf43d1e-4230-43a2-9fcd-3678cecb8080":	{
+				"$Position":	{
+					"$x":	390,
+					"$y":	1353
+				}
+			},
+			"Dimensions-a7276538-998e-4f2d-904e-de8e6e87a30f":	{
+				"$Position":	{
+					"$x":	386,
+					"$y":	1514
+				}
+			},
+			"LoadIntFromToolArg-f1ae017a-a665-4f22-8068-30e1b5501c2d":	{
+				"$Position":	{
+					"$x":	382,
+					"$y":	1920
+				}
+			},
+			"Set-fcc3df2a-12cf-48bb-987b-628a303e9aa9":	{
+				"$Position":	{
+					"$x":	387,
+					"$y":	2161
+				}
+			},
+			"HistoryMask-153ef4e1-d50f-4425-8e76-2e32ee179f67":	{
+				"$Position":	{
+					"$x":	350,
+					"$y":	2696
+				}
+			},
+			"Dimensions-0ab1ae6d-5380-4a6c-843b-96d00e9d7cea":	{
+				"$Position":	{
+					"$x":	348,
+					"$y":	2835
+				}
+			},
+			"AppendMaskFromToolArg-c219036f-91e5-41b9-9bf5-63d64944054d":	{
+				"$Position":	{
+					"$x":	348,
+					"$y":	3246
+				}
+			},
+			"AppendMaskFromToolArg-31c4298d-7c90-44e1-ba44-916c8a892731":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	3514
+				}
+			},
+			"LoadMaterial-edf24e37-fa1f-4cdc-86f8-4e14a193487b":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	3800
+				}
+			},
+			"SetDensity-7d6bb08c-eb2e-4908-a5f4-f85e51ecd449":	{
+				"$Position":	{
+					"$x":	347,
+					"$y":	3982
+				}
+			},
+			"Set-0cb8325f-d4ca-497d-a5f4-0f992bf68d8f":	{
+				"$Position":	{
+					"$x":	347,
+					"$y":	4205
+				}
+			},
+			"Dimensions-e9e20753-95fe-4221-bd08-7120b444211a":	{
+				"$Position":	{
+					"$x":	347,
+					"$y":	4383
+				}
+			},
+			"LoadIntFromToolArg-41395c9a-16b6-4564-baf2-ad4a787fb177":	{
+				"$Position":	{
+					"$x":	342,
+					"$y":	4788
+				}
+			},
+			"Set-da7779b7-9238-4f01-a1a0-948a5f45b502":	{
+				"$Position":	{
+					"$x":	349,
+					"$y":	5024
+				}
+			},
+			"Dimensions-d449abbc-d8eb-478e-8a3f-179806154ca4":	{
+				"$Position":	{
+					"$x":	353,
+					"$y":	5517
+				}
+			},
+			"ClearOperationMask-cc62ad3b-69a2-49af-a1e6-7ea69b45fae0":	{
+				"$Position":	{
+					"$x":	359,
+					"$y":	5930
+				}
+			},
+			"AppendMask-ba2c8256-2b99-4662-8236-2b31f4d0bf16":	{
+				"$Position":	{
+					"$x":	362,
+					"$y":	6286
+				}
+			},
+			"AppendMaskFromToolArg-98ea21d1-33c3-4a02-841e-efcb354f3b06":	{
+				"$Position":	{
+					"$x":	357,
+					"$y":	6495
+				}
+			},
+			"AppendMaskFromToolArg-f57f07d3-3460-40aa-ac5e-2b736dbfd7b4":	{
+				"$Position":	{
+					"$x":	358,
+					"$y":	6763
+				}
+			},
+			"LoadMaterial-39ec61f2-3ee5-4a43-86c1-3017a432b060":	{
+				"$Position":	{
+					"$x":	362,
+					"$y":	7039
+				}
+			},
+			"SaveIndex-95a50093-82ea-420d-970e-5b7ee8c4c3dd":	{
+				"$Position":	{
+					"$x":	359,
+					"$y":	7238
+				}
+			},
+			"RandomOffset-9c6f90c8-a85d-4c8d-ad77-1f0a994c95a0":	{
+				"$Position":	{
+					"$x":	355,
+					"$y":	7385
+				}
+			},
+			"SetDensity-6b82e663-d9d2-4d4e-b510-bd168166469c":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	8599
+				}
+			},
+			"Set-5845dfa7-e7fa-4039-864e-77e3b31b251f":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	8753
+				}
+			},
+			"Dimensions-5b08f0b9-b43e-47f6-9f8c-d4677cc7e5a8":	{
+				"$Position":	{
+					"$x":	358,
+					"$y":	8918
+				}
+			},
+			"LoadIntFromToolArg-000449d2-1358-4106-bbdb-a7f6fcd1f65e":	{
+				"$Position":	{
+					"$x":	370,
+					"$y":	9331
+				}
+			},
+			"Loop-53601ec0-cf60-426a-822e-ae71d0c84df6":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	9584
+				}
+			},
+			"Exit-c37cdc6f-f3ff-47ec-8375-a02e56b8f668":	{
+				"$Position":	{
+					"$x":	344,
+					"$y":	9957
+				}
+			},
+			"SaveIndex-e4d88c21-f738-4ddf-b8ed-aa00165153ce":	{
+				"$Position":	{
+					"$x":	109,
+					"$y":	11415
+				}
+			},
+			"JumpIfToolArg-6d0c3f03-07f0-4f67-9716-dddbb8a70745":	{
+				"$Position":	{
+					"$x":	112,
+					"$y":	11579
+				}
+			},
+			"JumpIfToolArg-1bc1edfb-e9c1-4548-9c97-26207d92b59e":	{
+				"$Position":	{
+					"$x":	110,
+					"$y":	11827
+				}
+			},
+			"JumpIfToolArg-2c28998c-27ce-4409-8e73-7e5faf6d9701":	{
+				"$Position":	{
+					"$x":	110,
+					"$y":	12079
+				}
+			},
+			"SaveIndex-beb34d59-39c0-4e83-8de0-2a67bcbf618c":	{
+				"$Position":	{
+					"$x":	163,
+					"$y":	12739
+				}
+			},
+			"RandomOffset-d6712e71-6353-43a9-a353-bcbfb5d5d6ca":	{
+				"$Position":	{
+					"$x":	158,
+					"$y":	12878
+				}
+			},
+			"SaveIndex-8246a47a-e36f-444a-a17a-5b4aef788618":	{
+				"$Position":	{
+					"$x":	213,
+					"$y":	20149
+				}
+			},
+			"JumpIfToolArg-d18f61db-8433-4ab2-9fc7-c40bdd4baf93":	{
+				"$Position":	{
+					"$x":	216,
+					"$y":	20315
+				}
+			},
+			"JumpIfToolArg-eae4f182-5b9b-42c3-a5c9-1f593acdef1e":	{
+				"$Position":	{
+					"$x":	215,
+					"$y":	20573
+				}
+			},
+			"SaveIndex-84e2da68-9154-459a-b148-f6ee1efd124b":	{
+				"$Position":	{
+					"$x":	203,
+					"$y":	20816
+				}
+			},
+			"PastePrefab-0db55757-b8cc-4edb-815c-371bb9732901":	{
+				"$Position":	{
+					"$x":	203,
+					"$y":	21122
+				}
+			},
+			"JumpToIndex-5b63a98b-4960-4a69-ba50-c3ff108f0545":	{
+				"$Position":	{
+					"$x":	201,
+					"$y":	21256
+				}
+			},
+			"SaveIndex-cf018433-4ca9-4113-9763-acfcde12f508":	{
+				"$Position":	{
+					"$x":	208,
+					"$y":	21393
+				}
+			},
+			"JumpIfToolArg-37199cfd-a96f-4df2-9719-8fa9286f6342":	{
+				"$Position":	{
+					"$x":	212,
+					"$y":	21732
+				}
+			},
+			"JumpIfToolArg-58ecc90f-2b51-47da-9309-53c8667df211":	{
+				"$Position":	{
+					"$x":	211,
+					"$y":	21956
+				}
+			},
+			"JumpIfToolArg-840f07e3-41e3-47b6-92e9-7df5a901111a":	{
+				"$Position":	{
+					"$x":	209,
+					"$y":	22175
+				}
+			},
+			"JumpIfToolArg-67bf7e4c-106e-40dc-9eb0-594f8c06b0c3":	{
+				"$Position":	{
+					"$x":	212,
+					"$y":	22401
+				}
+			},
+			"JumpIfToolArg-0c30e979-d617-4d0c-99b7-8b81d65e1dd4":	{
+				"$Position":	{
+					"$x":	216,
+					"$y":	22661
+				}
+			},
+			"JumpIfToolArg-09008607-0c8d-4d0b-b5ad-409d59ba3b81":	{
+				"$Position":	{
+					"$x":	237,
+					"$y":	22914
+				}
+			},
+			"JumpIfToolArg-b2afdcb3-672d-4b96-90a7-a740103b408b":	{
+				"$Position":	{
+					"$x":	258,
+					"$y":	23172
+				}
+			},
+			"JumpIfToolArg-9f6bf652-b2b4-4bc3-80da-5b3c14a1a9d6":	{
+				"$Position":	{
+					"$x":	262,
+					"$y":	23420
+				}
+			},
+			"JumpIfToolArg-2d619adc-7ca1-4345-bd18-7cbfe68005cc":	{
+				"$Position":	{
+					"$x":	279,
+					"$y":	23700
+				}
+			},
+			"JumpIfToolArg-80e6d4c7-ccd3-485d-bfde-9607afdacad7":	{
+				"$Position":	{
+					"$x":	289,
+					"$y":	23950
+				}
+			},
+			"JumpIfToolArg-94ffb4ba-abd0-4be4-a545-8879c7d562fd":	{
+				"$Position":	{
+					"$x":	288,
+					"$y":	24220
+				}
+			},
+			"JumpIfToolArg-6d7df9b5-eb56-4005-b889-99c4e7c60c69":	{
+				"$Position":	{
+					"$x":	294,
+					"$y":	24474
+				}
+			},
+			"JumpIfToolArg-42751f8c-e0bf-4c37-af29-4118de2bb8e3":	{
+				"$Position":	{
+					"$x":	297,
+					"$y":	24747
+				}
+			},
+			"JumpIfToolArg-b439b58e-6c9c-4059-8bb4-c59512e6e578":	{
+				"$Position":	{
+					"$x":	297,
+					"$y":	25009
+				}
+			},
+			"JumpIfToolArg-87c14112-457a-4ec3-873a-55da36c326ad":	{
+				"$Position":	{
+					"$x":	312,
+					"$y":	25295
+				}
+			},
+			"JumpIfToolArg-6c3433c1-fb5e-4ce2-a6ec-1ff0ef5cb501":	{
+				"$Position":	{
+					"$x":	306,
+					"$y":	25610
+				}
+			},
+			"JumpIfToolArg-35c5dfb4-e3d0-412c-a9a6-fd158b29af0c":	{
+				"$Position":	{
+					"$x":	303,
+					"$y":	25856
+				}
+			},
+			"JumpIfToolArg-bb80a1bc-1a41-40b2-9752-728c932c42cd":	{
+				"$Position":	{
+					"$x":	295,
+					"$y":	26149
+				}
+			},
+			"JumpIfToolArg-a66df4f8-7315-40e3-85e5-5f18e1b53baf":	{
+				"$Position":	{
+					"$x":	283,
+					"$y":	26457
+				}
+			},
+			"JumpIfToolArg-5bf4b7dc-76c0-4839-813f-8c44a649a92f":	{
+				"$Position":	{
+					"$x":	245,
+					"$y":	26764
+				}
+			},
+			"JumpIfToolArg-13360296-1faa-492b-a6fe-de0f3da6cb9a":	{
+				"$Position":	{
+					"$x":	267,
+					"$y":	27012
+				}
+			},
+			"JumpIfToolArg-14dca352-2fb0-4536-ad0f-7b4bae48b2a7":	{
+				"$Position":	{
+					"$x":	260,
+					"$y":	27271
+				}
+			},
+			"JumpIfToolArg-5538d424-62d1-4c71-a32d-ebb17ff0eab6":	{
+				"$Position":	{
+					"$x":	270,
+					"$y":	27543
+				}
+			},
+			"JumpIfToolArg-2823c02a-af21-4bd7-9418-8b9c0d504cd5":	{
+				"$Position":	{
+					"$x":	273,
+					"$y":	27829
+				}
+			},
+			"JumpIfToolArg-33ff416a-8f71-4a48-80be-841636d8cca9":	{
+				"$Position":	{
+					"$x":	298,
+					"$y":	28096
+				}
+			},
+			"JumpIfToolArg-4d6c9cec-e23c-4039-9894-aba421e3701a":	{
+				"$Position":	{
+					"$x":	286,
+					"$y":	28386
+				}
+			},
+			"JumpIfToolArg-64cc4265-db8a-40e4-abd4-be91fbc9c937":	{
+				"$Position":	{
+					"$x":	274,
+					"$y":	28651
+				}
+			},
+			"JumpIfToolArg-625224e4-a5e4-4c9f-8ccc-ba85798402b7":	{
+				"$Position":	{
+					"$x":	280,
+					"$y":	28941
+				}
+			},
+			"JumpIfToolArg-f37f7a18-71c2-4968-9e17-6ca5a235bc0c":	{
+				"$Position":	{
+					"$x":	267,
+					"$y":	29222
+				}
+			},
+			"JumpIfToolArg-bc1798aa-2403-4ee4-b106-773449ce5aa5":	{
+				"$Position":	{
+					"$x":	281,
+					"$y":	29490
+				}
+			},
+			"JumpIfToolArg-8c17cebb-2b21-4cf4-af0a-21ab3b958953":	{
+				"$Position":	{
+					"$x":	275,
+					"$y":	29754
+				}
+			},
+			"JumpIfToolArg-da0361cd-cfaf-43fd-8080-381bf21136f6":	{
+				"$Position":	{
+					"$x":	277,
+					"$y":	30011
+				}
+			},
+			"JumpIfToolArg-6604a77d-e1be-442a-a5ce-ecd74237c3d6":	{
+				"$Position":	{
+					"$x":	291,
+					"$y":	30274
+				}
+			},
+			"JumpIfToolArg-b6b37a71-b5fe-492e-be13-7ba4cad4123d":	{
+				"$Position":	{
+					"$x":	286,
+					"$y":	30537
+				}
+			},
+			"JumpIfToolArg-fc7a38b2-8d10-455d-9a8e-5217a4616a4a":	{
+				"$Position":	{
+					"$x":	291,
+					"$y":	30804
+				}
+			},
+			"JumpIfToolArg-0cbad6e7-8be5-4278-ae0d-47c1983c37ad":	{
+				"$Position":	{
+					"$x":	295,
+					"$y":	31091
+				}
+			},
+			"JumpIfToolArg-d8474561-c6d3-4a79-99ed-7c977086cd0a":	{
+				"$Position":	{
+					"$x":	305,
+					"$y":	31349
+				}
+			},
+			"JumpIfToolArg-9587a425-0067-4d5c-b4d9-e7e370fd36f7":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	31612
+				}
+			},
+			"JumpIfToolArg-c71b558c-994e-4dda-b007-65ffffb1170c":	{
+				"$Position":	{
+					"$x":	309,
+					"$y":	31879
+				}
+			},
+			"JumpIfToolArg-a5d49796-b708-4ace-98e5-4ff5aebab0d8":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	32142
+				}
+			},
+			"JumpIfToolArg-ce103ab8-7ff5-4588-9e59-40104ba8ce41":	{
+				"$Position":	{
+					"$x":	305,
+					"$y":	32419
+				}
+			},
+			"JumpIfToolArg-4f7cc01d-c6ee-4008-9052-df5383799ba3":	{
+				"$Position":	{
+					"$x":	305,
+					"$y":	32691
+				}
+			},
+			"JumpIfToolArg-762dd461-d280-4a8f-ac65-734ac5cef485":	{
+				"$Position":	{
+					"$x":	309,
+					"$y":	32964
+				}
+			},
+			"JumpIfToolArg-392b3f51-91fd-4a2e-aae8-1c8e5f804147":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	33250
+				}
+			},
+			"JumpIfToolArg-62e91e00-f5be-46b2-af92-89ce913ed494":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	33541
+				}
+			},
+			"JumpIfToolArg-eb85dfca-132c-4021-b3fa-ee0a089236c0":	{
+				"$Position":	{
+					"$x":	309,
+					"$y":	33822
+				}
+			},
+			"JumpIfToolArg-f27997e3-9c6a-4a0d-bcd1-937a65412ece":	{
+				"$Position":	{
+					"$x":	314,
+					"$y":	34090
+				}
+			},
+			"JumpIfToolArg-1a689fe8-c2af-48f7-8591-9dc1ee6f8a0f":	{
+				"$Position":	{
+					"$x":	310,
+					"$y":	34364
+				}
+			},
+			"JumpIfToolArg-a992d58a-9814-4a4a-b34a-3f84752c8c6a":	{
+				"$Position":	{
+					"$x":	312,
+					"$y":	34623
+				}
+			},
+			"JumpIfToolArg-35e8a5c1-d14b-4678-a149-6629c2dd6c5d":	{
+				"$Position":	{
+					"$x":	316,
+					"$y":	34874
+				}
+			},
+			"JumpIfToolArg-aaeedc9b-f39f-4f9c-b633-39a5f7772d51":	{
+				"$Position":	{
+					"$x":	316,
+					"$y":	35124
+				}
+			},
+			"JumpIfToolArg-c6775d1c-0a02-4c72-93af-00a9e7c83865":	{
+				"$Position":	{
+					"$x":	316,
+					"$y":	35361
+				}
+			},
+			"JumpIfToolArg-367abf22-bec5-4175-93ab-547a47d38061":	{
+				"$Position":	{
+					"$x":	325,
+					"$y":	35606
+				}
+			},
+			"JumpIfToolArg-21d0ae5c-400a-4786-95da-a4df2275fa2c":	{
+				"$Position":	{
+					"$x":	325,
+					"$y":	35852
+				}
+			},
+			"JumpIfToolArg-22bfa403-1a53-4c31-8d1a-6d42815b5ed3":	{
+				"$Position":	{
+					"$x":	330,
+					"$y":	36116
+				}
+			},
+			"JumpIfToolArg-b11fad12-293a-4dcf-a908-9e2d871495e7":	{
+				"$Position":	{
+					"$x":	343,
+					"$y":	36366
+				}
+			},
+			"JumpIfToolArg-04293685-e1a6-4cb4-a752-a2e69664336e":	{
+				"$Position":	{
+					"$x":	334,
+					"$y":	36630
+				}
+			},
+			"JumpIfToolArg-42453fdf-97c8-4eb3-9885-a145320fb2cb":	{
+				"$Position":	{
+					"$x":	339,
+					"$y":	36884
+				}
+			},
+			"JumpIfToolArg-b82186d1-1ca3-4a69-855a-29914a68eb70":	{
+				"$Position":	{
+					"$x":	339,
+					"$y":	37139
+				}
+			},
+			"JumpIfToolArg-b35abd6d-4558-4c88-b6d2-22f046d6fa2d":	{
+				"$Position":	{
+					"$x":	343,
+					"$y":	37398
+				}
+			},
+			"JumpIfToolArg-95dd631e-c9c1-477e-9124-31e96bf886c1":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	37674
+				}
+			},
+			"JumpIfToolArg-35d1f38e-88de-401d-ae21-db56cb34799c":	{
+				"$Position":	{
+					"$x":	347,
+					"$y":	37934
+				}
+			},
+			"JumpIfToolArg-656ac840-aea1-485c-947d-beb79da97995":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	38177
+				}
+			},
+			"JumpIfToolArg-bc93bd17-f068-4338-aaf5-5a4ba98723bd":	{
+				"$Position":	{
+					"$x":	359,
+					"$y":	38429
+				}
+			},
+			"JumpIfToolArg-896136c3-c957-4927-8da2-404c74dccdf1":	{
+				"$Position":	{
+					"$x":	359,
+					"$y":	38697
+				}
+			},
+			"JumpIfToolArg-a1feac70-18a9-4b1b-8511-4c4bc347941e":	{
+				"$Position":	{
+					"$x":	355,
+					"$y":	38957
+				}
+			},
+			"JumpIfToolArg-76898bc4-83b0-4528-b585-2ddbf6949fae":	{
+				"$Position":	{
+					"$x":	355,
+					"$y":	39213
+				}
+			},
+			"JumpIfToolArg-f3376ff9-d7d3-4b91-b73a-6e87f48a8c26":	{
+				"$Position":	{
+					"$x":	363,
+					"$y":	39456
+				}
+			},
+			"JumpIfToolArg-95539aba-eaf7-4c29-aa55-e60c5632ba28":	{
+				"$Position":	{
+					"$x":	351,
+					"$y":	39701
+				}
+			},
+			"JumpIfToolArg-0958b286-8c26-420b-814b-b844dbef0e3c":	{
+				"$Position":	{
+					"$x":	354,
+					"$y":	39955
+				}
+			},
+			"JumpIfToolArg-61a65624-eb05-40e0-a0e8-c0f4b166a067":	{
+				"$Position":	{
+					"$x":	360,
+					"$y":	40212
+				}
+			},
+			"JumpIfToolArg-cbfbd248-d9f8-4ca4-9874-3c7c55d9d9b6":	{
+				"$Position":	{
+					"$x":	374,
+					"$y":	40472
+				}
+			},
+			"JumpIfToolArg-2a03563e-bccc-4025-92fa-dd18527acc64":	{
+				"$Position":	{
+					"$x":	374,
+					"$y":	40740
+				}
+			},
+			"JumpIfToolArg-6cc918ae-1f6b-4761-b490-a9bdc1682205":	{
+				"$Position":	{
+					"$x":	379,
+					"$y":	41006
+				}
+			},
+			"JumpIfToolArg-fdc38002-e4ae-4470-b4fd-816c164d4cbb":	{
+				"$Position":	{
+					"$x":	384,
+					"$y":	41260
+				}
+			},
+			"JumpIfToolArg-cb58f9ee-39cd-4a2d-837d-962a3d801549":	{
+				"$Position":	{
+					"$x":	382,
+					"$y":	41515
+				}
+			},
+			"JumpIfToolArg-278d2257-824b-4645-b3f7-b968b206ed58":	{
+				"$Position":	{
+					"$x":	392,
+					"$y":	41775
+				}
+			},
+			"SaveIndex-9a88e1db-4426-4f41-913e-394c3cf71de5":	{
+				"$Position":	{
+					"$x":	389,
+					"$y":	42034
+				}
+			},
+			"PastePrefab-e8b04fdd-b15b-4f32-b9f2-7f7748a98aea":	{
+				"$Position":	{
+					"$x":	383,
+					"$y":	42379
+				}
+			},
+			"JumpToIndex-7551da70-963d-4c0d-9cf0-079b8d1686c6":	{
+				"$Position":	{
+					"$x":	385,
+					"$y":	42497
+				}
+			},
+			"SaveIndex-aa142bfa-160a-4fb1-9d05-7f65ee30c71a":	{
+				"$Position":	{
+					"$x":	398,
+					"$y":	42614
+				}
+			},
+			"PastePrefab-8a43d66d-61d2-4636-9168-1329e0fbdbd7":	{
+				"$Position":	{
+					"$x":	400,
+					"$y":	42748
+				}
+			},
+			"JumpToIndex-4be035d9-22b3-4dd1-9836-ce9a5c36ec18":	{
+				"$Position":	{
+					"$x":	397,
+					"$y":	42888
+				}
+			},
+			"SaveIndex-4baaa58d-54a0-47e7-9d00-e0a8c4333ae0":	{
+				"$Position":	{
+					"$x":	454,
+					"$y":	43046
+				}
+			},
+			"PastePrefab-fa8fa4f3-816e-44d1-ac40-5f9cf9faf367":	{
+				"$Position":	{
+					"$x":	456,
+					"$y":	43180
+				}
+			},
+			"JumpToIndex-9df8b972-2094-4507-9d67-91efbbaa5b60":	{
+				"$Position":	{
+					"$x":	453,
+					"$y":	43320
+				}
+			},
+			"SaveIndex-20e630cf-c8c3-43fe-ae9c-cbe53cccaa5a":	{
+				"$Position":	{
+					"$x":	459,
+					"$y":	43480
+				}
+			},
+			"PastePrefab-9771f1ae-57b0-4f43-b1db-4797e8d1d8bc":	{
+				"$Position":	{
+					"$x":	461,
+					"$y":	43614
+				}
+			},
+			"JumpToIndex-5aaf4de4-30a3-4e15-a512-30f08bd113d7":	{
+				"$Position":	{
+					"$x":	458,
+					"$y":	43754
+				}
+			},
+			"SaveIndex-45d51c77-1bfb-43cc-a4ef-2d880450f814":	{
+				"$Position":	{
+					"$x":	469,
+					"$y":	43938
+				}
+			},
+			"PastePrefab-76017e0c-3397-4e58-827f-62ef2b948131":	{
+				"$Position":	{
+					"$x":	471,
+					"$y":	44072
+				}
+			},
+			"JumpToIndex-e6f69378-dba8-4d3d-8b36-8f02407e2ec4":	{
+				"$Position":	{
+					"$x":	468,
+					"$y":	44212
+				}
+			},
+			"SaveIndex-31770c75-b291-4fc9-ac2d-0f3742ea672c":	{
+				"$Position":	{
+					"$x":	469,
+					"$y":	44397
+				}
+			},
+			"PastePrefab-5779b8e9-744c-4550-94cf-bec3cf96730a":	{
+				"$Position":	{
+					"$x":	471,
+					"$y":	44531
+				}
+			},
+			"JumpToIndex-1896b671-5c2d-486f-9d15-a89b711da9ab":	{
+				"$Position":	{
+					"$x":	468,
+					"$y":	44671
+				}
+			},
+			"SaveIndex-3de963be-d2d2-4bc6-835f-a1f98ae04088":	{
+				"$Position":	{
+					"$x":	484,
+					"$y":	44825
+				}
+			},
+			"PastePrefab-d0c31cf5-3c02-40fc-a44b-7574b948f39c":	{
+				"$Position":	{
+					"$x":	486,
+					"$y":	44959
+				}
+			},
+			"JumpToIndex-a890762e-cd2e-4d2d-89f2-a639c7c0e19f":	{
+				"$Position":	{
+					"$x":	483,
+					"$y":	45099
+				}
+			},
+			"SaveIndex-cac09921-4888-4c91-96c0-0358e604150f":	{
+				"$Position":	{
+					"$x":	505,
+					"$y":	45269
+				}
+			},
+			"PastePrefab-c031df58-d51e-4f8d-b843-456b72924d67":	{
+				"$Position":	{
+					"$x":	507,
+					"$y":	45403
+				}
+			},
+			"JumpToIndex-abe8b8ff-ce7c-4b23-a4ea-2435138eb639":	{
+				"$Position":	{
+					"$x":	504,
+					"$y":	45543
+				}
+			},
+			"SaveIndex-ce4b5122-0abb-4703-a349-04060029bafb":	{
+				"$Position":	{
+					"$x":	520,
+					"$y":	45672
+				}
+			},
+			"PastePrefab-0bdb34ee-6e3f-486c-99dc-490cf474a205":	{
+				"$Position":	{
+					"$x":	522,
+					"$y":	45806
+				}
+			},
+			"JumpToIndex-9254df11-d1c4-4f36-a293-1da0fd0337af":	{
+				"$Position":	{
+					"$x":	519,
+					"$y":	45946
+				}
+			},
+			"SaveIndex-29c7e686-628e-4b1d-a9b2-a0456398cdd6":	{
+				"$Position":	{
+					"$x":	525,
+					"$y":	46101
+				}
+			},
+			"PastePrefab-6db800e8-6955-4bd7-b5e1-f7ad3eabbaa8":	{
+				"$Position":	{
+					"$x":	527,
+					"$y":	46235
+				}
+			},
+			"JumpToIndex-8b38d77e-f5b0-454b-bd3c-8380abea6782":	{
+				"$Position":	{
+					"$x":	524,
+					"$y":	46375
+				}
+			},
+			"SaveIndex-c843db04-933c-4ff4-95f5-3a0a08a5cb36":	{
+				"$Position":	{
+					"$x":	545,
+					"$y":	46554
+				}
+			},
+			"PastePrefab-ff11994f-d037-4de4-918d-1aed4096231c":	{
+				"$Position":	{
+					"$x":	547,
+					"$y":	46688
+				}
+			},
+			"JumpToIndex-415fa5d1-9819-4b1a-b522-09c6c55ffd7a":	{
+				"$Position":	{
+					"$x":	544,
+					"$y":	46828
+				}
+			},
+			"SaveIndex-5b98deed-f1bc-4997-851c-4523d5d21156":	{
+				"$Position":	{
+					"$x":	530,
+					"$y":	46993
+				}
+			},
+			"PastePrefab-9b854ee8-e63b-422b-9fd1-fb81fc81558e":	{
+				"$Position":	{
+					"$x":	532,
+					"$y":	47127
+				}
+			},
+			"JumpToIndex-2faad27b-617c-4a07-9590-6b42c26e91fb":	{
+				"$Position":	{
+					"$x":	529,
+					"$y":	47267
+				}
+			},
+			"SaveIndex-161ace52-2db4-427b-bb4e-f179fd163834":	{
+				"$Position":	{
+					"$x":	494,
+					"$y":	47447
+				}
+			},
+			"PastePrefab-d3be0189-aee4-4c5d-8d8a-c5d2be69aa11":	{
+				"$Position":	{
+					"$x":	496,
+					"$y":	47581
+				}
+			},
+			"JumpToIndex-2ceef15f-445c-42f2-982d-6d9571e9bad6":	{
+				"$Position":	{
+					"$x":	493,
+					"$y":	47721
+				}
+			},
+			"SaveIndex-ba8607b5-769b-494c-94a7-880933592d80":	{
+				"$Position":	{
+					"$x":	505,
+					"$y":	47900
+				}
+			},
+			"PastePrefab-f8212e2f-8dee-41ec-88c1-7d6f06090779":	{
+				"$Position":	{
+					"$x":	507,
+					"$y":	48034
+				}
+			},
+			"JumpToIndex-64956a71-31a8-4050-8f5e-f1bec07e43a0":	{
+				"$Position":	{
+					"$x":	504,
+					"$y":	48174
+				}
+			},
+			"SaveIndex-fec3514e-0c0c-469c-bce1-494b00d98ebb":	{
+				"$Position":	{
+					"$x":	545,
+					"$y":	48354
+				}
+			},
+			"PastePrefab-258282af-cb06-4d80-a176-cad3130149aa":	{
+				"$Position":	{
+					"$x":	547,
+					"$y":	48488
+				}
+			},
+			"JumpToIndex-58df17f8-db22-430c-b0c1-e23cb9bf4bdd":	{
+				"$Position":	{
+					"$x":	544,
+					"$y":	48628
+				}
+			},
+			"SaveIndex-89107088-4850-496d-9050-644612d9cf5f":	{
+				"$Position":	{
+					"$x":	550,
+					"$y":	48787
+				}
+			},
+			"PastePrefab-a6079bce-b128-4a59-ba5c-9de99d036164":	{
+				"$Position":	{
+					"$x":	552,
+					"$y":	48921
+				}
+			},
+			"JumpToIndex-2ca54d1c-db83-4788-8a86-809dfac6832a":	{
+				"$Position":	{
+					"$x":	549,
+					"$y":	49061
+				}
+			},
+			"SaveIndex-fde3ccb3-cfc1-4410-bcf1-bd183920d57c":	{
+				"$Position":	{
+					"$x":	582,
+					"$y":	49230
+				}
+			},
+			"PastePrefab-a68bdcff-be28-4eef-bdd4-942c009b1f82":	{
+				"$Position":	{
+					"$x":	584,
+					"$y":	49364
+				}
+			},
+			"JumpToIndex-60c45053-d75e-4cca-84de-ef03645a3574":	{
+				"$Position":	{
+					"$x":	581,
+					"$y":	49504
+				}
+			},
+			"SaveIndex-8711d904-7726-4aeb-a5ba-140aff7b45a1":	{
+				"$Position":	{
+					"$x":	543,
+					"$y":	49749
+				}
+			},
+			"PastePrefab-50d4acdd-df92-41d9-b012-3c4a1922e324":	{
+				"$Position":	{
+					"$x":	545,
+					"$y":	49883
+				}
+			},
+			"JumpToIndex-2a725762-be14-4f8d-a1aa-3fc27edc96fc":	{
+				"$Position":	{
+					"$x":	542,
+					"$y":	50023
+				}
+			},
+			"SaveIndex-c86c5ad9-ba43-412d-bead-8c5526c7759b":	{
+				"$Position":	{
+					"$x":	550,
+					"$y":	50239
+				}
+			},
+			"PastePrefab-51a626bc-7021-4cd5-acd2-12db80bf5aaf":	{
+				"$Position":	{
+					"$x":	552,
+					"$y":	50373
+				}
+			},
+			"JumpToIndex-e9e34b34-a6ea-4fce-9678-4979536c0acb":	{
+				"$Position":	{
+					"$x":	549,
+					"$y":	50513
+				}
+			},
+			"SaveIndex-d324d87a-45b7-4eac-b3ae-e2d6d5b348b1":	{
+				"$Position":	{
+					"$x":	543,
+					"$y":	50771
+				}
+			},
+			"PastePrefab-68f399af-2f75-414a-8676-ec0cb61966c5":	{
+				"$Position":	{
+					"$x":	545,
+					"$y":	50905
+				}
+			},
+			"JumpToIndex-5de492ae-10d8-46e8-a3a2-2474b1f0a119":	{
+				"$Position":	{
+					"$x":	542,
+					"$y":	51045
+				}
+			},
+			"SaveIndex-91968d15-d6d4-4a89-a1e9-97b00c89e75d":	{
+				"$Position":	{
+					"$x":	547,
+					"$y":	51229
+				}
+			},
+			"PastePrefab-0e7f5869-5326-42fc-8092-129db48edfc1":	{
+				"$Position":	{
+					"$x":	549,
+					"$y":	51363
+				}
+			},
+			"JumpToIndex-2f9c43ec-c88a-4ef5-97e5-c0152e0d9eba":	{
+				"$Position":	{
+					"$x":	546,
+					"$y":	51503
+				}
+			},
+			"SaveIndex-c1b086f5-aaaf-487d-a78b-a44c7aa1ba00":	{
+				"$Position":	{
+					"$x":	622,
+					"$y":	51705
+				}
+			},
+			"PastePrefab-b2aa9497-7365-47b6-b103-ea985fd3b385":	{
+				"$Position":	{
+					"$x":	624,
+					"$y":	51839
+				}
+			},
+			"JumpToIndex-b1ee7699-a3da-42ab-bc1f-169d04f2430b":	{
+				"$Position":	{
+					"$x":	621,
+					"$y":	51979
+				}
+			},
+			"SaveIndex-1b03d90a-6276-420b-82c0-fe9d4b97e12b":	{
+				"$Position":	{
+					"$x":	582,
+					"$y":	52238
+				}
+			},
+			"PastePrefab-b434adf1-0cd7-4dee-9664-bdf8a5c55615":	{
+				"$Position":	{
+					"$x":	584,
+					"$y":	52372
+				}
+			},
+			"JumpToIndex-18acad5c-97ef-41a5-bb06-68b6117e408c":	{
+				"$Position":	{
+					"$x":	581,
+					"$y":	52512
+				}
+			},
+			"SaveIndex-5e4b72d4-e699-4700-a836-50d1097b52dd":	{
+				"$Position":	{
+					"$x":	643,
+					"$y":	52717
+				}
+			},
+			"PastePrefab-058dd3e5-3f79-4f6b-91e6-559e30bedaaa":	{
+				"$Position":	{
+					"$x":	649,
+					"$y":	52859
+				}
+			},
+			"JumpToIndex-861a91cd-f1cc-496b-a08f-1686761128cf":	{
+				"$Position":	{
+					"$x":	642,
+					"$y":	52991
+				}
+			},
+			"SaveIndex-3091b63e-d442-47d5-a773-836dffcdec73":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	53232
+				}
+			},
+			"PastePrefab-e66fa051-4b97-4bc9-a563-806f7197d9cf":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	53368
+				}
+			},
+			"JumpToIndex-1b1768e2-0219-46f4-b831-f51d2dceb1c9":	{
+				"$Position":	{
+					"$x":	674,
+					"$y":	53506
+				}
+			},
+			"SaveIndex-0f0e6504-6ec5-4c15-8e47-168f90033d08":	{
+				"$Position":	{
+					"$x":	657,
+					"$y":	53772
+				}
+			},
+			"PastePrefab-ecf25c2e-46a6-4a74-ae95-c83efcdcf16e":	{
+				"$Position":	{
+					"$x":	659,
+					"$y":	53906
+				}
+			},
+			"JumpToIndex-8912187a-addb-4e26-94b2-b0319cae3033":	{
+				"$Position":	{
+					"$x":	656,
+					"$y":	54046
+				}
+			},
+			"SaveIndex-4ffc5f52-44f3-42d4-862b-893ee7a62d1a":	{
+				"$Position":	{
+					"$x":	662,
+					"$y":	54243
+				}
+			},
+			"PastePrefab-7adebaff-25fa-46f8-9cbd-5cb227cd2c8d":	{
+				"$Position":	{
+					"$x":	664,
+					"$y":	54377
+				}
+			},
+			"JumpToIndex-10a94110-a54d-4aab-ae99-37b31b6d8679":	{
+				"$Position":	{
+					"$x":	661,
+					"$y":	54517
+				}
+			},
+			"SaveIndex-ac6b8d12-64d8-42d3-84d1-991dab5a4165":	{
+				"$Position":	{
+					"$x":	639,
+					"$y":	54725
+				}
+			},
+			"PastePrefab-7a0d7d26-cfe0-4493-88c1-a6c9d3791b56":	{
+				"$Position":	{
+					"$x":	641,
+					"$y":	54859
+				}
+			},
+			"JumpToIndex-d514faa3-e1f5-4295-8b35-b95db2f21080":	{
+				"$Position":	{
+					"$x":	638,
+					"$y":	54999
+				}
+			},
+			"SaveIndex-dc5f42dd-3d0a-49a6-9aeb-e9f8ac7c0ccb":	{
+				"$Position":	{
+					"$x":	629,
+					"$y":	55228
+				}
+			},
+			"PastePrefab-9c7b01f5-6b0b-4754-8ab9-98a5dbd3c5b6":	{
+				"$Position":	{
+					"$x":	631,
+					"$y":	55362
+				}
+			},
+			"JumpToIndex-aa7e2bb2-5570-4701-9e22-ef903691d863":	{
+				"$Position":	{
+					"$x":	628,
+					"$y":	55502
+				}
+			},
+			"SaveIndex-30853773-5d9c-4452-ae5b-865dee52a7de":	{
+				"$Position":	{
+					"$x":	608,
+					"$y":	55690
+				}
+			},
+			"PastePrefab-72cd7a67-f8bf-4f95-8e04-dd6e3c7b48fc":	{
+				"$Position":	{
+					"$x":	610,
+					"$y":	55824
+				}
+			},
+			"JumpToIndex-b6904abb-ceb8-4f42-959e-a11664693c61":	{
+				"$Position":	{
+					"$x":	607,
+					"$y":	55964
+				}
+			},
+			"SaveIndex-c3e63d40-9f7d-44f5-9a74-202d39f9d331":	{
+				"$Position":	{
+					"$x":	621,
+					"$y":	56157
+				}
+			},
+			"PastePrefab-0e9d3b2e-69b8-404a-b0e2-c952f190cc97":	{
+				"$Position":	{
+					"$x":	623,
+					"$y":	56291
+				}
+			},
+			"JumpToIndex-a56527e6-4807-4681-93b0-14bad6d9d8e2":	{
+				"$Position":	{
+					"$x":	620,
+					"$y":	56431
+				}
+			},
+			"SaveIndex-9644cebf-9569-4636-8f33-364a7f419f7d":	{
+				"$Position":	{
+					"$x":	642,
+					"$y":	56624
+				}
+			},
+			"PastePrefab-6248e185-e0e9-4244-91ae-3877ae5d6d5d":	{
+				"$Position":	{
+					"$x":	644,
+					"$y":	56758
+				}
+			},
+			"JumpToIndex-58d2ba30-f1d7-4d5e-bf9f-649e2a6da5c1":	{
+				"$Position":	{
+					"$x":	641,
+					"$y":	56898
+				}
+			},
+			"SaveIndex-bde2c06b-311b-4836-8392-91cad79ae981":	{
+				"$Position":	{
+					"$x":	635,
+					"$y":	57071
+				}
+			},
+			"PastePrefab-47a313a0-bdee-4086-8545-dad62b23c4eb":	{
+				"$Position":	{
+					"$x":	637,
+					"$y":	57205
+				}
+			},
+			"JumpToIndex-7268f528-e89f-4787-89ad-50a6dcb2f103":	{
+				"$Position":	{
+					"$x":	634,
+					"$y":	57345
+				}
+			},
+			"SaveIndex-f9b63ba2-5d5e-4d13-b2d6-6fc36a687820":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	57532
+				}
+			},
+			"PastePrefab-1f162b9f-b2c9-4567-ada7-e3a943c3af0a":	{
+				"$Position":	{
+					"$x":	677,
+					"$y":	57666
+				}
+			},
+			"JumpToIndex-85860c18-382d-480d-8f46-4dfac6e293ea":	{
+				"$Position":	{
+					"$x":	674,
+					"$y":	57806
+				}
+			},
+			"SaveIndex-3c82ee49-bb93-49dc-b0fd-6227a9338264":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	58033
+				}
+			},
+			"PastePrefab-7a47b166-be3f-4bde-9820-a0904e21a6f1":	{
+				"$Position":	{
+					"$x":	677,
+					"$y":	58167
+				}
+			},
+			"JumpToIndex-cbb3c1e4-7b38-4504-9c4b-c0bbf3dc7918":	{
+				"$Position":	{
+					"$x":	674,
+					"$y":	58307
+				}
+			},
+			"SaveIndex-dd058596-5ffb-438f-8611-bc2fd9dbcbd7":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	58520
+				}
+			},
+			"PastePrefab-7b7950f3-5800-4cb9-986e-01baf358391f":	{
+				"$Position":	{
+					"$x":	678,
+					"$y":	58654
+				}
+			},
+			"JumpToIndex-5fce5cc9-4962-416a-a55e-1ce961813c2f":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	58794
+				}
+			},
+			"SaveIndex-442738b7-ac50-4e71-a68d-9a41a444a0c5":	{
+				"$Position":	{
+					"$x":	682,
+					"$y":	58981
+				}
+			},
+			"PastePrefab-a9f85136-9ac6-4783-bb2d-b5be74e212c8":	{
+				"$Position":	{
+					"$x":	684,
+					"$y":	59115
+				}
+			},
+			"JumpToIndex-65ef58ee-973f-4469-b786-0062d870a248":	{
+				"$Position":	{
+					"$x":	681,
+					"$y":	59255
+				}
+			},
+			"SaveIndex-e2c37ce4-32fc-4bc1-a57c-665d6bd753e1":	{
+				"$Position":	{
+					"$x":	662,
+					"$y":	59414
+				}
+			},
+			"PastePrefab-5c472737-cac3-4d8b-8491-6cab537585ae":	{
+				"$Position":	{
+					"$x":	664,
+					"$y":	59548
+				}
+			},
+			"JumpToIndex-a4bd2546-2f87-4a27-b43a-bc9997001806":	{
+				"$Position":	{
+					"$x":	661,
+					"$y":	59688
+				}
+			},
+			"SaveIndex-4865fd97-0700-4ebf-992e-411b2883e7d5":	{
+				"$Position":	{
+					"$x":	682,
+					"$y":	59847
+				}
+			},
+			"PastePrefab-bc6911dd-333b-4a9a-b3e4-cf21e5b7427f":	{
+				"$Position":	{
+					"$x":	684,
+					"$y":	59981
+				}
+			},
+			"JumpToIndex-cd5ddcd4-d07a-4b48-8a4c-f126632365af":	{
+				"$Position":	{
+					"$x":	681,
+					"$y":	60121
+				}
+			},
+			"SaveIndex-fb71f5d5-26ec-4ed1-925c-f310cda9a82e":	{
+				"$Position":	{
+					"$x":	689,
+					"$y":	60274
+				}
+			},
+			"PastePrefab-26a3a9d5-0197-419e-9982-c671b74f5c55":	{
+				"$Position":	{
+					"$x":	691,
+					"$y":	60408
+				}
+			},
+			"JumpToIndex-78e3c30a-a924-49c5-9e45-f3f0ca1bda5b":	{
+				"$Position":	{
+					"$x":	688,
+					"$y":	60548
+				}
+			},
+			"SaveIndex-9d4df8a5-8400-4e3a-8e16-0fff405b09ad":	{
+				"$Position":	{
+					"$x":	682,
+					"$y":	60694
+				}
+			},
+			"PastePrefab-8fce7333-7ae0-402b-9873-dea78c154852":	{
+				"$Position":	{
+					"$x":	684,
+					"$y":	60828
+				}
+			},
+			"JumpToIndex-68a291f2-9d0d-4ba8-8b9f-8aa31b8e14c4":	{
+				"$Position":	{
+					"$x":	681,
+					"$y":	60968
+				}
+			},
+			"SaveIndex-160e18e4-0bed-4801-b716-9a03f499b49c":	{
+				"$Position":	{
+					"$x":	689,
+					"$y":	61140
+				}
+			},
+			"PastePrefab-033ab61a-b026-42d9-9a07-4f22b9ed8760":	{
+				"$Position":	{
+					"$x":	691,
+					"$y":	61274
+				}
+			},
+			"JumpToIndex-ff42794e-187b-4074-8667-a2e549801ad3":	{
+				"$Position":	{
+					"$x":	688,
+					"$y":	61414
+				}
+			},
+			"SaveIndex-8e23f64f-6fc6-4c6e-bb9d-a6dce5ddbdd2":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	61587
+				}
+			},
+			"PastePrefab-5a57e3d8-b3de-4060-ae22-814b3190e427":	{
+				"$Position":	{
+					"$x":	678,
+					"$y":	61721
+				}
+			},
+			"JumpToIndex-8a752497-a1ac-4482-9908-17e49bf31dcf":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	61861
+				}
+			},
+			"SaveIndex-7ab423ae-9ed8-4caa-b4bc-5962a7c996a3":	{
+				"$Position":	{
+					"$x":	655,
+					"$y":	62014
+				}
+			},
+			"PastePrefab-58553612-45c4-4de8-9ed2-e625a78654c4":	{
+				"$Position":	{
+					"$x":	657,
+					"$y":	62148
+				}
+			},
+			"JumpToIndex-87c98230-4c31-401f-90b4-ca9774ca2c21":	{
+				"$Position":	{
+					"$x":	654,
+					"$y":	62288
+				}
+			},
+			"SaveIndex-d25f465b-4aab-48a3-811a-cb9fcb3d6818":	{
+				"$Position":	{
+					"$x":	655,
+					"$y":	62454
+				}
+			},
+			"PastePrefab-4fc78fbd-8183-4440-be57-9e0578f03a0e":	{
+				"$Position":	{
+					"$x":	657,
+					"$y":	62588
+				}
+			},
+			"JumpToIndex-a56fb533-0f7e-4fd3-a8c5-8c5bdd50deb5":	{
+				"$Position":	{
+					"$x":	654,
+					"$y":	62728
+				}
+			},
+			"SaveIndex-0bea0a2c-96c8-4987-b2a9-86730bc80124":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	62880
+				}
+			},
+			"PastePrefab-a497a3f0-fbe3-484f-a5e0-4ad588cfc9bb":	{
+				"$Position":	{
+					"$x":	678,
+					"$y":	63014
+				}
+			},
+			"JumpToIndex-7c4d3a64-94a7-47a1-9876-102a897c81b9":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	63154
+				}
+			},
+			"SaveIndex-0a668a95-5bf1-4eb0-b2dc-1f85bbb7560d":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	63307
+				}
+			},
+			"PastePrefab-4662cf73-5537-44dc-bba2-57c1daff9bdb":	{
+				"$Position":	{
+					"$x":	678,
+					"$y":	63441
+				}
+			},
+			"JumpToIndex-4d9f0411-1440-4ced-93cf-3c77c7743dc4":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	63581
+				}
+			},
+			"SaveIndex-21c9f457-f721-4f59-a19c-62b09b5f9eb0":	{
+				"$Position":	{
+					"$x":	669,
+					"$y":	63747
+				}
+			},
+			"PastePrefab-d6eb58cf-b7f1-474e-9cf0-cd7706acd199":	{
+				"$Position":	{
+					"$x":	671,
+					"$y":	63881
+				}
+			},
+			"JumpToIndex-89dae385-08e7-4189-aced-8daf990f1830":	{
+				"$Position":	{
+					"$x":	668,
+					"$y":	64021
+				}
+			},
+			"SaveIndex-c1578b75-bc90-483f-9021-5ec4520bf9b9":	{
+				"$Position":	{
+					"$x":	663,
+					"$y":	64206
+				}
+			},
+			"PastePrefab-0272a4dc-d336-41f0-b7f2-7fd3c52a4951":	{
+				"$Position":	{
+					"$x":	665,
+					"$y":	64340
+				}
+			},
+			"JumpToIndex-cf58ea1e-8c17-4341-ae90-772ce9474a01":	{
+				"$Position":	{
+					"$x":	662,
+					"$y":	64480
+				}
+			},
+			"SaveIndex-93869366-2901-4156-bef4-80e524735d73":	{
+				"$Position":	{
+					"$x":	672,
+					"$y":	64639
+				}
+			},
+			"PastePrefab-4e024428-c077-4e8f-bdf4-d40c5c4182f8":	{
+				"$Position":	{
+					"$x":	674,
+					"$y":	64773
+				}
+			},
+			"JumpToIndex-bb2acf53-7fe4-419e-afc5-6b79d98a012b":	{
+				"$Position":	{
+					"$x":	671,
+					"$y":	64913
+				}
+			},
+			"SaveIndex-2c918fc0-2c8c-4259-8fa3-a6104826b7c9":	{
+				"$Position":	{
+					"$x":	677,
+					"$y":	65052
+				}
+			},
+			"PastePrefab-6f1a0c10-3501-45f7-b5c1-d0790867471d":	{
+				"$Position":	{
+					"$x":	679,
+					"$y":	65186
+				}
+			},
+			"JumpToIndex-07432093-3c25-442c-9558-78bda792857b":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	65326
+				}
+			},
+			"SaveIndex-769399ec-fd1d-4b31-9890-913ad7e63eb7":	{
+				"$Position":	{
+					"$x":	677,
+					"$y":	65480
+				}
+			},
+			"PastePrefab-7b5bcc31-0ea2-4a0c-9299-ddcf3997b857":	{
+				"$Position":	{
+					"$x":	679,
+					"$y":	65614
+				}
+			},
+			"JumpToIndex-52c9c76c-55c6-4aef-95d0-58a91c0fd2be":	{
+				"$Position":	{
+					"$x":	676,
+					"$y":	65754
+				}
+			},
+			"SaveIndex-b3954057-5cdc-42d6-b95a-c7a68d036d6e":	{
+				"$Position":	{
+					"$x":	691,
+					"$y":	65903
+				}
+			},
+			"PastePrefab-5dabd909-3d8d-456b-81c5-3b607dedd284":	{
+				"$Position":	{
+					"$x":	693,
+					"$y":	66037
+				}
+			},
+			"JumpToIndex-388206ca-7d76-43f2-b6ca-a499b8706dfe":	{
+				"$Position":	{
+					"$x":	690,
+					"$y":	66177
+				}
+			},
+			"SaveIndex-3cdce8e0-59b0-414c-acb3-01e71694e231":	{
+				"$Position":	{
+					"$x":	696,
+					"$y":	66326
+				}
+			},
+			"PastePrefab-a1f361d7-04c1-40bf-a066-cdbde51c1e13":	{
+				"$Position":	{
+					"$x":	698,
+					"$y":	66460
+				}
+			},
+			"JumpToIndex-2025b167-fb04-46d7-9261-2e0f67dc7daf":	{
+				"$Position":	{
+					"$x":	695,
+					"$y":	66600
+				}
+			},
+			"SaveIndex-4779deb0-e230-4672-ac6b-72e0bacc3b3e":	{
+				"$Position":	{
+					"$x":	700,
+					"$y":	66768
+				}
+			},
+			"PastePrefab-6f447031-5ddf-4f40-818b-2faec5a5fa70":	{
+				"$Position":	{
+					"$x":	702,
+					"$y":	66902
+				}
+			},
+			"JumpToIndex-84afb219-5991-428c-8849-bbddd3d28cd5":	{
+				"$Position":	{
+					"$x":	699,
+					"$y":	67042
+				}
+			},
+			"SaveIndex-a3a1cdb5-6564-4cc0-a630-ffdaefb093ce":	{
+				"$Position":	{
+					"$x":	705,
+					"$y":	67195
+				}
+			},
+			"PastePrefab-1ae35eb1-6862-4ef8-9c72-bdc60349d503":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	67329
+				}
+			},
+			"JumpToIndex-3a8aee3d-f570-4615-9197-ccd62e2a17a3":	{
+				"$Position":	{
+					"$x":	704,
+					"$y":	67469
+				}
+			},
+			"SaveIndex-b4632d78-0fe9-4e15-9c27-90b0d7faba14":	{
+				"$Position":	{
+					"$x":	705,
+					"$y":	67628
+				}
+			},
+			"PastePrefab-15f9bdc0-b383-40a5-b867-fa1e331f85ce":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	67762
+				}
+			},
+			"JumpToIndex-348e75e1-0dac-4835-a922-9f31b7b458ae":	{
+				"$Position":	{
+					"$x":	704,
+					"$y":	67902
+				}
+			},
+			"SaveIndex-2498dd52-9d63-4919-a2fb-29acc34a8048":	{
+				"$Position":	{
+					"$x":	705,
+					"$y":	68056
+				}
+			},
+			"PastePrefab-c8febdf0-69cd-4906-a2e5-cbae658aab58":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	68190
+				}
+			},
+			"JumpToIndex-2610c727-ce29-445c-aa2a-4c44c8603a3a":	{
+				"$Position":	{
+					"$x":	704,
+					"$y":	68330
+				}
+			},
+			"SaveIndex-565fc9cd-8984-445c-a55f-ed00456aecee":	{
+				"$Position":	{
+					"$x":	700,
+					"$y":	68474
+				}
+			},
+			"PastePrefab-0bc738c5-3ff2-4af0-8d87-9db396e85224":	{
+				"$Position":	{
+					"$x":	702,
+					"$y":	68608
+				}
+			},
+			"JumpToIndex-8c7b9319-483c-415a-8c75-9afd291a631c":	{
+				"$Position":	{
+					"$x":	699,
+					"$y":	68748
+				}
+			},
+			"SaveIndex-1debb0f6-020b-4aad-bb23-b1977209a428":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	68897
+				}
+			},
+			"PastePrefab-eecfc848-4e6c-47dc-96ae-9faab4fce5cd":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	69031
+				}
+			},
+			"JumpToIndex-b438fcc4-84a6-4d8b-ac80-67625dc78913":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	69171
+				}
+			},
+			"SaveIndex-8c29a898-acc2-4d6f-bd6d-c1a35fbc334e":	{
+				"$Position":	{
+					"$x":	710,
+					"$y":	69316
+				}
+			},
+			"PastePrefab-9f808492-47af-4c8c-952a-35409a74256f":	{
+				"$Position":	{
+					"$x":	712,
+					"$y":	69450
+				}
+			},
+			"JumpToIndex-6628436f-ecbf-4a5f-9589-d03b74d72d30":	{
+				"$Position":	{
+					"$x":	709,
+					"$y":	69590
+				}
+			},
+			"SaveIndex-8530b3c0-8836-4a4e-bf5d-68c66868bf8c":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	69729
+				}
+			},
+			"PastePrefab-4e489015-7d0c-4da2-8149-3f431964890e":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	69863
+				}
+			},
+			"JumpToIndex-a3c77ced-b73d-46e6-a84b-e98392c374b7":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	70003
+				}
+			},
+			"SaveIndex-e7c7222c-c272-4d9f-b798-6bed990435d9":	{
+				"$Position":	{
+					"$x":	719,
+					"$y":	70147
+				}
+			},
+			"PastePrefab-ac306377-10a4-4d30-a4d6-367ef75fd1fd":	{
+				"$Position":	{
+					"$x":	721,
+					"$y":	70281
+				}
+			},
+			"JumpToIndex-90dc61ae-7bb2-45da-b621-53c8e6c7ba23":	{
+				"$Position":	{
+					"$x":	718,
+					"$y":	70421
+				}
+			},
+			"SaveIndex-a8f94d23-2def-4eca-a3a2-0c2114978e0e":	{
+				"$Position":	{
+					"$x":	719,
+					"$y":	70580
+				}
+			},
+			"PastePrefab-3b46115e-ff10-4777-b8be-a70cbe514dd9":	{
+				"$Position":	{
+					"$x":	721,
+					"$y":	70714
+				}
+			},
+			"JumpToIndex-15f31510-8616-4775-801d-f10b9fc55a15":	{
+				"$Position":	{
+					"$x":	718,
+					"$y":	70854
+				}
+			},
+			"SaveIndex-f5b83760-e400-4450-a19a-13770198d3c6":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	71012
+				}
+			},
+			"PastePrefab-f15be421-ddc3-4dae-b6fc-955c71b76e94":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	71146
+				}
+			},
+			"JumpToIndex-177af2a5-74fc-455f-9273-3fd478cac71a":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	71286
+				}
+			},
+			"SaveIndex-11f184d1-e161-44c4-b7be-ef632503885f":	{
+				"$Position":	{
+					"$x":	705,
+					"$y":	71440
+				}
+			},
+			"PastePrefab-1e2ffd49-cfaf-480a-bb9d-2f9d8cc1fdfc":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	71574
+				}
+			},
+			"JumpToIndex-c32aff86-c066-4788-ac36-4fcb4e273e79":	{
+				"$Position":	{
+					"$x":	704,
+					"$y":	71714
+				}
+			},
+			"SaveIndex-f6e5a2cd-8e76-4a2a-9956-b74e4715b90d":	{
+				"$Position":	{
+					"$x":	718,
+					"$y":	71872
+				}
+			},
+			"PastePrefab-e5e9aca8-dbb8-4f36-9608-b450d7ce4e38":	{
+				"$Position":	{
+					"$x":	720,
+					"$y":	72006
+				}
+			},
+			"JumpToIndex-68ab60b1-f358-4f54-b5cd-87db09c97b64":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	72146
+				}
+			},
+			"SaveIndex-55109c10-ce4c-43a8-9874-34d448027423":	{
+				"$Position":	{
+					"$x":	710,
+					"$y":	72302
+				}
+			},
+			"PastePrefab-1b3350f6-26a6-4e09-9800-39630fb7ae19":	{
+				"$Position":	{
+					"$x":	712,
+					"$y":	72436
+				}
+			},
+			"JumpToIndex-f0f4da02-5a87-4fa2-a7fc-d96943589f53":	{
+				"$Position":	{
+					"$x":	709,
+					"$y":	72576
+				}
+			},
+			"SaveIndex-99d31276-d310-40dd-a4dd-bd5ef475f7a2":	{
+				"$Position":	{
+					"$x":	718,
+					"$y":	72739
+				}
+			},
+			"PastePrefab-10d9ac4a-00e6-48bd-ae7c-71e85be98705":	{
+				"$Position":	{
+					"$x":	720,
+					"$y":	72873
+				}
+			},
+			"JumpToIndex-a32f5321-7453-4278-83f7-5863eae250e3":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	73013
+				}
+			},
+			"SaveIndex-8717fee8-d597-42a4-a696-540a0dea0c56":	{
+				"$Position":	{
+					"$x":	721,
+					"$y":	73155
+				}
+			},
+			"PastePrefab-921cb2c3-be22-491e-9626-aa459fb6d00f":	{
+				"$Position":	{
+					"$x":	723,
+					"$y":	73289
+				}
+			},
+			"JumpToIndex-33e35ab7-087e-49c9-8d8a-fb5de36bf6d7":	{
+				"$Position":	{
+					"$x":	720,
+					"$y":	73429
+				}
+			},
+			"SaveIndex-a076026f-dfcb-4cf6-ad6c-4ec5f49af64e":	{
+				"$Position":	{
+					"$x":	712,
+					"$y":	73594
+				}
+			},
+			"PastePrefab-d40db874-74e6-4b8b-89c1-2b83a2d1560a":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	73728
+				}
+			},
+			"JumpToIndex-1ead4fe7-7c63-4214-97b7-57180b15b5dc":	{
+				"$Position":	{
+					"$x":	711,
+					"$y":	73868
+				}
+			},
+			"SaveIndex-1da2ff6c-eb96-496a-96c4-9ffa4b34b983":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	74017
+				}
+			},
+			"PastePrefab-3141595e-7260-4da2-9600-cb8e32c1aa40":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	74151
+				}
+			},
+			"JumpToIndex-0019085b-3d01-439e-be2a-622b2a07178f":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	74291
+				}
+			},
+			"SaveIndex-239d1fd7-1aa0-4048-a98b-46a5f6fdfa16":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	74436
+				}
+			},
+			"PastePrefab-748b514f-6be3-476e-9e91-93814cc4bf8f":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	74570
+				}
+			},
+			"JumpToIndex-93eb3af8-82ec-459f-baa9-60a4355a22a1":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	74710
+				}
+			},
+			"SaveIndex-bfe418b8-c75c-4f14-a56d-802af6edf750":	{
+				"$Position":	{
+					"$x":	710,
+					"$y":	74850
+				}
+			},
+			"PastePrefab-956d3254-f6c4-4e59-89f3-9995ef16f3fb":	{
+				"$Position":	{
+					"$x":	712,
+					"$y":	74984
+				}
+			},
+			"JumpToIndex-9a625d01-daec-40a3-8686-b788d589b45b":	{
+				"$Position":	{
+					"$x":	709,
+					"$y":	75124
+				}
+			},
+			"SaveIndex-59effad4-a6fe-4fa8-9860-a3cd922866d0":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	75269
+				}
+			},
+			"PastePrefab-75881f75-e83f-461d-9976-0356d8800d7a":	{
+				"$Position":	{
+					"$x":	709,
+					"$y":	75403
+				}
+			},
+			"JumpToIndex-a7c38227-8365-4d02-a1ab-d43dbeaf5db7":	{
+				"$Position":	{
+					"$x":	706,
+					"$y":	75543
+				}
+			},
+			"SaveIndex-867cc5d1-5636-43c2-afbc-65838d3a83fa":	{
+				"$Position":	{
+					"$x":	698,
+					"$y":	75692
+				}
+			},
+			"PastePrefab-5fc126f3-1c3c-4fb0-ac7e-3f0988f767cb":	{
+				"$Position":	{
+					"$x":	700,
+					"$y":	75826
+				}
+			},
+			"JumpToIndex-ac9596b0-3d2a-4eac-850e-b5400de35e1f":	{
+				"$Position":	{
+					"$x":	697,
+					"$y":	75966
+				}
+			},
+			"SaveIndex-aea945b5-a481-4fca-ba21-d0c1dcddbb0b":	{
+				"$Position":	{
+					"$x":	715,
+					"$y":	76117
+				}
+			},
+			"PastePrefab-7a7b055c-a291-4423-8921-38ef6dc2e008":	{
+				"$Position":	{
+					"$x":	717,
+					"$y":	76251
+				}
+			},
+			"JumpToIndex-9b1f6945-683c-497e-a4a7-ac1c1553b2a9":	{
+				"$Position":	{
+					"$x":	714,
+					"$y":	76391
+				}
+			},
+			"SaveIndex-a82d56cc-8e4d-4e5f-b4d4-edcf6c57298f":	{
+				"$Position":	{
+					"$x":	707,
+					"$y":	76583
+				}
+			},
+			"JumpIfToolArg-405a9362-200d-4852-907f-aca8a2c91461":	{
+				"$Position":	{
+					"$x":	700,
+					"$y":	76798
+				}
+			},
+			"LoopCircleFromArg-b519b363-fbc3-4a37-89bc-968ecb8023ec":	{
+				"$Position":	{
+					"$x":	682,
+					"$y":	77130
+				}
+			},
+			"SaveIndex-e867ce6c-c15f-4c21-a17d-d91412fe59dc":	{
+				"$Position":	{
+					"$x":	689,
+					"$y":	77466
+				}
+			},
+			"Exit-2572ad6d-5961-4293-a773-192deb96bf57":	{
+				"$Position":	{
+					"$x":	675,
+					"$y":	77666
+				}
+			},
+			"SaveIndex-545d0c68-2758-410e-ba4c-436343cef256":	{
+				"$Position":	{
+					"$x":	649,
+					"$y":	78151
+				}
+			},
+			"LoadMaterial-2f922dfc-d0b5-472d-af0f-7b3af39cdb00":	{
+				"$Position":	{
+					"$x":	646,
+					"$y":	78297
+				}
+			},
+			"Offset-d35ed58d-81b4-41a9-82cc-bbf24f7320a4":	{
+				"$Position":	{
+					"$x":	637,
+					"$y":	78425
+				}
+			},
+			"LoadIntFromToolArg-99965cd8-aeb2-42d1-b433-223130b3de48":	{
+				"$Position":	{
+					"$x":	649,
+					"$y":	79085
+				}
+			},
+			"Mask-67819d72-f423-49d7-b2d4-131ad0517c3f":	{
+				"$Position":	{
+					"$x":	657,
+					"$y":	79318
+				}
+			},
+			"AppendMaskFromToolArg-bb22feb3-0983-485a-8f13-89be3f8e3b6b":	{
+				"$Position":	{
+					"$x":	649,
+					"$y":	79467
+				}
+			},
+			"Set-14efe22e-a7b0-408a-bb90-a55bc88c4a65":	{
+				"$Position":	{
+					"$x":	657,
+					"$y":	79724
+				}
+			},
+			"ClearOperationMask-a5ba864c-9a65-4aec-831f-069f20397f98":	{
+				"$Position":	{
+					"$x":	655,
+					"$y":	79881
+				}
+			},
+			"Mask-6c766f8b-e051-4009-9156-9010c419b552":	{
+				"$Position":	{
+					"$x":	645,
+					"$y":	80039
+				}
+			},
+			"AppendMaskFromToolArg-1f06d52b-bc84-4bcb-9b8c-ecdf03b2d4a9":	{
+				"$Position":	{
+					"$x":	638,
+					"$y":	80174
+				}
+			},
+			"Set-12dac710-62a2-4a84-926c-ccdbdc624223":	{
+				"$Position":	{
+					"$x":	641,
+					"$y":	80451
+				}
+			},
+			"Mask-204f47a0-47f6-4762-b1e4-e3307fbf88c5":	{
+				"$Position":	{
+					"$x":	361,
+					"$y":	6097
+				}
+			}
+		},
+		"$FloatingNodes":	[{
+				"$NodeId":	"Mask-204f47a0-47f6-4762-b1e4-e3307fbf88c5",
+				"Id":	"mask",
+				"Mask":	"!Plant_Coral_Model_Red,!Plant_Leaves_Autumn,!Plant_Grass_Winter_Short,!Plant_Moss_Short_Green,!Plant_Moss_Block_Green,!Plant_Vine_Thick_Roots,!Plant_Crop_Mushroom_Glowing_Red,!Plant_Seeds_Fire,!Plant_Coral_Block_Cyan,!Plant_Crop_Carrot,!Plant_Reeds_Arid,!Plant_Crop_Mushroom_Glowing_Violet,!Plant_Seeds_Rice,!Plant_Crop_Mushroom_Boomshroom_Small,!Plant_Flower_Flax_Blue,!Plant_Barnacles,!Plant_Coral_Block_Yellow,!Plant_Cactus_1,!Plant_Grass_Snowy_Short,!Plant_Leaves_Redwood,!Plant_Flower_Bushy_Purple,!Plant_Coral_Model_White,!Plant_Seeds_Stamina2,!Plant_Coral_Bush_White,!Plant_Crop_Mushroom_Cap_White,!Plant_Seeds_Palo,!Plant_Coral_Model_Lime,!Plant_Coral_Block_Pink,!Plant_Grass_Dry_Tall,!Plant_Coral_Block_White,!Plant_Flower_Bushy_Grey,!Plant_Roots_Cave_Small,!Plant_Grass_Arid,!Plant_Seeds_Lettuce,!Plant_Crop_Mushroom_Block_Yellow_Branch,!Plant_Crop_Mana2,!Plant_Flower_Common_Red2,!Plant_Leaves_Palm_Oasis,!Plant_Petals_Green,!Plant_Grass_Wet_Wild,!Plant_Petals_Azure,!Plant_Grass_Jungle,!Plant_Seeds_Fir,!Plant_Sapling_Windwillow,!Plant_Leaves_Fir_Red,!Plant_Flower_Water_Duckweed,!Plant_Cactus_Flat_1,!Plant_Leaves_Bramble,!Plant_Moss_Cave_Green_Dark,!Plant_Sapling_Poisoned,!Plant_Coral_Block_Green,!Plant_Petals_Cyan,!Plant_Seaweed_Dead_Short,!Plant_Reeds_Lava,!Plant_Coral_Model_Pink,!Plant_Vine_Jungle,!Plant_Seeds_Aubergine,!Plant_Sapling_Dry,!Plant_Crop_Mushroom_Cap_Poison,!Plant_Coral_Bush_Red,!Plant_Moss_Block_Blue,!Plant_Moss_Rug_Red,!Plant_Flower_Bushy_Poisoned,!Plant_Seaweed_Dead_Tall,!Plant_Crop_Stamina3,!Plant_Grass_Wet_Short,!Plant_Leaves_Palm_Arid,!Plant_Crop_Mushroom_Boomshroom_Large,!Plant_Crop_Mushroom_Glowing_Purple,!Plant_Leaves_Cedar,!Plant_Leaves_Jungle_Floor,!Plant_Petals_Blue,!Plant_Grass_Lush_Tall,!Plant_Fern_Wet_Big,!Plant_Bramble_Dry_Sandthorn,!Plant_Seeds_Aspen,!Plant_Seaweed_Winter_Stack,!Plant_Seeds_Mana3,!Plant_Flower_Common_Lime2,!Plant_Seeds_Redwood,!Plant_Sapling_Redwood,!Plant_Grass_Cave_Short,!Plant_Vine_Wall_Dry,!Plant_Crop_Pumpkin,!Plant_Moss_Rug_Blue,!Plant_Flower_Tall_Violet,!Plant_Cactus_Flat_3,!Plant_Seeds_Stamina1,!Plant_Seaweed_Grass,!Plant_Sapling_Spruce_Frozen,!Plant_Flower_Common_Poisoned2,!Plant_Seeds_Carrot,!Plant_Moss_Block_Green_Dark,!Plant_Roots_Cave,!Plant_Crop_Lettuce,!Plant_Moss_Block_Red,!Plant_Flower_Bushy_Red,!Plant_Crop_Stamina2,!Plant_Fruit_Azure,!Plant_Leaves_Burnt,!Plant_Coral_Block_Poison,!Plant_Flower_Common_White,!Plant_Seeds_Health2,!Plant_Crop_Mushroom_Block_Blue_Trunk,!Plant_Leaves_Sallow,!Plant_Leaves_Ash,!Plant_Leaves_Aspen,!Plant_Crop_Mushroom_Block_Green_Trunk,!Plant_Crop_Mushroom_Block_Green,!Plant_Flower_Common_Orange,!Plant_Vine_Red_Hanging,!Plant_Crop_Mana3,!Plant_Seeds_Ice,!Plant_Crop_Mushroom_Block_Yellow,!Plant_Crop_Mushroom_Common_Lime,!Plant_Sapling_Birch,!Plant_Seeds_Azure,!Plant_Flower_Flax_White,!Plant_Crop_Mushroom_Block_Yellow_Trunk,!Plant_Flower_Common_Poisoned,!Plant_Moss_Rug_Yellow,!Plant_Bramble_Dead_Lavathorn,!Plant_Coral_Bush_Poisoned,!Plant_Seaweed_Arid_Yellow,!Plant_Seaweed_Arid_Stack,!Plant_Moss_Block_Yellow,!Plant_Fern_Arid,!Plant_Leaves_Spiral,!Plant_Vine_Wall,!Plant_Leaves_Fire,!Plant_Vine_Liana_End,!Plant_Cactus_2,!Plant_Flower_Common_Cyan2,!Plant_Bush_Berry,!Plant_Flower_Water_White,!Plant_Crop_Mushroom_Block_White_Mycelium,!Plant_Crop_Mushroom_Cap_Green,!Plant_Leaves_Snow,!Plant_Bush_Arid,!Plant_Reeds_Marsh,!Plant_Seeds_Palm,!Plant_Reeds_Poison,!Plant_Bush_Wet_Berry,!Plant_Leaves_Gumboab,!Plant_Bush_Arid_Palm,!Plant_Crop_Mushroom_Common_Brown,!Plant_Flower_Common_Red,!Plant_Leaves_Maple,!Plant_Seaweed_Wet_Stack,!Plant_Seeds_Mana2,!Plant_Moss_Rug_Green,!Plant_Leaves_Beech,!Plant_Seeds_Spiral,!Plant_Fruit_Coconut,!Plant_Flower_Orchid_Orange,!Plant_Crop_Wheat,!Plant_Flower_Orchid_Poisoned,!Plant_Moss_Rug_Pink,!Plant_Grass_Gnarled_Tall,!Plant_Coral_Model_Green,!Plant_Crop_Mushroom_Block_White_Trunk,!Plant_Leaves_Amber,!Plant_Grass_Rocky,!Plant_Grass_Jungle_Tall,!Plant_Crop_Mushroom_Glowing_Green,!Plant_Petals_Blood,!Plant_Fruit_Apple,!Plant_Leaves_Palm,!Plant_Crop_Aubergine,!Plant_Fern_Jungle_Trunk,!Plant_Seaweed_Grass_Tall,!Plant_Vine_Hanging,!Plant_Crop_Mushroom_Block_Blue,!Plant_Coral_Bush_Grey,!Plant_Coral_Model_Orange,!Plant_Bush,!Plant_Leaves_Camphor,!Plant_Leaves_Oak,!Plant_Crop_Mushroom_Block_Purple,!Plant_Flower_Poisoned_Orange,!Plant_Crop_Mushroom_Glowing_Blue,!Plant_Seeds_Willow,!Plant_Bramble_Dry_Magic,!Plant_Fruit_Mango,!Plant_Flower_Common_White2,!Plant_Seaweed_Dead_Stack,!Plant_Leaves_Goldentree,!Plant_Crop_Cotton,!Plant_Fruit_Orange,!Plant_Seeds_Gumboab,!Plant_Bush_Dead_Tall,!Plant_Grass_Sharp_Overgrown,!Plant_Grass_Arid_Tall,!Plant_Coral_Bush_Green,!Plant_Coral_Bush_Violet,!Plant_Flower_Flax_Yellow,!Plant_Seeds_Maple,!Plant_Leaves_Fig_Blue,!Plant_Flower_Common_Yellow,!Plant_Crop_Mushroom_Glowing_Orange,!Plant_Bush_Crystal,!Plant_Seaweed_Winter_Tall,!Plant_Flower_Tall_Pink,!Plant_Moss_Short_Green_Dark,!Plant_Flower_Bushy_Blue,!Plant_Cactus_Flat_2,!Plant_Bush_Arid_Sharp,!Plant_Seeds_Mushroom,!Plant_Grass_Dry,!Plant_Crop_Stamina1,!Plant_Grass_Gnarled_Short,!Plant_Seeds_Beans_Purple,!Plant_Petals_White,!Plant_Bush_Arid_Red,!Plant_Sapling_Cedar,!Plant_Flower_Tall_Red,!Plant_Bush_Bramble,!Plant_Crop_Mushroom_Block_Brown_Trunk,!Plant_Bush_Jungle,!Plant_Crop_Mushroom_Block_White,!Plant_Flower_Common_Blue2,!Plant_Moss_Wall_Green,!Plant_Leaves_Windwillow,!Plant_Crop_Onion,!Plant_Seeds_Cauliflower,!Plant_Flower_Bushy_Yellow,!Plant_Grass_Lush_Short,!Plant_Leaves_Azure,!Plant_Moss_Cave_Green,!Plant_Flower_Tall_Yellow,!Plant_Seeds_Wild,!Plant_Leaves_Poisoned_Floor,!Plant_Reeds_Winter,!Plant_Seeds_Frostwood,!Plant_Seeds_Pine,!Plant_Bush_Winter_Red,!Plant_Fruit_Pear,!Plant_Leaves_Dry,!Plant_Coral_Block_Violet,!Plant_Leaves_Jungle,!Plant_Petals_Yellow,!Plant_Grass_Snowy,!Plant_Vine_Liana,!Plant_Petals_Red,!Plant_Crop_Mushroom_Block_Yellow_Mycelium,!Plant_Sapling_Beech,!Plant_Roots_Leafy,!Plant_Seaweed_Arid_Tall,!Plant_Moss_Yellow,!Plant_Grass_Rocky_Tall,!Plant_Bush_Hanging,!Plant_Fruit_Berries_Red,!Plant_Seeds_Health1,!Plant_Seaweed_Winter_Aurora,!Plant_Crop_Mushroom_Block_Red_Branch,!Plant_Grass_Jungle_Short,!Plant_Cactus_Ball_1,!Plant_Grass_Poisoned_Short,!Plant_Moss_Short_Yellow,!Plant_Flower_Orchid_Pink,!Plant_Flower_Common_Purple,!Plant_Coral_Model_Blue,!Plant_Vine_Wall_Winter,!Plant_Hay_Bundle,!Plant_Leaves_Stormbark,!Plant_Seeds_Birch,!Plant_Moss_Short_Red,!Plant_Flower_Flax_Pink,!Plant_Coral_Bush_Purple,!Plant_Leaves_Poisoned,!Plant_Flower_Bushy_White,!Plant_Moss_Wall_Yellow,!Plant_Sapling_Crystal,!Plant_Moss_Rug_Green_Dark,!Plant_Vine_Wall_Dead,!Plant_Crop_Mushroom_Flatcap_Green,!Plant_Fruit_Poison,!Plant_Moss_Wall_Green_Dark,!Plant_Seaweed_Winter_Short,!Plant_Seeds_Stamina3,!Plant_Moss_Cave_Blue,!Plant_Flower_Bushy_Cyan,!Plant_Leaves_Birch,!Plant_Seeds_Sallow,!Plant_Coral_Model_Grey,!Plant_Leaves_Fir_Tip_Snow,!Plant_Sapling_Ash,!Plant_Fern_Winter,!Plant_Crop_Mushroom_Block_Green_Mycelium,!Plant_Bush_Green,!Plant_Crop_Mushroom_Block_Red_Trunk,!Plant_Leaves_Bamboo,!Plant_Coral_Bush_Cyan,!Plant_Crop_Health1,!Plant_Flower_Common_Pink2,!Plant_Crop_Mushroom_Block_Purple_Mycelium,!Plant_Coral_Block_Lime,!Plant_Flower_Water_Blue,!Plant_Coral_Bush_Yellow,!Plant_Fern,!Plant_Flower_Common_Grey2,!Plant_Flower_Water_Green,!Plant_Seeds_Test_Tree,!Plant_Grass_Sharp_Wild,!Plant_Grass_Winter_Tall,!Plant_Reeds_Water,!Plant_Fern_Jungle,!Plant_Flower_Water_Red,!Plant_Fern_Forest,!Plant_Seaweed_Grass_Short,!Plant_Coral_Model_Violet,!Plant_Grass_Poisoned,!Plant_Flower_Hemlock,!Plant_Bush_Winter_Snow,!Plant_Seeds_Crystal,!Plant_Flower_Common_Lime,!Plant_Grass_Lush,!Plant_Leaves_Autumn_Floor,!Plant_Crop_Corn,!Plant_Bush_Wet,!Plant_Flower_Tall_Cyan2,!Plant_Grass_Sharp_Tall,!Plant_Moss_Green_Dark,!Plant_Coral_Model_Purple,!Plant_Seeds_Ash,!Plant_Bush_Dead_Hanging,!Plant_Crop_Chilli,!Plant_Flower_Orchid_Blue,!Plant_Coral_Bush_Orange,!Plant_Crop_Mushroom_Block_Blue_Branch,!Plant_Vine_Wall_Poisoned,!Plant_Seeds_Bamboo,!Plant_Petals_Purple,!Plant_Flower_Common_Orange2,!Plant_Bush_Winter_Berry,!Plant_Fern_Tall,!Plant_Bush_Winter,!Plant_Grass_Gnarled,!Plant_Moss_Wall_Red,!Plant_Bush_Lush,!Plant_Grass_Sharp_Short,!Plant_Flower_Common_Yellow2,!Plant_Coral_Bush_Blue,!Plant_Cactus_Flower,!Plant_Flower_Flax_Purple,!Plant_Crop_Mushroom_Block_Red_Mycelium,!Plant_Crop_Mushroom_Block_White_Branch,!Plant_Grass_Wet_Overgrown,!Plant_Crop_Rice,!Plant_Seeds_Jungle,!Plant_Bush_Dead_Twisted,!Plant_Reeds_Wet,!Plant_Flower_Tall_Blue,!Plant_Flower_Common_Cyan,!Plant_Flower_Tall_Purple,!Plant_Seaweed_Grass_Stack,!Plant_Seeds_Pumpkin,!Plant_Crop_Health2,!Plant_Seeds_Health3,!Plant_Seeds_Chilli,!Plant_Crop_Mushroom_Cap_Brown,!Plant_Bush_Winter_Sharp,!Plant_Seaweed_Grass_Bulbs,!Plant_Fruit_Windwillow,!Plant_Crop_Mana1,!Plant_Coral_Block_Purple,!Plant_Flower_Tall_Cyan,!Plant_Leaves_Dead,!Plant_Vine_Rug,!Plant_Flower_Orchid_Cyan,!Plant_Grass_Winter,!Plant_Flower_Water_Purple,!Plant_Crop_Mushroom_Shelve_Brown,!Plant_Seaweed_Arid_Short,!Plant_Leaves_Fir,!Plant_Crop_Mushroom_Shelve_Green,!Plant_Flower_Common_Purple2,!Plant_Leaves_Wisteria_Wild,!Plant_Moss_Blue,!Plant_Seaweed_Dead_Eerie,!Plant_Crop_Mushroom_Block_Red,!Plant_Leaves_Banyan,!Plant_Vine_Green_Hanging,!Plant_Crop_Tomato,!Plant_Flower_Common_Violet2,!Plant_Flower_Orchid_Purple,!Plant_Bramble_Dry_Twisted,!Plant_Leaves_Fir_Tip,!Plant_Bramble_Dead_Twisted,!Plant_Seeds_Cotton,!Plant_Crop_Mushroom_Common_Blue,!Plant_Flower_Orchid_Yellow,!Plant_Seaweed_Winter_Blue,!Plant_Crop_Mushroom_Block_Purple_Branch,!Plant_Fruit_Berries_Blue,!Plant_Leaves_Petrified,!Plant_Bramble_Winter,!Plant_Leaves_Palo,!Plant_Seeds_Tomato,!Plant_Crop_Mushroom_Cap_Red,!Plant_Leaves_Fir_Snow,!Plant_Seeds_Potato,!Plant_Crop_Mushroom_Block_Green_Branch,!Plant_Flower_Bushy_Violet,!Plant_Crop_Potato,!Plant_Fruit_Spiral,!Plant_Moss_Short_Blue,!Plant_Seaweed_Dead_Ghostly,!Plant_Moss_Wall_Blue,!Plant_Moss_Red,!Plant_Seeds_Cedar,!Plant_Seeds_Mana1,!Plant_Seeds_Wheat,!Plant_Coral_Block_Orange,!Plant_Coral_Block_Blue,!Plant_Seaweed_Arid_Red,!Plant_Flower_Orchid_Red,!Plant_Seeds_Sunflower,!Plant_Flower_Common_Grey,!Plant_Coral_Bush_Lime,!Plant_Leaves_Crystal,!Plant_Mushroom_Red,!Plant_Coral_Model_Cyan,!Plant_Crop_Mushroom_Shelve_Yellow,!Plant_Mushroom_Brown,!Plant_Crop_Mushroom_Block_Brown_Branch,!Plant_Petals_Storm,!Plant_Sapling_Oak,!Plant_Seeds_Dry,!Plant_Seaweed_Grass_Green,!Plant_Moss_Cave_Red,!Plant_Crop_Cauliflower,!Plant_Grass_Wet,!Plant_Fruit_Pinkberry,!Plant_Crop_Mushroom_Block_Brown_Mycelium,!Plant_Crop_Mushroom_Block_Purple_Trunk,!Plant_Coral_Block_Grey,!Plant_Sapling_Palm,!Plant_Fern_Wet_Giant_Trunk,!Plant_Flower_Common_Violet,!Plant_Crop_Health3,!Plant_Crop_Mushroom_Flatcap_Blue,!Plant_Flower_Common_Pink,!Plant_Bush_Dead,!Plant_Flower_Orchid_White,!Plant_Grass_Rocky_Short,!Plant_Grass_Arid_Short,!Plant_Grass_Wet_Tall,!Plant_Moss_Rug_Lime,!Plant_Sapling_Spruce,!Plant_Vine,!Plant_Fern_Wet_Giant,!Plant_Seeds_Bottletree,!Plant_Crop_Mushroom_Block_Brown,!Plant_Vine_Thick_Vertical,!Plant_Grass_Sharp,!Plant_Seeds_Turnip,!Plant_Seeds_Oak,!Plant_Crop_Turnip,!Plant_Coral_Block_Red,!Plant_Coral_Model_Yellow,!Plant_Coral_Bush_Pink,!Plant_Bramble_Moss_Twisted,!Plant_Grass_Snowy_Tall,!Plant_Leaves_Bottle,!Plant_Seeds_Onion,!Plant_Flower_Bushy_Green,!Plant_Flower_Common_Blue,!Plant_Moss_Cave_Yellow,!Plant_Seeds_Berry,!Plant_Flower_Flax_Orange,!Plant_Flower_Bushy_Orange,!Plant_Seeds_Beech,!Plant_Moss_Green,!Plant_Crop_Mushroom_Block_Blue_Mycelium,!Plant_Cactus_3,!Plant_Seeds_Corn,!Plant_Petals_Pink\r\n"
+			}],
+		"$Links":	{
+		},
+		"$Groups":	[{
+				"$Position":	{
+					"$x":	230.3125,
+					"$y":	4.875
+				},
+				"$width":	936.375,
+				"$height":	2340.6875,
+				"$name":	"Coloring - Main Ground"
+			}, {
+				"$Position":	{
+					"$x":	192.5,
+					"$y":	2615.4375
+				},
+				"$width":	952.375,
+				"$height":	2604,
+				"$name":	"Coloring - Secondary (Outline)"
+			}, {
+				"$Position":	{
+					"$x":	228.25,
+					"$y":	5404.25
+				},
+				"$width":	944.375,
+				"$height":	4515.0625,
+				"$name":	"Coloring - Patches"
+			}, {
+				"$Position":	{
+					"$x":	125.25,
+					"$y":	-287.3125
+				},
+				"$width":	1267.125,
+				"$height":	10542.125,
+				"$name":	"Right Click"
+			}, {
+				"$Position":	{
+					"$x":	30.625,
+					"$y":	12604.9375
+				},
+				"$width":	1501.75,
+				"$height":	10025.0625,
+				"$name":	"Decoration - Prefabs"
+			}, {
+				"$Position":	{
+					"$x":	-25.125,
+					"$y":	11312.3125
+				},
+				"$width":	1509.375,
+				"$height":	1071,
+				"$name":	"Decoration - Options"
+			}, {
+				"$Position":	{
+					"$x":	-188.5,
+					"$y":	10995.25
+				},
+				"$width":	1992,
+				"$height":	69816.4375,
+				"$name":	"Left Click"
+			}, {
+				"$Position":	{
+					"$x":	448.75,
+					"$y":	78060.8125
+				},
+				"$width":	929.6875,
+				"$height":	2615.4375,
+				"$name":	"Decoration - Foliage"
+			}],
+		"$Comments":	[{
+				"$Position":	{
+					"$x":	1526.625,
+					"$y":	-892.125
+				},
+				"$width":	1260.6875,
+				"$height":	1323.375,
+				"$name":	"Comment",
+				"$text":	"-------------------------------------\n  FOREST BRUSH\n-------------------------------------\nThis brush gives you the ability to create forests.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create a forest floor.\n\nLeft Click: Adds decorations to the forest floor (Boulders, Trees, Foliage). Use the Decoration Types dropdown to select the type of decoration. If using Foliage, use the inputs with the word \"Foliage\" to control these settings.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nDecoration Types = The decorations offered by the brush. Here are the current settings:\n\n          Boulders: Places down boulder prefabs\n\n          Trees: Places down tree prefabs (use \"Tree Types\" dropdown to select what trees)\n\n          Foliage: Places down plants and other materials on top of the forest floor\n\nTree Types = Dropdown of available trees to place as decorations.\n\nFoliage Blocks = The materials that make up the plants that will be placed on top of the forest floor.\n\nFoliage Density = How dense the Foliage Blocks will be.\n\nPrimary Blocks = The primary materials to make up the forest floor.\n\nPrimary Density = How dense the Primary Blocks will be.\n\nPatch Blocks = The materials to make up patches within the Primary Blocks.\n\nPatch Density = How dense the Patch Blocks will be.\n\nSecondary Blocks = The secondary materials to make up the forest floor. This will be the outline around the forest floor.\n\nSecondary Density = How dense the Secondary Blocks will be.\n\n-------------------------------------------\n  FOREST BRUSH - Read the Above ^\n-------------------------------------------",
+				"$fontSize":	21
+			}, {
+				"$Position":	{
+					"$x":	2874.4375,
+					"$y":	-883.75
+				},
+				"$width":	1254.875,
+				"$height":	1299.875,
+				"$name":	"Comment",
+				"$text":	"Forest Brush Documentation:\n\nThe comment to the left of this comment block is the documentation that will be sent in the chat when the player first tries to use the brush. The documentation in this comment block will detail about the brush itself in the node editor.\n\nTODO:\n\nThe list of possible trees is pretty expansive, and other prefabs may be cool to add to this brush that are as expansive as that.\n\nThe prefab list assets used in this brush were auto generated via a script. It lists all the folders in a given root folder you specify. If any folders or prefabs in these folders are changed, it will effect this brush.",
+				"$fontSize":	25
+			}],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

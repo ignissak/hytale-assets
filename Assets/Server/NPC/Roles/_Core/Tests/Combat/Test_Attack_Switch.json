@@ -1,0 +1,155 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": false,
+            "GetPlayers": true,
+            "Range": 40,
+            "MinRange": 10,
+            "LockOnTarget": true,
+            "AutoUnlockTarget": true,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": false,
+            "GetPlayers": true,
+            "Range": 10,
+            "MinRange": 2,
+            "LockOnTarget": true,
+            "AutoUnlockTarget": true
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 2,
+            "SlowDownDistance": 3
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "OnlyLockedTarget": true,
+            "Range": 2,
+            "AutoUnlockTarget": true
+          },
+          "HeadMotion": {
+            "Type": "Aim"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "OnlyLockedTarget": true,
+            "Range": 40,
+            "MinRange": 10,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "Inventory",
+                  "UseTarget": false,
+                  "Operation": "Equip",
+                  "Item": "Weapon_Shortbow_Crude"
+                },
+                {
+                  "Type": "Attack",
+                  "Attack": "Skeleton_Archer_Bow_Shoot",
+                  "BallisticMode": "Short",
+                  "LineOfSight": true,
+                  "AttackPauseRange": [ 0.5, 1 ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "OnlyLockedTarget": true,
+            "Range": 3
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "Inventory",
+                  "UseTarget": false,
+                  "Operation": "Equip",
+                  "Item": "Weapon_Longsword_Iron"
+                },
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Attack_Switch.name"
+}

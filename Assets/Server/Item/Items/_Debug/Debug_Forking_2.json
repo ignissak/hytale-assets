@@ -1,0 +1,125 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Debug_Forking_2.name"
+  },
+  "Categories": [],
+  "Icon": "Icons/ItemsGenerated/Weapon_Shield_Iron.png",
+  "IconProperties": {
+    "Scale": 0.35,
+    "Translation": [
+      -2.91,
+      1.29
+    ],
+    "Rotation": [
+      315,
+      270,
+      0
+    ]
+  },
+  "Quality": "Debug",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Shield/Iron.blockymodel",
+  "Texture": "Items/Weapons/Shield/Iron_Texture.png",
+  "PlayerAnimationsId": "Shield",
+  "Weapon": {},
+  "Interactions": {
+    "Primary": {
+      "Cooldown": {
+        "Cooldown": 2
+      },
+      "Interactions": [
+        {
+          "Type": "SendMessage",
+          "Message": "#",
+          "Next": {
+            "Type": "Repeat",
+            "Repeat": 3,
+            "ForkInteractions": {
+              "Interactions": [
+                {
+                  "Type": "SendMessage",
+                  "Message": "##"
+                },
+                {
+                  "Type": "Repeat",
+                  "Repeat": 3,
+                  "ForkInteractions": {
+                    "Interactions": [
+                      {
+                        "Type": "SendMessage",
+                        "Message": "###"
+                      },
+                      {
+                        "Type": "Repeat",
+                        "Repeat": 3,
+                        "ForkInteractions": {
+                          "Interactions": [
+                            {
+                              "Type": "SendMessage",
+                              "Message": "####"
+                            }
+                          ]
+                        },
+                        "Next": {
+                          "Type": "SendMessage",
+                          "Message": "###"
+                        }
+                      }
+                    ]
+                  },
+                  "Next": {
+                    "Type": "SendMessage",
+                    "Message": "##"
+                  }
+                }
+              ]
+            },
+            "Next": {
+              "Type": "SendMessage",
+              "Message": "#"
+            }
+          }
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "SendMessage",
+          "Message": "Blocking start"
+        },
+        {
+          "Type": "Wielding",
+          "Effects": {
+            "ItemAnimationId": "Guard",
+            "ClearAnimationOnFinish": true
+          },
+          "CancelOnOtherClick": true,
+          "Forks": {
+            "Primary": {
+              "Interactions": [
+                {
+                  "Type": "SendMessage",
+                  "Effects": {
+                    "ItemAnimationId": "Bash",
+                    "WaitForAnimationToFinish": true
+                  },
+                  "Message": "Bash!"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "InteractionVars": {
+    "Shield_Swing_Left_Effect": "Shield_Swing_Left_Effect",
+    "Shield_Swing_Left_Damage": "Shield_Swing_Left_Damage"
+  },
+  "Tags": {
+    "Type": [
+      "Debug"
+    ]
+  }
+}

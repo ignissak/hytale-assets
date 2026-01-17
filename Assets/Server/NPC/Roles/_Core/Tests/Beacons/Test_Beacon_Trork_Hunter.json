@@ -1,0 +1,173 @@
+{
+  "Type": "Generic",
+  "Appearance": "Trork_Hunter",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "FlockAllowedNPC": [ "Test_Beacon_Trork_Wolf" ],
+  "FlockSpawnTypes": [ "Test_Beacon_Trork_Wolf" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 8,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Or",
+            "Sensors": [
+              {
+                "Type": "Beacon",
+                "Message": "Player_Danger_Close",
+                "Range": 25,
+                "TargetSlot": "LockedTarget"
+              },
+              {
+                "Type": "Player",
+                "Range": 25,
+                "MinRange": 10,
+                "LockOnTarget": true,
+                "AutoUnlockTarget": true,
+                "Filters": [
+                  {
+                    "Type": "LineOfSight"
+                  },
+                  {
+                    "Type": "ViewSector",
+                    "ViewSector": 180
+                  }
+                ]
+              }
+            ]
+          },
+          "Tag": "Far distance aim",
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5,
+            "MinRange": 2,
+            "LockOnTarget": true,
+            "AutoUnlockTarget": true,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "Tag": "Mid distance seek",
+          "BodyMotion": {
+            "Type": "Seek",
+            "StopDistance": 2,
+            "SlowDownDistance": 3
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "OnlyLockedTarget": true,
+            "Range": 25,
+            "MinRange": 5,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 180
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "FlockTarget"
+                },
+                {
+                  "Type": "Inventory",
+                  "UseTarget": false,
+                  "Operation": "Equip",
+                  "Item": "Weapon_Shortbow_Crude"
+                },
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "OnlyLockedTarget": true,
+            "Range": 5
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "FlockTarget"
+                },
+                {
+                  "Type": "Inventory",
+                  "UseTarget": false,
+                  "Operation": "Equip",
+                  "Item": "Weapon_Daggers_Stone_Trork"
+                },
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Beacon_Trork_Hunter.name"
+}

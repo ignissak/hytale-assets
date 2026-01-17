@@ -1,0 +1,263 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            5
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "SwordBlock": {
+        "Type": "Ability",
+        "Description": "Use Block",
+        "Target": "Hostile",
+        "AbilityType": "Secondary",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          5
+        ],
+        "PostExecuteDistanceRange": [
+          2.5,
+          2.5
+        ],
+        "Ability": "Shield_Block",
+        "ChargeFor": 2,
+        "InteractionVars": {
+          "Shield_Block_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Shield_Block_Damage",
+                "Failed": {
+                  "Type": "Simple",
+                  "Effects": {
+                    "Particles": [
+                      {
+                        "SystemId": "Explosion_Medium"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "RecentSustainedDamage",
+            "Curve": {
+              "ResponseCurve": "InverseExponential",
+              "XRange": [
+                0,
+                6
+              ]
+            }
+          }
+        ]
+      },
+      "MeleeState": {
+        "Type": "State",
+        "Description": "Switch dynamically to melee during ranged",
+        "State": "Chase",
+        "SubState": "Melee",
+        "Target": "Hostile",
+        "Conditions": [
+          {
+            "Type": "RecentSustainedDamage",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 1
+            }
+          },
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                30
+              ]
+            }
+          }
+        ]
+      },
+      "SelectTarget": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "$Comment": "This would function better with a substate option",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                15
+              ]
+            }
+          }
+        ]
+      },
+      "SelectTargetRanged": {
+        "Type": "SelectBasicAttackTarget",
+        "Description": "Select a target",
+        "WeaponSlot": 0,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                30
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Melee": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Sword_Attack"
+          ],
+          "InteractionVars": {
+            "Sword_Swing_Left_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Left_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 9
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 9
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 9
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "MaxRange": 2.5,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SelectTarget",
+          "SwordBlock"
+        ]
+      },
+      "Ranged": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Goblin_Scavenger_Trash"
+          ],
+          "Randomise": false,
+          "MaxRange": 30,
+          "Timeout": 0.5,
+          "CooldownRange": [
+            0.01,
+            0.05
+          ]
+        },
+        "Actions": [
+          "SelectTargetRanged",
+          "MeleeState"
+        ]
+      }
+    }
+  }
+}

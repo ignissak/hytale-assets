@@ -1,0 +1,82 @@
+{
+  "Type": "MAX",
+  "Noise": [
+    {
+      "Type": "DISTORTED",
+      "Noise": {
+        "Type": "SUM",
+        "Noise": [
+          {
+            "Seed": "Grasslands-River-Noise",
+            "NoiseType": "OLD_SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED_RIDGED_FIX",
+            "Octaves": 1,
+            "Persistence": 0.1,
+            "Scale": 0.004,
+            "Normalize": [
+              0.5,
+              1
+            ]
+          },
+          {
+            "Seed": "Drylands-Canyon-Rougher",
+            "NoiseType": "SIMPLEX",
+            "FractalMode": "OLDSCHOOL",
+            "Formula": "INVERTED",
+            "Octaves": 3,
+            "Persistence": 1,
+            "Scale": 0.02
+          }
+        ],
+        "Factors": [
+          0.85,
+          0.15
+        ]
+      },
+      "Randomizer": {
+        "Generators": [
+          {
+            "Seed": "Drylands-Randomizer",
+            "NoiseType": "SIMPLEX",
+            "Octaves": 3,
+            "Persistence": 0.8,
+            "Scale": 0.0014,
+            "Amplitude": 70
+          }
+        ]
+      }
+    },
+    {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Seed": "Drylands-Canyon-Noise",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 1,
+          "Persistence": 0.8,
+          "Scale": 0.0012
+        },
+        {
+          "Seed": "Drylands-Canyon-Noise-3",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.02
+        }
+      ],
+      "Factors": [
+        0.95,
+        0.05
+      ],
+      "Normalize": [
+        0,
+        0.45
+      ]
+    }
+  ],
+  "Threshold": [
+    0,
+    0.72
+  ]
+}

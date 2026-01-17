@@ -1,0 +1,83 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rubble_Stone.name",
+    "Description": "server.items.Rubble_Stone.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Rubble_Stone.png",
+  "Categories": [
+    "Blocks.Rocks"
+  ],
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "RequiredGameMode": "Adventure",
+          "Crouching": false,
+          "Next": "Item_Throw",
+          "Failed": "Block_Secondary"
+        }
+      ]
+    }
+  },
+  "InteractionVars": {
+    "Item_Throw_Projectile": {
+      "Interactions": [
+        {
+          "Parent": "Item_Throw_Projectile",
+          "ProjectileId": "Rubble_Stone"
+        }
+      ]
+    }
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Stone/Rubble_Small.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Rubble/Rubble_Textures/Stone.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "HitboxType": "Rubble",
+    "Flags": {},
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Rubble_Stone"
+      },
+      "Harvest": {
+        "ItemId": "Rubble_Stone"
+      },
+      "UseDefaultDropWhenPlaced": true
+    },
+    "BlockParticleSetId": "Dust",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#75755b",
+    "BlockSoundSetId": "Stone"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Rubble"
+    }
+  ],
+  "PlayerAnimationsId": "Item",
+  "Tags": {
+    "Type": [
+      "Rubble",
+      "Flint"
+    ]
+  },
+  "MaxStack": 100,
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "DropOnDeath": true
+}

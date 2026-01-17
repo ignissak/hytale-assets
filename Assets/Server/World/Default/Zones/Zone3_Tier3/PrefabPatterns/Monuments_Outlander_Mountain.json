@@ -1,0 +1,88 @@
+{
+  "GridGenerator": {
+		"Seed": "Pattern_Monuments",
+    "Density": [0.65, 0.75],
+    "Scale": 0.005,
+    "Jitter": 0.75
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115, 170, 171],
+    "Values": [0, 1, 1, 0]
+  },
+  "NoiseMask": {
+				"Type":"DISTORTED",
+				"Noise":{
+					"Type": "SUM",
+					"Noise": [
+						{
+							"Type": "MIN",
+							"Noise": [
+							  {
+							    "File": "Zones.Noise.Shared.Heightmaps.River"
+							  }
+							],
+							"Formula": "INVERTED_RIDGED"
+						},
+						{
+							"Type": "MIN",
+							"Noise": [
+							  {
+							    "File": "Zones.Noise.Shared.Heightmaps.Base"
+							  }
+							],
+							"Formula": "INVERTED",
+							"Normalize": [0.45, 0.6]
+						},
+						{
+							"Seed": "Grasslands-Base",
+							"NoiseType": "CELL",
+							"Formula": "INVERTED_SQRT",
+							"Scale": 0.025,
+							"CellMode": "DISTANCE",
+							"Jitter": 0.6
+						},
+						{
+							"Seed": "Grasslands-Base",
+							"NoiseType": "CELL",
+							"Formula": "INVERTED_SQRT",
+							"Scale": 0.011,
+							"CellMode": "DISTANCE",
+							"Jitter": 0.6
+						}
+					],
+					"Factors": [0.65, 0.15, 0.1, 0.1],
+					"Normalize": [0.4, 0.7]
+				},
+				"Randomizer":{
+					"Generators":[
+						{
+							"Seed": "Grasslands-River-Noise",
+							"NoiseType":"SIMPLEX",
+							"Octaves":3,
+							"Persistence":0.6,
+							"Scale":0.006,
+							"Amplitude": 15
+						}
+					]
+				},
+    "Threshold": [0, 0.75]
+  },
+  "Mask": {
+    "Default": ["!Rock_Ice","!Rock_Ice_Permafrost",{"Replace":false,"Fluid":"Water_Source"},"!Wood_Fir_Trunk","*"],
+    "Specific": [
+      {
+        "Block": ["Cloth_Block_Wool_Red", "Cloth_Block_Wool_Blue", "Cloth_Block_Wool_Black", "Cloth_Block_Wool_Cyan", "Cloth_Block_Wool_Green", "Cloth_Block_Wool_Orange", "Cloth_Block_Wool_Pink", "Cloth_Block_Wool_Purple", "Cloth_Block_Wool_White", "Cloth_Block_Wool_Yellow"],
+        "Rule": ["!*"]
+      },
+      {
+        "Block": ["Soil_Snow"],
+        "Rule": ["!Rock_Slate", "!Rock_Shale", "!Rock_Shale_Brick", "!Rock_Shale_Cobble", "!Rock_Basalt", "!Rock_Marble", "*"]
+      },
+      {
+        "Block": ["Furniture_Ancient_Ladder", "Furniture_Tavern_Ladder", "Wood_Darkwood_Planks_Half", "Wood_Deadwood_Planks_Half", "Wood_Deadwood_Stairs", "Wood_Deadwood_Roof", "Wood_Deadwood_Roof_Hollow", "Wood_Deadwood_Roof_Flat", "*Wood_Deadwood_Roof_State_Definitions_Corner_Right", "*Wood_Deadwood_Roof_State_Definitions_Corner_Left", "*Wood_Deadwood_Roof_State_Definitions_Inverted_Corner_Right", "*Wood_Deadwood_Roof_State_Definitions_Inverted_Corner_Left", "Rock_Basalt_Cobble_Roof", "Rock_Basalt_Cobble_Roof_Hollow", "Rock_Basalt_Cobble_Roof_Flat", "*Rock_Basalt_Cobble_Roof_State_Definitions_Corner_Right", "*Rock_Basalt_Cobble_Roof_State_Definitions_Corner_Left", "*Rock_Basalt_Cobble_Roof_State_Definitions_Inverted_Corner_Right", "*Rock_Basalt_Cobble_Roof_State_Definitions_Inverted_Corner_Left", "Cloth_Roof_Hide", "*Cloth_Roof_Hide_State_Definitions_Corner_Right", "*Cloth_Roof_Hide_State_Definitions_Corner_Left", "Cloth_Roof_Hide_Flap", "Cloth_Roof_Hide_Vertical", "Cloth_Roof_Hide_Flat", "Rock_Shale_Brick_Stairs", "Rock_Shale_Cobble_Stairs", "Rock_Basalt_Brick_Half", "Rock_Shale_Brick_Half"],
+        "Rule": ["!Soil_Snow", "!Soil_Dirt_Cold", "!Soil_Dirt_Poisoned", "!Soil_Roots_Poisoned", "!Soil_Grass_Cold", "!Soil_Gravel", "!Soil_Pebbles_Frozen", "!Soil_Pebbles", "!Rock_Slate", "!Rock_Shale", "!Rock_Shale_Brick", "!Rock_Shale_Cobble", "!Rock_Basalt", "!Rock_Marble", "*"]
+      }
+    ]
+  },
+  "FitHeightmap": true
+}

@@ -1,0 +1,45 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 3.01
+  },
+  "Next": {
+    "Type": "Simple",
+    "Effects": {
+      "ItemAnimationId": "SwingRightCharged",
+      "LocalSoundEventId": "SFX_Light_Melee_T2_Swing"
+    },
+    "$Comment": "Prepare Delay",
+    "RunTime": 0,
+    "Next": {
+      "Type": "Parallel",
+      "Interactions": [
+        {
+          "Interactions": [
+            "Mace_Swing_Right_Charged_Selector"
+          ]
+        },
+        {
+          "Interactions": [
+            {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "Stamina": -3,
+                "StaminaRegenDelay": -1
+              }
+            },
+            {
+              "Type": "Replace",
+              "DefaultValue": {
+                "Interactions": [
+                  "Mace_Swing_Right_Charged_Effect"
+                ]
+              },
+              "Var": "Mace_Swing_Right_Charged_Effect"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

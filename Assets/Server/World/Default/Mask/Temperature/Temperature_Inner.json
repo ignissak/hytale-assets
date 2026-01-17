@@ -1,0 +1,29 @@
+{
+  "#Comment": [
+    "A fixed north-south/cold-hot gradient with distortion to add variety.",
+    "The OffsetY property needs to be tuned to suit the Blend_Outer radius in order",
+    "to keep the temperate region nearer the equator."
+  ],
+  "Type": "DISTORTED",
+  "Noise": {
+    "Seed": "CENTRAL-TEMPERATURE",
+    "NoiseType": "GRID",
+    "OffsetY": 2750.0,
+    "ThicknessX": 0.0,
+    "ThicknessY": 0.5,
+    "Scale": 0.000085
+  },
+  "Randomizer": {
+    "Generators": [
+      {
+        "Seed": "CENTRAL-TEMPERATURE-WARP-1",
+        "NoiseType": "SIMPLEX",
+        "Scale": 0.0006,
+        "Amplitude": 350,
+        "Octaves": 2,
+        "Persistence": 0.35,
+        "Lacunarity": 2.0
+      }
+    ]
+  }
+}

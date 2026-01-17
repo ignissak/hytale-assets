@@ -1,0 +1,250 @@
+{
+  "StartState": "Idle",
+  "Type": "Generic",
+  "Debug": "TraceSuccess",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxClimbHeight": 0.5
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10,
+                "Filters": [
+                  {
+                    "Type": "HeightDifference",
+                    "HeightDifference": [ -2, 1 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Melee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Ranged"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
+              },
+              "BodyMotion": {
+                "Type": "Nothing"
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Melee"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "Inventory",
+                  "Operation": "Equip",
+                  "Item": "Weapon_Sword_Iron",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "In height range"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 10,
+                  "Filters": [
+                    {
+                      "Type": "HeightDifference",
+                      "HeightDifference": [ -2, 1 ]
+                    }
+                  ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Ranged"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 10
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 1.5,
+                "Filters": [
+                  {
+                    "Type": "HeightDifference",
+                    "HeightDifference": [ -2, 1 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "Nothing"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10,
+                "Filters": [
+                  {
+                    "Type": "HeightDifference",
+                    "HeightDifference": [ -2, 1 ]
+                  }
+                ]
+              },
+              "BodyMotion": {
+                "Type": "Seek",
+                "StopDistance": 1.5
+              }
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Ranged"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "Inventory",
+                  "Operation": "Equip",
+                  "Item": "Weapon_Shortbow_Crude",
+                  "UseTarget": false
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Out of height range"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 10
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10,
+                "Filters": [
+                  {
+                    "Type": "HeightDifference",
+                    "HeightDifference": [ -2, 1 ]
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Melee"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 10
+              },
+              "Actions": [
+                {
+                  "Type": "Attack",
+                  "Attack": "Skeleton_Archer_Bow_Shoot",
+                  "AimingTimeRange": [ 3, 3 ],
+                  "LineOfSight": true
+                }
+              ],
+              "HeadMotion": {
+                "Type": "Aim"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sensor_Height_Bow.name"
+}

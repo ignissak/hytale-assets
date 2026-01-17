@@ -1,0 +1,110 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Deco_Lantern.name"
+  },
+  "Variant": true,
+  "Parent": "Deco_Lantern",
+  "Icon": "Icons/ItemsGenerated/Deco_Lantern.png",
+  "BlockType": {
+    "PlacementSettings": {
+      "RotationMode": "BlockNormal",
+      "PlaceInEmptyBlocks": true,
+      "FloorPlacementOverrideBlockId": "Deco_Lantern"
+    },
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Village/Lantern_Texture.png"
+      }
+    ],
+    "HitboxType": "Lantern_Village_Ceiling",
+    "Light": {
+      "Radius": 0,
+      "Color": "#dca"
+    },
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "ItemId": "Deco_Lantern"
+      }
+    },
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Wood",
+    "Support": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Full",
+          "Filler": []
+        },
+        {
+          "FaceType": "Branch"
+        },
+        {
+          "FaceType": "Rock_Beam"
+        },
+        {
+          "FaceType": "Wood_Beam"
+        },
+        {
+          "FaceType": "Fence"
+        },
+        {
+          "FaceType": "Fence_Corner"
+        },
+        {
+          "FaceType": "Wall"
+        },
+        {
+          "FaceType": "Wall_Corner"
+        },
+        {
+          "FaceType": "Rope"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chain_Small"
+        },
+        {
+          "BlockTypeId": "Deco_Iron_Chains_Vertical"
+        }
+      ]
+    },
+    "CustomModel": "Blocks/Decorative_Sets/Village/Lantern_Ceiling.blockymodel",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            }
+          }
+        ]
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "AmbientSoundEventId": "SFX_Torch_Default_Loop"
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Light": null,
+          "Particles": null,
+          "InteractionSoundEventId": "SFX_Torch_Off",
+          "AmbientSoundEventId": null,
+          "CustomModelAnimation": "Blocks/Animations/Light/Light_Off.blockyanim"
+        }
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "CustomModelScale": 0.8
+  }
+}

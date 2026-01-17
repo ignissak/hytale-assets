@@ -1,0 +1,35 @@
+{
+	"GridGenerator": {
+    "Seed": "Firelands-Pattern-Monuments-Incidental",
+    "Density": 0.75,
+		"Scale": 0.015,
+		"Jitter": 0.4
+	},
+  "NoiseMask": {
+    "Seed": "Firelands-Pattern-Monuments-Tier-5",
+    "NoiseType": "CELL",
+    "Formula": "INVERTED_SQRT",
+    "CellMode": "DISTANCE",
+    "Scale": 0.005,
+    "Jitter": 0.75,
+    "Threshold": [0.25, 0.6]
+  },
+  "HeightThreshold": {
+    "Positions": [30, 31, 40, 41],
+    "Values": [0, 1, 1, 0]
+  },
+	"Mask": {
+		"Default": ["*"],
+		"Specific": [
+			{
+				"Block": ["Rock_Volcanic_Cobble_Stairs", "Rock_Volcanic_Brick_Stairs", "Rock_Basalt_Cobble_Stairs", "Rock_Basalt_Brick_Stairs"],
+				"Rule": ["Empty"]
+			},
+			{
+			"Block": ["Empty"],
+			"Rule": ["*"]
+			}
+		]
+	},
+"DeepSearch": true
+}

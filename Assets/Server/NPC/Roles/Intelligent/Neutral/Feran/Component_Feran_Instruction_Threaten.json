@@ -1,0 +1,126 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Attack", "Search", "Idle" ],
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "ContinueToThreatenNPCComponent": {
+      "Value": "Component_Feran_Sensor_Scarak",
+      "Description": "The component sensor used to decide whether this NPC should remain in the threaten state when confronted with certain NPCs in certain situations"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Attack", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Beacon",
+          "Message": "Feran_All_Attack",
+          "TargetSlot": "LockedTarget"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Attack"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": 10,
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        },
+        "BodyMotion": {
+          "Type": "Flee",
+          "SlowDownDistance": 10,
+          "StopDistance": 12,
+          "RelaxedMoveConstraints": false
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "AlertedRange" }
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Once": true,
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Reference": "Component_Feran_Sensor_Scarak"
+                },
+                {
+                  "Type": "Target",
+                  "Range": { "Compute": "AlertedRange" }
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "And",
+              "Sensors": [
+                {
+                  "Reference": "Component_Feran_Sensor_Scarak"
+                },
+                {
+                  "Type": "Target",
+                  "Range": { "Compute": "AlertedRange" }
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "MatchLook"
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          },
+          {
+            "Actions": [
+              {
+                "Type": "ParentState",
+                "State": "Alerted"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

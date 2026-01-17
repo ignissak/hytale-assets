@@ -1,0 +1,53 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Mana": 50
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Gun_Shoot_Cost"
+              ]
+            },
+            "Var": "Gun_Shoot_Cost"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Gun_Shoot"
+              ]
+            },
+            "Var": "Gun_Shoot"
+          }
+        ]
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Replace",
+    "DefaultValue": {
+      "Interactions": [
+        "Gun_Shoot_Fail"
+      ]
+    },
+    "Var": "Gun_Shoot_Fail"
+  },
+  "Effects": {
+    "LocalSoundEventId": "SFX_Blunderbuss_Fire_Local",
+    "WorldSoundEventId": "SFX_Blunderbuss_Fire"
+  }
+}

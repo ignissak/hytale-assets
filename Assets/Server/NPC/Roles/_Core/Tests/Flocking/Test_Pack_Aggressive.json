@@ -1,0 +1,157 @@
+{
+  "Type": "Generic",
+  "Debug": "",
+  "Appearance": "Trork",
+  "ApplyAvoidance": false,
+  "ApplySeparation": true,
+  "FlockAllowedNPC": [ "Test_Pack_Aggressive" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "CollisionViewAngle": 0,
+  "SeparationDistance": 3,
+  "SeparationWeight": 1,
+  "SeparationDistanceTarget": 0.5,
+  "SeparationNearRadiusTarget": 1,
+  "SeparationFarRadiusTarget": 5,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 7,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "$Comment": "Seek locked player if we have one player to attack",
+          "Sensor": {
+            "Type": "Player",
+            "Range": 32,
+            "OnlyLockedTarget": true
+          },
+          "Tag": "Seeking locked target",
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 4,
+            "StopDistance": 1.5
+          }
+        },
+        {
+          "$Comment": "Seek any player to attack within 15 blocks",
+          "Sensor": {
+            "Type": "Player",
+            "Range": 15,
+            "LockOnTarget": true
+          },
+          "Tag": "Seeking player target",
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 4,
+            "StopDistance": 1.5
+          }
+        },
+        {
+          "$Comment": "Not attacking target? just follow leader",
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Follower"
+                  }
+                ]
+              }
+            ]
+          },
+          "Tag": "Follow leader",
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 7,
+            "StopDistance": 4
+          }
+        },
+        {
+          "$Comment": "As leader just wander when not attacking",
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Leader"
+                  }
+                ]
+              }
+            ]
+          },
+          "Tag": "Leader wanders",
+          "BodyMotion": {
+            "Reference": "Wander_Simple",
+            "Modify": { }
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "$Comment": "When someone inflicts damage it sets target for the flock",
+          "Sensor": {
+            "Type": "InflictedDamage",
+            "Target": "Flock"
+          },
+          "Tag": "Setting flock target",
+          "Actions": [
+            {
+              "Type": "FlockTarget"
+            }
+          ]
+        },
+        {
+          "$Comment": "Attack any player in range of 2 blocks and within 90 degrees view sector",
+          "Sensor": {
+            "Type": "Player",
+            "Range": 2,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 90
+              }
+            ]
+          },
+          "Tag": "Attacking",
+          "Actions": [
+            {
+              "Type": "Attack",
+              "Attack": "Root_NPC_Attack_Melee"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Pack_Aggressive.name"
+}

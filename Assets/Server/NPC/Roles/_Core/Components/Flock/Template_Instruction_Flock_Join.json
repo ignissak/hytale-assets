@@ -1,0 +1,131 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "FlockJoinRange": {
+      "Value": 10,
+      "Description": "How far to look for flocks to create or join"
+    },
+    "FlockLeaveRange": {
+      "Value": 20,
+      "Description": "How far away from leader NPC has to be to leave flock"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Flock",
+                  "FlockStatus": "NotMember"
+                }
+              ]
+            },
+            {
+              "Type": "Or",
+              "Sensors": [
+                {
+                  "Type": "Mob",
+                  "Range": { "Compute": "FlockJoinRange" },
+                  "ExcludeOwnType": false,
+                  "LockOnTarget": true,
+                  "Filters": [
+                    {
+                      "Type": "NPCGroup",
+                      "IncludeGroups": [ "Flock" ]
+                    },
+                    {
+                      "Type": "Flock",
+                      "FlockStatus": "NotMember"
+                    }
+                  ]
+                },
+                {
+                  "Type": "Mob",
+                  "Range": { "Compute": "FlockJoinRange" },
+                  "ExcludeOwnType": false,
+                  "LockOnTarget": true,
+                  "Filters": [
+                    {
+                      "Type": "NPCGroup",
+                      "IncludeGroups": [ "Flock" ]
+                    },
+                    {
+                      "Type": "Flock",
+                      "FlockStatus": "Leader"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "JoinFlock"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "FlockLeader"
+            },
+            {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Flock",
+                  "FlockStatus": "Follower"
+                }
+              ]
+            }
+          ]
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Mob",
+              "Range": { "Compute": "FlockLeaveRange" },
+              "ExcludeOwnType": false,
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "NPCGroup",
+                  "IncludeGroups": [ "Flock" ]
+                },
+                {
+                  "Type": "Flock",
+                  "FlockStatus": "Leader"
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "SetLeashPosition",
+                "ToTarget": true
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "LeaveFlock"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,630 @@
+{
+	"$NodeId":	"Root-43689135-9969-41fb-95e4-e962b3bba240",
+	"Operations":	[{
+			"$NodeId":	"SaveBrushConfig-82659be7-1f1d-4410-9402-06dffdfcb63c",
+			"Id":	"savebrushconfig",
+			"StoredName":	"Default"
+		}, {
+			"$NodeId":	"LoadMaterial-971df95c-5839-48b0-9fa1-a1f4c8ca571c",
+			"Id":	"loadmaterial",
+			"ArgName":	"aaMaterial"
+		}, {
+			"$NodeId":	"JumpIfToolArg-72c489ec-38c4-41e3-9b5c-48f212e800ba",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"cFlip",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"spiral_loop_flip"
+		}, {
+			"$NodeId":	"JumpIfToolArg-a9eb87cb-86c3-4933-9c78-88e9d2ac4ee2",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"dRotate",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"spiral_loop_rotate"
+		}, {
+			"$NodeId":	"SaveIndex-9a961360-fe66-4878-9a94-4456f8950228",
+			"Id":	"saveindex",
+			"StoredIndexName":	"spiral_loop"
+		}, {
+			"$NodeId":	"JumpIfToolArg-c2ef43ff-0204-4df6-a94d-406ecd4c7efc",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"dHeightInvertDirection",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"invert_direction"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-29b7d194-14de-4784-bb01-50155addb2f5",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"JumpToIndex-16069cc6-2b1f-4812-802f-4c738b790171",
+			"Id":	"jump",
+			"StoredIndexName":	"direction_end"
+		}, {
+			"$NodeId":	"SaveIndex-3242908e-6490-4f68-baec-9cce6db356e1",
+			"Id":	"saveindex",
+			"StoredIndexName":	"invert_direction"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-dbfbfaa3-79f0-4ace-931b-fd6cc89f619b",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	true
+		}, {
+			"$NodeId":	"SaveIndex-a3715886-5f30-4cb1-9597-3ffe28fd2ebe",
+			"Id":	"saveindex",
+			"StoredIndexName":	"direction_end"
+		}, {
+			"$NodeId":	"Set-3722cb7e-0a79-4775-8288-c5e621e976bd",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"JumpIfToolArg-9b78911a-6cc2-4805-ada9-efa5cac95e7e",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"eSmooth",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"0",
+			"StoredIndexName":	"skip_smooth"
+		}, {
+			"$NodeId":	"SaveIndex-0da5674c-1b64-41e7-a79a-8584977d2b48",
+			"Id":	"saveindex",
+			"StoredIndexName":	"smooth_loop"
+		}, {
+			"$NodeId":	"Smooth-55debb93-6d6b-46cc-a27b-616e9c1ee81b",
+			"Id":	"smooth",
+			"SmoothStrength":	1
+		}, {
+			"$NodeId":	"LoadLoopFromToolArg-d9fe4757-adcf-46fd-83e5-877a14bcbf9f",
+			"Id":	"loadloop",
+			"StoredIndexName":	"smooth_loop",
+			"ArgName":	"eSmooth"
+		}, {
+			"$NodeId":	"SaveIndex-41012aa0-5532-4e2b-9a79-957f558ace7a",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_smooth"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-d6c75ec6-fa99-41e4-8bcf-c2390a194fad",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"spiral_loop",
+			"NumberCirclePointsArg":	"aNumPoints",
+			"CircleRadiusArg":	"bRadius",
+			"FlipDirection":	false,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"JumpToIndex-4cc544cf-680f-4a51-9e81-268192196675",
+			"Id":	"jump",
+			"StoredIndexName":	"spiral_end"
+		}, {
+			"$NodeId":	"SaveIndex-1ca37e9e-01dd-40ac-b1a8-54f3f3b5ab44",
+			"Id":	"saveindex",
+			"StoredIndexName":	"spiral_loop_flip"
+		}, {
+			"$NodeId":	"JumpIfToolArg-49222b77-297c-43dc-a1af-05c10efb9fb1",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"dHeightInvertDirection",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"invert_direction_2"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-80be70d0-e8be-49f2-988b-42560abda032",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"JumpToIndex-9df038f0-d543-4d78-88ab-977b1303af53",
+			"Id":	"jump",
+			"StoredIndexName":	"direction_end_2"
+		}, {
+			"$NodeId":	"SaveIndex-a37ed0f3-2564-4a09-ae95-975c1f35f7c9",
+			"Id":	"saveindex",
+			"StoredIndexName":	"invert_direction_2"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-7dadf8fe-604a-4e4a-9bf2-6a985ab64a28",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	true
+		}, {
+			"$NodeId":	"SaveIndex-5c693b67-99ed-4a0b-a5c7-2e85c599288c",
+			"Id":	"saveindex",
+			"StoredIndexName":	"direction_end_2"
+		}, {
+			"$NodeId":	"Set-9e7d3cd0-55f7-48fd-b63a-f0f746885c25",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"JumpIfToolArg-7f665ebd-ee7e-4679-9f67-732107697775",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"eSmooth",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"0",
+			"StoredIndexName":	"skip_smooth_1"
+		}, {
+			"$NodeId":	"SaveIndex-6e4bc01e-363f-4820-9b4b-7f4c21b61cd5",
+			"Id":	"saveindex",
+			"StoredIndexName":	"smooth_loop_1"
+		}, {
+			"$NodeId":	"Smooth-2bb6569a-3ddd-46d6-b0c8-c98eb8246715",
+			"Id":	"smooth",
+			"SmoothStrength":	1
+		}, {
+			"$NodeId":	"LoadLoopFromToolArg-c9f2a592-cda4-44bf-9818-7cae9d72546e",
+			"Id":	"loadloop",
+			"StoredIndexName":	"smooth_loop_1",
+			"ArgName":	"eSmooth"
+		}, {
+			"$NodeId":	"SaveIndex-4d760e8e-b9d0-45e1-b32c-a13ca7aaf70e",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_smooth_1"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-1536eb1d-1dce-4719-bd2b-d6b08a51d72a",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"spiral_loop_flip",
+			"NumberCirclePointsArg":	"aNumPoints",
+			"CircleRadiusArg":	"bRadius",
+			"FlipDirection":	true,
+			"RotateDirection":	false
+		}, {
+			"$NodeId":	"JumpToIndex-67bc97bf-6ad6-4984-b9f9-19b6457928e1",
+			"Id":	"jump",
+			"StoredIndexName":	"spiral_end"
+		}, {
+			"$NodeId":	"SaveIndex-4c9777dc-2ceb-4268-ae5b-7882fb17b103",
+			"Id":	"saveindex",
+			"StoredIndexName":	"spiral_loop_rotate"
+		}, {
+			"$NodeId":	"JumpIfToolArg-dd701b8e-382e-464b-89de-1eeef4542bc9",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"dHeightInvertDirection",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"true",
+			"StoredIndexName":	"invert_direction_3"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-05226c46-5028-41ad-9e0d-dcae90d6ccc9",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"JumpToIndex-7e512f24-76de-4a2e-abaa-ef4ebe78c520",
+			"Id":	"jump",
+			"StoredIndexName":	"direction_end_3"
+		}, {
+			"$NodeId":	"SaveIndex-85432abe-ecf4-49a7-b03e-a699791a5021",
+			"Id":	"saveindex",
+			"StoredIndexName":	"invert_direction_3"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-ee368d42-4ada-4b6a-9394-d8f649868b64",
+			"Id":	"loadint",
+			"ArgName":	"fHeight",
+			"TargetField":	"OffsetY",
+			"Relative":	true,
+			"Negate":	true
+		}, {
+			"$NodeId":	"SaveIndex-b25af225-8b2a-4de3-8f06-f2d25a970f50",
+			"Id":	"saveindex",
+			"StoredIndexName":	"direction_end_3"
+		}, {
+			"$NodeId":	"Set-64d47573-ac31-4b07-8bdb-263a702f49ef",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"JumpIfToolArg-cdf12da2-b37e-47c1-80d8-d2be653abd01",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"eSmooth",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"0",
+			"StoredIndexName":	"skip_smooth_3"
+		}, {
+			"$NodeId":	"SaveIndex-ef37ff86-1429-4b83-b292-dec08738461a",
+			"Id":	"saveindex",
+			"StoredIndexName":	"smooth_loop_3"
+		}, {
+			"$NodeId":	"Smooth-1e4f7a86-9b1f-4fc1-8874-54512db607aa",
+			"Id":	"smooth",
+			"SmoothStrength":	1
+		}, {
+			"$NodeId":	"LoadLoopFromToolArg-e8202cb8-dce5-4711-bf69-f7a96dd80c1d",
+			"Id":	"loadloop",
+			"StoredIndexName":	"smooth_loop_3",
+			"ArgName":	"eSmooth"
+		}, {
+			"$NodeId":	"SaveIndex-8951dcc6-209a-4d2e-8836-b1cc72126542",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_smooth_3"
+		}, {
+			"$NodeId":	"LoopCircleFromArg-d88ca4f1-8570-4656-a2f4-b7b2a8e57f31",
+			"Id":	"loopcirclefromarg",
+			"StoredIndexName":	"spiral_loop_rotate",
+			"NumberCirclePointsArg":	"aNumPoints",
+			"CircleRadiusArg":	"bRadius",
+			"FlipDirection":	false,
+			"RotateDirection":	true
+		}, {
+			"$NodeId":	"JumpToIndex-5ef893e1-ed5b-4bf8-bcdf-b0f244b2ad02",
+			"Id":	"jump",
+			"StoredIndexName":	"spiral_end"
+		}, {
+			"$NodeId":	"SaveIndex-85b15fde-a2f1-4f09-825e-8c88b089a386",
+			"Id":	"saveindex",
+			"StoredIndexName":	"spiral_end"
+		}, {
+			"$NodeId":	"JumpIfToolArg-539d303f-eef7-4fcc-a900-09c2444798bf",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"hHollowCenter",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"false",
+			"StoredIndexName":	"skip_hollow_center"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-f6c05a53-c996-4fcb-9914-309b8c2b928a",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"aaMaterial",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Material-cd029ada-8e2f-4126-954d-bf4d67470cea",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-d6c918b7-8aa0-4545-b250-4db129077eb4",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"SaveIndex-cc7aa801-af79-4a22-b72f-f1b206d753de",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_hollow_center"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-43689135-9969-41fb-95e4-e962b3bba240":	{
+				"$Position":	{
+					"$x":	250,
+					"$y":	250
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"LoopCircleFromArg-d6c75ec6-fa99-41e4-8bcf-c2390a194fad":	{
+				"$Position":	{
+					"$x":	633,
+					"$y":	2221
+				}
+			},
+			"SaveIndex-9a961360-fe66-4878-9a94-4456f8950228":	{
+				"$Position":	{
+					"$x":	656,
+					"$y":	-777
+				}
+			},
+			"LoadIntFromToolArg-29b7d194-14de-4784-bb01-50155addb2f5":	{
+				"$Position":	{
+					"$x":	643,
+					"$y":	-357
+				}
+			},
+			"Set-3722cb7e-0a79-4775-8288-c5e621e976bd":	{
+				"$Position":	{
+					"$x":	630,
+					"$y":	633
+				}
+			},
+			"SaveBrushConfig-82659be7-1f1d-4410-9402-06dffdfcb63c":	{
+				"$Position":	{
+					"$x":	650,
+					"$y":	-2384
+				}
+			},
+			"LoadMaterial-971df95c-5839-48b0-9fa1-a1f4c8ca571c":	{
+				"$Position":	{
+					"$x":	652,
+					"$y":	-2206
+				}
+			},
+			"JumpIfToolArg-72c489ec-38c4-41e3-9b5c-48f212e800ba":	{
+				"$Position":	{
+					"$x":	649,
+					"$y":	-1968
+				}
+			},
+			"JumpIfToolArg-a9eb87cb-86c3-4933-9c78-88e9d2ac4ee2":	{
+				"$Position":	{
+					"$x":	656,
+					"$y":	-1700
+				}
+			},
+			"LoopCircleFromArg-1536eb1d-1dce-4719-bd2b-d6b08a51d72a":	{
+				"$Position":	{
+					"$x":	562,
+					"$y":	5855
+				}
+			},
+			"SaveIndex-1ca37e9e-01dd-40ac-b1a8-54f3f3b5ab44":	{
+				"$Position":	{
+					"$x":	610,
+					"$y":	3183
+				}
+			},
+			"Set-9e7d3cd0-55f7-48fd-b63a-f0f746885c25":	{
+				"$Position":	{
+					"$x":	574,
+					"$y":	4606
+				}
+			},
+			"LoopCircleFromArg-d88ca4f1-8570-4656-a2f4-b7b2a8e57f31":	{
+				"$Position":	{
+					"$x":	494,
+					"$y":	10158
+				}
+			},
+			"SaveIndex-4c9777dc-2ceb-4268-ae5b-7882fb17b103":	{
+				"$Position":	{
+					"$x":	523,
+					"$y":	7309
+				}
+			},
+			"Set-64d47573-ac31-4b07-8bdb-263a702f49ef":	{
+				"$Position":	{
+					"$x":	503,
+					"$y":	8830
+				}
+			},
+			"JumpToIndex-4cc544cf-680f-4a51-9e81-268192196675":	{
+				"$Position":	{
+					"$x":	635,
+					"$y":	2535
+				}
+			},
+			"JumpToIndex-67bc97bf-6ad6-4984-b9f9-19b6457928e1":	{
+				"$Position":	{
+					"$x":	573,
+					"$y":	6167
+				}
+			},
+			"JumpToIndex-5ef893e1-ed5b-4bf8-bcdf-b0f244b2ad02":	{
+				"$Position":	{
+					"$x":	506,
+					"$y":	10462
+				}
+			},
+			"SaveIndex-85b15fde-a2f1-4f09-825e-8c88b089a386":	{
+				"$Position":	{
+					"$x":	491,
+					"$y":	10759
+				}
+			},
+			"JumpIfToolArg-c2ef43ff-0204-4df6-a94d-406ecd4c7efc":	{
+				"$Position":	{
+					"$x":	651,
+					"$y":	-614
+				}
+			},
+			"SaveIndex-3242908e-6490-4f68-baec-9cce6db356e1":	{
+				"$Position":	{
+					"$x":	634,
+					"$y":	48
+				}
+			},
+			"LoadIntFromToolArg-dbfbfaa3-79f0-4ace-931b-fd6cc89f619b":	{
+				"$Position":	{
+					"$x":	631,
+					"$y":	180
+				}
+			},
+			"SaveIndex-a3715886-5f30-4cb1-9597-3ffe28fd2ebe":	{
+				"$Position":	{
+					"$x":	630,
+					"$y":	454
+				}
+			},
+			"JumpToIndex-16069cc6-2b1f-4812-802f-4c738b790171":	{
+				"$Position":	{
+					"$x":	641,
+					"$y":	-90
+				}
+			},
+			"LoadIntFromToolArg-80be70d0-e8be-49f2-988b-42560abda032":	{
+				"$Position":	{
+					"$x":	584,
+					"$y":	3604
+				}
+			},
+			"LoadIntFromToolArg-7dadf8fe-604a-4e4a-9bf2-6a985ab64a28":	{
+				"$Position":	{
+					"$x":	572,
+					"$y":	4141
+				}
+			},
+			"JumpToIndex-9df038f0-d543-4d78-88ab-977b1303af53":	{
+				"$Position":	{
+					"$x":	582,
+					"$y":	3871
+				}
+			},
+			"SaveIndex-a37ed0f3-2564-4a09-ae95-975c1f35f7c9":	{
+				"$Position":	{
+					"$x":	575,
+					"$y":	4009
+				}
+			},
+			"JumpIfToolArg-49222b77-297c-43dc-a1af-05c10efb9fb1":	{
+				"$Position":	{
+					"$x":	592,
+					"$y":	3347
+				}
+			},
+			"SaveIndex-5c693b67-99ed-4a0b-a5c7-2e85c599288c":	{
+				"$Position":	{
+					"$x":	571,
+					"$y":	4415
+				}
+			},
+			"SaveIndex-85432abe-ecf4-49a7-b03e-a699791a5021":	{
+				"$Position":	{
+					"$x":	499,
+					"$y":	8224
+				}
+			},
+			"LoadIntFromToolArg-05226c46-5028-41ad-9e0d-dcae90d6ccc9":	{
+				"$Position":	{
+					"$x":	508,
+					"$y":	7819
+				}
+			},
+			"LoadIntFromToolArg-ee368d42-4ada-4b6a-9394-d8f649868b64":	{
+				"$Position":	{
+					"$x":	496,
+					"$y":	8356
+				}
+			},
+			"JumpIfToolArg-dd701b8e-382e-464b-89de-1eeef4542bc9":	{
+				"$Position":	{
+					"$x":	516,
+					"$y":	7562
+				}
+			},
+			"JumpToIndex-7e512f24-76de-4a2e-abaa-ef4ebe78c520":	{
+				"$Position":	{
+					"$x":	506,
+					"$y":	8086
+				}
+			},
+			"SaveIndex-b25af225-8b2a-4de3-8f06-f2d25a970f50":	{
+				"$Position":	{
+					"$x":	495,
+					"$y":	8630
+				}
+			},
+			"LoadLoopFromToolArg-d9fe4757-adcf-46fd-83e5-877a14bcbf9f":	{
+				"$Position":	{
+					"$x":	658,
+					"$y":	1591
+				}
+			},
+			"SaveIndex-0da5674c-1b64-41e7-a79a-8584977d2b48":	{
+				"$Position":	{
+					"$x":	673,
+					"$y":	1273
+				}
+			},
+			"Smooth-55debb93-6d6b-46cc-a27b-616e9c1ee81b":	{
+				"$Position":	{
+					"$x":	674,
+					"$y":	1436
+				}
+			},
+			"JumpIfToolArg-9b78911a-6cc2-4805-ada9-efa5cac95e7e":	{
+				"$Position":	{
+					"$x":	666,
+					"$y":	1024
+				}
+			},
+			"SaveIndex-41012aa0-5532-4e2b-9a79-957f558ace7a":	{
+				"$Position":	{
+					"$x":	663,
+					"$y":	1791
+				}
+			},
+			"LoadLoopFromToolArg-c9f2a592-cda4-44bf-9818-7cae9d72546e":	{
+				"$Position":	{
+					"$x":	579,
+					"$y":	5413
+				}
+			},
+			"JumpIfToolArg-7f665ebd-ee7e-4679-9f67-732107697775":	{
+				"$Position":	{
+					"$x":	587,
+					"$y":	4846
+				}
+			},
+			"SaveIndex-4d760e8e-b9d0-45e1-b32c-a13ca7aaf70e":	{
+				"$Position":	{
+					"$x":	584,
+					"$y":	5613
+				}
+			},
+			"SaveIndex-6e4bc01e-363f-4820-9b4b-7f4c21b61cd5":	{
+				"$Position":	{
+					"$x":	594,
+					"$y":	5095
+				}
+			},
+			"Smooth-2bb6569a-3ddd-46d6-b0c8-c98eb8246715":	{
+				"$Position":	{
+					"$x":	595,
+					"$y":	5258
+				}
+			},
+			"LoadLoopFromToolArg-e8202cb8-dce5-4711-bf69-f7a96dd80c1d":	{
+				"$Position":	{
+					"$x":	515,
+					"$y":	9595
+				}
+			},
+			"JumpIfToolArg-cdf12da2-b37e-47c1-80d8-d2be653abd01":	{
+				"$Position":	{
+					"$x":	523,
+					"$y":	9028
+				}
+			},
+			"SaveIndex-8951dcc6-209a-4d2e-8836-b1cc72126542":	{
+				"$Position":	{
+					"$x":	520,
+					"$y":	9795
+				}
+			},
+			"SaveIndex-ef37ff86-1429-4b83-b292-dec08738461a":	{
+				"$Position":	{
+					"$x":	530,
+					"$y":	9277
+				}
+			},
+			"Smooth-1e4f7a86-9b1f-4fc1-8874-54512db607aa":	{
+				"$Position":	{
+					"$x":	531,
+					"$y":	9440
+				}
+			},
+			"JumpIfToolArg-539d303f-eef7-4fcc-a900-09c2444798bf":	{
+				"$Position":	{
+					"$x":	486,
+					"$y":	10959
+				}
+			},
+			"Material-cd029ada-8e2f-4126-954d-bf4d67470cea":	{
+				"$Position":	{
+					"$x":	492,
+					"$y":	11516
+				}
+			},
+			"AppendMaskFromToolArg-f6c05a53-c996-4fcb-9914-309b8c2b928a":	{
+				"$Position":	{
+					"$x":	495,
+					"$y":	11229
+				}
+			},
+			"Set-d6c918b7-8aa0-4545-b250-4db129077eb4":	{
+				"$Position":	{
+					"$x":	507,
+					"$y":	11688
+				}
+			},
+			"SaveIndex-cc7aa801-af79-4a22-b72f-f1b206d753de":	{
+				"$Position":	{
+					"$x":	497,
+					"$y":	11835
+				}
+			}
+		},
+		"$FloatingNodes":	[],
+		"$Links":	{
+		},
+		"$Groups":	[],
+		"$Comments":	[],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

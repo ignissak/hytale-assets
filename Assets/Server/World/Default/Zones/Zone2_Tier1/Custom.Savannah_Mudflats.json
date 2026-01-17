@@ -1,0 +1,304 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Seed": "458u56i8637oi6",
+      "NoiseType": "OLD_SIMPLEX",
+      "FractalMode": "OLDSCHOOL",
+      "Formula": "INVERTED",
+      "Octaves": 4,
+      "Persistence": 0.6,
+      "Scale": 0.004,
+      "Threshold": [
+        0.68,
+        1
+      ]
+    },
+    "BiomeMask": [
+      "Savannah_Forest"
+    ],
+    "Priority": 1
+  },
+  "MapColor": "#d4da93",
+  "Covers": [
+    {
+      "Type": [
+        "Rubble_Sandstone",
+        "Rubble_Sandstone_Medium"
+      ],
+      "Weight": [
+        0.8,
+        0.2
+      ],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Seed": "eherh",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.025,
+        "Threshold": [
+          0,
+          0.4
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Dirt_Dry",
+        "Soil_Mud_Dry",
+        "Rock_Sandstone"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Bush_Arid_Sharp"
+      ],
+      "Density": 0.04,
+      "NoiseMask": {
+        "Seed": "Dirtcovers",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.025,
+        "Threshold": [
+          0,
+          0.4
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Dirt_Dry",
+        "Soil_Mud_Dry"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Flower_Tall_Pink"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Flowers.Flowers_River"
+          }
+        ],
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Mud_Dry"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Weight": [
+          50,
+          20,
+          20
+        ],
+        "Prefab": [
+          "Trees.Dry.Stage_2.*",
+          "Trees.Dry.Stage_3.*",
+          "Rock_Formations.Rocks.Sandstone.Small.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Mudflats_Trees"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": [
+              "Soil_Mud_Dry"
+            ],
+            "NoiseMask": {
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 5,
+              "Persistence": 0.5,
+              "Scale": 0.06,
+              "Threshold": [
+                0,
+                0.44
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Dirt_Dry",
+                "Repeat": [
+                  1,
+                  5
+                ],
+                "repeatNoise": {
+                  "Seed": "Dirtcovers",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.7,
+                  "Scale": 0.05
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Blocks": [
+          {
+            "Type": "Rock_Sandstone",
+            "Repeat": [
+              3,
+              8
+            ],
+            "repeatNoise": {
+              "Seed": "Grasslands-Layers-Ground",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.08
+            }
+          },
+          {
+            "Type": "Soil_Clay",
+            "Repeat": [
+              2,
+              5
+            ],
+            "repeatNoise": {
+              "Seed": "Grasslands-Layers-Ground",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.08
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [
+      108,
+      110,
+      112,
+      114,
+      119,
+      121
+    ],
+    "Values": [
+      1,
+      0.8,
+      0.75,
+      0.71,
+      0.68,
+      0
+    ]
+  },
+  "HeightmapNoise": {
+    "Seed": "458u56i8637oi6",
+    "NoiseType": "OLD_SIMPLEX",
+    "FractalMode": "OLDSCHOOL",
+    "Formula": "INVERTED",
+    "Octaves": 4,
+    "Persistence": 0.6,
+    "Scale": 0.004
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "bfac29",
+        "b7b82e"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "SIMPLEX",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone2_Savanna"
+      ]
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Block": "Soil_Mud",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

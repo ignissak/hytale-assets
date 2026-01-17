@@ -1,0 +1,115 @@
+{
+  "Operations": [
+    {
+      "Id": "echoonce",
+      "Message": "========== Example Tool Arg Brush ==========\nThis brush demonstrates the JumpIfToolArg operation.\nIt checks the 'EnableFeature' checkbox and 'BrushMode' dropdown.\nTry changing them in the tool settings!"
+    },
+    {
+      "Id": "echo",
+      "Message": "Checking EnableFeature checkbox..."
+    },
+    {
+      "Id": "jumpiftoolarg",
+      "ArgName": "EnableFeature",
+      "ComparisonType": "Equals",
+      "ComparisonValue": "true",
+      "StoredIndexName": "featureEnabled"
+    },
+    {
+      "Id": "echo",
+      "Message": "Feature is DISABLED - using default pattern"
+    },
+    {
+      "Id": "pattern",
+      "BlockPattern": "Rock_Stone"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "checkMode"
+    },
+    {
+      "Id": "echo",
+      "Message": "Checking BrushMode dropdown..."
+    },
+    {
+      "Id": "jumpiftoolarg",
+      "ArgName": "BrushMode",
+      "ComparisonType": "Equals",
+      "ComparisonValue": "Smooth",
+      "StoredIndexName": "smoothMode"
+    },
+    {
+      "Id": "jumpiftoolarg",
+      "ArgName": "BrushMode",
+      "ComparisonType": "Equals",
+      "ComparisonValue": "Rough",
+      "StoredIndexName": "roughMode"
+    },
+    {
+      "Id": "echo",
+      "Message": "Mode: Normal - full density"
+    },
+    {
+      "Id": "density",
+      "Density": 100
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "placeBlocks"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "featureEnabled"
+    },
+    {
+      "Id": "echo",
+      "Message": "Feature is ENABLED - using special pattern"
+    },
+    {
+      "Id": "pattern",
+      "BlockPattern": "Soil_Grass"
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "checkMode"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "smoothMode"
+    },
+    {
+      "Id": "echo",
+      "Message": "Mode: Smooth - medium density"
+    },
+    {
+      "Id": "density",
+      "Density": 75
+    },
+    {
+      "Id": "jump",
+      "StoredIndexName": "placeBlocks"
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "roughMode"
+    },
+    {
+      "Id": "echo",
+      "Message": "Mode: Rough - low density"
+    },
+    {
+      "Id": "density",
+      "Density": 50
+    },
+    {
+      "Id": "saveindex",
+      "StoredIndexName": "placeBlocks"
+    },
+    {
+      "Id": "set"
+    },
+    {
+      "Id": "exit"
+    }
+  ]
+}

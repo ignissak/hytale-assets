@@ -1,0 +1,65 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "CombatConfig": {
+    "EntityEffect": {
+      "Infinite": true,
+      "ApplicationEffects": {
+        "EntityBottomTint": "#80ecff",
+        "ModelVFXId": "Freeze",
+        "ScreenEffect": "ScreenEffects/Snow.png",
+        "Particles": [
+          {
+            "SystemId": "Effect_Snow"
+          },
+          {
+            "SystemId": "Effect_Snow_Impact"
+          }
+        ],
+        "EntityTopTint": "#da72ff"
+      },
+      "DamageResistance": {
+        "Projectile": [
+          {
+            "Amount": 0.5,
+            "CalculationType": "Multiplicative"
+          }
+        ]
+      }
+    }
+  },
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 30
+          },
+          "HeadMotion": {
+            "Type": "Watch"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Entity_Effect.name"
+}

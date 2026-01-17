@@ -1,0 +1,113 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Crawler_Void_Default",
+    "ItemAnimationId": "ScratchLeft"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.25,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.117,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.5,
+              "EndDistance": 2,
+              "Length": 90,
+              "RollOffset": 15,
+              "YawStartOffset": -45
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.333
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.25,
+            "Effects": {
+              "Trails": [
+                {
+                  "TrailId": "Crawler_Void_Claw",
+                  "TargetEntityPart": "Entity",
+                  "TargetNodeName": "R-Claw-R",
+                  "RotationOffset": {
+                    "Yaw": 0,
+                    "Pitch": 0,
+                    "Roll": 90
+                  },
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0.1
+                  }
+                },
+                {
+                  "TrailId": "Crawler_Void_Claw",
+                  "TargetEntityPart": "Entity",
+                  "TargetNodeName": "R-Claw-Mid",
+                  "RotationOffset": {
+                    "Yaw": 0,
+                    "Pitch": 0,
+                    "Roll": 90
+                  },
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0.1
+                  }
+                },
+                {
+                  "TrailId": "Crawler_Void_Claw",
+                  "TargetEntityPart": "Entity",
+                  "TargetNodeName": "R-Claw-L",
+                  "RotationOffset": {
+                    "Yaw": 0,
+                    "Pitch": 0,
+                    "Roll": 90
+                  },
+                  "PositionOffset": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0.1
+                  }
+                }
+              ],
+              "WorldSoundEventId": "SFX_Zombie_Attack_Swing"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

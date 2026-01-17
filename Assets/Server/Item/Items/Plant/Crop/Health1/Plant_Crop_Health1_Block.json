@@ -1,0 +1,162 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Health1_Stage_0.name"
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/Blood_Rose.png",
+        "Weight": 1
+      }
+    ],
+    "BlockSoundSetId": "Seeds",
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "Opacity": "Semitransparent",
+          "CustomModel": "Blocks/Foliage/Flowers/Health_T1_Blood_Rose/Blood_Rose_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Flowers/Health_T1_Blood_Rose/Blood_Rose_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Plant_Small",
+          "RandomRotation": "YawStep1",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Health1_Stage_1"
+            }
+          },
+          "BlockParticleSetId": "Flower",
+          "Light": {
+            "Color": "#422"
+          },
+          "ParticleColor": "#ef706c"
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Flowers/Health_T1_Blood_Rose/Blood_Rose_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Flowers/Health_T1_Blood_Rose/Blood_Rose_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "HitboxType": "Plant_Large",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Plant_Crop_Health1_Stage_2"
+            }
+          },
+          "BlockParticleSetId": "Flower",
+          "Light": {
+            "Color": "#522"
+          },
+          "ParticleColor": "#bd2b8d"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10350,
+              "Max": 41400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 82800,
+              "Max": 93500
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Block": "Plant_Crop_Health1",
+            "Type": "BlockType",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ]
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Plant_Crop_Health1_Stage_0"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "CustomModelScale": 0.9,
+    "ParticleColor": "#cb374f",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 0.85,
+    "Translation": [
+      1.5,
+      -3.9
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Health1_Stage_0.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

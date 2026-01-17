@@ -1,0 +1,107 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Modify": {
+    "Appearance": "Tiger_Sabertooth",
+    "AttitudeGroup": "PredatorsBig",
+    "DropList": "Drop_Tiger_Sabertooth",
+    "MaxHealth": 124,
+    "MaxSpeed": 10,
+    "WanderRadius": 15,
+    "ViewRange": 10,
+    "HearingRange": 12,
+    "AbsoluteDetectionRange": 2,
+    "AlertedRange": 18,
+    "IsMemory": true,
+    "MemoriesCategory": "Predator",
+    "AlertedTime": [
+      3,
+      3
+    ],
+    "MaintainDistanceWhileAlerted": false,
+    "ThreatenDelayRange": [
+      2,
+      2
+    ],
+    "ThreatenAnimation": "Howl",
+    "FleeIfNotThreatened": false,
+    "FleeRange": 11,
+    "HardLeashDistance": 60,
+    "LeashDistance": 30,
+    "LeashMinPlayerDistance": 7,
+    "LeashTimer": [
+      4,
+      5
+    ],
+    "CombatBehaviorDistance": 6,
+    "CombatDirectWeight": 0,
+    "CombatStrafeWeight": 10,
+    "CombatBackOffAfterAttack": true,
+    "CombatBackOffDistanceRange": [
+      4,
+      5
+    ],
+    "CombatBackOffDurationRange": [
+      3,
+      3
+    ],
+    "Attack": "Root_NPC_Attack_Melee",
+    "AttackPauseRange": [
+      5,
+      5
+    ],
+    "AttackDistance": 2.5,
+    "ChaseRelativeSpeed": 0.6,
+    "CombatMovingRelativeSpeed": 0.6,
+    "CombatStrafingDurationRange": [
+      3,
+      3
+    ],
+    "CombatStrafingFrequencyRange": [
+      2,
+      2
+    ],
+    "AlwaysSleepAtNight": false,
+    "NightFlavorAnimation": "",
+    "DayTimeNapWeight": 0,
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Simple",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Tiger_Sabertooth_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.333
+          }
+        ]
+      },
+      "Melee_Damage": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Melee_Damage",
+            "$Comment": "Sets damage and onhit effects",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 46
+              },
+              "RandomPercentageModifier": 0.1
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Tiger_Sabertooth.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

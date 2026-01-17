@@ -1,0 +1,62 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Mana": 25
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.167,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Wand_Cast_Cost"
+              ]
+            },
+            "Var": "Wand_Cast_Left_Cost"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Wand_Cast_Launch"
+              ]
+            },
+            "Var": "Wand_Cast_Left_Launch"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Wand_Cast_Effect"
+              ]
+            },
+            "Var": "Wand_Cast_Left_Effect"
+          }
+        ]
+      }
+    ]
+  },
+  "Failed": {
+    "Type": "Replace",
+    "DefaultValue": {
+      "Interactions": [
+        "Wand_Cast_Fail"
+      ]
+    },
+    "Var": "Wand_Cast_Left_Fail"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "GridGenerator": {
+    "Seed": "Drylands-Pattern-Desert-Plateau-Cactus",
+    "Density": [0, 0.3],
+    "Scale": 0.02,
+    "Jitter": 0.5
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+
+        "Type": "MIN",
+
+        "Noise": [
+
+          {
+
+            "File": "Zones.Noise.Shared.Heightmaps.Base"
+
+          }
+
+        ]
+
+      },
+      {
+        "Seed": "Grasslands-Base-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 4,
+        "Persistence": 0.4,
+        "Scale": 0.02
+      },
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED_SQRT",
+        "Octaves": 4,
+        "Persistence": 0.5,
+        "Scale": 0.004
+      }
+    ],
+    "Factors": [0.75, 0.1, 0.15],
+    "Threshold": [0.27, 1]
+  },
+  "Mask": {
+    "Default": ["Empty", "Plant_Grass_Arid_Tall", "Plant_Grass_Dry_Tall", "Plant_Bush_Arid", "Plant_Bramble_Dry_Twisted"]
+  },
+  "Parent": ["Soil_Sand_White", "Soil_Gravel_Sand_White", "Soil_Grass_Dry", "Soil_Dirt_Dry"]
+}

@@ -1,0 +1,67 @@
+{
+  "Debug": "DisplayState, DisplayFlock",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "StartState": "Idle",
+  "FlockSpawnTypes": [ "Test_Flock_Damage" ],
+  "FlockAllowedNPC": [ "Test_Flock_Damage" ],
+  "BreathesInWater": true,
+  "MotionControllerList": [
+    {
+      "Type": "Dive",
+      "MaxSwimSpeed": 10,
+      "Acceleration": 10,
+      "MaxDiveSpeed": 8,
+      "SwimDepth": 0.6,
+      "SinkRatio": 0.5,
+      "MinDiveDepth": 0,
+      "MaxDiveDepth": 100,
+      "MinDepthAboveGround": 1,
+      "MinDepthBelowSurface": 1,
+      "Gravity": 10,
+      "MaxRotationSpeed": 360,
+      "MaxSwimTurnAngle": 180
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "FlockCombatDamage",
+                "LeaderOnly": false
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Damage"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Damage"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Flock_Damage.name"
+}

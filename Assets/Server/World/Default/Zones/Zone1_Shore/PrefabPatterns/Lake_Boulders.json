@@ -1,0 +1,37 @@
+{
+  "GridGenerator": {
+    "Density": 0.75,
+    "Scale": 0.063,
+    "Jitter": 0.5
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED_RIDGED",
+        "Octaves": 4,
+        "Persistence": 0.4,
+        "Scale": 0.004
+      },
+      {
+
+        "File": "Zones.Noise.Shared.Heightmaps.Base"
+
+      },
+      {
+        "Seed": "Grasslands-Base-2",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.4,
+        "Scale": 0.04
+      }
+    ],
+    "Factors": [0.35, 0.62, 0.03],
+    "Threshold": [0.77, 0.8]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "Parent": "Projectile_Config_Bow_Vamp",
+  "LaunchForce": 6,
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Parent": "Bow_Vamp_Projectile_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 2
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Force": 3
+            }
+          },
+          "EntityStatsOnHit": [
+            {
+              "EntityStatId": "SignatureEnergy",
+              "Amount": 0.54
+            },
+            {
+              "EntityStatId": "Health",
+              "Amount": 2
+            }
+          ]
+        },
+        "Bow_Combat_Projectile_Damage_End"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        "Bow_Combat_Projectile_Miss",
+        "Bow_Combat_Projectile_Miss_End"
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "Type": "Generic",
+  "Appearance": "Dog",
+  "FlockAllowedNPC": [ "Test_Sheep_Flock" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Member"
+                  }
+                ]
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 7,
+            "StopDistance": 3
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Leader"
+                  }
+                ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Cat"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "And",
+            "Sensors": [
+              {
+                "Type": "FlockLeader"
+              },
+              {
+                "Type": "Self",
+                "Filters": [
+                  {
+                    "Type": "Flock",
+                    "FlockStatus": "Member"
+                  }
+                ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Dog"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "Flock",
+                "FlockStatus": "NotMember"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Appearance",
+              "Appearance": "Sheep"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Dog_Flock.name"
+}

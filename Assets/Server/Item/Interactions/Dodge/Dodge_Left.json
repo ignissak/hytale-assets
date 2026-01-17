@@ -1,0 +1,66 @@
+{
+  "Type": "StatsConditionWithModifier",
+  "Costs": {
+    "Stamina": 2
+  },
+  "InteractionModifierId": "Dodge",
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ApplyEffect",
+        "EffectId": "Dodge_Invulnerability"
+      },
+      {
+        "Type": "ApplyEffect",
+        "EffectId": "Dodge_Left"
+      },
+      {
+        "Type": "ApplyForce",
+        "Direction": {
+          "X": -1,
+          "Y": 0,
+          "Z": 0
+        },
+        "AdjustVertical": false,
+        "WaitForGround": false,
+        "Force": 13,
+        "ChangeVelocityType": "Set",
+        "VelocityConfig": {
+          "AirResistance": 0.97,
+          "AirResistanceMax": 0.96,
+          "GroundResistance": 0.94,
+          "GroundResistanceMax": 0.82,
+          "Threshold": 5.0,
+          "Style": "Exp"
+        }
+      },
+      {
+        "Type": "Condition",
+        "RequiredGameMode": "Adventure",
+        "Next": {
+          "Type": "Serial",
+          "Interactions": [
+            {
+              "Type": "ChangeStatWithModifier",
+              "StatModifiers": {
+                "Stamina": -2
+              },
+              "ValueType": "Absolute",
+              "InteractionModifierId": "Dodge"
+            },
+            {
+              "Type": "ChangeStat",
+              "StatModifiers": {
+                "StaminaRegenDelay": -0.7
+              },
+              "Behaviour": "Set",
+              "ValueType": "Absolute"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Failed": "Stamina_Bar_Flash"
+}

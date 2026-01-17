@@ -1,0 +1,87 @@
+{
+  "GridGenerator": {
+		"Seed": "Glacier_Stalactites",
+    "Density": 1,
+    "Scale": 0.11,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+		"Type": "MAX",
+		"Noise": [
+			{
+				"Type":"DISTORTED",
+				"Noise":{
+					"Type": "MIN",
+					"Noise": [
+					  {
+					    "File": "Zones.Noise.Shared.Heightmaps.River"
+					  }
+					],
+					"Formula": "RIDGED_SQRT"
+				},
+				"Randomizer":{
+					"Generators":[
+						{
+							"Seed": "Grasslands-River-Noise",
+							"NoiseType":"SIMPLEX",
+							"Octaves":3,
+							"Persistence":0.6,
+							"Scale":0.006,
+							"Amplitude": 15
+						}
+					]
+				}
+			},
+			{
+					"Type": "SUM",
+					"Noise": [
+						{
+							"Seed": "Glacier_Base",
+							"NoiseType": "SIMPLEX",
+							"Formula": "INVERTED",
+							"Octaves": 3,
+							"Persistence": 0.5,
+							"Scale": 0.0015
+						},
+						{
+							"Type": "MIN",
+							"Noise": [
+							  {
+							    "File": "Zones.Noise.Shared.Heightmaps.River"
+							  }
+							],
+							"Formula": "RIDGED",
+							"Normalize": [0.2, 1]
+						},
+						{
+							"Seed": "Snowlands-Ice",
+							"NoiseType": "DISTANCE",
+							"DistanceMode": "NATURAL",
+							"Jitter": 0.8,
+							"Distance2Mode": "DIV",
+							"Formula": "SQUARED",
+							"Scale": 0.032
+						}
+					],
+					"Factors": [0.55, 0.4, 0.05],
+          "Normalize": [0.21]
+			}
+		],
+    "Threshold": [0, 0.18]
+	},
+  "HeightThreshold": {
+    "Positions": [117, 118, 132, 133],
+    "Values": [0, 1, 1, 0]
+  },
+	"OnWater": true,
+	"Displacement": [-3, -5],
+  "Mask": {
+    "Default": ["Empty", "!Rock_Ice", "!Rock_Ice_Permafrost", "!*"],
+		"Specific": [
+			{
+				"Block": ["Rock_Ice", "Rock_Ice_Permafrost"],
+				"Rule": ["*"]
+			}
+		]
+  }
+}

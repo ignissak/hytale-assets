@@ -1,0 +1,47 @@
+{
+  "Parent": "Projectile_Config_Bomb_Base",
+  "Model": "Bomb_Popberry",
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 1
+        },
+        "Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Goblin_Lobber_Bomb_Death",
+            "LocalSoundEventId": "SFX_Goblin_Lobber_Bomb_Death"
+          }
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Goblin_Lobber_Bomb_Death",
+            "LocalSoundEventId": "SFX_Goblin_Lobber_Bomb_Death"
+          }
+        }
+      ]
+    }
+  }
+}

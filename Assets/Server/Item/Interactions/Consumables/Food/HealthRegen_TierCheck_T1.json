@@ -1,0 +1,18 @@
+{
+  "$Comment": "[TMP] Check if T2 or T3 HealthRegen buff is NOT active - allows T1 to apply",
+  "Type": "EffectCondition",
+  "EntityEffectIds": [
+    "HealthRegen_Buff_T2",
+    "HealthRegen_Buff_T3"
+  ],
+  "Match": "None",
+  "Next": {
+    "Type": "ApplyEffect",
+    "EffectId": "HealthRegen_Buff_T1"
+  },
+  "Failed": {
+    "Type": "Simple",
+    "RunTime": 0
+  }
+}
+

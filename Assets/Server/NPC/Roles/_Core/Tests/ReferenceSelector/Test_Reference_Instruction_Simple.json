@@ -1,0 +1,73 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Type": "Reference",
+      "Name": "Test_Component",
+      "Parameters": {
+        "Range": {
+          "Value": 1
+        },
+        "DisplayName": {
+          "Value": "Name"
+        }
+      },
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Not",
+            "Sensor": {
+              "Type": "Player",
+              "Range": { "Compute": "Range" }
+            }
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": { "Compute": "DisplayName" }
+            }
+          ],
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    },
+    {
+      "Continue": true,
+      "Reference": "Test_Component",
+      "Local": true,
+      "Modify": {
+        "Range": 5,
+        "DisplayName": "Far"
+      }
+    },
+    {
+      "Reference": "Test_Component",
+      "Local": true,
+      "Modify": {
+        "DisplayName": "Near"
+      }
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Reference_Instruction_Simple.name"
+}

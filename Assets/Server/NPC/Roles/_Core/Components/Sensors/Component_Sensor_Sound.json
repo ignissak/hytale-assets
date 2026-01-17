@@ -1,0 +1,39 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the player will be heard"
+    },
+    "Enabled": {
+      "Value": true,
+      "Description": "Whether this sensor should be enabled"
+    },
+    "ThroughWalls": {
+      "Value": true,
+      "Description": "Whether the NPC can hear the player through obstacles"
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "Enabled" },
+    "Type": "Player",
+    "Range": { "Compute": "HearingRange" },
+    "LockOnTarget": true,
+    "Filters": [
+      {
+        "Type": "LineOfSight"
+      },
+      {
+        "Type": "Not",
+        "Filter": {
+          "Type": "MovementState",
+          "State": "Crouching"
+        }
+      }
+    ],
+    "Collector": {
+      "Type": "CombatTargets"
+    }
+  },
+  "Type": "Component"
+}

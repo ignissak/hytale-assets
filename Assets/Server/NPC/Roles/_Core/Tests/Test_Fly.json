@@ -1,0 +1,41 @@
+{
+  "Type": "Generic",
+  "Appearance": "Pigeon",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MinAirSpeed": 0.1,
+      "MinHeightOverGround": 1,
+      "MaxHeightOverGround": 8
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander",
+            "RelativeSpeed": 1,
+            "MinWalkTime": 3,
+            "TestsPerTick": 1,
+            "MinHeadingChange": 0,
+            "MaxHeadingChange": 180,
+            "RelaxHeadingChange": true
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Fly.name"
+}

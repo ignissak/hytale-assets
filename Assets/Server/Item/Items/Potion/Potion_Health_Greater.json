@@ -1,0 +1,171 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Potion_Health_Greater.name",
+    "Description": "server.items.Potion_Health_Greater.description"
+  },
+  "ItemLevel": 20,
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "Categories": [
+    "Items.Potions"
+  ],
+  "Icon": "Icons/ItemsGenerated/Potion_Health.png",
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.9,
+    "Translation": [
+      0,
+      -9
+    ]
+  },
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Potion_Empty",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Potion_Health_Lesser",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Plant_Fruit_Berries_Red",
+        "Quantity": 12
+      },
+      {
+        "ItemId": "Plant_Crop_Health2",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Plant_Crop_Health3",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Alchemybench",
+        "Type": "Crafting",
+        "Categories": [
+          "Alchemy_Potions"
+        ],
+        "RequiredTierLevel": 2
+      }
+    ],
+    "OutputQuantity": 3,
+    "TimeSeconds": 1
+  },
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Potion"
+  },
+  "InteractionVars": {
+    "RemoveEffect": {
+      "Interactions": [
+        {
+          "Type": "Simple"
+        }
+      ]
+    },
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ClearEntityEffect",
+          "EntityEffectId": "Potion_Health_Lesser_Regen",
+          "Next": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Potion_Health_Instant_Greater"
+              },
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Potion_Health_Greater_Regen"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "ConsumeSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consume_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+          }
+        }
+      ]
+    },
+    "ConsumedSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consumed_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Potion_Drink_Success"
+          }
+        }
+      ]
+    }
+  },
+  "Utility": {
+    "Compatible": false
+  },
+  "BlockType": {
+    "BlockParticleSetId": "GlassMagic",
+    "BlockSoundSetId": "Glass",
+    "CustomModel": "Items/Consumables/Potions/Potion.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Potions/Potion_Textures/Red.png",
+        "Weight": 1
+      }
+    ],
+    "CustomModelScale": 0.5,
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Harvest": {},
+      "Soft": {}
+    },
+    "HitboxType": "Potion",
+    "Material": "Empty",
+    "RandomRotation": "YawStep1",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "ParticleColor": "#ff3730",
+    "Light": {
+      "Color": "#522"
+    }
+  },
+  "Consumable": true,
+  "Tags": {
+    "Type": [
+      "Potion"
+    ]
+  },
+  "Scale": 2,
+  "MaxStack": 10,
+  "DropOnDeath": true
+}

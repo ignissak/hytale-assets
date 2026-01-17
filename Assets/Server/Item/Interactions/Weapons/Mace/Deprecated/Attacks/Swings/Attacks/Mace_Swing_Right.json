@@ -1,0 +1,43 @@
+{
+  "$Comment": "Prepare Delay",
+  "Type": "Simple",
+  "Effects": {
+    "$Comment": "Swinging animation and sound hooks",
+    "ItemAnimationId": "SwingRight",
+    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing",
+    "Particles": [
+      {
+        "SystemId": "Empty"
+      }
+    ]
+  },
+  "RunTime": 0.45,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          "Mace_Swing_Right_Selector"
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "RunTime": 0
+          },
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Mace_Swing_Right_Effect"
+              ]
+            },
+            "Var": "Mace_Swing_Right_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

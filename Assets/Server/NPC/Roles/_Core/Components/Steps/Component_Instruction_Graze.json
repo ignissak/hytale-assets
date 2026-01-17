@@ -1,0 +1,70 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "Weight": {
+      "Value": 10,
+      "Description": "Comparative weight for deciding the chance the NPC grazes"
+    },
+    "WaitTime": {
+      "Value": [ 5, 10 ],
+      "Description": "How long to graze for"
+    },
+    "GrazingBlockSet": {
+      "Value": "Grass",
+      "Description": "The type of block that this NPC will graze on top of"
+    }
+  },
+  "Content": {
+    "Weight": { "Compute": "Weight" },
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "Continue": true,
+        "ActionsAtomic": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "WaitTime" }
+          },
+          {
+            "Type": "ResetInstructions"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "$TODO": "Find an area where they can graze",
+          "Type": "Not",
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": { "Compute": "GrazingBlockSet" }
+              }
+            ]
+          }
+        },
+        "BodyMotion": {
+          "Type": "Nothing"
+        }
+      },
+      {
+        "Sensor": {
+          "Once": true,
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status",
+            "Animation": "Eat"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

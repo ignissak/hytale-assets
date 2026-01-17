@@ -1,0 +1,337 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".DroppedMeat",
+  "ResetOnStateChange": true,
+  "Parameters": {
+    "_ImportStates": [
+      "Idle",
+      "Alerted",
+      "Chase",
+      "Search",
+      "Warn",
+      "Neutral",
+      "Friendly",
+      "Revered",
+      "DroppedMeat"
+    ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "SmellRange": {
+      "Value": 8,
+      "Description": "Smell range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether this NPC can see"
+    },
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether this NPC can hear"
+    },
+    "CanSmell": {
+      "Value": false,
+      "Description": "Whether this NPC can smell"
+    },
+    "ReactToChests": {
+      "Value": true,
+      "Description": "Whether to react to chest interactions"
+    },
+    "TargetGroups": {
+      "Value": [ "Trork" ],
+      "Description": "Beacon target groups"
+    },
+    "UnderlingGroups": {
+      "Value": [ "Trork_Underlings" ],
+      "Description": "A list of groups to exclude from reputation sensors"
+    },
+    "ChestBlockSet": {
+      "Value": "Trork_Chest",
+      "Description": "The block set designating chests for this NPC"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".DroppedMeat"
+        },
+        "Instructions": [
+          {
+            "Reference": "Component_Trork_Instruction_Pre_Checks",
+            "Modify": {
+              "_ExportStates": [
+                "Alerted",
+                "Chase",
+                "Search",
+                "Warn",
+                "Neutral",
+                "Friendly",
+                "Revered",
+                "DroppedMeat"
+              ],
+              "ViewRange": { "Compute": "ViewRange" },
+              "ViewSector": { "Compute": "ViewSector" },
+              "HearingRange": { "Compute": "HearingRange" },
+              "SmellRange": { "Compute": "SmellRange" },
+              "AlertedRange": { "Compute": "AlertedRange" },
+              "CanSee": { "Compute": "CanSee" },
+              "CanHear": { "Compute": "CanHear" },
+              "CanSmell": { "Compute": "CanSmell" },
+              "CheckDroppedMeat": false,
+              "ReactToChests": { "Compute": "ReactToChests" },
+              "ExcludeGroups": { "Compute": "UnderlingGroups" },
+              "ChestBlockSet": { "Compute": "ChestBlockSet" }
+            }
+          },
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              },
+              {
+                "Type": "SpawnParticles",
+                "Offset": [ 0, 2.1, 0 ],
+                "ParticleSystem": "Alerted"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 1, 1 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".DroppedMeatPursue"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".DroppedMeatPursue"
+        },
+        "Instructions": [
+          {
+            "Reference": "Component_Trork_Instruction_Pre_Checks",
+            "Modify": {
+              "_ExportStates": [
+                "Alerted",
+                "Chase",
+                "Search",
+                "Warn",
+                "Neutral",
+                "Friendly",
+                "Revered",
+                "DroppedMeat"
+              ],
+              "ViewRange": { "Compute": "ViewRange" },
+              "ViewSector": { "Compute": "ViewSector" },
+              "HearingRange": { "Compute": "HearingRange" },
+              "SmellRange": { "Compute": "SmellRange" },
+              "AlertedRange": { "Compute": "AlertedRange" },
+              "CanSee": { "Compute": "CanSee" },
+              "CanHear": { "Compute": "CanHear" },
+              "CanSmell": { "Compute": "CanSmell" },
+              "CheckDroppedMeat": false,
+              "ReactToChests": { "Compute": "ReactToChests" },
+              "ExcludeGroups": { "Compute": "UnderlingGroups" },
+              "ChestBlockSet": { "Compute": "ChestBlockSet" }
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Beacon",
+              "Message": "TrorkMeatPickedUp",
+              "TargetSlot": "LockedTarget"
+            },
+            "$TODO": "This should go to brawl state",
+            "Actions": [ ]
+          },
+          {
+            "Sensor": {
+              "Reference": "Component_Trork_Sensor_Dropped_Meat",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" }
+              }
+            },
+            "Actions": [
+              {
+                "Type": "PickUpItem",
+                "Range": 1
+              }
+            ],
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 2,
+              "StopDistance": 1
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Inventory",
+                  "Items": [ "*meat*" ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Beacon",
+                "Range": 10,
+                "Message": "TrorkMeatPickedUp",
+                "TargetGroups": { "Compute": "TargetGroups" }
+              },
+              {
+                "$TODO": "Move to brawl state here - if no one responds, perhaps sit down and eat the meat?",
+                "Type": "State",
+                "State": ".DroppedMeatEat"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 5 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".DroppedMeatEat"
+        },
+        "Instructions": [
+          {
+            "Reference": "Component_Trork_Instruction_Pre_Checks",
+            "Modify": {
+              "_ExportStates": [
+                "Alerted",
+                "Chase",
+                "Search",
+                "Warn",
+                "Neutral",
+                "Friendly",
+                "Revered",
+                "DroppedMeat"
+              ],
+              "ViewRange": { "Compute": "ViewRange / 2" },
+              "ViewSector": { "Compute": "ViewSector" },
+              "HearingRange": { "Compute": "HearingRange / 2" },
+              "CanSmell": { "Compute": "CanSmell" },
+              "AlertedRange": { "Compute": "AlertedRange" },
+              "CheckDroppedMeat": false,
+              "CanSee": false,
+              "CanHear": { "Compute": "CanHear" },
+              "ReactToChests": { "Compute": "ReactToChests" },
+              "ExcludeGroups": { "Compute": "UnderlingGroups" },
+              "ChestBlockSet": { "Compute": "ChestBlockSet" }
+            }
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "Inventory",
+                "Operation": "EquipHotbar",
+                "Slot": 2,
+                "UseTarget": false
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 9 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Reset"
+                }
+              },
+              {
+                "Type": "Timeout",
+                "Delay": [ 0.4, 0.4 ],
+                "Action": {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status",
+                  "Animation": "Eat"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Reset"
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status"
+          },
+          {
+            "Type": "State",
+            "State": ".DroppedMeat"
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,79 @@
+@LabelStyle = (
+  Alignment: Center,
+  FontSize: 15,
+  RenderBold: true,
+  TextColor: #ffffff(0.8),
+  OutlineColor: #000000(0.2)
+);
+
+@HoveredLabelStyle = (...@LabelStyle, TextColor: #ffffff);
+@PressedLabelStyle = (...@LabelStyle, TextColor: #ffffff);
+@UnavailableLabelStyle = (...@LabelStyle, TextColor: #ffffff(0.4));
+
+@BindingLabelStyle = (...@LabelStyle, RenderUppercase: true, FontName: "Secondary", TextColor: #ccd8e8, OutlineColor: #000000(0), FontSize: 14);
+
+@BindingButtonBackground = PatchStyle(TexturePath: "InputBinding.png", Border: 6);
+@BindingButtonBackgroundHovered = PatchStyle(TexturePath: "InputBinding.png", Border: 6);
+@BindingButtonBackgroundPressed = PatchStyle(TexturePath: "InputBinding.png", Border: 6);
+
+@IconMouseLeftClick = PatchStyle(TexturePath: "InputIconMouseLeftClick.png");
+@IconMouseMiddleClick = PatchStyle(TexturePath: "InputIconMouseMiddleClick.png");
+@IconMouseRightClick = PatchStyle(TexturePath: "InputIconMouseRightClick.png");
+
+Group #Container {
+  LayoutMode: Left;
+  Anchor: (Height: 24);
+
+  Label #NameRight {
+    Style: @LabelStyle;
+    Anchor: (Right: 10);
+    Visible: false;
+  }
+
+  Group #BindingModifier1Container {
+    Anchor: (Height: 24, Right: 7);
+    Background: @BindingButtonBackground;
+    Visible: false;
+    Padding: (Horizontal: 6);
+
+    Label #BindingModifier1Label {
+      Text: "???";
+      Style: @BindingLabelStyle;
+    }
+  }
+
+  Group #BindingModifier2Container {
+    Anchor: (Height: 24, Right: 7);
+    Background: @BindingButtonBackground;
+    Visible: false;
+    Padding: (Horizontal: 6);
+
+    Label #BindingModifier2Label {
+      Text: "???";
+      Style: @BindingLabelStyle;
+    }
+  }
+
+  Group #BindingContainer {
+    Anchor: (Height: 24);
+    Background: @BindingButtonBackground;
+    Visible: false;
+    Padding: (Horizontal: 6);
+
+    Label #BindingLabel {
+      Text: "???";
+      Style: @BindingLabelStyle;
+    }
+  }
+
+  Group #BindingIcon {
+    Anchor: (Width: 24, Height: 24);
+    Visible: false;
+  }
+
+  Label #NameLeft {
+    Style: @LabelStyle;
+    Anchor: (Left: 10);
+    Visible: false;
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Greet",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Search", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "GreetAnimation": {
+      "Value": "Wave",
+      "Description": "Greeting animation to play"
+    },
+    "OverrideTo": {
+      "Value": "Ignore",
+      "Description": "The value to temporarily set as attitude towards this NPC (to avoid re-triggering)"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "ViewRange" }
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status",
+            "Animation": { "Compute": "GreetAnimation" }
+          },
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 6 ]
+          },
+          {
+            "Type": "OverrideAttitude",
+            "Attitude": { "Compute": "OverrideTo" },
+            "Duration": 600
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ],
+        "HeadMotion": {
+          "Type": "Watch"
+        }
+      },
+      {
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

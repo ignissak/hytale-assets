@@ -1,0 +1,233 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Tomato_StageFinal.name"
+  },
+  "Parent": "Template_Crop_Block",
+  "BlockType": {
+    "RandomRotation": "YawStep90",
+    "CustomModel": "Resources/Ingredients/Tomato_Seed.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ingredients/Tomato_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Tomato_01.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Large",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_Stage1"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#94a94e"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Tomato_02.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Tall_Large",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_Stage2"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#7b9c46"
+        },
+        "Stage3": {
+          "CustomModel": "Resources/Ingredients/Tomato_03.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Tall_Large",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_Stage3"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#8fbc48"
+        },
+        "Stage4": {
+          "CustomModel": "Resources/Ingredients/Tomato_04.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Tall_Full",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_Stage4"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#8fb74f"
+        },
+        "Stage5": {
+          "CustomModel": "Resources/Ingredients/Tomato_05.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Tall_Full",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_Stage5"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#8fb74f"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Tomato_06.blockymodel",
+          "CustomModelScale": 0.9,
+          "HitboxType": "Plant_Tall_Full",
+          "Gathering": {
+            "Soft": {
+              "IsWeaponBreakable": false,
+              "DropList": "Drops_Plant_Crop_Tomato_StageFinal"
+            },
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Tomato_StageFinal_Harvest"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#8fb74f"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Starting": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage4"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage5"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage4"
+          },
+          {
+            "Duration": {
+              "Min": 15180,
+              "Max": 15180
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage5"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Starting",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false,
+        "DropList": "Drops_Plant_Crop_Tomato_Block"
+      }
+    },
+    "CustomModelScale": 0.7,
+    "ParticleColor": "#d7bd5a"
+  },
+  "IconProperties": {
+    "Scale": 1.12,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -5.7
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Tomato_Block.png"
+}

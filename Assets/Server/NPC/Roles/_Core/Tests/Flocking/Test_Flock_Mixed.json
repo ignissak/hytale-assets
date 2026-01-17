@@ -1,0 +1,79 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "FlockAllowedNPC": [ "Test_Flock_Mixed", "Test_Flock_Mixed_Member", "Test_Flock_Mixed_Member_2" ],
+  "FlockSpawnTypes": [ "Test_Flock_Mixed_Member", "Test_Flock_Mixed_Member_2" ],
+  "FlockCanLead": true,
+  "FlockInfluenceRange": 4,
+  "Debug": "DisplayTarget",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Mob",
+            "Range": 10,
+            "ExcludeOwnType": false,
+            "LockOnTarget": true,
+            "LockedTargetSlot": "FlockLeader",
+            "Filters": [
+              {
+                "Type": "Flock",
+                "FlockStatus": "Leader"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 10,
+            "LockOnTarget": true
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Flock_Mixed.name"
+}

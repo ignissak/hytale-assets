@@ -1,0 +1,1257 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-5904,
+		"$y":	-3986
+	},
+	"Name":	"Basic",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-4771,
+			"$y":	-5334
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-4559,
+				"$y":	-5342
+			},
+			"Type":	"Mix",
+			"ExportAs":	"SandDunesAll",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-2904,
+						"$y":	-5626
+					},
+					"Type":	"Max",
+					"ExportAs":	"SanddunesTerrain",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1637,
+								"$y":	-5970
+							},
+							"Type":	"Min",
+							"ExportAs":	"OnlyDunes",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-160,
+										"$y":	-8529
+									},
+									"Type":	"Sum",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	336,
+												"$y":	-9809
+											},
+											"Type":	"Normalizer",
+											"Skip":	false,
+											"FromMin":	-1,
+											"FromMax":	1,
+											"ToMin":	-0.1,
+											"ToMax":	0.1,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	957,
+														"$y":	-9804
+													},
+													"Type":	"Min",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	1613,
+																"$y":	-10251
+															},
+															"Type":	"Constant",
+															"Skip":	false,
+															"Value":	0
+														}, {
+															"$Position":	{
+																"$x":	1668,
+																"$y":	-9974
+															},
+															"Type":	"Scale",
+															"ExportAs":	"SandslideB",
+															"Skip":	false,
+															"ScaleX":	1,
+															"ScaleY":	1,
+															"ScaleZ":	3,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	2330,
+																		"$y":	-10160
+																	},
+																	"Type":	"Sum",
+																	"Skip":	false,
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	2704,
+																				"$y":	-10673
+																			},
+																			"Type":	"Normalizer",
+																			"Skip":	false,
+																			"FromMin":	-1,
+																			"FromMax":	1,
+																			"ToMin":	-0.2,
+																			"ToMax":	0.2,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	3396,
+																						"$y":	-10712
+																					},
+																					"Type":	"SimplexNoise2D",
+																					"Skip":	false,
+																					"Lacunarity":	2,
+																					"Persistence":	0.5,
+																					"Octaves":	1,
+																					"Scale":	10,
+																					"Seed":	"A",
+																					"CacheSize":	16
+																				}]
+																		}, {
+																			"$Position":	{
+																				"$x":	2995,
+																				"$y":	-10271
+																			},
+																			"Type":	"Normalizer",
+																			"Skip":	false,
+																			"FromMin":	-1,
+																			"FromMax":	1,
+																			"ToMin":	-0.8,
+																			"ToMax":	0.8,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	3637,
+																						"$y":	-10299
+																					},
+																					"Type":	"SimplexNoise2D",
+																					"Skip":	false,
+																					"Lacunarity":	2,
+																					"Persistence":	0.5,
+																					"Octaves":	1,
+																					"Scale":	60,
+																					"Seed":	"A",
+																					"CacheSize":	16
+																				}]
+																		}]
+																}]
+														}, {
+															"$Position":	{
+																"$x":	1661,
+																"$y":	-9605
+															},
+															"Type":	"Normalizer",
+															"Skip":	false,
+															"FromMin":	80,
+															"FromMax":	90,
+															"ToMin":	0,
+															"ToMax":	1,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	2367,
+																		"$y":	-9495
+																	},
+																	"Type":	"Gradient",
+																	"Skip":	false,
+																	"SampleRange":	1,
+																	"Axis":	{
+																		"$Position":	{
+																			"$x":	3038,
+																			"$y":	-9353
+																		},
+																		"X":	0,
+																		"Y":	1,
+																		"Z":	0
+																	},
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	3252,
+																				"$y":	-9776
+																			},
+																			"Type":	"Imported",
+																			"Skip":	false,
+																			"Name":	"DuneNoiseA"
+																		}, {
+																			"$Position":	{
+																				"$x":	3247,
+																				"$y":	-9601
+																			},
+																			"Type":	"Imported",
+																			"Skip":	false,
+																			"Name":	"DuneCurveA"
+																		}]
+																}]
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	538,
+												"$y":	-8761
+											},
+											"Type":	"Inverter",
+											"ExportAs":	"DuneNoiseA",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	1266,
+														"$y":	-8894
+													},
+													"Type":	"Sum",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	1933,
+																"$y":	-9169
+															},
+															"Type":	"Normalizer",
+															"Skip":	false,
+															"FromMin":	-1,
+															"FromMax":	1,
+															"ToMin":	-0.5,
+															"ToMax":	0.5,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	2646,
+																		"$y":	-9220
+																	},
+																	"Type":	"SimplexNoise2D",
+																	"Skip":	false,
+																	"Lacunarity":	2,
+																	"Persistence":	0.5,
+																	"Octaves":	1,
+																	"Scale":	600,
+																	"Seed":	"A",
+																	"CacheSize":	16
+																}]
+														}, {
+															"$Position":	{
+																"$x":	1997,
+																"$y":	-8830
+															},
+															"Type":	"Normalizer",
+															"Skip":	false,
+															"FromMin":	-1,
+															"FromMax":	1,
+															"ToMin":	-0.5,
+															"ToMax":	0.5,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	2677,
+																		"$y":	-8812
+																	},
+																	"Type":	"SimplexNoise2D",
+																	"Skip":	false,
+																	"Lacunarity":	2,
+																	"Persistence":	0.5,
+																	"Octaves":	3,
+																	"Scale":	200,
+																	"Seed":	"A",
+																	"CacheSize":	16
+																}]
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	621,
+												"$y":	-8282
+											},
+											"Type":	"CurveMapper",
+											"ExportAs":	"DuneCurveA",
+											"Skip":	false,
+											"Curve":	{
+												"$Position":	{
+													"$x":	1716,
+													"$y":	-8100
+												},
+												"Type":	"Manual",
+												"Points":	[{
+														"$Position":	{
+															"$x":	2551,
+															"$y":	-8134
+														},
+														"In":	100,
+														"Out":	0.8
+													}, {
+														"$Position":	{
+															"$x":	2560,
+															"$y":	-7931
+														},
+														"In":	180,
+														"Out":	-1
+													}]
+											},
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	1431,
+														"$y":	-8413
+													},
+													"Type":	"BaseHeight",
+													"Skip":	false,
+													"BaseHeightName":	"Bedrock",
+													"Distance":	true
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	770,
+										"$y":	-5924
+									},
+									"Type":	"Sum",
+									"Skip":	false,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	1815,
+												"$y":	-6876
+											},
+											"Type":	"Normalizer",
+											"Skip":	false,
+											"FromMin":	-1,
+											"FromMax":	1,
+											"ToMin":	-0.1,
+											"ToMax":	0.1,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2436,
+														"$y":	-6871
+													},
+													"Type":	"Min",
+													"Skip":	false,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3092,
+																"$y":	-7318
+															},
+															"Type":	"Constant",
+															"Skip":	false,
+															"Value":	0
+														}, {
+															"$Position":	{
+																"$x":	3147,
+																"$y":	-7041
+															},
+															"Type":	"Scale",
+															"ExportAs":	"SandslideA",
+															"Skip":	false,
+															"ScaleX":	3,
+															"ScaleY":	1,
+															"ScaleZ":	1,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	3809,
+																		"$y":	-7227
+																	},
+																	"Type":	"Sum",
+																	"Skip":	false,
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	4271,
+																				"$y":	-7753
+																			},
+																			"Type":	"Normalizer",
+																			"Skip":	false,
+																			"FromMin":	-1,
+																			"FromMax":	1,
+																			"ToMin":	-0.2,
+																			"ToMax":	0.2,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	4875,
+																						"$y":	-7779
+																					},
+																					"Type":	"SimplexNoise2D",
+																					"Skip":	false,
+																					"Lacunarity":	2,
+																					"Persistence":	0.5,
+																					"Octaves":	1,
+																					"Scale":	10,
+																					"Seed":	"A",
+																					"CacheSize":	16
+																				}]
+																		}, {
+																			"$Position":	{
+																				"$x":	4408,
+																				"$y":	-7317
+																			},
+																			"Type":	"Normalizer",
+																			"Skip":	false,
+																			"FromMin":	-1,
+																			"FromMax":	1,
+																			"ToMin":	-0.8,
+																			"ToMax":	0.8,
+																			"Inputs":	[{
+																					"$Position":	{
+																						"$x":	5004,
+																						"$y":	-7377
+																					},
+																					"Type":	"SimplexNoise2D",
+																					"Skip":	false,
+																					"Lacunarity":	2,
+																					"Persistence":	0.5,
+																					"Octaves":	1,
+																					"Scale":	60,
+																					"Seed":	"A",
+																					"CacheSize":	16
+																				}]
+																		}]
+																}]
+														}, {
+															"$Position":	{
+																"$x":	3140,
+																"$y":	-6672
+															},
+															"Type":	"Normalizer",
+															"Skip":	false,
+															"FromMin":	80,
+															"FromMax":	90,
+															"ToMin":	0,
+															"ToMax":	1,
+															"Inputs":	[{
+																	"$Position":	{
+																		"$x":	3846,
+																		"$y":	-6562
+																	},
+																	"Type":	"Gradient",
+																	"Skip":	false,
+																	"SampleRange":	1,
+																	"Axis":	{
+																		"$Position":	{
+																			"$x":	4517,
+																			"$y":	-6420
+																		},
+																		"X":	0,
+																		"Y":	1,
+																		"Z":	0
+																	},
+																	"Inputs":	[{
+																			"$Position":	{
+																				"$x":	4731,
+																				"$y":	-6843
+																			},
+																			"Type":	"Imported",
+																			"Skip":	false,
+																			"Name":	"DuneNoiseB"
+																		}, {
+																			"$Position":	{
+																				"$x":	4726,
+																				"$y":	-6668
+																			},
+																			"Type":	"Imported",
+																			"Skip":	false,
+																			"Name":	"DuneCurveB"
+																		}]
+																}]
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	1718,
+												"$y":	-5938
+											},
+											"Type":	"Sum",
+											"ExportAs":	"DuneNoiseB",
+											"Skip":	false,
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2385,
+														"$y":	-6213
+													},
+													"Type":	"Normalizer",
+													"Skip":	false,
+													"FromMin":	-1,
+													"FromMax":	1,
+													"ToMin":	-0.5,
+													"ToMax":	0.5,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3098,
+																"$y":	-6264
+															},
+															"Type":	"SimplexNoise2D",
+															"Skip":	false,
+															"Lacunarity":	2,
+															"Persistence":	0.5,
+															"Octaves":	1,
+															"Scale":	600,
+															"Seed":	"B",
+															"CacheSize":	16
+														}]
+												}, {
+													"$Position":	{
+														"$x":	2449,
+														"$y":	-5874
+													},
+													"Type":	"Normalizer",
+													"Skip":	false,
+													"FromMin":	-1,
+													"FromMax":	1,
+													"ToMin":	-0.5,
+													"ToMax":	0.5,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	3129,
+																"$y":	-5856
+															},
+															"Type":	"SimplexNoise2D",
+															"Skip":	false,
+															"Lacunarity":	2,
+															"Persistence":	0.5,
+															"Octaves":	1,
+															"Scale":	200,
+															"Seed":	"A",
+															"CacheSize":	16
+														}]
+												}]
+										}, {
+											"$Position":	{
+												"$x":	1670,
+												"$y":	-5191
+											},
+											"Type":	"CurveMapper",
+											"ExportAs":	"DuneCurveB",
+											"Skip":	false,
+											"Curve":	{
+												"$Position":	{
+													"$x":	2447,
+													"$y":	-4980
+												},
+												"Type":	"Manual",
+												"Points":	[{
+														"$Position":	{
+															"$x":	3118,
+															"$y":	-5184
+														},
+														"In":	100,
+														"Out":	0.8
+													}, {
+														"$Position":	{
+															"$x":	3065,
+															"$y":	-4846
+														},
+														"In":	180,
+														"Out":	-1
+													}]
+											},
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	2480,
+														"$y":	-5323
+													},
+													"Type":	"BaseHeight",
+													"Skip":	false,
+													"BaseHeightName":	"Bedrock",
+													"Distance":	true
+												}]
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-2203,
+								"$y":	-5515
+							},
+							"Type":	"Sum",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-1488,
+										"$y":	-5637
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.2,
+									"ToMax":	0.2,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-846,
+												"$y":	-5635
+											},
+											"Type":	"Rotator",
+											"Skip":	false,
+											"SpinAngle":	45,
+											"NewYAxis":	{
+												"$Position":	{
+													"$x":	-174,
+													"$y":	-5346
+												},
+												"X":	0,
+												"Y":	1,
+												"Z":	0
+											},
+											"Inputs":	[{
+													"$Position":	{
+														"$x":	-182,
+														"$y":	-5679
+													},
+													"Type":	"Scale",
+													"Skip":	false,
+													"ScaleX":	3,
+													"ScaleY":	1,
+													"ScaleZ":	1,
+													"Inputs":	[{
+															"$Position":	{
+																"$x":	440,
+																"$y":	-5684
+															},
+															"Type":	"SimplexNoise2D",
+															"Skip":	false,
+															"Lacunarity":	2,
+															"Persistence":	0.5,
+															"Octaves":	1,
+															"Scale":	20,
+															"Seed":	"C",
+															"CacheSize":	16
+														}]
+												}]
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-1406,
+										"$y":	-5290
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	-0.8,
+									"ToMax":	0.8,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-748,
+												"$y":	-5283
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	1,
+											"Persistence":	1,
+											"Octaves":	1,
+											"Scale":	200,
+											"Seed":	"A",
+											"CacheSize":	16
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-1558,
+										"$y":	-4828
+									},
+									"Type":	"CurveMapper",
+									"Skip":	false,
+									"Curve":	{
+										"$Position":	{
+											"$x":	-905,
+											"$y":	-4553
+										},
+										"Type":	"Manual",
+										"Points":	[{
+												"$Position":	{
+													"$x":	-246,
+													"$y":	-4574
+												},
+												"In":	100,
+												"Out":	1
+											}, {
+												"$Position":	{
+													"$x":	-241,
+													"$y":	-4416
+												},
+												"In":	120,
+												"Out":	-1
+											}]
+									},
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-897,
+												"$y":	-4835
+											},
+											"Type":	"BaseHeight",
+											"Skip":	false,
+											"BaseHeightName":	"Bedrock",
+											"Distance":	true
+										}]
+								}]
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3915,
+						"$y":	-5340
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-3327,
+							"$y":	-5121
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-2706,
+									"$y":	-5199
+								},
+								"In":	100,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-2704,
+									"$y":	-5048
+								},
+								"In":	100.1,
+								"Out":	-1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-3298,
+								"$y":	-5352
+							},
+							"Type":	"BaseHeight",
+							"Skip":	false,
+							"BaseHeightName":	"Bedrock",
+							"Distance":	true
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3913,
+						"$y":	-4858
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-3326,
+							"$y":	-4638
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-2708,
+									"$y":	-4871
+								},
+								"In":	80,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-2704,
+									"$y":	-4716
+								},
+								"In":	90,
+								"Out":	0
+							}, {
+								"$Position":	{
+									"$x":	-2703,
+									"$y":	-4566
+								},
+								"In":	200,
+								"Out":	0
+							}, {
+								"$Position":	{
+									"$x":	-2697,
+									"$y":	-4405
+								},
+								"In":	210,
+								"Out":	1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-3297,
+								"$y":	-4870
+							},
+							"Type":	"BaseHeight",
+							"Skip":	false,
+							"BaseHeightName":	"Bedrock",
+							"Distance":	true
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-2518,
+			"$y":	-4141
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1719,
+				"$y":	-4109
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-805,
+						"$y":	-4090
+					},
+					"Type":	"FieldFunction",
+					"FieldFunction":	{
+						"$Position":	{
+							"$x":	286,
+							"$y":	-4367
+						},
+						"Type":	"SimplexNoise2D",
+						"Skip":	false,
+						"Lacunarity":	2,
+						"Persistence":	0.5,
+						"Octaves":	1,
+						"Scale":	50,
+						"Seed":	"A",
+						"CacheSize":	16
+					},
+					"Delimiters":	[{
+							"$Position":	{
+								"$x":	-131,
+								"$y":	-3960
+							},
+							"From":	-1,
+							"To":	1,
+							"Material":	{
+								"$Position":	{
+									"$x":	317,
+									"$y":	-3922
+								},
+								"Type":	"SpaceAndDepth",
+								"LayerContext":	"DEPTH_INTO_FLOOR",
+								"MaxExpectedDepth":	3,
+								"Layers":	[{
+										"$Position":	{
+											"$x":	1015,
+											"$y":	-3880
+										},
+										"Type":	"ConstantThickness",
+										"Thickness":	3,
+										"Material":	{
+											"$Position":	{
+												"$x":	1472,
+												"$y":	-3892
+											},
+											"Type":	"Constant",
+											"Material":	{
+												"$Position":	{
+													"$x":	2105,
+													"$y":	-3895
+												},
+												"Solid":	"Soil_Grass_Full"
+											}
+										}
+									}]
+							}
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-784,
+						"$y":	-3697
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-789,
+							"$y":	-3583
+						},
+						"Solid":	"Rock_Sandstone"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-1716,
+				"$y":	-3816
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1714,
+					"$y":	-3663
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"Props":	[{
+			"$Position":	{
+				"$x":	-3168,
+				"$y":	-1333
+			},
+			"Skip":	true,
+			"Runtime":	0,
+			"Positions":	{
+				"$Position":	{
+					"$x":	-2644,
+					"$y":	-1399
+				},
+				"Type":	"Mesh2D",
+				"Skip":	false,
+				"PointsY":	0,
+				"PointGenerator":	{
+					"$Position":	{
+						"$x":	-1960,
+						"$y":	-1457
+					},
+					"Type":	"Mesh",
+					"Jitter":	0.4,
+					"ScaleX":	100,
+					"ScaleY":	100,
+					"ScaleZ":	100,
+					"Seed":	"A"
+				}
+			},
+			"Assignments":	{
+				"$Position":	{
+					"$x":	-3034,
+					"$y":	-959
+				},
+				"Type":	"Constant",
+				"Prop":	{
+					"$Position":	{
+						"$x":	-1788,
+						"$y":	-1022
+					},
+					"Type":	"Prefab",
+					"Skip":	false,
+					"WeightedPrefabPaths":	[{
+							"$Position":	{
+								"$x":	-1000,
+								"$y":	-1188
+							},
+							"Path":	"Monuments/Unique/Mage_Towers/Sandstone/Tier_3",
+							"Weight":	100
+						}, {
+							"$Position":	{
+								"$x":	-1027,
+								"$y":	-1028
+							},
+							"Path":	"Monuments/Unique/Mage_Towers/Sandstone/Tier_2",
+							"Weight":	100
+						}],
+					"LegacyPath":	false,
+					"LoadEntities":	true,
+					"Directionality":	{
+						"$Position":	{
+							"$x":	-1028,
+							"$y":	-852
+						},
+						"Type":	"Random",
+						"Seed":	"A",
+						"Pattern":	{
+							"$Position":	{
+								"$x":	-382,
+								"$y":	-863
+							},
+							"Type":	"Floor",
+							"Skip":	false,
+							"Origin":	{
+								"$Position":	{
+									"$x":	265,
+									"$y":	-1031
+								},
+								"Type":	"BlockSet",
+								"Skip":	false,
+								"BlockSet":	{
+									"$Position":	{
+										"$x":	897,
+										"$y":	-1026
+									},
+									"Inclusive":	true,
+									"Materials":	[{
+											"$Position":	{
+												"$x":	891,
+												"$y":	-914
+											},
+											"Solid":	"Soil_Sand_White"
+										}]
+								}
+							},
+							"Floor":	{
+								"$Position":	{
+									"$x":	210,
+									"$y":	-678
+								},
+								"Type":	"BlockSet",
+								"Skip":	false,
+								"BlockSet":	{
+									"$Position":	{
+										"$x":	904,
+										"$y":	-513
+									},
+									"Inclusive":	true,
+									"Materials":	[{
+											"$Position":	{
+												"$x":	899,
+												"$y":	-398
+											},
+											"Solid":	"Rock_Sandstone"
+										}]
+								}
+							}
+						}
+					},
+					"Scanner":	{
+						"$Position":	{
+							"$x":	-1032,
+							"$y":	-683
+						},
+						"Type":	"ColumnLinear",
+						"Skip":	false,
+						"MaxY":	120,
+						"MinY":	90,
+						"RelativeToPosition":	false,
+						"BaseHeightName":	"Bedrock",
+						"TopDownOrder":	true,
+						"ResultCap":	1
+					},
+					"MoldingDirection":	"None",
+					"MoldingChildren":	false
+				}
+			}
+		}],
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-8623,
+			"$y":	-2223
+		},
+		"Type":	"DensityDelimited",
+		"Density":	{
+			"$Position":	{
+				"$x":	-7848,
+				"$y":	-2504
+			},
+			"Type":	"Normalizer",
+			"Skip":	false,
+			"FromMin":	-1,
+			"FromMax":	1,
+			"ToMin":	0,
+			"ToMax":	2,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-7249,
+						"$y":	-2518
+					},
+					"Type":	"Max",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-6521,
+								"$y":	-2705
+							},
+							"Type":	"Min",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-5898,
+										"$y":	-2939
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	0,
+									"ToMax":	1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-5248,
+												"$y":	-2769
+											},
+											"Type":	"Imported",
+											"Skip":	false,
+											"Name":	"SandslideB"
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-5891,
+										"$y":	-2663
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	1,
+									"ToMin":	0,
+									"ToMax":	1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-5229,
+												"$y":	-2552
+											},
+											"Type":	"Imported",
+											"Skip":	false,
+											"Name":	"SandslideA"
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-6620,
+								"$y":	-2230
+							},
+							"Type":	"Min",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-5874,
+										"$y":	-2375
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	3,
+									"ToMin":	0.2,
+									"ToMax":	1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-5234,
+												"$y":	-2396
+											},
+											"Type":	"Imported",
+											"Skip":	false,
+											"Name":	"DuneNoiseB"
+										}]
+								}, {
+									"$Position":	{
+										"$x":	-5920,
+										"$y":	-2059
+									},
+									"Type":	"Normalizer",
+									"Skip":	false,
+									"FromMin":	-1,
+									"FromMax":	3,
+									"ToMin":	0.2,
+									"ToMax":	1,
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	-5228,
+												"$y":	-2213
+											},
+											"Type":	"Imported",
+											"Skip":	false,
+											"Name":	"DuneNoiseA"
+										}]
+								}]
+						}]
+				}]
+		},
+		"Delimiters":	[{
+				"$Position":	{
+					"$x":	-7850,
+					"$y":	-2087
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-7535,
+						"$y":	-2105
+					},
+					"Type":	"Constant",
+					"Color":	"#e3be62"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-7534,
+						"$y":	-1959
+					},
+					"MinInclusive":	0,
+					"MaxExclusive":	1.33
+				}
+			}, {
+				"$Position":	{
+					"$x":	-7854,
+					"$y":	-1785
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-7539,
+						"$y":	-1803
+					},
+					"Type":	"Constant",
+					"Color":	"#f2d079"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-7538,
+						"$y":	-1657
+					},
+					"MinInclusive":	1.33,
+					"MaxExclusive":	1.39
+				}
+			}, {
+				"$Position":	{
+					"$x":	-7855,
+					"$y":	-1485
+				},
+				"Tint":	{
+					"$Position":	{
+						"$x":	-7541,
+						"$y":	-1502
+					},
+					"Type":	"Constant",
+					"ExportAs":	"#e3be62",
+					"Color":	"#fcdf92"
+				},
+				"Range":	{
+					"$Position":	{
+						"$x":	-7540,
+						"$y":	-1356
+					},
+					"MinInclusive":	1.39,
+					"MaxExclusive":	2
+				}
+			}]
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-1644.1875,
+				"$y":	-24301.8125
+			},
+			"$width":	6836.0625,
+			"$height":	8446.875,
+			"$name":	"Terrain"
+		}, {
+			"$Position":	{
+				"$x":	-4622.5625,
+				"$y":	-5451.75
+			},
+			"$width":	2363.8125,
+			"$height":	1267.3125,
+			"$name":	"Height Optimizations"
+		}, {
+			"$Position":	{
+				"$x":	1444.125,
+				"$y":	-3971.5625
+			},
+			"$width":	590.75,
+			"$height":	300,
+			"$name":	"Soil_Grass_Full"
+		}, {
+			"$Position":	{
+				"$x":	-804.375,
+				"$y":	-3763.25
+			},
+			"$width":	590.75,
+			"$height":	300,
+			"$name":	"Rock_Sandstone"
+		}, {
+			"$Position":	{
+				"$x":	-1737.375,
+				"$y":	-3879.5
+			},
+			"$width":	590.75,
+			"$height":	300,
+			"$name":	"Empty"
+		}, {
+			"$Position":	{
+				"$x":	868.8125,
+				"$y":	-1076.875
+			},
+			"$width":	590.75,
+			"$height":	360.5,
+			"$name":	"Soil_Sand_White"
+		}, {
+			"$Position":	{
+				"$x":	883.0625,
+				"$y":	-556
+			},
+			"$width":	590.75,
+			"$height":	347,
+			"$name":	"Rock_Sandstone"
+		}]
+}

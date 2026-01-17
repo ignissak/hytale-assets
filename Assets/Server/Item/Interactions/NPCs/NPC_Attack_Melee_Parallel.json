@@ -1,0 +1,43 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Default",
+    "ItemAnimationId": "SwingLeft"
+  },
+  "$Comment": "Prepare Delay before damage is applied via selector",
+  "RunTime": 0.38,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "This is a paraller interaction to allow for extra FX during attack, where possible try to use the Simple one",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "$Comment": "This interaction has size of the hitbox and it has a damage interaction linked inside",
+            "DefaultValue": {
+              "Interactions": [
+                "NPC_Attack_Selector_Left"
+              ]
+            },
+            "Var": "Melee_Selector"
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          { 
+            "Type": "Replace",
+            "$Comment": "Hit FX are defined in Damage interaction above, this allows to spawn FX parallel during attack - e.g. trails",
+            "DefaultValue": {
+              "Interactions": [
+                "NPC_Attack_Melee_Effects"
+              ]
+            },
+            "Var": "Melee_Effects"
+          }
+        ]
+      }
+    ]
+  }
+}

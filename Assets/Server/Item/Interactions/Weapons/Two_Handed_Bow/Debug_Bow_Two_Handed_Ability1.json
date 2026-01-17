@@ -1,0 +1,70 @@
+{
+  "Type": "Parallel",
+  "Interactions": [
+    {
+      "Interactions": [
+        {
+          "Type": "ApplyForce",
+          "RunTime": 0.5,
+          "Effects": {
+            "ItemAnimationId": "Slide",
+            "ClearAnimationOnFinish": true,
+            "WorldSoundEventId": "SFX_Bow_T2_Draw",
+            "LocalSoundEventId": "SFX_Bow_T2_Draw",
+            "MovementEffects": {
+              "DisableForward": true,
+              "DisableBackward": true
+            }
+          },
+          "Direction": {
+            "X": 0,
+            "Y": 0,
+            "Z": -1
+          },
+          "AdjustVertical": false,
+          "WaitForGround": false,
+          "Force": 15,
+          "ChangeVelocityType": "Set",
+          "VelocityConfig": {
+            "AirResistance": 0.97,
+            "AirResistanceMax": 0.96,
+            "GroundResistance": 0.94,
+            "GroundResistanceMax": 0.82,
+            "Threshold": 3.0,
+            "Style": "Exp"
+          },
+          "Camera": {
+            "FirstPerson": [
+              {
+                "Time": 0.3,
+                "Position": {
+                  "X": 0,
+                  "Y": -0.7,
+                  "Z": 0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Interactions": [
+        {
+          "Type": "Selector",
+          "RunTime": 0.5,
+          "Selector": {
+            "Id": "AOECircle",
+            "Range": 0.4
+          },
+          "HitEntity": {
+            "Interactions": [
+              "Bow_Two_Handed_Ability1_Slide_Damage",
+              "Bow_Two_Handed_Ability1_Arrow_Volley"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "MapColor": "#bfbfa1",
+  "Weight": 1,
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Blocks": ["Soil_Sand_White:5"]
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [102, 114, 117, 118],
+    "Values": [1, 0.75, 0.3, 0]
+  },
+  "HeightmapNoise": {
+    "Seed": "Grasslands-Height-Threshold",
+    "NoiseType": "OLD_SIMPLEX",
+    "FractalMode": "OLDSCHOOL",
+    "Formula": "INVERTED",
+    "Octaves": 4,
+    "Persistence": 0.3,
+    "Scale": 0.02
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["#D5BA6E", "#cfbe6d", "CDB868"],
+      "Weight": [0.4, 0.27, 0.33],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": [
+      {
+        "Colors": ["#CFC06D"],
+        "Weight": [1],
+        "NoiseMask": {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Grasslands-River-Noise",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Formula": "INVERTED_RIDGED_SQRT",
+              "Octaves": 6,
+              "Persistence": 0.5,
+              "Scale": 0.0043
+            },
+            {
+              "Seed": "Grasslands-Base",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Formula": "INVERTED",
+              "Octaves": 3,
+              "Persistence": 0.4,
+              "Scale": 0.0033
+            },
+            {
+              "Seed": "Plant_Grass_Sharp",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.2,
+              "Scale": 0.02
+            }
+          ],
+          "Factors": [0.4, 0.35, 0.25],
+          "Threshold": [0.66, 1]
+        }
+      }
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Shores"],
+      "Weights": [1],
+      "Noise": {
+        "Seed": "Grasslands-Base-Tint",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.08
+      }
+    },
+    "Entries": []
+  },
+  "Water": {
+		"Entries": [
+			{
+				"Fluid": "Water_Source",
+				"Min": 0,
+				"Max": 114
+			}
+		]
+  }
+}

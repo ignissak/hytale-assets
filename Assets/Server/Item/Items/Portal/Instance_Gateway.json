@@ -1,0 +1,109 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Instance_Gateway.name",
+    "Description": "server.items.Instance_Gateway.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Portal_Device.png",
+  "Categories": [
+    "Blocks.Portals"
+  ],
+  "BlockType": {
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Platform_MagicInactive.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Platform_Magic_Blue2.png",
+        "Weight": 1
+      }
+    ],
+    "CustomModelAnimation": "Blocks/Miscellaneous/Platform_Magic_Idle.blockyanim",
+    "BlockEntity": {
+      "Components": {
+        "InstanceConfig": {
+          "PositionOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 3
+          }
+        }
+      }
+    },
+    "HitboxType": "Pad_Portal",
+    "BlockParticleSetId": "Stone",
+    "BlockSoundSetId": "Stone",
+    "VariantRotation": "NESW",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "SoftBlocks"
+      }
+    },
+    "AmbientSoundEventId": "SFX_Portal_Neutral",
+    "Particles": [
+      {
+        "SystemId": "MagicPortal",
+        "PositionOffset": {
+          "Y": 2.0
+        },
+        "Scale": 0.8
+      },
+      {
+        "SystemId": "MagicPortal_Stones",
+        "TargetEntityPart": "Self",
+        "TargetNodeName": "Debris"
+      },
+      {
+        "SystemId": "MagicPortal_Stones",
+        "TargetEntityPart": "Self",
+        "TargetNodeName": "Debris6"
+      }
+    ],
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "OpenCustomUI",
+            "Page": {
+              "Id": "ConfigInstanceBlock"
+            }
+          }
+        ]
+      },
+      "CollisionEnter": {
+        "Interactions": [
+          {
+            "Type": "TeleportConfigInstance"
+          }
+        ]
+      }
+    },
+    "Light": {
+      "Color": "#7cc",
+      "Radius": 4
+    }
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Portal"
+    ]
+  },
+  "Quality": "Developer",
+  "IconProperties": {
+    "Scale": 0.35,
+    "Rotation": [
+      22.5,
+      45.0,
+      22.5
+    ],
+    "Translation": [
+      0.0,
+      -13.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone"
+}

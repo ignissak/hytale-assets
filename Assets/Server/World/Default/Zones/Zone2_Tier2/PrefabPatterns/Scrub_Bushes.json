@@ -1,0 +1,43 @@
+{
+  "GridGenerator": {
+    "Seed": "Drylands-Pattern-Scrub-Bushes",
+    "Density": [0, 0.15],
+    "Scale": 0.06,
+    "Jitter": 1
+  },
+  "NoiseMask": {
+		"Type": "SUM",
+		"Noise": [
+			{
+				"Seed": "Drylands-Pattern-Monuments-Tier-2",
+				"NoiseType": "CELL",
+				"CellMode": "DISTANCE",
+				"Formula": "INVERTED",
+				"DistanceRange": [1, 5],
+				"Density": [0.625, 0.8125],
+				"Jitter": 0.6,
+				"Scale": 0.005
+			},
+			{
+				"Seed": "Tar_Pits_Noise",
+				"NoiseType": "DISTANCE",
+				"Distance2Mode": "DIV",
+				"DistanceMode": "NATURAL",
+				"Formula": "INVERTED",
+				"Scale": 0.035
+			}
+		],
+		"Factors": [0.8, 0.2],
+		"Normalize": [-0.35, 1],
+    "Threshold": [0, 0.55]
+  },
+  "HeightThreshold": {
+    "Positions": [114, 115],
+    "Values": [0, 1]
+  },
+  "Mask": {
+    "File": "Zones.Masks.Shared.Bushes"
+  },
+  "FitHeightmap": true,
+  "Parent": ["Soil_Grass_Dry", "Soil_Sand_Red", "Soil_Dirt_Dry", "Soil_Mud", "Soil_Mud_Dry"]
+}

@@ -1,0 +1,129 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Wand_Wood_Rotten.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Wand/Wood.blockymodel",
+  "Texture": "Items/Weapons/Wand/Wood_Rotten.png",
+  "PlayerAnimationsId": "Wand",
+  "Particles": [
+    {
+      "SystemId": "Wood_Wand",
+      "TargetNodeName": "Handle"
+    }
+  ],
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Wand_Primary",
+    "Secondary": "Wand_Primary"
+  },
+  "InteractionVars": {
+    "Wand_Cast_Left_Charged": {
+      "Interactions": [
+        {
+          "Parent": "Wand_Cast_Left_Charged",
+          "Costs": {
+            "Mana": 25
+          }
+        }
+      ]
+    },
+    "Wand_Cast_Left_Cost": {
+      "Interactions": [
+        {
+          "Parent": "Wand_Cast_Cost",
+          "StatModifiers": {
+            "Mana": -25
+          }
+        }
+      ]
+    },
+    "Wand_Cast_Left_Launch": "Wand_Cast_Launch",
+    "Wand_Cast_Left_Effect": "Wand_Cast_Effect",
+    "Wand_Cast_Left_Fail": "Wand_Cast_Fail",
+    "Sword_Swing_Left_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Sword_Swing_Left_Fast_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "PositionOffset": {
+                  "X": 0.6,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "RotationOffset": {
+                  "Pitch": 0,
+                  "Roll": 90,
+                  "Yaw": 0
+                },
+                "TargetNodeName": "Handle",
+                "TrailId": "Small_Default"
+              }
+            ],
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Sword_Swing_Left_Fast_Damage": "Sword_Swing_Left_Fast_Damage",
+    "Sword_Swing_Right_Fast_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Sword_Swing_Right_Fast_Effect",
+          "Effects": {
+            "Trails": [
+              {
+                "PositionOffset": {
+                  "X": 0.6,
+                  "Y": 0,
+                  "Z": 0
+                },
+                "RotationOffset": {
+                  "Pitch": 0,
+                  "Roll": 90,
+                  "Yaw": 0
+                },
+                "TargetNodeName": "Handle",
+                "TrailId": "Small_Default"
+              }
+            ],
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Sword_Swing_Right_Fast_Damage": "Sword_Swing_Right_Fast_Damage"
+  },
+  "IconProperties": {
+    "Scale": 0.6,
+    "Translation": [
+      -13,
+      -16
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Wand_Wood_Rotten.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Wand"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Wand"
+}

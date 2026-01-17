@@ -1,0 +1,176 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Predator",
+  "Parameters": {
+    "Appearance": {
+      "Value": "Bear_Grizzly",
+      "Description": "Model to be used."
+    },
+    "DropList": {
+      "Value": "Drop_Bear_Grizzly",
+      "Description": "Drop Items."
+    },
+    "Attack": {
+      "Value": "Root_NPC_Bear_Grizzly_Attack",
+      "Description": "Attack Root Interaction."
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max Health."
+    },
+    "LeashDistance": {
+      "Value": 50,
+      "Description": "Leash Distance."
+    },
+    "HardLeashDistance": {
+      "Value": 80,
+      "Description": "Hard Leash Distance."
+    },
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Bear_Grizzly.name",
+      "Description": "Translation key for NPC name display"
+    }
+  },
+  "Modify": {
+    "Appearance": {
+      "Compute": "Appearance"
+    },
+    "AttitudeGroup": "PredatorsBig",
+    "DropList": {
+      "Compute": "DropList"
+    },
+    "MaxHealth": 124,
+    "MaxSpeed": 6,
+    "WanderRadius": 8,
+    "ViewRange": 8,
+    "HearingRange": 12,
+    "AbsoluteDetectionRange": 2,
+    "AlertedRange": 18,
+    "AlertedTime": [
+      4,
+      4
+    ],
+    "MaintainDistanceWhileAlerted": false,
+    "ThreatenDelayRange": [
+      2,
+      2
+    ],
+    "ThreatenAnimation": "Roar",
+    "FleeIfNotThreatened": false,
+    "FleeRange": 11,
+    "LeashDistance": {
+      "Compute": "LeashDistance"
+    },
+    "HardLeashDistance": {
+      "Compute": "HardLeashDistance"
+    },
+    "LeashMinPlayerDistance": 7,
+    "LeashTimer": [
+      3,
+      4
+    ],
+    "CombatBehaviorDistance": 6.5,
+    "CombatRelativeTurnSpeed": 0.5,
+    "CombatDirectWeight": 10,
+    "CombatStrafeWeight": 0,
+    "CombatBackOffAfterAttack": true,
+    "CombatBackOffDurationRange": [
+      3,
+      4
+    ],
+    "CombatBackOffDistanceRange": [
+      3,
+      4
+    ],
+    "CombatStrafingFrequencyRange": [
+      2,
+      2
+    ],
+    "CombatStrafingDurationRange": [
+      2,
+      3
+    ],
+    "CombatMovingRelativeSpeed": 0.2,
+    "Attack": {
+      "Compute": "Attack"
+    },
+    "AttackDistance": 3.25,
+    "ChaseRelativeSpeed": 1,
+    "AlwaysSleepAtNight": true,
+    "DayFlavorAnimation": "Eat",
+    "DayTimeNapWeight": 4,
+    "DayTimeNapTimeRange": [
+      10,
+      12
+    ],
+    "TimidDuringDay": false,
+    "AttackPauseRange": [
+      3,
+      4
+    ],
+    "IsMemory": true,
+    "MemoriesCategory": "Predator",
+    "_InteractionVars": {
+      "Swipe_Left_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Grizzly_Swipe_Left_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 46
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      },
+      "Swipe_Right_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Grizzly_Swipe_Right_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 46
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.5
+              }
+            }
+          }
+        ]
+      },
+      "Stomp_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Bear_Grizzly_Stomp_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 46
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 5
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  }
+}

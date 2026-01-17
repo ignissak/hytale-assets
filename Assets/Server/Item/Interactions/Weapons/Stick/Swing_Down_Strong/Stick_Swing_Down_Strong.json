@@ -1,0 +1,80 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemAnimationId": "SwingDownStrong",
+    "LocalSoundEventId": "SFX_Light_Melee_T2_Swing",
+    "Particles": [
+      {
+        "SystemId": "Empty"
+      }
+    ]
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.525,
+  "HorizontalSpeedMultiplier": 0.7,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.12,
+            "HorizontalSpeedMultiplier": 0.6,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.25,
+              "ExtendBottom": 0.25,
+              "StartDistance": 0.1,
+              "EndDistance": 2.25,
+              "Length": 75,
+              "RollOffset": 85,
+              "YawStartOffset": -40
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Stick_Swing_Down_Strong_Damage"
+                    ]
+                  },
+                  "Var": "Stick_Swing_Down_Strong_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.6,
+              "HorizontalSpeedMultiplier": 0.6
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Replace",
+            "DefaultValue": {
+              "Interactions": [
+                "Stick_Swing_Down_Strong_Effect"
+              ]
+            },
+            "Var": "Stick_Swing_Down_Strong_Effect"
+          }
+        ]
+      }
+    ]
+  }
+}

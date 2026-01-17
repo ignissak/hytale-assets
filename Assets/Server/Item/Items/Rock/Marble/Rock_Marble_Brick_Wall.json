@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Marble_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Marble_Brick_Wall.png",
+  "Set": "Rock_Marble_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Marble_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick_Marble.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Marble_Brick_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "HitboxType": "Fence_Thick",
+    "ParticleColor": "#d5d5c8",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick_Marble.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thick",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Marble_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Marble_Brick_Wall",
+        "Corner": "*Rock_Marble_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Marble"
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall"
+}

@@ -1,0 +1,92 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Sandstone_Cobble_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Sandstone_Cobble_Wall.png",
+  "Set": "Rock_Sandstone_Cobble",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Sandstone"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Sandstone_Cobble.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Sandstone_Cobble_Textures/default.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Fence_Thick",
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Sandstone_Cobble_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#b38741",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Sandstone_Cobble_Textures/default.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_SandStone_Cobble_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thick",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Sandstone_Cobble_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Sandstone_Cobble_Wall",
+        "Corner": "*Rock_Sandstone_Cobble_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "IconProperties": {
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Scale": 0.58823,
+    "Translation": [
+      0,
+      -16.8
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Sandstone"
+    ]
+  },
+  "Parent": "Rock_Stone_Cobble_Wall"
+}

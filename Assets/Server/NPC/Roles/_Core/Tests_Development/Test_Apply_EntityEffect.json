@@ -1,0 +1,55 @@
+{
+  "Type": "Generic",
+  "Appearance": "Kweebec_Sproutling",
+  "HotbarItems": [ ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5
+          },
+          "Actions": [
+            {
+              "Type": "ApplyEntityEffect",
+              "UseTarget": true,
+              "EntityEffect": "Burn"
+            }
+          ]
+        },
+        {
+          "ActionsBlocking": true,
+          "Actions": [
+            {
+              "Type": "Timeout",
+              "Delay": [ 5, 5 ]
+            },
+            {
+              "Type": "ApplyEntityEffect",
+              "UseTarget": false,
+              "EntityEffect": "Npc_Heal_Low"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Apply_EntityEffect.name"
+}

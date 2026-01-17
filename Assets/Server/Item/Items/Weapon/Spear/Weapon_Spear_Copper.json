@@ -1,0 +1,81 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Spear_Copper.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 10,
+  "Model": "Items/Weapons/Spear/Copper.blockymodel",
+  "Texture": "Items/Weapons/Spear/Copper_Texture.png",
+  "MaxStack": 30,
+  "IconProperties": {
+    "Scale": 0.245,
+    "Translation": [
+      -62,
+      -62
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Interactions": {
+    "Primary": "Spear_Attack",
+    "Secondary": "Spear_Block"
+  },
+  "InteractionVars": {
+    "Spear_Block_Damage": "Spear_Block_Damage",
+    "Spear_Stab_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Spear_Stab_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Stab_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 5
+            },
+            "Type": "Absolute"
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Spear_Impact"
+          }
+        }
+      ]
+    },
+    "Spear_Throw_Charged_Projectile": {
+      "Interactions": [
+        {
+          "Parent": "Spear_Throw_Charged_Projectile",
+          "ProjectileId": "Spear_Copper"
+        }
+      ]
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Spear_Copper.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "PlayerAnimationsId": "Spear",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Spear"
+    ]
+  },
+  "MaxDurability": 25,
+  "DurabilityLossOnHit": 0.56,
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

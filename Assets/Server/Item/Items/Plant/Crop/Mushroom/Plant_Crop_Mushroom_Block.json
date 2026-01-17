@@ -1,0 +1,137 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Mushroom_Stage_0.name"
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/SmallGrey.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "RandomRotation": "YawStep90",
+    "State": {
+      "Definitions": {}
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 100,
+              "Max": 101
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Block": "Empty",
+            "Duration": {
+              "Min": 100,
+              "Max": 101
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Type": "Spread",
+            "Executions": [
+              7,
+              10
+            ],
+            "SpreadDecayPercent": [
+              100,
+              100
+            ],
+            "GrowthBehaviours": [
+              {
+                "Type": "Directional",
+                "GrowthBlockTypes": [
+                  {
+                    "BlockType": "Plant_Crop_Mushroom_Cap_Red",
+                    "Weight": 1
+                  }
+                ],
+                "Horizontal": [
+                  2,
+                  2
+                ],
+                "LocationConditions": [
+                  {
+                    "Type": "NeighbourBlockTags",
+                    "NeighbourBlock": "Below",
+                    "TagPattern": "Soil_Or_Grass"
+                  }
+                ]
+              }
+            ],
+            "Duration": {
+              "Min": 100,
+              "Max": 101
+            }
+          }
+        ]
+      },
+      "StartingStageSet": "Default"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Plant_Crop_Lettuce_Stage_0"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "CustomModelScale": 0.9,
+    "ParticleColor": "#aa946e",
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 1.115,
+    "Translation": [
+      1.2,
+      -4.2
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Crop_Lettuce_Block.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop",
+      "Seed"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

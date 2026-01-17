@@ -1,0 +1,39 @@
+{
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 0.1
+  },
+  "Failed": "Weapon_Mace_Primary_Swing_Right",
+  "Next": {
+    "Type": "ChangeStat",
+    "Behaviour": "Set",
+    "StatModifiers": {
+      "StaminaRegenDelay": -3
+    },
+    "Next": {
+      "Type": "Charging",
+      "DisplayProgress": false,
+      "AllowIndefiniteHold": false,
+      "Next": {
+        "0": {
+          "Type": "ChangeStat",
+          "Behaviour": "Set",
+          "StatModifiers": {
+            "StaminaRegenDelay": 0
+          },
+          "Next": {
+            "Type": "Replace",
+            "Var": "Swing_Right_Start",
+            "DefaultOk": true,
+            "DefaultValue": {
+              "Interactions": [
+                "Weapon_Mace_Primary_Swing_Right"
+              ]
+            }
+          }
+        },
+        "0.2": "Weapon_Mace_Primary_Swing_Right_Charged"
+      }
+    }
+  }
+}

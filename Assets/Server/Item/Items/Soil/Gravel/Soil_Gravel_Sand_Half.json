@@ -1,0 +1,77 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Soil_Gravel_Sand_Half.name"
+  },
+  "Parent": "Soil_Gravel",
+  "Icon": "Icons/ItemsGenerated/Soil_Gravel_Sand_Half.png",
+  "Set": "Soil_Half",
+  "PlayerAnimationsId": "Block",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Parent": "Half_Block",
+          "Matchers": [
+            {
+              "Block": {
+                "Id": "Soil_Gravel_Sand_Half",
+                "State": "default"
+              },
+              "Face": "Up",
+              "StaticFace": false
+            }
+          ]
+        }
+      ],
+      "Cooldown": {
+        "Id": "BlockInteraction",
+        "Cooldown": 0.3,
+        "ClickBypass": true
+      },
+      "Settings": {
+        "Creative": {
+          "AllowSkipChainOnClick": true
+        }
+      }
+    }
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "CustomModel": "Blocks/Structures/Base_Shapes/HalfBlock.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/Soil_Gravel_Sand.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Block_Half",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Soils",
+        "DropList": "Rubble_Sandstone"
+      }
+    },
+    "VariantRotation": "DoublePipe",
+    "ParticleColor": "#c69f4f",
+    "State": {
+      "Definitions": {
+        "Block": {
+          "Material": "Solid",
+          "DrawType": "Cube",
+          "HitboxType": "Full",
+          "Textures": [
+            {
+              "All": "BlockTextures/Soil_Gravel_Sand.png",
+              "Weight": 1
+            }
+          ],
+          "Supporting": {
+            "BlockSides": [
+              {}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

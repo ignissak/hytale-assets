@@ -1,0 +1,211 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Template_Crop.name"
+  },
+  "Quality": "Technical",
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "RandomRotation": "YawStep1",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Resources/Plants/Seeds.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Plants/Seeds_Textures/SmallBlack.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Resources/Ingredients/Carrot_01.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Carrot_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.7,
+          "HitboxType": "Plant_Small",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Carrot_Stage1"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#1e951c"
+        },
+        "Stage2": {
+          "CustomModel": "Resources/Ingredients/Carrot_02.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Carrot_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Medium",
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Carrot_Stage2"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#1e951c"
+        },
+        "StageFinal": {
+          "CustomModel": "Resources/Ingredients/Carrot.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Resources/Ingredients/Carrot_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModelScale": 0.6,
+          "HitboxType": "Plant_Medium",
+          "InteractionHint": "server.interactionHints.harvest",
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Carrot_StageFinal_Harvest"
+            },
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Carrot_StageFinal"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#1e951c"
+        }
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 9600,
+              "Max": 11400
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 28800,
+              "Max": 30600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 28800,
+              "Max": 30600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+,            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 28800,
+              "Max": 30600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 28800,
+              "Max": 30600
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete"
+,            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Carrot_Block"
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "TagId": "Type=Soil"
+        },
+        {
+          "TagId": "SubType=Planter"
+        }
+      ]
+    },
+    "Material": "Empty",
+    "HitboxType": "Plant_Seed",
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Seeds",
+    "ParticleColor": "#7a633a",
+    "CustomModelScale": 0.75,
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "IconProperties": {
+    "Scale": 1.1,
+    "Translation": [
+      2.4,
+      -3
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Carrot_Stage_0.png",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Crop"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

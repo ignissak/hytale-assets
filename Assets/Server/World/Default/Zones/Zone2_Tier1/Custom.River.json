@@ -1,0 +1,336 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone2.Heightmaps.River"
+        }
+      ],
+      "Threshold": [0.61, 1]
+    },
+    "BiomeMask": [
+      "Savannah_Boab",
+      "Savannah_Forest",
+      "Savannah_Plains",
+      "Savannah_Rock",
+      "Scrub_Bushland"
+    ],
+    "Priority": 2
+  },
+  "MapColor": "#d2d2b1",
+  "Covers": [
+    {
+      "Type": ["Plant_Reeds_Arid", "Plant_Bush_Arid_Sharp"],
+      "Weights": [0.3, 0.7],
+      "Density": 0.6,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.05,
+        "Threshold": [0, 0.4]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Coral_Model_Yellow", "Rubble_Sandstone_White"],
+      "Weights": [0.5, 0.5],
+      "Density": 0.6,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.8,
+        "Scale": 0.09,
+        "Threshold": [0, 0.4]
+      },
+      "HeightThreshold": {
+        "Positions": [111, 113, 114],
+        "Values": [0, 1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Reeds_Arid"],
+      "Weights": [0.3, 0.7],
+      "Density": 0.6,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.05,
+        "Threshold": [0, 0.4]
+      },
+      "HeightThreshold": {
+        "Positions": [113, 114, 115],
+        "Values": [0, 1, 0]
+      }
+    },
+    {
+      "Type": ["*Plant_Crop_Onion_Block_State_Definitions_StageFinal"],
+      "Weights": [1],
+      "Density": 0.2,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Crops.Sandstone_Beach"
+          }
+        ],
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 116, 117],
+        "Values": [0, 1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Flower_Common_Purple"],
+      "Weights": [100],
+      "Density": 0.075,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "INVERTED",
+        "Octaves": 3,
+        "Persistence": 0.3,
+        "Scale": 0.05,
+        "Threshold": [0, 0.25]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "Type": ["Plant_Crop_Mana1"],
+      "Density": 0.007,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Crops.Coconut_Islands"
+          }
+        ],
+        "Threshold": [0.65, 0.7]
+      },
+      "HeightThreshold": {
+        "Positions": [111, 113, 115, 116],
+        "Values": [0, 1, 1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Crop_Health1"],
+      "Density": 0.007,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Crops.Coconut_Islands"
+          }
+        ],
+        "Threshold": [0.65, 0.7]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115, 116, 117],
+        "Values": [0, 1, 1, 0]
+      }
+    },
+    {
+      "Type": ["Plant_Grass_Arid_Short", "Plant_Grass_Arid"],
+      "Weight": [40, 60],
+      "Density": 0.42,
+      "NoiseMask": {
+        "Seed": "Plant_Grass_Sharp_Tall",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.5,
+        "Scale": 0.05,
+        "Threshold": [0.4, 0.55]
+      },
+      "Parent": ["Soil_Grass_Dry"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": ["Trees.Palm.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Desert_Oasis_Trees"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "Entries": [
+          {
+            "Blocks": ["Soil_Gravel_Sand"],
+            "NoiseMask": {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Type": "SUM",
+                "Noise": [
+                  {
+                    "Type": "MIN",
+                    "Noise": [
+                      {
+                        "File": "Zones.Noise.Shared.Heightmaps.River",
+                        "Formula": "INVERTED_RIDGED_SQRT"
+                      }
+                    ],
+                    "Normalize": [0.5876, 0.9999]
+                  },
+                  {
+                    "Seed": "Drylands-Canyon-Rougher",
+                    "NoiseType": "SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Formula": "INVERTED",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.02
+                  }
+                ],
+                "Factors": [0.85, 0.15]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 3,
+                    "Persistence": 0.8,
+                    "Scale": 0.0014,
+                    "Amplitude": 70
+                  }
+                ]
+              },
+              "Threshold": [0.66, 1]
+            }
+          },
+          {
+            "Blocks": ["Soil_Grass_Dry"]
+          }
+        ]
+      },
+      {
+        "Blocks": [
+          {
+            "Type": "Soil_Dirt_Dry",
+            "Repeat": [3, 8],
+            "RepeatNoise": {
+              "Seed": "Grasslands-Layers-Ground",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.08
+            }
+          },
+          {
+            "Type": "Soil_Clay",
+            "Repeat": [2, 5],
+            "RepeatNoise": {
+              "Seed": "Grasslands-Layers-Ground",
+              "NoiseType": "OLD_SIMPLEX",
+              "FractalMode": "OLDSCHOOL",
+              "Octaves": 3,
+              "Persistence": 0.5,
+              "Scale": 0.08
+            }
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static_Savannah"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [110, 112, 114, 115, 116, 120, 200, 225],
+    "Values": [1, 0.8, 0.66, 0.6, 0.5, 0.2, 0.1, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "DISTORTED",
+    "Noise": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Shared.Heightmaps.River"
+            }
+          ],
+          "Formula": "INVERTED_RIDGED_SQRT",
+          "Normalize": [0.5876, 0.9999]
+        },
+        {
+          "Seed": "Drylands-Canyon-Rougher",
+          "NoiseType": "SIMPLEX",
+          "FractalMode": "OLDSCHOOL",
+          "Formula": "INVERTED",
+          "Octaves": 3,
+          "Persistence": 0.8,
+          "Scale": 0.02
+        }
+      ],
+      "Factors": [0.85, 0.15]
+    },
+    "Randomizer": {
+      "Generators": [
+        {
+          "Seed": "Drylands-Randomizer",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 3,
+          "Persistence": 0.8,
+          "Scale": 0.0014,
+          "Amplitude": 70
+        }
+      ]
+    }
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["#b0c42c"]
+    },
+    "Entries": []
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Savanna"]
+    },
+    "Entries": []
+  },
+  "Water": {
+    "Entries": [
+      {
+        "Fluid": "Water_Source",
+        "Min": 0,
+        "Max": 114
+      }
+    ]
+  }
+}

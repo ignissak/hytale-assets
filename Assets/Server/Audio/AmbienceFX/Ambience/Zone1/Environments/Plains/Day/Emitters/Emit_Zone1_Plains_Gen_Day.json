@@ -1,0 +1,76 @@
+{
+  "Conditions": {
+    "DayTime": {
+      "Min": 5,
+      "Max": 19
+    },
+    "SunLightLevel": {
+      "Min": 10,
+      "Max": 15
+    },
+    "EnvironmentTagPattern": {
+      "Op": "And",
+      "Patterns": [
+        {
+          "Op": "Equals",
+          "Tag": "Zone1"
+        },
+        {
+          "Op": "Or",
+          "Patterns": [
+            {
+              "Op": "Equals",
+              "Tag": "Plains"
+            },
+            {
+              "Op": "Equals",
+              "Tag": "Encounters"
+            }
+          ]
+        }
+      ]
+    },
+    "WeatherTagPattern": {
+      "Op": "Not",
+      "Pattern": {
+        "Op": "Equals",
+        "Tag": "Rain"
+      }
+    }
+  },
+  "Sounds": [
+    {
+      "SoundEventId": "SFX_Z1_Emit_Plains_Gen_Day_Birds",
+      "Frequency": {
+        "Min": 1,
+        "Max": 3
+      },
+      "Radius": {
+        "Min": 1,
+        "Max": 7
+      }
+    },
+    {
+      "SoundEventId": "SFX_Z1_Emit_Plains_Gen_Day_Insects",
+      "Radius": {
+        "Min": 2,
+        "Max": 8
+      },
+      "Frequency": {
+        "Min": 2,
+        "Max": 4
+      }
+    },
+    {
+      "SoundEventId": "SFX_Z1_Emit_Plains_Gen_Day_Wind",
+      "Frequency": {
+        "Min": 0,
+        "Max": 2
+      },
+      "Radius": {
+        "Min": 2,
+        "Max": 5
+      }
+    }
+  ]
+}

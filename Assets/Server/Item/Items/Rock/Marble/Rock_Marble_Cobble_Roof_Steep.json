@@ -1,0 +1,115 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Marble_Cobble_Roof_Steep.name"
+  },
+  "Set": "Rock_Marble_Cobble",
+  "BlockType": {
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Roofs/Slope_Textures/Marble_Cobble.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Marble_Cobble_Roof_Steep",
+        "GatherType": "Rocks"
+      }
+    },
+    "ParticleColor": "#b4b0a1",
+    "State": {
+      "Definitions": {
+        "Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Right.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Steep_Left.blockymodel",
+          "HitboxType": "Stairs_Corner_Steep_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Inverted_Corner_Right": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Right.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Right",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        },
+        "Inverted_Corner_Left": {
+          "CustomModel": "Blocks/Structures/Roofs/Corner_Inverted_Steep_Left.blockymodel",
+          "HitboxType": "Roof_Corner_Steep_Inverted_Left",
+          "FlipType": "Orthogonal",
+          "Supporting": {
+            "Down": [
+              {}
+            ]
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "Roof",
+      "Regular": {
+        "Straight": {
+          "State": "default"
+        },
+        "Corner_Right": {
+          "State": "Corner_Right"
+        },
+        "Corner_Left": {
+          "State": "Corner_Left"
+        },
+        "Inverted_Corner_Right": {
+          "State": "Inverted_Corner_Right"
+        },
+        "Inverted_Corner_Left": {
+          "State": "Inverted_Corner_Left"
+        }
+      },
+      "MaterialName": "Roof_Steep"
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Marble_Cobble_Roof_Steep.png",
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Marble"
+    ]
+  },
+  "Parent": "Rock_Stone_Cobble_Roof_Steep",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Marble"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Roof"
+        ]
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 0
+  }
+}

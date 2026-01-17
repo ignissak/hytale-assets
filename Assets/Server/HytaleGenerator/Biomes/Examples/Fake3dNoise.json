@@ -1,0 +1,483 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-3393,
+		"$y":	-4144
+	},
+	"Name":	"Fake3dNoise",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-5627,
+			"$y":	-5649
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-4537,
+				"$y":	-5698
+			},
+			"Type":	"Multiplier",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-3857,
+						"$y":	-8032
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-3188,
+							"$y":	-7928
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-2571,
+									"$y":	-8004
+								},
+								"In":	240,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-2563,
+									"$y":	-7836
+								},
+								"In":	250,
+								"Out":	0
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-3245,
+								"$y":	-8146
+							},
+							"Type":	"YValue",
+							"Skip":	false
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3703,
+						"$y":	-7395
+					},
+					"Type":	"Cache2D",
+					"Skip":	true,
+					"Y":	0,
+					"CacheSize":	16,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-2981,
+								"$y":	-7393
+							},
+							"Type":	"Positions3D",
+							"Skip":	false,
+							"MaxDistance":	400,
+							"Positions":	{
+								"$Position":	{
+									"$x":	-2296,
+									"$y":	-7371
+								},
+								"Type":	"List",
+								"Skip":	false,
+								"Positions":	[{
+										"$Position":	{
+											"$x":	-1596,
+											"$y":	-7387
+										},
+										"X":	0,
+										"Y":	0,
+										"Z":	0
+									}]
+							},
+							"DistanceCurve":	{
+								"$Position":	{
+									"$x":	-2115,
+									"$y":	-7042
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	-1508,
+											"$y":	-7128
+										},
+										"In":	400,
+										"Out":	1
+									}, {
+										"$Position":	{
+											"$x":	-1458,
+											"$y":	-6929
+										},
+										"In":	401,
+										"Out":	0
+									}]
+							}
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3222,
+						"$y":	-6291
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1565,
+								"$y":	-6338
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	-739,
+									"$y":	-6422
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	-122,
+											"$y":	-6498
+										},
+										"In":	200,
+										"Out":	0
+									}, {
+										"$Position":	{
+											"$x":	-114,
+											"$y":	-6330
+										},
+										"In":	240,
+										"Out":	-1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-759,
+										"$y":	-6731
+									},
+									"Type":	"YValue",
+									"Skip":	false
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-900,
+								"$y":	-5360
+							},
+							"Type":	"Scale",
+							"Skip":	false,
+							"ScaleX":	1,
+							"ScaleY":	0.4,
+							"ScaleZ":	1,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	536,
+										"$y":	-5578
+									},
+									"Type":	"MultiMix",
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	1216,
+												"$y":	-8034
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"A",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1268,
+												"$y":	-7616
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"B",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1240,
+												"$y":	-7140
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"C",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1236,
+												"$y":	-6761
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"D",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1238,
+												"$y":	-6347
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"E",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1249,
+												"$y":	-5950
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	5,
+											"Scale":	100,
+											"Seed":	"F",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	1242,
+												"$y":	-4859
+											},
+											"Type":	"YValue",
+											"Skip":	false
+										}],
+									"Keys":	[{
+											"$Position":	{
+												"$x":	721,
+												"$y":	-5004
+											},
+											"Value":	0,
+											"DensityIndex":	0
+										}, {
+											"$Position":	{
+												"$x":	722,
+												"$y":	-4860
+											},
+											"Value":	40,
+											"DensityIndex":	1
+										}, {
+											"$Position":	{
+												"$x":	725,
+												"$y":	-4709
+											},
+											"Value":	80,
+											"DensityIndex":	2
+										}, {
+											"$Position":	{
+												"$x":	716,
+												"$y":	-4562
+											},
+											"Value":	120,
+											"DensityIndex":	3
+										}, {
+											"$Position":	{
+												"$x":	720,
+												"$y":	-4419
+											},
+											"Value":	160,
+											"DensityIndex":	4
+										}, {
+											"$Position":	{
+												"$x":	725,
+												"$y":	-4247
+											},
+											"Value":	200,
+											"DensityIndex":	5
+										}, {
+											"$Position":	{
+												"$x":	724,
+												"$y":	-4091
+											},
+											"Value":	240,
+											"DensityIndex":	0
+										}, {
+											"$Position":	{
+												"$x":	727,
+												"$y":	-3936
+											},
+											"Value":	280,
+											"DensityIndex":	1
+										}, {
+											"$Position":	{
+												"$x":	725,
+												"$y":	-3792
+											},
+											"Value":	320,
+											"DensityIndex":	2
+										}, {
+											"$Position":	{
+												"$x":	742,
+												"$y":	-3642
+											},
+											"Value":	360,
+											"DensityIndex":	3
+										}, {
+											"$Position":	{
+												"$x":	746,
+												"$y":	-3499
+											},
+											"Value":	400,
+											"DensityIndex":	4
+										}, {
+											"$Position":	{
+												"$x":	768,
+												"$y":	-3329
+											},
+											"Value":	440,
+											"DensityIndex":	5
+										}, {
+											"$Position":	{
+												"$x":	766,
+												"$y":	-3185
+											},
+											"Value":	480,
+											"DensityIndex":	0
+										}, {
+											"$Position":	{
+												"$x":	783,
+												"$y":	-3035
+											},
+											"Value":	520,
+											"DensityIndex":	1
+										}, {
+											"$Position":	{
+												"$x":	795,
+												"$y":	-2884
+											},
+											"Value":	560,
+											"DensityIndex":	2
+										}]
+								}]
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3709,
+						"$y":	-5446
+					},
+					"Type":	"Sum",
+					"Skip":	true,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-3058,
+								"$y":	-5577
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	-2232,
+									"$y":	-5661
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	-1615,
+											"$y":	-5737
+										},
+										"In":	200,
+										"Out":	0
+									}, {
+										"$Position":	{
+											"$x":	-1607,
+											"$y":	-5569
+										},
+										"In":	240,
+										"Out":	-1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-2252,
+										"$y":	-5970
+									},
+									"Type":	"YValue",
+									"Skip":	false
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-2894,
+								"$y":	-5373
+							},
+							"Type":	"SimplexNoise3D",
+							"Skip":	false,
+							"Lacunarity":	2,
+							"Persistence":	0.5,
+							"Octaves":	8,
+							"ScaleXZ":	500,
+							"ScaleY":	500,
+							"Seed":	"A"
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-2518,
+			"$y":	-4141
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1719,
+				"$y":	-4109
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-1067,
+						"$y":	-4092
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-437,
+							"$y":	-4090
+						},
+						"Solid":	"Soil_Dirt"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-1716,
+				"$y":	-3816
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1093,
+					"$y":	-3801
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-1644.1875,
+				"$y":	-24301.8125
+			},
+			"$width":	6836.0625,
+			"$height":	8446.875,
+			"$name":	"Terrain"
+		}]
+}

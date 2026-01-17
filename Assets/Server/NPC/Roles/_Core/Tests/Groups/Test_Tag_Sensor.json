@@ -1,0 +1,135 @@
+{
+  "Type": "Generic",
+  "$Comment": "ValidatePositions",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander",
+            "RelativeSpeed": 1,
+            "MinWalkTime": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "GetNPCs": true,
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "NPCGroup",
+                "IncludeGroups": [ "Neutral" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Humans"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "GetNPCs": true,
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "NPCGroup",
+                "IncludeGroups": [ "Passive" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Livestock"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "GetNPCs": true,
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "NPCGroup",
+                "IncludeGroups": [ "Player" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Player"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetPlayers": true,
+            "GetNPCs": true,
+            "Range": 3,
+            "Filters": [
+              {
+                "Type": "NPCGroup",
+                "IncludeGroups": [ "Self" ]
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Twin"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "None"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Tag_Sensor.name"
+}

@@ -1,0 +1,36 @@
+{
+  "GridGenerator": {
+    "Density": 0.4,
+    "Scale": 0.1,
+    "Jitter": 0.8
+  },
+  "NoiseMask": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Seed": "Grasslands-River-Noise",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Formula": "RIDGED",
+        "Octaves": 4,
+        "Persistence": 0.4,
+        "Scale": 0.004
+      },
+      {
+        "Seed": "LightForest_Patches",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 2,
+        "Persistence": 0.3,
+        "Scale": 0.05
+      }
+    ],
+    "Factors": [0.4, 0.6],
+    "Threshold": [0.22, 0.27]
+  },
+  "HeightThreshold": {
+    "Positions": [113, 114],
+    "Values": [0, 1]
+  },
+  "Parent": ["Soil_Pebbles", "Soil_Grass_Cold"]
+}

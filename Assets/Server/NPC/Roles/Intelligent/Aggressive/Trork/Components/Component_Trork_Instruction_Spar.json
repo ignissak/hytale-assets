@@ -1,0 +1,812 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Default",
+  "Parameters": {
+    "_ImportStates": [ "Idle", "Chase", "Search" ],
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "SparBeginMessage": {
+      "Value": "TrorkSparBegin",
+      "Description": "The message to send when requesting sparring"
+    },
+    "UseWeaponSlot": {
+      "Value": 2,
+      "Description": "Which weapon to use for sparring"
+    },
+    "DefaultWeaponSlot": {
+      "Value": 0,
+      "Description": "Weapon slot to switch to afterwards"
+    },
+    "SparTargetGroups": {
+      "Value": [ "Trork_Spar" ],
+      "Description": "Groups to spar with"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation",
+        "Modify": { }
+      },
+      {
+        "Sensor": {
+          "Type": "Beacon",
+          "Message": "TrorkSparCancel"
+        },
+        "Actions": [
+          {
+            "Type": "ReleaseTarget"
+          },
+          {
+            "Type": "Inventory",
+            "Operation": "EquipHotbar",
+            "Slot": { "Compute": "DefaultWeaponSlot" },
+            "UseTarget": false
+          },
+          {
+            "Type": "State",
+            "State": ".Default"
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Beacon",
+          "Message": "TrorkSparEnd"
+        },
+        "Actions": [
+          {
+            "Type": "State",
+            "State": ".End"
+          }
+        ]
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Default"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Beacon",
+              "Message": { "Compute": "SparBeginMessage" },
+              "TargetSlot": "LockedTarget"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".SlaveWait"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Stat",
+                  "StatTarget": "Value",
+                  "RelativeTo": "Health",
+                  "Stat": "Health",
+                  "RelativeToTarget": "Max",
+                  "ValueRange": [ 0, 0.4 ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Inventory",
+                "Operation": "EquipHotbar",
+                "Slot": { "Compute": "DefaultWeaponSlot" },
+                "UseTarget": false
+              },
+              {
+                "Type": "ParentState",
+                "State": "Idle"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Beacon",
+                "Range": 18,
+                "SendCount": 1,
+                "Message": { "Compute": "SparBeginMessage" },
+                "TargetGroups": { "Compute": "SparTargetGroups" }
+              },
+              {
+                "Type": "State",
+                "State": ".MasterWait"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".SlaveWait"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Stat",
+                  "StatTarget": "Value",
+                  "RelativeTo": "Health",
+                  "Stat": "Health",
+                  "RelativeToTarget": "Max",
+                  "ValueRange": [ 0, 0.4 ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Notify",
+                "Message": "TrorkSparCancel",
+                "UseTargetSlot": "LockedTarget"
+              },
+              {
+                "Type": "ReleaseTarget"
+              },
+              {
+                "Type": "Inventory",
+                "Operation": "EquipHotbar",
+                "Slot": { "Compute": "DefaultWeaponSlot" },
+                "UseTarget": false
+              },
+              {
+                "Type": "State",
+                "State": ".Default"
+              },
+              {
+                "Type": "ParentState",
+                "State": "Idle"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "Notify",
+                "Message": "TrorkSparConfirm",
+                "UseTargetSlot": "LockedTarget"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 10 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Notify",
+                      "Message": "TrorkSparCancel",
+                      "UseTargetSlot": "LockedTarget"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "ReleaseTarget"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": 5,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Inventory",
+                "Operation": "EquipHotbar",
+                "Slot": { "Compute": "UseWeaponSlot" },
+                "UseTarget": false
+              },
+              {
+                "Type": "State",
+                "State": ".Fight"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": 20,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".MasterWait"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 2, 2 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "ReleaseTarget"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Beacon",
+              "Message": "TrorkSparConfirm",
+              "TargetSlot": "LockedTarget"
+            },
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".MasterMove"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".MasterMove"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": 5,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Inventory",
+                "Operation": "EquipHotbar",
+                "Slot": { "Compute": "UseWeaponSlot" },
+                "UseTarget": false
+              },
+              {
+                "Type": "State",
+                "State": ".Fight"
+              }
+            ]
+          },
+          {
+            "$TODO": "Use pathfinding for this",
+            "Sensor": {
+              "Type": "Target",
+              "Range": 25
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 4,
+              "StopDistance": 2
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 10, 10 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Notify",
+                      "Message": "TrorkSparCancel",
+                      "UseTargetSlot": "LockedTarget"
+                    },
+                    {
+                      "Type": "ReleaseTarget"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Fight"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 9, 11 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Notify",
+                      "Message": "TrorkSparCancel",
+                      "UseTargetSlot": "LockedTarget"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "ReleaseTarget"
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Stat",
+                  "StatTarget": "Value",
+                  "RelativeTo": "Health",
+                  "Stat": "Health",
+                  "RelativeToTarget": "Max",
+                  "ValueRange": [ 0, 0.4 ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "Notify",
+                "Message": "TrorkSparEnd",
+                "UseTargetSlot": "LockedTarget"
+              },
+              {
+                "Type": "State",
+                "State": ".End"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Target",
+              "Range": 2,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": 2,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "Instructions": [
+              {
+                "Sensor": {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "Target",
+                    "Range": 2,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      },
+                      {
+                        "Type": "HeightDifference",
+                        "HeightDifference": [ -1, 2 ]
+                      }
+                    ]
+                  }
+                },
+                "Actions": [
+                  {
+                    "Type": "Notify",
+                    "Message": "TrorkSparCancel",
+                    "UseTargetSlot": "LockedTarget"
+                  },
+                  {
+                    "Type": "ReleaseTarget"
+                  },
+                  {
+                    "Type": "Inventory",
+                    "Operation": "EquipHotbar",
+                    "Slot": { "Compute": "DefaultWeaponSlot" },
+                    "UseTarget": false
+                  },
+                  {
+                    "Type": "State",
+                    "State": ".Default"
+                  },
+                  {
+                    "Type": "ParentState",
+                    "State": "Idle"
+                  }
+                ]
+              },
+              {
+                "Sensor": {
+                  "Type": "Target",
+                  "Range": 2,
+                  "Filters": [
+                    {
+                      "Type": "LineOfSight"
+                    }
+                  ]
+                },
+                "$TODO": "Set up proper attacks",
+                "ActionsBlocking": true,
+                "Actions": [
+                  {
+                    "Type": "Attack",
+                    "Attack": "Root_NPC_Attack_Melee",
+                    "DamageFriendlies": true,
+                    "AttackPauseRange": [ 0.5, 1.5 ]
+                  },
+                  {
+                    "Type": "Attack",
+                    "Attack": "Root_NPC_Attack_Melee",
+                    "DamageFriendlies": true,
+                    "AttackPauseRange": [ 0.5, 1.5 ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": 8,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": 3,
+              "StopDistance": 2
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".End"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Stat",
+                  "StatTarget": "Value",
+                  "RelativeTo": "Health",
+                  "Stat": "Health",
+                  "RelativeToTarget": "Max",
+                  "ValueRange": [ 0, 0.4 ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "ReleaseTarget"
+              },
+              {
+                "Type": "State",
+                "State": ".KO"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "ReleaseTarget"
+              },
+              {
+                "Type": "State",
+                "State": ".Victory"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Victory"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "$TODO": "Victory anim",
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 2, 3 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "Reference": "Component_Instruction_Damage_Check",
+            "Modify": {
+              "_ExportStates": [ "Chase", "Search" ],
+              "AlertedRange": { "Compute": "AlertedRange" }
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".KO"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Sleep"
+              }
+            ]
+          },
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 5, 10 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Wake"
+                }
+              }
+            ]
+          },
+          {
+            "Reference": "Component_Instruction_Damage_Check",
+            "Modify": {
+              "_ExportStates": [ "Chase", "Search" ],
+              "AlertedRange": { "Compute": "AlertedRange" }
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Wake"
+        },
+        "Instructions": [
+          {
+            "$Comment": "Animations",
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Wake"
+              }
+            ]
+          },
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 4 ],
+                "Action": {
+                  "Type": "Sequence",
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "Operation": "EquipHotbar",
+                      "Slot": { "Compute": "DefaultWeaponSlot" },
+                      "UseTarget": false
+                    },
+                    {
+                      "Type": "State",
+                      "State": ".Default"
+                    },
+                    {
+                      "Type": "ParentState",
+                      "State": "Idle"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

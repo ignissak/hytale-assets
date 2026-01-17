@@ -1,0 +1,40 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.1,
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToLeft",
+    "TestLineOfSight": false,
+    "ExtendTop": 0.5,
+    "ExtendBottom": 0.5,
+    "StartDistance": 0.1,
+    "EndDistance": 2.5,
+    "Length": 90,
+    "RollOffset": 0,
+    "YawStartOffset": -45
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "DefaultValue": {
+          "Interactions": [
+            "Mace_Swing_Left_Damage"
+          ]
+        },
+        "Var": "Mace_Swing_Left_Damage"
+      }
+    ]
+  },
+  "Next": {
+    "Type": "Simple",
+    "$Comment": "Pad the interaction length",
+    "RunTime": 0.59
+  }
+}

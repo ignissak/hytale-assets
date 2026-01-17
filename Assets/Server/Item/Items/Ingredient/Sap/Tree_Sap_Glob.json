@@ -1,0 +1,161 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Tree_Sap_Glob.name"
+  },
+  "ItemLevel": 10,
+  "Icon": "Icons/ItemsGenerated/Tree_Sap_Glob_0.png",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "PlayerAnimationsId": "Item",
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Farming/Sap/Sap_Glob_0.blockymodel",
+    "Gathering": {
+      "Soft": {
+        "DropList": "Tree_Sap_Glob_0"
+      }
+    },
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Farming/Sap/Sap_Glob_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Flags": {
+      "IsStackable": false
+    },
+    "Farming": {
+      "StartingStageSet": "Default",
+      "Stages": {
+        "Default": [
+          {
+            "Type": "BlockState",
+            "State": "default",
+            "Duration": {
+              "Min": 2000,
+              "Max": 6000
+            }
+          },
+          {
+            "Type": "BlockState",
+            "State": "Stage_1",
+            "Duration": {
+              "Min": 2000,
+              "Max": 6000
+            }
+          },
+          {
+            "Type": "BlockState",
+            "State": "Stage_2"
+          }
+        ]
+      },
+      "StageSetAfterHarvest": "Default"
+    },
+    "Group": "Wood",
+    "HitboxType": "Branch_Short",
+    "VariantRotation": "NESW",
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#774422",
+    "BlockSoundSetId": "Branch",
+    "Support": {
+      "North": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "FaceType": "Branch"
+        }
+      ]
+    },
+    "Tags": {
+      "Type": [
+        "Ingredient"
+      ]
+    },
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    },
+    "State": {
+      "Definitions": {
+        "Stage_1": {
+          "CustomModel": "Blocks/Farming/Sap/Sap_Glob_1.blockymodel",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            },
+            "Primary": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop",
+                  "Effects": {
+                    "ItemAnimationId": "SwingLeft"
+                  }
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Tree_Sap_Glob_1"
+            }
+          }
+        },
+        "Stage_2": {
+          "CustomModel": "Blocks/Farming/Sap/Sap_Glob_2.blockymodel",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            },
+            "Primary": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop",
+                  "Effects": {
+                    "ItemAnimationId": "SwingLeft"
+                  }
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Tree_Sap_Glob_2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      7,
+      -17
+    ]
+  },
+  "Quality": "Developer",
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

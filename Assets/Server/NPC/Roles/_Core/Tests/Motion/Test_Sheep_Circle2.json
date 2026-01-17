@@ -1,0 +1,65 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 8,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8
+          },
+          "Tag": "threat",
+          "BodyMotion": {
+            "Type": "Flee",
+            "SlowDownDistance": 9,
+            "StopDistance": 10
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Tag": "idle",
+          "BodyMotion": {
+            "Reference": "Wander_Circle",
+            "Modify": { }
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Sheep_Circle2.name"
+}

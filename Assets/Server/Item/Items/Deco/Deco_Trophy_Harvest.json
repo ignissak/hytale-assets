@@ -1,0 +1,281 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Deco_Trophy_Harvest.name",
+    "Description": "server.items.Deco_Trophy_Harvest.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Deco_Orbis_Trophy.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Life_Essence_Concentrated",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Fruit_Berries_Red",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Wheat_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Lettuce_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Carrot_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Corn_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Cauliflower_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Turnip_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Aubergine_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Pumpkin_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Tomato_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Chilli_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Cotton_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Rice_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Onion_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Crop_Potato_Item",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Plant_Fruit_Apple",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Food_Egg",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Wool",
+        "Quantity": 100
+      },
+      {
+        "ResourceTypeId": "Fish",
+        "Quantity": 100
+      },
+      {
+        "ResourceTypeId": "Moss",
+        "Quantity": 100
+      },
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Poop",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Feathers_Light",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Tree_Sap",
+        "Quantity": 100
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 100
+      },
+      {
+        "ResourceTypeId": "Milk_Bucket",
+        "Quantity": 8
+      },
+      {
+        "ResourceTypeId": "Milk_Mosshorn_Bucket",
+        "Quantity": 8
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Farmingbench",
+        "Categories": [
+          "Decorative"
+        ],
+        "RequiredTierLevel": 8
+      }
+    ],
+    "RequiredMemoriesLevel": 6,
+    "TimeSeconds": 10
+  },
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Kweebec_Plush.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Kweebec_Plush_Pink_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "CustomModelScale": 0.85,
+    "Group": "Wood",
+    "HitboxType": "Plant_Large",
+    "VariantRotation": "NESW",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "BlockParticleSetId": "Leaves",
+    "ParticleColor": "#228b22",
+    "BlockSoundSetId": "Plushie",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "ChangeState",
+            "Changes": {
+              "default": "Off",
+              "On": "Off",
+              "Off": "On"
+            },
+            "Effects": {
+              "LocalSoundEventId": "SFX_Plushie_Build"
+            }
+          }
+        ]
+      }
+    },
+    "InteractionHint": "server.interactionHints.turnoff",
+    "State": {
+      "Definitions": {
+        "On": {
+          "Particles": [
+            {
+              "SystemId": "ForgottenTemple_Leaves",
+              "PositionOffset": {
+                "Y": 8.0
+              }
+            },
+            {
+              "SystemId": "MemoryUnlock",
+              "Scale": 0.25
+            }
+          ]
+        },
+        "Off": {
+          "InteractionHint": "server.interactionHints.turnon",
+          "Particles": [],
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "ChangeState",
+                  "Changes": {
+                    "Off": "On"
+                  },
+                  "Effects": {
+                    "LocalSoundEventId": "SFX_Memories_Unlock_Local"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "East": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "West": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Particles": [
+      {
+        "SystemId": "ForgottenTemple_Leaves",
+        "PositionOffset": {
+          "Y": 8.0
+        }
+      },
+      {
+        "SystemId": "MemoryUnlock",
+        "Scale": 0.25
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Block",
+  "Model": "Blocks/Miscellaneous/Kweebec_Plush.blockymodel",
+  "Texture": "Blocks/Miscellaneous/Kweebec_Plush_Texture.png",
+  "IconProperties": {
+    "Scale": 0.685,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      -1.7,
+      -13.1
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Deco"
+    ],
+    "Family": [
+      "Kweebec"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Quality": "Legendary"
+}

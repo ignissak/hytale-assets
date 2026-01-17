@@ -1,0 +1,214 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Crop_Rice_StageFinal.name"
+  },
+  "Parent": "Plant_Crop_Rice_Block",
+  "BlockType": {
+    "State": {
+      "Definitions": {
+        "Stage1": {
+          "CustomModel": "Blocks/Foliage/Plants/Dense_Small_3Rows.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Dense_Small_3Rows_Wheat_01.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Rice_Eternal_Stage1"
+            }
+          },
+          "HitboxType": "Plant_Small",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#93d72c"
+        },
+        "Stage2": {
+          "CustomModel": "Blocks/Foliage/Plants/Dense_Medium_3Rows.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Dense_Medium_3Rows_Wheat_02.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Rice_Eternal_Stage2"
+            }
+          },
+          "HitboxType": "Plant_Large",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#c3d05d"
+        },
+        "Stage3": {
+          "CustomModel": "Blocks/Foliage/Plants/Dense_Medium_3Rows.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Dense_Medium_3Rows_Wheat_03.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "Gathering": {
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Rice_Eternal_Stage3"
+            }
+          },
+          "HitboxType": "Plant_Full",
+          "BlockParticleSetId": "Grass",
+          "BlockSoundSetId": "Plant",
+          "ParticleColor": "#dfe285"
+        },
+        "StageFinal": {
+          "CustomModel": "Blocks/Foliage/Plants/Dense_Tall.blockymodel",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Foliage/Plants/Dense_Tall_Textures/Rice.png",
+              "Weight": 1
+            }
+          ],
+          "Effect": [
+            "WindAttached"
+          ],
+          "InteractionHint": "server.interactionHints.harvest",
+          "Interactions": {
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "HarvestCrop"
+                }
+              ]
+            }
+          },
+          "Gathering": {
+            "Harvest": {
+              "DropList": "Drops_Plant_Crop_Rice_Eternal_StageFinal_Harvest"
+            },
+            "Soft": {
+              "DropList": "Drops_Plant_Crop_Rice_Eternal_StageFinal"
+            }
+          },
+          "BlockParticleSetId": "Grass",
+          "ParticleColor": "#efcc7b",
+          "BlockSoundSetId": "Plant",
+          "HitboxType": "Plant_Tall_Small"
+        }
+      }
+    },
+    "Particles": [
+      {
+        "SystemId": "Plant_Eternal",
+        "DetachedFromModel": false,
+        "Scale": 0.5,
+        "PositionOffset": {
+          "X": 0.0,
+          "Z": 0.5,
+          "Y": -0.5
+        }
+      }
+    ],
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Duration": {
+              "Min": 10500,
+              "Max": 10500
+            },
+            "Type": "BlockState",
+            "State": "default"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ],
+        "Harvested": [
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage1"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage2"
+          },
+          {
+            "Duration": {
+              "Min": 25300,
+              "Max": 25300
+            },
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow",
+            "State": "Stage3"
+          },
+          {
+            "Type": "BlockState",
+            "SoundEventId": "SFX_Crops_Grow_Stage_Complete",
+            "State": "StageFinal"
+          }
+        ]
+      },
+      "StartingStageSet": "Default",
+      "ActiveGrowthModifiers": [
+        "Fertilizer",
+        "Water",
+        "LightLevel"
+      ],
+      "StageSetAfterHarvest": "Harvested"
+    },
+    "Gathering": {
+      "Soft": {
+        "DropList": "Drops_Plant_Crop_Rice_Eternal_Block"
+      }
+    }
+  },
+  "Quality": "Uncommon"
+}

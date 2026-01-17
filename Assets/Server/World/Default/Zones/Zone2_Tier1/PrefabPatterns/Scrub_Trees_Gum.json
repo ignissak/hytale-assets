@@ -1,0 +1,39 @@
+{
+  "GridGenerator": {
+    "Seed": "Drylands-Pattern-Scrub-Trees",
+    "Density": [0, 0.115],
+    "Scale": 0.077,
+    "Jitter": 0.4
+  },
+  "NoiseMask": {
+    "Type": "MAX",
+    "Noise": [
+		{
+			"Seed": "Drylands-Pattern-Monuments-Tier-1",
+			"NoiseType": "CELL",
+			"Formula": "INVERTED_SQRT",
+			"Scale": 0.005,
+			"CellMode": "DISTANCE",
+			"Jitter": 0.75,
+			"Density": [0, 1],
+			"Normalize": 0.6
+		},
+		{
+			"Seed": "Drylands-Caves-Density-Surface",
+			"Scale": 0.01501,
+			"Jitter": 0.4001,
+			"DistanceRange": 6,
+			"NoiseType": "CELL",
+			"Formula" : "INVERTED",
+			"CellMode": "DISTANCE",
+			"Density": [0.7501, 0.9999],
+			"Normalize": 0.4501
+		}
+    ],
+    "Threshold": [0, 0.99]
+},
+  "Mask": {
+    "File": "Zones.Masks.Shared.Trees"
+  },
+  "Parent": ["Soil_Grass_Dry", "Soil_Sand_Red", "Soil_Dirt_Dry", "Soil_Mud", "Soil_Mud_Dry", "Rock_Sandstone_Red"]
+}

@@ -1,0 +1,109 @@
+// {
+//   "Name": "Cave",
+//   "Priority": 2,
+//   "Type": "DISTORTED",
+//   "Shape": "ELLIPSOID",
+//   "Interpolation": "LINEAR",
+//   "InheritParentRadius": false,
+//   "RadiusX": [
+//     23.0, 27
+//   ],
+//   "RadiusY": [
+//     20.0
+//   ],
+//   "RadiusZ": [
+//     23.0, 27
+//   ],
+//   "WidthNoise": {
+//     "Type": "SUM",
+//     "Factors": [
+//       0.2,
+//       0.8
+//     ],
+//     "Noise": [
+//       {
+//         "NoiseType": "SIMPLEX",
+//         "Formula": "NORMAL",
+//         "Octaves": 1,
+//         "Scale": 0.09000000000000001
+//       },
+//       {
+//         "NoiseType": "CONSTANT",
+//         "Value": 1
+//       }
+//     ]
+//   },
+//   "FloorNoise":
+//   {
+//     "Type": "MULTIPLY",
+//     "Noise": [
+//       {
+//         "Type": "SUM",
+//         "Noise": [
+//           {
+//               "Seed": "Lava_Cracks",
+//               "NoiseType": "DISTANCE",
+//               "DistanceMode": "NATURAL",
+//               "Formula": "SQUARED",
+//               "DistanceRange": [1, 3],
+//               "Distance2Mode": "DIV",
+//               "Scale": 0.09,
+//               "Normalize": [0.7, 0.78]
+//           }
+//           ,
+//           {
+//             "Seed": "Firelands-Base",
+//             "NoiseType": "SIMPLEX",
+//             "Formula": "INVERTED",
+//             "Octaves": 3,
+//             "Persistence": 0.4,
+//             "Scale": 0.0025
+//           }
+//         ],
+//         "Factors": [0.25, 0.75]
+//       },
+//       {
+//         "$Comment": "Lava Stalacmites",
+//         "Seed": "Stalacmites",
+//         "NoiseType": "DISTANCE",
+//         "Distance2Mode": "DIV",
+//         "FractalMode": "MIN",
+//         "Formula": "SQRT",
+//         "Scale": 0.04,
+//         "Jitter": 0.7,
+//         "Octaves": 1,
+//         "Normalize": [0.08, 0.6]
+//       }
+//     ]
+//   },
+//   "CeilingNoise": {
+//     "Type": "MIN",
+//     "Noise": [
+//       {
+//         "NoiseType": "SIMPLEX",
+//         "Formula": "NORMAL",
+//         "Octaves": 1,
+//         "Scale": 0.04,
+//         "Normalize": [0, 0.8]
+//       },
+//       {
+//         "$Comment": "Lava Stalacmites",
+//         "Seed": "Stalacmites",
+//         "NoiseType": "DISTANCE",
+//         "Distance2Mode": "DIV",
+//         "FractalMode": "MIN",
+//         "Formula": "SQRT",
+//         "Scale": 0.06,
+//         "Jitter": 0.7,
+//         "Octaves": 1
+//       }
+//     ]
+//   },
+//   "Environment": "Env_Zone1_Caves_Plains",
+//   "Children": [
+
+//   ],
+//   "Cover": {
+//     "File": "Zones.Zone1_Tier1.Cave.Covers.Covers_Volcanic_Goblin"
+//   }
+// }

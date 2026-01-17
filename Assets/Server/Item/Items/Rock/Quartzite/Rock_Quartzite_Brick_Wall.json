@@ -1,0 +1,82 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Quartzite_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Quartzite_Brick_Wall.png",
+  "Set": "Rock_Quartzite_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Quartzite_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick02.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick02_Quartzite.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Fence_Thick",
+    "Flags": {},
+    "Gathering": {
+      "Breaking": {
+        "ItemId": "Rock_Quartzite_Brick_Wall",
+        "GatherType": "Rocks"
+      }
+    },
+    "VariantRotation": "NESW",
+    "ParticleColor": "#96844f",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Rock_Brick02_Quartzite.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Rock_Brick_Corner02.blockymodel",
+          "HitboxType": "Fence_Corner_Thick",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Quartzite_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Quartzite_Brick_Wall",
+        "Corner": "*Rock_Quartzite_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Rock"
+    ],
+    "Family": [
+      "Quartzite"
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall"
+}

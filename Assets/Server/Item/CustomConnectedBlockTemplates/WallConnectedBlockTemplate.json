@@ -1,0 +1,194 @@
+{
+    "ConnectsToOtherMaterials":true,
+    "DefaultShape": "Straight",
+    "Shapes":{
+      "Gate":{
+        "FaceTags": {
+          "East": ["FenceConnection"],
+          "West": ["FenceConnection"]
+        },
+        "PatternsToMatchAnyOf": []
+      },
+      "Straight":{
+            "FaceTags": {
+                "East": ["FenceConnection"],
+                "West": ["FenceConnection"]
+            },
+            "PatternsToMatchAnyOf": []
+        },
+        "Corner":{
+            "FaceTags": {
+                "West": ["FenceConnection"],
+                "South": ["FenceConnection"]
+            },
+            "PatternsToMatchAnyOf": [
+                {
+                    "Type": "Custom",
+                    "AllowedPatternTransformations":{
+                        "IsCardinallyRotatable": true
+                    },
+                    "RulesToMatch":[
+                        {
+                            "Position":{ "X":-1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "East": ["FenceConnection"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":1 },
+                            "IncludeOrExclude":"Include",
+                            "FaceTags": {
+                                "North": ["FenceConnection"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":1, "Y":0, "Z":0 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "West": ["FenceConnection"]
+                            }
+                        },
+                        {
+                            "Position":{ "X":0, "Y":0, "Z":-1 },
+                            "IncludeOrExclude":"Exclude",
+                            "FaceTags": {
+                                "South": ["FenceConnection"]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+
+      "T_Junction":{
+        "FaceTags": {
+          "East": ["FenceConnection"],
+          "West": ["FenceConnection"],
+          "South": ["FenceConnection"]
+        },
+        "PatternsToMatchAnyOf": [
+          {
+            "Type": "Custom",
+            "AllowedPatternTransformations":{
+              "IsCardinallyRotatable": true
+            },
+            "RulesToMatch":[
+              {
+                "Position":{ "X":1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "West": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":-1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "East": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":0, "Y":0, "Z":1 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "North": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":0, "Y":0, "Z":-1 },
+                "IncludeOrExclude":"Exclude",
+                "FaceTags": {
+                  "South": ["FenceConnection"]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "Cross_Junction":{
+        "FaceTags": {
+          "East": ["FenceConnection"],
+          "West": ["FenceConnection"],
+          "South": ["FenceConnection"],
+          "North": ["FenceConnection"]
+        },
+        "PatternsToMatchAnyOf": [
+          {
+            "Type": "Custom",
+            "AllowedPatternTransformations":{
+              "IsCardinallyRotatable": true
+            },
+            "RulesToMatch":[
+              {
+                "Position":{ "X":1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "West": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":-1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "East": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":0, "Y":0, "Z":1 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "North": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":0, "Y":0, "Z":-1 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "South": ["FenceConnection"]
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Custom",
+            "AllowedPatternTransformations":{
+              "IsCardinallyRotatable": false
+            },
+            "TransformRulesToOrientation": true,
+            "RulesToMatch":[
+              {
+                "Position":{ "X":0, "Y":0, "Z":1 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "North": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":0, "Y":0, "Z":-1 },
+                "IncludeOrExclude":"Include",
+                "FaceTags": {
+                  "South": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Exclude",
+                "FaceTags": {
+                  "West": ["FenceConnection"]
+                }
+              },
+              {
+                "Position":{ "X":-1, "Y":0, "Z":0 },
+                "IncludeOrExclude":"Exclude",
+                "FaceTags": {
+                  "East": ["FenceConnection"]
+                }
+              }
+            ]
+          }
+        ]
+      }
+
+    }
+}

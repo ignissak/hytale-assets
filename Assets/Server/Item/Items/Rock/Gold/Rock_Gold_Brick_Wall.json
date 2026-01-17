@@ -1,0 +1,81 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Rock_Gold_Brick_Wall.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Gold_Brick_Wall.png",
+  "Set": "Rock_Gold_Brick",
+  "Recipe": {
+    "Input": [
+      {
+        "Quantity": 1,
+        "ResourceTypeId": "Rock_Gold_Brick"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Wall"
+        ]
+      }
+    ],
+    "OutputQuantity": 2,
+    "TimeSeconds": 0
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Structures/Walls/Wall_Gold_Brick.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Walls/Wall_Gold_Brick_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "HitboxType": "Fence_Thin",
+    "BlockParticleSetId": "Metal",
+    "BlockSoundSetId": "Metal",
+    "ParticleColor": "#feb03f",
+    "State": {
+      "Definitions": {
+        "Corner": {
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Structures/Walls/Wall_Gold_Brick_Texture.png",
+              "Weight": 1
+            }
+          ],
+          "CustomModel": "Blocks/Structures/Walls/Wall_Gold_Brick_Corner.blockymodel",
+          "HitboxType": "Fence_Corner_Thin",
+          "Gathering": {
+            "Breaking": {
+              "ItemId": "Rock_Gold_Brick_Wall",
+              "GatherType": "Rocks"
+            }
+          }
+        }
+      }
+    },
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Straight": "Rock_Gold_Brick_Wall",
+        "Corner": "*Rock_Gold_Brick_Wall_State_Definitions_Corner"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    }
+  },
+  "Tags": {
+    "Family": [
+      "Gold"
+    ],
+    "Type": [
+      "Rock"
+    ]
+  },
+  "Parent": "Rock_Stone_Brick_Wall"
+}

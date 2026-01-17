@@ -1,0 +1,907 @@
+{
+  "Type": "CombatActionEvaluator",
+  "TargetMemoryDuration": 10,
+  "CombatActionEvaluator": {
+    "RunConditions": [
+      {
+        "Type": "TimeSinceLastUsed",
+        "Curve": {
+          "ResponseCurve": "Linear",
+          "XRange": [
+            0,
+            10
+          ]
+        }
+      },
+      {
+        "Type": "Randomiser",
+        "MinValue": 0.9,
+        "MaxValue": 1
+      }
+    ],
+    "MinRunUtility": 0.5,
+    "MinActionUtility": 0.01,
+    "AvailableActions": {
+      "Default": {
+        "Type": "State",
+        "Description": "Change to the Default state",
+        "State": "Combat",
+        "SubState": "Default",
+        "PostExecuteDistanceRange": [
+          2.25,
+          2.25
+        ],
+        "Target": "Hostile",
+        "WeightCoefficient": 1.25,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "SwordBlock": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "AbilityType": "Secondary",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          5
+        ],
+        "PostExecuteDistanceRange": [
+          2.25,
+          2.25
+        ],
+        "Ability": "Shield_Block",
+        "SubState": "Default",
+        "ChargeFor": 1,
+        "WeightCoefficient": 1.25,
+        "InteractionVars": {
+          "Shield_Block_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Shield_Block_Damage",
+                "Failed": {
+                  "Type": "Simple",
+                  "Effects": {
+                    "Particles": [
+                      {
+                        "SystemId": "Explosion_Medium"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "RecentSustainedDamage",
+            "Curve": {
+              "ResponseCurve": "InverseExponential",
+              "XRange": [
+                0,
+                6
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.4,
+            "MaxValue": 0.8
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 2
+            }
+          }
+        ]
+      },
+      "SwordSignature": {
+        "Type": "Ability",
+        "Description": "Use signature attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "SubState": "Default",
+        "AttackDistanceRange": [
+          3,
+          4
+        ],
+        "PostExecuteDistanceRange": [
+          2.25,
+          2.25
+        ],
+        "Ability": {
+          "Interactions": [
+            {
+              "Type": "StatsCondition",
+              "Costs": {
+                "SignatureEnergy": 100
+              },
+              "ValueType": "Percent",
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": {
+                  "StatModifiers": {
+                    "SignatureEnergy": -100
+                  },
+                  "ValueType": "Percent"
+                },
+                "Next": "Sword_Spin_Right_Stab_Dash"
+              }
+            }
+          ]
+        },
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect2": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect2"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect3": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect3"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 8
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage2": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage2",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 8
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage3": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage3",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 16
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "OwnStatAbsolute",
+            "Stat": "SignatureEnergy",
+            "Curve": {
+              "Type": "Switch",
+              "InitialState": 0,
+              "FinalState": 1,
+              "SwitchPoint": 1
+            }
+          }
+        ]
+      },
+      "SwordCharged": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          5
+        ],
+        "PostExecuteDistanceRange": [
+          2.25,
+          2.25
+        ],
+        "Ability": {
+          "Interactions": [
+            {
+              "Type": "StatsCondition",
+              "Costs": {
+                "Stamina": 2.01
+              },
+              "Next": "Sword_Attack"
+            }
+          ]
+        },
+        "SubState": "Default",
+        "ChargeFor": 1.565,
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "Strafe": {
+        "Type": "State",
+        "Description": "Change to the strafe state",
+        "State": "Combat",
+        "SubState": "Strafe",
+        "PostExecuteDistanceRange": [
+          4,
+          9
+        ],
+        "Target": "Hostile",
+        "WeightCoefficient": 1.25,
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      },
+      "SwordStrafeBlock": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "AbilityType": "Secondary",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          9
+        ],
+        "PostExecuteDistanceRange": [
+          4,
+          9
+        ],
+        "Ability": "Shield_Block",
+        "SubState": "Default",
+        "ChargeFor": 1,
+        "WeightCoefficient": 1.25,
+        "InteractionVars": {
+          "Shield_Block_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Shield_Block_Damage",
+                "Failed": {
+                  "Type": "Simple",
+                  "Effects": {
+                    "Particles": [
+                      {
+                        "SystemId": "Explosion_Medium"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "RecentSustainedDamage",
+            "Curve": {
+              "ResponseCurve": "InverseExponential",
+              "XRange": [
+                0,
+                6
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.4,
+            "MaxValue": 0.8
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 2
+            }
+          }
+        ]
+      },
+      "SwordStrafeSignature": {
+        "Type": "Ability",
+        "Description": "Use signature attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "SubState": "Default",
+        "AttackDistanceRange": [
+          3,
+          4
+        ],
+        "PostExecuteDistanceRange": [
+          4,
+          9
+        ],
+        "Ability": {
+          "Interactions": [
+            {
+              "Type": "StatsCondition",
+              "Costs": {
+                "SignatureEnergy": 100
+              },
+              "ValueType": "Percent",
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": {
+                  "StatModifiers": {
+                    "SignatureEnergy": -100
+                  },
+                  "ValueType": "Percent"
+                },
+                "Next": "Sword_Spin_Right_Stab_Dash"
+              }
+            }
+          ]
+        },
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect2": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect2"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Effect3": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Effect3"
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 8
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage2": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage2",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 8
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          },
+          "Sword_Spin_Right_Stab_Dash_Damage3": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Spin_Right_Stab_Dash_Damage3",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 16
+                  },
+                  "Type": "Absolute"
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                  "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "OwnStatAbsolute",
+            "Stat": "SignatureEnergy",
+            "Curve": {
+              "Type": "Switch",
+              "InitialState": 0,
+              "FinalState": 1,
+              "SwitchPoint": 1
+            }
+          }
+        ]
+      },
+      "SwordStrafeCharged": {
+        "Type": "Ability",
+        "Description": "Use charge attack",
+        "Target": "Hostile",
+        "WeaponSlot": 0,
+        "AttackDistanceRange": [
+          4,
+          5
+        ],
+        "PostExecuteDistanceRange": [
+          4,
+          9
+        ],
+        "Ability": {
+          "Interactions": [
+            {
+              "Type": "StatsCondition",
+              "Costs": {
+                "Stamina": 2.01
+              },
+              "Next": "Sword_Attack"
+            }
+          ]
+        },
+        "SubState": "Default",
+        "ChargeFor": 1.565,
+        "InteractionVars": {
+          "Sword_Stab_Dash_Charged_Effect": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Effect",
+                "Effects": {
+                  "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                  "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                }
+              }
+            ]
+          },
+          "Sword_Stab_Dash_Charged_Damage": {
+            "Interactions": [
+              {
+                "Parent": "Sword_Stab_Dash_Charged_Damage",
+                "DamageCalculator": {
+                  "BaseDamage": {
+                    "Physical": 12
+                  },
+                  "Type": "Absolute",
+                  "RandomPercentageModifier": 0
+                },
+                "DamageEffects": {
+                  "WorldSoundEventId": "SFX_Sword_T2_Impact"
+                }
+              }
+            ]
+          }
+        },
+        "Conditions": [
+          {
+            "Type": "TargetDistance",
+            "Curve": {
+              "ResponseCurve": "SimpleDescendingLogistic",
+              "XRange": [
+                0,
+                10
+              ]
+            }
+          },
+          {
+            "Type": "Randomiser",
+            "MinValue": 0.9,
+            "MaxValue": 1
+          },
+          {
+            "Type": "TimeSinceLastUsed",
+            "Curve": {
+              "Type": "Switch",
+              "SwitchPoint": 10
+            }
+          }
+        ]
+      }
+    },
+    "ActionSets": {
+      "Default": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Sword_Attack"
+          ],
+          "InteractionVars": {
+            "Sword_Swing_Left_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Left_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 6
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 6
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 9
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "UseProjectedDistance": true,
+          "MaxRange": 3,
+          "Timeout": 0.001,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SwordCharged",
+          "SwordSignature",
+          "SwordBlock",
+          "Strafe"
+        ]
+      },
+      "Strafe": {
+        "BasicAttacks": {
+          "Attacks": [
+            "Sword_Attack"
+          ],
+          "InteractionVars": {
+            "Sword_Swing_Left_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Left_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Left_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 6
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Right_Fast_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Right_Fast_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 6
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Effect": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Effect",
+                  "Effects": {
+                    "WorldSoundEventId": "SFX_Light_Melee_T2_Swing",
+                    "LocalSoundEventId": "SFX_Sword_T2_Swing_LR_Local"
+                  }
+                }
+              ]
+            },
+            "Sword_Swing_Down_Strong_Damage": {
+              "Interactions": [
+                {
+                  "Parent": "Sword_Swing_Down_Strong_Damage",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 9
+                    },
+                    "RandomPercentageModifier": 0
+                  },
+                  "DamageEffects": {
+                    "WorldSoundEventId": "SFX_Sword_T2_Impact",
+                    "LocalSoundEventId": "SFX_Sword_T2_Impact"
+                  }
+                }
+              ]
+            }
+          },
+          "Randomise": false,
+          "UseProjectedDistance": true,
+          "MaxRange": 3,
+          "Timeout": 0.001,
+          "CooldownRange": [
+            0.001,
+            0.001
+          ]
+        },
+        "Actions": [
+          "SwordStrafeCharged",
+          "SwordStrafeSignature",
+          "SwordStrafeBlock",
+          "Default"
+        ]
+      }
+    }
+  }
+}

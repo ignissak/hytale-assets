@@ -1,0 +1,477 @@
+{
+  "Debug": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "DisableDamageGroups": [ "Self" ],
+  "Parameters": {
+    "Ranged": {
+      "Value": true,
+      "Description": "The on and off ranged"
+    },
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "StartState": "Attack",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 10,
+      "Gravity": 10,
+      "MaxFallSpeed": 15,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 360,
+      "ClimbSpeedMult": 0.125
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Attack"
+          },
+          "Instructions": [
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Default",
+                "$Comment": "Chase"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status"
+                    },
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    },
+                    {
+                      "Type": "Inventory",
+                      "UseTarget": false,
+                      "Operation": "Equip",
+                      "Item": "Weapon_Longsword_Copper"
+                    }
+                  ]
+                },
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "Eval",
+                        "Expression": "blocked"
+                      },
+                      "BodyMotion": {
+                        "Type": "Timer",
+                        "Time": [ 2, 3 ],
+                        "Motion": {
+                          "Type": "Wander",
+                          "MaxHeadingChange": 45,
+                          "RelativeSpeed": 0.61
+                        }
+                      }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Player",
+                        "Range": 15
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 2,
+                        "StopDistance": 2,
+                        "RelativeSpeed": 0.61
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Enabled": { "Compute": "Ranged" },
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Player",
+                      "Range": 15,
+                      "Filters": [
+                        {
+                          "Type": "HeightDifference",
+                          "HeightDifference": [ -2, 1 ]
+                        }
+                      ]
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Attack.Ranged"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 3.5,
+                    "Filters": [
+                      {
+                        "Type": "Combat",
+                        "Mode": "Melee"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Attack",
+                      "Attack": "Skeleton_Archer_Bow_Shoot"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Player",
+                        "Range": 3,
+                        "LockOnTarget": true,
+                        "Filters": [
+                          {
+                            "Type": "LineOfSight"
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "And",
+                        "Sensors": [
+                          {
+                            "Type": "Not",
+                            "Sensor": {
+                              "Type": "Target",
+                              "TargetSlot": "LockedTarget",
+                              "Filters": [
+                                {
+                                  "Type": "MovementState",
+                                  "State": "Running"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "Type": "Not",
+                            "Sensor": {
+                              "Type": "Target",
+                              "TargetSlot": "LockedTarget",
+                              "Filters": [
+                                {
+                                  "Type": "MovementState",
+                                  "State": "Jumping"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Attack.Melee"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Melee"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "Eval",
+                        "Expression": "blocked"
+                      },
+                      "BodyMotion": {
+                        "Type": "Timer",
+                        "Time": [ 2, 3 ],
+                        "Motion": {
+                          "Type": "Wander",
+                          "MaxHeadingChange": 45,
+                          "RelativeSpeed": 0.44
+                        }
+                      }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Player",
+                        "Range": 2
+                      },
+                      "HeadMotion": {
+                        "Type": "Watch"
+                      }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Player",
+                        "Range": 15
+                      },
+                      "BodyMotion": {
+                        "Type": "Seek",
+                        "SlowDownDistance": 2,
+                        "StopDistance": 2,
+                        "RelativeSpeed": 0.44
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Enabled": { "Compute": "Ranged" },
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Player",
+                      "Range": 15,
+                      "Filters": [
+                        {
+                          "Type": "HeightDifference",
+                          "HeightDifference": [ -2, 1 ]
+                        }
+                      ]
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Attack.Ranged"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 3.5,
+                    "Filters": [
+                      {
+                        "Type": "Combat",
+                        "Mode": "Melee"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Attack",
+                      "Attack": "Skeleton_Archer_Bow_Shoot"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "Player",
+                        "Range": 4,
+                        "LockOnTarget": true,
+                        "Filters": [
+                          {
+                            "Type": "LineOfSight"
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "Target",
+                        "TargetSlot": "LockedTarget",
+                        "Filters": [
+                          {
+                            "Type": "MovementState",
+                            "State": "Running"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Attack.Default"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "MinRange": 3,
+                    "LockOnTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "LineOfSight"
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Timeout",
+                      "Delay": [ 0.5, 0.5 ],
+                      "Action": {
+                        "Type": "State",
+                        "State": "Attack.Default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "State",
+                "State": ".Ranged"
+              },
+              "Instructions": [
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any",
+                    "Once": true
+                  },
+                  "Actions": [
+                    {
+                      "Type": "PlayAnimation",
+                      "Slot": "Status"
+                    },
+                    {
+                      "Type": "Crouch",
+                      "Crouch": false
+                    },
+                    {
+                      "Type": "Inventory",
+                      "UseTarget": false,
+                      "Operation": "ClearHeldItem"
+                    }
+                  ]
+                },
+                {
+                  "Continue": true,
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "Instructions": [
+                    {
+                      "Sensor": {
+                        "Type": "Eval",
+                        "Expression": "blocked"
+                      },
+                      "BodyMotion": {
+                        "Type": "Timer",
+                        "Time": [ 2, 3 ],
+                        "Motion": {
+                          "Type": "Wander",
+                          "MaxHeadingChange": 45,
+                          "RelativeSpeed": 0.61
+                        }
+                      }
+                    },
+                    {
+                      "Sensor": {
+                        "Type": "Player",
+                        "Range": 15,
+                        "Filters": [
+                          {
+                            "Type": "LineOfSight"
+                          }
+                        ]
+                      },
+                      "Actions": [
+                        {
+                          "Type": "Timeout",
+                          "Delay": [ 0.7, 1 ],
+                          "Action": {
+                            "Type": "Attack",
+                            "Attack": "NPC_Rubble_Throw"
+                          }
+                        }
+                      ],
+                      "HeadMotion": {
+                        "Type": "Aim"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Player",
+                      "Range": 15,
+                      "Filters": [
+                        {
+                          "Type": "LineOfSight"
+                        }
+                      ]
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Attack.Default"
+                    }
+                  ]
+                },
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "Filters": [
+                      {
+                        "Type": "HeightDifference",
+                        "HeightDifference": [ -2, 1 ]
+                      }
+                    ]
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Attack.Melee"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Component_Attack_Sequence.name"
+}

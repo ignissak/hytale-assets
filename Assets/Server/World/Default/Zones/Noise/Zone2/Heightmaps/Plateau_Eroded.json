@@ -1,0 +1,75 @@
+{
+  "Type": "MIN",
+  "Noise": [
+    {
+      "Type": "MAX",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Layered"
+        },
+        {
+          "Type": "DISTORTED",
+          "Noise": {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Zone2.Heightmaps.Plateau"
+              }
+            ],
+            "Normalize": [0.27, 0.32]
+          },
+          "Randomizer": {
+            "Generators": [
+              {
+                "Seed": "DrylandsErosion",
+                "NoiseType": "SIMPLEX",
+                "Octaves": 3,
+                "Persistence": 1.5,
+                "Scale": 0.0015,
+                "Amplitude": 100
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Type": "MAX",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Layered"
+            }
+          ],
+          "Normalize": [-0.5, 1]
+        },
+        {
+          "Type": "DISTORTED",
+          "Noise": {
+            "Type": "MIN",
+            "Noise": [
+              {
+                "File": "Zones.Noise.Zone2.Heightmaps.Plateau"
+              }
+            ],
+            "Normalize": [0.27, 0.32]
+          },
+          "Randomizer": {
+            "Generators": [
+              {
+                "Seed": "DrylandsErosion2",
+                "NoiseType": "SIMPLEX",
+                "Octaves": 3,
+                "Persistence": 1.5,
+                "Scale": 0.0015,
+                "Amplitude": 100
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Furniture_Frozen_Castle_Chest_Small.name"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Set": "Furniture_Frozen_Castle",
+  "Recipe": {
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Ice_Essence",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Rock_Ice",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Wood_Ice_Trunk",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Storage"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 6
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Ice",
+    "BlockSoundSetId": "Ice",
+    "CustomModel": "Blocks/Decorative_Sets/Frozen_Castle/Chest.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Decorative_Sets/Frozen_Castle/Chest_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks"
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeAssetId": "ChestConnectedBlockTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Default": "Furniture_Frozen_Castle_Chest_Small",
+        "Double": "Furniture_Frozen_Castle_Chest_Large"
+      }
+    },
+    "State": {
+      "Id": "container",
+      "Capacity": 18,
+      "Definitions": {
+        "CloseWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Close",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Close.blockyanim"
+        },
+        "OpenWindow": {
+          "InteractionSoundEventId": "SFX_Chest_Wooden_Open",
+          "CustomModelAnimation": "Blocks/Animations/Chest/Chest_Open.blockyanim"
+        }
+      }
+    },
+    "Supporting": {
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Primary": "Break_Container",
+      "Use": "Open_Container"
+    },
+    "HitboxType": "Chest_Small",
+    "ParticleColor": "#5bbaca"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fuel"
+    },
+    {
+      "Id": "Charcoal"
+    }
+  ],
+  "Tags": {
+    "Type": [
+      "Furniture"
+    ],
+    "Family": [
+      "Tavern"
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Furniture_Frozen_Castle_Chest_Small.png",
+  "IconProperties": {
+    "Scale": 0.5,
+    "Translation": [
+      0,
+      -13
+    ],
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "ItemLevel": 22,
+  "MaxStack": 10
+}

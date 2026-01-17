@@ -1,0 +1,177 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Plant_Cactus_Flat_1.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Plant_Cactus_Flat_1.png",
+  "Categories": [
+    "Blocks.Plants"
+  ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "Utility": {
+    "Compatible": true
+  },
+  "BlockType": {
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Foliage/Plants/CactusFlat1.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Foliage/Plants/CactusFlat1_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Material": "Solid",
+    "Flags": {},
+    "BlockEntity": {
+      "Components": {
+        "FarmingBlock": {}
+      }
+    },
+    "Farming": {
+      "Stages": {
+        "Default": [
+          {
+            "Block": "Plant_Cactus_Flat_1",
+            "Duration": {
+              "Min": 1000,
+              "Max": 1001
+            },
+            "Type": "BlockType"
+          },
+          {
+            "Type": "Spread",
+            "Executions": [
+              1,
+              1
+            ],
+            "SpreadDecayPercent": [
+              50,
+              50
+            ],
+            "GrowthBehaviours": [
+              {
+                "Type": "Directional",
+                "GrowthBlockTypes": [
+                  {
+                    "BlockType": "Plant_Cactus_Flat_1",
+                    "Weight": 45
+                  },
+                  {
+                    "BlockType": "Plant_Cactus_Flat_2",
+                    "Weight": 25
+                  },
+                  {
+                    "BlockType": "Plant_Cactus_Flat_3",
+                    "Weight": 10
+                  }
+                ],
+                "LocationConditions": [
+                  {
+                    "Type": "NeighbourBlockTags",
+                    "NeighbourBlock": "Below",
+                    "TagPattern": "CactusGrowth"
+                  }
+                ],
+                "Vertical": [
+                  1,
+                  1
+                ],
+                "VerticalDirection": "Upwards"
+              }
+            ],
+            "Duration": {
+              "Min": 1000,
+              "Max": 1001
+            }
+          },
+          {
+            "Type": "Spread",
+            "Executions": [
+              1,
+              1
+            ],
+            "SpreadDecayPercent": [
+              60,
+              60
+            ],
+            "GrowthBehaviours": [
+              {
+                "Type": "Directional",
+                "GrowthBlockTypes": [
+                  {
+                    "BlockType": "Plant_Cactus_Flat_1",
+                    "Weight": 1
+                  },
+                  {
+                    "BlockType": "Plant_Cactus_Flat_2",
+                    "Weight": 1
+                  },
+                  {
+                    "BlockType": "Plant_Cactus_Flat_3",
+                    "Weight": 1
+                  }
+                ],
+                "Horizontal": [
+                  1,
+                  2
+                ],
+                "LocationConditions": [
+                  {
+                    "Type": "NeighbourBlockTags",
+                    "NeighbourBlock": "Below",
+                    "TagPattern": "Soil_Or_Grass"
+                  }
+                ]
+              }
+            ],
+            "Duration": {
+              "Min": 1000,
+              "Max": 1001
+            }
+          }
+        ]
+      },
+      "StartingStageSet": "Default"
+    },
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Woods"
+      }
+    },
+    "BlockParticleSetId": "Dust",
+    "BlockSoundSetId": "Cactus_Small",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        },
+        {
+          "TagId": "SubType=Cactus_Flat"
+        }
+      ]
+    },
+    "ParticleColor": "#d9db8e",
+    "Interactions": {
+      "Collision": "Block_Damage"
+    },
+    "CustomModelScale": 1.0
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Plant"
+    ],
+    "Family": [
+      "Cactus",
+      "CactusGrowth"
+    ],
+    "SubType": [
+      "Cactus_Flat"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Items_Foliage"
+}

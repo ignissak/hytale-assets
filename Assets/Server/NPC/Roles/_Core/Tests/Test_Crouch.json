@@ -1,0 +1,99 @@
+{
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "HotbarItems": [ "Weapon_Shortbow_Crude" ],
+  "DisableDamageGroups": [ "Neutral" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Mob",
+            "GetNPCs": true,
+            "GetPlayers": true,
+            "Range": 30,
+            "LockOnTarget": true,
+            "AutoUnlockTarget": true,
+            "Filters": [
+              {
+                "Type": "LineOfSight"
+              }
+            ]
+          },
+          "HeadMotion": {
+            "Type": "Aim",
+            "Spread": 0,
+            "HitProbability": 1,
+            "Deflection": true
+          }
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Wander"
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Target"
+          },
+          "Actions": [
+            {
+              "Type": "Sequence",
+              "Actions": [
+                {
+                  "Type": "Crouch",
+                  "Crouch": false
+                },
+                {
+                  "Type": "Attack",
+                  "Attack": "Skeleton_Archer_Bow_Shoot",
+                  "BallisticMode": "Short",
+                  "AimingTimeRange": [ 3, 3 ],
+                  "LineOfSight": true,
+                  "AttackPauseRange": [ 1, 1 ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Crouch",
+              "Crouch": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Crouch.name"
+}

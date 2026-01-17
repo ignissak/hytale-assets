@@ -1,0 +1,1120 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "Type": "MAX",
+              "Noise": [
+                {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Seed": "Drylands-Canyon-Noise",
+                      "NoiseType": "SIMPLEX",
+                      "Octaves": 1,
+                      "Persistence": 0.8,
+                      "Scale": 0.0012
+                    },
+                    {
+                      "Seed": "Drylands-Canyon-Noise-3",
+                      "NoiseType": "SIMPLEX",
+                      "Octaves": 2,
+                      "Persistence": 0.3,
+                      "Scale": 0.02
+                    }
+                  ],
+                  "Factors": [
+                    0.95,
+                    0.05
+                  ],
+                  "Normalize": [
+                    0,
+                    0.45
+                  ]
+                }
+              ]
+            },
+            {
+              "Type": "MAX",
+              "Noise": [
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Type": "SUM",
+                    "Noise": [
+                      {
+                        "Type": "MIN",
+                        "Noise": [
+                          {
+                            "File": "Zones.Noise.Shared.Heightmaps.River"
+                          }
+                        ],
+                        "Formula": "INVERTED_RIDGED_FIX",
+                        "Normalize": [
+                          0.5,
+                          1
+                        ]
+                      },
+                      {
+                        "Seed": "Drylands-Canyon-Rougher",
+                        "NoiseType": "SIMPLEX",
+                        "FractalMode": "OLDSCHOOL",
+                        "Formula": "INVERTED",
+                        "Octaves": 3,
+                        "Persistence": 1,
+                        "Scale": 0.02
+                      }
+                    ],
+                    "Factors": [
+                      0.85,
+                      0.15
+                    ]
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Randomizer",
+                        "NoiseType": "SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.8,
+                        "Scale": 0.0014,
+                        "Amplitude": 70
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Type": "DISTORTED",
+                  "Noise": {
+                    "Seed": "Drylands-Biomes-Distrobution",
+                    "NoiseType": "CELL",
+                    "CellMode": "DISTANCE",
+                    "DistanceRange": [
+                      5,
+                      5
+                    ],
+                    "Scale": 0.0022
+                  },
+                  "Randomizer": {
+                    "Generators": [
+                      {
+                        "Seed": "Drylands-Base-Randomizer-1",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.5,
+                        "Scale": 0.009,
+                        "Amplitude": 40
+                      },
+                      {
+                        "Seed": "Drylands-Base-Randomizer-2",
+                        "NoiseType": "OLD_SIMPLEX",
+                        "Octaves": 3,
+                        "Persistence": 0.5,
+                        "Scale": 0.005,
+                        "Amplitude": 40
+                      }
+                    ]
+                  },
+                  "Normalize": [
+                    -0.4,
+                    0.75
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Type": "MULTIPLY",
+          "Noise": [
+            {
+              "Type": "DISTORTED",
+              "Noise": {
+                "Seed": "Drylands-Red-Pillars",
+                "NoiseType": "CELL",
+                "CellMode": "DISTANCE",
+                "Formula": "SQUARED",
+                "Scale": 0.04,
+                "Octaves": 2,
+                "Persistence": 0.2,
+                "DistanceRange": [
+                  0.2,
+                  4
+                ]
+              },
+              "Randomizer": {
+                "Generators": [
+                  {
+                    "Seed": "Drylands-Randomizer",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 2,
+                    "Persistence": 1,
+                    "Scale": 0.001,
+                    "Amplitude": 30
+                  },
+                  {
+                    "Seed": "Drylands-Canyon-Rougher",
+                    "NoiseType": "SIMPLEX",
+                    "FractalMode": "OLDSCHOOL",
+                    "Octaves": 3,
+                    "Persistence": 1,
+                    "Scale": 0.04,
+                    "Amplitude": 4
+                  }
+                ]
+              }
+            }
+          ],
+          "Normalize": [
+            0,
+            0.25
+          ]
+        }
+      ],
+      "Factors": [
+        0.93,
+        0.07
+      ],
+      "Threshold": [
+        0,
+        0.84
+      ]
+    },
+    "BiomeMask": [
+      "Desert_Red"
+    ],
+    "Priority": 4
+  },
+  "MapColor": "#e1ce99",
+  "Covers": [
+    {
+      "Type": [
+        {
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weights": [
+        100
+      ],
+      "Density": 1,
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Water.Water_Pools"
+          }
+        ],
+        "Threshold": [
+          0.86,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          171,
+          172
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Crop_Stamina2"
+      ],
+      "Density": 0.01,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Wheat_Small"
+          }
+        ],
+        "Threshold": [
+          0.6,
+          0.65
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          145,
+          155
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Flower_Bushy_Yellow"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.3,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.1,
+        "Threshold": [
+          0.695,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Sand_Red"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Cactus_Ball_1"
+      ],
+      "Weight": [
+        1
+      ],
+      "Density": 0.2,
+      "NoiseMask": {
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 3,
+        "Persistence": 0.5,
+        "Scale": 0.04,
+        "Threshold": [
+          0.75,
+          1
+        ]
+      },
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Sand_Red"
+      ]
+    },
+    {
+      "Type": [
+        "Plant_Grass_Arid"
+      ],
+      "Weight": [
+        100
+      ],
+      "Density": 0.08,
+      "HeightThreshold": {
+        "Positions": [
+          114,
+          115
+        ],
+        "Values": [
+          0,
+          1
+        ]
+      },
+      "Parent": [
+        "Soil_Dirt_Dry",
+        "Soil_Grass_Dry",
+        "Soil_Mud_Dry"
+      ]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Vertical_Sand_Red.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Cave_Entrance_Type1"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Diagonal_Sand_Red.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Cave_Entrance_Type2"
+        }
+      },
+      {
+        "Prefab": [
+          "Rock_Formations.Arches.Desert_Red.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Plateau_Red_Pillars"
+        }
+      },
+      {
+        "Prefab": [
+          "Trees.Gum.Stage_1.*"
+        ],
+        "Weight": [
+          100
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Desert_Plateau_Trees_Dry"
+        }
+      },
+      {
+        "Prefab": [
+          "Trees.Palm.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier2.PrefabPatterns.Canyon_Trees"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "NoiseMask": {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "Type": "INVERT",
+                  "Noise": {
+                    "Type": "DISTORTED",
+                    "Noise": {
+                      "Type": "SUM",
+                      "Noise": [
+                        {
+                          "Type": "MIN",
+                          "Noise": [
+                            {
+                              "File": "Zones.Noise.Shared.Heightmaps.River"
+                            }
+                          ],
+                          "Formula": "INVERTED_RIDGED_FIX",
+                          "Normalize": [
+                            0.5,
+                            1
+                          ]
+                        },
+                        {
+                          "Seed": "Drylands-Canyon-Rougher",
+                          "NoiseType": "SIMPLEX",
+                          "FractalMode": "OLDSCHOOL",
+                          "Formula": "INVERTED",
+                          "Octaves": 3,
+                          "Persistence": 1,
+                          "Scale": 0.02
+                        }
+                      ],
+                      "Factors": [
+                        0.85,
+                        0.15
+                      ]
+                    },
+                    "Randomizer": {
+                      "Generators": [
+                        {
+                          "Seed": "Drylands-Randomizer",
+                          "NoiseType": "SIMPLEX",
+                          "Octaves": 3,
+                          "Persistence": 0.8,
+                          "Scale": 0.0014,
+                          "Amplitude": 70
+                        }
+                      ]
+                    },
+                    "Normalize": 0.6
+                  }
+                },
+                {
+                  "Type": "MULTIPLY",
+                  "Noise": [
+                    {
+                      "Type": "DISTORTED",
+                      "Noise": {
+                        "Seed": "Drylands-Red-Pillars",
+                        "NoiseType": "CELL",
+                        "CellMode": "DISTANCE",
+                        "Formula": "SQUARED",
+                        "Scale": 0.04,
+                        "Octaves": 2,
+                        "Persistence": 0.2,
+                        "DistanceRange": [
+                          0.2,
+                          4
+                        ]
+                      },
+                      "Randomizer": {
+                        "Generators": [
+                          {
+                            "Seed": "Drylands-Randomizer",
+                            "NoiseType": "SIMPLEX",
+                            "Octaves": 2,
+                            "Persistence": 1,
+                            "Scale": 0.001,
+                            "Amplitude": 30
+                          },
+                          {
+                            "Seed": "Drylands-Canyon-Rougher",
+                            "NoiseType": "SIMPLEX",
+                            "FractalMode": "OLDSCHOOL",
+                            "Octaves": 3,
+                            "Persistence": 1,
+                            "Scale": 0.04,
+                            "Amplitude": 4
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "Normalize": [
+                    0,
+                    0.25
+                  ]
+                }
+              ]
+            },
+            {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "Type": "MAX",
+                  "Noise": [
+                    {
+                      "Type": "DISTORTED",
+                      "Noise": {
+                        "Type": "SUM",
+                        "Noise": [
+                          {
+                            "Type": "MIN",
+                            "Noise": [
+                              {
+                                "File": "Zones.Noise.Shared.Heightmaps.River"
+                              }
+                            ],
+                            "Formula": "INVERTED_RIDGED_FIX",
+                            "Normalize": [
+                              0.5,
+                              1
+                            ]
+                          },
+                          {
+                            "Seed": "Drylands-Canyon-Rougher",
+                            "NoiseType": "SIMPLEX",
+                            "FractalMode": "OLDSCHOOL",
+                            "Formula": "INVERTED",
+                            "Octaves": 3,
+                            "Persistence": 1,
+                            "Scale": 0.02
+                          }
+                        ],
+                        "Factors": [
+                          0.85,
+                          0.15
+                        ]
+                      },
+                      "Randomizer": {
+                        "Generators": [
+                          {
+                            "Seed": "Drylands-Randomizer",
+                            "NoiseType": "SIMPLEX",
+                            "Octaves": 3,
+                            "Persistence": 0.8,
+                            "Scale": 0.0014,
+                            "Amplitude": 70
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "Normalize": 0.83
+            }
+          ],
+          "Threshold": [
+            0.7,
+            1
+          ]
+        },
+        "Entries": [
+          {
+            "Blocks": [
+              "Soil_Grass_Dry",
+              "Soil_Dirt_Dry:2"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Plant_Grass_Sharp",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.2,
+                  "Scale": 0.03
+                },
+                {
+                  "Seed": "Patch",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.8,
+                  "Scale": 0.15
+                }
+              ],
+              "Factors": [
+                0.8,
+                0.2
+              ],
+              "Threshold": [
+                0,
+                0.3
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Dirt_Dry:2"
+            ],
+            "NoiseMask": {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Plant_Grass_Sharp",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.03
+                },
+                {
+                  "Seed": "Patch",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 2,
+                  "Persistence": 0.8,
+                  "Scale": 0.15
+                }
+              ],
+              "Factors": [
+                0.8,
+                0.2
+              ],
+              "Threshold": [
+                0,
+                0.33
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              "Soil_Gravel_Sand_Red:2"
+            ],
+            "NoiseMask": {
+              "Type": "MIN",
+              "Noise": [
+                {
+                  "File": "Zones.Noise.Zone2.Layers.Soil.Gravel_Red_Desert"
+                }
+              ],
+              "Threshold": [
+                0,
+                0.25
+              ]
+            }
+          },
+          {
+            "Blocks": [
+              {
+                "Type": "Soil_Sand_Red",
+                "Repeat": [
+                  2,
+                  5
+                ],
+                "RepeatNoise": {
+                  "Seed": "Grasslands-Layers-Ground",
+                  "NoiseType": "OLD_SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 0.5,
+                  "Scale": 0.08
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static_Desert_Red"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T2"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Noise": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "Seed": "Drylands-Canyon-Noise-3",
+          "NoiseType": "SIMPLEX",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.02,
+          "Normalize": [
+            -1,
+            1
+          ]
+        },
+        {
+          "Type": "SUM",
+          "Noise": [
+            {
+              "Seed": "Drylands-Canyon-Noise",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 1,
+              "Persistence": 0.8,
+              "Scale": 0.0012
+            },
+            {
+              "Seed": "Drylands-Canyon-Noise-3",
+              "NoiseType": "SIMPLEX",
+              "Octaves": 1,
+              "Persistence": 0.1,
+              "Scale": 0.02
+            }
+          ],
+          "Factors": [
+            0.96,
+            0.04
+          ],
+          "Normalize": [
+            0.14,
+            0.19
+          ]
+        }
+      ]
+    },
+    "Keys": [
+      0.2,
+      0.5,
+      0.51
+    ],
+    "Thresholds": [
+      {
+        "Positions": [
+          117,
+          118,
+          123,
+          125,
+          136,
+          140,
+          147,
+          150,
+          155,
+          158,
+          156,
+          172,
+          177
+        ],
+        "Values": [
+          1,
+          0.86,
+          0.82,
+          0.82,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          116,
+          117,
+          140,
+          150,
+          157,
+          185,
+          195,
+          205
+        ],
+        "Values": [
+          1,
+          0.83,
+          0.7,
+          0.63,
+          0.57,
+          0.35,
+          0.1,
+          0
+        ]
+      },
+      {
+        "Positions": [
+          116,
+          117,
+          140,
+          150,
+          157,
+          185,
+          195,
+          205
+        ],
+        "Values": [
+          1,
+          0.83,
+          0.7,
+          0.63,
+          0.57,
+          0.35,
+          0.1,
+          0
+        ]
+      }
+    ]
+  },
+  "HeightmapNoise": {
+    "Type": "SUM",
+    "Noise": [
+      {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "Type": "MAX",
+            "Noise": [
+              {
+                "Type": "DISTORTED",
+                "Noise": {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Type": "MIN",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Shared.Heightmaps.River"
+                        }
+                      ],
+                      "Formula": "INVERTED_RIDGED_FIX",
+                      "Normalize": [
+                        0.5,
+                        1
+                      ]
+                    },
+                    {
+                      "Seed": "Drylands-Canyon-Rougher",
+                      "NoiseType": "SIMPLEX",
+                      "FractalMode": "OLDSCHOOL",
+                      "Formula": "INVERTED",
+                      "Octaves": 3,
+                      "Persistence": 1,
+                      "Scale": 0.02
+                    }
+                  ],
+                  "Factors": [
+                    0.85,
+                    0.15
+                  ]
+                },
+                "Randomizer": {
+                  "Generators": [
+                    {
+                      "Seed": "Drylands-Randomizer",
+                      "NoiseType": "SIMPLEX",
+                      "Octaves": 3,
+                      "Persistence": 0.8,
+                      "Scale": 0.0014,
+                      "Amplitude": 70
+                    }
+                  ]
+                }
+              },
+              {
+                "Type": "SUM",
+                "Noise": [
+                  {
+                    "Seed": "Drylands-Canyon-Noise",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 1,
+                    "Persistence": 0.8,
+                    "Scale": 0.0012
+                  },
+                  {
+                    "Seed": "Drylands-Canyon-Noise-3",
+                    "NoiseType": "SIMPLEX",
+                    "Octaves": 2,
+                    "Persistence": 0.3,
+                    "Scale": 0.02
+                  }
+                ],
+                "Factors": [
+                  0.95,
+                  0.05
+                ],
+                "Normalize": [
+                  0,
+                  0.45
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "MAX",
+            "Noise": [
+              {
+                "Type": "DISTORTED",
+                "Noise": {
+                  "Type": "SUM",
+                  "Noise": [
+                    {
+                      "Type": "MIN",
+                      "Noise": [
+                        {
+                          "File": "Zones.Noise.Shared.Heightmaps.River"
+                        }
+                      ],
+                      "Formula": "INVERTED_RIDGED_FIX",
+                      "Normalize": [
+                        0.5,
+                        1
+                      ]
+                    },
+                    {
+                      "Seed": "Drylands-Canyon-Rougher",
+                      "NoiseType": "SIMPLEX",
+                      "FractalMode": "OLDSCHOOL",
+                      "Formula": "INVERTED",
+                      "Octaves": 3,
+                      "Persistence": 1,
+                      "Scale": 0.02
+                    }
+                  ],
+                  "Factors": [
+                    0.85,
+                    0.15
+                  ]
+                },
+                "Randomizer": {
+                  "Generators": [
+                    {
+                      "Seed": "Drylands-Randomizer",
+                      "NoiseType": "SIMPLEX",
+                      "Octaves": 3,
+                      "Persistence": 0.8,
+                      "Scale": 0.0014,
+                      "Amplitude": 70
+                    }
+                  ]
+                }
+              },
+              {
+                "Type": "DISTORTED",
+                "Noise": {
+                  "Seed": "Drylands-Biomes-Distrobution",
+                  "NoiseType": "CELL",
+                  "CellMode": "DISTANCE",
+                  "DistanceRange": [
+                    5,
+                    5
+                  ],
+                  "Scale": 0.0022
+                },
+                "Randomizer": {
+                  "Generators": [
+                    {
+                      "Seed": "Drylands-Base-Randomizer-1",
+                      "NoiseType": "OLD_SIMPLEX",
+                      "Octaves": 3,
+                      "Persistence": 0.5,
+                      "Scale": 0.009,
+                      "Amplitude": 40
+                    },
+                    {
+                      "Seed": "Drylands-Base-Randomizer-2",
+                      "NoiseType": "OLD_SIMPLEX",
+                      "Octaves": 3,
+                      "Persistence": 0.5,
+                      "Scale": 0.005,
+                      "Amplitude": 40
+                    }
+                  ]
+                },
+                "Normalize": [
+                  -0.4,
+                  0.75
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Type": "MULTIPLY",
+        "Noise": [
+          {
+            "Type": "DISTORTED",
+            "Noise": {
+              "Seed": "Drylands-Red-Pillars",
+              "NoiseType": "CELL",
+              "CellMode": "DISTANCE",
+              "Formula": "SQUARED",
+              "Scale": 0.04,
+              "Octaves": 2,
+              "Persistence": 0.2,
+              "DistanceRange": [
+                0.2,
+                4
+              ]
+            },
+            "Randomizer": {
+              "Generators": [
+                {
+                  "Seed": "Drylands-Randomizer",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 2,
+                  "Persistence": 1,
+                  "Scale": 0.001,
+                  "Amplitude": 30
+                },
+                {
+                  "Seed": "Drylands-Canyon-Rougher",
+                  "NoiseType": "SIMPLEX",
+                  "FractalMode": "OLDSCHOOL",
+                  "Octaves": 3,
+                  "Persistence": 1,
+                  "Scale": 0.04,
+                  "Amplitude": 4
+                }
+              ]
+            }
+          }
+        ],
+        "Normalize": [
+          0,
+          0.25
+        ]
+      }
+    ],
+    "Factors": [
+      0.93,
+      0.07
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": [
+        "da9137",
+        "d49837"
+      ],
+      "Weights": [
+        50,
+        50
+      ],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    },
+    "Entries": [
+      {
+        "Colors": [
+          "CFC06D"
+        ],
+        "NoiseMask": {
+          "Type": "MAX",
+          "Noise": [
+            {
+              "Type": "SUM",
+              "Noise": [
+                {
+                  "Seed": "Drylands-Canyon-Noise",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 1,
+                  "Persistence": 0.8,
+                  "Scale": 0.0012
+                },
+                {
+                  "Seed": "Drylands-Canyon-Noise-3",
+                  "NoiseType": "SIMPLEX",
+                  "Octaves": 2,
+                  "Persistence": 0.3,
+                  "Scale": 0.02
+                }
+              ],
+              "Factors": [
+                0.95,
+                0.05
+              ],
+              "Normalize": [
+                0,
+                0.45
+              ]
+            }
+          ],
+          "Threshold": [
+            0,
+            0.49
+          ]
+        }
+      }
+    ]
+  },
+  "Environment": {
+    "Default": {
+      "Names": [
+        "Env_Zone2_Plateaus"
+      ]
+    },
+    "Entries": []
+  }
+}

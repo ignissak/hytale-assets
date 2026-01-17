@@ -1,0 +1,58 @@
+{
+  "Type": "Generic",
+  "Appearance": "Bluegill",
+  "BreathesInAir": false,
+  "BreathesInWater": true,
+  "Debug": "PathFinder",
+  "MotionControllerList": [
+    {
+      "Type": "Dive",
+      "MaxSwimSpeed": 3,
+      "Acceleration": 3,
+      "MaxDiveSpeed": 8,
+      "SwimDepth": 0.6,
+      "SinkRatio": 0.5,
+      "MinDiveDepth": 0,
+      "MaxDiveDepth": 1000000000,
+      "MinDepthAboveGround": 1,
+      "MinDepthBelowSurface": 1,
+      "Gravity": 10,
+      "MaxRotationSpeed": 360,
+      "MaxSwimTurnAngle": 90
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 8,
+            "Filters": [
+              {
+                "Type": "ViewSector",
+                "ViewSector": 0
+              }
+            ]
+          },
+          "BodyMotion": {
+            "Type": "Flee",
+            "StopDistance": 10,
+            "SlowDownDistance": 6,
+            "Falloff": 3,
+            "Debug": ""
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Dive_Flee.name"
+}

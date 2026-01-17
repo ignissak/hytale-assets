@@ -1,0 +1,95 @@
+{
+  "$Comment": "DisplayState",
+  "Type": "Generic",
+  "Appearance": "PlayerTestModel_V",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5,
+            "LockOnTarget": true,
+            "AutoUnlockTarget": true
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "Target"
+              },
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Sensor": {
+                "Type": "Target",
+                "TargetSlot": "LockedTarget",
+                "Filters": [
+                  {
+                    "Type": "Inventory",
+                    "Items": [ "Weapon_Sword_Iron" ]
+                  }
+                ]
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Target"
+                  },
+                  "Actions": [
+                    {
+                      "Type": "Inventory",
+                      "UseTarget": false,
+                      "Operation": "Equip",
+                      "Item": "Weapon_Sword_Iron"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "UseTarget": true,
+                      "Operation": "Remove",
+                      "Item": "Weapon_Sword_Iron"
+                    },
+                    {
+                      "Type": "Inventory",
+                      "UseTarget": true,
+                      "Operation": "Equip",
+                      "Item": "Armor_Steel_Head"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "BodyMotion": {
+            "Type": "Nothing"
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Inventory_Actions.name"
+}

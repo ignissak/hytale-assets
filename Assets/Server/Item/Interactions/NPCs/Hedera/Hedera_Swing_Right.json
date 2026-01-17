@@ -1,0 +1,62 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Default",
+    "ItemAnimationId": "SwingRight",
+    "WorldSoundEventId": "SFX_Unarmed_Swing",
+    "LocalSoundEventId": "SFX_Player_Unarmed_Swing_Right"
+  },
+  "RunTime": 0.111,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.25,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToRight",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 2,
+              "StartDistance": 0.1,
+              "EndDistance": 2.8,
+              "Length": 90,
+              "RollOffset": -30,
+              "YawStartOffset": -45,
+              "PitchOffset": -20
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultOk": true,
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Hedera_Swing_Right_Damage"
+                    ]
+                  },
+                  "Var": "Swing_Right_Damage"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Block break delay",
+            "RunTime": 0,
+            "Next": "Block_Break"
+          }
+        ]
+      }
+    ]
+  }
+}

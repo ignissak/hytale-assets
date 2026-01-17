@@ -1,0 +1,47 @@
+{
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "$Comment": "Play the charging animation and fork based on time",
+        "Type": "Charging",
+        "DisplayProgress": false,
+        "Effects": {
+          "$Comment": "Charging while swinging and associated particles and sounds",
+          "ItemAnimationId": "SwingRightCharging",
+          "Particles": [
+            {
+              "PositionOffset": {
+                "X": 0.6,
+                "Y": 0,
+                "Z": 0
+              },
+              "RotationOffset": {
+                "Pitch": 0,
+                "Roll": 90,
+                "Yaw": 0
+              },
+              "TargetNodeName": "Handle",
+              "SystemId": "Mace_Charging"
+            }
+          ]
+        },
+        "AllowIndefiniteHold": false,
+        "Next": {
+          "0": {
+            "$Comment": "Charging interaction forks - consume the requisite stamina and begin the next interaction state",
+            "Type": "Serial",
+            "Interactions": [
+              "Mace_Swing_Right"
+            ]
+          },
+          "0.65": {
+            "$Comment": "Fully charged",
+            "Type": "Serial",
+            "Interactions": [
+              "Mace_Swing_Right_Charged"
+            ]
+          }
+        }
+      }
+    ]
+  }

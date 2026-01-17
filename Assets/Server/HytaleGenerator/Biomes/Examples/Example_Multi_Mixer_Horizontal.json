@@ -1,0 +1,238 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-3434,
+		"$y":	-3674
+	},
+	"Name":	"Hills",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-2623,
+			"$y":	-4779
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-2366,
+				"$y":	-4786
+			},
+			"Type":	"Max",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-1731,
+						"$y":	-4796
+					},
+					"Type":	"Sum",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-1061,
+								"$y":	-4809
+							},
+							"Type":	"Inverter",
+							"Skip":	false,
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-356,
+										"$y":	-4818
+									},
+									"Type":	"MultiMix",
+									"Inputs":	[{
+											"$Position":	{
+												"$x":	359,
+												"$y":	-7122
+											},
+											"Type":	"CellNoise2D",
+											"Skip":	false,
+											"ScaleX":	20,
+											"ScaleZ":	20,
+											"Jitter":	0.3,
+											"CellType":	"Distance2Div",
+											"Octaves":	1,
+											"Seed":	"A",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	359,
+												"$y":	-6674
+											},
+											"Type":	"CellNoise2D",
+											"Skip":	false,
+											"ScaleX":	40,
+											"ScaleZ":	40,
+											"Jitter":	0.3,
+											"CellType":	"Distance2Div",
+											"Octaves":	1,
+											"Seed":	"A",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	340,
+												"$y":	-6237
+											},
+											"Type":	"CellNoise2D",
+											"Skip":	false,
+											"ScaleX":	80,
+											"ScaleZ":	80,
+											"Jitter":	0.3,
+											"CellType":	"Distance2Div",
+											"Octaves":	1,
+											"Seed":	"A",
+											"CacheSize":	16
+										}, {
+											"$Position":	{
+												"$x":	343,
+												"$y":	-5663
+											},
+											"Type":	"SimplexNoise2D",
+											"Skip":	false,
+											"Lacunarity":	2,
+											"Persistence":	0.5,
+											"Octaves":	1,
+											"Scale":	300,
+											"Seed":	"A",
+											"CacheSize":	16
+										}],
+									"Keys":	[{
+											"$Position":	{
+												"$x":	327,
+												"$y":	-5103
+											},
+											"Value":	-1,
+											"DensityIndex":	0
+										}, {
+											"$Position":	{
+												"$x":	326,
+												"$y":	-4952
+											},
+											"Value":	0,
+											"DensityIndex":	1
+										}, {
+											"$Position":	{
+												"$x":	333,
+												"$y":	-4791
+											},
+											"Value":	1,
+											"DensityIndex":	2
+										}]
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-1070,
+								"$y":	-4618
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	-417,
+									"$y":	-4343
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	190,
+											"$y":	-4549
+										},
+										"In":	100,
+										"Out":	1
+									}, {
+										"$Position":	{
+											"$x":	190,
+											"$y":	-4357
+										},
+										"In":	120,
+										"Out":	-0.4
+									}, {
+										"$Position":	{
+											"$x":	187,
+											"$y":	-4200
+										},
+										"In":	121,
+										"Out":	-1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-409,
+										"$y":	-4625
+									},
+									"Type":	"BaseHeight",
+									"Skip":	false,
+									"BaseHeightName":	"Base",
+									"Distance":	true
+								}]
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-2526,
+			"$y":	-3225
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-1849,
+				"$y":	-3421
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	-1221,
+						"$y":	-3407
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-597,
+							"$y":	-3395
+						},
+						"Solid":	"Soil_Dirt"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Position":	{
+				"$x":	-1854,
+				"$y":	-3232
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Comment":	"REQUIRED",
+					"$Position":	{
+						"$x":	-1208,
+						"$y":	-3209
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-576,
+							"$y":	-3190
+						},
+						"Solid":	"EmptySoil_Dirt"
+					}
+				}]
+		}
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[{
+			"$Position":	{
+				"$x":	-1644.1875,
+				"$y":	-24301.8125
+			},
+			"$width":	6836.0625,
+			"$height":	8446.875,
+			"$name":	"Terrain"
+		}, {
+			"$Position":	{
+				"$x":	-1754.6875,
+				"$y":	-7019.1875
+			},
+			"$width":	2750.625,
+			"$height":	3189.5,
+			"$name":	"Base"
+		}]
+}

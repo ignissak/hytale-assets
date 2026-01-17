@@ -1,0 +1,94 @@
+{
+  "Class": "Instruction",
+  "DefaultState": ".Other",
+  "TestType": "Normal",
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Other"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 3 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".A"
+                }
+              },
+              {
+                "Once": true,
+                "Type": "Appearance",
+                "Appearance": "Chicken"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".A"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 3 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".B"
+                }
+              },
+              {
+                "Once": true,
+                "Type": "Appearance",
+                "Appearance": "Sheep"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".B"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Any"
+            },
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": [ 3, 3 ],
+                "Action": {
+                  "Type": "State",
+                  "State": ".Other"
+                }
+              },
+              {
+                "Once": true,
+                "Type": "Appearance",
+                "Appearance": "PlayerTestModel_V"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

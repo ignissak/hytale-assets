@@ -1,0 +1,44 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "TestType": "Normal",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "EntityEvent",
+            "Range": 10,
+            "EventType": "Damage",
+            "NPCGroup": "Tests",
+            "SearchType": "PlayerFirst"
+          },
+          "BodyMotion": {
+            "Type": "Seek",
+            "SlowDownDistance": 2,
+            "StopDistance": 1
+          }
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Entity_Damage_Event.name"
+}

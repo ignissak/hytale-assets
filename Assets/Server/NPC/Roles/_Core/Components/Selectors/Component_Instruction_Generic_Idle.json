@@ -1,0 +1,90 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Idle",
+  "Parameters": {
+    "_ImportStates": [ "Alerted", "Search", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "ViewSector": {
+      "Value": 180,
+      "Description": "View sector"
+    },
+    "HearingRange": {
+      "Value": 8,
+      "Description": "Hearing range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "MotionComponent": {
+      "Value": "$Null",
+      "Description": "The component to use for motion"
+    },
+    "SearchedForAttitudes": {
+      "Value": [ "Hostile" ],
+      "Description": "The attitudes towards entities to pay attention to around them"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Reference": "Component_Instruction_Damage_Check",
+        "Modify": {
+          "_ExportStates": [ "Chase", "Search" ],
+          "AlertedRange": { "Compute": "AlertedRange" }
+        }
+      },
+      {
+        "Reference": { "Compute": "MotionComponent" },
+        "Interfaces": [ "Hytale.Instruction.Intelligent.Idle.Motion" ],
+        "Nullable": true
+      },
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "Player",
+              "Range": 2,
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            {
+              "Reference": "Component_Sensor_Sight_By_Attitude",
+              "Modify": {
+                "ViewRange": { "Compute": "ViewRange" },
+                "ViewSector": { "Compute": "ViewSector" },
+                "Attitudes": { "Compute": "SearchedForAttitudes" }
+              }
+            },
+            {
+              "Reference": "Component_Sensor_Sound_By_Attitude",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "ThroughWalls": false,
+                "Attitudes": { "Compute": "SearchedForAttitudes" }
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Alerted"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

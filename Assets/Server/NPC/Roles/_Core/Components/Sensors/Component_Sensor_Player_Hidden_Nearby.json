@@ -1,0 +1,71 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "CanHear": {
+      "Value": true,
+      "Description": "Whether or not this NPC detects by sound"
+    },
+    "CanSee": {
+      "Value": true,
+      "Description": "Whether or not this NPC detects by sight"
+    },
+    "IntuitionRange": {
+      "Value": 20,
+      "Description": "The distance within which the NPC still 'knows' of the player's presence"
+    },
+    "HearingRange": {
+      "Value": 10,
+      "Description": "The range from which the player can be heard"
+    },
+    "ViewRange": {
+      "Value": 10,
+      "Description": "The range from which the player can be seen"
+    },
+    "ViewSector": {
+      "Value": 120,
+      "Description": "The viewsector within which the player can be seen"
+    }
+  },
+  "Content": {
+    "Type": "And",
+    "Sensors": [
+      {
+        "Type": "Player",
+        "Range": { "Compute": "IntuitionRange" },
+        "AutoUnlockTarget": true,
+        "OnlyLockedTarget": true
+      },
+      {
+        "Type": "Not",
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Enabled": { "Compute": "CanSee" },
+              "Type": "Player",
+              "Range": { "Compute": "ViewRange" },
+              "LockOnTarget": true,
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                },
+                {
+                  "Type": "ViewSector",
+                  "ViewSector": { "Compute": "ViewSector" }
+                }
+              ]
+            },
+            {
+              "Reference": "Component_Sensor_Sound",
+              "Modify": {
+                "HearingRange": { "Compute": "HearingRange" },
+                "Enabled": { "Compute": "CanHear" }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

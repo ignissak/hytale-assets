@@ -1,0 +1,127 @@
+{
+  "DefaultSubState": "Start",
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": "Ore_Gold"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Gold"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": "Grass"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Grass"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": "Soil"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Soil"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": "Rock"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Rock"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Self",
+            "Filters": [
+              {
+                "Type": "StandingOnBlock",
+                "BlockSet": "Leaves"
+              }
+            ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "Leaves"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Standing_On_Block_Sensor.name"
+}

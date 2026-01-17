@@ -1,0 +1,72 @@
+{
+  "Type": "Generic",
+  "Appearance": "Mannequin",
+  "DisableDamageGroups": [ "Self" ],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 6,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10,
+      "MaxRotationSpeed": 360,
+      "ClimbSpeedMult": 0.125
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Flag",
+            "Name": "Switch",
+            "Set": true
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 5 ]
+                },
+                {
+                  "Type": "DisplayName",
+                  "DisplayName": "Delay Over"
+                }
+              ]
+            },
+            {
+              "Actions": [
+                {
+                  "Type": "SetFlag",
+                  "Name": "Switch",
+                  "SetTo": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Actions": [
+            {
+              "Type": "SetFlag",
+              "Name": "Switch",
+              "SetTo": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Inactive_Delay.name"
+}

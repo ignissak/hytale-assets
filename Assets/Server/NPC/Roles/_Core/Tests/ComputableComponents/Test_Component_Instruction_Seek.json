@@ -1,0 +1,28 @@
+{
+  "Class": "Instruction",
+  "TestType": "Normal",
+  "Interface": "Hytale.Test.Component.Seek",
+  "Parameters": {
+    "Range": {
+      "Value": 1,
+      "Description": "The desired range"
+    },
+    "RelativeSpeed": {
+      "Value": 0.5,
+      "Description": "The desired relative speed"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Player",
+      "Range": { "Compute": "Range" }
+    },
+    "BodyMotion": {
+      "Type": "Seek",
+      "SlowDownDistance": 3,
+      "StopDistance": 1,
+      "RelativeSpeed": { "Compute": "RelativeSpeed" }
+    }
+  },
+  "Type": "Component"
+}

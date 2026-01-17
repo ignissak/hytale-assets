@@ -1,0 +1,206 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Deco_Tankard.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Deco_Tankard.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Root_Mug_Fill"
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Wood_Hardwood_Planks",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Misc"
+        ]
+      }
+    ]
+  },
+  "Consumable": true,
+  "Utility": {
+    "Compatible": true
+  },
+  "State": {
+    "Filled_Water": {
+      "Variant":  true,
+      "TranslationProperties": {
+        "Name": "server.items.Deco_Tankard_Water.name"
+      },
+      "Recipe": null,
+      "Consumable": true,
+      "MaxDurability": 3,
+      "MaxStack": 1,
+      "BlockType": {
+        "$TODO": "Parent: Container_Crude_Mug",
+        "CustomModelTexture": [
+          {
+            "Texture": "Blocks/Miscellaneous/Tankard_Texture_Water.png",
+            "Weight": 1
+          }
+        ],
+        "$Comment": "FOLLOWING PROPERTIES DUPLICATED BECAUSE OF SERVER BUG",
+        "DrawType": "Model",
+        "Opacity": "Transparent",
+        "CustomModel": "Blocks/Miscellaneous/Tankard.blockymodel",
+        "CustomModelScale": 1.5,
+        "HitboxType": "Plant_Small",
+        "Flags": {
+          "IsStackable": false
+        },
+        "RandomRotation": "YawStep1",
+        "BlockSoundSetId": "Wood",
+        "Gathering": {
+          "Harvest": {},
+          "Soft": {}
+        }
+      },
+      "IconProperties": {
+        "Scale": 1.3,
+        "Rotation": [
+          22.5,
+          24.0,
+          22.5
+        ],
+        "Translation": [
+          0.305,
+          -6.895
+        ]
+      },
+      "Icon": "Icons/ItemsGenerated/Deco_Tankard_Water.png",
+      "Interactions": {
+        "Secondary": "Root_Secondary_Consume_Drink"
+      },
+      "InteractionVars": {
+        "Effect": {
+          "Interactions": [
+            {
+              "Type": "ApplyEffect",
+              "EffectId": "Food_Health_Restore_Small"
+            }
+          ]
+        },
+        "ConsumeSFX": {
+          "Interactions": [
+            {
+              "Parent": "Consume_SFX",
+              "Effects": {
+                "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+              }
+            }
+          ]
+        },
+        "ConsumedSFX": {
+          "Interactions": [
+            {
+              "Parent": "Consume_SFX",
+              "Effects": {
+                "LocalSoundEventId": "SFX_WATER_MoveOut"
+              }
+            }
+          ]
+        },
+        "DurabilityModify": {
+          "Interactions": [
+            {
+              "Type": "ModifyInventory",
+              "AdjustHeldItemDurability": -1,
+              "BrokenItem": "Deco_Tankard"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "BlockType": {
+    "RandomRotation": "YawStep1",
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Miscellaneous/Tankard.blockymodel",
+    "CustomModelScale": 1.5,
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Miscellaneous/Tankard_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Wood",
+    "HitboxType": "Plant_Small",
+    "VariantRotation": "Wall",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "East": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "West": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    }
+  },
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
+  "IconProperties": {
+    "Scale": 1.3,
+    "Rotation": [
+      20.0,
+      302.0,
+      340.0
+    ],
+    "Translation": [
+      2.0,
+      -6.0
+    ]
+  },
+  "Scale": 1,
+  "Tags": {
+    "Type": [
+      "Deco"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

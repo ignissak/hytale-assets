@@ -1,0 +1,26 @@
+{
+  "Type": "BlockCondition",
+  "Matchers": [
+    {
+      "Block": {
+        "Id": "Soil_Dirt_Tilled"
+      },
+      "Face": "Up"
+    },
+    {
+      "Block": {
+        "Tag": "SubType=Planter"
+      },
+      "Face": "Up"
+    }
+  ],
+  "Next": {
+    "Type": "Replace",
+    "Var": "SeedId",
+    "DefaultValue": {
+      "Interactions": [
+        "Seed_Place"
+      ]
+    }
+  }
+}

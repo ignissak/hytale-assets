@@ -1,0 +1,58 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Eye_Void_Default",
+    "ItemAnimationId": "Summon"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.25,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.333,
+            "Selector": {
+              "Id": "AOECircle",
+              "Range": 5
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "NPC_Attack_Melee_Damage"
+                    ]
+                  },
+                  "Var": "Melee_Damage"
+                }
+              ]
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.334
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "$Comment": "Length of Effect",
+            "RunTime": 0.167,
+            "Effects": {
+              "WorldSoundEventId": "SFX_Eye_Void_Attack_Summon"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

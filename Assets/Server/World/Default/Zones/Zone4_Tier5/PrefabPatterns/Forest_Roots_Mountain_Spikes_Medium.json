@@ -1,0 +1,44 @@
+{
+  "GridGenerator": {
+		"Seed": "Forest_Burned_Trees",
+    "Density": [0.41, 0.54],
+    "Scale": 0.065,
+    "Jitter": 0.5
+  },
+    "NoiseMask": {
+      "Type": "SUM",
+      "Noise": [
+        {
+    		  "Seed": "Firelands-Base",
+    		  "NoiseType": "SIMPLEX",
+    		  "Formula": "INVERTED",
+    		  "Octaves": 3,
+    		  "Persistence": 0.4,
+    		  "Scale": 0.001
+        },
+        {
+					"Seed": "Firelands-Hills",
+					"NoiseType": "SIMPLEX",
+    		  "Formula": "INVERTED",
+					"Octaves": 4,
+					"Persistence": 0.3,
+					"Scale": 0.008
+        },
+        {
+          "Seed": "4554845555",
+          "NoiseType": "DISTANCE",
+          "Distance2Mode": "DIV",
+          "Formula": "INVERTED_SQUARED",
+          "Octaves": 2,
+          "Persistence": 0.3,
+          "Scale": 0.008
+        }
+      ],
+      "Factors": [0.75, 0.15, 0.1],
+    "Threshold": [0.23, 0.4]
+  	},
+  "HeightThreshold": {
+    "Positions": [165, 170, 195, 200],
+    "Values": [0, 1, 1, 0]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Shortbow_Combat.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Common",
+  "ItemLevel": 10,
+  "Model": "Items/Weapons/Bow/Iron.blockymodel",
+  "Texture": "Items/Weapons/Bow/Iron_Texture.png",
+  "Icon": "Icons/ItemsGenerated/Weapon_Bow_Iron.png",
+  "PlayerAnimationsId": "Bow",
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -26,
+      -38
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Interactions": {
+    "Primary": "Bow_Combat_Shoot_Charging",
+    "Secondary": "Daggers_Bash",
+    "Ability1": "Bow_Combat_Trishot"
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Bow"
+    ]
+  },
+  "Weapon": {
+    "EntityStatsToClear": [
+      "SignatureEnergy"
+    ],
+    "StatModifiers": {
+      "SignatureEnergy": [
+        {
+          "Amount": 10,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "ItemAppearanceConditions": {
+    "SignatureEnergy": [
+      {
+        "Condition": [
+          100.0,
+          100
+        ],
+        "ConditionValueType": "Percent",
+        "Particles": [
+          {
+            "SystemId": "Daggers_Signature_Ready",
+            "TargetNodeName": "L-Attachment",
+            "TargetEntityPart": "PrimaryItem"
+          }
+        ],
+        "ModelVFXId": "Sword_Signature_Status"
+      }
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

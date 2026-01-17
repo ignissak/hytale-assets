@@ -1,0 +1,53 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "$Interaction" ]
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Not",
+          "Sensor": {
+            "$Comment": "Check the negative first so we can exit early and avoid the rest of the logic",
+            "Type": "CanInteract",
+            "ViewSector": 90
+          }
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": false
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "SetInteractable",
+            "Interactable": true
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "HasInteracted"
+        },
+        "Actions": [
+          {
+            "Type": "LockOnInteractionTarget"
+          },
+          {
+            "Type": "ParentState",
+            "State": "$Interaction"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

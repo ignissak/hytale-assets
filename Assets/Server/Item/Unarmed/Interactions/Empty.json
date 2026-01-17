@@ -1,0 +1,95 @@
+{
+  "Interactions": {
+    "Wielding": "Double_Jump",
+    "Primary": {
+      "Settings": {
+        "Adventure": {
+          "Cooldown": {
+            "Id": "BlockInteraction",
+            "Cooldown": 0.35
+          }
+        },
+        "Creative": {
+          "AllowSkipChainOnClick": true,
+          "Cooldown": {
+            "Id": "BlockInteraction_Creative",
+            "Cooldown": 0.35,
+            "ClickBypass": true
+          }
+        }
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Next": {
+            "Type": "UseBlock",
+            "Failed": "Unarmed_Attack"
+          }
+        }
+      ]
+    },
+    "Use": {
+      "Settings": {
+        "Adventure": {
+          "Cooldown": {
+            "Id": "BlockInteraction",
+            "Cooldown": 0.35
+          }
+        },
+        "Creative": {
+          "Cooldown": {
+            "Id": "BlockInteraction_Creative",
+            "Cooldown": 0.35,
+            "ClickBypass": true
+          }
+        }
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "ItemAnimationId": "Interact"
+          },
+          "Next": {
+            "Type": "UseBlock",
+            "Failed": {
+              "Type": "UseEntity",
+              "Failed": {
+                "Type": "BreakBlock",
+                "Harvest": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Pick": {
+      "Settings": {
+        "Adventure": {
+          "Cooldown": {
+            "Id": "BlockInteraction",
+            "Cooldown": 0.35
+          }
+        },
+        "Creative": {
+          "Cooldown": {
+            "Id": "BlockInteraction_Creative",
+            "Cooldown": 0.35,
+            "ClickBypass": true
+          }
+        }
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "ItemAnimationId": "Interact"
+          },
+          "Next": {
+            "Type": "PickBlock"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "Model": "Bomb_Fire_Goblin",
+  "SpawnRotationOffset": {
+    "Pitch": 10.0,
+    "Yaw": 1,
+    "Roll": 15
+  },
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 20,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityRoll",
+    "BounceLimit": 0.2,
+    "Bounciness": 1,
+    "BounceCount": 3,
+    "AllowRolling": true,
+    "RollingFrictionFactor": 1,
+    "SticksVertically": false
+  },
+  "LaunchForce": 20,
+  "SpawnOffset": {
+    "X": 0.3,
+    "Y": 0.1,
+    "Z": 0.0
+  },
+  "Interactions": {
+    "ProjectileSpawn": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 2
+        },
+        "Goblin_Lobber_Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Goblin_Lobber_Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Rules": {
+        "Interrupting": [
+          "ProjectileSpawn"
+        ]
+      },
+      "Interactions": [
+        "Goblin_Lobber_Bomb_Explode",
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileBounce": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Goblin_Lobber_Bomb_Bounce",
+            "LocalSoundEventId": "SFX_Goblin_Lobber_Bomb_Bounce"
+          }
+        }
+      ]
+    }
+  }
+}

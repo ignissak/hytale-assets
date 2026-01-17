@@ -1,0 +1,56 @@
+{
+  "Type": "Selector",
+  "$Comment": "Length of Combat",
+  "RunTime": 0.05,
+  "Selector": {
+    "Id": "Horizontal",
+    "Direction": "ToRight",
+    "TestLineOfSight": false,
+    "ExtendTop": 1,
+    "ExtendBottom": 1,
+    "StartDistance": 0.1,
+    "EndDistance": 3,
+    "Length": 60,
+    "RollOffset": 0,
+    "YawStartOffset": -30
+  },
+  "Effects": {
+    "WorldSoundEventId": "SFX_Unarmed_Swing"
+  },
+  "HitBlock": {
+    "Interactions": [
+      "Block_Break_Adventure"
+    ]
+  },
+  "HitEntity": {
+    "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Guard_Shove_Hit",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              "Common_Guard_Shove_Hit"
+            ]
+          }
+        }
+    ]
+  },
+  "Next": {
+    "Type": "ApplyEffect",
+    "EffectId": "Stamina_Broken_Immune",
+    "Next": {
+      "Type": "ChangeStat",
+      "StatModifiers": {
+        "Stamina": -2
+      },
+      "Next": {
+        "Type": "ChangeStat",
+        "Behaviour": "Set",
+        "StatModifiers": {
+          "StaminaRegenDelay": -1.5
+        }
+      }
+    }
+  }
+}

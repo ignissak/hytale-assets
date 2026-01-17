@@ -1,0 +1,324 @@
+{
+  "CustomBiomeGenerator": {
+    "NoiseMask": {
+      "Type": "MIN",
+      "Noise": [
+        {
+          "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+        }
+      ],
+ "Threshold": [0, 0.99]
+    },
+    "BiomeMask": ["Savannah_Rock"],
+    "Priority": 3
+  },
+  "MapColor": "#c1b98b",
+  "Covers": [
+    {
+      "Type": [
+        {
+          "Fluid": "Water_Source"
+        }
+      ],
+      "Weights": [100],
+      "Density": 1,
+      "Offset": -1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Water.Water_Pools"
+          }
+        ],
+        "Threshold": [0.86, 1]
+      },
+      "HeightThreshold": {
+        "Positions": [171, 172],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Cactus_Ball_1"],
+      "Weight": [1],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Cacti.Cacti_Ball_Patches"
+          }
+        ],
+        "Threshold": [0.775, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Crop_Stamina1"],
+      "Density": 0.003,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone1.Covers.Crops.Wheat_Small"
+          }
+        ],
+        "Threshold": [0.6, 0.65]
+      },
+      "HeightThreshold": {
+        "Positions": [145, 150],
+        "Values": [0, 1]
+      }
+    },
+    {
+      "Type": ["Plant_Fern_Arid"],
+      "Weight": [1],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Fern.Fern_Arid_Patches"
+          }
+        ],
+        "Threshold": [0.75, 1]
+      }
+    },
+    {
+      "Type": ["Rubble_Sandstone", "Rubble_Sandstone_Medium"],
+      "Weight": [0.7, 0.3],
+      "Density": 0.05,
+      "NoiseMask": {
+        "Type": "MIN",
+        "Noise": [
+          {
+            "File": "Zones.Noise.Zone2.Covers.Rubble.Sandstone_Plateau"
+          }
+        ],
+        "Threshold": [0.7, 1]
+      }
+    },
+    {
+      "Type": [
+        "Plant_Grass_Arid_Short",
+        "Plant_Grass_Arid",
+        "Plant_Grass_Arid_Tall",
+        "Rubble_Sandstone"
+      ],
+      "Weight": [0.32, 0.32, 0.3, 0.06],
+      "Density": 0.03,
+      "Parent": ["Soil_Grass_Dry"]
+    },
+    {
+      "$Comment": "This cover places rubble around Boulders",
+      "Type": ["Rubble_Sandstone", "Rubble_Sandstone_Medium"],
+      "Weight": [80, 20],
+      "Density": 0.005,
+      "NoiseMask": {
+        "Seed": "Drylands-Plateau-Clusters",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": 1.0,
+        "Formula": "NORMAL",
+        "Density": [0, 0.2],
+        "Scale": 0.011,
+        "Jitter": 0.9,
+        "Threshold": [0, 0.23]
+      }
+    },
+    {
+      "Type": ["Plant_Flower_Bushy_Red"],
+      "Density": 0.015,
+      "NoiseMask": {
+        "Seed": "Drylands-Patterns-Cactus",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": 1.0,
+        "Formula": "NORMAL",
+        "Density": 0.4,
+        "Scale": 0.15,
+        "Jitter": 0.6,
+        "Threshold": [0, 0.2]
+      },
+      "HeightThreshold": {
+        "Positions": [114, 115],
+        "Values": [0, 1]
+      },
+      "Parent": ["Soil_Dirt_Dry"]
+    },
+    {
+      "$Comment": "This cover places Plants at the base of Savannah trees",
+      "Type": [
+        "Plant_Bush_Arid",
+        "Plant_Grass_Arid_Tall",
+        "Plant_Grass_Dry_Tall"
+      ],
+      "Weight": [0.08, 0.4, 0.3],
+      "Density": 0.1,
+      "NoiseMask": {
+        "Seed": "Drylands-Plateau-Savannah",
+        "NoiseType": "CELL",
+        "CellMode": "DISTANCE",
+        "DistanceRange": 1.0,
+        "Formula": "NORMAL",
+        "Density": 0.06,
+        "Scale": 0.056,
+        "Jitter": 1,
+        "Threshold": [0, 0.23]
+      },
+      "Parent": ["Soil_Dirt_Dry", "Soil_Grass_Dry"]
+    }
+  ],
+  "Prefabs": {
+    "Entries": [
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Vertical_Savannah.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Cave_Entrance_Type1"
+        }
+      },
+      {
+        "Prefab": [
+          "Cave.Nodes.Rock_Sandstone.Surface_Entry.Diagonal_Savannah.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Cave_Entrance_Type2"
+        }
+      },
+      {
+        "Weight": [95, 5],
+        "Prefab": [
+          "Rock_Formations.Rocks.Sandstone.Small.*",
+          "Rock_Formations.Rocks.Sandstone.Savannah.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Rock_Cactus_Boulders"
+        }
+      },
+      {
+        "Weight": [100],
+        "Prefab": ["Rock_Formations.Arches.Savannah.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Rock_Cactus_Pillars"
+        }
+      },
+      {
+        "Weight": [5, 60, 35],
+        "Prefab": [
+          "Trees.Boab.Stage_0.*",
+          "Trees.Boab.Stage_1.*",
+          "Trees.Boab.Stage_2.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Boab"
+        }
+      },
+      {
+        "Prefab": ["Trees.Dry.Stage_1.*", "Trees.Dry.Stage_2.*"],
+        "Weight": [65, 35],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Plateau_Trees_Dry"
+        }
+      },
+      {
+        "Weight": [100],
+        "Prefab": ["Plants.Bush.Arid.*"],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Rock_Bush"
+        }
+      },
+      {
+        "Weight": [1, 3, 2, 3, 1, 2],
+        "Prefab": [
+          "Plants.Cacti.Full.Stage_0.*",
+          "Plants.Cacti.Full.Stage_1.*",
+          "Plants.Cacti.Full.Stage_2.*",
+          "Plants.Cacti.Full.Stage_3.*",
+          "Plants.Cacti.Flat.Stage_0.*",
+          "Plants.Cacti.Flat.Stage_1.*"
+        ],
+        "Pattern": {
+          "File": "Zones.Zone2_Tier1.PrefabPatterns.Savannah_Rock_Cactus"
+        }
+      }
+    ]
+  },
+  "Layers": {
+    "Default": "Rock_Sandstone",
+    "Dynamic": [
+      {
+        "NoiseMask": {
+          "Type": "MIN",
+          "Noise": [
+            {
+              "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+            }
+          ],
+          "Gradient": {
+            "Mode": "MAGNITUDE",
+            "Distance": 2.0,
+            "Normalize": 0.1
+          },
+          "Threshold": [0, 0.1]
+        },
+        "Entries": [
+          {
+            "Blocks": ["Soil_Grass_Dry", "Soil_Dirt_Dry:2"]
+          }
+        ]
+      }
+    ],
+    "Static": [
+      {
+        "File": "Zones.Layers.Zone2.Static_Savannah"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Static"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Volcanic"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Bedrock"
+      },
+      {
+        "File": "Zones.Layers.Zone2.Cave_Environments_Shallow"
+      },
+      {
+        "File": "Zones.Layers.Environments_Volcanic.Cave_Environments_Volcanic_T1"
+      }
+    ]
+  },
+  "TerrainHeightThreshold": {
+    "Positions": [114, 210],
+    "Values": [1, 0]
+  },
+  "HeightmapNoise": {
+    "Type": "MIN",
+    "Noise": [
+      {
+        "File": "Zones.Noise.Zone2.Heightmaps.Plateau_Heightmap"
+      }
+    ]
+  },
+  "Tint": {
+    "Default": {
+      "Colors": ["ddc965", "e6ce69"],
+      "Weights": [0.5, 0.5],
+      "Noise": {
+        "Seed": "Plant_Grass_Sharp",
+        "NoiseType": "OLD_SIMPLEX",
+        "FractalMode": "OLDSCHOOL",
+        "Octaves": 5,
+        "Persistence": 0.6,
+        "Scale": 0.015
+      }
+    }
+  },
+  "Environment": {
+    "Default": {
+      "Names": ["Env_Zone2_Plateaus"]
+    },
+    "Entries": []
+  }
+}

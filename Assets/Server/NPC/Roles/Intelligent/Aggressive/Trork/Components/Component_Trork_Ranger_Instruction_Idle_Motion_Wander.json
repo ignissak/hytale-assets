@@ -1,0 +1,66 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Intelligent.Idle.Motion",
+  "Content": {
+    "Continue": true,
+    "Sensor": {
+      "Type": "Any"
+    },
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Spread_Out",
+        "Modify": {
+          "Range": 2,
+          "RelativeSpeed": 0.45
+        }
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "BodyMotion": {
+          "Type": "Sequence",
+          "Motions": [
+            {
+              "Type": "Timer",
+              "Time": [ 3, 6 ],
+              "Motion": {
+                "Type": "Wander",
+                "MaxHeadingChange": 1,
+                "RelativeSpeed": 0.35,
+                "MinWalkTime": 2,
+                "RelaxedMoveConstraints": false
+              }
+            },
+            {
+              "Type": "Sequence",
+              "Looped": true,
+              "Motions": [
+                {
+                  "Type": "Timer",
+                  "Time": [ 2, 4 ],
+                  "Motion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 100,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.35,
+                    "MinWalkTime": 1,
+                    "RelaxedMoveConstraints": false
+                  }
+                },
+                {
+                  "Type": "Timer",
+                  "Time": [ 1, 2 ],
+                  "Motion": {
+                    "Type": "Nothing"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,64 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Target", "NoTarget" ],
+    "EventRange": {
+      "Value": 15,
+      "Description": "Up to how far away the damaged ally can be"
+    },
+    "EventGroup": {
+      "Value": "Deer",
+      "Description": "The NPCGroup this component cares about being damaged"
+    },
+    "FlockOnly": {
+      "Value": false,
+      "Description": "Whether this component only cares if the damaged individual is in the same flock as the NPC"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "EntityEvent",
+      "Range": { "Compute": "EventRange" },
+      "EventType": "Damage",
+      "NPCGroup": { "Compute": "EventGroup" },
+      "SearchType": "PlayerFirst",
+      "FlockOnly": { "Compute": "FlockOnly" }
+    },
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "AlertedRange" },
+          "AutoUnlockTarget": true,
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "Target"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Any"
+        },
+        "Actions": [
+          {
+            "Type": "ParentState",
+            "State": "NoTarget"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

@@ -1,0 +1,26 @@
+{
+  "$Comment": "See Mace_Pummel for implementation",
+  "Type": "StatsCondition",
+  "Costs": {
+    "Stamina": 1.51
+  },
+  "Next": {
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "StaminaRegenDelay": -1
+        },
+        "Behaviour": "Set"
+      },
+      {
+        "Type": "ChangeStat",
+        "StatModifiers": {
+          "Stamina": -1.5
+        }
+      }
+    ]
+  },
+  "Failed": "Stamina_Bar_Flash"
+}

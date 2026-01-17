@@ -1,0 +1,56 @@
+{
+  "Type": "Variant",
+  "Reference": "Wolf_Black",
+  "Modify": {
+    "Appearance": "Wolf_White",
+    "MaxHealth": 103,
+    "FlockArray": [
+      "Wolf_White"
+    ],
+    "HardLeashDistance": 100,
+    "MemoriesNameOverride": "Wolf_White",
+    "_InteractionVars": {
+      "Melee_Start": {
+        "Interactions": [
+          {
+            "Parent": "Wolf_Bite",
+            "$Comment": "Sets animations and delay before hit",
+            "Effects": {
+              "ItemPlayerAnimationsId": "Wolf_Black_Default",
+              "ItemAnimationId": "Bite"
+            },
+            "RunTime": 0.167
+          }
+        ]
+      },
+      "Bite_Damage": {
+        "Interactions": [
+          {
+            "Parent": "Wolf_Bite_Damage",
+            "DamageCalculator": {
+              "Type": "Absolute",
+              "BaseDamage": {
+                "Physical": 27
+              },
+              "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "server.npcRoles.Wolf_White.name",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}

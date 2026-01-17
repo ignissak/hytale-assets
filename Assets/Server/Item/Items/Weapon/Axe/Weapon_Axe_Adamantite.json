@@ -1,0 +1,156 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Axe_Adamantite.name"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Rare",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Axe/Adamantite.blockymodel",
+  "Texture": "Items/Weapons/Axe/Adamantite_Texture.png",
+  "Recipe": {
+    "TimeSeconds": 4.5,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Adamantite",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Leather_Heavy",
+        "Quantity": 4
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Categories": [
+          "Weapon_Axe"
+        ],
+        "Id": "Weapon_Bench",
+        "RequiredTierLevel": 3
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Axe",
+  "Utility": {
+    "Compatible": true
+  },
+  "Interactions": {
+    "Primary": "Axe_Attack"
+  },
+  "InteractionVars": {
+    "Axe_Swing_Down_Left_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Down_Left_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Down_Left_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 52
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Up_Right_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Up_Right_Damage",
+          "DamageCalculator": {
+            "Type": "Absolute",
+            "BaseDamage": {
+              "Physical": 52
+            },
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Impact"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Weapon_Charge_Swing"
+          }
+        }
+      ]
+    },
+    "Axe_Swing_Left_Charged_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Axe_Swing_Left_Charged_Damage",
+          "DamageCalculator": {
+            "BaseDamage": {
+              "Physical": 104
+            },
+            "Type": "Absolute",
+            "RandomPercentageModifier": 0.2
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Axe_Special_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.4,
+    "Translation": [
+      -30,
+      -30
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Axe_Adamantite.png",
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 150,
+  "DurabilityLossOnHit": 0.56,
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Axe"
+    ]
+  },
+  "Weapon": {},
+  "ItemSoundSetId": "ISS_Weapons_Blunt_Small"
+}

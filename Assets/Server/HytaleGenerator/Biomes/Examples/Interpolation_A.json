@@ -1,0 +1,271 @@
+{
+	"$Title":	"[ROOT] Biome",
+	"$Position":	{
+		"$x":	-4228,
+		"$y":	-4226
+	},
+	"Name":	"Interpolation_A",
+	"Terrain":	{
+		"$Position":	{
+			"$x":	-3806,
+			"$y":	-5663
+		},
+		"Type":	"DAOTerrain",
+		"Density":	{
+			"$Position":	{
+				"$x":	-3575,
+				"$y":	-5686
+			},
+			"Type":	"Sum",
+			"Skip":	false,
+			"Inputs":	[{
+					"$Position":	{
+						"$x":	-2963,
+						"$y":	-5937
+					},
+					"Type":	"Multiplier",
+					"Skip":	false,
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-2251,
+								"$y":	-6116
+							},
+							"Type":	"CurveMapper",
+							"Skip":	false,
+							"Curve":	{
+								"$Position":	{
+									"$x":	-1605,
+									"$y":	-6097
+								},
+								"Type":	"Manual",
+								"Points":	[{
+										"$Position":	{
+											"$x":	-953,
+											"$y":	-6308
+										},
+										"In":	0,
+										"Out":	0
+									}, {
+										"$Position":	{
+											"$x":	-955,
+											"$y":	-6026
+										},
+										"In":	32,
+										"Out":	1
+									}]
+							},
+							"Inputs":	[{
+									"$Position":	{
+										"$x":	-1616,
+										"$y":	-6359
+									},
+									"Type":	"DistanceToBiomeEdge",
+									"Skip":	false
+								}]
+						}, {
+							"$Position":	{
+								"$x":	-2263,
+								"$y":	-5865
+							},
+							"Type":	"SimplexNoise2D",
+							"Skip":	false,
+							"Lacunarity":	2,
+							"Persistence":	0.5,
+							"Octaves":	1,
+							"Scale":	20,
+							"Seed":	"A"
+						}]
+				}, {
+					"$Position":	{
+						"$x":	-3089,
+						"$y":	-4991
+					},
+					"Type":	"CurveMapper",
+					"Skip":	false,
+					"Curve":	{
+						"$Position":	{
+							"$x":	-2442,
+							"$y":	-4943
+						},
+						"Type":	"Manual",
+						"Points":	[{
+								"$Position":	{
+									"$x":	-1795,
+									"$y":	-5173
+								},
+								"In":	100,
+								"Out":	1
+							}, {
+								"$Position":	{
+									"$x":	-1794,
+									"$y":	-4819
+								},
+								"In":	140,
+								"Out":	-1
+							}]
+					},
+					"Inputs":	[{
+							"$Position":	{
+								"$x":	-2477,
+								"$y":	-5201
+							},
+							"Type":	"YValue",
+							"Skip":	false
+						}]
+				}]
+		}
+	},
+	"MaterialProvider":	{
+		"$Position":	{
+			"$x":	-3132,
+			"$y":	-4137
+		},
+		"Type":	"Solidity",
+		"Solid":	{
+			"$Position":	{
+				"$x":	-2333,
+				"$y":	-4105
+			},
+			"Type":	"Queue",
+			"Queue":	[{
+					"$Position":	{
+						"$x":	352,
+						"$y":	-5382
+					},
+					"Type":	"SimpleHorizontal",
+					"TopY":	320,
+					"BottomY":	0,
+					"Material":	{
+						"$Position":	{
+							"$x":	974,
+							"$y":	-5379
+						},
+						"Type":	"SpaceAndDepth",
+						"LayerContext":	"DEPTH_INTO_FLOOR",
+						"MaxExpectedDepth":	3,
+						"Layers":	[{
+								"$Position":	{
+									"$x":	1614,
+									"$y":	-5307
+								},
+								"Type":	"ConstantThickness",
+								"Thickness":	3,
+								"Material":	{
+									"$Position":	{
+										"$x":	2047,
+										"$y":	-5323
+									},
+									"Type":	"FieldFunction",
+									"FieldFunction":	{
+										"$Position":	{
+											"$x":	2742,
+											"$y":	-5697
+										},
+										"Type":	"CurveMapper",
+										"Skip":	false,
+										"Curve":	{
+											"$Position":	{
+												"$x":	3356,
+												"$y":	-5551
+											},
+											"Type":	"Manual",
+											"Points":	[{
+													"$Position":	{
+														"$x":	3974,
+														"$y":	-5711
+													},
+													"In":	0,
+													"Out":	-1
+												}, {
+													"$Position":	{
+														"$x":	3979,
+														"$y":	-5542
+													},
+													"In":	48,
+													"Out":	2
+												}]
+										},
+										"Inputs":	[{
+												"$Position":	{
+													"$x":	3356,
+													"$y":	-5708
+												},
+												"Type":	"DistanceToBiomeEdge",
+												"Skip":	false
+											}]
+									},
+									"Delimiters":	[{
+											"$Position":	{
+												"$x":	2713,
+												"$y":	-5238
+											},
+											"From":	0,
+											"To":	100,
+											"Material":	{
+												"$Position":	{
+													"$x":	3126,
+													"$y":	-5242
+												},
+												"Type":	"Constant",
+												"Material":	{
+													"$Position":	{
+														"$x":	3742,
+														"$y":	-5239
+													},
+													"Solid":	"Soil_Dirt"
+												}
+											}
+										}]
+								}
+							}]
+					}
+				}, {
+					"$Position":	{
+						"$x":	-1419,
+						"$y":	-3908
+					},
+					"Type":	"Constant",
+					"Material":	{
+						"$Position":	{
+							"$x":	-776,
+							"$y":	-3916
+						},
+						"Solid":	"Rock_Stone"
+					}
+				}]
+		},
+		"Empty":	{
+			"$Comment":	"REQUIRED",
+			"$Position":	{
+				"$x":	-2330,
+				"$y":	-3812
+			},
+			"Type":	"Constant",
+			"Material":	{
+				"$Position":	{
+					"$x":	-1634,
+					"$y":	-3783
+				},
+				"Solid":	"Empty"
+			}
+		}
+	},
+	"EnvironmentProvider":	{
+		"$Position":	{
+			"$x":	-3315,
+			"$y":	-3714
+		},
+		"Type":	"Constant",
+		"Environment":	"Zone1_Overground"
+	},
+	"TintProvider":	{
+		"$Position":	{
+			"$x":	-3283,
+			"$y":	-3483
+		},
+		"Type":	"Constant",
+		"Color":	"#5b9e28"
+	},
+	"$WorkspaceID":	"HytaleGenerator - Biome",
+	"$Groups":	[]
+}

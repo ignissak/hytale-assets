@@ -1,0 +1,85 @@
+{
+  "Model": "Ice_Bolt",
+  "LaunchForce": 50,
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 3,
+    "TerminalVelocityAir": 55,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.0,
+    "SticksVertically": true
+  },
+  "LaunchWorldSoundEventId": "SFX_Staff_Ice_Shoot",
+  "Interactions": {
+    "ProjectileHit": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Parent": "DamageEntityParent",
+          "DamageCalculator": {
+            "Class": "Charged",
+            "BaseDamage": {
+              "Ice": 5
+            }
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 1,
+                "Z": -3
+              },
+              "Force": 8,
+              "VelocityType": "Add"
+            },
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Ice"
+              }
+            ],
+            "WorldSoundEventId": "SFX_Ice_Break"
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    },
+    "ProjectileMiss": {
+      "Cooldown": {
+        "Cooldown": 0
+      },
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0,
+          "Effects": {
+            "WorldSoundEventId": "SFX_Ice_Break",
+            "WorldParticles": [
+              {
+                "SystemId": "Impact_Ice"
+              }
+            ]
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

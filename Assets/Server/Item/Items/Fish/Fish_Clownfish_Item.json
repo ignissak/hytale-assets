@@ -1,0 +1,88 @@
+{
+  "Parent": "Template_Fish_Item",
+  "Quality": "Rare",
+  "TranslationProperties": {
+    "Name": "server.npcRoles.Clownfish.name"
+  },
+  "Model": "NPC/Swimming_Critter/Clownfish/Models/Model.blockymodel",
+  "Texture": "NPC/Swimming_Critter/Clownfish/Models/Texture.png",
+  "Animation": "NPC/Swimming_Wildlife/Bluegill/Animations/Swim/Swim.blockyanim",
+  "Icon": "Icons/ItemsGenerated/Fish_Clownfish_Item.png",
+  "IconProperties": {
+    "Scale": 0.8,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      3,
+      -9
+    ]
+  },
+  "InteractionVars": {
+    "SpawnNPC_Entity": {
+      "Interactions": [
+        {
+          "Parent": "SpawnNPC_Entity_Default",
+          "EntityId": "Clownfish",
+          "SpawnOffset": {
+            "X": 0,
+            "Y": 1,
+            "Z": 0
+          },
+          "Effects": {
+            "WorldSoundEventId": "SFX_Water_MoveOut"
+          }
+        }
+      ]
+    }
+  },
+  "State": {
+    "Epic": {
+      "Variant":  true,
+      "Quality": "Epic",
+      "ItemEntity": {
+        "ParticleSystemId": "Drop_Epic"
+      },
+      "ResourceTypes": [
+        {
+          "Id": "Fish",
+          "Quantity": 1
+        },
+        {
+          "Id": "Fish_Rare"
+        }
+      ]
+    },
+    "Legendary": {
+      "Variant":  true,
+      "Quality": "Legendary",
+      "ItemEntity": {
+        "ParticleSystemId": "Drop_Legendary"
+      },
+      "ResourceTypes": [
+        {
+          "Id": "Fish",
+          "Quantity": 1
+        },
+        {
+          "Id": "Fish_Legendary"
+        }
+      ]
+    }
+  },
+  "ItemEntity": {
+    "ParticleSystemId": "Drop_Rare"
+  },
+  "ResourceTypes": [
+    {
+      "Id": "Fish",
+      "Quantity": 1
+    },
+    {
+      "Id": "Fish_Rare",
+      "Quantity": 1
+    }
+  ]
+}

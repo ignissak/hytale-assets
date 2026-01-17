@@ -1,0 +1,97 @@
+{
+  "Type": "Generic",
+  "Debug": "DisplayState",
+  "Appearance": "Crow",
+  "TestType": "Normal",
+  "StartState": "High",
+  "MotionControllerList": [
+    {
+      "Type": "Fly",
+      "MaxHorizontalSpeed": 12,
+      "MaxSinkSpeed": 12,
+      "MaxClimbSpeed": 8,
+      "MaxClimbAngle": 45,
+      "MinAirSpeed": 4,
+      "Acceleration": 5,
+      "MinHeightOverGround": 15,
+      "MaxHeightOverGround": 20,
+      "MaxRollAngle": 80,
+      "MaxTurnSpeed": 180,
+      "DesiredAltitudeWeight": 1
+    }
+  ],
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "High"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "BodyMotion": {
+                "Type": "WanderInCircle"
+              }
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 10, 10 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "Low"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Low"
+          },
+          "Instructions": [
+            {
+              "Continue": true,
+              "Actions": [
+                {
+                  "Type": "OverrideAltitude",
+                  "DesiredAltitudeRange": [ 2, 4 ]
+                }
+              ],
+              "BodyMotion": {
+                "Type": "WanderInCircle"
+              }
+            },
+            {
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 10, 10 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "High"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Bird_Override_Altitude.name"
+}

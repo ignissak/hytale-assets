@@ -1,0 +1,74 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Goblin.Panic",
+  "Parameters": {
+    "_ImportStates": [ "Idle" ]
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Reference": "Component_Instruction_Clear_Status_Animation"
+      },
+      {
+        "Continue": true,
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": [ 5, 8 ]
+          },
+          {
+            "Type": "ParentState",
+            "State": "Idle"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Eval",
+          "Expression": "blocked"
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status",
+            "Animation": "PlugEars"
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Target",
+              "Range": 8,
+              "TargetSlot": "LockedTarget"
+            },
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "Eval",
+                "Expression": "blocked"
+              }
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "PlayAnimation",
+            "Slot": "Status"
+          }
+        ],
+        "BodyMotion": {
+          "Type": "Flee",
+          "SlowDownDistance": 6,
+          "StopDistance": 8,
+          "RelativeSpeed": 1
+        }
+      }
+    ]
+  },
+  "Type": "Component"
+}

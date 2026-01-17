@@ -1,0 +1,99 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "Hostile", "Neutral", "Friendly", "Revered" ],
+    "SwitchTime": {
+      "Value": [ 1, 1 ],
+      "Description": "Delay before switching state"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "Attitude",
+              "Attitudes": [ "Hostile" ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "SwitchTime" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Hostile"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "Attitude",
+              "Attitudes": [ "Neutral" ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "SwitchTime" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Neutral"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "Attitude",
+              "Attitudes": [ "Friendly" ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "SwitchTime" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Friendly"
+            }
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "Attitude",
+              "Attitudes": [ "Revered" ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "SwitchTime" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "Revered"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

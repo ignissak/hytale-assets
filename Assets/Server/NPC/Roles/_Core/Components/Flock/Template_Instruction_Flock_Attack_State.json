@@ -1,0 +1,111 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "BeaconAttackMessage": {
+      "Value": "FlockPreyAttack",
+      "Description": "The message to send as a beacon to other flock members"
+    },
+    "GetAwayRange": {
+      "Value": 12,
+      "Description": "How far an NPC we're attacking has to be in order for us to give up and go to the get away state."
+    },
+    "GetAwayState": {
+      "Value": "Idle",
+      "Description": "The state to change to when an NPC we're attacking is dead or outside the range"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "Type": "Not",
+              "Sensor": {
+                "Type": "Target"
+              }
+            },
+            {
+              "Type": "Or",
+              "Sensors": [
+                {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "And",
+                    "Sensors": [
+                      {
+                        "Type": "FlockLeader"
+                      },
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Flock",
+                            "Size": [ 10, 2000 ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Type": "Not",
+                  "Sensor": {
+                    "Type": "Mob",
+                    "GetPlayers": true,
+                    "Range": { "Compute": "GetAwayRange" },
+                    "ExcludeOwnType": false,
+                    "OnlyLockedTarget": true,
+                    "Filters": [
+                      {
+                        "Type": "NPCGroup",
+                        "IncludeGroups": [ "FlockPrey" ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "FlockState",
+            "State": { "Compute": "GetAwayState" }
+          }
+        ]
+      },
+      {
+        "Continue": true,
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "FlockLeader"
+            },
+            {
+              "Type": "Self",
+              "Filters": [
+                {
+                  "Type": "Flock",
+                  "FlockStatus": "Leader",
+                  "Size": [ 10, 2000 ]
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "FlockBeacon",
+            "Message": { "Compute": "BeaconAttackMessage" },
+            "ExpirationTime": 3,
+            "SendTargetSlot": "LockedTarget"
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

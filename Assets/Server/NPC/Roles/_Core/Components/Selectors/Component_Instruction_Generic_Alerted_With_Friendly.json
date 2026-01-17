@@ -1,0 +1,120 @@
+{
+  "Class": "Instruction",
+  "Interface": "Hytale.Instruction.Generic.Alerted",
+  "DefaultState": ".Evaluate",
+  "Parameters": {
+    "_ImportStates": [ "Greet", "Search", "Idle", "Chase" ],
+    "ViewRange": {
+      "Value": 15,
+      "Description": "View range"
+    },
+    "AlertedRange": {
+      "Value": 30,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+    },
+    "WaitTime": {
+      "Value": [ 2, 3 ],
+      "Description": "Delay before moving to the next state"
+    }
+  },
+  "Content": {
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Evaluate"
+        },
+        "Instructions": [
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Filters": [
+                {
+                  "Type": "Attitude",
+                  "Attitudes": [ "Friendly" ]
+                }
+              ]
+            },
+            "Actions": [
+              {
+                "Type": "ParentState",
+                "State": "Greet"
+              }
+            ]
+          },
+          {
+            "Actions": [
+              {
+                "Type": "State",
+                "State": ".Default"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Sensor": {
+          "Type": "State",
+          "State": ".Default"
+        },
+        "Instructions": [
+          {
+            "Continue": true,
+            "Sensor": {
+              "Type": "Any",
+              "Once": true
+            },
+            "Actions": [
+              {
+                "Type": "PlayAnimation",
+                "Slot": "Status",
+                "Animation": "Alerted"
+              }
+            ]
+          },
+          {
+            "Reference": "Component_Instruction_Damage_Check",
+            "Modify": {
+              "_ExportStates": [ "Chase", "Search" ],
+              "AlertedRange": { "Compute": "AlertedRange" }
+            }
+          },
+          {
+            "Sensor": {
+              "Type": "Target",
+              "Range": { "Compute": "ViewRange" },
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            },
+            "ActionsBlocking": true,
+            "Actions": [
+              {
+                "Type": "Timeout",
+                "Delay": { "Compute": "WaitTime" }
+              },
+              {
+                "Type": "ParentState",
+                "State": "Chase"
+              }
+            ],
+            "HeadMotion": {
+              "Type": "Watch"
+            }
+          },
+          {
+            "Actions": [
+              {
+                "Type": "ParentState",
+                "State": "Idle"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

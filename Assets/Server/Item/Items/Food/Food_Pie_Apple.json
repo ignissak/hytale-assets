@@ -1,0 +1,70 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Food_Pie_Apple.name",
+    "Description": "server.items.Food_Pie_Apple.description"
+  },
+  "Parent": "Template_Food",
+  "Interactions": {
+    "Secondary": "Root_Secondary_Consume_Food_T3"
+  },
+  "Quality": "Rare",
+  "Icon": "Icons/ItemsGenerated/Food_Pie_Apple.png",
+  "BlockType": {
+    "Material": "Empty",
+    "DrawType": "Model",
+    "CustomModel": "Items/Consumables/Food/Pie.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Consumables/Food/Pie_Textures/Apple.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#e5b132"
+  },
+  "InteractionVars": {
+    "Effect": {
+      "Interactions": [
+        {
+          "Type": "ApplyEffect",
+          "EffectId": "Food_Instant_Heal_T3"
+        },
+        "HealthRegen_TierCheck_T3",
+        "FruitVeggie_TierCheck_T3"
+      ]
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Dough",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Plant_Fruit_Apple",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Spices",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Fuel",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Cookingbench",
+        "Categories": [
+          "Baked"
+        ]
+      }
+    ],
+    "TimeSeconds": 5,
+    "KnowledgeRequired": true
+  },
+  "ItemLevel": 11,
+  "MaxStack": 25,
+  "DropOnDeath": true
+}

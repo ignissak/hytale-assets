@@ -1,0 +1,146 @@
+{
+  "Model": "Crossbow_Turret_Item_Projectile",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 15,
+    "TerminalVelocityAir": 50,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0,
+    "SticksVertically": true
+  },
+  "LaunchForce": 15,
+  "SpawnOffset": {
+    "X": 0.3,
+    "Y": -0.5,
+    "Z": -0.6
+  },
+  "SpawnRotationOffset": {
+    "Pitch": 10.0,
+    "Yaw": 1,
+    "Roll": 0
+  },
+  "Interactions": {
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "SpawnDeployableAtHitLocation",
+          "Config": {
+            "Type": "Turret",
+            "Id": "Turret",
+            "Model": "Crossbow_Turret",
+            "HitboxCollisionConfig": "HardCollision",
+            "DeployDelay": 2,
+            "LiveDuration": 14,
+            "DetectionRadius": 20,
+            "TrackableRadius": 25,
+            "RotationSpeed": 20,
+            "ShotInterval": 0.25,
+            "BurstCount": 5,
+            "BurstCooldown": 2,
+            "ProjectileDamage": 5,
+            "DebugVisuals": false,
+            "CanShootOwner": false,
+            "DoLineOfSightTest": true,
+            "RespectTeams": true,
+            "Stats": {
+              "Health": {
+                "Initial": 25,
+                "Max": 25
+              }
+            },
+            "TargetOffset": {
+              "X": 0,
+              "Y": 1,
+              "Z": 0
+            },
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": -1.5
+              },
+              "Force": 1.0,
+              "VelocityType": "Set"
+            },
+            "ProjectileSpawnOffsets": {
+              "UP": {
+                "X": 0,
+                "Y": 0.5,
+                "Z": 0
+              },
+              "DOWN": {
+                "X": 0,
+                "Y": -0.5,
+                "Z": 0
+              },
+              "NORTH": {
+                "X": 0,
+                "Y": 0,
+                "Z": 0.5
+              },
+              "SOUTH": {
+                "X": 0,
+                "Y": 0,
+                "Z": -0.5
+              },
+              "EAST": {
+                "X": -0.5,
+                "Y": 0,
+                "Z": 0
+              },
+              "WEST": {
+                "X": 0.5,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "ProjectileHitLocalSoundEventId": "ARROW_FULLCHARGE_HIT",
+            "ProjectileHitWorldSoundEventId": "ARROW_HIT_3P",
+            "ProjectileConfig": {
+              "Model": "Arrow_Crude",
+              "Physics": {
+                "Type": "Standard",
+                "Gravity": 0.1,
+                "TerminalVelocityAir": 100,
+                "TerminalVelocityWater": 15,
+                "RotationMode": "VelocityDamped",
+                "Bounciness": 0.0,
+                "SticksVertically": true
+              },
+              "LaunchForce": 50,
+              "SpawnRotationOffset": {
+                "Pitch": 0,
+                "Yaw": 0,
+                "Roll": 0
+              },
+              "Interactions": {
+                "ProjectileMiss": {
+                  "Interactions": [
+                    {
+                      "Type": "Simple",
+                      "RunTime": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "Type": "RemoveEntity",
+          "Entity": "User"
+        }
+      ]
+    }
+  }
+}

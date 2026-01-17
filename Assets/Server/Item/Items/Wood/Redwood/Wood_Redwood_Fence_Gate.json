@@ -1,0 +1,67 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Redwood_Fence_Gate.name"
+  },
+  "Parent": "Wood_Softwood_Fence_Gate",
+  "Icon": "Icons/ItemsGenerated/Wood_Redwood_Fence_Gate.png",
+  "Set": "Wood_Redwood_Planks",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Redwood",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Builders",
+        "Type": "StructuralCrafting",
+        "Categories": [
+          "Gate"
+        ]
+      }
+    ],
+    "OutputQuantity": 1
+  },
+  "BlockType": {
+    "State": {
+      "Definitions": {
+        "CloseDoorIn": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_In.blockyanim"
+        },
+        "CloseDoorOut": {
+          "InteractionSoundEventId": "SFX_Door_Desert_Close",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Close_Out.blockyanim"
+        },
+        "DoorBlocked": {},
+        "OpenDoorIn": {
+          "HitboxType": "Fence_Gate_Open_In",
+          "InteractionHitboxType": "Fence_Gate_Open_In_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_In.blockyanim"
+        },
+        "OpenDoorOut": {
+          "HitboxType": "Fence_Gate_Open_Out",
+          "InteractionHitboxType": "Fence_Gate_Open_Out_Interaction",
+          "InteractionSoundEventId": "SFX_Door_Desert_Open",
+          "CustomModelAnimation": "Blocks/Animations/Door/Door_Open_Out.blockyanim"
+        }
+      }
+    },
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Structures/Fences/Fence_Redwood_Gate_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "ConnectedBlockRuleSet": {
+      "Type": "CustomTemplate",
+      "TemplateShapeBlockPatterns": {
+        "Gate": "Wood_Redwood_Fence_Gate,*Wood_Redwood_Fence_Gate_State_Definitions_OpenDoorIn,*Wood_Redwood_Fence_Gate_State_Definitions_OpenDoorOut,*Wood_Redwood_Fence_Gate_State_Definitions_CloseDoorIn,*Wood_Redwood_Fence_Gate_State_Definitions_CloseDoorOut,*Wood_Redwood_Fence_Gate_State_Definitions_DoorBlocked"
+      },
+      "TemplateShapeAssetId": "WallConnectedBlockTemplate"
+    },
+    "BlockSoundSetId": "Wood"
+  }
+}

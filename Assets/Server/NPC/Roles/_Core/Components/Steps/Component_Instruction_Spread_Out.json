@@ -1,0 +1,33 @@
+{
+  "Class": "Instruction",
+  "Parameters": {
+    "Range": {
+      "Value": 2,
+      "Description": "The desired minimum range from other NPCs of the same type"
+    },
+    "RelativeSpeed": {
+      "Value": 0.25,
+      "Description": "Relative movement speed to use for spreading out"
+    }
+  },
+  "Content": {
+    "Sensor": {
+      "Type": "Mob",
+      "Range": 2,
+      "ExcludeOwnType": false,
+      "LockOnTarget": false,
+      "Filters": [
+        {
+          "Type": "NPCGroup",
+          "IncludeGroups": [ "Self" ]
+        }
+      ]
+    },
+    "BodyMotion": {
+      "Type": "Wander",
+      "MaxHeadingChange": 45,
+      "RelativeSpeed": { "Compute": "RelativeSpeed" }
+    }
+  },
+  "Type": "Component"
+}

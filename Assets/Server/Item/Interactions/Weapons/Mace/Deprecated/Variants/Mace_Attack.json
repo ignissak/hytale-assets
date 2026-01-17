@@ -1,0 +1,16 @@
+{
+  "$Comment": "Parent interaction which forks to Left or Right swings",
+  "Type": "MovementCondition",
+  "Left": "Mace_Swings_Left",
+  "Right": "Mace_Swings_Right",
+  "Back": "Mace_Swings_Up",
+  "Failed": {
+    "$Comment": "If no key is pressed we should default the normal Left/Right pattern",
+    "Type": "Chaining",
+    "ChainingAllowance": 8,
+    "Next": [
+      "Mace_Swings_Left",
+      "Mace_Swings_Right"
+    ]
+  }
+}

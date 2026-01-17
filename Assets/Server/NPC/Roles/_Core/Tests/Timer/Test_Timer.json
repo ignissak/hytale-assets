@@ -1,0 +1,254 @@
+{
+  "Type": "Generic",
+  "Appearance": "Sheep",
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "RunThreshold": 0.7,
+      "RunThresholdRange": 0.1,
+      "Gravity": 10,
+      "MaxFallSpeed": 20,
+      "Acceleration": 10
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Any",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Test_Timer",
+              "StartValueRange": [ 10, 10 ],
+              "RestartValueRange": [ 10, 10 ]
+            },
+            {
+              "Type": "TimerContinue",
+              "Name": "Test_Timer"
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer_2",
+            "State": "Stopped"
+          },
+          "Actions": [
+            {
+              "Type": "SpawnParticles",
+              "Offset": [ 0, 2.1, 0 ],
+              "ParticleSystem": "Alerted"
+            },
+            {
+              "Type": "TimerRestart",
+              "Name": "Test_Timer_2"
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer_2",
+            "State": "Stopped",
+            "Once": true
+          },
+          "Actions": [
+            {
+              "Type": "TimerStart",
+              "Name": "Test_Timer_2",
+              "StartValueRange": [ 5, 5 ],
+              "RestartValueRange": [ 5, 5 ]
+            }
+          ]
+        },
+        {
+          "Continue": true,
+          "Sensor": {
+            "Type": "Player",
+            "Range": 5
+          },
+          "Actions": [
+            {
+              "Type": "TimerRestart",
+              "Name": "Test_Timer"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "State": "Paused"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "PAUSED"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 0.01, 1 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "1"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 1, 2 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "2"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 2, 3 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "3"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 3, 4 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "4"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 4, 5 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "5"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 5, 6 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "6"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 6, 7 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "7"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 7, 8 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "8"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 8, 9 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "9"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "TimeRemainingRange": [ 9, 10 ]
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "10"
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Timer",
+            "Name": "Test_Timer",
+            "State": "Stopped"
+          },
+          "Actions": [
+            {
+              "Type": "DisplayName",
+              "DisplayName": "STOPPED"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Timer.name"
+}

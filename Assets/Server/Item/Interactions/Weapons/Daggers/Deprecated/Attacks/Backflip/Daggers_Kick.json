@@ -1,0 +1,52 @@
+{
+  "Type": "Simple",
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.02,
+  "Next": {
+    "Type": "Parallel",
+    "$Comment": "Make sure this parallel interaction is needed and can't be optimized away",
+    "Interactions": [
+      {
+        "Interactions": [
+          {
+            "Type": "Selector",
+            "$Comment": "Length of Combat",
+            "RunTime": 0.069,
+            "Selector": {
+              "Id": "Horizontal",
+              "Direction": "ToLeft",
+              "TestLineOfSight": false,
+              "ExtendTop": 0.5,
+              "ExtendBottom": 0.5,
+              "StartDistance": 0.1,
+              "EndDistance": 2.5,
+              "Length": 30,
+              "RollOffset": 60,
+              "YawStartOffset": -15
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.042
+            },
+            "HitBlock": {
+              "Interactions": [
+                "Block_Break_Adventure"
+              ]
+            },
+            "HitEntity": {
+              "Interactions": [
+                "Daggers_Kick_Damage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Interactions": [
+          "Daggers_Kick_Effect"
+        ]
+      }
+    ]
+  }
+}

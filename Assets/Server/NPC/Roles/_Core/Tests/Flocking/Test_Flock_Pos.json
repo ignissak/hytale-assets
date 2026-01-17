@@ -1,0 +1,238 @@
+{
+  "Debug": "DisplayState, DisplayFlock, DisplayTarget",
+  "Type": "Generic",
+  "Appearance": "Bluegill",
+  "StartState": "Idle",
+  "FlockSpawnTypes": [ "Test_Flock_Pos" ],
+  "FlockAllowedNPC": [ "Test_Flock_Pos" ],
+  "BreathesInWater": true,
+  "MotionControllerList": [
+    {
+      "Type": "Dive",
+      "MaxSwimSpeed": 10,
+      "Acceleration": 10,
+      "MaxDiveSpeed": 8,
+      "SwimDepth": 0.6,
+      "SinkRatio": 0.5,
+      "MinDiveDepth": 0,
+      "MaxDiveDepth": 100,
+      "MinDepthAboveGround": 1,
+      "MinDepthBelowSurface": 1,
+      "Gravity": 10,
+      "MaxRotationSpeed": 360,
+      "MaxSwimTurnAngle": 180
+    }
+  ],
+  "TestType": "Normal",
+  "MaxHealth": { "Compute": "MaxHealth" },
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 100,
+      "Description": "Max health for the NPC"
+    }
+  },
+  "Instructions": [
+    {
+      "Continue": true,
+      "Instructions": [
+        {
+          "$Comment": "This is a seperate Instruction so we are always open to recieving beacon messages",
+          "Sensor": {
+            "Type": "Beacon",
+            "Message": "Flock_Pos"
+          },
+          "Actions": [
+            {
+              "Type": "SetLeashPosition",
+              "ToTarget": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Idle"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Leash",
+                    "Range": 5
+                  },
+                  "BodyMotion": {
+                    "Type": "Seek",
+                    "SlowDownDistance": 1.5,
+                    "StopDistance": 1,
+                    "RelativeSpeed": 0.5
+                  }
+                },
+                {
+                  "Sensor": {
+                    "Type": "Any"
+                  },
+                  "BodyMotion": {
+                    "Type": "WanderInCircle",
+                    "Radius": 5,
+                    "MaxHeadingChange": 60,
+                    "RelativeSpeed": 0.25
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Or",
+                    "Sensors": [
+                      {
+                        "Type": "Self",
+                        "Filters": [
+                          {
+                            "Type": "Flock",
+                            "FlockStatus": "NotMember"
+                          }
+                        ]
+                      },
+                      {
+                        "Type": "And",
+                        "Sensors": [
+                          {
+                            "Type": "FlockLeader"
+                          },
+                          {
+                            "Type": "Self",
+                            "Filters": [
+                              {
+                                "Type": "Flock",
+                                "FlockStatus": "Leader"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Leash",
+                    "Range": 6
+                  }
+                ]
+              },
+              "Actions": [
+                {
+                  "Type": "FlockBeacon",
+                  "Message": "Flock_Pos",
+                  "SendToSelf": false,
+                  "ExpirationTime": 0.5
+                },
+                {
+                  "Type": "SetLeashPosition",
+                  "ToCurrent": true
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Player",
+                "Range": 12
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Flee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "State",
+            "State": "Flee"
+          },
+          "Instructions": [
+            {
+              "$Comment": "Animations",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any",
+                "Once": true
+              },
+              "Actions": [
+                {
+                  "Type": "PlayAnimation",
+                  "Slot": "Status"
+                }
+              ]
+            },
+            {
+              "$Comment": "Motions",
+              "Continue": true,
+              "Sensor": {
+                "Type": "Any"
+              },
+              "Instructions": [
+                {
+                  "Sensor": {
+                    "Type": "Player",
+                    "Range": 15,
+                    "LockOnTarget": true
+                  },
+                  "BodyMotion": {
+                    "Type": "Flee",
+                    "SlowDownDistance": 9,
+                    "StopDistance": 12,
+                    "RelativeSpeed": 0.75
+                  }
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Player",
+                  "Range": 12
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Idle"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "NameTranslationKey": "server.npcRoles.Test_Flock_Pos.name"
+}

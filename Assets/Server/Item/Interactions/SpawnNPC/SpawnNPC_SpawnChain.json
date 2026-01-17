@@ -1,0 +1,32 @@
+{
+  "$Comment": "The actual spawn chain - effects, entity spawn, and inventory modification",
+  "Type": "Serial",
+  "Interactions": [
+    {
+      "Type": "Replace",
+      "$Comment": "Play spawn effects - can be overridden by items",
+      "Var": "SpawnNPC_Effects",
+      "DefaultOk": true,
+      "DefaultValue": {
+        "Interactions": [
+          "SpawnNPC_Effects_Default"
+        ]
+      }
+    },
+    {
+      "Type": "Replace",
+      "$Comment": "The actual NPC spawn - items MUST provide this InteractionVar",
+      "Var": "SpawnNPC_Entity",
+      "DefaultValue": {
+        "Interactions": [
+          "SpawnNPC_Entity_Default"
+        ]
+      }
+    },
+    {
+      "Type": "ModifyInventory",
+      "$Comment": "Consume one item after spawning the NPC",
+      "AdjustHeldItemQuantity": -1
+    }
+  ]
+}
