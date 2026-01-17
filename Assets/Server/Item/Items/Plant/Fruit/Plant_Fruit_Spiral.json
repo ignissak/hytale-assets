@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Plant_Fruit_Spiral.name"
+    "Name": "server.items.Plant_Fruit_Spiral.name",
+    "Description": "server.items.Plant_Fruit_Spiral.description"
   },
   "Icon": "Icons/ItemsGenerated/Plant_Fruit_Spiral_Tree.png",
   "Parent": "Template_Fruit",
@@ -21,6 +22,25 @@
     "BlockParticleSetId": "Dust",
     "ParticleColor": "#f9fcfc"
   },
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#f9fcfc",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
   "IconProperties": {
     "Scale": 1.28,
     "Translation": [
@@ -35,5 +55,5 @@
   },
   "Scale": 1.75,
   "DropOnDeath": true,
-  "Quality": "Uncommon"
+  "Quality": "Common"
 }

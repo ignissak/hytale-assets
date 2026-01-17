@@ -23,19 +23,9 @@
   },
   "Next": {
     "0": "Weapon_Sword_Primary_Chain",
-    "0.7": {
-    "Type": "Serial",
+    "0.65": {
+      "Type": "Serial",
       "Interactions": [
-        {
-          "Type": "Replace",
-          "Var": "Thrust_Force",
-          "DefaultOk": true,
-          "DefaultValue": {
-            "Interactions": [
-              "Weapon_Sword_Primary_Thrust_Force"
-            ]
-          }
-        },
         {
           "Type": "Replace",
           "Var": "Thrust_StaminaCost",
@@ -65,19 +55,38 @@
                 "Type": "ChangeStat",
                 "Behaviour": "Set",
                 "StatModifiers": {
-                  "StaminaRegenDelay": -1.5
+                  "StaminaRegenDelay": -2
                 }
               }
             ]
           }
         },
         {
-          "Type": "Replace",
-          "Var": "Thrust_Selector",
-          "DefaultOk": true,
-          "DefaultValue": {
+          "Type": "Simple",
+          "RunTime": 0.05,
+          "Next": {
+            "Type": "Serial",
             "Interactions": [
-              "Weapon_Sword_Primary_Thrust_Selector"
+              {
+                "Type": "Replace",
+                "Var": "Thrust_Force",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    "Weapon_Sword_Primary_Thrust_Force"
+                  ]
+                }
+              },
+              {
+                "Type": "Replace",
+                "Var": "Thrust_Selector",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    "Weapon_Sword_Primary_Thrust_Selector"
+                  ]
+                }
+              }
             ]
           }
         }

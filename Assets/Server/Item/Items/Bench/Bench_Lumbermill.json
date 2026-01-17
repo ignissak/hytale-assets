@@ -4,9 +4,37 @@
   },
   "Icon": "Icons/ItemsGenerated/Bench_Lumbermill.png",
   "Categories": [
-    "Furniture.Benches"
+    "Furniture.Furniture"
   ],
-  "Quality": "Developer",
+  "Recipe": {
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 1
+      },
+      {
+        "ResourceTypeId": "Rubble",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Fibre",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Stick",
+        "Quantity": 2
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Furniture_Bench",
+        "Categories": [
+          "Furniture_Misc"
+        ]
+      }
+    ]
+  },
   "BlockType": {
     "Material": "Solid",
     "DrawType": "Model",
@@ -21,32 +49,9 @@
     "CustomModelScale": 1,
     "VariantRotation": "NESW",
     "HitboxType": "Bench_Lumbermill",
-    "Bench": {
-      "Type": "Processing",
-      "Input": [
-        {},
-        {}
-      ],
-      "LocalOpenSoundEventId": "SFX_Lumbermill_Bench_Open",
-      "LocalCloseSoundEventId": "SFX_Lumbermill_Bench_Close",
-      "Id": "Lumbermill"
-    },
-    "State": {
-      "Id": "processingBench",
-      "Definitions": {
-        "Processing": {
-          "Looping": true,
-          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
-        },
-        "ProcessCompleted": {
-          "Looping": true,
-          "CustomModelAnimation": "Blocks/Benches/Lumbermill_Crafting.blockyanim"
-        }
-      }
-    },
     "Gathering": {
       "Breaking": {
-        "GatherType": "Benches"
+        "GatherType": "Woods"
       }
     },
     "BlockParticleSetId": "Wood",
@@ -58,10 +63,7 @@
       ]
     },
     "ParticleColor": "#6f462c",
-    "BlockSoundSetId": "Wood",
-    "Interactions": {
-      "Use": "Open_Processing_Bench"
-    }
+    "BlockSoundSetId": "Wood"
   },
   "PlayerAnimationsId": "Block",
   "IconProperties": {
@@ -78,7 +80,7 @@
   },
   "Tags": {
     "Type": [
-      "Bench"
+      "Furniture"
     ]
   },
   "MaxStack": 1,

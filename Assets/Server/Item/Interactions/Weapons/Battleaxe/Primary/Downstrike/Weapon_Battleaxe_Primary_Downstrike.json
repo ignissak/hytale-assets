@@ -26,7 +26,7 @@
   "AllowIndefiniteHold": false,
   "Next": {
     "0": "Weapon_Battleaxe_Primary_Chain",
-    "0.7": {
+    "0.65": {
       "Type": "Serial",
       "Interactions": [
         {
@@ -58,23 +58,32 @@
                 "Type": "ChangeStat",
                 "Behaviour": "Set",
                 "StatModifiers": {
-                  "StaminaRegenDelay": -1.5
+                  "StaminaRegenDelay": -3
                 }
               }
             ]
           }
         },
         {
-          "Type": "ApplyEffect",
-          "EffectId": "Battleaxe_Downstrike_Jump"
-        },
-        {
-          "Type": "Replace",
-          "Var": "Downstrike_Force",
-          "DefaultOk": true,
-          "DefaultValue": {
+          "Type": "Simple",
+          "RunTime": 0.05,
+          "Next": {
+            "Type": "Serial",
             "Interactions": [
-              "Weapon_Battleaxe_Primary_Downstrike_Force"
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Battleaxe_Downstrike_Jump"
+              },
+              {
+                "Type": "Replace",
+                "Var": "Downstrike_Force",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    "Weapon_Battleaxe_Primary_Downstrike_Force"
+                  ]
+                }
+              }
             ]
           }
         }

@@ -23,7 +23,7 @@
     },
     "AbsoluteDetectionRange": {
       "Value": 4,
-      "Description": "The range at which a target is guaranteed to be detected. If zero, abosulte detection will be disabled."
+      "Description": "The range at which a target is guaranteed to be detected. If zero, absolute detection will be disabled."
     },
     "FleeRange": {
       "Value": 15,
@@ -243,6 +243,50 @@
       "Value": 100,
       "Description": "Max health for the NPC."
     },
+    "KnockbackScale": {
+      "Value": 0.5,
+      "Description": "Scale factor for knockback."
+    },
+    "ClimbHeight": {
+      "Value": 1,
+      "Description": "The maximum climb height, in blocks."
+    },
+    "MinJumpHeight": {
+      "Value": 0.8,
+      "Description": "The minimum jump height."
+    },
+    "AscentAnimationType": {
+      "Value": "Walk",
+      "Description": "Animation when climbing up. Options: Walk, Jump, Climb, Fly, Idle."
+    },
+    "ClimbSpeedMult": {
+      "Value": 0,
+      "Description": "Climb speed multiplier (const + mult * walkspeed^pow)."
+    },
+    "ClimbSpeedPow": {
+      "Value": 1,
+      "Description": "Climb speed power (const + mult * walkspeed^pow)."
+    },
+    "ClimbSpeedConst": {
+      "Value": 5,
+      "Description": "Climb speed constant (const + mult * walkspeed^pow)."
+    },
+    "DescendSpeedCompensation": {
+      "Value": 0.9,
+      "Description": "Factor to compensate forward speed reduction while moving downwards."
+    },
+    "DescendFlatness": {
+      "Value": 0.7,
+      "Description": "Relative scale how fast NPC moves forward while climbing down."
+    },
+    "DescentSteepness": {
+      "Value": 1.4,
+      "Description": "The relative steepness of the descent."
+    },
+    "DescentBlending": {
+      "Value": 1.8,
+      "Description": "Blending of the descent pattern. 0 is linear, higher values more curved."
+    },
     "LeashDistance": {
       "Value": 20,
       "Description": "The range after which an NPC will start to want to return to their spawn point."
@@ -316,7 +360,7 @@
   "SeparationDistanceTarget": 1.5,
   "SeparationNearRadiusTarget": 3,
   "SeparationFarRadiusTarget": 8,
-  "KnockbackScale": 0.5,
+  "KnockbackScale": { "Compute": "KnockbackScale" },
   "MotionControllerList": [
     {
       "Type": "Walk",
@@ -326,7 +370,17 @@
       "RunThresholdRange": 0.05,
       "MaxFallSpeed": 15,
       "MaxRotationSpeed": 180,
-      "Acceleration": 10
+      "Acceleration": 10,
+      "MaxClimbHeight": { "Compute": "ClimbHeight" },
+      "MinJumpHeight": { "Compute": "MinJumpHeight" },
+      "AscentAnimationType": { "Compute": "AscentAnimationType" },
+      "ClimbSpeedMult": { "Compute": "ClimbSpeedMult" },
+      "ClimbSpeedPow": { "Compute": "ClimbSpeedPow" },
+      "ClimbSpeedConst": { "Compute": "ClimbSpeedConst" },
+      "DescendSpeedCompensation": { "Compute": "DescendSpeedCompensation" },
+      "DescendFlatness": { "Compute": "DescendFlatness" },
+      "DescentSteepness": { "Compute": "DescentSteepness" },
+      "DescentBlending": { "Compute": "DescentBlending" }
     }
   ],
   "StateTransitions": [
@@ -1057,6 +1111,7 @@
               }
             },
             {
+              "Enabled": { "Compute": "!FleeIfNotThreatened && AbsoluteDetectionRange > 0" },
               "Sensor": {
                 "Type": "Target",
                 "Range": { "Compute": "AbsoluteDetectionRange" }
@@ -1185,6 +1240,7 @@
               ]
             },
             {
+              "Enabled": { "Compute": "!FleeIfNotThreatened" },
               "$Comment": "If the target moves, start chase",
               "Sensor": {
                 "Type": "And",
@@ -1245,13 +1301,13 @@
                   "Enabled": { "Compute": "FleeIfNotThreatened" },
                   "Sensor": {
                     "Type": "Target",
+                    "Range": { "Compute": "AlertedRange" },
                     "Filters": [
                       {
                         "Type": "NPCGroup",
                         "IncludeGroups": [ "PredatorsBig", "Player" ]
                       }
-                    ],
-                    "Range": { "Compute": "AlertedRange" }
+                    ]
                   },
                   "Actions": [
                     {
@@ -1935,6 +1991,7 @@
                     "TargetSlot": "LockedTarget"
                   },
                   {
+                    "Enabled": { "Compute": "AbsoluteDetectionRange > 0" },
                     "Type": "Target",
                     "TargetSlot": "LockedTarget",
                     "Range": { "Compute": "AbsoluteDetectionRange" }
@@ -1983,6 +2040,21 @@
           },
           "Instructions": [
             {
+              "$Comment": "Switches to combat if attacked",
+              "Sensor": {
+                "Type": "Damage",
+                "Combat": true
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Combat.Message"
+                }
+              ]
+            },
+            {
+              "$Comment": "If the target gets too close and the NPCs isn't shy, attack it",
+              "Enabled": { "Compute": "!FleeIfNotThreatened && AbsoluteDetectionRange > 0" },
               "Sensor": {
                 "Type": "Target",
                 "Range": { "Compute": "AbsoluteDetectionRange" }
@@ -1995,15 +2067,11 @@
               ]
             },
             {
+              "$Comment": "Start a timer to switch to combat if it can't flee from the target",
+              "Continue": true,
               "Sensor": {
                 "Type": "Target",
                 "Range": { "Compute": "FleeRange" }
-              },
-              "BodyMotion": {
-                "Type": "Flee",
-                "SlowDownDistance": { "Compute": "min(ViewRange,FleeRange)" },
-                "StopDistance": { "Compute": "FleeRange + 1" },
-                "RelativeSpeed": 0.68
               },
               "Actions": [
                 {
@@ -2017,6 +2085,19 @@
               ]
             },
             {
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "FleeRange" }
+              },
+              "BodyMotion": {
+                "Type": "Flee",
+                "SlowDownDistance": { "Compute": "min(ViewRange,FleeRange)" },
+                "StopDistance": { "Compute": "FleeRange + 1" },
+                "RelativeSpeed": 0.68
+              }
+            },
+            {
+              "$Comment": "Go back to idle if target is lost for some reason",
               "Actions": [
                 {
                   "Type": "State",

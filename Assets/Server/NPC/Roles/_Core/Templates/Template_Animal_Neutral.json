@@ -24,7 +24,7 @@
     },
     "AbsoluteDetectionRange": {
       "Value": 4,
-      "Description": "The range at which a target is guaranteed to be detected, in blocks. If set to zero, absolute detection will be disabled. Within the alerted state, this value has an upper bound of 0.75 * AlertedActionRange."
+      "Description": "The range at which a target is guaranteed to be detected, in blocks. If set to zero, absolute detection will be disabled. The interval [ AbsoluteDetectionRange, AlertedActionRange ] defines the distance range within which an NPC can be befriended."
     },
     "AlertedRange": {
       "Value": 18,
@@ -32,7 +32,7 @@
     },
     "AlertedActionRange": {
       "Value": 8,
-      "Description": "The range at which an NPC will react to other NPCs and players, depending on the attitude towards them, in blocks. Should be higher than AbsoluteDetectionRange."
+      "Description": "The range at which an NPC will react to other NPCs and players, depending on the attitude towards them, in blocks. Should be higher than AbsoluteDetectionRange to make the NPC befriendable."
     },
     "LeashDistance": {
       "Value": 20,
@@ -1218,7 +1218,7 @@
                       },
                       {
                         "Type": "Target",
-                        "Range": { "Compute": "min(AbsoluteDetectionRange, AlertedActionRange * 0.75)" },
+                        "Range": { "Compute": "AbsoluteDetectionRange" },
                         "Filters": [
                           {
                             "Type": "Not",

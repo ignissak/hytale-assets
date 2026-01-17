@@ -75,16 +75,51 @@
   "Interactions": {
     "Secondary": "Root_Secondary_Consume_Food_T1"
   },
-  "$Comment": "[TMP] Tiered food buff system - FruitVeggie T1 (health regen + stamina)",
   "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#C12B10",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "Effect": {
       "Interactions": [
         {
           "Type": "ApplyEffect",
           "EffectId": "Food_Instant_Heal_T1"
         },
-        "HealthRegen_TierCheck_T1",
-        "FruitVeggie_TierCheck_T1"
+        "HealthRegen_TierCheck_T1"
+      ]
+    },
+    "ConsumeSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consume_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Consume_Bread_Local"
+          }
+        }
+      ]
+    },
+    "ConsumedSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consumed_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Consume_Bread_Local"
+          }
+        }
       ]
     }
   },

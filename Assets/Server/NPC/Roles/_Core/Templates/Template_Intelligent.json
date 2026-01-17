@@ -35,8 +35,8 @@
       "Description": "Percentage chance to engage in combat if another intelligent NPC engages a target."
     },
     "AlertedRange": {
-      "Value": 30,
-      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence"
+      "Value": 45,
+      "Description": "A range within which the player can be seen/sensed when the NPC is alerted to their presence. Should be equal or lower than LeashDistance."
     },
     "AlertedTime": {
       "Value": [ 1, 2 ],
@@ -121,7 +121,7 @@
       "Description": "The block set designating bedrolls for this NPC. If empty, will sleep anywhere."
     },
     "LeashDistance": {
-      "Value": 30,
+      "Value": 45,
       "Description": "The range after which an NPC will start to want to return to their spawn point."
     },
     "LeashMinPlayerDistance": {
@@ -275,7 +275,7 @@
       "Description": "How long the NPC should act confused for when losing its target before beginning the search. While confused the NPC detection range is lowered."
     },
     "SearchTimeRange": {
-      "Value": [ 5, 8 ],
+      "Value": [ 10, 14 ],
       "Description": "How long the NPC should actively search for its lost target before giving up and going back to idle."
     },
     "IsMemory": {
@@ -1984,11 +1984,11 @@
                     "Motions": [
                       {
                         "Type": "Timer",
-                        "Time": [ 2, 3 ],
+                        "Time": [ 3, 6 ],
                         "Motion": {
                           "Type": "Wander",
                           "MaxHeadingChange": 1,
-                          "RelativeSpeed": 0.3
+                          "RelativeSpeed": 0.5
                         }
                       },
                       {
@@ -1997,17 +1997,17 @@
                         "Motions": [
                           {
                             "Type": "Timer",
-                            "Time": [ 2, 3 ],
+                            "Time": [ 3, 6 ],
                             "Motion": {
                               "Type": "WanderInCircle",
-                              "Radius": 5,
+                              "Radius": 10,
                               "MaxHeadingChange": 60,
-                              "RelativeSpeed": 0.3
+                              "RelativeSpeed": 0.5
                             }
                           },
                           {
                             "Type": "Timer",
-                            "Time": [ 1, 2 ],
+                            "Time": [ 2, 3 ],
                             "Motion": {
                               "Type": "Nothing"
                             }

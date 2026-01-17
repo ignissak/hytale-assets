@@ -35,15 +35,64 @@
         ]
       }
     },
-    "2": {
-      "Type": "Replace",
-      "Var": "Swing_Right_Charged",
-      "DefaultOk": true,
-      "DefaultValue": {
-        "Interactions": [
-          "Weapon_Mace_Primary_Swing_Right_Charged_Parallel"
-        ]
-      }
+    "2.0": {
+      "Type": "Serial",
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "Var": "Swing_Right_Charged_StaminaCost",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              {
+                "Type": "ApplyEffect",
+                "EffectId": "Stamina_Broken_Immune"
+              },
+              {
+                "Type": "ChangeStat",
+                "StatModifiers": {
+                  "Stamina": -2
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Type": "Replace",
+          "Var": "Swing_Right_Charged_StaminaRegenDelay",
+          "DefaultOk": true,
+          "DefaultValue": {
+            "Interactions": [
+              {
+                "Type": "ChangeStat",
+                "Behaviour": "Set",
+                "StatModifiers": {
+                  "StaminaRegenDelay": -1.5
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Type": "Simple",
+          "RunTime": 0.05,
+          "Next": {
+            "Type": "Serial",
+            "Interactions": [
+              {
+                "Type": "Replace",
+                "Var": "Swing_Right_Charged_Selector",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    "Weapon_Mace_Primary_Swing_Right_Charged_Selector"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
     }
   }
 }

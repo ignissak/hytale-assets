@@ -8,13 +8,34 @@
   },
   "RunTime": 0.033,
   "Next": {
-    "Type": "Replace",
-    "DefaultOk": true,
-    "DefaultValue": {
-      "Interactions": [
-        "Weapon_Daggers_Primary_Pounce_Stab_Selector"
-      ]
-    },
-    "Var": "Pounce_Stab_Selector"
+    "Type": "Serial",
+    "Interactions": [
+      {
+        "Type": "Replace",
+        "Var": "Pounce_Stab_StaminaRegenDelay",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            {
+              "Type": "ChangeStat",
+              "Behaviour": "Set",
+              "StatModifiers": {
+                "StaminaRegenDelay": -1.5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Type": "Replace",
+        "DefaultOk": true,
+        "DefaultValue": {
+          "Interactions": [
+            "Weapon_Daggers_Primary_Pounce_Stab_Selector"
+          ]
+        },
+        "Var": "Pounce_Stab_Selector"
+      }
+    ]
   }
 }

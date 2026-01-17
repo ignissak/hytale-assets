@@ -8,7 +8,17 @@
   "Categories": [
     "Items.Consumables"
   ],
-  "PlayerAnimationsId": "Item",
+  "PlayerAnimationsId": {
+    "Parent": "Item",
+    "Animations": {
+      "Consume": {
+        "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink_FPS.blockyanim",
+        "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Attacks/Drink/Drink.blockyanim",
+        "Speed": 1,
+        "Looping": true
+      }
+    }
+  },
   "Icon": "Icons/ItemsGenerated/Weapon_Bomb_Potion_Poison.png",
   "Model": "Items/Weapons/Bomb/Potion_Onion.blockymodel",
   "Texture": "Items/Weapons/Bomb/Potion_Onion_Poison.png",
@@ -38,9 +48,33 @@
             "Type": "ClearEntityEffect",
             "EntityEffectId": "Poison_T2",
             "Next": {
-              "Type": "ApplyEffect",
-              "EffectId": "Antidote"
+              "Type": "ClearEntityEffect",
+              "EntityEffectId": "Poison_T3",
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": "Antidote"
+              }
             }
+          }
+        }
+      ]
+    },
+    "ConsumeSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consume_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Health_Potion_Low_Drink"
+          }
+        }
+      ]
+    },
+    "ConsumedSFX": {
+      "Interactions": [
+        {
+          "Parent": "Consumed_SFX",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Potion_Drink_Success"
           }
         }
       ]

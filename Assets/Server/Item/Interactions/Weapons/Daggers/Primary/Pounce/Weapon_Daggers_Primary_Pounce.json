@@ -70,7 +70,7 @@
   "AllowIndefiniteHold": false,
   "Next": {
     "0": "Weapon_Daggers_Primary_Chain",
-    "0.5": {
+    "0.4": {
       "Type": "Serial",
       "Interactions": [
         {
@@ -93,41 +93,34 @@
           }
         },
         {
-          "Type": "Replace",
-          "Var": "Pounce_EntityEffect",
-          "DefaultOk": true,
-          "DefaultValue": {
+          "Type": "Simple",
+          "RunTime": 0.1,
+          "Next": {
+            "Type": "Serial",
             "Interactions": [
               {
-                "Type": "ApplyEffect",
-                "EffectId": "Dagger_Pounce"
-              }
-            ]
-          }
-        },
-        {
-          "Type": "Replace",
-          "Var": "Pounce_Stamina_RegenDelay",
-          "DefaultOk": true,
-          "DefaultValue": {
-            "Interactions": [
+                "Type": "Replace",
+                "Var": "Pounce_EntityEffect",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    {
+                      "Type": "ApplyEffect",
+                      "EffectId": "Dagger_Pounce"
+                    }
+                  ]
+                }
+              },
               {
-                "Type": "ChangeStat",
-                "Behaviour": "Set",
-                "StatModifiers": {
-                  "StaminaRegenDelay": -1.5
+                "Type": "Replace",
+                "Var": "Pounce_Force",
+                "DefaultOk": true,
+                "DefaultValue": {
+                  "Interactions": [
+                    "Weapon_Daggers_Primary_Pounce_Force"
+                  ]
                 }
               }
-            ]
-          }
-        },
-        {
-          "Type": "Replace",
-          "Var": "Pounce_Force",
-          "DefaultOk": true,
-          "DefaultValue": {
-            "Interactions": [
-              "Weapon_Daggers_Primary_Pounce_Force"
             ]
           }
         }

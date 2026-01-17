@@ -15,13 +15,25 @@
       "Value": [ "Template_Swimming_Aggressive" ],
       "Description": "Array containing NPCs for this flock type"
     },
-    "HearingRange": {
-      "Value": 10,
-      "Description": "Range within which NPC will aggro"
+    "ViewRange": {
+      "Value": 8,
+      "Description": "The view range of the NPC"
+    },
+    "ViewSector": {
+      "Value": 360,
+      "Description": "The view sector of the NPC"
     },
     "AlertedRange": {
       "Value": 15,
       "Description": "Range within which the NPC will keep following to attack or aggro if attacked"
+    },
+    "AbsoluteDetectionRange": {
+      "Value": 1,
+      "Description": "The range at which a target is guaranteed to be detected. If zero, abosulte detection will be disabled."
+    },
+    "AlertedTime": {
+      "Value": [ 3, 5 ],
+      "Description": "How long to wait in an alerted or threatening state before switching to active combat."
     },
     "MaxHealth": {
       "Value": 100,
@@ -30,6 +42,22 @@
     "Attack": {
       "Value": "Root_NPC_Attack_Melee",
       "Description": "The attack sequence to use in combat"
+    },
+    "AttackRange": {
+      "Value": 3,
+      "Description": "The range at which the NPC will attack targets"
+    },
+    "AttackPauseRange": {
+      "Value": [ 1, 1.5 ],
+      "Description": "The time delay range between consecutive attacks"
+    },
+    "DefaultNPCAttitude": {
+      "Value": "Ignore",
+      "Description": "The default attitude towards players"
+    },
+    "DefaultPlayerAttitude": {
+      "Value": "Hostile",
+      "Description": "The default attitude towards NPCs"
     },
     "IsMemory": {
       "Value": false,
@@ -54,6 +82,8 @@
   "DropList": { "Compute": "DropList" },
   "FlockSpawnTypes": { "Compute": "FlockArray" },
   "DisableDamageGroups": [ "Self" ],
+  "DefaultNPCAttitude": { "Compute": "DefaultNPCAttitude" },
+  "DefaultPlayerAttitude": { "Compute": "DefaultPlayerAttitude" },
   "Appearance": { "Compute": "Appearance" },
   "BreathesInWater": true,
   "MotionControllerList": [
@@ -103,6 +133,22 @@
             {
               "Reference": "Component_Instruction_Clear_Status_Animation",
               "Modify": { }
+            },
+            {
+              "$Comment": "Switch to combat state if any flock member engages a target.",
+              "Enabled": { "Compute": "!isEmptyStringArray(FlockArray)" },
+              "Sensor": {
+                "Type": "Beacon",
+                "Message": "Flock_Attack",
+                "TargetSlot": "LockedTarget",
+                "Range": { "Compute": "ViewRange" }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Combat.Default"
+                }
+              ]
             },
             {
               "$Comment": "Motions",
@@ -198,61 +244,61 @@
               ]
             },
             {
-              "Sensor": {
-                "Type": "Player",
-                "Range": { "Compute": "HearingRange" },
-                "Filters": [
-                  {
-                    "Type": "LineOfSight"
-                  }
-                ]
-              },
-              "Actions": [
-                {
-                  "Type": "State",
-                  "State": "Alerted"
-                }
-              ]
-            },
-            {
+              "$Comment": "React to sudden incoming damage.",
               "Sensor": {
                 "Type": "Damage",
-                "Combat": true,
                 "Environment": true,
+                "Drowning": true,
+                "Combat": true,
                 "Other": true
               },
               "Instructions": [
                 {
+                  "$Comment": "If there's someone who could have caused the damage, target them.",
                   "Sensor": {
-                    "Type": "And",
-                    "Sensors": [
-                      {
-                        "Type": "Player",
-                        "Range": { "Compute": "AlertedRange" }
-                      },
-                      {
-                        "Type": "Damage",
-                        "Combat": true
-                      }
-                    ]
+                    "Reference": "Component_Sensor_Standard_Detection",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "HearingRange": 0,
+                      "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
+                      "Attitudes": [ "Hostile", "Neutral" ]
+                    }
                   },
                   "Actions": [
                     {
                       "Type": "State",
-                      "State": "Attack"
+                      "State": "Alerted"
                     }
                   ]
                 },
                 {
-                  "Sensor": {
-                    "Type": "Any"
-                  },
+                  "$Comment": "If the damage was from an unknown source, panic to try and get away.",
                   "Actions": [
                     {
                       "Type": "State",
                       "State": "Panic"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "$Comment": "Check if there are any potential targets nearby",
+              "Sensor": {
+                "Reference": "Component_Sensor_Standard_Detection",
+                "Modify": {
+                  "ViewRange": { "Compute": "ViewRange" },
+                  "ViewSector": { "Compute": "ViewSector" },
+                  "HearingRange": 0,
+                  "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
+                  "Attitudes": [ "Hostile" ]
+                }
+              },
+              "Actions": [
+                {
+                  "Type": "State",
+                  "State": "Alerted"
                 }
               ]
             }
@@ -291,7 +337,7 @@
               "Instructions": [
                 {
                   "Sensor": {
-                    "Type": "Player",
+                    "Type": "Target",
                     "Range": { "Compute": "AlertedRange" }
                   },
                   "HeadMotion": {
@@ -301,24 +347,64 @@
               ]
             },
             {
+              "$Comment": "React to sudden incoming damage.",
               "Sensor": {
                 "Type": "Damage",
-                "Combat": true
+                "Environment": true,
+                "Drowning": true,
+                "Combat": true,
+                "Other": true
               },
-              "Actions": [
+              "Instructions": [
                 {
-                  "Type": "State",
-                  "State": "Attack"
+                  "$Comment": "If there's someone who could have caused the damage, target them.",
+                  "Sensor": {
+                    "Reference": "Component_Sensor_Standard_Detection",
+                    "Modify": {
+                      "ViewRange": { "Compute": "ViewRange" },
+                      "ViewSector": { "Compute": "ViewSector" },
+                      "HearingRange": 0,
+                      "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
+                      "Attitudes": [ "Hostile", "Neutral" ]
+                    }
+                  },
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Combat.Message"
+                    }
+                  ]
+                },
+                {
+                  "$Comment": "If the damage was from an unknown source, panic to try and get away.",
+                  "Actions": [
+                    {
+                      "Type": "State",
+                      "State": "Panic"
+                    }
+                  ]
                 }
               ]
             },
             {
               "Sensor": {
-                "Type": "Not",
-                "Sensor": {
-                  "Type": "Player",
-                  "Range": { "Compute": "AlertedRange" }
+                "Type": "Target",
+                "Range": { "Compute": "AlertedRange" }
+              },
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": { "Compute": "AlertedTime" },
+                  "Action": {
+                    "Type": "State",
+                    "State": "Combat.Message"
+                  }
                 }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Any"
               },
               "Actions": [
                 {
@@ -330,62 +416,47 @@
                   }
                 }
               ]
-            },
-            {
-              "Sensor": {
-                "Type": "Any"
-              },
-              "Actions": [
-                {
-                  "Type": "Timeout",
-                  "Delay": [ 2, 3 ],
-                  "Action": {
-                    "Type": "State",
-                    "State": "Attack"
-                  }
-                }
-              ]
             }
           ]
         },
         {
           "Sensor": {
             "Type": "State",
-            "State": "Attack"
+            "State": "Combat"
           },
           "Instructions": [
             {
               "Continue": true,
               "Sensor": {
-                "Type": "Any"
+                "Type": "Target",
+                "Range": { "Compute": "AlertedRange" }
               },
-              "Instructions": [
+              "HeadMotion": {
+                "Type": "Watch"
+              }
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "State",
+                "State": ".Message"
+              },
+              "Actions": [
                 {
-                  "Sensor": {
-                    "Type": "Player",
-                    "Range": 2.5
-                  },
-                  "HeadMotion": {
-                    "Type": "Watch"
-                  }
+                  "Type": "FlockBeacon",
+                  "Message": "Flock_Attack",
+                  "SendTargetSlot": "LockedTarget"
                 },
                 {
-                  "Sensor": {
-                    "Type": "Player",
-                    "Range": { "Compute": "AlertedRange" }
-                  },
-                  "BodyMotion": {
-                    "Type": "Seek",
-                    "SlowDownDistance": 3,
-                    "StopDistance": 2.5
-                  }
+                  "Type": "State",
+                  "State": ".Default"
                 }
               ]
             },
             {
               "Sensor": {
-                "Type": "Player",
-                "Range": 3,
+                "Type": "Target",
+                "Range": { "Compute": "AttackRange" },
                 "Filters": [
                   {
                     "Type": "LineOfSight"
@@ -396,18 +467,23 @@
                 {
                   "Type": "Attack",
                   "Attack": { "Compute": "Attack" },
-                  "AttackPauseRange": [ 1, 1.5 ]
+                  "AttackPauseRange": { "Compute": "AttackPauseRange" }
                 }
               ]
             },
             {
               "Sensor": {
-                "Type": "Not",
-                "Sensor": {
-                  "Type": "Player",
-                  "Range": { "Compute": "AlertedRange" }
-                }
+                "Type": "Target",
+                "Range": { "Compute": "AlertedRange" }
               },
+              "BodyMotion": {
+                "Type": "Seek",
+                "SlowDownDistance": { "Compute": "AttackRange + 1"},
+                "StopDistance": { "Compute": "AttackRange * 0.5"}
+              }
+            },
+            {
+              "$Comment": "Return to the idle state if there's no target",
               "Actions": [
                 {
                   "Type": "Timeout",
@@ -495,8 +571,8 @@
             },
             {
               "Sensor": {
-                "Type": "Player",
-                "Range": { "Compute": "HearingRange" },
+                "Type": "Target",
+                "Range": { "Compute": "ViewRange" },
                 "Filters": [
                   {
                     "Type": "LineOfSight"
@@ -511,9 +587,7 @@
               ]
             },
             {
-              "Sensor": {
-                "Type": "Any"
-              },
+              "$Comment": "Return to the idle state if there's no target after a while",
               "Actions": [
                 {
                   "Type": "Timeout",

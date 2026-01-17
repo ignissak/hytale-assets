@@ -20,8 +20,28 @@ $C.@PageOverlay {
     Anchor: (Height: 825, Width: 1070);
 
     #Title {
+
       Group {
-        LayoutMode: Left;
+        LayoutMode: Center;
+
+        Button #MemoriesInfoButton {
+          Anchor: (Width: 24, Height: 24, Left: 15);
+          Style: (
+            Default: (Background: (TexturePath: "InfoButtonBackground.png", Border: 2)),
+            Hovered: (Background: (TexturePath: "InfoButtonBackgroundHovered.png", Border: 2))
+          );
+
+          Label {
+            Style: (
+              FontSize: 14,
+              TextColor: #b4c8c9,
+              HorizontalAlignment: Center,
+              RenderBold: true,
+              VerticalAlignment: Center
+            );
+            Text: "?";
+          }
+        }
 
         Group {
           FlexWeight: 1;
@@ -32,10 +52,13 @@ $C.@PageOverlay {
           Text: %server.memories.general.title;
         }
 
-        Group #Completed {
-          LayoutMode: Right;
+        Group {
           FlexWeight: 1;
-          Anchor: (Right: 16);
+        }
+
+        Group {
+          LayoutMode: Right;
+          Anchor: (Width: 24, Right: 15);
         }
       }
     }

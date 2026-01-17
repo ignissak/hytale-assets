@@ -656,6 +656,9 @@ builderTools.copycut.noSelection = You don't have anything selected!
 builderTools.commands.clearEntities.desc = Remove all entities within the current selection
 builderTools.commands.clearEntities.noSelection = You don't have anything selected!
 builderTools.commands.clearEntities.cleared = Removed {count, plural, one {1 entity} other {{count, number} entities}} from selection
+commands.clearEntities.desc = Remove all entities within the current selection
+commands.clearEntities.noSelection = You don't have anything selected!
+commands.clearEntities.cleared = Removed {count, plural, one {1 entity} other {{count, number} entities}} from selection
 builderTools.edit.invalidBlockId = Invalid block id: {id}
 builderTools.environment.envNotFound = Failed to find environment with name: {name}
 builderTools.invalidBlockType = {name} '{key}' is not a valid block type!
@@ -807,6 +810,10 @@ commands.memories.level.desc = Get the memories level
 commands.memories.level.success = Current Memory level is {level}
 commands.memories.unlockAll.desc = Unlock all memories
 commands.memories.unlockAll.success = All Memories unlocked
+commands.memories.setCount.desc = [TMP] Set the number of recorded memories for testing
+commands.memories.setCount.count.desc = [TMP] The number of memories to record
+commands.memories.setCount.success = [TMP] Set recorded memories to {actual, number} (requested: {requested, number})
+commands.memories.setCount.invalid = [TMP] Invalid count. Must be 0 or greater.
 commands.objective = Commands related to objectives
 commands.objective.objectiveNotFound = Objective '{id}' not found!
 commands.objective.objectiveLineNotFound = Objective line '{id}' not found!
@@ -1447,6 +1454,11 @@ commands.parsing.argtype.tickrate.usage = A tick rate value (e.g., 30tps, 33ms, 
 commands.parsing.argtype.tickrate.fail = Could not parse tick rate: '{input}'. Use formats like 30tps, 33ms, or just 30.
 commands.parsing.argtype.tickrate.empty = Tick rate cannot be empty
 commands.parsing.argtype.tickrate.invalidMs = Invalid milliseconds value: '{input}'. Must be positive.
+commands.parsing.argtype.playerUuidLookup.name = Player UUID/Username (with lookup)
+commands.parsing.argtype.playerUuidLookup.usage = A player UUID or username. If not found locally, performs a remote lookup via the Profile Service.
+commands.parsing.argtype.playerUuidLookup.noAuth = Could not look up '{input}' - server is not authenticated. Use /auth login to authenticate.
+commands.parsing.argtype.playerUuidLookup.lookupError = Failed to look up '{input}': {error}
+commands.parsing.argtype.playerUuidLookup.notFound = Player '{input}' was not found locally or via remote lookup.
 commands.help.usage = Usage
 commands.help.usagecolon = Usage: {usage}
 commands.help.noPermissibleSubCommand = No permissible subcommands
@@ -1606,6 +1618,7 @@ commands.give.received = Received {quantity, number} of {item}
 commands.give.item.desc = The item to give
 commands.give.quantity.desc = The quantity of items to give
 commands.give.metadata.desc = Item metadata as a JSON string
+commands.give.durability.desc = Item durability
 commands.give.invalidMetadata = Invalid metadata format: {error}
 commands.kick.success = Kicked {username}!
 commands.version.response = HytaleServer v{version} ({patchline})
@@ -6368,46 +6381,54 @@ items.Wood_Amber_Branch_Long.name = Amber Branch - Long
 items.Wood_Amber_Branch_Short.name = Amber Branch - Short
 items.Wood_Amber_Roots.name = Amber Roots
 items.Wood_Amber_Trunk.name = Amber Log
+items.Wood_Amber_Trunk.description = [TMP] Goldenwood
 items.Wood_Amber_Trunk_Full.name = Amber Tree Trunk
 items.Wood_Ash_Branch_Corner.name = Ash Branch - Corner
 items.Wood_Ash_Branch_Long.name = Ash Branch - Long
 items.Wood_Ash_Branch_Short.name = Ash Branch - Short
 items.Wood_Ash_Roots.name = Ash Roots
 items.Wood_Ash_Trunk.name = Ash Log
+items.Wood_Ash_Trunk.description = [TMP] Hardwood
 items.Wood_Ash_Trunk_Full.name = Ash Tree Trunk
 items.Wood_Aspen_Branch_Corner.name = Aspen Branch - Corner
 items.Wood_Aspen_Branch_Long.name = Aspen Branch - Long
 items.Wood_Aspen_Branch_Short.name = Aspen Branch - Short
 items.Wood_Aspen_Roots.name = Aspen Roots
 items.Wood_Aspen_Trunk.name = Aspen Log
+items.Wood_Aspen_Trunk.description = [TMP] Softwood
 items.Wood_Aspen_Trunk_Full.name = Aspen Tree Trunk
 items.Wood_Azure_Branch_Corner.name = Azure Branch - Corner
 items.Wood_Azure_Branch_Long.name = Azure Branch - Long
 items.Wood_Azure_Branch_Short.name = Azure Branch - Short
 items.Wood_Azure_Roots.name = Azure Roots
 items.Wood_Azure_Trunk.name = Azure Log
+items.Wood_Azure_Trunk.description = [TMP] Azure
 items.Wood_Azure_Trunk_Full.name = Azure Tree Trunk
 items.Wood_Bamboo_Branch_Long.name = Bamboo Branch - Long
 items.Wood_Bamboo_Branch_Long_Deco.name = Bamboo Branch - Long
 items.Wood_Bamboo_Trunk.name = Bamboo Log
+items.Wood_Bamboo_Trunk.description = [TMP] Tropicalwood
 items.Wood_Bamboo_Trunk_Deco.name = Bamboo Log
 items.Wood_Banyan_Branch_Corner.name = Banyan Branch - Corner
 items.Wood_Banyan_Branch_Long.name = Banyan Branch - Long
 items.Wood_Banyan_Branch_Short.name = Banyan Branch - Short
 items.Wood_Banyan_Roots.name = Banyan Roots
 items.Wood_Banyan_Trunk.name = Banyan Log
+items.Wood_Banyan_Trunk.description = [TMP] Softwood
 items.Wood_Banyan_Trunk_Full.name = Banyan Tree Trunk
 items.Wood_Beech_Branch_Corner.name = Beech Branch - Corner
 items.Wood_Beech_Branch_Long.name = Beech Branch - Long
 items.Wood_Beech_Branch_Short.name = Beech Branch - Short
 items.Wood_Beech_Roots.name = Beech Roots
 items.Wood_Beech_Trunk.name = Beech Log
+items.Wood_Beech_Trunk.description = [TMP] Softwood
 items.Wood_Beech_Trunk_Full.name = Beech Tree Trunk
 items.Wood_Birch_Branch_Corner.name = Birch Branch - Corner
 items.Wood_Birch_Branch_Long.name = Birch Branch - Long
 items.Wood_Birch_Branch_Short.name = Birch Branch - Short
 items.Wood_Birch_Roots.name = Birch Roots
 items.Wood_Birch_Trunk.name = Birch Log
+items.Wood_Birch_Trunk.description = [TMP] Lightwood
 items.Wood_Birch_Trunk_Full.name = Birch Tree Trunk
 items.Wood_Blackwood_Beam.name = Blackwood Beam
 items.Wood_Blackwood_Decorative.name = Blackwood Planks - Decorative
@@ -6427,30 +6448,35 @@ items.Wood_Bottletree_Branch_Long.name = Bottletree Branch - Long
 items.Wood_Bottletree_Branch_Short.name = Bottletree Branch - Short
 items.Wood_Bottletree_Roots.name = Bottletree Roots
 items.Wood_Bottletree_Trunk.name = Bottletree Log
+items.Wood_Bottletree_Trunk.description = [TMP] Drywood
 items.Wood_Bottletree_Trunk_Full.name = Bottletree Tree Trunk
 items.Wood_Burnt_Branch_Corner.name = Burnt Branch - Corner
 items.Wood_Burnt_Branch_Long.name = Burnt Branch - Long
 items.Wood_Burnt_Branch_Short.name = Burnt Branch - Short
 items.Wood_Burnt_Roots.name = Burnt Roots
 items.Wood_Burnt_Trunk.name = Burnt Log
+items.Wood_Burnt_Trunk.description = [TMP] Blackwood
 items.Wood_Burnt_Trunk_Full.name = Burnt Tree Trunk
 items.Wood_Camphor_Branch_Corner.name = Camphor Branch - Corner
 items.Wood_Camphor_Branch_Long.name = Camphor Branch - Long
 items.Wood_Camphor_Branch_Short.name = Camphor Branch - Short
 items.Wood_Camphor_Roots.name = Camphor Roots
 items.Wood_Camphor_Trunk.name = Camphor Log
+items.Wood_Camphor_Trunk.description = [TMP] Lightwood
 items.Wood_Camphor_Trunk_Full.name = Camphor Tree Trunk
 items.Wood_Cedar_Branch_Corner.name = Cedar Branch - Corner
 items.Wood_Cedar_Branch_Long.name = Cedar Branch - Long
 items.Wood_Cedar_Branch_Short.name = Cedar Branch - Short
 items.Wood_Cedar_Roots.name = Cedar Roots
 items.Wood_Cedar_Trunk.name = Cedar Log
+items.Wood_Cedar_Trunk.description = [TMP] Darkwood
 items.Wood_Cedar_Trunk_Full.name = Cedar Tree Trunk
 items.Wood_Crystal_Branch_Corner.name = Crystalwood Branch - Corner
 items.Wood_Crystal_Branch_Long.name = Crystalwood Branch - Long
 items.Wood_Crystal_Branch_Short.name = Crystalwood Branch - Short
 items.Wood_Crystal_Roots.name = Crystalwood Roots
 items.Wood_Crystal_Trunk.name = Crystalwood Log
+items.Wood_Crystal_Trunk.description = [TMP] Crystal
 items.Wood_Crystal_Trunk_Full.name = Crystalwood Tree Trunk
 items.Wood_Darkwood_Beam.name = Darkwood Beam
 items.Wood_Darkwood_Decorative.name = Darkwood Planks - Decorative
@@ -6483,6 +6509,7 @@ items.Wood_Dry_Branch_Long.name = Dry Branch - Long
 items.Wood_Dry_Branch_Short.name = Dry Branch - Short
 items.Wood_Dry_Roots.name = Dry Roots
 items.Wood_Dry_Trunk.name = Dry Log
+items.Wood_Dry_Trunk.description = [TMP] Drywood
 items.Wood_Dry_Trunk_Full.name = Dry Tree Trunk
 items.Wood_Drywood_Beam.name = Drywood Beam
 items.Wood_Drywood_Decorative.name = Drywood Planks - Decorative
@@ -6502,17 +6529,20 @@ items.Wood_Fig_Blue_Branch_Long.name = Blue Fig Branch - Long
 items.Wood_Fig_Blue_Branch_Short.name = Blue Fig Branch - Short
 items.Wood_Fig_Blue_Roots.name = Blue Fig Roots
 items.Wood_Fig_Blue_Trunk.name = Blue Fig Log
+items.Wood_Fig_Blue_Trunk.description = [TMP] Redwood
 items.Wood_Fig_Blue_Trunk_Full.name = Blue Fig Tree Trunk
 items.Wood_Fir_Branch_Corner.name = Fir Branch - Corner
 items.Wood_Fir_Branch_Long.name = Fir Branch - Long
 items.Wood_Fir_Branch_Short.name = Fir Branch - Short
 items.Wood_Fir_Roots.name = Fir Roots
 items.Wood_Fir_Trunk.name = Fir Log
+items.Wood_Fir_Trunk.description = [TMP] Hardwood
 items.Wood_Fir_Trunk_Full.name = Fir Tree Trunk
 items.Wood_Fire_Branch_Corner.name = Fire Branch - Corner
 items.Wood_Fire_Branch_Long.name = Fire Branch - Long
 items.Wood_Fire_Branch_Short.name = Fire Branch - Short
 items.Wood_Fire_Trunk.name = Fire Log
+items.Wood_Fire_Trunk.description = [TMP] Blackwood
 items.Wood_Fire_Trunk_Full.name = Fire Tree Trunk
 items.Wood_Gnarled_Roots.name = Gnarled Roots
 items.Wood_Goldenwood_Beam.name = Goldenwood Beam
@@ -6563,6 +6593,7 @@ items.Wood_Gumboab_Branch_Long.name = Gumboab Branch - Long
 items.Wood_Gumboab_Branch_Short.name = Gumboab Branch - Short
 items.Wood_Gumboab_Roots.name = Gumboab Roots
 items.Wood_Gumboab_Trunk.name = Gumboab Log
+items.Wood_Gumboab_Trunk.description = [TMP] Lightwood
 items.Wood_Gumboab_Trunk_Full.name = Gumboab Tree Trunk
 items.Wood_Hardwood_Beam.name = Hardwood Beam
 items.Wood_Hardwood_Decorative.name = Hardwood Planks - Decorative
@@ -6578,11 +6609,13 @@ items.Wood_Hardwood_Roof_Shallow.name = Hardwood Roof - Shallow
 items.Wood_Hardwood_Roof_Steep.name = Hardwood Roof - Steep
 items.Wood_Hardwood_Stairs.name = Hardwood Stairs
 items.Wood_Ice_Trunk.name = Ice Log
+items.Wood_Ice_Trunk.description = [TMP] Ice
 items.Wood_Jungle_Branch_Corner.name = Jungle Branch - Corner
 items.Wood_Jungle_Branch_Long.name = Jungle Branch - Long
 items.Wood_Jungle_Branch_Short.name = Jungle Branch - Short
 items.Wood_Jungle_Roots.name = Jungle Roots
 items.Wood_Jungle_Trunk.name = Jungle Log
+items.Wood_Jungle_Trunk.description = [TMP] Greenwood
 items.Wood_Jungle_Trunk_Full.name = Jungle Tree Trunk
 items.Wood_Lightwood_Beam.name = Lightwood Beam
 items.Wood_Lightwood_Decorative.name = Lightwood Planks - Decorative
@@ -6602,12 +6635,14 @@ items.Wood_Maple_Branch_Long.name = Maple Branch - Long
 items.Wood_Maple_Branch_Short.name = Maple Branch - Short
 items.Wood_Maple_Roots.name = Maple Roots
 items.Wood_Maple_Trunk.name = Maple Log
+items.Wood_Maple_Trunk.description = [TMP] Redwood
 items.Wood_Maple_Trunk_Full.name = Maple Tree Trunk
 items.Wood_Oak_Branch_Corner.name = Oak Branch - Corner
 items.Wood_Oak_Branch_Long.name = Oak Branch - Long
 items.Wood_Oak_Branch_Short.name = Oak Branch - Short
 items.Wood_Oak_Roots.name = Oak Roots
 items.Wood_Oak_Trunk.name = Oak Log
+items.Wood_Oak_Trunk.description = [TMP] Hardwood
 items.Wood_Oak_Trunk_Full.name = Oak Tree Trunk
 items.Wood_Oak_Trunk_Half.name = Oak Wood Half Slab
 items.Wood_Oak_Trunk_Stairs.name = Oak Wood Stairs
@@ -6616,24 +6651,28 @@ items.Wood_Palm_Branch_Long.name = Palm Tree Branch - Long
 items.Wood_Palm_Branch_Short.name = Palm Tree Branch - Short
 items.Wood_Palm_Roots.name = Palm Tree Roots
 items.Wood_Palm_Trunk.name = Palm Tree Log
+items.Wood_Palm_Trunk.description = [TMP] Goldenwood
 items.Wood_Palm_Trunk_Full.name = Palm Tree Trunk
 items.Wood_Palo_Branch_Corner.name = Palo Branch - Corner
 items.Wood_Palo_Branch_Long.name = Palo Branch - Long
 items.Wood_Palo_Branch_Short.name = Palo Branch - Short
 items.Wood_Palo_Roots.name = Palo Roots
 items.Wood_Palo_Trunk.name = Palo Log
+items.Wood_Palo_Trunk.description = [TMP] Greenwood
 items.Wood_Palo_Trunk_Full.name = Palo Tree Trunk
 items.Wood_Petrified_Branch_Corner.name = Petrified Branch - Corner
 items.Wood_Petrified_Branch_Long.name = Petrified Branch - Long
 items.Wood_Petrified_Branch_Short.name = Petrified Branch - Short
 items.Wood_Petrified_Roots.name = Petrified Roots
 items.Wood_Petrified_Trunk.name = Petrified Log
+items.Wood_Petrified_Trunk.description = [TMP] Deadwood
 items.Wood_Petrified_Trunk_Full.name = Petrified Tree Trunk
 items.Wood_Poisoned_Branch_Corner.name = Poisoned Branch - Corner
 items.Wood_Poisoned_Branch_Long.name = Poisoned Branch - Long
 items.Wood_Poisoned_Branch_Short.name = Poisoned Branch - Short
 items.Wood_Poisoned_Roots.name = Poisoned Roots
 items.Wood_Poisoned_Trunk.name = Poisoned Log
+items.Wood_Poisoned_Trunk.description = [TMP] Deadwood
 items.Wood_Poisoned_Trunk_Full.name = Poison Tree Trunk
 items.Wood_Redwood_Beam.name = Redwood Beam
 items.Wood_Redwood_Branch_Corner.name = Redwood Branch - Corner
@@ -6653,12 +6692,14 @@ items.Wood_Redwood_Roof_Steep.name = Redwood Roof - Steep
 items.Wood_Redwood_Roots.name = Redwood Roots
 items.Wood_Redwood_Stairs.name = Redwood Stairs
 items.Wood_Redwood_Trunk.name = Redwood Log
+items.Wood_Redwood_Trunk.description = [TMP] Redwood
 items.Wood_Redwood_Trunk_Full.name = Redwood Tree Trunk
 items.Wood_Sallow_Branch_Corner.name = Sallow Branch - Corner
 items.Wood_Sallow_Branch_Long.name = Sallow Branch - Long
 items.Wood_Sallow_Branch_Short.name = Sallow Branch - Short
 items.Wood_Sallow_Roots.name = Sallow Roots
 items.Wood_Sallow_Trunk.name = Sallow Log
+items.Wood_Sallow_Trunk.description = [TMP] Goldenwood
 items.Wood_Sallow_Trunk_Full.name = Sallow Tree Trunk
 items.Wood_Softwood_Beam.name = Softwood Beam
 items.Wood_Softwood_Decorative.name = Softwood Planks - Decorative
@@ -6678,6 +6719,7 @@ items.Wood_Spiral_Branch_Long.name = Spiral Branch - Long
 items.Wood_Spiral_Branch_Short.name = Spiral Branch - Short
 items.Wood_Spiral_Roots.name = Spiral Roots
 items.Wood_Spiral_Trunk.name = Spiral Log
+items.Wood_Spiral_Trunk.description = [TMP] Spiral
 items.Wood_Spiral_Trunk_Full.name = Spiral Tree Trunk
 items.Wood_Sticks.name = Pile of Sticks
 items.Wood_Stormbark_Branch_Corner.name = Stormbark Branch - Corner
@@ -6709,12 +6751,14 @@ items.Wood_Windwillow_Branch_Long.name = Windwillow Branch - Long
 items.Wood_Windwillow_Branch_Short.name = Windwillow Branch - Short
 items.Wood_Windwillow_Roots.name = Windwillow Roots
 items.Wood_Windwillow_Trunk.name = Windwillow Log
+items.Wood_Windwillow_Trunk.description = [TMP] Windwillow
 items.Wood_Windwillow_Trunk_Full.name = Windwillow Tree Trunk
 items.Wood_Wisteria_Wild_Branch_Corner.name = Wisteria Branch - Corner
 items.Wood_Wisteria_Wild_Branch_Long.name = Wisteria Branch - Long
 items.Wood_Wisteria_Wild_Branch_Short.name = Wisteria Branch - Short
 items.Wood_Wisteria_Wild_Roots.name = Wisteria Roots
 items.Wood_Wisteria_Wild_Trunk.name = Wild Wisteria Log
+items.Wood_Wisteria_Wild_Trunk.description = [TMP] Darkwood
 items.Wood_Wisteria_Wild_Trunk_Full.name = Wisteria Tree Trunk
 items.Prototype_Geyser.name = Prototype Geyser Spawner
 items.Ingredient_Chitin_Sturdy.name = Sturdy Chitin
@@ -6845,26 +6889,33 @@ items.Rock_Salt.name = Salt Block
 items.Rock_Salt.description = Can be refined at the <item is="Bench_Cooking"/>.
 items.Rock_Salt_Half.name = Salt Half Slab
 items.Rock_Slate_Cobble_Corner.name = Slate Cobble - Corner
-items.Plant_Fruit_Apple.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Fruit_Berries_Red.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Fruit_Berries_Blue.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Fruit_Orange.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Fruit_Pear.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Carrot_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Corn_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Potato_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Pumpkin_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Onion_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Lettuce_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Turnip_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Tomato_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Rice_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Cauliflower_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Chilli_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Crop_Aubergine_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Mushroom_Brown.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Plant_Mushroom_Red.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
-items.Food_Vegetable_Cooked.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Stamina Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
+items.Plant_Fruit_Apple.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Berries_Red.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Berries_Blue.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Orange.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Pear.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Azure.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Coconut.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Mango.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Pinkberry.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Poison.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Spiral.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Fruit_Windwillow.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Carrot_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Corn_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Potato_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Pumpkin_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Onion_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Lettuce_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Turnip_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Tomato_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Rice_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Cauliflower_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Chilli_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Crop_Aubergine_Item.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Mushroom_Brown.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Plant_Mushroom_Red.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Food_Vegetable_Cooked.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Stamina Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
 items.Food_Kebab_Fruit.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Stamina Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
 items.Food_Kebab_Vegetable.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Stamina Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
 items.Food_Kebab_Mushroom.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Stamina Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
@@ -6881,8 +6932,8 @@ items.Recipe_Food_Pie_Meat.description = [TMP] Teaches the <item is="Food_Pie_Me
 items.Recipe_Food_Salad_Caesar.name = [TMP] Recipe: Caesar Salad
 items.Recipe_Food_Salad_Caesar.description = [TMP] Teaches the <item is="Food_Salad_Caesar"/> recipe.\n\nInstantly restores <color is="#ffffff">15%</color> health and grants:\n\n• <color is="#ffffff">Health Regen III</color>\n• <color is="#ffffff">Stamina Boost III</color>\n\nDuration: <color is="#ffffff">6:00</color>
 items.Food_Pie_Pumpkin.description = [TMP] Instantly restores <color is="#ffffff">15%</color> health and grants:\n\n• <color is="#ffffff">Health Regen III</color>\n• <color is="#ffffff">Stamina Boost III</color>\n\nDuration: <color is="#ffffff">6:00</color>
-items.Food_Wildmeat_Cooked.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Health Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
-items.Food_Fish_Grilled.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Health Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
+items.Food_Wildmeat_Cooked.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Health Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
+items.Food_Fish_Grilled.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health and grants:\n\n• <color is="#ffffff">Health Regen I</color>\n• <color is="#ffffff">Health Boost I</color>\n\nDuration: <color is="#ffffff">0:45</color>
 items.Food_Kebab_Meat.description = [TMP] Instantly restores <color is="#ffffff">10%</color> health and grants:\n\n• <color is="#ffffff">Health Regen II</color>\n• <color is="#ffffff">Health Boost II</color>\n\nDuration: <color is="#ffffff">2:30</color>
 items.Food_Pie_Meat.description = [TMP] Instantly restores <color is="#ffffff">15%</color> health and grants:\n\n• <color is="#ffffff">Health Regen III</color>\n• <color is="#ffffff">Health Boost III</color>\n\nDuration: <color is="#ffffff">6:00</color>
 items.Food_Wildmeat_Raw.description = [TMP] Instantly restores <color is="#ffffff">5%</color> health.
@@ -6950,6 +7001,12 @@ memories.categories.Undead.title = Undead
 memories.categories.Elemental.title = Elemental
 memories.categories.Feran.title = Feran
 
+memories.unlock.title = [TMP] You have unlocked the Memories Feature!
+memories.unlock.bullet1 = [TMP] Void's curse keeps Orbis locked away but there may yet be a way to break it.
+memories.unlock.bullet2 = [TMP] A deity rests within this Heart of Orbis; seek out memories of Orbis' myriad creatures and record them here to restore her will.
+memories.unlock.bullet3 = [TMP] Your inventory can now store a limited number of memories under a special section. \nReturn them to the Heart of Orbis to unlock a variety of rewards.
+memories.unlock.discoverMemories = [TMP] Discover memories
+
 memories.general.title = Memories
 memories.general.noMemories = No memories to record
 memories.general.categories = Categories
@@ -6957,7 +7014,7 @@ memories.general.recordNum = Record {count, number} {count, plural, one {memory}
 memories.general.collected = New memory collected! '{memoryTitle}' discovered!
 memories.general.featureUnlockedNotification = Memories unlocked! Explore the many versions of Orbis to collect memories!
 memories.general.featureUnlockedMessage = You've unlocked the Memories feature!\nWhen encountering creatures you'll collect memories that will be stored in your inventory.\nBring these memories back to the Heart of Orbis to record them and unlock rewards!
-memories.general.discovered.tooltipText = Memory discovered!
+memories.general.discovered.tooltipText = New memory discovered!\n\nReturn to The Heart of Orbis in the Forgotten Temple to restore it.
 memories.general.undiscovered.tooltipText = Keep exploring to uncover this memory!
 memories.general.memoriesLevelProgress = Memories Level: {level} (next level in {count, plural, one {1 memory} other {{count, number} memories}})
 memories.general.chestLocked.tooltipText = [TMP] <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Restore {count, number} {count, plural, one {memory} other {memories}} to unlock.</color>

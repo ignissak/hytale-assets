@@ -1,12 +1,6 @@
 {
   "RenderMode": "Erosion",
-  "EmitOffset": {
-    "Z": {
-      "Min": 1.5,
-      "Max": 1.5
-    }
-  },
-  "ParticleRotationInfluence": "Billboard",
+  "ParticleRotationInfluence": "BillboardY",
   "LinearFiltering": true,
   "LightInfluence": 0,
   "ParticleRotateWithSpawner": false,
@@ -17,32 +11,8 @@
     "Min": 1.0,
     "Max": 2.0
   },
-  "Attractors": [
-    {
-      "Radius": 0,
-      "LinearAcceleration": {
-        "X": 0,
-        "Y": 2.0,
-        "Z": 0
-      },
-      "RadialAcceleration": -8.0,
-      "RadialImpulse": -2.0,
-      "TrailPositionMultiplier": 0.0,
-      "RadialTangentImpulse": 8.0,
-      "RadialAxis": {
-        "Y": 1.0
-      }
-    },
-    {
-      "RadialAcceleration": 4.0,
-      "RadialAxis": {
-        "Y": 1.0
-      },
-      "RadialTangentAcceleration": 1.0
-    }
-  ],
   "Particle": {
-    "Texture": "Particles/Textures/Basic/Shape_Rect_Erosion.png",
+    "Texture": "Particles/Textures/Basic/Ray.png",
     "ScaleRatioConstraint": "None",
     "Animation": {
       "0": {
@@ -78,7 +48,7 @@
         "Opacity": 1.0
       },
       "90": {
-        "Opacity": 0.58
+        "Opacity": 0.368
       },
       "100": {
         "Opacity": 0.0,
@@ -86,16 +56,10 @@
       }
     },
     "InitialAnimationFrame": {
-      "Rotation": {
-        "Z": {
-          "Min": 90.0,
-          "Max": 90.0
-        }
-      },
       "Scale": {
         "X": {
-          "Max": 0.6,
-          "Min": 0.6
+          "Max": 0.2,
+          "Min": 0.2
         },
         "Y": {
           "Max": 0.6,
@@ -108,23 +72,32 @@
   },
   "UseEmitDirection": false,
   "VelocityStretchMultiplier": 0.0,
-  "SpawnBurst": true,
+  "SpawnBurst": false,
   "SpawnRate": {
-    "Min": 10.0,
-    "Max": 10.0
+    "Min": 10,
+    "Max": 22
   },
   "InitialVelocity": {
     "Speed": {
-      "Min": 1.0,
-      "Max": 2.0
+      "Min": 0.2,
+      "Max": 0.4
     },
-    "Yaw": {
-      "Min": 90.0,
-      "Max": 90.0
+    "Pitch": {
+      "Min": 90,
+      "Max": 90
     }
   },
-  "WaveDelay": {
-    "Min": 1,
-    "Max": 1
+  "EmitOffset": {
+    "Z": {
+      "Min": 0.3,
+      "Max": 0.4
+    },
+    "X": {
+      "Min": 0.3,
+      "Max": 0.4
+    },
+    "Y": {
+      "Max": 1
+    }
   }
 }

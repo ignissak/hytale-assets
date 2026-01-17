@@ -1,0 +1,81 @@
+$Common = "../../Common.ui";
+
+@BulletPoint = Group {
+  Anchor: (Top: 15);
+  LayoutMode: Left;
+
+  Group #BulletIcon {
+    Background: "MemoriesUnlocked/BulletIcon.png";
+    Anchor: (Width: 8, Height: 8, Top: 8);
+  }
+
+  Label #TextLabel {
+  Anchor: (Left: 10);
+    Style: (HorizontalAlignment: Start, FontSize: 18, Wrap: true, TextColor: #778393);
+    Text: @Text;
+  }
+};
+
+SceneBlur {}
+
+Group {
+  Background: #000000(0.70);
+}
+
+Group {
+  LayoutMode: Middle;
+
+  Group {
+    LayoutMode: Center;
+    Anchor: (Height: 540);
+    Background: (TexturePath: "MemoriesUnlocked/BackgroundModal.png", Border: 4);
+    Padding: (Vertical: 20);
+
+    Group {
+      LayoutMode: Top;
+
+      Group #Content {
+        Anchor: (Top: 30);
+        LayoutMode: Left;
+
+        Group #ContentText {
+          Anchor: (Width: 500, Top: 20);
+          LayoutMode: Top;
+
+          Label #TitleLabel {
+            Style: (HorizontalAlignment: Start, FontName: "Secondary", TextColor: #b6cfee, FontSize: 28, RenderBold: true, RenderUppercase: true, Wrap: true);
+            Text: %server.memories.unlock.title;
+          }
+
+          @BulletPoint {
+            @Text = %server.memories.unlock.bullet1;
+          }
+
+          @BulletPoint {
+            @Text = %server.memories.unlock.bullet2;
+          }
+
+          @BulletPoint {
+            @Text = %server.memories.unlock.bullet3;
+          }
+        }
+
+        Group #ContentImage {
+          LayoutMode: Center;
+          Anchor: (Width: 286, Height: 393, Left: 40);
+          Background: "MemoriesUnlocked/ModalStatue.png";
+        }
+      }
+
+      Group {
+        FlexWeight: 1;
+      }
+
+      $Common.@TextButton #DiscoverMemoriesButton {
+        @Anchor = Anchor(Width: 300, Bottom: 2);
+        @Text = %server.memories.unlock.discoverMemories;
+      }
+    }
+
+  }
+}

@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Plant_Fruit_Poison.name"
+    "Name": "server.items.Plant_Fruit_Poison.name",
+    "Description": "server.items.Plant_Fruit_Poison.description"
   },
   "Icon": "Icons/ItemsGenerated/Plant_Fruit_Poison_Tree.png",
   "Parent": "Template_Fruit",
@@ -21,6 +22,25 @@
     "BlockParticleSetId": "Dust",
     "ParticleColor": "#c6a9ff"
   },
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#c6a9ff",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
   "IconProperties": {
     "Scale": 0.58,
     "Translation": [
@@ -35,5 +55,5 @@
   },
   "Scale": 1.75,
   "DropOnDeath": true,
-  "Quality": "Uncommon"
+  "Quality": "Common"
 }

@@ -8,14 +8,33 @@
     ],
     "AttitudeGroup": "PredatorsBig",
     "WanderRadius": 8,
-    "ViewRange": 12,
+    "ViewRange": 5,
     "FleeRange": 15,
-    "HearingRange": 8,
+    "HearingRange": 20,
     "DropList": "Drop_Rex_Cave",
-    "MaxSpeed": 24,
+    "MaxSpeed": 9,
     "Attack": "Root_NPC_Attack_Melee",
+    "AttackDistance": 3,
+    "CombatBehaviorDistance": 6,
+    "CombatAlwaysMovingWeight": 1000,
+    "RunThreshold": 0.1,
+    "KnockbackScale": 0.1,
+    "ClimbHeight": 2,
+    "MinJumpHeight": 1.5,
+    "AscentAnimationType": "Walk",
+    "ClimbSpeedMult": 1,
+    "ClimbSpeedPow": 1,
+    "ClimbSpeedConst": 5,
+    "DescendSpeedCompensation": 1,
+    "DescendFlatness": 0.9,
+    "DescentSteepness": 0.9,
+    "DescentBlending": 1.5,
+    "LeashDistance": 60,
+    "HardLeashDistance": 100,
+    "LeashMinPlayerDistance": 15,
+    "LeashTimer": [12, 16],
     "AlwaysSleepAtNight": false,
-    "MaxHealth": 226,
+    "MaxHealth": 400,
     "IsMemory": true,
     "MemoriesCategory": "Reptile",
     "_InteractionVars": {
@@ -43,6 +62,39 @@
                 "Physical": 68
               },
               "RandomPercentageModifier": 0.1
+            },
+            "DamageEffects": {
+              "Knockback": {
+                "Force": 0.2,
+                "RelativeX": 0,
+                "RelativeZ": 0.8,
+                "VelocityY": 20,
+                "VelocityType": "Set"
+              }
+            }
+          }
+        ]
+      },
+      "Melee_Selector": {
+        "Interactions": [
+          {
+            "Parent": "NPC_Attack_Selector_Left",
+            "$Comment": "Sets Hit shape and padding to allow effect to play and wait till animation is over",
+            "RunTime": 0.152,
+            "Selector": {
+              "Id": "Stab",
+              "TestLineOfSight": true,
+              "ExtendTop": 1,
+              "ExtendBottom": 3,
+              "ExtendLeft": 1,
+              "ExtendRight": 1,
+              "StartDistance": 1,
+              "EndDistance": 5
+            },
+            "Next": {
+              "Type": "Simple",
+              "$Comment": "Pad the interaction length",
+              "RunTime": 0.13
             }
           }
         ]

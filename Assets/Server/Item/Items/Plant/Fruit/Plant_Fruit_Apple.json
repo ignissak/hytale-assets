@@ -3,7 +3,7 @@
     "Name": "server.items.Plant_Fruit_Apple.name",
     "Description": "server.items.Plant_Fruit_Apple.description"
   },
-  "Quality": "Uncommon",
+  "Quality": "Common",
   "Icon": "Icons/ItemsGenerated/Plant_Fruit_Apple.png",
   "Parent": "Template_Fruit",
   "BlockType": {
@@ -19,6 +19,26 @@
       }
     ],
     "ParticleColor": "#518e2e"
+  },
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#C12B10",
+                "Scale": 1,
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
   },
   "ItemLevel": 10,
   "IconProperties": {

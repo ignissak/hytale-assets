@@ -1,9 +1,29 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Plant_Fruit_Windwillow.name"
+    "Name": "server.items.Plant_Fruit_Windwillow.name",
+    "Description": "server.items.Plant_Fruit_Windwillow.description"
   },
   "Icon": "Icons/ItemsGenerated/Plant_Fruit_Windwillow.png",
   "Parent": "Template_Fruit",
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#9fd0dd",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
   "BlockType": {
     "CustomModel": "Resources/Ingredients/Blue_Fruit.blockymodel",
     "CustomModelTexture": [
@@ -44,5 +64,5 @@
   },
   "Scale": 1.75,
   "DropOnDeath": true,
-  "Quality": "Uncommon"
+  "Quality": "Common"
 }

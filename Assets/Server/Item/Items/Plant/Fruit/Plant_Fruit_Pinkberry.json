@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Plant_Fruit_Pinkberry.name"
+    "Name": "server.items.Plant_Fruit_Pinkberry.name",
+    "Description": "server.items.Plant_Fruit_Pinkberry.description"
   },
   "Icon": "Icons/ItemsGenerated/Plant_Fruit_Pinkberry.png",
   "Parent": "Template_Fruit",
@@ -22,6 +23,25 @@
     "BlockParticleSetId": "Dust",
     "ParticleColor": "#f058a4"
   },
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#F8619C",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
   "IconProperties": {
     "Scale": 1,
     "Translation": [
@@ -36,5 +56,5 @@
   },
   "Scale": 1.75,
   "DropOnDeath": true,
-  "Quality": "Uncommon"
+  "Quality": "Common"
 }

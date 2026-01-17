@@ -30,14 +30,91 @@
       "Melee_Damage": {
         "Interactions": [
           {
-            "Parent": "NPC_Attack_Melee_Damage",
-            "$Comment": "Sets damage and onhit effects",
-            "DamageCalculator": {
-              "Type": "Absolute",
-              "BaseDamage": {
-                "Physical": 27
+            "Type": "CooldownCondition",
+            "Id": "Snapdragon_Poison",
+            "Next": {
+              "Type": "Serial",
+              "Interactions": [
+                {
+                  "Type": "TriggerCooldown",
+                  "Cooldown": {
+                    "Id": "Snapdragon_Poison",
+                    "Cooldown": 5
+                  }
+                },
+                {
+                  "Type": "Simple",
+                  "RunTime": 0.1,
+                  "Effects": {
+                    "Particles": [
+                      {
+                        "SystemId": "Placeholder_Poison_Melee_Slash",
+                        "TargetEntityPart": "Entity",
+                        "PositionOffset": {
+                          "X": 0,
+                          "Y": 0.75,
+                          "Z": 1.5
+                        },
+                        "RotationOffset": {
+                          "Pitch": -30,
+                          "Roll": 0,
+                          "Yaw": 90
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "Parent": "NPC_Attack_Melee_Damage",
+                  "$Comment": "Sets damage and onhit effects with poison",
+                  "DamageCalculator": {
+                    "Type": "Absolute",
+                    "BaseDamage": {
+                      "Physical": 27
+                    },
+                    "RandomPercentageModifier": 0.1
+                  },
+                  "DamageEffects": {
+                    "Knockback": {
+                      "Force": 0.5
+                    }
+                  },
+                  "Next": {
+                    "Type": "EffectCondition",
+                    "Entity": "Target",
+                    "EntityEffectIds": [
+                      "Antidote"
+                    ],
+                    "Match": "None",
+                    "Next": {
+                      "Type": "ClearEntityEffect",
+                      "Entity": "Target",
+                      "EntityEffectId": "Poison_T3",
+                      "Next": {
+                        "Type": "ApplyEffect",
+                        "Entity": "Target",
+                        "EffectId": "Poison_T3"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "Failed": {
+              "Parent": "NPC_Attack_Melee_Damage",
+              "$Comment": "Damage only when poison is on cooldown",
+              "DamageCalculator": {
+                "Type": "Absolute",
+                "BaseDamage": {
+                  "Physical": 27
+                },
+                "RandomPercentageModifier": 0.1
               },
-              "RandomPercentageModifier": 0.1
+              "DamageEffects": {
+                "Knockback": {
+                  "Force": 0.5
+                }
+              }
             }
           }
         ]

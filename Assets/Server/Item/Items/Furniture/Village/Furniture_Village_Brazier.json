@@ -69,13 +69,32 @@
     "Looping": true,
     "AmbientSoundEventId": "SFX_Campfire_Default_Loop",
     "Interactions": {
+      "Collision": {
+        "Cooldown": {
+          "Id": "BurnEffect",
+          "Cooldown": 1
+        },
+        "Interactions": [
+          {
+            "Type": "Condition",
+            "RequiredGameMode": "Adventure",
+            "Next": {
+              "Type": "Simple",
+              "RunTime": 0.1,
+              "Next": {
+                "Type": "ApplyEffect",
+                "EffectId": "Burn"
+              }
+            }
+          }
+        ]
+      },
       "Use": {
         "Interactions": [
           {
             "Type": "ChangeState",
             "Changes": {
-              "default": "Off",
-              "Off": "default"
+              "default": "Off"
             }
           }
         ]
@@ -83,7 +102,7 @@
     },
     "State": {
       "Definitions": {
-        "On": {
+        "Off": {
           "Interactions": {
             "Collision": {
               "Cooldown": {
@@ -92,23 +111,21 @@
               },
               "Interactions": [
                 {
-                  "Type": "Condition",
-                  "RequiredGameMode": "Adventure",
-                  "Next": {
-                    "Type": "Simple",
-                    "RunTime": 0.1,
-                    "Next": {
-                      "Type": "ApplyEffect",
-                      "EffectId": "Burn"
-                    }
+                  "Type": "Simple"
+                }
+              ]
+            },
+            "Use": {
+              "Interactions": [
+                {
+                  "Type": "ChangeState",
+                  "Changes": {
+                    "Off": "default"
                   }
                 }
               ]
             }
           },
-          "AmbientSoundEventId": "SFX_Campfire_Default_Loop"
-        },
-        "Off": {
           "InteractionHint": "server.interactionHints.turnon",
           "Light": null,
           "Particles": null,

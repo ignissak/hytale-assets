@@ -1,6 +1,7 @@
 {
   "TranslationProperties": {
-    "Name": "server.items.Plant_Fruit_Coconut.name"
+    "Name": "server.items.Plant_Fruit_Coconut.name",
+    "Description": "server.items.Plant_Fruit_Coconut.description"
   },
   "Icon": "Icons/ItemsGenerated/Plant_Crop_Coconut.png",
   "Parent": "Template_Fruit",
@@ -17,7 +18,26 @@
     "BlockParticleSetId": "Flower",
     "ParticleColor": "#ad755d"
   },
+  "InteractionVars": {
+    "Consume_Charge": {
+      "Interactions": [
+        {
+          "Parent": "Consume_Charge_Food_T1_Inner",
+          "Effects": {
+            "Particles": [
+              {
+                "SystemId": "Food_Eat",
+                "Color": "#995C42",
+                "TargetNodeName": "Mouth",
+                "TargetEntityPart": "Entity"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
   "Scale": 1.75,
   "DropOnDeath": true,
-  "Quality": "Uncommon"
+  "Quality": "Common"
 }
