@@ -28,10 +28,11 @@ jobs:
       - name: Download assets
         run: ./hytale-downloader-linux-amd64 -download-path assets.zip -patchline pre-release
 
-      - name: Unzip assets
+      - name: Extract and unzip assets
         run: |
-          unzip -o assets.zip -d Assets/
-          rm assets.zip
+          unzip -o assets.zip
+          unzip -o Assets.zip -d Assets/
+          rm assets.zip Assets.zip
 
       - name: Check for changes and commit
         run: |
