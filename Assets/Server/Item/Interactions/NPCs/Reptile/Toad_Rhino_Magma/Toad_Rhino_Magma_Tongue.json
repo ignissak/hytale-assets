@@ -1,0 +1,45 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Toad_Rhino_Magma_Default",
+    "ItemAnimationId": "Tongue"
+  },
+  "$Comment": "Prepare Delay",
+  "RunTime": 0.333,
+  "Next": {
+    "Type": "Selector",
+    "Effects": {
+      "WorldSoundEventId": "SFX_Toad_Rhino_Magma_Tongue_Whoosh"
+    },
+    "$Comment": "Length of Combat",
+    "RunTime": 0.152,
+    "Selector": {
+      "Id": "Stab",
+      "TestLineOfSight": true,
+      "ExtendTop": 0.5,
+      "ExtendBottom": 0.5,
+      "ExtendLeft": 0.5,
+      "ExtendRight": 0.5,
+      "StartDistance": 1,
+      "EndDistance": 7
+    },
+    "HitEntity": {
+      "Interactions": [
+        {
+          "Type": "Replace",
+          "DefaultValue": {
+            "Interactions": [
+              "Toad_Rhino_Magma_Tongue_Damage"
+            ]
+          },
+          "Var": "Tongue_Damage"
+        }
+      ]
+    },
+    "Next": {
+      "Type": "Simple",
+      "$Comment": "Pad the interaction length",
+      "RunTime": 0.53
+    }
+  }
+}

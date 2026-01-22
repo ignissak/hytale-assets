@@ -1,0 +1,72 @@
+{
+  "Class": "Sensor",
+  "Parameters": {
+    "AttackDistance": {
+      "Value": 2.5,
+      "Description": "The attack distance to be considered"
+    },
+    "NavStates": {
+      "Value": [ "Aborted", "Defer", "Blocked" ],
+      "Description": "The nav states that are used for the unreachability check"
+    },
+    "ThrottleDuration": {
+      "Value": 3,
+      "Description": "The duration the current nav state, in seconds"
+    },
+    "AllowedHeightDifference": {
+      "Value": [ -2, 2 ],
+      "Description": "The height difference beyond which the target is considered unreachable"
+    },
+    "CheckLoS": {
+      "Value": false,
+      "Description": "Whether to account for LoS to the target when evaluating unreachability"
+    }
+  },
+  "Content": {
+    "Type": "And",
+    "Sensors": [
+      {
+        "Type": "Not",
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "AttackDistance" }
+        }
+      },
+      {
+        "Enabled": { "Compute": "CheckLoS" },
+        "Type": "Not",
+        "Sensor": {
+          "Type": "Target",
+          "Filters": [
+            {
+              "Type": "LineOfSight"
+            }
+          ]
+        }
+      },
+      {
+        "Type": "Or",
+        "Sensors": [
+          {
+            "Type": "Nav",
+            "NavStates": { "Compute": "NavStates" },
+            "ThrottleDuration": { "Compute": "ThrottleDuration" }
+          },
+          {
+            "Type": "Target",
+            "Filters": [
+              {
+                "Type": "Not",
+                "Filter": {
+                  "Type": "HeightDifference",
+                  "HeightDifference": { "Compute": "AllowedHeightDifference" }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type": "Component"
+}

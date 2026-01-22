@@ -23,6 +23,10 @@
       "Value": 360,
       "Description": "The view sector of the NPC"
     },
+    "HearingRange": {
+      "Value": 4,
+      "Description": "The hearing range of the NPC"
+    },
     "AlertedRange": {
       "Value": 15,
       "Description": "Range within which the NPC will keep following to attack or aggro if attacked"
@@ -40,7 +44,7 @@
       "Description": "Max health for the NPC"
     },
     "Attack": {
-      "Value": "Root_NPC_Attack_Melee",
+      "Value": "Shark_Hammerhead_Bite",
       "Description": "The attack sequence to use in combat"
     },
     "AttackRange": {
@@ -89,15 +93,15 @@
   "MotionControllerList": [
     {
       "Type": "Dive",
-      "MaxSwimSpeed": 10,
+      "MaxSwimSpeed": 8,
       "Acceleration": 10,
       "MaxDiveSpeed": 8,
       "SwimDepth": 0.6,
       "SinkRatio": 0.5,
       "MinDiveDepth": 0,
       "MaxDiveDepth": 100,
-      "MinDepthAboveGround": 1,
-      "MinDepthBelowSurface": 1,
+      "MinDepthAboveGround": 0.5,
+      "MinDepthBelowSurface": 0.5,
       "Gravity": 10,
       "MaxRotationSpeed": 360,
       "MaxSwimTurnAngle": 180
@@ -260,7 +264,7 @@
                     "Modify": {
                       "ViewRange": { "Compute": "ViewRange" },
                       "ViewSector": { "Compute": "ViewSector" },
-                      "HearingRange": 0,
+                      "HearingRange": { "Compute": "HearingRange" },
                       "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
                       "Attitudes": [ "Hostile", "Neutral" ]
                     }
@@ -290,7 +294,7 @@
                 "Modify": {
                   "ViewRange": { "Compute": "ViewRange" },
                   "ViewSector": { "Compute": "ViewSector" },
-                  "HearingRange": 0,
+                  "HearingRange": { "Compute": "HearingRange" },
                   "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
                   "Attitudes": [ "Hostile" ]
                 }
@@ -363,7 +367,7 @@
                     "Modify": {
                       "ViewRange": { "Compute": "ViewRange" },
                       "ViewSector": { "Compute": "ViewSector" },
-                      "HearingRange": 0,
+                      "HearingRange": { "Compute": "HearingRange" },
                       "AbsoluteDetectionRange": { "Compute": "AbsoluteDetectionRange" },
                       "Attitudes": [ "Hostile", "Neutral" ]
                     }
@@ -462,6 +466,9 @@
                     "Type": "LineOfSight"
                   }
                 ]
+              },
+              "BodyMotion": {
+                "Type": "MatchLook"
               },
               "Actions": [
                 {

@@ -23,7 +23,7 @@
 		}, {
 			"$NodeId":	"Mask-1e3dd75d-3d76-4813-b3f9-ba98c2cd27e2",
 			"Id":	"mask",
-			"Mask":	"Filter_PlantsAndTrees"
+			"Mask":	"Filter_PlantsAndTrees|Filter_AllScatter,!~Fluid_Water"
 		}, {
 			"$NodeId":	"Material-df479354-c734-4d91-b0f9-ec6b7ec2c877",
 			"Id":	"material",
@@ -50,10 +50,6 @@
 			"$NodeId":	"SaveIndex-166ae9a2-7f42-44e3-84f2-0a40e54c139d",
 			"Id":	"saveindex",
 			"StoredIndexName":	"melt_loop"
-		}, {
-			"$NodeId":	"Shape-361c54c4-a09d-41dc-95bb-964471775981",
-			"Id":	"shape",
-			"Shape":	"Cylinder"
 		}, {
 			"$NodeId":	"RandomOffset-642a9fff-6ffc-4e7f-83de-03bfae4d66b6",
 			"Id":	"randomoffset",
@@ -186,7 +182,7 @@
 		}, {
 			"$NodeId":	"Mask-ccfbbd7e-7711-401f-af37-35cadc868fa9",
 			"Id":	"mask",
-			"Mask":	"!Empty|Filter_PlantsAndTrees|Rock_Basalt"
+			"Mask":	"!Empty|Filter_PlantsAndTrees|Filter_AllScatter|Rock_Basalt"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-603748ec-407b-4a86-b9f6-40a016b7beed",
 			"Id":	"appendmaskfromtoolarg",
@@ -216,16 +212,19 @@
 			"Invert":	true,
 			"AdditionalBlocks":	""
 		}, {
-			"$NodeId":	"Dimensions-1e729264-dcc8-40a0-9765-c6ba5004db8d",
-			"Id":	"dimensions",
-			"Width":	{
-				"Value":	4,
-				"Relative":	true
-			},
-			"Height":	{
-				"Value":	4,
-				"Relative":	true
-			}
+			"$NodeId":	"LoadIntFromToolArg-bd38d14b-866b-4423-9fa1-8b571934e3d4",
+			"Id":	"loadint",
+			"ArgName":	"SurfaceMaterialWidth",
+			"TargetField":	"Width",
+			"Relative":	true,
+			"Negate":	false
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-2c04ad24-013e-441c-8eb9-7ec40bdb1ccd",
+			"Id":	"loadint",
+			"ArgName":	"SurfaceMaterialWidth",
+			"TargetField":	"Height",
+			"Relative":	true,
+			"Negate":	false
 		}, {
 			"$NodeId":	"LoadMaterial-975db5fe-ab2b-4a52-ad90-57a292005001",
 			"Id":	"loadmaterial",
@@ -313,7 +312,7 @@
 		}, {
 			"$NodeId":	"Mask-5cd86c6f-46ec-4cff-9c4f-85df01744cae",
 			"Id":	"mask",
-			"Mask":	"Empty,!Filter_PlantsAndTrees"
+			"Mask":	"Empty,!Filter_PlantsAndTrees|Filter_AllScatter"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-a08b9723-89eb-4a7b-8f2d-023c6c4ffc5d",
 			"Id":	"appendmaskfromtoolarg",
@@ -420,7 +419,14 @@
 		}, {
 			"$NodeId":	"Mask-10ae717f-d9f1-4934-b7df-e0bb0d2947fd",
 			"Id":	"mask",
-			"Mask":	"Fluid_Water,>Soil_Gravel"
+			"Mask":	"Fluid_Water"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-be597678-7fbb-408c-9335-439c1d65d5e7",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"SubsurfaceMaterial",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
 		}, {
 			"$NodeId":	"Set-7ce2a5ff-2a9e-4b77-9c9d-0c1a910f3452",
 			"Id":	"set"
@@ -558,12 +564,6 @@
 					"$y":	557
 				}
 			},
-			"Shape-361c54c4-a09d-41dc-95bb-964471775981":	{
-				"$Position":	{
-					"$x":	1715,
-					"$y":	685
-				}
-			},
 			"RandomOffset-642a9fff-6ffc-4e7f-83de-03bfae4d66b6":	{
 				"$Position":	{
 					"$x":	1714,
@@ -660,322 +660,334 @@
 					"$y":	7484
 				}
 			},
-			"Dimensions-1e729264-dcc8-40a0-9765-c6ba5004db8d":	{
+			"LoadIntFromToolArg-bd38d14b-866b-4423-9fa1-8b571934e3d4":	{
 				"$Position":	{
-					"$x":	1665,
-					"$y":	7789
+					"$x":	1655,
+					"$y":	7759
+				}
+			},
+			"LoadIntFromToolArg-2c04ad24-013e-441c-8eb9-7ec40bdb1ccd":	{
+				"$Position":	{
+					"$x":	1660,
+					"$y":	8022
 				}
 			},
 			"LoadMaterial-975db5fe-ab2b-4a52-ad90-57a292005001":	{
 				"$Position":	{
-					"$x":	1662,
-					"$y":	8190
+					"$x":	1625,
+					"$y":	8901
 				}
 			},
 			"Set-3cd734ef-a139-4856-953f-b95eabe0ad66":	{
 				"$Position":	{
-					"$x":	1666,
-					"$y":	8339
+					"$x":	1629,
+					"$y":	9050
 				}
 			},
 			"LoadIntFromToolArg-7b51624b-db22-4c77-b75a-15afee660dc4":	{
 				"$Position":	{
-					"$x":	1668,
-					"$y":	8475
+					"$x":	1631,
+					"$y":	9186
 				}
 			},
 			"Dimensions-4e15db4b-d3f1-4908-ab25-75be0b6e4dd0":	{
 				"$Position":	{
-					"$x":	1665,
-					"$y":	8697
+					"$x":	1628,
+					"$y":	9408
 				}
 			},
 			"Set-886e7088-ac8e-4564-9461-0ccd2b4844ee":	{
 				"$Position":	{
-					"$x":	1677,
-					"$y":	9103
+					"$x":	1640,
+					"$y":	9814
 				}
 			},
 			"ClearOperationMask-45e0e63d-78e8-4161-9c82-2918ab7b8e00":	{
 				"$Position":	{
-					"$x":	1569,
-					"$y":	9624
+					"$x":	1494,
+					"$y":	11426
 				}
 			},
 			"AppendMaskFromToolArg-ba6e6180-8d93-4eb4-b866-195f65594084":	{
 				"$Position":	{
-					"$x":	1574,
-					"$y":	9768
+					"$x":	1499,
+					"$y":	11570
 				}
 			},
 			"AppendMaskFromToolArg-3a75c0ae-eb26-4ebb-96d5-87cd15275bd8":	{
 				"$Position":	{
-					"$x":	1573,
-					"$y":	10035
+					"$x":	1498,
+					"$y":	11837
 				}
 			},
 			"AppendMaskFromToolArg-86b00aa6-cec6-4ffa-9926-398f58d828f6":	{
 				"$Position":	{
-					"$x":	1571,
-					"$y":	10306
+					"$x":	1496,
+					"$y":	12108
 				}
 			},
 			"Dimensions-0efecb1c-fb2f-47b4-bde7-8b73566bf821":	{
 				"$Position":	{
-					"$x":	1566,
-					"$y":	10576
+					"$x":	1491,
+					"$y":	12378
 				}
 			},
 			"LoadMaterial-02830b76-e6bb-4876-9cfa-9e0e7ef1f571":	{
 				"$Position":	{
-					"$x":	1570,
-					"$y":	10990
+					"$x":	1495,
+					"$y":	12792
 				}
 			},
 			"LoadIntFromToolArg-8b2109e5-7e5a-467f-a263-0f1728d62a1d":	{
 				"$Position":	{
-					"$x":	1578,
-					"$y":	11137
+					"$x":	1503,
+					"$y":	12939
 				}
 			},
 			"Set-d579484a-aa77-4aeb-a450-6a4c0a509c75":	{
 				"$Position":	{
-					"$x":	1580,
-					"$y":	11361
+					"$x":	1505,
+					"$y":	13163
 				}
 			},
 			"ClearOperationMask-e06635d4-0b8b-4641-a91c-5ccec42f648f":	{
 				"$Position":	{
-					"$x":	1533,
-					"$y":	11769
+					"$x":	1562,
+					"$y":	13802
 				}
 			},
 			"HistoryMask-c66744b0-0929-4ad4-9307-4ca7866cc4be":	{
 				"$Position":	{
-					"$x":	1533,
-					"$y":	11896
+					"$x":	1562,
+					"$y":	13929
 				}
 			},
 			"Mask-5cd86c6f-46ec-4cff-9c4f-85df01744cae":	{
 				"$Position":	{
-					"$x":	1530,
-					"$y":	12035
+					"$x":	1559,
+					"$y":	14068
 				}
 			},
 			"AppendMaskFromToolArg-a08b9723-89eb-4a7b-8f2d-023c6c4ffc5d":	{
 				"$Position":	{
-					"$x":	1527,
-					"$y":	12211
+					"$x":	1556,
+					"$y":	14244
 				}
 			},
 			"AppendMaskFromToolArg-bb0a46b1-0f93-449a-a5c6-e5849401640c":	{
 				"$Position":	{
-					"$x":	1526,
-					"$y":	12475
+					"$x":	1555,
+					"$y":	14508
 				}
 			},
 			"LoadMaterial-eb649a47-b638-4373-84ab-d2ea1f6e8c64":	{
 				"$Position":	{
-					"$x":	1504,
-					"$y":	12748
+					"$x":	1533,
+					"$y":	14781
 				}
 			},
 			"SetDensity-3b0c3b12-f20e-4a6a-8509-f98316dc4e6a":	{
 				"$Position":	{
-					"$x":	1501,
-					"$y":	12893
+					"$x":	1530,
+					"$y":	14926
 				}
 			},
 			"Dimensions-c33e713b-3a22-4826-9749-266a7a5c5077":	{
 				"$Position":	{
-					"$x":	1495,
-					"$y":	13041
+					"$x":	1524,
+					"$y":	15074
 				}
 			},
 			"Set-6dc92139-faee-415f-8c36-1b2ede5e0d68":	{
 				"$Position":	{
-					"$x":	1488,
-					"$y":	13442
+					"$x":	1517,
+					"$y":	15475
 				}
 			},
 			"HistoryMask-46e162a9-17e3-44cb-a7f8-fc9f79414215":	{
 				"$Position":	{
-					"$x":	1527,
-					"$y":	13902
+					"$x":	1504,
+					"$y":	16397
 				}
 			},
 			"Dimensions-586dfcc6-1ff2-4f37-baba-b268be003344":	{
 				"$Position":	{
-					"$x":	1514,
-					"$y":	14055
+					"$x":	1491,
+					"$y":	16550
 				}
 			},
 			"ClearOperationMask-7a52f1f4-237a-44b2-9641-dc924612c0a8":	{
 				"$Position":	{
-					"$x":	1514,
-					"$y":	14456
+					"$x":	1491,
+					"$y":	16951
 				}
 			},
 			"Mask-b8233116-8ae5-40b6-8707-fcb207c3a685":	{
 				"$Position":	{
-					"$x":	1511,
-					"$y":	14604
+					"$x":	1472,
+					"$y":	17100
 				}
 			},
 			"Material-cad80d15-6717-4592-9c67-7994a34e6ba7":	{
 				"$Position":	{
-					"$x":	1516,
-					"$y":	14757
+					"$x":	1477,
+					"$y":	17253
 				}
 			},
 			"Set-e45927f6-035f-4680-8b0d-a7da56dcd630":	{
 				"$Position":	{
-					"$x":	1520,
-					"$y":	14920
+					"$x":	1481,
+					"$y":	17416
 				}
 			},
 			"Exit-0645d5ed-26c9-4a3e-ad21-a42baf543cbe":	{
 				"$Position":	{
-					"$x":	1516,
-					"$y":	15137
+					"$x":	1462,
+					"$y":	17767
 				}
 			},
 			"SaveIndex-d4624734-ecd3-4cd5-97cd-c6a06de415e6":	{
 				"$Position":	{
-					"$x":	1460,
-					"$y":	16554
+					"$x":	1347,
+					"$y":	19313
 				}
 			},
 			"AppendMaskFromToolArg-c00e434f-a125-4b49-862d-438543bc9482":	{
 				"$Position":	{
-					"$x":	1478,
-					"$y":	16886
+					"$x":	1365,
+					"$y":	19645
 				}
 			},
 			"AppendMaskFromToolArg-bd5f0186-a730-4eab-96f7-895519d1ac16":	{
 				"$Position":	{
-					"$x":	1477,
-					"$y":	17142
+					"$x":	1364,
+					"$y":	19901
 				}
 			},
 			"LoadMaterial-51a074e7-ff2a-4bf4-87f0-79750f4d587f":	{
 				"$Position":	{
-					"$x":	1475,
-					"$y":	17409
+					"$x":	1362,
+					"$y":	20168
 				}
 			},
 			"LoadIntFromToolArg-4eb740fe-0cbd-4fd2-ada2-54d16ad37ecc":	{
 				"$Position":	{
-					"$x":	1474,
-					"$y":	17561
+					"$x":	1361,
+					"$y":	20320
 				}
 			},
 			"Set-f7aeb040-70f2-4c92-bf2b-a2d0e79dc4a6":	{
 				"$Position":	{
-					"$x":	1480,
-					"$y":	17782
+					"$x":	1367,
+					"$y":	20541
 				}
 			},
 			"ClearOperationMask-cb0b9440-d774-4735-8a24-0a6ed514ff68":	{
 				"$Position":	{
-					"$x":	1478,
-					"$y":	17931
+					"$x":	1365,
+					"$y":	20690
 				}
 			},
 			"Mask-10ae717f-d9f1-4934-b7df-e0bb0d2947fd":	{
 				"$Position":	{
-					"$x":	1479,
-					"$y":	18074
+					"$x":	1366,
+					"$y":	20833
+				}
+			},
+			"AppendMaskFromToolArg-be597678-7fbb-408c-9335-439c1d65d5e7":	{
+				"$Position":	{
+					"$x":	1363,
+					"$y":	21014
 				}
 			},
 			"Set-7ce2a5ff-2a9e-4b77-9c9d-0c1a910f3452":	{
 				"$Position":	{
-					"$x":	1484,
-					"$y":	18235
+					"$x":	1345,
+					"$y":	21391
 				}
 			},
 			"ClearOperationMask-cb88f9af-ec86-4b9e-b670-39ea37ad6ded":	{
 				"$Position":	{
-					"$x":	1583,
-					"$y":	18782
+					"$x":	1400,
+					"$y":	22205
 				}
 			},
 			"Mask-9d0048f3-a832-4ba4-886b-cf298a7ba54f":	{
 				"$Position":	{
-					"$x":	1579,
-					"$y":	18947
+					"$x":	1396,
+					"$y":	22370
 				}
 			},
 			"AppendMaskFromToolArg-cb546e69-2656-4686-8f7f-00c48b5136bd":	{
 				"$Position":	{
-					"$x":	1579,
-					"$y":	19093
+					"$x":	1396,
+					"$y":	22516
 				}
 			},
 			"AppendMaskFromToolArg-cd343c3a-c917-4e30-87ec-fa106d2d78bf":	{
 				"$Position":	{
-					"$x":	1582,
-					"$y":	19342
+					"$x":	1399,
+					"$y":	22765
 				}
 			},
 			"LoadIntFromToolArg-b6e4d46d-d323-4e7b-911b-c59faaf59e9a":	{
 				"$Position":	{
-					"$x":	1584,
-					"$y":	19600
+					"$x":	1401,
+					"$y":	23023
 				}
 			},
 			"LoadMaterial-4bead4a1-6984-4196-96e2-de272dec46d3":	{
 				"$Position":	{
-					"$x":	1586,
-					"$y":	19821
+					"$x":	1403,
+					"$y":	23244
 				}
 			},
 			"Set-f31c3ee6-40b1-464f-8bf8-792e1f6bf306":	{
 				"$Position":	{
-					"$x":	1579,
-					"$y":	19991
+					"$x":	1396,
+					"$y":	23414
 				}
 			},
 			"ClearOperationMask-a4d33f9d-893f-4be3-9554-54ba10bda482":	{
 				"$Position":	{
-					"$x":	1582,
-					"$y":	20566
+					"$x":	1368,
+					"$y":	23989
 				}
 			},
 			"Mask-db740c12-bc94-46c4-8370-3d32683ff00c":	{
 				"$Position":	{
-					"$x":	1576,
-					"$y":	20721
+					"$x":	1362,
+					"$y":	24144
 				}
 			},
 			"AppendMaskFromToolArg-93c5ca91-08a5-45f2-8e4b-550a1e56250c":	{
 				"$Position":	{
-					"$x":	1570,
-					"$y":	20868
+					"$x":	1356,
+					"$y":	24291
 				}
 			},
 			"AppendMaskFromToolArg-e9d8bab5-287f-4080-8950-32b2fa0e79fa":	{
 				"$Position":	{
-					"$x":	1569,
-					"$y":	21121
+					"$x":	1355,
+					"$y":	24544
 				}
 			},
 			"LoadIntFromToolArg-3b75eebd-01a9-438e-ab40-4a25c7e6fb6a":	{
 				"$Position":	{
-					"$x":	1567,
-					"$y":	21377
+					"$x":	1353,
+					"$y":	24800
 				}
 			},
 			"LoadMaterial-7a0b8a45-cbcd-464e-a2e6-d0304e227606":	{
 				"$Position":	{
-					"$x":	1569,
-					"$y":	21600
+					"$x":	1355,
+					"$y":	25023
 				}
 			},
 			"Set-295a5f5b-9c5c-44f7-b0b4-ce72f1766ec7":	{
 				"$Position":	{
-					"$x":	1563,
-					"$y":	21772
+					"$x":	1349,
+					"$y":	25195
 				}
 			}
 		},
@@ -984,32 +996,32 @@
 		},
 		"$Groups":	[{
 				"$Position":	{
-					"$x":	1443.5,
-					"$y":	16821.5
+					"$x":	1331.1875,
+					"$y":	19581.1875
 				},
 				"$width":	941.625,
 				"$height":	1613.4375,
 				"$name":	"Plants in the Water"
 			}, {
 				"$Position":	{
-					"$x":	1498.5625,
-					"$y":	18697.5625
+					"$x":	1316.0625,
+					"$y":	22120.6875
 				},
 				"$width":	990.4375,
 				"$height":	1522.9375,
 				"$name":	"Plants on sides of the Water"
 			}, {
 				"$Position":	{
-					"$x":	1496.5625,
-					"$y":	20485.25
+					"$x":	1282.75,
+					"$y":	23908.375
 				},
 				"$width":	1039.875,
 				"$height":	1485.625,
 				"$name":	"Plants on top of the Water"
 			}, {
 				"$Position":	{
-					"$x":	1417.5625,
-					"$y":	11630.25
+					"$x":	1447.3125,
+					"$y":	13663.8125
 				},
 				"$width":	964.4375,
 				"$height":	2384.6875,
@@ -1040,19 +1052,19 @@
 				"$name":	"Shaping"
 			}, {
 				"$Position":	{
-					"$x":	1489.4375,
-					"$y":	9512
+					"$x":	1414.9375,
+					"$y":	11314.5625
 				},
 				"$width":	1011,
 				"$height":	2039.0625,
 				"$name":	"Coloring - Underwater"
 			}, {
 				"$Position":	{
-					"$x":	1230.25,
-					"$y":	16366.1875
+					"$x":	1117.9375,
+					"$y":	19125.875
 				},
 				"$width":	1555.75,
-				"$height":	5813.3125,
+				"$height":	6456.625,
 				"$name":	"Left Click"
 			}, {
 				"$Position":	{
@@ -1060,7 +1072,7 @@
 					"$y":	-2289.5625
 				},
 				"$width":	1918.75,
-				"$height":	17693.375,
+				"$height":	20380.5625,
 				"$name":	"Right Click"
 			}, {
 				"$Position":	{
@@ -1072,8 +1084,8 @@
 				"$name":	"Workaround - Replace Plants and Trees with Air"
 			}, {
 				"$Position":	{
-					"$x":	1425.3125,
-					"$y":	13796.375
+					"$x":	1402.9375,
+					"$y":	16291.75
 				},
 				"$width":	991,
 				"$height":	1323.375,

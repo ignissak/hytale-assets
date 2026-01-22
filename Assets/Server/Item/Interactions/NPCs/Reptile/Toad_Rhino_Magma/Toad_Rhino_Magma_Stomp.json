@@ -1,0 +1,51 @@
+{
+  "Type": "Simple",
+  "Effects": {
+    "ItemPlayerAnimationsId": "Toad_Rhino_Magma_Default",
+    "ItemAnimationId": "Stomp"
+  },
+  "$Comment": "Trigger animation once, then start the repeat loop",
+  "RunTime": 0,
+  "Next": {
+    "Type": "Repeat",
+    "Repeat": 3,
+    "ForkInteractions": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "$Comment": "Delay before each shockwave",
+          "RunTime": 0.417,
+          "Next": {
+            "Type": "Selector",
+            "Effects": {
+              "WorldSoundEventId": "SFX_Toad_Rhino_Magma_Tongue_Whoosh",
+              "Particles": [
+                {
+                  "SystemId": "Mace_Signature_Ground_Hit"
+                }
+              ]
+            },
+            "RunTime": 0.083,
+            "Selector": {
+              "Id": "AOECircle",
+              "Range": 4
+            },
+            "HitEntity": {
+              "Interactions": [
+                {
+                  "Type": "Replace",
+                  "DefaultValue": {
+                    "Interactions": [
+                      "Toad_Rhino_Magma_Stomp_Damage"
+                    ]
+                  },
+                  "Var": "Stomp_Damage"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

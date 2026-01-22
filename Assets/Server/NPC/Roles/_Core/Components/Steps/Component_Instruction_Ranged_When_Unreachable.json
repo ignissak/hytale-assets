@@ -1,0 +1,281 @@
+{
+  "Type": "Component",
+  "Class": "Instruction",
+  "Parameters": {
+    "_ImportStates": [ "GiveUp" ],
+    "Enabled": {
+      "Value":true,
+      "Description": "Whether this component is enabled."
+    },
+    "AttackMeleeDistance": {
+      "Value": 2,
+      "Description": "The distance at which an NPC will execute melee attacks. Used for reachability checks."
+    },
+    "AttackRanged": {
+      "Value": "NPC_Rubble_Throw",
+      "Description": "The ranged attack the NPC will execute."
+    },
+    "AttackRangedStartDelay": {
+      "Value": [ 3, 6 ],
+      "Description": "How long the NPC will wait for (after the target is deemed unreachable) before switching to ranged attacks."
+    },
+    "AttackRangedAngledHeightDiffAbove": {
+      "Value": [ 2, 6 ],
+      "Description": "The height difference range in which the target is considered to be at a steep angle, when above the target."
+    },
+    "AttackRangedAngledHeightDiffBelow": {
+      "Value": [ -4, 2 ],
+      "Description": "The height difference range in which the target is considered to be at a steep angle, when below the target."
+    },
+    "AttackRangedAngledDistance": {
+      "Value": [ 8, 10 ],
+      "Description": "The distance the NPC will maintain from a target at a steep angle above it. When the target is below, the NPC will move closer to the ledge as possible."
+    },
+    "AttackRangedAimTime": {
+      "Value": [ 2, 3 ],
+      "Description": "The time interval it takes for the NPC to aim at a target."
+    },
+    "AttackRangedCooldownTime": {
+      "Value": [ 2, 4 ],
+      "Description": "The cooldown between consecutive attacks."
+    },
+    "AttackRangedRequireLoS": {
+      "Value": true,
+      "Description": "Whether the ranged attack requires LoS."
+    },
+    "GiveUpTimeout": {
+      "Value": [ 5, 8 ],
+      "Description": "The delay after which the NPC will give up on the target."
+    },
+    "GiveUpDistance": {
+      "Value": 24,
+      "Description": "The distance at which the NPC will give up on attacking the target."
+    },
+    "LeashMinDistance": {
+      "Value": 30,
+      "Description": "How far away the NPC has to be from its leash position to give up on a target."
+    },
+    "AlertedRange": {
+      "Value": 45,
+      "Description": "The NPC's alerted ranged. Used for head motion."
+    },
+    "CombatMovingRelativeSpeed": {
+      "Value": 0.6,
+      "Description": "The relative speed to use during combat specific movement (e.g. to achieve slower strafing)."
+    },
+    "CombatBackwardsRelativeSpeed": {
+      "Value": 0.3,
+      "Description": "The relative speed to use during combat when backing away from target."
+    }
+  },
+  "Content": {
+    "Enabled": { "Compute": "Enabled" },
+    "Sensor": {
+      "Reference": "Component_Sensor_Unreachable_Target",
+      "Modify": {
+        "AttackDistance": { "Compute": "AttackMeleeDistance" },
+        "AllowedHeightDifference": [ -2, 2 ]
+      }
+    },
+    "Instructions": [
+      {
+        "Sensor": {
+          "Type": "Any",
+          "Once": true
+        },
+        "Actions": [
+          {
+            "Type": "SetFlag",
+            "Name": "RangedDelay",
+            "SetTo": true
+          }
+        ]
+      },
+      {
+        "$Comment": "Always watch the target, similar to the Combat instruction but without LoS check",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Target",
+          "Range": { "Compute": "AlertedRange" }
+        },
+        "HeadMotion": {
+          "Type": "Aim"
+        }
+      },
+      {
+        "$Comment": "Move into the appropriate ranged attack distance",
+        "Continue": true,
+        "Sensor": {
+          "Type": "Target"
+        },
+        "Instructions": [
+          {
+            "$Comment": "When the target is at a shallow angle or below the NPC, get as close as possible for increased accuracy and maintenance of LoS",
+            "Sensor": {
+              "Type": "Target",
+              "Filters": [
+                {
+                  "Type": "HeightDifference",
+                  "HeightDifference": { "Compute": "AttackRangedAngledHeightDiffBelow" }
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "Seek",
+              "SlowDownDistance": { "Compute": "AttackMeleeDistance + 2" },
+              "StopDistance": { "Compute": "AttackMeleeDistance - 1" }
+            }
+          },
+          {
+            "$Comment": "When the target is at a steep angle above the NPC, maintain distance to angle up the ranged attack",
+            "Sensor": {
+              "Type": "Target",
+              "Filters": [
+                {
+                  "Type": "HeightDifference",
+                  "HeightDifference": { "Compute": "AttackRangedAngledHeightDiffAbove" }
+                }
+              ]
+            },
+            "BodyMotion": {
+              "Type": "MaintainDistance",
+              "DesiredDistanceRange": { "Compute": "AttackRangedAngledDistance" },
+              "RelativeForwardsSpeed": { "Compute": "CombatMovingRelativeSpeed" },
+              "RelativeBackwardsSpeed": { "Compute": "CombatBackwardsRelativeSpeed" }
+            }
+          }
+        ]
+      },
+      {
+        "$Comment": "If the target leaves the required height range, give up",
+        "Sensor": {
+          "Type": "Or",
+          "Sensors": [
+            {
+              "$Comment": "Either the target went past the cut-off distance, or...",
+              "Type": "Not",
+              "Sensor": {
+                "Type": "Target",
+                "Range": { "Compute": "GiveUpDistance" }
+              }
+            },
+            {
+              "$Comment": "...there's no LoS to the target (optional)...",
+              "Enabled": { "Compute": "AttackRangedRequireLoS" },
+              "Type": "Target",
+              "Filters": [
+                {
+                  "Type": "Not",
+                  "Filter": {
+                    "Type": "LineOfSight"
+                  }
+                }
+              ]
+            },
+            {
+              "$Comment": "...or the target is still in range, but...",
+              "Type": "And",
+              "Sensors": [
+                {
+                  "$Comment": "...the target is outside the ranged attack height ranges...",
+                  "Type": "And",
+                  "Sensors": [
+                    {
+                      "Type": "Target",
+                      "Filters": [
+                        {
+                          "$Comment": "TODO: add support for AND/OR filters of the same type",
+                          "Type": "Not",
+                          "Filter": {
+                            "Type": "HeightDifference",
+                            "HeightDifference": { "Compute": "AttackRangedAngledHeightDiffAbove" }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Type": "Target",
+                      "Filters": [
+                        {
+                          "Type": "Not",
+                          "Filter": {
+                            "Type": "HeightDifference",
+                            "HeightDifference": { "Compute": "AttackRangedAngledHeightDiffBelow" }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "$Comment": "...and the NPC is some distance away from the leash, guaranteeing it won't get stuck in an alerted loop",
+                  "Type": "Leash",
+                  "Range": { "Compute": "LeashMinDistance" }
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "GiveUpTimeout" },
+            "Action": {
+              "Type": "ParentState",
+              "State": "GiveUp"
+            }
+          }             
+        ]
+      },
+      {
+        "Enabled": true,
+        "$Comment": "Start a timeout to switch to ranged attacks. Note this won't reset if the target is reaquired",
+        "Sensor": {
+          "Type": "Flag",
+          "Name": "RangedDelay"
+        },
+        "ActionsBlocking": true,
+        "Actions": [
+          {
+            "Type": "Timeout",
+            "Delay": { "Compute": "AttackRangedStartDelay" }
+          },
+          {
+            "Type": "SetFlag",
+            "Name": "RangedDelay",
+            "SetTo": false
+          }
+        ]
+      },
+      {
+        "$Comment": "Execute ranged attack",
+        "Sensor": {
+          "Type": "And",
+          "Sensors": [
+            {
+              "Type": "Target"
+            },
+            {
+              "$Comment": "TODO: add Enabled to filters",
+              "Enabled": { "Compute": "AttackRangedRequireLoS" },
+              "Type": "Target",
+              "Filters": [
+                {
+                  "Type": "LineOfSight"
+                }
+              ]
+            }
+          ]
+        },
+        "Actions": [
+          {
+            "Type": "Attack",
+            "Attack": { "Compute": "AttackRanged" },
+            "AimingTimeRange": { "Compute": "AttackRangedAimTime" },
+            "AttackPauseRange": { "Compute": "AttackRangedCooldownTime" }
+          }
+        ]
+      }
+    ]
+  }
+}
