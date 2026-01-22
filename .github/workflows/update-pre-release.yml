@@ -1,0 +1,41 @@
+name: Update Pre-Release Assets
+
+on:
+  schedule:
+    # Runs every day at 00:00 UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-assets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: pre-release
+
+      - name: Make downloader executable
+        run: chmod +x ./hytale-downloader-linux-amd64
+
+      - name: Download assets
+        run: ./hytale-downloader-linux-amd64 -download-path assets.zip -patchline pre-release
+
+      - name: Unzip assets
+        run: |
+          unzip -o assets.zip -d Assets/
+          rm assets.zip
+
+      - name: Check for changes and commit
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            DATE=$(date +'%Y-%m-%d')
+            git commit -m "pre-release: $DATE"
+            git push
+          fi
