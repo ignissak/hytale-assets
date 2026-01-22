@@ -3,8 +3,6 @@
   "Appearance": "PlayerTestModel_V",
   "HotbarItems": [ "Weapon_Shortbow_Crude" ],
   "DisableDamageGroups": [ "Self", "Player" ],
-  "OverrideHeadPitchAngle": true,
-  "HeadPitchAngleRange": [ -89, 89 ],
   "MotionControllerList": [
     {
       "Type": "Walk",
@@ -43,6 +41,15 @@
             "Spread": 0,
             "HitProbability": 1,
             "Deflection": true
+          }
+        }
+      ]
+    },
+    {
+      "Instructions": [
+        {
+          "Sensor": {
+            "Type": "Any"
           },
           "Actions": [
             {
@@ -53,6 +60,16 @@
               "LineOfSight": true,
               "AvoidFriendlyFire": true,
               "AttackPauseRange": [ 1, 1 ]
+            }
+          ]
+        },
+        {
+          "Sensor": {
+            "Type": "Any"
+          },
+          "Actions": [
+            {
+              "Type": "Nothing"
             }
           ]
         }

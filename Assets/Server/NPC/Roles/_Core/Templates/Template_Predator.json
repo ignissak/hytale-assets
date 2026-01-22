@@ -198,38 +198,6 @@
       "Value": [ 2, 3 ],
       "Description": "How long to back off for after performing an attack."
     },
-    "CombatOptionalRanged": {
-      "Value": false,
-      "Description": "Whether this NPC will switch to a ranged attack when the target is unreachable."
-    },
-    "CombatOptionalRangedHeightDiffAbove": {
-      "Value": [ 2, 6 ],
-      "Description": "The height difference range within which the NPC will execute ranged attacks on a target."
-    },
-    "CombatOptionalRangedHeightDiffBelow": {
-      "Value": [ -4, 2 ],
-      "Description": "The height difference range within which the NPC will execute ranged attacks on a target."
-    },
-    "CombatOptionalRangedGiveUpTimeout": {
-      "Value": [ 5, 10 ],
-      "Description": "The delay after which the NPC will give up on the target when it exits ranged combat constraints."
-    },
-    "CombatOptionalRangedAttack": {
-      "Value": "NPC_Rubble_Throw",
-      "Description": "The attack interaction this NPC will use for the ranged behavior."
-    },
-    "CombatOptionalRangedAttackDistance": {
-      "Value": [ 8, 10 ],
-      "Description": "The distance range within which the NPC will use the ranged attack."
-    },
-    "CombatOptionalRangedAttackAimTime": {
-      "Value": [ 2, 3 ],
-      "Description": "The time it takes for the NPC to aim the ranged attack."
-    },
-    "CombatOptionalRangedAttackCooldownTime": {
-      "Value": [ 2, 4 ],
-      "Description": "The cooldown time between ranged attacks."
-    },
     "Weapons": {
       "Value": [ ],
       "TypeHint": "String",
@@ -322,10 +290,6 @@
     "LeashDistance": {
       "Value": 20,
       "Description": "The range after which an NPC will start to want to return to their spawn point."
-    },
-    "LeashDistanceProximityMult": {
-      "Value": 0.3,
-      "Description": "The percentage of LeashDistance within which the NPC will consider to have return home."
     },
     "LeashMinPlayerDistance": {
       "Value": 4,
@@ -1378,24 +1342,6 @@
             "State": "Combat"
           },
           "Instructions": [
-             {
-              "Continue": true,
-              "Sensor": {
-                "Type": "State",
-                "State": ".Message"
-              },
-              "Actions": [
-                {
-                  "Type": "FlockBeacon",
-                  "Message": "Flock_Attack",
-                  "SendTargetSlot": "LockedTarget"
-                },
-                {
-                  "Type": "State",
-                  "State": ".Default"
-                }
-              ]
-            },
             {
               "$Comment": "Always watch the target",
               "Continue": true,
@@ -1410,96 +1356,6 @@
               },
               "HeadMotion": {
                 "Type": "Watch"
-              }
-            },
-            {
-              "$Comment": "If the target is lost, return home",
-              "Sensor": {
-                "Type": "Not",
-                "Sensor": {
-                  "Type": "Target"
-                }
-              },
-              "Actions": [
-                {
-                  "Type": "Timeout",
-                  "Delay": [ 2, 2 ],
-                  "Action": {
-                    "Type": "State",
-                    "State": "ReturnHome"
-                  }
-                }
-              ]
-            },
-            {
-              "$Comment": "If the target is unreachable, return home. TODO: add Enabled to sensor macros so we don't have to duplicate this",
-              "Enabled": { "Compute": "!CombatOptionalRanged" },
-              "Continue": true,
-              "Sensor": {
-                "Type": "And",
-                "Sensors": [
-                  {
-                    "Reference": "Component_Sensor_Unreachable_Target",
-                    "Modify": {
-                      "AttackDistance": { "Compute": "AttackDistance" }
-                    }
-                  },
-                  {
-                    "$Comment": "This is done to avoid the NPC getting stuck in an Alerted loop when too close to its leash",
-                    "Type": "Leash",
-                    "Range": { "Compute": "LeashDistance * LeashDistanceProximityMult + max(ViewRange,HearingRange)" }
-                  }
-                ]
-              },
-              "Actions": [
-                {
-                  "Type": "Timeout",
-                  "Delay": [ 4, 5 ],
-                  "Action": {
-                    "Type": "State",
-                    "State": "ReturnHome"
-                  }
-                }
-              ]
-            },
-            {
-              "$Comment": "Fallback to when the target goes beyond the sense ranges for too long",
-              "Sensor": {
-                "Type": "Not",
-                "Sensor": {
-                  "Type": "Target",
-                  "Range": { "Compute": "max(ViewRange,HearingRange)" }
-                }
-              },
-              "ActionsBlocking": true,
-              "Actions": [
-                {
-                  "Type": "Timeout",
-                  "Delay": [ 5, 5 ]
-                },
-                {
-                  "Type": "State",
-                  "State": "ReturnHome"
-                }
-              ]
-            },
-            {
-              "Reference": "Component_Instruction_Ranged_When_Unreachable",
-              "Modify": {
-                "_ExportStates": [ "ReturnHome" ],
-                "Enabled": { "Compute": "CombatOptionalRanged" },
-                "AttackMeleeDistance": { "Compute": "AttackDistance" },
-                "AttackRanged": { "Compute": "CombatOptionalRangedAttack" },
-                "AttackRangedAngledHeightDiffAbove": { "Compute": "CombatOptionalRangedHeightDiffAbove" },
-                "AttackRangedAngledHeightDiffBelow": { "Compute": "CombatOptionalRangedHeightDiffBelow" },
-                "AttackRangedAimTime": { "Compute": "CombatOptionalRangedAttackAimTime" },
-                "AttackRangedCooldownTime": { "Compute": "CombatOptionalRangedAttackCooldownTime" },
-                "GiveUpTimeout": { "Compute": "CombatOptionalRangedGiveUpTimeout" },
-                "GiveUpDistance": { "Compute": "max(ViewRange, HearingRange)" },
-                "LeashMinDistance": { "Compute": "LeashDistance * LeashDistanceProximityMult + max(ViewRange,HearingRange)" },
-                "AlertedRange": { "Compute": "AlertedRange" },
-                "CombatMovingRelativeSpeed": { "Compute": "CombatMovingRelativeSpeed" },
-                "CombatBackwardsRelativeSpeed": { "Compute": "CombatMovingRelativeSpeed" }
               }
             },
             {
@@ -1528,6 +1384,24 @@
                       "State": "Idle"
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "Continue": true,
+              "Sensor": {
+                "Type": "State",
+                "State": ".Message"
+              },
+              "Actions": [
+                {
+                  "Type": "FlockBeacon",
+                  "Message": "Flock_Attack",
+                  "SendTargetSlot": "LockedTarget"
+                },
+                {
+                  "Type": "State",
+                  "State": ".Default"
                 }
               ]
             },
@@ -1621,6 +1495,55 @@
               }
             },
             {
+              "Continue": true,
+              "Sensor": {
+                "Type": "And",
+                "Sensors": [
+                  {
+                    "Type": "Not",
+                    "Sensor": {
+                      "Type": "Target",
+                      "Range": { "Compute": "AttackDistance" }
+                    }
+                  },
+                  {
+                    "Type": "Or",
+                    "Sensors": [
+                      {
+                        "Type": "Nav",
+                        "NavStates": [ "Defer" ],
+                        "ThrottleDuration": 3
+                      },
+                      {
+                        "Type": "Target",
+                        "Range": { "Compute": "CombatBehaviorDistance" },
+                        "Filters": [
+                          {
+                            "Type": "Not",
+                            "Filter": {
+                              "Type": "HeightDifference",
+                              "HeightDifference": [ -2, 2 ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 5 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "ReturnHome"
+                }
+              ]
+            },
+            {
               "Reference": "Component_Instruction_Soft_Leash",
               "Modify": {
                 "_ExportStates": [ "ReturnHome" ],
@@ -1662,15 +1585,6 @@
                     "Type": "Not",
                     "Sensor": {
                       "Type": "IsBackingAway"
-                    }
-                  },
-                  {
-                    "Type": "Not",
-                    "Sensor": {
-                      "Reference": "Component_Sensor_Unreachable_Target",
-                      "Modify": {
-                        "AttackDistance": { "Compute": "AttackDistance" }
-                      }
                     }
                   }
                 ]
@@ -1768,16 +1682,30 @@
             },
             {
               "Enabled": { "Compute": "Chase" },
-              "Sensor": {
-                "Type": "Not",
-                "Sensor": {
-                  "Reference": "Component_Sensor_Unreachable_Target"
-                }
-              },
               "Actions": [
                 {
                   "Type": "State",
                   "State": ".Chase"
+                }
+              ]
+            },
+            {
+              "Sensor": {
+                "Type": "Not",
+                "Sensor": {
+                  "Type": "Target",
+                  "Range": { "Compute": "ViewRange" }
+                }
+              },
+              "ActionsBlocking": true,
+              "Actions": [
+                {
+                  "Type": "Timeout",
+                  "Delay": [ 5, 5 ]
+                },
+                {
+                  "Type": "State",
+                  "State": "ReturnHome"
                 }
               ]
             }
@@ -2080,12 +2008,12 @@
             {
               "Sensor": {
                 "Type": "Leash",
-                "Range": { "Compute": "LeashDistance * LeashDistanceProximityMult" }
+                "Range": { "Compute": "LeashDistance * 0.3" }
               },
               "BodyMotion": {
                 "Type": "Seek",
-                "SlowDownDistance": { "Compute": "LeashDistance * LeashDistanceProximityMult * 1.2" },
-                "StopDistance": { "Compute": "LeashDistance * LeashDistanceProximityMult * 0.8" },
+                "SlowDownDistance": { "Compute": "LeashDistance * 0.4" },
+                "StopDistance": { "Compute": "LeashDistance * 0.2" },
                 "RelativeSpeed": { "Compute": "LeashRelativeSpeed" },
                 "UsePathfinder": true
               }

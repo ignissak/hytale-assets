@@ -3,34 +3,65 @@
     "Name": "server.items.Ore_Copper_Shale.name"
   },
   "Icon": "Icons/ItemsGenerated/Ore_Copper_Shale.png",
-  "Parent": "Ore_Copper_Stone",
+  "Categories": [
+    "Blocks.Ores"
+  ],
   "BlockType": {
+    "Material": "Solid",
+    "DrawType": "CubeWithModel",
+    "CustomModel": "Resources/Ores/Ore_Large.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ores/Ore_Textures/Copper.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "Flags": {},
+    "RandomRotation": "YawStep90",
     "Gathering": {
       "Breaking": {
-        "GatherType": "OreCopper",
+        "GatherType": "Rocks",
         "DropList": {
           "Container": {
             "Type": "Multiple",
             "Containers": [
               {
                 "Type": "Single",
-                "Item": { "ItemId": "Ore_Copper" }
+                "Item": {
+                  "ItemId": "Ore_Copper"
+                }
               },
               {
                 "Type": "Single",
-                "Item": { "ItemId": "Rock_Shale_Cobble" }
+                "Item": {
+                  "ItemId": "Rock_Shale_Cobble"
+                }
               }
             ]
           }
         }
       }
     },
+    "BlockParticleSetId": "Ore",
     "Textures": [
       {
         "Weight": 1,
         "All": "BlockTextures/Rock_Shale.png"
       }
     ],
+    "BlockSoundSetId": "Ore",
     "ParticleColor": "#ffa04a"
-  }
+  },
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Ore"
+    ],
+    "Family": [
+      "Copper"
+    ]
+  },
+  "MaxStack": 25,
+  "ItemSoundSetId": "ISS_Blocks_Stone"
 }

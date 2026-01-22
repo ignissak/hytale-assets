@@ -1,14 +1,6 @@
 {
 	"$NodeId":	"Root-c225c433-f831-43aa-bdf6-f006b0070421",
 	"Operations":	[{
-			"$NodeId":	"EchoOnce-09a4779c-b5b9-4967-a8f3-932511af8155",
-			"Id":	"echoonce",
-			"Message":	"-------------------------------------\n  MOUNTAIN  BRUSH\n-------------------------------------\nThis brush gives you the ability to raise mountains from the ground.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to form the mountain.\n\nNOTE: The advanced settings are work in progress, use them with caution. If used, turn the smoothness to 1 or off.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your mountains how you want them. Below are each setting and what they do:\n\nTop Layer = The blocks to be placed on the top layer of the mountain.\n\nMiddle Layer = The blocks to be placed on the middle layer of the mountain.\n\nBottom Layer = The blocks to be placed on the bottom layer of the mountain.\n\nSmoothness = How smooth to make the mountain.\n\nNumber of Points (ADVANCED) = Number of additional raising spots to place on the ground. Warning: Do not use with high smoothness or hold down when using.\n\nPoint Spacing (ADVANCED) = Spacing between Number of Points. Warning: Do not use with high smoothness or hold down when using.\n\n-------------------------------------------\n  MOUNTAIN BRUSH - Read the Above ^\n-------------------------------------------"
-		}, {
-			"$NodeId":	"SaveIndex-b3e961b8-fb99-4e7e-8ffd-887a1c4023d0",
-			"Id":	"saveindex",
-			"StoredIndexName":	"circle_loop"
-		}, {
 			"$NodeId":	"Lift-011c6065-5ce3-4765-b43f-8d08ab562b9b",
 			"Id":	"lift"
 		}, {
@@ -51,40 +43,31 @@
 				"Relative":	true
 			},
 			"Height":	{
-				"Value":	7,
+				"Value":	13,
 				"Relative":	true
 			}
 		}, {
-			"$NodeId":	"JumpIfToolArg-0f41bf4a-e92e-4ba6-a7a1-37afd6863838",
-			"Id":	"jumpiftoolarg",
-			"ArgName":	"ccSmoothness",
-			"ComparisonType":	"Equals",
-			"ComparisonValue":	"0",
-			"StoredIndexName":	"skip_smooth"
-		}, {
-			"$NodeId":	"SaveIndex-14cb079b-1a24-4c7e-84b9-8b475000649e",
-			"Id":	"saveindex",
-			"StoredIndexName":	"smooth_loop"
+			"$NodeId":	"Offset-e7f69b5c-8237-4afd-8a7b-d7812f6ce23c",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Y":	{
+					"Value":	0,
+					"Relative":	false
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	false
+				}
+			},
+			"Negate":	false
 		}, {
 			"$NodeId":	"Smooth-be9bd5ea-aa35-474e-9266-9cd4d70d3452",
 			"Id":	"smooth",
 			"SmoothStrength":	2
-		}, {
-			"$NodeId":	"JumpIfToolArg-a1f5e450-4172-4b55-9772-9879eaf154f5",
-			"Id":	"jumpiftoolarg",
-			"ArgName":	"ccSmoothness",
-			"ComparisonType":	"Equals",
-			"ComparisonValue":	"1",
-			"StoredIndexName":	"skip_smooth"
-		}, {
-			"$NodeId":	"LoadLoopFromToolArg-cfcf7e8f-c783-490d-a290-411b059f8d0c",
-			"Id":	"loadloop",
-			"StoredIndexName":	"smooth_loop",
-			"ArgName":	"ccSmoothness"
-		}, {
-			"$NodeId":	"SaveIndex-fece77b1-ec85-46af-a61a-f0ed0a4b05a0",
-			"Id":	"saveindex",
-			"StoredIndexName":	"skip_smooth"
 		}, {
 			"$NodeId":	"Dimensions-58d3bcbd-fde7-4eb0-b94b-1f6abc86d50f",
 			"Id":	"dimensions",
@@ -103,40 +86,18 @@
 					"$NodeId":	"LayerEntry-c6f3eca6-e12b-4768-90d1-8627ed1c9074",
 					"Left":	1,
 					"Right":	"1stLayer",
-					"UseToolArg":	true,
-					"Skip":	false
+					"UseToolArg":	true
 				}, {
 					"$NodeId":	"LayerEntry-2dda099c-62d0-4b81-93cc-2152b5a5a015",
 					"Left":	2,
 					"Right":	"2ndLayer",
-					"UseToolArg":	true,
-					"Skip":	false
+					"UseToolArg":	true
 				}, {
 					"$NodeId":	"LayerEntry-285b3a38-969a-4bf5-b3b4-3f1d19b3852e",
 					"Left":	5,
 					"Right":	"3rdLayer",
-					"UseToolArg":	true,
-					"Skip":	false
+					"UseToolArg":	true
 				}]
-		}, {
-			"$NodeId":	"JumpIfToolArg-6c8eda22-177e-479b-933d-a95217cc5c69",
-			"Id":	"jumpiftoolarg",
-			"ArgName":	"abNumPoints",
-			"ComparisonType":	"Equals",
-			"ComparisonValue":	"0",
-			"StoredIndexName":	"skip_offsets"
-		}, {
-			"$NodeId":	"LoopCircleFromArg-a5705cc7-7d3c-4f5a-b06e-0d113229f07d",
-			"Id":	"loopcirclefromarg",
-			"StoredIndexName":	"circle_loop",
-			"NumberCirclePointsArg":	"abNumPoints",
-			"CircleRadiusArg":	"bbRadius",
-			"FlipDirection":	false,
-			"RotateDirection":	false
-		}, {
-			"$NodeId":	"SaveIndex-73b9ceee-d681-4e29-9735-0a09e17e93e2",
-			"Id":	"saveindex",
-			"StoredIndexName":	"skip_offsets"
 		}],
 	"$NodeEditorMetadata":	{
 		"$Nodes":	{
@@ -147,172 +108,84 @@
 				},
 				"$Title":	"[ROOT] Root"
 			},
-			"SaveIndex-b3e961b8-fb99-4e7e-8ffd-887a1c4023d0":	{
-				"$Position":	{
-					"$x":	817,
-					"$y":	-2038
-				}
-			},
 			"Lift-011c6065-5ce3-4765-b43f-8d08ab562b9b":	{
 				"$Position":	{
-					"$x":	815,
-					"$y":	-1751
+					"$x":	498,
+					"$y":	-1957
 				}
 			},
 			"Offset-6ce3729c-7ecc-4b94-aaae-c4864d4957b3":	{
 				"$Position":	{
-					"$x":	815,
-					"$y":	-1567
+					"$x":	498,
+					"$y":	-1773
 				}
 			},
 			"Dimensions-8e3c2619-c1f4-4412-8128-72d6a4011f1a":	{
 				"$Position":	{
-					"$x":	815,
-					"$y":	-838
+					"$x":	498,
+					"$y":	-1044
 				}
 			},
 			"Lift-64358f28-2ea3-4d63-bc96-ea5b0b62c9a9":	{
 				"$Position":	{
-					"$x":	815,
-					"$y":	-400
+					"$x":	498,
+					"$y":	-606
 				}
 			},
 			"Dimensions-8a29fab2-6553-40f5-b9ce-c0934ead6708":	{
 				"$Position":	{
-					"$x":	799,
-					"$y":	-156
+					"$x":	498,
+					"$y":	-423
 				}
 			},
 			"Offset-e7f69b5c-8237-4afd-8a7b-d7812f6ce23c":	{
 				"$Position":	{
-					"$x":	799,
-					"$y":	279
+					"$x":	498,
+					"$y":	14
 				}
 			},
 			"Smooth-be9bd5ea-aa35-474e-9266-9cd4d70d3452":	{
 				"$Position":	{
-					"$x":	864,
-					"$y":	1704
+					"$x":	498,
+					"$y":	743
 				}
 			},
 			"Dimensions-58d3bcbd-fde7-4eb0-b94b-1f6abc86d50f":	{
 				"$Position":	{
-					"$x":	838,
-					"$y":	3226
+					"$x":	498,
+					"$y":	927
 				}
 			},
 			"Layer-3c3826cb-ba52-4a0b-a18d-939f37ab9ff2":	{
 				"$Position":	{
-					"$x":	838,
-					"$y":	3663
+					"$x":	498,
+					"$y":	1364
 				}
 			},
 			"LayerEntry-c6f3eca6-e12b-4768-90d1-8627ed1c9074":	{
 				"$Position":	{
-					"$x":	1478,
-					"$y":	3437
+					"$x":	1138,
+					"$y":	1138
 				}
 			},
 			"LayerEntry-2dda099c-62d0-4b81-93cc-2152b5a5a015":	{
 				"$Position":	{
-					"$x":	1478,
-					"$y":	3696
+					"$x":	1138,
+					"$y":	1397
 				}
 			},
 			"LayerEntry-285b3a38-969a-4bf5-b3b4-3f1d19b3852e":	{
 				"$Position":	{
-					"$x":	1478,
-					"$y":	3955
-				}
-			},
-			"JumpIfToolArg-6c8eda22-177e-479b-933d-a95217cc5c69":	{
-				"$Position":	{
-					"$x":	814,
-					"$y":	4277
-				}
-			},
-			"LoopCircleFromArg-a5705cc7-7d3c-4f5a-b06e-0d113229f07d":	{
-				"$Position":	{
-					"$x":	788,
-					"$y":	4553
-				}
-			},
-			"SaveIndex-73b9ceee-d681-4e29-9735-0a09e17e93e2":	{
-				"$Position":	{
-					"$x":	779,
-					"$y":	4893
-				}
-			},
-			"SaveIndex-14cb079b-1a24-4c7e-84b9-8b475000649e":	{
-				"$Position":	{
-					"$x":	865,
-					"$y":	1560
-				}
-			},
-			"LoadLoopFromToolArg-cfcf7e8f-c783-490d-a290-411b059f8d0c":	{
-				"$Position":	{
-					"$x":	852,
-					"$y":	2211
-				}
-			},
-			"JumpIfToolArg-0f41bf4a-e92e-4ba6-a7a1-37afd6863838":	{
-				"$Position":	{
-					"$x":	880,
-					"$y":	1269
-				}
-			},
-			"SaveIndex-fece77b1-ec85-46af-a61a-f0ed0a4b05a0":	{
-				"$Position":	{
-					"$x":	861,
-					"$y":	2409
-				}
-			},
-			"JumpIfToolArg-a1f5e450-4172-4b55-9772-9879eaf154f5":	{
-				"$Position":	{
-					"$x":	851,
-					"$y":	1907
-				}
-			},
-			"EchoOnce-09a4779c-b5b9-4967-a8f3-932511af8155":	{
-				"$Position":	{
-					"$x":	819,
-					"$y":	-2299
+					"$x":	1138,
+					"$y":	1656
 				}
 			}
 		},
-		"$FloatingNodes":	[{
-				"$NodeId":	"Offset-e7f69b5c-8237-4afd-8a7b-d7812f6ce23c",
-				"Id":	"offset",
-				"Offset":	{
-					"X":	{
-						"Value":	0,
-						"Relative":	false
-					},
-					"Y":	{
-						"Value":	0,
-						"Relative":	false
-					},
-					"Z":	{
-						"Value":	0,
-						"Relative":	false
-					}
-				},
-				"Negate":	false
-			}],
+		"$FloatingNodes":	[],
 		"$Links":	{
 		},
 		"$Groups":	[],
-		"$Comments":	[{
-				"$Position":	{
-					"$x":	1560.625,
-					"$y":	-2081.5625
-				},
-				"$width":	1495,
-				"$height":	1790.5,
-				"$name":	"Comment",
-				"$text":	"-------------------------------------\n  MOUNTAIN  BRUSH\n-------------------------------------\nThis brush gives you the ability to raise mountains from the ground.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to form the mountain.\n\nNOTE: The advanced settings are work in progress, use them with caution. If used, turn the smoothness to 1 or off, and do not hold down when using.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your mountains how you want them. Below are each setting and what they do:\n\nTop Layer = The blocks to be placed on the top layer of the mountain.\n\nMiddle Layer = The blocks to be placed on the middle layer of the mountain.\n\nBottom Layer = The blocks to be placed on the bottom layer of the mountain.\n\nSmoothness = How smooth to make the mountain.\n\nNumber of Points (ADVANCED) = Number of additional raising spots to place on the ground. Warning: Do not use with high smoothness or hold down when using.\n\nPoint Spacing (ADVANCED) = Spacing between Number of Points. Warning: Do not use with high smoothness or hold down when using.\n\n-------------------------------------------\n  MOUNTAIN BRUSH - Read the Above ^\n-------------------------------------------",
-				"$fontSize":	25
-			}],
+		"$Comments":	[],
 		"$WorkspaceID":	"Scriptable Brush"
 	}
 }

@@ -6,6 +6,10 @@
   "Categories": [
     "Blocks.Deco"
   ],
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Root_Mug_Fill"
+  },
   "Recipe": {
     "Input": [
       {
@@ -27,10 +31,6 @@
       }
     ]
   },
-  "Interactions": {
-    "Primary": "Block_Primary",
-    "Secondary": "Root_Mug_Fill"
-  },
   "Consumable": true,
   "Utility": {
     "Compatible": true
@@ -43,20 +43,22 @@
       },
       "Recipe": null,
       "Consumable": true,
-      "MaxDurability": 1,
+      "MaxDurability": 3,
       "MaxStack": 1,
       "BlockType": {
+        "$TODO": "Parent: Container_Crude_Mug",
         "CustomModelTexture": [
           {
             "Texture": "Blocks/Miscellaneous/Tankard_Texture_Water.png",
             "Weight": 1
           }
         ],
+        "$Comment": "FOLLOWING PROPERTIES DUPLICATED BECAUSE OF SERVER BUG",
         "DrawType": "Model",
         "Opacity": "Transparent",
         "CustomModel": "Blocks/Miscellaneous/Tankard.blockymodel",
-        "CustomModelScale": 1.2,
-        "HitboxType": "Food_Medium",
+        "CustomModelScale": 1.5,
+        "HitboxType": "Plant_Small",
         "Flags": {
           "IsStackable": false
         },
@@ -64,12 +66,9 @@
         "BlockSoundSetId": "Wood",
         "Gathering": {
           "Harvest": {},
-          "Soft": {
-            "IsWeaponBreakable": false
-          }
+          "Soft": {}
         }
       },
-      "Scale": 1.43,
       "IconProperties": {
         "Scale": 1.3,
         "Rotation": [
@@ -128,29 +127,51 @@
     }
   },
   "BlockType": {
+    "RandomRotation": "YawStep1",
+    "Material": "Solid",
     "DrawType": "Model",
     "Opacity": "Transparent",
     "CustomModel": "Blocks/Miscellaneous/Tankard.blockymodel",
-    "CustomModelScale": 1.2,
+    "CustomModelScale": 1.5,
     "CustomModelTexture": [
       {
         "Texture": "Blocks/Miscellaneous/Tankard_Texture.png",
         "Weight": 1
       }
     ],
-    "HitboxType": "Food_Medium",
-    "Flags": {
-      "IsStackable": false
-    },
-    "RandomRotation": "YawStep1",
+    "Group": "Wood",
+    "HitboxType": "Plant_Small",
+    "VariantRotation": "Wall",
+    "Flags": {},
     "Gathering": {
-      "Harvest": {},
       "Soft": {
         "IsWeaponBreakable": false
       }
     },
     "BlockParticleSetId": "Wood",
-    "BlockSoundSetId": "Wood"
+    "BlockSoundSetId": "Wood",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "Up": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "East": [
+        {
+          "FaceType": "Full"
+        }
+      ],
+      "West": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    }
   },
   "PlayerAnimationsId": {
     "Parent": "Item",
@@ -175,7 +196,7 @@
       -6.0
     ]
   },
-  "Scale": 1.4,
+  "Scale": 1,
   "Tags": {
     "Type": [
       "Deco"

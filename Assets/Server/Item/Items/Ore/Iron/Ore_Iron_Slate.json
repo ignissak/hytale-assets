@@ -2,35 +2,66 @@
   "TranslationProperties": {
     "Name": "server.items.Ore_Iron_Slate.name"
   },
-  "Parent": "Ore_Iron_Stone",
+  "Categories": [
+    "Blocks.Ores"
+  ],
   "BlockType": {
+    "Material": "Solid",
+    "DrawType": "CubeWithModel",
+    "CustomModel": "Resources/Ores/Ore_Large.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Resources/Ores/Ore_Textures/Iron.png",
+        "Weight": 1
+      }
+    ],
+    "Group": "Stone",
+    "Flags": {},
+    "RandomRotation": "YawStep90",
     "Gathering": {
       "Breaking": {
-        "GatherType": "OreIron",
+        "GatherType": "Rocks",
         "DropList": {
           "Container": {
             "Type": "Multiple",
             "Containers": [
               {
                 "Type": "Single",
-                "Item": { "ItemId": "Ore_Iron" }
+                "Item": {
+                  "ItemId": "Ore_Iron"
+                }
               },
               {
                 "Type": "Single",
-                "Item": { "ItemId": "Rock_Slate_Cobble" }
+                "Item": {
+                  "ItemId": "Rock_Slate_Cobble"
+                }
               }
             ]
           }
         }
       }
     },
+    "BlockParticleSetId": "Ore",
     "Textures": [
       {
         "Weight": 1,
         "All": "BlockTextures/Rock_Slate.png"
       }
     ],
+    "BlockSoundSetId": "Ore",
     "ParticleColor": "#d0d1c1"
   },
-  "Icon": "Icons/ItemsGenerated/Ore_Iron_Slate.png"
+  "PlayerAnimationsId": "Block",
+  "Tags": {
+    "Type": [
+      "Ore"
+    ],
+    "Family": [
+      "Iron"
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Ore_Iron_Slate.png",
+  "MaxStack": 25,
+  "ItemSoundSetId": "ISS_Blocks_Stone"
 }

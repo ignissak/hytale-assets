@@ -16,23 +16,6 @@ $C.@Container {
   #Content {
     LayoutMode: Top;
 
-    Label #CurrentPath {
-      Anchor: (Bottom: 8, Horizontal: 4);
-      Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #6a7d8f);
-      Text: "/";
-    }
-
-    Group {
-      LayoutMode: Left;
-      Anchor: (Bottom: 10, Height: $C.@DropdownBoxHeight);
-
-      $C.@TextField #SearchInput {
-        @Anchor = (Left: 0);
-        FlexWeight: 1;
-        PlaceholderText: %server.customUI.instanceListPage.searchPlaceholder;
-      }
-    }
-
     Group #List {
       FlexWeight: 1;
       Anchor: (Bottom: 15);
@@ -51,6 +34,8 @@ $C.@Container {
         );
         Text: " ";
       }
+
+    $C.@PanelSeparatorFancy {}
 
     Group {
       LayoutMode: Left;
