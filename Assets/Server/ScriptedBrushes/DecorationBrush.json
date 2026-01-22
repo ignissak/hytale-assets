@@ -1,0 +1,209 @@
+{
+	"$NodeId":	"Root-0224f560-adb3-4774-9bb2-97b3b9374fb7",
+	"Operations":	[{
+			"$NodeId":	"EchoOnce-c5566a38-7d36-42dc-8788-575df1f59437",
+			"Id":	"echoonce",
+			"Message":	"-------------------------------------\n  DECORATION BRUSH\n-------------------------------------\nThis brush gives you the ability to add decorations on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the decorations.\n\nLeft Click: Clears decorations and other blocks.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your decorations how you want them. Below are each setting and what they do:\n\nBlocks to Clear = The blocks to get rid of when you left click.\n\nFloor Blocks = The blocks to be placed on the floor. Comes with a density slider to control how dense.\n\nDecor Blocks = The small decoration blocks to be placed on top of Floor Blocks as decoration. Comes with a density slider to control how dense.\n\n-------------------------------------------\n  DECORATION BRUSH - Read the Above ^\n-------------------------------------------"
+		}, {
+			"$NodeId":	"JumpIfClickType-4bde82a3-4d27-4d9e-aa63-d0869d41edfd",
+			"Id":	"jumpifclicktype",
+			"StoredIndexName":	"clear",
+			"ClickType":	"Left"
+		}, {
+			"$NodeId":	"LoadMaterial-f25c594e-d58a-4e88-9b7c-23b883065c6e",
+			"Id":	"loadmaterial",
+			"ArgName":	"cFloorBlocks"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-d997cbc2-3d62-4451-8644-25dba27f5116",
+			"Id":	"loadint",
+			"ArgName":	"cFloorBlocksDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Mask-935d9bf2-6448-419f-a959-8826347d2a29",
+			"Id":	"mask",
+			"Mask":	"!Empty|Filter_AllScatter|Filter_PlantsAndTrees"
+		}, {
+			"$NodeId":	"Set-9ea4e587-a289-474f-84da-9271410dc1e2",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-c25be54d-307c-41e9-8145-8a4785da4f3c",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"LoadMaterial-d389e649-4cc3-49fb-a69c-3dc3985bf73c",
+			"Id":	"loadmaterial",
+			"ArgName":	"dDecorationBlocks"
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-bd9f7d6d-39ad-4ffc-b95e-70435f7a4217",
+			"Id":	"loadint",
+			"ArgName":	"dDecorationBlocksDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Mask-8d49b6c4-2d59-412d-b273-d1c82b3c7132",
+			"Id":	"mask",
+			"Mask":	"Empty|Filter_AllScatter"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-66d2effe-e23d-4886-9859-9815aec30088",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"cFloorBlocks",
+			"FilterType":	"AboveBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-d0d4a548-9fee-47d0-87db-ddd063f0fb95",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"Exit-41bcefe7-9090-4843-bc2a-2c588833ce42",
+			"Id":	"exit"
+		}, {
+			"$NodeId":	"SaveIndex-e22bcf92-011a-4abc-a38c-b905d3443353",
+			"Id":	"saveindex",
+			"StoredIndexName":	"clear"
+		}, {
+			"$NodeId":	"Material-190a4a0b-77bd-44bb-bee0-279efa30111a",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-25318e34-5206-4e3f-9d42-1fb4ca4abd5f",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"bBlocksToClear",
+			"FilterType":	"TargetBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"Set-a41b4b5a-9440-40c5-90db-b83c10fd8255",
+			"Id":	"set"
+		}],
+	"$NodeEditorMetadata":	{
+		"$Nodes":	{
+			"Root-0224f560-adb3-4774-9bb2-97b3b9374fb7":	{
+				"$Position":	{
+					"$x":	0,
+					"$y":	0
+				},
+				"$Title":	"[ROOT] Root"
+			},
+			"SaveIndex-e22bcf92-011a-4abc-a38c-b905d3443353":	{
+				"$Position":	{
+					"$x":	761,
+					"$y":	944
+				}
+			},
+			"Material-190a4a0b-77bd-44bb-bee0-279efa30111a":	{
+				"$Position":	{
+					"$x":	766,
+					"$y":	1122
+				}
+			},
+			"Exit-41bcefe7-9090-4843-bc2a-2c588833ce42":	{
+				"$Position":	{
+					"$x":	770,
+					"$y":	367
+				}
+			},
+			"AppendMaskFromToolArg-25318e34-5206-4e3f-9d42-1fb4ca4abd5f":	{
+				"$Position":	{
+					"$x":	774,
+					"$y":	1292
+				}
+			},
+			"Set-a41b4b5a-9440-40c5-90db-b83c10fd8255":	{
+				"$Position":	{
+					"$x":	768,
+					"$y":	1575
+				}
+			},
+			"LoadMaterial-f25c594e-d58a-4e88-9b7c-23b883065c6e":	{
+				"$Position":	{
+					"$x":	788,
+					"$y":	-1725
+				}
+			},
+			"LoadIntFromToolArg-d997cbc2-3d62-4451-8644-25dba27f5116":	{
+				"$Position":	{
+					"$x":	792,
+					"$y":	-1572
+				}
+			},
+			"Set-9ea4e587-a289-474f-84da-9271410dc1e2":	{
+				"$Position":	{
+					"$x":	786,
+					"$y":	-1133
+				}
+			},
+			"Mask-935d9bf2-6448-419f-a959-8826347d2a29":	{
+				"$Position":	{
+					"$x":	786,
+					"$y":	-1289
+				}
+			},
+			"ClearOperationMask-c25be54d-307c-41e9-8145-8a4785da4f3c":	{
+				"$Position":	{
+					"$x":	781,
+					"$y":	-865
+				}
+			},
+			"LoadMaterial-d389e649-4cc3-49fb-a69c-3dc3985bf73c":	{
+				"$Position":	{
+					"$x":	790,
+					"$y":	-692
+				}
+			},
+			"Set-d0d4a548-9fee-47d0-87db-ddd063f0fb95":	{
+				"$Position":	{
+					"$x":	777,
+					"$y":	190
+				}
+			},
+			"LoadIntFromToolArg-bd9f7d6d-39ad-4ffc-b95e-70435f7a4217":	{
+				"$Position":	{
+					"$x":	794,
+					"$y":	-539
+				}
+			},
+			"Mask-8d49b6c4-2d59-412d-b273-d1c82b3c7132":	{
+				"$Position":	{
+					"$x":	788,
+					"$y":	-256
+				}
+			},
+			"AppendMaskFromToolArg-66d2effe-e23d-4886-9859-9815aec30088":	{
+				"$Position":	{
+					"$x":	781,
+					"$y":	-85
+				}
+			},
+			"JumpIfClickType-4bde82a3-4d27-4d9e-aa63-d0869d41edfd":	{
+				"$Position":	{
+					"$x":	797,
+					"$y":	-2107
+				}
+			},
+			"EchoOnce-c5566a38-7d36-42dc-8788-575df1f59437":	{
+				"$Position":	{
+					"$x":	795,
+					"$y":	-2358
+				}
+			}
+		},
+		"$FloatingNodes":	[],
+		"$Links":	{
+		},
+		"$Groups":	[],
+		"$Comments":	[{
+				"$Position":	{
+					"$x":	1704.1875,
+					"$y":	-2367.25
+				},
+				"$width":	1559.125,
+				"$height":	1917.875,
+				"$name":	"Comment",
+				"$text":	"-------------------------------------\n  DECORATION BRUSH\n-------------------------------------\nThis brush gives you the ability to add decorations on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the decorations.\n\nLeft Click: Clears decorations and other blocks.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your decorations how you want them. Below are each setting and what they do:\n\nBlocks to Clear = The blocks to get rid of when you left click.\n\nFloor Blocks = The blocks to be placed on the floor. Comes with a density slider to control how dense.\n\nDecor Blocks = The small decoration blocks to be placed on top of Floor Blocks as decoration. Comes with a density slider to control how dense.\n\n-------------------------------------------\n  DECORATION BRUSH - Read the Above ^\n-------------------------------------------",
+				"$fontSize":	29
+			}],
+		"$WorkspaceID":	"Scriptable Brush"
+	}
+}

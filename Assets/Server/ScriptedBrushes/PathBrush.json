@@ -5,14 +5,35 @@
 			"Id":	"echoonce",
 			"Message":	"-------------------------------------\n  PATH BRUSH\n-------------------------------------\nThis brush gives you the ability to create paths on the ground.\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the path.\n\nLeft Click: Edits the blocks on the path, around a raised area, to add slabs to make a smoother path.\n\nNOTE: This brush currently does not clear out blocks that already exist. If you are making a path through lots of plants, it will not remove the plants in the way of the path.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nFoliage Density = How dense the materials that make up the \"Blocks to appear on and around Path\" should be.\n\nFoliage Width = The width of the \"Blocks to appear on and around Path\" should be around the main path on the ground. This increases how far away foliage appears on the path, the bigger the number, the farther away it will appear.\n\nBlocks to appear on and around Path = The decoration blocks to add on and around the path.\n\nGround Density = How dense the materials that make up the \"Blocks for Path\" blocks should be.\n\nBlocks for Path = Materials that make up the main path on the ground.\n\nHalf-Blocks on Path = Materials that can be placed with Left-Click on raised areas to make the path smoother. Half-Blocks are recommended to create the smooth look/effect.\n\nOutline Density = How dense the materials that make up the \"Blocks to outline the Path\" should be.\n\nBlocks to ouline the Path = Materials that are placed around the border of the \"Blocks for Path\". This puts materials are the main path to act as a border\"\n\n-------------------------------------------\n  PATH BRUSH - Read the Above ^\n-------------------------------------------"
 		}, {
-			"$NodeId":	"Shape-6f447696-08e4-4b7e-92a7-aa16f0dad477",
-			"Id":	"shape",
-			"Shape":	"Cylinder"
-		}, {
 			"$NodeId":	"JumpIfClickType-7269c460-9016-4dd3-84bc-057e59b8e797",
 			"Id":	"jumpifclicktype",
 			"StoredIndexName":	"halfblocks",
 			"ClickType":	"Left"
+		}, {
+			"$NodeId":	"JumpIfToolArg-93af6737-a609-4286-a454-05752dccedb2",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"aaaClearObstacles",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"false",
+			"StoredIndexName":	"skip_clear_obstacles"
+		}, {
+			"$NodeId":	"Mask-1f06e4ea-33f3-46c8-ad3e-e672b5cde5b9",
+			"Id":	"mask",
+			"Mask":	"Filter_AllScatter"
+		}, {
+			"$NodeId":	"Material-4cce21d1-80f6-498c-8674-6d39ade83521",
+			"Id":	"material",
+			"BlockType":	"Empty"
+		}, {
+			"$NodeId":	"Set-d0b7a421-51e1-479c-bf82-1f9aca01f431",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-2cafa2c9-bfa9-43e8-ae89-6c8530fab052",
+			"Id":	"clearoperationmask"
+		}, {
+			"$NodeId":	"SaveIndex-2934e368-3362-4d73-b214-f8c4a6403aaf",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_clear_obstacles"
 		}, {
 			"$NodeId":	"HistoryMask-89c6ca92-d528-409e-a90c-01c7a785658a",
 			"Id":	"historymask",
@@ -24,22 +45,22 @@
 		}, {
 			"$NodeId":	"AppendMask-a8613312-0555-4d56-9bd6-664b2d0fb5de",
 			"Id":	"appendmask",
-			"AppendMask":	"!Filter_PlantsAndTrees"
+			"AppendMask":	"!Filter_PlantsAndTrees|Filter_AllScatter"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-2e5a0ac5-5633-4d1c-a298-d7c359fba240",
 			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathFoliageGroundBlocks",
+			"ArgName":	"caPathFoliageGroundBlocks",
 			"FilterType":	"TargetBlock",
 			"Invert":	true,
 			"AdditionalBlocks":	""
 		}, {
 			"$NodeId":	"LoadMaterial-9b7b9ad8-6a2b-425b-8201-120a5c586af9",
 			"Id":	"loadmaterial",
-			"ArgName":	"PathGroundBlocks"
+			"ArgName":	"aPathGroundBlocks"
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-2e0ddb90-521c-4aa9-bb9e-1da88b104714",
 			"Id":	"loadint",
-			"ArgName":	"PathGroundBlockDensity",
+			"ArgName":	"aPathGroundBlocksDensity",
 			"TargetField":	"Density",
 			"Relative":	false,
 			"Negate":	false
@@ -60,7 +81,7 @@
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-20259582-d2bc-45a3-b3d9-b7b3751cdba6",
 			"Id":	"loadint",
-			"ArgName":	"PathGroundBlockDensity",
+			"ArgName":	"aPathGroundBlocksDensity",
 			"TargetField":	"Density",
 			"Relative":	false,
 			"Negate":	false
@@ -77,36 +98,36 @@
 		}, {
 			"$NodeId":	"AppendMask-0d3a291b-246b-4ff8-92e7-345f1364b7e8",
 			"Id":	"appendmask",
-			"AppendMask":	"!Filter_PlantsAndTrees"
+			"AppendMask":	"!Filter_PlantsAndTrees|Filter_AllScatter"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-38a3f4ee-497e-439f-9b74-3b120292633d",
 			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundBlocks",
+			"ArgName":	"aPathGroundBlocks",
 			"FilterType":	"TargetBlock",
 			"Invert":	true,
 			"AdditionalBlocks":	""
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-bf221f0f-b13b-4b7f-8630-1ff143e9f69f",
 			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathFoliageGroundBlocks",
+			"ArgName":	"caPathFoliageGroundBlocks",
 			"FilterType":	"TargetBlock",
 			"Invert":	true,
 			"AdditionalBlocks":	""
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-f35d0898-773b-4487-9832-c246285a7111",
 			"Id":	"loadint",
-			"ArgName":	"PathOutlineGroundBlockWidth",
+			"ArgName":	"bPathOutlineGroundBlocksWidth",
 			"TargetField":	"Width",
 			"Relative":	true,
 			"Negate":	false
 		}, {
 			"$NodeId":	"LoadMaterial-0c0d3597-a696-4d1b-a4be-f2eced83b6b1",
 			"Id":	"loadmaterial",
-			"ArgName":	"PathOutlineGroundBlocks"
+			"ArgName":	"baPathOutlineGroundBlocks"
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-2b50911c-494f-4176-94d5-f4de88dd4e06",
 			"Id":	"loadint",
-			"ArgName":	"PathGroundOutlineBlockDensity",
+			"ArgName":	"bPathGroundOutlineBlocksDensity",
 			"TargetField":	"Density",
 			"Relative":	false,
 			"Negate":	false
@@ -116,7 +137,7 @@
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-1fd6e79e-284e-4d6e-b664-dc206a014ea5",
 			"Id":	"loadint",
-			"ArgName":	"PathOutlineGroundBlockWidth",
+			"ArgName":	"bPathOutlineGroundBlocksWidth",
 			"TargetField":	"Width",
 			"Relative":	true,
 			"Negate":	true
@@ -134,29 +155,25 @@
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-40a387d9-f669-428e-ba51-bbcdb5a16768",
 			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathOutlineGroundBlocks",
+			"ArgName":	"baPathOutlineGroundBlocks",
 			"FilterType":	"AboveBlock",
 			"Invert":	false,
 			"AdditionalBlocks":	""
 		}, {
-			"$NodeId":	"AppendMask-57a44865-6ce3-4188-873e-97acf1057a62",
-			"Id":	"appendmask",
-			"AppendMask":	"!Filter_PlantAndTrees"
-		}, {
 			"$NodeId":	"LoadMaterial-1d43db89-9d46-43ed-b2d8-eb13b6710a1a",
 			"Id":	"loadmaterial",
-			"ArgName":	"PathFoliageGroundBlocks"
+			"ArgName":	"caPathFoliageGroundBlocks"
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-41cf6343-3ccf-4ab9-bda1-cab934670794",
 			"Id":	"loadint",
-			"ArgName":	"PathFoliageBlockDensity",
+			"ArgName":	"cPathFoliageBlockDensity",
 			"TargetField":	"Density",
 			"Relative":	false,
 			"Negate":	false
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-7998aa35-5a84-4d62-b9ce-b7cc241710a6",
 			"Id":	"loadint",
-			"ArgName":	"PathFoliageBlockWidth",
+			"ArgName":	"cPathFoliageBlockWidth",
 			"TargetField":	"Width",
 			"Relative":	true,
 			"Negate":	false
@@ -192,11 +209,25 @@
 		}, {
 			"$NodeId":	"Mask-0fc92b71-23aa-41f7-8f68-302ce68033c1",
 			"Id":	"mask",
-			"Mask":	"Empty,!Filter_PlantsAndTrees"
+			"Mask":	"Empty|Filter_AllScatter"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-4bb3af3b-bf8c-45e6-a172-a31dd0d0a2a7",
 			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundBlocks",
+			"ArgName":	"aPathGroundBlocks",
+			"FilterType":	"AdjacentBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-d5832bb7-485b-4ac2-9b0d-cc008deb92a1",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
+			"FilterType":	"AboveBlock",
+			"Invert":	true,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-9c6e8e5d-06bd-4d05-aa2d-265b60f703f7",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"PathGroundHalfBlocks",
 			"FilterType":	"AdjacentBlock",
 			"Invert":	false,
 			"AdditionalBlocks":	""
@@ -204,73 +235,8 @@
 			"$NodeId":	"Set-f41666a1-7fec-44ed-ad8e-431923fba5b4",
 			"Id":	"set"
 		}, {
-			"$NodeId":	"ClearOperationMask-b08e58d2-8ed4-42f4-b7c4-097876ffe254",
+			"$NodeId":	"ClearOperationMask-24f745da-be79-4151-8834-f99d4befcc1f",
 			"Id":	"clearoperationmask"
-		}, {
-			"$NodeId":	"Mask-a95ade73-70f1-46d9-8ef9-9e97beba76ce",
-			"Id":	"mask",
-			"Mask":	"Empty,!Filter_PlantsAndTrees"
-		}, {
-			"$NodeId":	"AppendMaskFromToolArg-0cf17df4-1f3c-4a3c-9314-c9f39df2ac5b",
-			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundHalfBlocks",
-			"FilterType":	"AdjacentBlock",
-			"Invert":	false,
-			"AdditionalBlocks":	""
-		}, {
-			"$NodeId":	"Set-751aacd4-3a34-4066-aa3d-5722cf2a3019",
-			"Id":	"set"
-		}, {
-			"$NodeId":	"ClearOperationMask-d3795f81-fd30-409c-adb3-b640f4c81b94",
-			"Id":	"clearoperationmask"
-		}, {
-			"$NodeId":	"Mask-8ff8484c-547b-4da4-b645-368baf6d1643",
-			"Id":	"mask",
-			"Mask":	"Filter_PlantsAndTrees"
-		}, {
-			"$NodeId":	"Set-044342ba-b609-4f91-8452-85ba5401a956",
-			"Id":	"set"
-		}, {
-			"$NodeId":	"ClearOperationMask-5d8c83d9-10f7-462f-9a24-26e1409a83ec",
-			"Id":	"clearoperationmask"
-		}, {
-			"$NodeId":	"Material-b7d405ad-4409-4281-b019-1a26db4633f2",
-			"Id":	"material",
-			"BlockType":	"Empty"
-		}, {
-			"$NodeId":	"AppendMaskFromToolArg-212aedb9-e336-4675-9ba0-74cb841b0cee",
-			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundHalfBlocks",
-			"FilterType":	"TargetBlock",
-			"Invert":	false,
-			"AdditionalBlocks":	""
-		}, {
-			"$NodeId":	"AppendMaskFromToolArg-c0a8558d-e6ac-47b1-b786-843860620cf5",
-			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundHalfBlocks",
-			"FilterType":	"AboveBlock",
-			"Invert":	false,
-			"AdditionalBlocks":	""
-		}, {
-			"$NodeId":	"Set-c69f4efc-0de3-4091-b047-4affe84158e7",
-			"Id":	"set"
-		}, {
-			"$NodeId":	"ClearOperationMask-3b67c514-da8d-46f7-a406-cbce33747ce6",
-			"Id":	"clearoperationmask"
-		}, {
-			"$NodeId":	"AppendMask-a85dce1a-e33a-457a-a53c-d20fa18e46cd",
-			"Id":	"appendmask",
-			"AppendMask":	"~Empty"
-		}, {
-			"$NodeId":	"AppendMaskFromToolArg-d3625e3f-2f56-4c8d-8194-f36573cb4768",
-			"Id":	"appendmaskfromtoolarg",
-			"ArgName":	"PathGroundHalfBlocks",
-			"FilterType":	"AboveBlock",
-			"Invert":	false,
-			"AdditionalBlocks":	""
-		}, {
-			"$NodeId":	"Set-d2cfaba3-dee4-4378-aef6-dc472e6a8c01",
-			"Id":	"set"
 		}],
 	"$NodeEditorMetadata":	{
 		"$Nodes":	{
@@ -283,26 +249,56 @@
 			},
 			"EchoOnce-993fbe3a-bc8e-446e-9850-a3fafae0cfab":	{
 				"$Position":	{
-					"$x":	493,
-					"$y":	-10319
-				}
-			},
-			"Shape-6f447696-08e4-4b7e-92a7-aa16f0dad477":	{
-				"$Position":	{
-					"$x":	493,
-					"$y":	-10043
+					"$x":	539,
+					"$y":	-11783
 				}
 			},
 			"JumpIfClickType-7269c460-9016-4dd3-84bc-057e59b8e797":	{
 				"$Position":	{
-					"$x":	483,
-					"$y":	-9853
+					"$x":	526,
+					"$y":	-11531
+				}
+			},
+			"JumpIfToolArg-93af6737-a609-4286-a454-05752dccedb2":	{
+				"$Position":	{
+					"$x":	515,
+					"$y":	-11107
+				}
+			},
+			"Mask-1f06e4ea-33f3-46c8-ad3e-e672b5cde5b9":	{
+				"$Position":	{
+					"$x":	517,
+					"$y":	-10833
+				}
+			},
+			"Material-4cce21d1-80f6-498c-8674-6d39ade83521":	{
+				"$Position":	{
+					"$x":	516,
+					"$y":	-10689
+				}
+			},
+			"Set-d0b7a421-51e1-479c-bf82-1f9aca01f431":	{
+				"$Position":	{
+					"$x":	519,
+					"$y":	-10541
+				}
+			},
+			"ClearOperationMask-2cafa2c9-bfa9-43e8-ae89-6c8530fab052":	{
+				"$Position":	{
+					"$x":	519,
+					"$y":	-10388
+				}
+			},
+			"SaveIndex-2934e368-3362-4d73-b214-f8c4a6403aaf":	{
+				"$Position":	{
+					"$x":	523,
+					"$y":	-10217
 				}
 			},
 			"HistoryMask-89c6ca92-d528-409e-a90c-01c7a785658a":	{
 				"$Position":	{
-					"$x":	425,
-					"$y":	-8888
+					"$x":	459,
+					"$y":	-8861
 				}
 			},
 			"Mask-f806bb73-3f87-441c-8f20-9b798847cc27":	{
@@ -389,6 +385,12 @@
 					"$y":	-5478
 				}
 			},
+			"LoadIntFromToolArg-f35d0898-773b-4487-9832-c246285a7111":	{
+				"$Position":	{
+					"$x":	416,
+					"$y":	-5123
+				}
+			},
 			"LoadMaterial-0c0d3597-a696-4d1b-a4be-f2eced83b6b1":	{
 				"$Position":	{
 					"$x":	405,
@@ -404,7 +406,13 @@
 			"Set-f7ff1f05-de82-49e6-89ec-24f733ef3fbe":	{
 				"$Position":	{
 					"$x":	404,
-					"$y":	-4533
+					"$y":	-4524
+				}
+			},
+			"LoadIntFromToolArg-1fd6e79e-284e-4d6e-b664-dc206a014ea5":	{
+				"$Position":	{
+					"$x":	403,
+					"$y":	-4398
 				}
 			},
 			"ClearOperationMask-7025f875-26a7-4571-be4e-a56cfc647a31":	{
@@ -431,16 +439,10 @@
 					"$y":	-3173
 				}
 			},
-			"AppendMask-57a44865-6ce3-4188-873e-97acf1057a62":	{
-				"$Position":	{
-					"$x":	414,
-					"$y":	-2883
-				}
-			},
 			"LoadMaterial-1d43db89-9d46-43ed-b2d8-eb13b6710a1a":	{
 				"$Position":	{
-					"$x":	416,
-					"$y":	-2709
+					"$x":	423,
+					"$y":	-2718
 				}
 			},
 			"LoadIntFromToolArg-41cf6343-3ccf-4ab9-bda1-cab934670794":	{
@@ -463,158 +465,68 @@
 			},
 			"Exit-639317ca-79df-45f9-baad-fc5f8310d7ed":	{
 				"$Position":	{
-					"$x":	386,
-					"$y":	-1762
+					"$x":	414,
+					"$y":	-1836
 				}
 			},
 			"SaveIndex-d3d0f850-680a-4272-bb33-51047890dc29":	{
 				"$Position":	{
-					"$x":	371,
-					"$y":	-1053
-				}
-			},
-			"Dimensions-5843ab6f-7302-4ada-b2d4-b2abb8735bfa":	{
-				"$Position":	{
-					"$x":	361,
-					"$y":	-842
+					"$x":	378,
+					"$y":	-738
 				}
 			},
 			"LoadMaterial-5b09b1a8-ba00-4eeb-b6a2-5588e745e4f9":	{
 				"$Position":	{
-					"$x":	354,
-					"$y":	-427
+					"$x":	361,
+					"$y":	-112
 				}
 			},
 			"SetDensity-642c9f8b-152c-4ed0-9909-df55f448f316":	{
 				"$Position":	{
-					"$x":	350,
-					"$y":	-268
+					"$x":	357,
+					"$y":	46
 				}
 			},
 			"Mask-0fc92b71-23aa-41f7-8f68-302ce68033c1":	{
 				"$Position":	{
-					"$x":	344,
-					"$y":	-122
+					"$x":	351,
+					"$y":	192
 				}
 			},
 			"AppendMaskFromToolArg-4bb3af3b-bf8c-45e6-a172-a31dd0d0a2a7":	{
 				"$Position":	{
-					"$x":	345,
-					"$y":	33
+					"$x":	352,
+					"$y":	347
 				}
 			},
 			"Set-f41666a1-7fec-44ed-ad8e-431923fba5b4":	{
 				"$Position":	{
-					"$x":	349,
-					"$y":	312
+					"$x":	350,
+					"$y":	1185
 				}
 			},
-			"ClearOperationMask-b08e58d2-8ed4-42f4-b7c4-097876ffe254":	{
-				"$Position":	{
-					"$x":	349,
-					"$y":	476
-				}
-			},
-			"Mask-a95ade73-70f1-46d9-8ef9-9e97beba76ce":	{
-				"$Position":	{
-					"$x":	343,
-					"$y":	631
-				}
-			},
-			"AppendMaskFromToolArg-0cf17df4-1f3c-4a3c-9314-c9f39df2ac5b":	{
-				"$Position":	{
-					"$x":	361,
-					"$y":	779
-				}
-			},
-			"Set-751aacd4-3a34-4066-aa3d-5722cf2a3019":	{
-				"$Position":	{
-					"$x":	351,
-					"$y":	1035
-				}
-			},
-			"ClearOperationMask-d3795f81-fd30-409c-adb3-b640f4c81b94":	{
-				"$Position":	{
-					"$x":	340,
-					"$y":	1178
-				}
-			},
-			"Mask-8ff8484c-547b-4da4-b645-368baf6d1643":	{
-				"$Position":	{
-					"$x":	337,
-					"$y":	1361
-				}
-			},
-			"Set-044342ba-b609-4f91-8452-85ba5401a956":	{
-				"$Position":	{
-					"$x":	340,
-					"$y":	1517
-				}
-			},
-			"ClearOperationMask-5d8c83d9-10f7-462f-9a24-26e1409a83ec":	{
-				"$Position":	{
-					"$x":	372,
-					"$y":	1785
-				}
-			},
-			"Material-b7d405ad-4409-4281-b019-1a26db4633f2":	{
-				"$Position":	{
-					"$x":	356,
-					"$y":	1934
-				}
-			},
-			"AppendMaskFromToolArg-212aedb9-e336-4675-9ba0-74cb841b0cee":	{
-				"$Position":	{
-					"$x":	346,
-					"$y":	2102
-				}
-			},
-			"AppendMaskFromToolArg-c0a8558d-e6ac-47b1-b786-843860620cf5":	{
-				"$Position":	{
-					"$x":	353,
-					"$y":	2342
-				}
-			},
-			"Set-c69f4efc-0de3-4091-b047-4affe84158e7":	{
+			"AppendMaskFromToolArg-d5832bb7-485b-4ac2-9b0d-cc008deb92a1":	{
 				"$Position":	{
 					"$x":	354,
-					"$y":	2598
+					"$y":	611
 				}
 			},
-			"ClearOperationMask-3b67c514-da8d-46f7-a406-cbce33747ce6":	{
+			"AppendMaskFromToolArg-9c6e8e5d-06bd-4d05-aa2d-265b60f703f7":	{
 				"$Position":	{
-					"$x":	350,
-					"$y":	2753
+					"$x":	346,
+					"$y":	884
 				}
 			},
-			"AppendMask-a85dce1a-e33a-457a-a53c-d20fa18e46cd":	{
+			"Dimensions-5843ab6f-7302-4ada-b2d4-b2abb8735bfa":	{
 				"$Position":	{
-					"$x":	338,
-					"$y":	2904
+					"$x":	367,
+					"$y":	-525
 				}
 			},
-			"AppendMaskFromToolArg-d3625e3f-2f56-4c8d-8194-f36573cb4768":	{
+			"ClearOperationMask-24f745da-be79-4151-8834-f99d4befcc1f":	{
 				"$Position":	{
-					"$x":	326,
-					"$y":	3049
-				}
-			},
-			"Set-d2cfaba3-dee4-4378-aef6-dc472e6a8c01":	{
-				"$Position":	{
-					"$x":	332,
-					"$y":	3322
-				}
-			},
-			"LoadIntFromToolArg-f35d0898-773b-4487-9832-c246285a7111":	{
-				"$Position":	{
-					"$x":	416,
-					"$y":	-5123
-				}
-			},
-			"LoadIntFromToolArg-1fd6e79e-284e-4d6e-b664-dc206a014ea5":	{
-				"$Position":	{
-					"$x":	403,
-					"$y":	-4398
+					"$x":	339,
+					"$y":	1361
 				}
 			}
 		},
@@ -655,11 +567,11 @@
 				"$name":	"Right Click"
 			}, {
 				"$Position":	{
-					"$x":	271.125,
-					"$y":	-1148.3125
+					"$x":	127.75,
+					"$y":	-832.875
 				},
-				"$width":	1221.5625,
-				"$height":	3024.9375,
+				"$width":	1372.8125,
+				"$height":	4813.875,
 				"$name":	"Left Click"
 			}],
 		"$Comments":	[{

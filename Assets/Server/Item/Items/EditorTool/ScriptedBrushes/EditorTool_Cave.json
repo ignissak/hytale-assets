@@ -1,0 +1,147 @@
+{
+  "TranslationProperties": {
+    "Name": "server.builderTools.tools.Cave.name",
+    "Description": "server.builderTools.tools.Cave.description"
+  },
+  "Icon": "Icons/Items/EditorTools/Paint.png",
+  "Categories": [
+    "Tool.ScriptedBrushes"
+  ],
+  "Model": "Items/Tools/Prototype_Teseract_2.blockymodel",
+  "Texture": "Items/Tools/Prototype_Teseract_3.png",
+  "MaxStack": 1,
+  "PlayerAnimationsId": "Item",
+  "BuilderTool": {
+    "UI": [],
+    "Tools": [
+      {
+        "Id": "Paint",
+        "IsBrush": true,
+        "BrushConfigurationCommand": "CaveBrush",
+        "BrushData": {
+          "Width": {
+            "Default": 11,
+            "Min": 1,
+            "Max": 100
+          },
+          "Height": {
+            "Default": 9,
+            "Min": 1,
+            "Max": 100
+          },
+          "Shape": {
+            "Default": "Sphere"
+          },
+          "Origin": {
+            "Default": "Center"
+          }
+        },
+        "Args": {
+          "aCaveBlocks": {
+            "Type": "Block",
+            "Default": "Rock_Stone",
+            "AllowPattern": true
+          },
+          "aCaveBlocksDecoration": {
+            "Type": "Block",
+            "Default": "Rock_Stone_Stalactite_Large,Rock_Stone_Stalactite_Small",
+            "AllowPattern": true
+          },
+          "aCaveBlocksDecorationDensity": {
+            "Type": "Int",
+            "Default": 9,
+            "Min": 0,
+            "Max": 100
+          },
+          "bCaveTopBlocks": {
+            "Type": "Block",
+            "Default": "Plant_Moss_Cave_Green_Dark,Plant_Vine_Hanging,Plant_Moss_Cave_Green_Dark",
+            "AllowPattern": true
+          },
+          "bCaveTopBlocksDensity": {
+            "Type": "Int",
+            "Default": 18,
+            "Min": 0,
+            "Max": 100
+          },
+          "cCaveFloorBlocks": {
+            "Type": "Block",
+            "Default": "Soil_Pathway,Soil_Pathway,Soil_Mud_Dry",
+            "AllowPattern": true
+          },
+          "cCaveFloorBlocksDensity": {
+            "Type": "Int",
+            "Default": 70,
+            "Min": 0,
+            "Max": 100
+          },
+          "dCaveFloorDecorationBlocks": {
+            "Type": "Block",
+            "Default": "Rubble_Stone,Plant_Crop_Mushroom_Flatcap_Green",
+            "AllowPattern": true
+          },
+          "dCaveFloorDecorationBlocksDensity": {
+            "Type": "Int",
+            "Default": 5,
+            "Min": 0,
+            "Max": 100
+          },
+          "eOreBlocks": {
+            "Type": "Block",
+            "Default": "Ore_Iron_Stone",
+            "AllowPattern": true
+          },
+          "eOreBlocksDensity": {
+            "Type": "Int",
+            "Default": 2,
+            "Min": 0,
+            "Max": 100
+          },
+          "xRandomizeDimensions": {
+            "Type": "Bool",
+            "Default": true
+          },
+          "yMeltStrength": {
+            "Type": "Int",
+            "Default": 4,
+            "Min": 1,
+            "Max": 10
+          },
+          "zSmoothness": {
+            "Type": "Int",
+            "Default": 2,
+            "Min": 0,
+            "Max": 10
+          }
+        }
+      }
+    ]
+  },
+  "Interactions": {
+    "Primary": "Builder_Tool",
+    "Secondary": "Builder_Tool"
+  },
+  "InteractionConfig": {
+    "DebugOutlines": true,
+    "UseDistance": {
+      "Adventure": 128,
+      "Creative": 128
+    },
+    "AllEntities": true
+  },
+  "ItemAppearanceConditions": {
+    "Health": [
+      {
+        "Condition": [
+          0,
+          100.0
+        ],
+        "ConditionValueType": "Percent",
+        "ModelVFXId": "Prototype_CreativeTool_ModelVFX"
+      }
+    ]
+  },
+  "Scale": 0.75,
+  "Set": "AAAA10",
+  "Quality": "Tool"
+}

@@ -1,0 +1,78 @@
+{
+  "Model": "Rubble_Stone",
+  "Physics": {
+    "Type": "Standard",
+    "Gravity": 20,
+    "TerminalVelocityAir": 30,
+    "TerminalVelocityWater": 15,
+    "RotationMode": "VelocityDamped",
+    "Bounciness": 0.5,
+    "SticksVertically": false
+  },
+  "LaunchForce": 30,
+  "SpawnOffset": {
+    "X": 0.15,
+    "Y": -0.25,
+    "Z": 0
+  },
+  "Interactions": {
+    "ProjectileHit": {
+      "Interactions": [
+        {
+          "Parent": "DamageEntityParent",
+          "DamageCalculator": {
+            "Class": "Charged",
+            "BaseDamage": {
+              "Physical": 2
+            }
+          },
+          "Effects": {
+            "LocalSoundEventId": "SFX_Rubble_Hit",
+            "WorldSoundEventId": "SFX_Rubble_Hit"
+          },
+          "DamageEffects": {
+            "Knockback": {
+              "Type": "Force",
+              "VelocityConfig": {
+                "AirResistance": 0.97,
+                "AirResistanceMax": 0.96,
+                "GroundResistance": 0.94,
+                "GroundResistanceMax": 0.3,
+                "Threshold": 3.0,
+                "Style": "Exp"
+              },
+              "Direction": {
+                "X": 0.0,
+                "Y": 1,
+                "Z": -1
+              },
+              "Force": 10,
+              "VelocityType": "Add"
+            },
+            "WorldParticles": [
+              {
+                "SystemId": "Stone_Death",
+                "Scale": 1
+              }
+            ]
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    },
+    "ProjectileMiss": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 5,
+          "Effects": {
+            "LocalSoundEventId": "SFX_Rubble_Hit",
+            "WorldSoundEventId": "SFX_Rubble_Hit"
+          }
+        },
+        "Common_Projectile_Despawn"
+      ]
+    }
+  }
+}
+

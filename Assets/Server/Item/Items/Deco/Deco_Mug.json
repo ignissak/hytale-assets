@@ -43,23 +43,21 @@
       },
       "Recipe": null,
       "Consumable": true,
-      "MaxDurability": 3,
+      "MaxDurability": 1,
       "MaxStack": 1,
       "BlockType": {
-        "$TODO": "Parent: Container_Crude_Mug",
         "CustomModelTexture": [
           {
             "Weight": 1,
             "Texture": "Blocks/Miscellaneous/Mug_Texture.png"
           }
         ],
-        "$Comment": "FOLLOWING PROPERTIES DUPLICATED BECAUSE OF SERVER BUG",
         "DrawType": "Model",
         "Opacity": "Transparent",
         "CustomModel": "Blocks/Miscellaneous/Mug.blockymodel",
-        "CustomModelScale": 0.5,
+        "CustomModelScale": 0.6,
         "CustomModelAnimation": "Blocks/Miscellaneous/Mug_Full.blockyanim",
-        "HitboxType": "Plant_Small",
+        "HitboxType": "Food_Medium",
         "Flags": {
           "IsStackable": false
         },
@@ -67,10 +65,12 @@
         "BlockSoundSetId": "Wood",
         "Gathering": {
           "Harvest": {},
-          "Soft": {}
+          "Soft": {
+            "IsWeaponBreakable": false
+          }
         }
       },
-      "Scale": 2,
+      "Scale": 1.43,
       "IconProperties": {
         "Scale": 0.8,
         "Rotation": [
@@ -138,14 +138,17 @@
         "Texture": "Blocks/Miscellaneous/Mug_Texture.png"
       }
     ],
-    "CustomModelScale": 0.7,
-    "HitboxType": "Plant_Small",
+    "CustomModelScale": 0.6,
+    "HitboxType": "Food_Medium",
     "Flags": {
       "IsStackable": false
     },
     "RandomRotation": "YawStep1",
     "Gathering": {
-      "Soft": {}
+      "Harvest": {},
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
     },
     "BlockParticleSetId": "Stone",
     "BlockSoundSetId": "Wood"

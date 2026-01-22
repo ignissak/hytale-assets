@@ -1,0 +1,38 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Ore_Adamantite_Magma_Cracked.name"
+  },
+  "Parent": "Rock_Magma_Cooled",
+  "BlockType": {
+    "Textures": [
+      {
+        "Weight": 1,
+        "Sides": "BlockTextures/Rock_Magma_Cooled_Side.png",
+        "UpDown": "BlockTextures/Rock_Magma_Cooled.png"
+      }
+    ],
+    "Gathering": {
+      "Breaking": {
+        "GatherType": "Rocks",
+        "DropList": {
+          "Container": {
+            "Type": "Multiple",
+            "Containers": [
+              {
+                "Weight": 0,
+                "$Comment": "In this case 'Weight' is interpreted as a percentage chance to spawn, so 20% chance",
+                "Type": "Single",
+                "Item": { "ItemId": "Ore_Adamantite" }
+              },
+              {
+                "Type": "Single",
+                "Item": { "ItemId": "Rock_Magma_Cooled" }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Icon": "Icons/ItemsGenerated/Rock_Magma_Cooled.png"
+}
