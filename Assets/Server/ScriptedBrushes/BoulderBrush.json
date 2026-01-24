@@ -3,7 +3,7 @@
 	"Operations":	[{
 			"$NodeId":	"EchoOnce-db43d859-c888-41ee-baaa-5d878ef98e25",
 			"Id":	"echoonce",
-			"Message":	"-------------------------------------\n  BOULDER BRUSH\n-------------------------------------\nThis brush gives you the ability to create boulders on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the boulder.\n\nLeft Click: Decorates the boulder.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nPrimary Blocks = The blocks the boulder will be made out of. Comes with a density slider to control how dense.\n\nPrimary Accent = The small decoration blocks to be placed on top of Primary Blocks as decoration. Comes with a density slider to control how dense.\n\nDecoration Blocks = The blocks placed on top of Primary Blocks. Comes with a density slider to control how dense.\n\nDecoration Accent = The small decoration blocks to be placed on top of Decoration Blocks as decoration. Comes with a density slider to control how dense.\n\nScaling Height = The height the boulder should be. This scales with the width, so the large the width, the taller the boulder.\n\nPoints on Radius = The number of smaller boulders to place around the main boulder.\n\nRadius Size = How close the small boulders in Points on Radius will be placed next to the main boulder.\n\nLayer Jitter = Add randomization to each sub-layer of the boulder\n\nRadius Jitter = Add randomization between the small boulders in Points on Radius.\n\nSmoothness = Sets how smooth the boulder should be.\n\n-------------------------------------\n How the brush works\n-------------------------------------\n\nThis section will talk about the way the boulders are made.\n\nThe boulder brush is made from a circle loop that pastes a main large boulder, then smaller boulders around it (how many of these is Points on Radius, and how far apart from each other is Radius Size). The initial selection is the base of the boulder,\r\nand the Boulder Height slider is how many times the boulder brush will stack this circle loop, and each time scales down the width to create a peak looking and moves the offset up by the height. The Layer Jitter adds an offset to each pasted stack, and the Radius Jitter adds offset between the smaller boulders around the main boulder in the stack.\n\n-------------------------------------------\n  BOULDER BRUSH - Read the Above ^\n-------------------------------------------"
+			"Message":	"-------------------------------------\n  BOULDER BRUSH\n-------------------------------------\nThis brush gives you the ability to create boulders on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the boulder.\n\nLeft Click: Decorates the boulder. NOTE: Changing the origin to Center works best.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nRock Blocks = The blocks the boulder will be made out of. Comes with a density slider to control how dense.\n\nRock Decor = The small decoration blocks to be placed on top of Primary Blocks as decoration. Comes with a density slider to control how dense.\n\nTop Blocks = The blocks placed on top of Rock Blocks. Comes with a density slider to control how dense.\n\nTop Decor = The small decoration blocks to be placed on top of Top Blocks as decoration. Comes with a density slider to control how dense.\n\nBoulder Points = Number of smaller boulders to form the main boulder.\n\nBoulder Radius = The distance between the smaller boulders (Boulder Points).\n\nRandomization = Randomizes the boulder.\n\nSmoothness = How smooth to make the boulder.\n\nStack Size (ADVANCED) = Number of times to stack the current shape on top of itself. Each stack will lessen the width by 1 until the width is 0.\n\nStack Randomization (ADVANCED) = Randomizes each stack from Stack Size.\n\n-------------------------------------------\n  BOULDER BRUSH - Read the Above ^\n-------------------------------------------"
 		}, {
 			"$NodeId":	"JumpIfClickType-6d0c3880-3a29-44a7-b84f-5a790729e05e",
 			"Id":	"jumpifclicktype",
@@ -13,6 +13,24 @@
 			"$NodeId":	"DisableHoldInteraction-8b1b4912-e3f7-4293-990e-8438e97410fc",
 			"Id":	"disableonhold"
 		}, {
+			"$NodeId":	"Offset-7cb0e418-1ceb-4de0-b52c-e748b51c5e42",
+			"Id":	"offset",
+			"Offset":	{
+				"X":	{
+					"Value":	0,
+					"Relative":	true
+				},
+				"Y":	{
+					"Value":	-1,
+					"Relative":	true
+				},
+				"Z":	{
+					"Value":	0,
+					"Relative":	true
+				}
+			},
+			"Negate":	false
+		}, {
 			"$NodeId":	"SaveIndex-3da01c9a-e71a-461c-9d50-8848f222b2a1",
 			"Id":	"saveindex",
 			"StoredIndexName":	"stack_loop"
@@ -21,34 +39,9 @@
 			"Id":	"loadmaterial",
 			"ArgName":	"aPrimaryBlocks"
 		}, {
-			"$NodeId":	"Dimensions-ac7d4117-2969-4a0c-9a7a-e4d976a7a297",
-			"Id":	"dimensions",
-			"Width":	{
-				"Value":	4,
-				"Relative":	true
-			},
-			"Height":	{
-				"Value":	4,
-				"Relative":	true
-			}
-		}, {
-			"$NodeId":	"Set-33a062d3-f6e1-4691-af7a-0fd5e98dd42c",
-			"Id":	"set"
-		}, {
-			"$NodeId":	"Dimensions-2f2ead8b-37ea-4fcd-932a-5215ee7c43dc",
-			"Id":	"dimensions",
-			"Width":	{
-				"Value":	-4,
-				"Relative":	true
-			},
-			"Height":	{
-				"Value":	-4,
-				"Relative":	true
-			}
-		}, {
 			"$NodeId":	"JumpIfToolArg-940fd6f2-8abc-4d63-aeca-94eec8936345",
 			"Id":	"jumpiftoolarg",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"ComparisonType":	"Equals",
 			"ComparisonValue":	"0",
 			"StoredIndexName":	"layer_jitter_end"
@@ -71,10 +64,6 @@
 					"$NodeId":	"IntegerStringPair-66dfa877-c171-4dbf-894d-d9c21aa90df1",
 					"Left":	1,
 					"Right":	"layer_neg_z"
-				}, {
-					"$NodeId":	"IntegerStringPair-6cbed0d0-48b8-4e04-938c-573d9bbb6138",
-					"Left":	1,
-					"Right":	"layer_neg_y"
 				}]
 		}, {
 			"$NodeId":	"SaveIndex-8dc5c86b-7aee-498e-92a7-c72f709e40d3",
@@ -84,7 +73,7 @@
 			"$NodeId":	"LoadIntFromToolArg-792ebbf9-c5ae-461f-aadf-20e999867153",
 			"$Comment":	"pos x",
 			"Id":	"loadint",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"TargetField":	"OffsetX",
 			"Relative":	true,
 			"Negate":	false
@@ -100,7 +89,7 @@
 			"$NodeId":	"LoadIntFromToolArg-c471308d-c9b4-40e2-8c4b-56f9526fde0f",
 			"$Comment":	"pos x",
 			"Id":	"loadint",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"TargetField":	"OffsetX",
 			"Relative":	true,
 			"Negate":	true
@@ -116,7 +105,7 @@
 			"$NodeId":	"LoadIntFromToolArg-ad3c95dd-0976-423b-b60c-7744a866a62d",
 			"$Comment":	"pos x",
 			"Id":	"loadint",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"TargetField":	"OffsetZ",
 			"Relative":	true,
 			"Negate":	false
@@ -132,7 +121,7 @@
 			"$NodeId":	"LoadIntFromToolArg-a44e9f72-ee4f-4dd5-b67b-a6beb1c3c1f0",
 			"$Comment":	"pos x",
 			"Id":	"loadint",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"TargetField":	"OffsetZ",
 			"Relative":	true,
 			"Negate":	true
@@ -148,7 +137,7 @@
 			"$NodeId":	"LoadIntFromToolArg-38cf8c26-782e-47c2-8f68-1762fb2f1cb0",
 			"$Comment":	"pos x",
 			"Id":	"loadint",
-			"ArgName":	"iJitter",
+			"ArgName":	"kJitter",
 			"TargetField":	"OffsetY",
 			"Relative":	true,
 			"Negate":	true
@@ -194,10 +183,6 @@
 					"$NodeId":	"IntegerStringPair-b11cddbc-b6e8-4548-a9e2-2e94d4e21b50",
 					"Left":	1,
 					"Right":	"z_neg"
-				}, {
-					"$NodeId":	"IntegerStringPair-0eb401ec-f3d7-4cae-bfae-744c1319b20f",
-					"Left":	1,
-					"Right":	"y_neg"
 				}]
 		}, {
 			"$NodeId":	"SaveIndex-e18c17ae-d9fc-40e1-bc48-2d86c1b3b238",
@@ -384,10 +369,21 @@
 				"Relative":	true
 			}
 		}, {
+			"$NodeId":	"JumpIfToolArg-d6cc6b32-f719-4bf1-8821-40f5d467caf7",
+			"Id":	"jumpiftoolarg",
+			"ArgName":	"jBoulderSize",
+			"ComparisonType":	"Equals",
+			"ComparisonValue":	"0",
+			"StoredIndexName":	"skip_stack"
+		}, {
 			"$NodeId":	"LoadLoopFromToolArg-84d3b301-e73a-42b7-97fa-5b87a095d5fb",
 			"Id":	"loadloop",
 			"StoredIndexName":	"stack_loop",
-			"ArgName":	"iBoulderSize"
+			"ArgName":	"jBoulderSize"
+		}, {
+			"$NodeId":	"SaveIndex-4d9b6fff-2c86-4a6b-8389-65245d614faf",
+			"Id":	"saveindex",
+			"StoredIndexName":	"skip_stack"
 		}, {
 			"$NodeId":	"Exit-4f9d1f4a-4963-478c-a294-34411d7f00a4",
 			"Id":	"exit"
@@ -403,6 +399,26 @@
 			"$NodeId":	"LoadMaterial-fa5de62c-c05e-4f0d-a38a-10643d002af5",
 			"Id":	"loadmaterial",
 			"ArgName":	"eDecorationBlocks"
+		}, {
+			"$NodeId":	"AppendMaskFromToolArg-4abdbb08-0e42-4ad2-bdfb-5b7d606dd17e",
+			"Id":	"appendmaskfromtoolarg",
+			"ArgName":	"eDecorationBlocks",
+			"FilterType":	"BelowBlock",
+			"Invert":	false,
+			"AdditionalBlocks":	""
+		}, {
+			"$NodeId":	"LoadIntFromToolArg-c0347de5-b8ef-4e4b-b683-422015cbfd98",
+			"Id":	"loadint",
+			"ArgName":	"fDecorationBlocksDensity",
+			"TargetField":	"Density",
+			"Relative":	false,
+			"Negate":	false
+		}, {
+			"$NodeId":	"Set-f44ab1f9-6173-4820-a769-355f55e6238b",
+			"Id":	"set"
+		}, {
+			"$NodeId":	"ClearOperationMask-1127854f-e2ba-48e6-9501-9a8ac1ab8065",
+			"Id":	"clearoperationmask"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-9428c80e-3d41-4236-be9f-248b2e3c5e71",
 			"Id":	"appendmaskfromtoolarg",
@@ -434,7 +450,7 @@
 		}, {
 			"$NodeId":	"Mask-181ac355-5181-4f6b-ab8f-531005605a5f",
 			"Id":	"mask",
-			"Mask":	"Empty"
+			"Mask":	"Empty.!Filter_PlantsAndTrees"
 		}, {
 			"$NodeId":	"AppendMaskFromToolArg-0b329dc5-9a56-48e6-b5d3-48c3a3978d0e",
 			"Id":	"appendmaskfromtoolarg",
@@ -442,10 +458,6 @@
 			"FilterType":	"AboveBlock",
 			"Invert":	false,
 			"AdditionalBlocks":	""
-		}, {
-			"$NodeId":	"AppendMask-dae0d493-a21a-4264-ae80-0498c27dc62c",
-			"Id":	"appendmask",
-			"AppendMask":	"!Filter_PlantsAndTrees"
 		}, {
 			"$NodeId":	"LoadIntFromToolArg-2f9601f2-0291-498a-a4af-73beacf155fc",
 			"Id":	"loadint",
@@ -475,10 +487,6 @@
 			"Invert":	false,
 			"AdditionalBlocks":	""
 		}, {
-			"$NodeId":	"AppendMask-6606c0c1-cbec-40e2-a955-d82bec918547",
-			"Id":	"appendmask",
-			"AppendMask":	"!Filter_PlantsAndTrees"
-		}, {
 			"$NodeId":	"LoadIntFromToolArg-ef3c6ed4-3207-453b-bbb5-e0a0b94098c5",
 			"Id":	"loadint",
 			"ArgName":	"dDecorationAccentPrimary",
@@ -501,52 +509,34 @@
 				},
 				"$Title":	"[ROOT] Root"
 			},
-			"DisableHoldInteraction-8b1b4912-e3f7-4293-990e-8438e97410fc":	{
-				"$Position":	{
-					"$x":	-8,
-					"$y":	-22219
-				}
-			},
 			"EchoOnce-db43d859-c888-41ee-baaa-5d878ef98e25":	{
 				"$Position":	{
-					"$x":	-18,
-					"$y":	-22641
+					"$x":	-13,
+					"$y":	-23682
 				}
 			},
 			"JumpIfClickType-6d0c3880-3a29-44a7-b84f-5a790729e05e":	{
 				"$Position":	{
-					"$x":	-17,
-					"$y":	-22408
+					"$x":	-12,
+					"$y":	-23449
+				}
+			},
+			"DisableHoldInteraction-8b1b4912-e3f7-4293-990e-8438e97410fc":	{
+				"$Position":	{
+					"$x":	-3,
+					"$y":	-23260
 				}
 			},
 			"SaveIndex-3da01c9a-e71a-461c-9d50-8848f222b2a1":	{
 				"$Position":	{
-					"$x":	-25,
-					"$y":	-21938
+					"$x":	-79,
+					"$y":	-20971
 				}
 			},
 			"LoadMaterial-ed40a32b-a361-4207-89b5-dea245ef9464":	{
 				"$Position":	{
-					"$x":	-27,
-					"$y":	-21776
-				}
-			},
-			"Dimensions-ac7d4117-2969-4a0c-9a7a-e4d976a7a297":	{
-				"$Position":	{
-					"$x":	-20,
-					"$y":	-21617
-				}
-			},
-			"Set-33a062d3-f6e1-4691-af7a-0fd5e98dd42c":	{
-				"$Position":	{
-					"$x":	-20,
-					"$y":	-21217
-				}
-			},
-			"Dimensions-2f2ead8b-37ea-4fcd-932a-5215ee7c43dc":	{
-				"$Position":	{
-					"$x":	-41,
-					"$y":	-21073
+					"$x":	-81,
+					"$y":	-20809
 				}
 			},
 			"JumpIfToolArg-940fd6f2-8abc-4d63-aeca-94eec8936345":	{
@@ -583,12 +573,6 @@
 				"$Position":	{
 					"$x":	1025,
 					"$y":	-19422
-				}
-			},
-			"IntegerStringPair-6cbed0d0-48b8-4e04-938c-573d9bbb6138":	{
-				"$Position":	{
-					"$x":	1031,
-					"$y":	-19233
 				}
 			},
 			"SaveIndex-8dc5c86b-7aee-498e-92a7-c72f709e40d3":	{
@@ -733,12 +717,6 @@
 				"$Position":	{
 					"$x":	971,
 					"$y":	-14881
-				}
-			},
-			"IntegerStringPair-0eb401ec-f3d7-4cae-bfae-744c1319b20f":	{
-				"$Position":	{
-					"$x":	977,
-					"$y":	-14690
 				}
 			},
 			"SaveIndex-e18c17ae-d9fc-40e1-bc48-2d86c1b3b238":	{
@@ -921,148 +899,178 @@
 					"$y":	-7317
 				}
 			},
+			"JumpIfToolArg-d6cc6b32-f719-4bf1-8821-40f5d467caf7":	{
+				"$Position":	{
+					"$x":	98,
+					"$y":	-6844
+				}
+			},
 			"LoadLoopFromToolArg-84d3b301-e73a-42b7-97fa-5b87a095d5fb":	{
 				"$Position":	{
-					"$x":	104,
-					"$y":	-6887
+					"$x":	97,
+					"$y":	-6586
+				}
+			},
+			"SaveIndex-4d9b6fff-2c86-4a6b-8389-65245d614faf":	{
+				"$Position":	{
+					"$x":	89,
+					"$y":	-6393
 				}
 			},
 			"Exit-4f9d1f4a-4963-478c-a294-34411d7f00a4":	{
 				"$Position":	{
-					"$x":	101,
-					"$y":	-6678
+					"$x":	95,
+					"$y":	-6172
 				}
 			},
 			"SaveIndex-623bc05c-6faf-4547-aa2d-15bb88885d2d":	{
 				"$Position":	{
-					"$x":	51,
-					"$y":	-6040
+					"$x":	-44,
+					"$y":	-5554
 				}
 			},
 			"Shape-c4228848-43bb-4854-bea7-2cc788135367":	{
 				"$Position":	{
-					"$x":	57,
-					"$y":	-5863
+					"$x":	-40,
+					"$y":	-5381
 				}
 			},
 			"LoadMaterial-fa5de62c-c05e-4f0d-a38a-10643d002af5":	{
 				"$Position":	{
-					"$x":	46,
-					"$y":	-5688
+					"$x":	-38,
+					"$y":	-5197
+				}
+			},
+			"AppendMaskFromToolArg-4abdbb08-0e42-4ad2-bdfb-5b7d606dd17e":	{
+				"$Position":	{
+					"$x":	-5,
+					"$y":	-4741
+				}
+			},
+			"LoadIntFromToolArg-c0347de5-b8ef-4e4b-b683-422015cbfd98":	{
+				"$Position":	{
+					"$x":	-1,
+					"$y":	-4470
+				}
+			},
+			"Set-f44ab1f9-6173-4820-a769-355f55e6238b":	{
+				"$Position":	{
+					"$x":	-1,
+					"$y":	-4199
+				}
+			},
+			"ClearOperationMask-1127854f-e2ba-48e6-9501-9a8ac1ab8065":	{
+				"$Position":	{
+					"$x":	-15,
+					"$y":	-4015
 				}
 			},
 			"AppendMaskFromToolArg-9428c80e-3d41-4236-be9f-248b2e3c5e71":	{
 				"$Position":	{
-					"$x":	35,
-					"$y":	-5517
+					"$x":	-87,
+					"$y":	-2938
 				}
 			},
 			"AppendMask-b2035b48-b944-4780-b1ac-5858dc785ec2":	{
 				"$Position":	{
-					"$x":	19,
-					"$y":	-5232
+					"$x":	-103,
+					"$y":	-2653
 				}
 			},
 			"LoadIntFromToolArg-693db82e-8dc4-4a58-944d-6ab91b39d488":	{
 				"$Position":	{
-					"$x":	21,
-					"$y":	-5076
+					"$x":	-101,
+					"$y":	-2497
 				}
 			},
 			"Set-77f516b5-d2ac-4f7a-9378-a8e3a3a7e699":	{
 				"$Position":	{
-					"$x":	21,
-					"$y":	-4805
+					"$x":	-101,
+					"$y":	-2226
 				}
 			},
 			"ClearOperationMask-c9177ce3-3ec4-468b-b2c7-ea883ec7201d":	{
 				"$Position":	{
-					"$x":	7,
-					"$y":	-4621
+					"$x":	-115,
+					"$y":	-2042
 				}
 			},
 			"LoadMaterial-2c04141f-05c7-4e8d-96ea-7a71551074b0":	{
 				"$Position":	{
-					"$x":	-17,
-					"$y":	-4130
+					"$x":	-139,
+					"$y":	-1453
 				}
 			},
 			"Mask-181ac355-5181-4f6b-ab8f-531005605a5f":	{
 				"$Position":	{
-					"$x":	-31,
-					"$y":	-3929
+					"$x":	-153,
+					"$y":	-1252
 				}
 			},
 			"AppendMaskFromToolArg-0b329dc5-9a56-48e6-b5d3-48c3a3978d0e":	{
 				"$Position":	{
-					"$x":	-26,
-					"$y":	-3772
-				}
-			},
-			"AppendMask-dae0d493-a21a-4264-ae80-0498c27dc62c":	{
-				"$Position":	{
-					"$x":	-42,
-					"$y":	-3487
+					"$x":	-148,
+					"$y":	-1095
 				}
 			},
 			"LoadIntFromToolArg-2f9601f2-0291-498a-a4af-73beacf155fc":	{
 				"$Position":	{
-					"$x":	-31,
-					"$y":	-3317
+					"$x":	-153,
+					"$y":	-640
 				}
 			},
 			"Set-cceb9508-d401-408f-89be-428ca76a66b4":	{
 				"$Position":	{
-					"$x":	-31,
-					"$y":	-3045
+					"$x":	-153,
+					"$y":	-368
 				}
 			},
 			"ClearOperationMask-354d40ef-dcb4-409a-979c-fb8c89481f1d":	{
 				"$Position":	{
-					"$x":	-45,
-					"$y":	-2861
+					"$x":	-167,
+					"$y":	-184
 				}
 			},
 			"LoadMaterial-2945252a-454a-47a6-841e-c7da64ff9eb4":	{
 				"$Position":	{
-					"$x":	-25,
-					"$y":	-2536
+					"$x":	-147,
+					"$y":	140
 				}
 			},
 			"Mask-8b24c312-7465-446f-9be1-2258692b3b87":	{
 				"$Position":	{
-					"$x":	-39,
-					"$y":	-2335
+					"$x":	-161,
+					"$y":	341
 				}
 			},
 			"AppendMaskFromToolArg-dc125739-629d-4002-83c5-1cf6124aac1e":	{
 				"$Position":	{
-					"$x":	-34,
-					"$y":	-2178
-				}
-			},
-			"AppendMask-6606c0c1-cbec-40e2-a955-d82bec918547":	{
-				"$Position":	{
-					"$x":	-50,
-					"$y":	-1893
+					"$x":	-156,
+					"$y":	498
 				}
 			},
 			"LoadIntFromToolArg-ef3c6ed4-3207-453b-bbb5-e0a0b94098c5":	{
 				"$Position":	{
-					"$x":	-39,
-					"$y":	-1723
+					"$x":	-169,
+					"$y":	800
 				}
 			},
 			"Set-050e7354-b7f0-4741-8db9-a2bff419f3ef":	{
 				"$Position":	{
-					"$x":	-39,
-					"$y":	-1451
+					"$x":	-169,
+					"$y":	1072
 				}
 			},
 			"ClearOperationMask-4082787c-c3b2-48a4-a2f8-b937b7cf8187":	{
 				"$Position":	{
-					"$x":	-53,
-					"$y":	-1267
+					"$x":	-183,
+					"$y":	1256
+				}
+			},
+			"Offset-7cb0e418-1ceb-4de0-b52c-e748b51c5e42":	{
+				"$Position":	{
+					"$x":	-29,
+					"$y":	-22897
 				}
 			}
 		},
@@ -1103,8 +1111,8 @@
 				"$name":	"Main Boulder Logic"
 			}, {
 				"$Position":	{
-					"$x":	-185.6875,
-					"$y":	-6161.625
+					"$x":	-308.5625,
+					"$y":	-3583.1875
 				},
 				"$width":	1001.5625,
 				"$height":	1912.875,
@@ -1112,13 +1120,13 @@
 			}],
 		"$Comments":	[{
 				"$Position":	{
-					"$x":	2597.3125,
-					"$y":	-22368.625
+					"$x":	2860.3125,
+					"$y":	-22395.6875
 				},
 				"$width":	1967,
 				"$height":	2062.8125,
 				"$name":	"Comment",
-				"$text":	"-------------------------------------\n  BOULDER BRUSH\n-------------------------------------\nThis brush gives you the ability to create boulders on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the boulder.\n\nLeft Click: Decorates the boulder.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nPrimary Blocks = The blocks the boulder will be made out of. Comes with a density slider to control how dense.\n\nPrimary Accent = The small decoration blocks to be placed on top of Primary Blocks as decoration. Comes with a density slider to control how dense.\n\nDecoration Blocks = The blocks placed on top of Primary Blocks. Comes with a density slider to control how dense.\n\nDecoration Accent = The small decoration blocks to be placed on top of Decoration Blocks as decoration. Comes with a density slider to control how dense.\n\nScaling Height = The height the boulder should be. This scales with the width, so the large the width, the taller the boulder.\n\nPoints on Radius = The number of smaller boulders to place around the main boulder.\n\nRadius Size = How close the small boulders in Points on Radius will be placed next to the main boulder.\n\nLayer Jitter = Add randomization to each sub-layer of the boulder\n\nRadius Jitter = Add randomization between the small boulders in Points on Radius.\n\nSmoothness = Sets how smooth the boulder should be.\n\n-------------------------------------\n How the brush works\n-------------------------------------\n\nThis section will talk about the way the boulders are made.\n\nThe boulder brush is made from a circle loop that pastes a main large boulder, then smaller boulders around it (how many of these is Points on Radius, and how far apart from each other is Radius Size). The initial selection is the base of the boulder,\r\nand the Boulder Height slider is how many times the boulder brush will stack this circle loop, and each time scales down the width to create a peak looking and moves the offset up by the height. The Layer Jitter adds an offset to each pasted stack, and the Radius Jitter adds offset between the smaller boulders around the main boulder in the stack.\n\n-------------------------------------------\n  BOULDER BRUSH - Read the Above ^\n-------------------------------------------",
+				"$text":	"-------------------------------------\n  BOULDER BRUSH\n-------------------------------------\nThis brush gives you the ability to create boulders on the ground\n\n-------------------------------------\n How to use\n-------------------------------------\n\nRight Click: Edits the blocks to create the boulder.\n\nLeft Click: Decorates the boulder. NOTE: Changing the origin to Center works best.\n\n-------------------------------------\n Customize the brush\n-------------------------------------\n\nThis brush has customizable settings so you can create your paths how you want them. Below are each setting and what they do:\n\nRock Blocks = The blocks the boulder will be made out of. Comes with a density slider to control how dense.\n\nRock Decor = The small decoration blocks to be placed on top of Primary Blocks as decoration. Comes with a density slider to control how dense.\n\nTop Blocks = The blocks placed on top of Rock Blocks. Comes with a density slider to control how dense.\n\nTop Decor = The small decoration blocks to be placed on top of Top Blocks as decoration. Comes with a density slider to control how dense.\n\nBoulder Points = Number of smaller boulders to form the main boulder.\n\nBoulder Radius = The distance between the smaller boulders (Boulder Points).\n\nRandomization = Randomizes the boulder.\n\nSmoothness = How smooth to make the boulder.\n\nStack Size (ADVANCED) = Number of times to stack the current shape on top of itself. Each stack will lessen the width by 1 until the width is 0.\n\nStack Randomization (ADVANCED) = Randomizes each stack from Stack Size.\n\n-------------------------------------------\n  BOULDER BRUSH - Read the Above ^\n-------------------------------------------",
 				"$fontSize":	33
 			}],
 		"$WorkspaceID":	"Scriptable Brush"

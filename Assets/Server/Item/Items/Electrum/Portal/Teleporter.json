@@ -64,19 +64,18 @@
           ],
           "Interactions": {
             "CollisionEnter": {
+              "Cooldown": {
+                "Cooldown": 1
+              },
               "Interactions": [
                 {
-                  "Type": "ApplyEffect",
-                  "EffectId": "Portal_Teleport",
-                  "Effects": {
-                    "WorldSoundEventId": "SFX_Potion_Drink_Success"
-                  },
+                  "Type": "Teleporter",
+                  "Particle": "Teleport",
                   "Next": {
-                    "Type": "Simple",
-                    "RunTime": 0.5,
-                    "Next": {
-                      "Type": "Teleporter",
-                      "Particle": "Teleport"
+                    "Type": "ApplyEffect",
+                    "EffectId": "Portal_Teleport",
+                    "Effects": {
+                      "WorldSoundEventId": "SFX_Potion_Drink_Success"
                     }
                   }
                 }
